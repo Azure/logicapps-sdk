@@ -12,583 +12,611 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
     public class MqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item> Read(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
+        public IBodyWorkflowAction<Item> Delete([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null)
         {
-            var apiCallPath = "/read";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var options = new JObject();
-            var optionspropCount = 0;
-            if (optionsqueue != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
-                optionspropCount++;
-            }
-
-            if (optionsmessageId != null)
-            {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
-                optionspropCount++;
-            }
-
-            if (optionscorrelationId != null)
-            {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
-                optionspropCount++;
-            }
-
-            if (optionsgroupId != null)
-            {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
-                optionspropCount++;
-            }
-
-            if (optionsmessageToken != null)
-            {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
-                optionspropCount++;
-            }
-
-            if (optionsoffset != null)
-            {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
-                optionspropCount++;
-            }
-
-            if (optionslogicalSequenceNumber != null)
-            {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
-                optionspropCount++;
-            }
-
-            if (optionsincludeInfo != null)
-            {
-                if (optionsincludeInfo != null)
+                var apiCallPath = "/v2/delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var options = new JObject();
+                var optionspropCount = 0;
+                if (optionsqueue != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["Queue"] = SourceExpressionConverter.ConvertToken(optionsqueue);
                     optionspropCount++;
                 }
 
-                optionspropCount++;
-            }
-            else
-            {
-                options["IncludeInfo"] = "false";
-                optionspropCount++;
-            }
-
-            if (optionstimeout != null)
-            {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
-                optionspropCount++;
-            }
-
-            if (optionspropCount > 0)
-            {
-                callPayload.Body = options;
-            }
-
-            return new ApiConnectionAction<Item>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList> ReadAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
-        {
-            var apiCallPath = "/readall";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var options = new JObject();
-            var optionspropCount = 0;
-            if (optionsqueue != null)
-            {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
-                optionspropCount++;
-            }
-
-            if (optionsmessageId != null)
-            {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
-                optionspropCount++;
-            }
-
-            if (optionscorrelationId != null)
-            {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
-                optionspropCount++;
-            }
-
-            if (optionsgroupId != null)
-            {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
-                optionspropCount++;
-            }
-
-            if (optionsmessageToken != null)
-            {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
-                optionspropCount++;
-            }
-
-            if (optionsoffset != null)
-            {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
-                optionspropCount++;
-            }
-
-            if (optionslogicalSequenceNumber != null)
-            {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
-                optionspropCount++;
-            }
-
-            if (optionsincludeInfo != null)
-            {
-                if (optionsincludeInfo != null)
+                if (optionsmessageId != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["MessageId"] = SourceExpressionConverter.ConvertToken(optionsmessageId);
                     optionspropCount++;
                 }
 
-                optionspropCount++;
-            }
-            else
-            {
-                options["IncludeInfo"] = "false";
-                optionspropCount++;
-            }
-
-            if (optionstimeout != null)
-            {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
-                optionspropCount++;
-            }
-
-            if (optionsbatchSize != null)
-            {
-                options["BatchSize"] = ExpressionConverter.ConvertO(optionsbatchSize);
-                optionspropCount++;
-            }
-
-            if (optionspropCount > 0)
-            {
-                callPayload.Body = options;
-            }
-
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item> Receive(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
-        {
-            var apiCallPath = "/receive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var options = new JObject();
-            var optionspropCount = 0;
-            if (optionsqueue != null)
-            {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
-                optionspropCount++;
-            }
-
-            if (optionsmessageId != null)
-            {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
-                optionspropCount++;
-            }
-
-            if (optionscorrelationId != null)
-            {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
-                optionspropCount++;
-            }
-
-            if (optionsgroupId != null)
-            {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
-                optionspropCount++;
-            }
-
-            if (optionsmessageToken != null)
-            {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
-                optionspropCount++;
-            }
-
-            if (optionsoffset != null)
-            {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
-                optionspropCount++;
-            }
-
-            if (optionslogicalSequenceNumber != null)
-            {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
-                optionspropCount++;
-            }
-
-            if (optionsincludeInfo != null)
-            {
-                if (optionsincludeInfo != null)
+                if (optionscorrelationId != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["CorrelationId"] = SourceExpressionConverter.ConvertToken(optionscorrelationId);
                     optionspropCount++;
                 }
 
-                optionspropCount++;
-            }
-            else
-            {
-                options["IncludeInfo"] = "false";
-                optionspropCount++;
-            }
-
-            if (optionstimeout != null)
-            {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
-                optionspropCount++;
-            }
-
-            if (optionspropCount > 0)
-            {
-                callPayload.Body = options;
-            }
-
-            return new ApiConnectionAction<Item>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList> ReceiveAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
-        {
-            var apiCallPath = "/receiveall";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var options = new JObject();
-            var optionspropCount = 0;
-            if (optionsqueue != null)
-            {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
-                optionspropCount++;
-            }
-
-            if (optionsmessageId != null)
-            {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
-                optionspropCount++;
-            }
-
-            if (optionscorrelationId != null)
-            {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
-                optionspropCount++;
-            }
-
-            if (optionsgroupId != null)
-            {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
-                optionspropCount++;
-            }
-
-            if (optionsmessageToken != null)
-            {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
-                optionspropCount++;
-            }
-
-            if (optionsoffset != null)
-            {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
-                optionspropCount++;
-            }
-
-            if (optionslogicalSequenceNumber != null)
-            {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
-                optionspropCount++;
-            }
-
-            if (optionsincludeInfo != null)
-            {
-                if (optionsincludeInfo != null)
+                if (optionsgroupId != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["GroupId"] = SourceExpressionConverter.ConvertToken(optionsgroupId);
                     optionspropCount++;
                 }
 
-                optionspropCount++;
-            }
-            else
-            {
-                options["IncludeInfo"] = "false";
-                optionspropCount++;
-            }
-
-            if (optionstimeout != null)
-            {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
-                optionspropCount++;
-            }
-
-            if (optionsbatchSize != null)
-            {
-                options["BatchSize"] = ExpressionConverter.ConvertO(optionsbatchSize);
-                optionspropCount++;
-            }
-
-            if (optionspropCount > 0)
-            {
-                callPayload.Body = options;
-            }
-
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<Item> Delete(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null)
-        {
-            var apiCallPath = "/delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var options = new JObject();
-            var optionspropCount = 0;
-            if (optionsqueue != null)
-            {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
-                optionspropCount++;
-            }
-
-            if (optionsmessageId != null)
-            {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
-                optionspropCount++;
-            }
-
-            if (optionscorrelationId != null)
-            {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
-                optionspropCount++;
-            }
-
-            if (optionsgroupId != null)
-            {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
-                optionspropCount++;
-            }
-
-            if (optionsmessageToken != null)
-            {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
-                optionspropCount++;
-            }
-
-            if (optionsoffset != null)
-            {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
-                optionspropCount++;
-            }
-
-            if (optionslogicalSequenceNumber != null)
-            {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
-                optionspropCount++;
-            }
-
-            if (optionsincludeInfo != null)
-            {
-                if (optionsincludeInfo != null)
+                if (optionsmessageToken != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["MessageToken"] = SourceExpressionConverter.ConvertToken(optionsmessageToken);
                     optionspropCount++;
                 }
 
-                optionspropCount++;
-            }
-            else
-            {
-                options["IncludeInfo"] = "false";
-                optionspropCount++;
-            }
-
-            if (optionstimeout != null)
-            {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
-                optionspropCount++;
-            }
-
-            if (optionspropCount > 0)
-            {
-                callPayload.Body = options;
-            }
-
-            return new ApiConnectionAction<Item>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ItemsList> DeleteAll(Expression<Func<string>> optionsqueue = null, Expression<Func<string>> optionsmessageId = null, Expression<Func<string>> optionscorrelationId = null, Expression<Func<string>> optionsgroupId = null, Expression<Func<string>> optionsmessageToken = null, Expression<Func<double>> optionsoffset = null, Expression<Func<double>> optionslogicalSequenceNumber = null, Expression<Func<optionsincludeInfoInput>> optionsincludeInfo = null, Expression<Func<string>> optionstimeout = null, Expression<Func<double>> optionsbatchSize = null)
-        {
-            var apiCallPath = "/deleteall";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var options = new JObject();
-            var optionspropCount = 0;
-            if (optionsqueue != null)
-            {
-                options["Queue"] = ExpressionConverter.ConvertO(optionsqueue);
-                optionspropCount++;
-            }
-
-            if (optionsmessageId != null)
-            {
-                options["MessageId"] = ExpressionConverter.ConvertO(optionsmessageId);
-                optionspropCount++;
-            }
-
-            if (optionscorrelationId != null)
-            {
-                options["CorrelationId"] = ExpressionConverter.ConvertO(optionscorrelationId);
-                optionspropCount++;
-            }
-
-            if (optionsgroupId != null)
-            {
-                options["GroupId"] = ExpressionConverter.ConvertO(optionsgroupId);
-                optionspropCount++;
-            }
-
-            if (optionsmessageToken != null)
-            {
-                options["MessageToken"] = ExpressionConverter.ConvertO(optionsmessageToken);
-                optionspropCount++;
-            }
-
-            if (optionsoffset != null)
-            {
-                options["Offset"] = ExpressionConverter.ConvertO(optionsoffset);
-                optionspropCount++;
-            }
-
-            if (optionslogicalSequenceNumber != null)
-            {
-                options["LogicalSequenceNumber"] = ExpressionConverter.ConvertO(optionslogicalSequenceNumber);
-                optionspropCount++;
-            }
-
-            if (optionsincludeInfo != null)
-            {
-                if (optionsincludeInfo != null)
+                if (optionsoffset != null)
                 {
-                    options["IncludeInfo"] = ExpressionConverter.ConvertO(optionsincludeInfo);
+                    options["Offset"] = SourceExpressionConverter.ConvertToken(optionsoffset);
                     optionspropCount++;
                 }
 
-                optionspropCount++;
-            }
-            else
-            {
-                options["IncludeInfo"] = "false";
-                optionspropCount++;
+                if (optionslogicalSequenceNumber != null)
+                {
+                    options["LogicalSequenceNumber"] = SourceExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
+                    optionspropCount++;
+                }
+
+                if (optionsincludeInfo != null)
+                {
+                    if (optionsincludeInfo != null)
+                    {
+                        options["IncludeInfo"] = SourceExpressionConverter.Convert(optionsincludeInfo);
+                        optionspropCount++;
+                    }
+
+                    optionspropCount++;
+                }
+                else
+                {
+                    options["IncludeInfo"] = "false";
+                    optionspropCount++;
+                }
+
+                if (optionstimeout != null)
+                {
+                    options["Timeout"] = SourceExpressionConverter.ConvertToken(optionstimeout);
+                    optionspropCount++;
+                }
+
+                if (optionspropCount > 0)
+                {
+                    callPayload.Body = options;
+                }
+                return callPayload;
             }
 
-            if (optionstimeout != null)
-            {
-                options["Timeout"] = ExpressionConverter.ConvertO(optionstimeout);
-                optionspropCount++;
-            }
-
-            if (optionsbatchSize != null)
-            {
-                options["BatchSize"] = ExpressionConverter.ConvertO(optionsbatchSize);
-                optionspropCount++;
-            }
-
-            if (optionspropCount > 0)
-            {
-                callPayload.Body = options;
-            }
-
-            return new ApiConnectionAction<ItemsList>(callPayload);
+            return new ApiConnectionAction<Item>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendResponse> Send(Expression<Func<string>> messagemessage, Expression<Func<string>> messagequeue = null, Expression<Func<messagemessageTypeInput>> messagemessageType = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messagereplyToQueue = null, Expression<Func<string>> messagereplyToQueueManager = null, Expression<Func<double>> messagecodeCharSetId = null, Expression<Func<double>> messageoffset = null, Expression<Func<string>> messageformat = null)
+        public IBodyWorkflowAction<ItemsList> DeleteAll([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null, [WorkflowExpression] Func<double> optionsbatchSize = null)
         {
-            var apiCallPath = "/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var message = new JObject();
-            var messagepropCount = 0;
-            if (messagequeue != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                message["Queue"] = ExpressionConverter.ConvertO(messagequeue);
-                messagepropCount++;
+                var apiCallPath = "/v2/deleteall";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var options = new JObject();
+                var optionspropCount = 0;
+                if (optionsqueue != null)
+                {
+                    options["Queue"] = SourceExpressionConverter.ConvertToken(optionsqueue);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageId != null)
+                {
+                    options["MessageId"] = SourceExpressionConverter.ConvertToken(optionsmessageId);
+                    optionspropCount++;
+                }
+
+                if (optionscorrelationId != null)
+                {
+                    options["CorrelationId"] = SourceExpressionConverter.ConvertToken(optionscorrelationId);
+                    optionspropCount++;
+                }
+
+                if (optionsgroupId != null)
+                {
+                    options["GroupId"] = SourceExpressionConverter.ConvertToken(optionsgroupId);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageToken != null)
+                {
+                    options["MessageToken"] = SourceExpressionConverter.ConvertToken(optionsmessageToken);
+                    optionspropCount++;
+                }
+
+                if (optionsoffset != null)
+                {
+                    options["Offset"] = SourceExpressionConverter.ConvertToken(optionsoffset);
+                    optionspropCount++;
+                }
+
+                if (optionslogicalSequenceNumber != null)
+                {
+                    options["LogicalSequenceNumber"] = SourceExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
+                    optionspropCount++;
+                }
+
+                if (optionsincludeInfo != null)
+                {
+                    if (optionsincludeInfo != null)
+                    {
+                        options["IncludeInfo"] = SourceExpressionConverter.Convert(optionsincludeInfo);
+                        optionspropCount++;
+                    }
+
+                    optionspropCount++;
+                }
+                else
+                {
+                    options["IncludeInfo"] = "false";
+                    optionspropCount++;
+                }
+
+                if (optionstimeout != null)
+                {
+                    options["Timeout"] = SourceExpressionConverter.ConvertToken(optionstimeout);
+                    optionspropCount++;
+                }
+
+                if (optionsbatchSize != null)
+                {
+                    options["BatchSize"] = SourceExpressionConverter.ConvertToken(optionsbatchSize);
+                    optionspropCount++;
+                }
+
+                if (optionspropCount > 0)
+                {
+                    callPayload.Body = options;
+                }
+                return callPayload;
             }
 
-            messagepropCount++;
-            message["Message"] = ExpressionConverter.ConvertO(messagemessage);
-            if (messagemessageType != null)
+            return new ApiConnectionAction<ItemsList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
+        public IBodyWorkflowAction<Item> Read([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                if (messagemessageType != null)
+                var apiCallPath = "/v2/read";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var options = new JObject();
+                var optionspropCount = 0;
+                if (optionsqueue != null)
                 {
-                    message["MessageType"] = ExpressionConverter.ConvertO(messagemessageType);
+                    options["Queue"] = SourceExpressionConverter.ConvertToken(optionsqueue);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageId != null)
+                {
+                    options["MessageId"] = SourceExpressionConverter.ConvertToken(optionsmessageId);
+                    optionspropCount++;
+                }
+
+                if (optionscorrelationId != null)
+                {
+                    options["CorrelationId"] = SourceExpressionConverter.ConvertToken(optionscorrelationId);
+                    optionspropCount++;
+                }
+
+                if (optionsgroupId != null)
+                {
+                    options["GroupId"] = SourceExpressionConverter.ConvertToken(optionsgroupId);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageToken != null)
+                {
+                    options["MessageToken"] = SourceExpressionConverter.ConvertToken(optionsmessageToken);
+                    optionspropCount++;
+                }
+
+                if (optionsoffset != null)
+                {
+                    options["Offset"] = SourceExpressionConverter.ConvertToken(optionsoffset);
+                    optionspropCount++;
+                }
+
+                if (optionslogicalSequenceNumber != null)
+                {
+                    options["LogicalSequenceNumber"] = SourceExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
+                    optionspropCount++;
+                }
+
+                if (optionsincludeInfo != null)
+                {
+                    if (optionsincludeInfo != null)
+                    {
+                        options["IncludeInfo"] = SourceExpressionConverter.Convert(optionsincludeInfo);
+                        optionspropCount++;
+                    }
+
+                    optionspropCount++;
+                }
+                else
+                {
+                    options["IncludeInfo"] = "false";
+                    optionspropCount++;
+                }
+
+                if (optionstimeout != null)
+                {
+                    options["Timeout"] = SourceExpressionConverter.ConvertToken(optionstimeout);
+                    optionspropCount++;
+                }
+
+                if (optionspropCount > 0)
+                {
+                    callPayload.Body = options;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
+        public IBodyWorkflowAction<ItemsList> ReadAll([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null, [WorkflowExpression] Func<double> optionsbatchSize = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/readall";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var options = new JObject();
+                var optionspropCount = 0;
+                if (optionsqueue != null)
+                {
+                    options["Queue"] = SourceExpressionConverter.ConvertToken(optionsqueue);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageId != null)
+                {
+                    options["MessageId"] = SourceExpressionConverter.ConvertToken(optionsmessageId);
+                    optionspropCount++;
+                }
+
+                if (optionscorrelationId != null)
+                {
+                    options["CorrelationId"] = SourceExpressionConverter.ConvertToken(optionscorrelationId);
+                    optionspropCount++;
+                }
+
+                if (optionsgroupId != null)
+                {
+                    options["GroupId"] = SourceExpressionConverter.ConvertToken(optionsgroupId);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageToken != null)
+                {
+                    options["MessageToken"] = SourceExpressionConverter.ConvertToken(optionsmessageToken);
+                    optionspropCount++;
+                }
+
+                if (optionsoffset != null)
+                {
+                    options["Offset"] = SourceExpressionConverter.ConvertToken(optionsoffset);
+                    optionspropCount++;
+                }
+
+                if (optionslogicalSequenceNumber != null)
+                {
+                    options["LogicalSequenceNumber"] = SourceExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
+                    optionspropCount++;
+                }
+
+                if (optionsincludeInfo != null)
+                {
+                    if (optionsincludeInfo != null)
+                    {
+                        options["IncludeInfo"] = SourceExpressionConverter.Convert(optionsincludeInfo);
+                        optionspropCount++;
+                    }
+
+                    optionspropCount++;
+                }
+                else
+                {
+                    options["IncludeInfo"] = "false";
+                    optionspropCount++;
+                }
+
+                if (optionstimeout != null)
+                {
+                    options["Timeout"] = SourceExpressionConverter.ConvertToken(optionstimeout);
+                    optionspropCount++;
+                }
+
+                if (optionsbatchSize != null)
+                {
+                    options["BatchSize"] = SourceExpressionConverter.ConvertToken(optionsbatchSize);
+                    optionspropCount++;
+                }
+
+                if (optionspropCount > 0)
+                {
+                    callPayload.Body = options;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ItemsList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
+        public IBodyWorkflowAction<Item> Receive([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/receive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var options = new JObject();
+                var optionspropCount = 0;
+                if (optionsqueue != null)
+                {
+                    options["Queue"] = SourceExpressionConverter.ConvertToken(optionsqueue);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageId != null)
+                {
+                    options["MessageId"] = SourceExpressionConverter.ConvertToken(optionsmessageId);
+                    optionspropCount++;
+                }
+
+                if (optionscorrelationId != null)
+                {
+                    options["CorrelationId"] = SourceExpressionConverter.ConvertToken(optionscorrelationId);
+                    optionspropCount++;
+                }
+
+                if (optionsgroupId != null)
+                {
+                    options["GroupId"] = SourceExpressionConverter.ConvertToken(optionsgroupId);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageToken != null)
+                {
+                    options["MessageToken"] = SourceExpressionConverter.ConvertToken(optionsmessageToken);
+                    optionspropCount++;
+                }
+
+                if (optionsoffset != null)
+                {
+                    options["Offset"] = SourceExpressionConverter.ConvertToken(optionsoffset);
+                    optionspropCount++;
+                }
+
+                if (optionslogicalSequenceNumber != null)
+                {
+                    options["LogicalSequenceNumber"] = SourceExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
+                    optionspropCount++;
+                }
+
+                if (optionsincludeInfo != null)
+                {
+                    if (optionsincludeInfo != null)
+                    {
+                        options["IncludeInfo"] = SourceExpressionConverter.Convert(optionsincludeInfo);
+                        optionspropCount++;
+                    }
+
+                    optionspropCount++;
+                }
+                else
+                {
+                    options["IncludeInfo"] = "false";
+                    optionspropCount++;
+                }
+
+                if (optionstimeout != null)
+                {
+                    options["Timeout"] = SourceExpressionConverter.ConvertToken(optionstimeout);
+                    optionspropCount++;
+                }
+
+                if (optionspropCount > 0)
+                {
+                    callPayload.Body = options;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
+        public IBodyWorkflowAction<ItemsList> ReceiveAll([WorkflowExpression] Func<string> optionsqueue = null, [WorkflowExpression] Func<string> optionsmessageId = null, [WorkflowExpression] Func<string> optionscorrelationId = null, [WorkflowExpression] Func<string> optionsgroupId = null, [WorkflowExpression] Func<string> optionsmessageToken = null, [WorkflowExpression] Func<double> optionsoffset = null, [WorkflowExpression] Func<double> optionslogicalSequenceNumber = null, [WorkflowExpression] Func<optionsincludeInfoInput> optionsincludeInfo = null, [WorkflowExpression] Func<string> optionstimeout = null, [WorkflowExpression] Func<double> optionsbatchSize = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/receiveall";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var options = new JObject();
+                var optionspropCount = 0;
+                if (optionsqueue != null)
+                {
+                    options["Queue"] = SourceExpressionConverter.ConvertToken(optionsqueue);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageId != null)
+                {
+                    options["MessageId"] = SourceExpressionConverter.ConvertToken(optionsmessageId);
+                    optionspropCount++;
+                }
+
+                if (optionscorrelationId != null)
+                {
+                    options["CorrelationId"] = SourceExpressionConverter.ConvertToken(optionscorrelationId);
+                    optionspropCount++;
+                }
+
+                if (optionsgroupId != null)
+                {
+                    options["GroupId"] = SourceExpressionConverter.ConvertToken(optionsgroupId);
+                    optionspropCount++;
+                }
+
+                if (optionsmessageToken != null)
+                {
+                    options["MessageToken"] = SourceExpressionConverter.ConvertToken(optionsmessageToken);
+                    optionspropCount++;
+                }
+
+                if (optionsoffset != null)
+                {
+                    options["Offset"] = SourceExpressionConverter.ConvertToken(optionsoffset);
+                    optionspropCount++;
+                }
+
+                if (optionslogicalSequenceNumber != null)
+                {
+                    options["LogicalSequenceNumber"] = SourceExpressionConverter.ConvertToken(optionslogicalSequenceNumber);
+                    optionspropCount++;
+                }
+
+                if (optionsincludeInfo != null)
+                {
+                    if (optionsincludeInfo != null)
+                    {
+                        options["IncludeInfo"] = SourceExpressionConverter.Convert(optionsincludeInfo);
+                        optionspropCount++;
+                    }
+
+                    optionspropCount++;
+                }
+                else
+                {
+                    options["IncludeInfo"] = "false";
+                    optionspropCount++;
+                }
+
+                if (optionstimeout != null)
+                {
+                    options["Timeout"] = SourceExpressionConverter.ConvertToken(optionstimeout);
+                    optionspropCount++;
+                }
+
+                if (optionsbatchSize != null)
+                {
+                    options["BatchSize"] = SourceExpressionConverter.ConvertToken(optionsbatchSize);
+                    optionspropCount++;
+                }
+
+                if (optionspropCount > 0)
+                {
+                    callPayload.Body = options;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ItemsList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mq")]
+        public IBodyWorkflowAction<SendV2Response> Send([WorkflowExpression] Func<string> messagemessage, [WorkflowExpression] Func<string> messagequeue = null, [WorkflowExpression] Func<messagemessageTypeInput> messagemessageType = null, [WorkflowExpression] Func<string> messagecorrelationId = null, [WorkflowExpression] Func<string> messagemessageId = null, [WorkflowExpression] Func<string> messagereplyToQueue = null, [WorkflowExpression] Func<string> messagereplyToQueueManager = null, [WorkflowExpression] Func<double> messagecodeCharSetId = null, [WorkflowExpression] Func<double> messageoffset = null, [WorkflowExpression] Func<string> messageformat = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var message = new JObject();
+                var messagepropCount = 0;
+                if (messagequeue != null)
+                {
+                    message["Queue"] = SourceExpressionConverter.ConvertToken(messagequeue);
                     messagepropCount++;
                 }
 
                 messagepropCount++;
-            }
-            else
-            {
-                message["MessageType"] = "Datagram";
-                messagepropCount++;
+                message["Message"] = SourceExpressionConverter.ConvertToken(messagemessage);
+                if (messagemessageType != null)
+                {
+                    if (messagemessageType != null)
+                    {
+                        message["MessageType"] = SourceExpressionConverter.Convert(messagemessageType);
+                        messagepropCount++;
+                    }
+
+                    messagepropCount++;
+                }
+                else
+                {
+                    message["MessageType"] = "Datagram";
+                    messagepropCount++;
+                }
+
+                if (messagecorrelationId != null)
+                {
+                    message["CorrelationId"] = SourceExpressionConverter.ConvertToken(messagecorrelationId);
+                    messagepropCount++;
+                }
+
+                if (messagemessageId != null)
+                {
+                    message["MessageId"] = SourceExpressionConverter.ConvertToken(messagemessageId);
+                    messagepropCount++;
+                }
+
+                if (messagereplyToQueue != null)
+                {
+                    message["ReplyToQueue"] = SourceExpressionConverter.ConvertToken(messagereplyToQueue);
+                    messagepropCount++;
+                }
+
+                if (messagereplyToQueueManager != null)
+                {
+                    message["ReplyToQueueManager"] = SourceExpressionConverter.ConvertToken(messagereplyToQueueManager);
+                    messagepropCount++;
+                }
+
+                if (messagecodeCharSetId != null)
+                {
+                    message["CodeCharSetId"] = SourceExpressionConverter.ConvertToken(messagecodeCharSetId);
+                    messagepropCount++;
+                }
+
+                if (messageoffset != null)
+                {
+                    message["Offset"] = SourceExpressionConverter.ConvertToken(messageoffset);
+                    messagepropCount++;
+                }
+
+                if (messageformat != null)
+                {
+                    message["Format"] = SourceExpressionConverter.ConvertToken(messageformat);
+                    messagepropCount++;
+                }
+
+                if (messagepropCount > 0)
+                {
+                    callPayload.Body = message;
+                }
+                return callPayload;
             }
 
-            if (messagecorrelationId != null)
-            {
-                message["CorrelationId"] = ExpressionConverter.ConvertO(messagecorrelationId);
-                messagepropCount++;
-            }
-
-            if (messagemessageId != null)
-            {
-                message["MessageId"] = ExpressionConverter.ConvertO(messagemessageId);
-                messagepropCount++;
-            }
-
-            if (messagereplyToQueue != null)
-            {
-                message["ReplyToQueue"] = ExpressionConverter.ConvertO(messagereplyToQueue);
-                messagepropCount++;
-            }
-
-            if (messagereplyToQueueManager != null)
-            {
-                message["ReplyToQueueManager"] = ExpressionConverter.ConvertO(messagereplyToQueueManager);
-                messagepropCount++;
-            }
-
-            if (messagecodeCharSetId != null)
-            {
-                message["CodeCharSetId"] = ExpressionConverter.ConvertO(messagecodeCharSetId);
-                messagepropCount++;
-            }
-
-            if (messageoffset != null)
-            {
-                message["Offset"] = ExpressionConverter.ConvertO(messageoffset);
-                messagepropCount++;
-            }
-
-            if (messageformat != null)
-            {
-                message["Format"] = ExpressionConverter.ConvertO(messageformat);
-                messagepropCount++;
-            }
-
-            if (messagepropCount > 0)
-            {
-                callPayload.Body = message;
-            }
-
-            return new ApiConnectionAction<SendResponse>(callPayload);
+            return new ApiConnectionAction<SendV2Response>(BuildSourceInput);
         }
     }
 
@@ -634,7 +662,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mq
         public Item[] Value { get; set; }
     }
 
-    public class SendResponse
+    public class SendV2Response
     {
         public string ItemInternalId { get; set; }
         public string MessageData { get; set; }

@@ -12,1033 +12,1089 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparsepowerboxtools
     public class SparsepowerboxtoolsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampImage> PdfStampImage(Expression<Func<string>> reqPdfStampImagepDF, Expression<Func<string>> reqPdfStampImageimage, Expression<Func<double>> reqPdfStampImageoptionsopacity = null, Expression<Func<double>> reqPdfStampImageoptionsscale = null, Expression<Func<int>> reqPdfStampImageoptionsrotate = null, Expression<Func<int>> reqPdfStampImageoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampImageoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampImageoptionspositionxOffset = null)
+        public IBodyWorkflowAction<Resp200PdfStampImage> PdfStampImage([WorkflowExpression] Func<string> reqPdfStampImagepDF, [WorkflowExpression] Func<string> reqPdfStampImageimage, [WorkflowExpression] Func<double> reqPdfStampImageoptionsopacity = null, [WorkflowExpression] Func<double> reqPdfStampImageoptionsscale = null, [WorkflowExpression] Func<int> reqPdfStampImageoptionsrotate = null, [WorkflowExpression] Func<int> reqPdfStampImageoptionspositionyOffset = null, [WorkflowExpression] Func<string> reqPdfStampImageoptionspositionstartOfYOffset = null, [WorkflowExpression] Func<int> reqPdfStampImageoptionspositionxOffset = null)
         {
-            var apiCallPath = "/pdf/stamp/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqPdfStampImage = new JObject();
-            var reqPdfStampImagepropCount = 0;
-            reqPdfStampImagepropCount++;
-            reqPdfStampImage["pdf"] = ExpressionConverter.ConvertO(reqPdfStampImagepDF);
-            reqPdfStampImagepropCount++;
-            reqPdfStampImage["image"] = ExpressionConverter.ConvertO(reqPdfStampImageimage);
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqPdfStampImageoptionsopacity != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/pdf/stamp/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqPdfStampImage = new JObject();
+                var reqPdfStampImagepropCount = 0;
+                reqPdfStampImagepropCount++;
+                reqPdfStampImage["pdf"] = SourceExpressionConverter.ConvertToken(reqPdfStampImagepDF);
+                reqPdfStampImagepropCount++;
+                reqPdfStampImage["image"] = SourceExpressionConverter.ConvertToken(reqPdfStampImageimage);
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
                 if (reqPdfStampImageoptionsopacity != null)
                 {
-                    optionsObject["opacity"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsopacity);
+                    if (reqPdfStampImageoptionsopacity != null)
+                    {
+                        optionsObject["opacity"] = SourceExpressionConverter.ConvertToken(reqPdfStampImageoptionsopacity);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["opacity"] = 1;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["opacity"] = 1;
-                optionsObjectpropCount++;
-            }
-
-            if (reqPdfStampImageoptionsscale != null)
-            {
                 if (reqPdfStampImageoptionsscale != null)
                 {
-                    optionsObject["scale"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsscale);
+                    if (reqPdfStampImageoptionsscale != null)
+                    {
+                        optionsObject["scale"] = SourceExpressionConverter.ConvertToken(reqPdfStampImageoptionsscale);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["scale"] = 1;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["scale"] = 1;
-                optionsObjectpropCount++;
-            }
-
-            if (reqPdfStampImageoptionsrotate != null)
-            {
                 if (reqPdfStampImageoptionsrotate != null)
                 {
-                    optionsObject["rotate"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionsrotate);
+                    if (reqPdfStampImageoptionsrotate != null)
+                    {
+                        optionsObject["rotate"] = SourceExpressionConverter.ConvertToken(reqPdfStampImageoptionsrotate);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["rotate"] = 0;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["rotate"] = 0;
-                optionsObjectpropCount++;
-            }
-
-            var positionObject = new JObject();
-            var positionObjectpropCount = 0;
-            if (reqPdfStampImageoptionspositionyOffset != null)
-            {
+                var positionObject = new JObject();
+                var positionObjectpropCount = 0;
                 if (reqPdfStampImageoptionspositionyOffset != null)
                 {
-                    positionObject["yOffset"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionyOffset);
+                    if (reqPdfStampImageoptionspositionyOffset != null)
+                    {
+                        positionObject["yOffset"] = SourceExpressionConverter.ConvertToken(reqPdfStampImageoptionspositionyOffset);
+                        positionObjectpropCount++;
+                    }
+
+                    positionObjectpropCount++;
+                }
+                else
+                {
+                    positionObject["yOffset"] = 25;
                     positionObjectpropCount++;
                 }
 
-                positionObjectpropCount++;
-            }
-            else
-            {
-                positionObject["yOffset"] = 25;
-                positionObjectpropCount++;
-            }
-
-            if (reqPdfStampImageoptionspositionstartOfYOffset != null)
-            {
                 if (reqPdfStampImageoptionspositionstartOfYOffset != null)
                 {
-                    positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionstartOfYOffset);
+                    if (reqPdfStampImageoptionspositionstartOfYOffset != null)
+                    {
+                        positionObject["yOffsetStart"] = SourceExpressionConverter.ConvertToken(reqPdfStampImageoptionspositionstartOfYOffset);
+                        positionObjectpropCount++;
+                    }
+
+                    positionObjectpropCount++;
+                }
+                else
+                {
+                    positionObject["yOffsetStart"] = "bottom";
                     positionObjectpropCount++;
                 }
 
-                positionObjectpropCount++;
-            }
-            else
-            {
-                positionObject["yOffsetStart"] = "bottom";
-                positionObjectpropCount++;
-            }
-
-            if (reqPdfStampImageoptionspositionxOffset != null)
-            {
                 if (reqPdfStampImageoptionspositionxOffset != null)
                 {
-                    positionObject["xOffset"] = ExpressionConverter.ConvertO(reqPdfStampImageoptionspositionxOffset);
+                    if (reqPdfStampImageoptionspositionxOffset != null)
+                    {
+                        positionObject["xOffset"] = SourceExpressionConverter.ConvertToken(reqPdfStampImageoptionspositionxOffset);
+                        positionObjectpropCount++;
+                    }
+
+                    positionObjectpropCount++;
+                }
+                else
+                {
+                    positionObject["xOffset"] = 50;
                     positionObjectpropCount++;
                 }
 
-                positionObjectpropCount++;
-            }
-            else
-            {
-                positionObject["xOffset"] = 50;
-                positionObjectpropCount++;
+                if (positionObjectpropCount > 0)
+                {
+                    optionsObject["position"] = positionObject;
+                    optionsObjectpropCount++;
+                }
+
+                if (optionsObjectpropCount > 0)
+                {
+                    reqPdfStampImage["options"] = optionsObject;
+                    reqPdfStampImagepropCount++;
+                }
+
+                if (reqPdfStampImagepropCount > 0)
+                {
+                    callPayload.Body = reqPdfStampImage;
+                }
+                return callPayload;
             }
 
-            if (positionObjectpropCount > 0)
-            {
-                optionsObject["position"] = positionObject;
-                optionsObjectpropCount++;
-            }
-
-            if (optionsObjectpropCount > 0)
-            {
-                reqPdfStampImage["options"] = optionsObject;
-                reqPdfStampImagepropCount++;
-            }
-
-            if (reqPdfStampImagepropCount > 0)
-            {
-                callPayload.Body = reqPdfStampImage;
-            }
-
-            return new ApiConnectionAction<Resp200PdfStampImage>(callPayload);
+            return new ApiConnectionAction<Resp200PdfStampImage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ExcelSheetAddRows> ExcelSheetAddRows(Expression<Func<string>> reqExcelSheetAddrowssheetname, Expression<Func<string>> reqExcelSheetAddrowsexcel, Expression<Func<JToken[]>> reqExcelSheetAddrowsdata = null)
+        public IBodyWorkflowAction<Resp200ExcelSheetAddRows> ExcelSheetAddRows([WorkflowExpression] Func<string> reqExcelSheetAddrowssheetname, [WorkflowExpression] Func<string> reqExcelSheetAddrowsexcel, [WorkflowExpression] Func<JToken[]> reqExcelSheetAddrowsdata = null)
         {
-            var apiCallPath = "/excel/sheet/add-rows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqExcelSheetAddrows = new JObject();
-            var reqExcelSheetAddrowspropCount = 0;
-            reqExcelSheetAddrowspropCount++;
-            reqExcelSheetAddrows["sheet"] = ExpressionConverter.ConvertO(reqExcelSheetAddrowssheetname);
-            if (reqExcelSheetAddrowsdata != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqExcelSheetAddrows["data"] = ExpressionConverter.ConvertO(reqExcelSheetAddrowsdata);
+                var apiCallPath = "/excel/sheet/add-rows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqExcelSheetAddrows = new JObject();
+                var reqExcelSheetAddrowspropCount = 0;
                 reqExcelSheetAddrowspropCount++;
+                reqExcelSheetAddrows["sheet"] = SourceExpressionConverter.ConvertToken(reqExcelSheetAddrowssheetname);
+                if (reqExcelSheetAddrowsdata != null)
+                {
+                    reqExcelSheetAddrows["data"] = SourceExpressionConverter.ConvertToken(reqExcelSheetAddrowsdata);
+                    reqExcelSheetAddrowspropCount++;
+                }
+
+                reqExcelSheetAddrowspropCount++;
+                reqExcelSheetAddrows["excelFile"] = SourceExpressionConverter.ConvertToken(reqExcelSheetAddrowsexcel);
+                if (reqExcelSheetAddrowspropCount > 0)
+                {
+                    callPayload.Body = reqExcelSheetAddrows;
+                }
+                return callPayload;
             }
 
-            reqExcelSheetAddrowspropCount++;
-            reqExcelSheetAddrows["excelFile"] = ExpressionConverter.ConvertO(reqExcelSheetAddrowsexcel);
-            if (reqExcelSheetAddrowspropCount > 0)
-            {
-                callPayload.Body = reqExcelSheetAddrows;
-            }
-
-            return new ApiConnectionAction<Resp200ExcelSheetAddRows>(callPayload);
+            return new ApiConnectionAction<Resp200ExcelSheetAddRows>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfCreateByHtml> PdfCreateByHtml(Expression<Func<string>> reqPdfCreateByHtmlhTML, Expression<Func<string>> reqPdfCreateByHtmloptionsmediaType = null, Expression<Func<string>> reqPdfCreateByHtmloptionspageFormat = null, Expression<Func<bool>> reqPdfCreateByHtmloptionslandscape = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginLeft = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginRight = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginTop = null, Expression<Func<string>> reqPdfCreateByHtmloptionsmarginmarginBottom = null)
+        public IBodyWorkflowAction<Resp200PdfCreateByHtml> PdfCreateByHtml([WorkflowExpression] Func<string> reqPdfCreateByHtmlhTML, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmediaType = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionspageFormat = null, [WorkflowExpression] Func<bool> reqPdfCreateByHtmloptionslandscape = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmarginmarginLeft = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmarginmarginRight = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmarginmarginTop = null, [WorkflowExpression] Func<string> reqPdfCreateByHtmloptionsmarginmarginBottom = null)
         {
-            var apiCallPath = "/pdf/create/by-html";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqPdfCreateByHtml = new JObject();
-            var reqPdfCreateByHtmlpropCount = 0;
-            reqPdfCreateByHtmlpropCount++;
-            reqPdfCreateByHtml["content"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmlhTML);
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqPdfCreateByHtml["data"] = dataObject;
+                var apiCallPath = "/pdf/create/by-html";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqPdfCreateByHtml = new JObject();
+                var reqPdfCreateByHtmlpropCount = 0;
                 reqPdfCreateByHtmlpropCount++;
-            }
+                reqPdfCreateByHtml["content"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByHtmlhTML);
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    reqPdfCreateByHtml["data"] = dataObject;
+                    reqPdfCreateByHtmlpropCount++;
+                }
 
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqPdfCreateByHtmloptionsmediaType != null)
-            {
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
                 if (reqPdfCreateByHtmloptionsmediaType != null)
                 {
-                    optionsObject["mediaType"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmediaType);
+                    if (reqPdfCreateByHtmloptionsmediaType != null)
+                    {
+                        optionsObject["mediaType"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmediaType);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["mediaType"] = "print";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["mediaType"] = "print";
-                optionsObjectpropCount++;
-            }
-
-            if (reqPdfCreateByHtmloptionspageFormat != null)
-            {
                 if (reqPdfCreateByHtmloptionspageFormat != null)
                 {
-                    optionsObject["format"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionspageFormat);
+                    if (reqPdfCreateByHtmloptionspageFormat != null)
+                    {
+                        optionsObject["format"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionspageFormat);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["format"] = "A4";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["format"] = "A4";
-                optionsObjectpropCount++;
-            }
-
-            if (reqPdfCreateByHtmloptionslandscape != null)
-            {
                 if (reqPdfCreateByHtmloptionslandscape != null)
                 {
-                    optionsObject["landscape"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionslandscape);
+                    if (reqPdfCreateByHtmloptionslandscape != null)
+                    {
+                        optionsObject["landscape"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionslandscape);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["landscape"] = false;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["landscape"] = false;
-                optionsObjectpropCount++;
-            }
-
-            var marginObject = new JObject();
-            var marginObjectpropCount = 0;
-            if (reqPdfCreateByHtmloptionsmarginmarginLeft != null)
-            {
+                var marginObject = new JObject();
+                var marginObjectpropCount = 0;
                 if (reqPdfCreateByHtmloptionsmarginmarginLeft != null)
                 {
-                    marginObject["left"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginLeft);
+                    if (reqPdfCreateByHtmloptionsmarginmarginLeft != null)
+                    {
+                        marginObject["left"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmarginmarginLeft);
+                        marginObjectpropCount++;
+                    }
+
+                    marginObjectpropCount++;
+                }
+                else
+                {
+                    marginObject["left"] = "0px";
                     marginObjectpropCount++;
                 }
 
-                marginObjectpropCount++;
-            }
-            else
-            {
-                marginObject["left"] = "0px";
-                marginObjectpropCount++;
-            }
-
-            if (reqPdfCreateByHtmloptionsmarginmarginRight != null)
-            {
                 if (reqPdfCreateByHtmloptionsmarginmarginRight != null)
                 {
-                    marginObject["right"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginRight);
+                    if (reqPdfCreateByHtmloptionsmarginmarginRight != null)
+                    {
+                        marginObject["right"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmarginmarginRight);
+                        marginObjectpropCount++;
+                    }
+
+                    marginObjectpropCount++;
+                }
+                else
+                {
+                    marginObject["right"] = "0px";
                     marginObjectpropCount++;
                 }
 
-                marginObjectpropCount++;
-            }
-            else
-            {
-                marginObject["right"] = "0px";
-                marginObjectpropCount++;
-            }
-
-            if (reqPdfCreateByHtmloptionsmarginmarginTop != null)
-            {
                 if (reqPdfCreateByHtmloptionsmarginmarginTop != null)
                 {
-                    marginObject["top"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginTop);
+                    if (reqPdfCreateByHtmloptionsmarginmarginTop != null)
+                    {
+                        marginObject["top"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmarginmarginTop);
+                        marginObjectpropCount++;
+                    }
+
+                    marginObjectpropCount++;
+                }
+                else
+                {
+                    marginObject["top"] = "0px";
                     marginObjectpropCount++;
                 }
 
-                marginObjectpropCount++;
-            }
-            else
-            {
-                marginObject["top"] = "0px";
-                marginObjectpropCount++;
-            }
-
-            if (reqPdfCreateByHtmloptionsmarginmarginBottom != null)
-            {
                 if (reqPdfCreateByHtmloptionsmarginmarginBottom != null)
                 {
-                    marginObject["bottom"] = ExpressionConverter.ConvertO(reqPdfCreateByHtmloptionsmarginmarginBottom);
+                    if (reqPdfCreateByHtmloptionsmarginmarginBottom != null)
+                    {
+                        marginObject["bottom"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByHtmloptionsmarginmarginBottom);
+                        marginObjectpropCount++;
+                    }
+
+                    marginObjectpropCount++;
+                }
+                else
+                {
+                    marginObject["bottom"] = "0px";
                     marginObjectpropCount++;
                 }
 
-                marginObjectpropCount++;
-            }
-            else
-            {
-                marginObject["bottom"] = "0px";
-                marginObjectpropCount++;
+                if (marginObjectpropCount > 0)
+                {
+                    optionsObject["margin"] = marginObject;
+                    optionsObjectpropCount++;
+                }
+
+                if (optionsObjectpropCount > 0)
+                {
+                    reqPdfCreateByHtml["options"] = optionsObject;
+                    reqPdfCreateByHtmlpropCount++;
+                }
+
+                if (reqPdfCreateByHtmlpropCount > 0)
+                {
+                    callPayload.Body = reqPdfCreateByHtml;
+                }
+                return callPayload;
             }
 
-            if (marginObjectpropCount > 0)
-            {
-                optionsObject["margin"] = marginObject;
-                optionsObjectpropCount++;
-            }
-
-            if (optionsObjectpropCount > 0)
-            {
-                reqPdfCreateByHtml["options"] = optionsObject;
-                reqPdfCreateByHtmlpropCount++;
-            }
-
-            if (reqPdfCreateByHtmlpropCount > 0)
-            {
-                callPayload.Body = reqPdfCreateByHtml;
-            }
-
-            return new ApiConnectionAction<Resp200PdfCreateByHtml>(callPayload);
+            return new ApiConnectionAction<Resp200PdfCreateByHtml>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageMergeDrawing> ImageMergeDrawing(Expression<Func<string>> reqImageMergeDrawingbackground, Expression<Func<string>> reqImageMergeDrawingdrawing)
+        public IBodyWorkflowAction<Resp200ImageMergeDrawing> ImageMergeDrawing([WorkflowExpression] Func<string> reqImageMergeDrawingbackground, [WorkflowExpression] Func<string> reqImageMergeDrawingdrawing)
         {
-            var apiCallPath = "/image/merge/drawing";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqImageMergeDrawing = new JObject();
-            var reqImageMergeDrawingpropCount = 0;
-            reqImageMergeDrawingpropCount++;
-            reqImageMergeDrawing["background"] = ExpressionConverter.ConvertO(reqImageMergeDrawingbackground);
-            reqImageMergeDrawingpropCount++;
-            reqImageMergeDrawing["drawing"] = ExpressionConverter.ConvertO(reqImageMergeDrawingdrawing);
-            if (reqImageMergeDrawingpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = reqImageMergeDrawing;
+                var apiCallPath = "/image/merge/drawing";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqImageMergeDrawing = new JObject();
+                var reqImageMergeDrawingpropCount = 0;
+                reqImageMergeDrawingpropCount++;
+                reqImageMergeDrawing["background"] = SourceExpressionConverter.ConvertToken(reqImageMergeDrawingbackground);
+                reqImageMergeDrawingpropCount++;
+                reqImageMergeDrawing["drawing"] = SourceExpressionConverter.ConvertToken(reqImageMergeDrawingdrawing);
+                if (reqImageMergeDrawingpropCount > 0)
+                {
+                    callPayload.Body = reqImageMergeDrawing;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<Resp200ImageMergeDrawing>(callPayload);
+            return new ApiConnectionAction<Resp200ImageMergeDrawing>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfStampText> PdfStampText(Expression<Func<string>> reqPdfStampTextpDF, Expression<Func<string>> reqPdfStampTexttext, Expression<Func<string>> reqPdfStampTextoptionsfontColor = null, Expression<Func<int>> reqPdfStampTextoptionsfontSize = null, Expression<Func<int>> reqPdfStampTextoptionsrotate = null, Expression<Func<int>> reqPdfStampTextoptionspositionyOffset = null, Expression<Func<string>> reqPdfStampTextoptionspositionstartOfYOffset = null, Expression<Func<int>> reqPdfStampTextoptionspositionxOffset = null)
+        public IBodyWorkflowAction<Resp200PdfStampText> PdfStampText([WorkflowExpression] Func<string> reqPdfStampTextpDF, [WorkflowExpression] Func<string> reqPdfStampTexttext, [WorkflowExpression] Func<string> reqPdfStampTextoptionsfontColor = null, [WorkflowExpression] Func<int> reqPdfStampTextoptionsfontSize = null, [WorkflowExpression] Func<int> reqPdfStampTextoptionsrotate = null, [WorkflowExpression] Func<int> reqPdfStampTextoptionspositionyOffset = null, [WorkflowExpression] Func<string> reqPdfStampTextoptionspositionstartOfYOffset = null, [WorkflowExpression] Func<int> reqPdfStampTextoptionspositionxOffset = null)
         {
-            var apiCallPath = "/pdf/stamp/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqPdfStampText = new JObject();
-            var reqPdfStampTextpropCount = 0;
-            reqPdfStampTextpropCount++;
-            reqPdfStampText["pdf"] = ExpressionConverter.ConvertO(reqPdfStampTextpDF);
-            reqPdfStampTextpropCount++;
-            reqPdfStampText["text"] = ExpressionConverter.ConvertO(reqPdfStampTexttext);
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqPdfStampTextoptionsfontColor != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/pdf/stamp/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqPdfStampText = new JObject();
+                var reqPdfStampTextpropCount = 0;
+                reqPdfStampTextpropCount++;
+                reqPdfStampText["pdf"] = SourceExpressionConverter.ConvertToken(reqPdfStampTextpDF);
+                reqPdfStampTextpropCount++;
+                reqPdfStampText["text"] = SourceExpressionConverter.ConvertToken(reqPdfStampTexttext);
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
                 if (reqPdfStampTextoptionsfontColor != null)
                 {
-                    optionsObject["color"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsfontColor);
+                    if (reqPdfStampTextoptionsfontColor != null)
+                    {
+                        optionsObject["color"] = SourceExpressionConverter.ConvertToken(reqPdfStampTextoptionsfontColor);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["color"] = "#000000";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["color"] = "#000000";
-                optionsObjectpropCount++;
-            }
-
-            if (reqPdfStampTextoptionsfontSize != null)
-            {
                 if (reqPdfStampTextoptionsfontSize != null)
                 {
-                    optionsObject["size"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsfontSize);
+                    if (reqPdfStampTextoptionsfontSize != null)
+                    {
+                        optionsObject["size"] = SourceExpressionConverter.ConvertToken(reqPdfStampTextoptionsfontSize);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["size"] = 50;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["size"] = 50;
-                optionsObjectpropCount++;
-            }
-
-            if (reqPdfStampTextoptionsrotate != null)
-            {
                 if (reqPdfStampTextoptionsrotate != null)
                 {
-                    optionsObject["rotate"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionsrotate);
+                    if (reqPdfStampTextoptionsrotate != null)
+                    {
+                        optionsObject["rotate"] = SourceExpressionConverter.ConvertToken(reqPdfStampTextoptionsrotate);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["rotate"] = 0;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["rotate"] = 0;
-                optionsObjectpropCount++;
-            }
-
-            var positionObject = new JObject();
-            var positionObjectpropCount = 0;
-            if (reqPdfStampTextoptionspositionyOffset != null)
-            {
+                var positionObject = new JObject();
+                var positionObjectpropCount = 0;
                 if (reqPdfStampTextoptionspositionyOffset != null)
                 {
-                    positionObject["yOffset"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionyOffset);
+                    if (reqPdfStampTextoptionspositionyOffset != null)
+                    {
+                        positionObject["yOffset"] = SourceExpressionConverter.ConvertToken(reqPdfStampTextoptionspositionyOffset);
+                        positionObjectpropCount++;
+                    }
+
+                    positionObjectpropCount++;
+                }
+                else
+                {
+                    positionObject["yOffset"] = 25;
                     positionObjectpropCount++;
                 }
 
-                positionObjectpropCount++;
-            }
-            else
-            {
-                positionObject["yOffset"] = 25;
-                positionObjectpropCount++;
-            }
-
-            if (reqPdfStampTextoptionspositionstartOfYOffset != null)
-            {
                 if (reqPdfStampTextoptionspositionstartOfYOffset != null)
                 {
-                    positionObject["yOffsetStart"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionstartOfYOffset);
+                    if (reqPdfStampTextoptionspositionstartOfYOffset != null)
+                    {
+                        positionObject["yOffsetStart"] = SourceExpressionConverter.ConvertToken(reqPdfStampTextoptionspositionstartOfYOffset);
+                        positionObjectpropCount++;
+                    }
+
+                    positionObjectpropCount++;
+                }
+                else
+                {
+                    positionObject["yOffsetStart"] = "bottom";
                     positionObjectpropCount++;
                 }
 
-                positionObjectpropCount++;
-            }
-            else
-            {
-                positionObject["yOffsetStart"] = "bottom";
-                positionObjectpropCount++;
-            }
-
-            if (reqPdfStampTextoptionspositionxOffset != null)
-            {
                 if (reqPdfStampTextoptionspositionxOffset != null)
                 {
-                    positionObject["xOffset"] = ExpressionConverter.ConvertO(reqPdfStampTextoptionspositionxOffset);
+                    if (reqPdfStampTextoptionspositionxOffset != null)
+                    {
+                        positionObject["xOffset"] = SourceExpressionConverter.ConvertToken(reqPdfStampTextoptionspositionxOffset);
+                        positionObjectpropCount++;
+                    }
+
+                    positionObjectpropCount++;
+                }
+                else
+                {
+                    positionObject["xOffset"] = 50;
                     positionObjectpropCount++;
                 }
 
-                positionObjectpropCount++;
-            }
-            else
-            {
-                positionObject["xOffset"] = 50;
-                positionObjectpropCount++;
+                if (positionObjectpropCount > 0)
+                {
+                    optionsObject["position"] = positionObject;
+                    optionsObjectpropCount++;
+                }
+
+                if (optionsObjectpropCount > 0)
+                {
+                    reqPdfStampText["options"] = optionsObject;
+                    reqPdfStampTextpropCount++;
+                }
+
+                if (reqPdfStampTextpropCount > 0)
+                {
+                    callPayload.Body = reqPdfStampText;
+                }
+                return callPayload;
             }
 
-            if (positionObjectpropCount > 0)
-            {
-                optionsObject["position"] = positionObject;
-                optionsObjectpropCount++;
-            }
-
-            if (optionsObjectpropCount > 0)
-            {
-                reqPdfStampText["options"] = optionsObject;
-                reqPdfStampTextpropCount++;
-            }
-
-            if (reqPdfStampTextpropCount > 0)
-            {
-                callPayload.Body = reqPdfStampText;
-            }
-
-            return new ApiConnectionAction<Resp200PdfStampText>(callPayload);
+            return new ApiConnectionAction<Resp200PdfStampText>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200CsvToJson> CsvToJson(Expression<Func<string>> reqCsvToJsoncSV, Expression<Func<bool>> reqCsvToJsonoptionshasHeaders = null, Expression<Func<string>> reqCsvToJsonoptionsdelimiter = null)
+        public IBodyWorkflowAction<Resp200CsvToJson> CsvToJson([WorkflowExpression] Func<string> reqCsvToJsoncSV, [WorkflowExpression] Func<bool> reqCsvToJsonoptionshasHeaders = null, [WorkflowExpression] Func<string> reqCsvToJsonoptionsdelimiter = null)
         {
-            var apiCallPath = "/csv/to-json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqCsvToJson = new JObject();
-            var reqCsvToJsonpropCount = 0;
-            reqCsvToJsonpropCount++;
-            reqCsvToJson["csv"] = ExpressionConverter.ConvertO(reqCsvToJsoncSV);
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqCsvToJsonoptionshasHeaders != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/csv/to-json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqCsvToJson = new JObject();
+                var reqCsvToJsonpropCount = 0;
+                reqCsvToJsonpropCount++;
+                reqCsvToJson["csv"] = SourceExpressionConverter.ConvertToken(reqCsvToJsoncSV);
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
                 if (reqCsvToJsonoptionshasHeaders != null)
                 {
-                    optionsObject["hasHeaders"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionshasHeaders);
+                    if (reqCsvToJsonoptionshasHeaders != null)
+                    {
+                        optionsObject["hasHeaders"] = SourceExpressionConverter.ConvertToken(reqCsvToJsonoptionshasHeaders);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["hasHeaders"] = true;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["hasHeaders"] = true;
-                optionsObjectpropCount++;
-            }
-
-            if (reqCsvToJsonoptionsdelimiter != null)
-            {
                 if (reqCsvToJsonoptionsdelimiter != null)
                 {
-                    optionsObject["delimiter"] = ExpressionConverter.ConvertO(reqCsvToJsonoptionsdelimiter);
+                    if (reqCsvToJsonoptionsdelimiter != null)
+                    {
+                        optionsObject["delimiter"] = SourceExpressionConverter.ConvertToken(reqCsvToJsonoptionsdelimiter);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["delimiter"] = ",";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["delimiter"] = ",";
-                optionsObjectpropCount++;
+                if (optionsObjectpropCount > 0)
+                {
+                    reqCsvToJson["options"] = optionsObject;
+                    reqCsvToJsonpropCount++;
+                }
+
+                if (reqCsvToJsonpropCount > 0)
+                {
+                    callPayload.Body = reqCsvToJson;
+                }
+                return callPayload;
             }
 
-            if (optionsObjectpropCount > 0)
-            {
-                reqCsvToJson["options"] = optionsObject;
-                reqCsvToJsonpropCount++;
-            }
-
-            if (reqCsvToJsonpropCount > 0)
-            {
-                callPayload.Body = reqCsvToJson;
-            }
-
-            return new ApiConnectionAction<Resp200CsvToJson>(callPayload);
+            return new ApiConnectionAction<Resp200CsvToJson>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfCreateByUrl> PdfCreateByUrl(Expression<Func<string>> reqPdfCreateByUrlhTML, Expression<Func<string>> reqPdfCreateByUrloptionsmediaType = null, Expression<Func<string>> reqPdfCreateByUrloptionspageFormat = null, Expression<Func<bool>> reqPdfCreateByUrloptionslandscape = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginLeft = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginRight = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginTop = null, Expression<Func<string>> reqPdfCreateByUrloptionsmarginmarginBottom = null)
+        public IBodyWorkflowAction<Resp200PdfCreateByUrl> PdfCreateByUrl([WorkflowExpression] Func<string> reqPdfCreateByUrlhTML, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmediaType = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionspageFormat = null, [WorkflowExpression] Func<bool> reqPdfCreateByUrloptionslandscape = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmarginmarginLeft = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmarginmarginRight = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmarginmarginTop = null, [WorkflowExpression] Func<string> reqPdfCreateByUrloptionsmarginmarginBottom = null)
         {
-            var apiCallPath = "/pdf/create/by-url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqPdfCreateByUrl = new JObject();
-            var reqPdfCreateByUrlpropCount = 0;
-            reqPdfCreateByUrlpropCount++;
-            reqPdfCreateByUrl["url"] = ExpressionConverter.ConvertO(reqPdfCreateByUrlhTML);
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqPdfCreateByUrloptionsmediaType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/pdf/create/by-url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqPdfCreateByUrl = new JObject();
+                var reqPdfCreateByUrlpropCount = 0;
+                reqPdfCreateByUrlpropCount++;
+                reqPdfCreateByUrl["url"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByUrlhTML);
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
                 if (reqPdfCreateByUrloptionsmediaType != null)
                 {
-                    optionsObject["mediaType"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmediaType);
+                    if (reqPdfCreateByUrloptionsmediaType != null)
+                    {
+                        optionsObject["mediaType"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmediaType);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["mediaType"] = "print";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["mediaType"] = "print";
-                optionsObjectpropCount++;
-            }
-
-            if (reqPdfCreateByUrloptionspageFormat != null)
-            {
                 if (reqPdfCreateByUrloptionspageFormat != null)
                 {
-                    optionsObject["format"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionspageFormat);
+                    if (reqPdfCreateByUrloptionspageFormat != null)
+                    {
+                        optionsObject["format"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByUrloptionspageFormat);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["format"] = "A4";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["format"] = "A4";
-                optionsObjectpropCount++;
-            }
-
-            if (reqPdfCreateByUrloptionslandscape != null)
-            {
                 if (reqPdfCreateByUrloptionslandscape != null)
                 {
-                    optionsObject["landscape"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionslandscape);
+                    if (reqPdfCreateByUrloptionslandscape != null)
+                    {
+                        optionsObject["landscape"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByUrloptionslandscape);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["landscape"] = false;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["landscape"] = false;
-                optionsObjectpropCount++;
-            }
-
-            var marginObject = new JObject();
-            var marginObjectpropCount = 0;
-            if (reqPdfCreateByUrloptionsmarginmarginLeft != null)
-            {
+                var marginObject = new JObject();
+                var marginObjectpropCount = 0;
                 if (reqPdfCreateByUrloptionsmarginmarginLeft != null)
                 {
-                    marginObject["left"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginLeft);
+                    if (reqPdfCreateByUrloptionsmarginmarginLeft != null)
+                    {
+                        marginObject["left"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmarginmarginLeft);
+                        marginObjectpropCount++;
+                    }
+
+                    marginObjectpropCount++;
+                }
+                else
+                {
+                    marginObject["left"] = "0px";
                     marginObjectpropCount++;
                 }
 
-                marginObjectpropCount++;
-            }
-            else
-            {
-                marginObject["left"] = "0px";
-                marginObjectpropCount++;
-            }
-
-            if (reqPdfCreateByUrloptionsmarginmarginRight != null)
-            {
                 if (reqPdfCreateByUrloptionsmarginmarginRight != null)
                 {
-                    marginObject["right"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginRight);
+                    if (reqPdfCreateByUrloptionsmarginmarginRight != null)
+                    {
+                        marginObject["right"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmarginmarginRight);
+                        marginObjectpropCount++;
+                    }
+
+                    marginObjectpropCount++;
+                }
+                else
+                {
+                    marginObject["right"] = "0px";
                     marginObjectpropCount++;
                 }
 
-                marginObjectpropCount++;
-            }
-            else
-            {
-                marginObject["right"] = "0px";
-                marginObjectpropCount++;
-            }
-
-            if (reqPdfCreateByUrloptionsmarginmarginTop != null)
-            {
                 if (reqPdfCreateByUrloptionsmarginmarginTop != null)
                 {
-                    marginObject["top"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginTop);
+                    if (reqPdfCreateByUrloptionsmarginmarginTop != null)
+                    {
+                        marginObject["top"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmarginmarginTop);
+                        marginObjectpropCount++;
+                    }
+
+                    marginObjectpropCount++;
+                }
+                else
+                {
+                    marginObject["top"] = "0px";
                     marginObjectpropCount++;
                 }
 
-                marginObjectpropCount++;
-            }
-            else
-            {
-                marginObject["top"] = "0px";
-                marginObjectpropCount++;
-            }
-
-            if (reqPdfCreateByUrloptionsmarginmarginBottom != null)
-            {
                 if (reqPdfCreateByUrloptionsmarginmarginBottom != null)
                 {
-                    marginObject["bottom"] = ExpressionConverter.ConvertO(reqPdfCreateByUrloptionsmarginmarginBottom);
+                    if (reqPdfCreateByUrloptionsmarginmarginBottom != null)
+                    {
+                        marginObject["bottom"] = SourceExpressionConverter.ConvertToken(reqPdfCreateByUrloptionsmarginmarginBottom);
+                        marginObjectpropCount++;
+                    }
+
+                    marginObjectpropCount++;
+                }
+                else
+                {
+                    marginObject["bottom"] = "0px";
                     marginObjectpropCount++;
                 }
 
-                marginObjectpropCount++;
-            }
-            else
-            {
-                marginObject["bottom"] = "0px";
-                marginObjectpropCount++;
+                if (marginObjectpropCount > 0)
+                {
+                    optionsObject["margin"] = marginObject;
+                    optionsObjectpropCount++;
+                }
+
+                if (optionsObjectpropCount > 0)
+                {
+                    reqPdfCreateByUrl["options"] = optionsObject;
+                    reqPdfCreateByUrlpropCount++;
+                }
+
+                if (reqPdfCreateByUrlpropCount > 0)
+                {
+                    callPayload.Body = reqPdfCreateByUrl;
+                }
+                return callPayload;
             }
 
-            if (marginObjectpropCount > 0)
-            {
-                optionsObject["margin"] = marginObject;
-                optionsObjectpropCount++;
-            }
-
-            if (optionsObjectpropCount > 0)
-            {
-                reqPdfCreateByUrl["options"] = optionsObject;
-                reqPdfCreateByUrlpropCount++;
-            }
-
-            if (reqPdfCreateByUrlpropCount > 0)
-            {
-                callPayload.Body = reqPdfCreateByUrl;
-            }
-
-            return new ApiConnectionAction<Resp200PdfCreateByUrl>(callPayload);
+            return new ApiConnectionAction<Resp200PdfCreateByUrl>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageStampText> ImageStampText(Expression<Func<string>> reqImageStampTextimage = null, Expression<Func<string>> reqImageStampTexttextToStamp = null, Expression<Func<string>> reqImageStampTextoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampTextoptionsfontcolor = null, Expression<Func<int>> reqImageStampTextoptionsfontsize = null)
+        public IBodyWorkflowAction<Resp200ImageStampText> ImageStampText([WorkflowExpression] Func<string> reqImageStampTextimage = null, [WorkflowExpression] Func<string> reqImageStampTexttextToStamp = null, [WorkflowExpression] Func<string> reqImageStampTextoptionslocationOfTheStamp = null, [WorkflowExpression] Func<string> reqImageStampTextoptionsfontcolor = null, [WorkflowExpression] Func<int> reqImageStampTextoptionsfontsize = null)
         {
-            var apiCallPath = "/image/stamp/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqImageStampText = new JObject();
-            var reqImageStampTextpropCount = 0;
-            if (reqImageStampTextimage != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqImageStampText["image"] = ExpressionConverter.ConvertO(reqImageStampTextimage);
-                reqImageStampTextpropCount++;
-            }
+                var apiCallPath = "/image/stamp/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqImageStampText = new JObject();
+                var reqImageStampTextpropCount = 0;
+                if (reqImageStampTextimage != null)
+                {
+                    reqImageStampText["image"] = SourceExpressionConverter.ConvertToken(reqImageStampTextimage);
+                    reqImageStampTextpropCount++;
+                }
 
-            if (reqImageStampTexttextToStamp != null)
-            {
-                reqImageStampText["text"] = ExpressionConverter.ConvertO(reqImageStampTexttextToStamp);
-                reqImageStampTextpropCount++;
-            }
+                if (reqImageStampTexttextToStamp != null)
+                {
+                    reqImageStampText["text"] = SourceExpressionConverter.ConvertToken(reqImageStampTexttextToStamp);
+                    reqImageStampTextpropCount++;
+                }
 
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqImageStampTextoptionslocationOfTheStamp != null)
-            {
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
                 if (reqImageStampTextoptionslocationOfTheStamp != null)
                 {
-                    optionsObject["location"] = ExpressionConverter.ConvertO(reqImageStampTextoptionslocationOfTheStamp);
+                    if (reqImageStampTextoptionslocationOfTheStamp != null)
+                    {
+                        optionsObject["location"] = SourceExpressionConverter.ConvertToken(reqImageStampTextoptionslocationOfTheStamp);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["location"] = "Center";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["location"] = "Center";
-                optionsObjectpropCount++;
-            }
-
-            if (reqImageStampTextoptionsfontcolor != null)
-            {
                 if (reqImageStampTextoptionsfontcolor != null)
                 {
-                    optionsObject["fontColor"] = ExpressionConverter.ConvertO(reqImageStampTextoptionsfontcolor);
+                    if (reqImageStampTextoptionsfontcolor != null)
+                    {
+                        optionsObject["fontColor"] = SourceExpressionConverter.ConvertToken(reqImageStampTextoptionsfontcolor);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["fontColor"] = "#ffffff";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["fontColor"] = "#ffffff";
-                optionsObjectpropCount++;
-            }
-
-            if (reqImageStampTextoptionsfontsize != null)
-            {
                 if (reqImageStampTextoptionsfontsize != null)
                 {
-                    optionsObject["fontSize"] = ExpressionConverter.ConvertO(reqImageStampTextoptionsfontsize);
+                    if (reqImageStampTextoptionsfontsize != null)
+                    {
+                        optionsObject["fontSize"] = SourceExpressionConverter.ConvertToken(reqImageStampTextoptionsfontsize);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["fontSize"] = 25;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["fontSize"] = 25;
-                optionsObjectpropCount++;
+                if (optionsObjectpropCount > 0)
+                {
+                    reqImageStampText["options"] = optionsObject;
+                    reqImageStampTextpropCount++;
+                }
+
+                if (reqImageStampTextpropCount > 0)
+                {
+                    callPayload.Body = reqImageStampText;
+                }
+                return callPayload;
             }
 
-            if (optionsObjectpropCount > 0)
-            {
-                reqImageStampText["options"] = optionsObject;
-                reqImageStampTextpropCount++;
-            }
-
-            if (reqImageStampTextpropCount > 0)
-            {
-                callPayload.Body = reqImageStampText;
-            }
-
-            return new ApiConnectionAction<Resp200ImageStampText>(callPayload);
+            return new ApiConnectionAction<Resp200ImageStampText>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageResize> ImageResize(Expression<Func<string>> reqImageResizeimage = null, Expression<Func<int>> reqImageResizewidth = null, Expression<Func<int>> reqImageResizeheight = null, Expression<Func<bool>> reqImageResizeoptionsignoreTheAspectRation = null)
+        public IBodyWorkflowAction<Resp200ImageResize> ImageResize([WorkflowExpression] Func<string> reqImageResizeimage = null, [WorkflowExpression] Func<int> reqImageResizewidth = null, [WorkflowExpression] Func<int> reqImageResizeheight = null, [WorkflowExpression] Func<bool> reqImageResizeoptionsignoreTheAspectRation = null)
         {
-            var apiCallPath = "/image/resize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqImageResize = new JObject();
-            var reqImageResizepropCount = 0;
-            if (reqImageResizeimage != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqImageResize["image"] = ExpressionConverter.ConvertO(reqImageResizeimage);
-                reqImageResizepropCount++;
-            }
+                var apiCallPath = "/image/resize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqImageResize = new JObject();
+                var reqImageResizepropCount = 0;
+                if (reqImageResizeimage != null)
+                {
+                    reqImageResize["image"] = SourceExpressionConverter.ConvertToken(reqImageResizeimage);
+                    reqImageResizepropCount++;
+                }
 
-            if (reqImageResizewidth != null)
-            {
-                reqImageResize["width"] = ExpressionConverter.ConvertO(reqImageResizewidth);
-                reqImageResizepropCount++;
-            }
+                if (reqImageResizewidth != null)
+                {
+                    reqImageResize["width"] = SourceExpressionConverter.ConvertToken(reqImageResizewidth);
+                    reqImageResizepropCount++;
+                }
 
-            if (reqImageResizeheight != null)
-            {
-                reqImageResize["height"] = ExpressionConverter.ConvertO(reqImageResizeheight);
-                reqImageResizepropCount++;
-            }
+                if (reqImageResizeheight != null)
+                {
+                    reqImageResize["height"] = SourceExpressionConverter.ConvertToken(reqImageResizeheight);
+                    reqImageResizepropCount++;
+                }
 
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqImageResizeoptionsignoreTheAspectRation != null)
-            {
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
                 if (reqImageResizeoptionsignoreTheAspectRation != null)
                 {
-                    optionsObject["ignoreAspectRation"] = ExpressionConverter.ConvertO(reqImageResizeoptionsignoreTheAspectRation);
+                    if (reqImageResizeoptionsignoreTheAspectRation != null)
+                    {
+                        optionsObject["ignoreAspectRation"] = SourceExpressionConverter.ConvertToken(reqImageResizeoptionsignoreTheAspectRation);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["ignoreAspectRation"] = false;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["ignoreAspectRation"] = false;
-                optionsObjectpropCount++;
+                if (optionsObjectpropCount > 0)
+                {
+                    reqImageResize["options"] = optionsObject;
+                    reqImageResizepropCount++;
+                }
+
+                if (reqImageResizepropCount > 0)
+                {
+                    callPayload.Body = reqImageResize;
+                }
+                return callPayload;
             }
 
-            if (optionsObjectpropCount > 0)
-            {
-                reqImageResize["options"] = optionsObject;
-                reqImageResizepropCount++;
-            }
-
-            if (reqImageResizepropCount > 0)
-            {
-                callPayload.Body = reqImageResize;
-            }
-
-            return new ApiConnectionAction<Resp200ImageResize>(callPayload);
+            return new ApiConnectionAction<Resp200ImageResize>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfSplitByPage> PdfSplitByPage(Expression<Func<string>> reqPdfSplitByPagepDFFile = null, Expression<Func<double>> reqPdfSplitByPageoptionsnumberOfPages = null)
+        public IBodyWorkflowAction<Resp200PdfSplitByPage> PdfSplitByPage([WorkflowExpression] Func<string> reqPdfSplitByPagepDFFile = null, [WorkflowExpression] Func<double> reqPdfSplitByPageoptionsnumberOfPages = null)
         {
-            var apiCallPath = "/pdf/split/by-page";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqPdfSplitByPage = new JObject();
-            var reqPdfSplitByPagepropCount = 0;
-            if (reqPdfSplitByPagepDFFile != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqPdfSplitByPage["pdf"] = ExpressionConverter.ConvertO(reqPdfSplitByPagepDFFile);
-                reqPdfSplitByPagepropCount++;
-            }
+                var apiCallPath = "/pdf/split/by-page";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqPdfSplitByPage = new JObject();
+                var reqPdfSplitByPagepropCount = 0;
+                if (reqPdfSplitByPagepDFFile != null)
+                {
+                    reqPdfSplitByPage["pdf"] = SourceExpressionConverter.ConvertToken(reqPdfSplitByPagepDFFile);
+                    reqPdfSplitByPagepropCount++;
+                }
 
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqPdfSplitByPageoptionsnumberOfPages != null)
-            {
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
                 if (reqPdfSplitByPageoptionsnumberOfPages != null)
                 {
-                    optionsObject["numberOfPages"] = ExpressionConverter.ConvertO(reqPdfSplitByPageoptionsnumberOfPages);
+                    if (reqPdfSplitByPageoptionsnumberOfPages != null)
+                    {
+                        optionsObject["numberOfPages"] = SourceExpressionConverter.ConvertToken(reqPdfSplitByPageoptionsnumberOfPages);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["numberOfPages"] = 1;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["numberOfPages"] = 1;
-                optionsObjectpropCount++;
+                if (optionsObjectpropCount > 0)
+                {
+                    reqPdfSplitByPage["options"] = optionsObject;
+                    reqPdfSplitByPagepropCount++;
+                }
+
+                if (reqPdfSplitByPagepropCount > 0)
+                {
+                    callPayload.Body = reqPdfSplitByPage;
+                }
+                return callPayload;
             }
 
-            if (optionsObjectpropCount > 0)
-            {
-                reqPdfSplitByPage["options"] = optionsObject;
-                reqPdfSplitByPagepropCount++;
-            }
-
-            if (reqPdfSplitByPagepropCount > 0)
-            {
-                callPayload.Body = reqPdfSplitByPage;
-            }
-
-            return new ApiConnectionAction<Resp200PdfSplitByPage>(callPayload);
+            return new ApiConnectionAction<Resp200PdfSplitByPage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200ImageStampExif> ImageStampExif(Expression<Func<string>> reqImageStampExifimage = null, Expression<Func<string[]>> reqImageStampExifoptionstags = null, Expression<Func<string>> reqImageStampExifoptionslocationOfTheStamp = null, Expression<Func<string>> reqImageStampExifoptionsfontcolor = null, Expression<Func<int>> reqImageStampExifoptionsfontsize = null, Expression<Func<bool>> reqImageStampExifoptionsprintTagName = null)
+        public IBodyWorkflowAction<Resp200ImageStampExif> ImageStampExif([WorkflowExpression] Func<string> reqImageStampExifimage = null, [WorkflowExpression] Func<string[]> reqImageStampExifoptionstags = null, [WorkflowExpression] Func<string> reqImageStampExifoptionslocationOfTheStamp = null, [WorkflowExpression] Func<string> reqImageStampExifoptionsfontcolor = null, [WorkflowExpression] Func<int> reqImageStampExifoptionsfontsize = null, [WorkflowExpression] Func<bool> reqImageStampExifoptionsprintTagName = null)
         {
-            var apiCallPath = "/image/stamp/exif";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqImageStampExif = new JObject();
-            var reqImageStampExifpropCount = 0;
-            if (reqImageStampExifimage != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqImageStampExif["image"] = ExpressionConverter.ConvertO(reqImageStampExifimage);
-                reqImageStampExifpropCount++;
-            }
+                var apiCallPath = "/image/stamp/exif";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqImageStampExif = new JObject();
+                var reqImageStampExifpropCount = 0;
+                if (reqImageStampExifimage != null)
+                {
+                    reqImageStampExif["image"] = SourceExpressionConverter.ConvertToken(reqImageStampExifimage);
+                    reqImageStampExifpropCount++;
+                }
 
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (reqImageStampExifoptionstags != null)
-            {
-                optionsObject["tags"] = ExpressionConverter.ConvertO(reqImageStampExifoptionstags);
-                optionsObjectpropCount++;
-            }
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (reqImageStampExifoptionstags != null)
+                {
+                    optionsObject["tags"] = SourceExpressionConverter.ConvertToken(reqImageStampExifoptionstags);
+                    optionsObjectpropCount++;
+                }
 
-            if (reqImageStampExifoptionslocationOfTheStamp != null)
-            {
                 if (reqImageStampExifoptionslocationOfTheStamp != null)
                 {
-                    optionsObject["location"] = ExpressionConverter.ConvertO(reqImageStampExifoptionslocationOfTheStamp);
+                    if (reqImageStampExifoptionslocationOfTheStamp != null)
+                    {
+                        optionsObject["location"] = SourceExpressionConverter.ConvertToken(reqImageStampExifoptionslocationOfTheStamp);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["location"] = "Center";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["location"] = "Center";
-                optionsObjectpropCount++;
-            }
-
-            if (reqImageStampExifoptionsfontcolor != null)
-            {
                 if (reqImageStampExifoptionsfontcolor != null)
                 {
-                    optionsObject["fontColor"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsfontcolor);
+                    if (reqImageStampExifoptionsfontcolor != null)
+                    {
+                        optionsObject["fontColor"] = SourceExpressionConverter.ConvertToken(reqImageStampExifoptionsfontcolor);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["fontColor"] = "#ffffff";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["fontColor"] = "#ffffff";
-                optionsObjectpropCount++;
-            }
-
-            if (reqImageStampExifoptionsfontsize != null)
-            {
                 if (reqImageStampExifoptionsfontsize != null)
                 {
-                    optionsObject["fontSize"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsfontsize);
+                    if (reqImageStampExifoptionsfontsize != null)
+                    {
+                        optionsObject["fontSize"] = SourceExpressionConverter.ConvertToken(reqImageStampExifoptionsfontsize);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["fontSize"] = 25;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["fontSize"] = 25;
-                optionsObjectpropCount++;
-            }
-
-            if (reqImageStampExifoptionsprintTagName != null)
-            {
                 if (reqImageStampExifoptionsprintTagName != null)
                 {
-                    optionsObject["printTagName"] = ExpressionConverter.ConvertO(reqImageStampExifoptionsprintTagName);
+                    if (reqImageStampExifoptionsprintTagName != null)
+                    {
+                        optionsObject["printTagName"] = SourceExpressionConverter.ConvertToken(reqImageStampExifoptionsprintTagName);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["printTagName"] = false;
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["printTagName"] = false;
-                optionsObjectpropCount++;
+                if (optionsObjectpropCount > 0)
+                {
+                    reqImageStampExif["options"] = optionsObject;
+                    reqImageStampExifpropCount++;
+                }
+
+                if (reqImageStampExifpropCount > 0)
+                {
+                    callPayload.Body = reqImageStampExif;
+                }
+                return callPayload;
             }
 
-            if (optionsObjectpropCount > 0)
-            {
-                reqImageStampExif["options"] = optionsObject;
-                reqImageStampExifpropCount++;
-            }
-
-            if (reqImageStampExifpropCount > 0)
-            {
-                callPayload.Body = reqImageStampExif;
-            }
-
-            return new ApiConnectionAction<Resp200ImageStampExif>(callPayload);
+            return new ApiConnectionAction<Resp200ImageStampExif>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfFillForm> PdfFillForm(Expression<Func<string>> reqPdfFillFormpDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfFillForm> PdfFillForm([WorkflowExpression] Func<string> reqPdfFillFormpDFFile = null)
         {
-            var apiCallPath = "/form/fill";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqPdfFillForm = new JObject();
-            var reqPdfFillFormpropCount = 0;
-            if (reqPdfFillFormpDFFile != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqPdfFillForm["pdf"] = ExpressionConverter.ConvertO(reqPdfFillFormpDFFile);
-                reqPdfFillFormpropCount++;
+                var apiCallPath = "/form/fill";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqPdfFillForm = new JObject();
+                var reqPdfFillFormpropCount = 0;
+                if (reqPdfFillFormpDFFile != null)
+                {
+                    reqPdfFillForm["pdf"] = SourceExpressionConverter.ConvertToken(reqPdfFillFormpDFFile);
+                    reqPdfFillFormpropCount++;
+                }
+
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    reqPdfFillForm["data"] = dataObject;
+                    reqPdfFillFormpropCount++;
+                }
+
+                if (reqPdfFillFormpropCount > 0)
+                {
+                    callPayload.Body = reqPdfFillForm;
+                }
+                return callPayload;
             }
 
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
-            {
-                reqPdfFillForm["data"] = dataObject;
-                reqPdfFillFormpropCount++;
-            }
-
-            if (reqPdfFillFormpropCount > 0)
-            {
-                callPayload.Body = reqPdfFillForm;
-            }
-
-            return new ApiConnectionAction<Resp200PdfFillForm>(callPayload);
+            return new ApiConnectionAction<Resp200PdfFillForm>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfGetFormData> PdfGetFormData(Expression<Func<string>> reqPdfGetFormDatapDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfGetFormData> PdfGetFormData([WorkflowExpression] Func<string> reqPdfGetFormDatapDFFile = null)
         {
-            var apiCallPath = "/form/getdata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqPdfGetFormData = new JObject();
-            var reqPdfGetFormDatapropCount = 0;
-            if (reqPdfGetFormDatapDFFile != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqPdfGetFormData["pdf"] = ExpressionConverter.ConvertO(reqPdfGetFormDatapDFFile);
-                reqPdfGetFormDatapropCount++;
+                var apiCallPath = "/form/getdata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqPdfGetFormData = new JObject();
+                var reqPdfGetFormDatapropCount = 0;
+                if (reqPdfGetFormDatapDFFile != null)
+                {
+                    reqPdfGetFormData["pdf"] = SourceExpressionConverter.ConvertToken(reqPdfGetFormDatapDFFile);
+                    reqPdfGetFormDatapropCount++;
+                }
+
+                if (reqPdfGetFormDatapropCount > 0)
+                {
+                    callPayload.Body = reqPdfGetFormData;
+                }
+                return callPayload;
             }
 
-            if (reqPdfGetFormDatapropCount > 0)
-            {
-                callPayload.Body = reqPdfGetFormData;
-            }
-
-            return new ApiConnectionAction<Resp200PdfGetFormData>(callPayload);
+            return new ApiConnectionAction<Resp200PdfGetFormData>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparsepowerboxtools")]
-        public IBodyWorkflowAction<Resp200PdfMergeSimple> PdfMergeSimple(Expression<Func<string[]>> reqPdfMergeSimplepDFFile = null)
+        public IBodyWorkflowAction<Resp200PdfMergeSimple> PdfMergeSimple([WorkflowExpression] Func<string[]> reqPdfMergeSimplepDFFile = null)
         {
-            var apiCallPath = "/pdf/merge/simple";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var reqPdfMergeSimple = new JObject();
-            var reqPdfMergeSimplepropCount = 0;
-            if (reqPdfMergeSimplepDFFile != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reqPdfMergeSimple["pdfs"] = ExpressionConverter.ConvertO(reqPdfMergeSimplepDFFile);
-                reqPdfMergeSimplepropCount++;
+                var apiCallPath = "/pdf/merge/simple";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var reqPdfMergeSimple = new JObject();
+                var reqPdfMergeSimplepropCount = 0;
+                if (reqPdfMergeSimplepDFFile != null)
+                {
+                    reqPdfMergeSimple["pdfs"] = SourceExpressionConverter.ConvertToken(reqPdfMergeSimplepDFFile);
+                    reqPdfMergeSimplepropCount++;
+                }
+
+                if (reqPdfMergeSimplepropCount > 0)
+                {
+                    callPayload.Body = reqPdfMergeSimple;
+                }
+                return callPayload;
             }
 
-            if (reqPdfMergeSimplepropCount > 0)
-            {
-                callPayload.Body = reqPdfMergeSimple;
-            }
-
-            return new ApiConnectionAction<Resp200PdfMergeSimple>(callPayload);
+            return new ApiConnectionAction<Resp200PdfMergeSimple>(BuildSourceInput);
         }
     }
 

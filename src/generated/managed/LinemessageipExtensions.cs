@@ -12,32 +12,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
     public class LinemessageipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linemessageip")]
-        public IWorkflowAction SendMessage(Expression<Func<string>> bodyto = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
+        public IWorkflowAction SendMessage([WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null)
         {
-            var apiCallPath = "/v2/bot/message/push";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyto != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
+                var apiCallPath = "/v2/bot/message/push";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyto != null)
+                {
+                    body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                    bodypropCount++;
+                }
+
+                if (bodymessages != null)
+                {
+                    body["messages"] = SourceExpressionConverter.ConvertToken(bodymessages);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymessages != null)
-            {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

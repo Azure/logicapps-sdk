@@ -12,15 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dadjokes
     public class DadjokesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dadjokes")]
-        public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet(Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<JokeGetResponseItem[]> JokeGet([WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/v1/dadjokes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Headers["X-RapidAPI-Host"] = Convert.ToString("dad-jokes-by-api-ninjas.p.rapidapi.com");
-            return new ApiConnectionAction<JokeGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/dadjokes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Headers["X-RapidAPI-Host"] = Convert.ToString("dad-jokes-by-api-ninjas.p.rapidapi.com");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JokeGetResponseItem[]>(BuildSourceInput);
         }
     }
 

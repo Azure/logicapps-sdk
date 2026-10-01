@@ -12,25 +12,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
     public class TophhiecloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
-        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo(Expression<Func<string>> tenantID = null, Expression<Func<string>> domainName = null)
+        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo([WorkflowExpression] Func<string> tenantId = null, [WorkflowExpression] Func<string> domainName = null)
         {
-            var apiCallPath = "/tenantinfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tenantID != null)
-                callPayload.Queries["tenantID"] = ExpressionConverter.Convert(tenantID);
-            if (domainName != null)
-                callPayload.Queries["domainName"] = ExpressionConverter.Convert(domainName);
-            return new ApiConnectionAction<TophhieCloudTenantInfoResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/tenantinfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tenantId != null)
+                    callPayload.Queries["tenantID"] = SourceExpressionConverter.ConvertO(tenantId);
+                if (domainName != null)
+                    callPayload.Queries["domainName"] = SourceExpressionConverter.ConvertO(domainName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TophhieCloudTenantInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
-        public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> TophhieCloudEntraIDIDConverter(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<TophhieCloudEntraIdIdConverterResponse> TophhieCloudEntraIdIdConverter([WorkflowExpression] Func<string> identifier)
         {
-            var apiCallPath = String.Format("/entra/convertid/{0}", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TophhieCloudEntraIDIDConverterResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TophhieCloudEntraIdIdConverterResponse>(BuildSourceInput);
         }
     }
 
@@ -74,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
         public string[] AdditionalDomains { get; set; }
     }
 
-    public class TophhieCloudEntraIDIDConverterResponse
+    public class TophhieCloudEntraIdIdConverterResponse
     {
         [JsonProperty("originalId")]
         public string OriginalId { get; set; }
@@ -86,10 +96,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
         public string ConvertDirection { get; set; }
 
         [JsonProperty("support")]
-        public TophhieCloudEntraIDIDConverterResponseSupportType Support { get; set; }
+        public TophhieCloudEntraIdIdConverterResponseSupportType Support { get; set; }
     }
 
-    public class TophhieCloudEntraIDIDConverterResponseSupportType
+    public class TophhieCloudEntraIdIdConverterResponseSupportType
     {
         [JsonProperty("message")]
         public string Message { get; set; }

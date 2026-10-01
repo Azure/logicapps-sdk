@@ -12,137 +12,160 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     public class WoodpeckerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet(Expression<Func<string>> search = null, Expression<Func<string>> activity = null, Expression<Func<string>> campaignId = null, Expression<Func<bool>> campaignsDetail = null, Expression<Func<sortInput>> sort = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<ProspectsGetResponseItem[]> ProspectsGet([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> activity = null, [WorkflowExpression] Func<string> campaignId = null, [WorkflowExpression] Func<bool> campaignsDetail = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/prospects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (activity != null)
-                callPayload.Queries["activity"] = ExpressionConverter.Convert(activity);
-            if (campaignId != null)
-                callPayload.Queries["campaign_id"] = ExpressionConverter.Convert(campaignId);
-            if (campaignsDetail != null)
-                callPayload.Queries["campaigns_detail"] = ExpressionConverter.Convert(campaignsDetail);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<ProspectsGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/prospects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (activity != null)
+                    callPayload.Queries["activity"] = SourceExpressionConverter.ConvertO(activity);
+                if (campaignId != null)
+                    callPayload.Queries["campaign_id"] = SourceExpressionConverter.ConvertO(campaignId);
+                if (campaignsDetail != null)
+                    callPayload.Queries["campaigns_detail"] = SourceExpressionConverter.ConvertO(campaignsDetail);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.Convert(sort);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProspectsGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<string> ProspectsDelete(Expression<Func<int>> id = null, Expression<Func<int>> campaignsId = null)
+        public IBodyWorkflowAction<string> ProspectsDelete([WorkflowExpression] Func<int> id = null, [WorkflowExpression] Func<int> campaignsId = null)
         {
-            var apiCallPath = "/prospects";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (campaignsId != null)
-                callPayload.Queries["campaigns_id"] = ExpressionConverter.Convert(campaignsId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/prospects";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                if (campaignsId != null)
+                    callPayload.Queries["campaigns_id"] = SourceExpressionConverter.ConvertO(campaignsId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsPostResponse> Prospects(Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem[]>> bodyprospects = null)
+        public IBodyWorkflowAction<ProspectsPostResponse> Prospects([WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem[]> bodyprospects = null)
         {
-            var apiCallPath = "/add_prospects_list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyupdate != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["update"] = ExpressionConverter.ConvertO(bodyupdate);
-                bodypropCount++;
+                var apiCallPath = "/add_prospects_list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyupdate != null)
+                {
+                    body["update"] = SourceExpressionConverter.Convert(bodyupdate);
+                    bodypropCount++;
+                }
+
+                if (bodyforce != null)
+                {
+                    body["force"] = SourceExpressionConverter.Convert(bodyforce);
+                    bodypropCount++;
+                }
+
+                if (bodyprospects != null)
+                {
+                    body["prospects"] = SourceExpressionConverter.ConvertToken(bodyprospects);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyforce != null)
-            {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
-                bodypropCount++;
-            }
-
-            if (bodyprospects != null)
-            {
-                body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProspectsPostResponse>(callPayload);
+            return new ApiConnectionAction<ProspectsPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign(Expression<Func<int>> bodycampaigncampaignId = null, Expression<Func<bodyupdateInput>> bodyupdate = null, Expression<Func<bodyforceInput>> bodyforce = null, Expression<Func<bodyprospectsInputItem2[]>> bodyprospects = null)
+        public IBodyWorkflowAction<ProspectsCampaignPostResponse> ProspectsCampaign([WorkflowExpression] Func<int> bodycampaigncampaignId = null, [WorkflowExpression] Func<bodyupdateInput> bodyupdate = null, [WorkflowExpression] Func<bodyforceInput> bodyforce = null, [WorkflowExpression] Func<bodyprospectsInputItem2[]> bodyprospects = null)
         {
-            var apiCallPath = "/add_prospects_campaign";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var campaignObject = new JObject();
-            var campaignObjectpropCount = 0;
-            if (bodycampaigncampaignId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                campaignObject["campaign_id"] = ExpressionConverter.ConvertO(bodycampaigncampaignId);
-                campaignObjectpropCount++;
+                var apiCallPath = "/add_prospects_campaign";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var campaignObject = new JObject();
+                var campaignObjectpropCount = 0;
+                if (bodycampaigncampaignId != null)
+                {
+                    campaignObject["campaign_id"] = SourceExpressionConverter.ConvertToken(bodycampaigncampaignId);
+                    campaignObjectpropCount++;
+                }
+
+                if (campaignObjectpropCount > 0)
+                {
+                    body["campaign"] = campaignObject;
+                    bodypropCount++;
+                }
+
+                if (bodyupdate != null)
+                {
+                    body["update"] = SourceExpressionConverter.Convert(bodyupdate);
+                    bodypropCount++;
+                }
+
+                if (bodyforce != null)
+                {
+                    body["force"] = SourceExpressionConverter.Convert(bodyforce);
+                    bodypropCount++;
+                }
+
+                if (bodyprospects != null)
+                {
+                    body["prospects"] = SourceExpressionConverter.ConvertToken(bodyprospects);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (campaignObjectpropCount > 0)
-            {
-                body["campaign"] = campaignObject;
-                bodypropCount++;
-            }
-
-            if (bodyupdate != null)
-            {
-                body["update"] = ExpressionConverter.ConvertO(bodyupdate);
-                bodypropCount++;
-            }
-
-            if (bodyforce != null)
-            {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
-                bodypropCount++;
-            }
-
-            if (bodyprospects != null)
-            {
-                body["prospects"] = ExpressionConverter.ConvertO(bodyprospects);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProspectsCampaignPostResponse>(callPayload);
+            return new ApiConnectionAction<ProspectsCampaignPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "woodpecker")]
-        public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet(Expression<Func<statusInput>> status = null, Expression<Func<int>> id = null)
+        public IBodyWorkflowAction<CampaignsGetResponseItem[]> CampaignsGet([WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> id = null)
         {
-            var apiCallPath = "/campaign_list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<CampaignsGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/campaign_list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CampaignsGetResponseItem[]>(BuildSourceInput);
         }
     }
 
@@ -300,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
     public enum sortInput
     {
         [EnumMember(Value = "+id")]
-        ID,
+        Id,
         [EnumMember(Value = "+email")]
         Email,
         [EnumMember(Value = "+first_name")]
@@ -310,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [EnumMember(Value = "+company")]
         Company,
         [EnumMember(Value = "+organization_id")]
-        OrganizationID,
+        OrganizationId,
         [EnumMember(Value = "+industry")]
         Industry,
         [EnumMember(Value = "+website")]
@@ -340,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [EnumMember(Value = "+status")]
         Status,
         [EnumMember(Value = "-id")]
-        IDDescending,
+        IdDescending,
         [EnumMember(Value = "-email")]
         EmailDescending,
         [EnumMember(Value = "-first_name")]
@@ -350,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Woodpecker
         [EnumMember(Value = "-company")]
         CompanyDescending,
         [EnumMember(Value = "-organization_id")]
-        OrganizationIDDescending,
+        OrganizationIdDescending,
         [EnumMember(Value = "-industry")]
         IndustryDescending,
         [EnumMember(Value = "-website")]

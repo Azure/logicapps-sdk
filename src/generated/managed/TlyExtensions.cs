@@ -14,423 +14,504 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<PixelsGetResponseItem[]> PixelsGet()
         {
-            var apiCallPath = "/api/v1/link/pixel";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PixelsGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/link/pixel";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PixelsGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelPostResponse> Pixel(Expression<Func<string>> bodyname, Expression<Func<string>> bodypixelId, Expression<Func<string>> bodypixelType)
+        public IBodyWorkflowAction<PixelPostResponse> Pixel([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypixelId, [WorkflowExpression] Func<string> bodypixelType)
         {
-            var apiCallPath = "/api/v1/link/pixel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["pixel_id"] = ExpressionConverter.ConvertO(bodypixelId);
-            bodypropCount++;
-            body["pixel_type"] = ExpressionConverter.ConvertO(bodypixelType);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/v1/link/pixel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["pixel_id"] = SourceExpressionConverter.ConvertToken(bodypixelId);
+                bodypropCount++;
+                body["pixel_type"] = SourceExpressionConverter.ConvertToken(bodypixelType);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PixelPostResponse>(callPayload);
+            return new ApiConnectionAction<PixelPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelGetResponse> PixelGet(Expression<Func<string>> pixelId)
+        public IBodyWorkflowAction<PixelGetResponse> PixelGet([WorkflowExpression] Func<string> pixelId)
         {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PixelGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PixelGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> PixelDelete(Expression<Func<string>> pixelId)
+        public IBodyWorkflowAction<string> PixelDelete([WorkflowExpression] Func<string> pixelId)
         {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelPutResponse> PixelPut(Expression<Func<string>> pixelId, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypixelId = null, Expression<Func<string>> bodypixelType = null)
+        public IBodyWorkflowAction<PixelPutResponse> PixelPut([WorkflowExpression] Func<string> pixelId, [WorkflowExpression] Func<int> bodyid = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypixelId = null, [WorkflowExpression] Func<string> bodypixelType = null)
         {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pixelId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypixelId != null)
+                {
+                    body["pixel_id"] = SourceExpressionConverter.ConvertToken(bodypixelId);
+                    bodypropCount++;
+                }
+
+                if (bodypixelType != null)
+                {
+                    body["pixel_type"] = SourceExpressionConverter.ConvertToken(bodypixelType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodypixelId != null)
-            {
-                body["pixel_id"] = ExpressionConverter.ConvertO(bodypixelId);
-                bodypropCount++;
-            }
-
-            if (bodypixelType != null)
-            {
-                body["pixel_type"] = ExpressionConverter.ConvertO(bodypixelType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PixelPutResponse>(callPayload);
+            return new ApiConnectionAction<PixelPutResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodylongUrl, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<bodymetasmartUrlsInputItem[]>> bodymetasmartUrls = null)
+        public IBodyWorkflowAction<LinkPostResponse> Link([WorkflowExpression] Func<string> bodylongUrl, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyexpireAtDatetime = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodypublicStats = null, [WorkflowExpression] Func<bodymetasmartUrlsInputItem[]> bodymetasmartUrls = null)
         {
-            var apiCallPath = "/api/v1/link/shorten";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["long_url"] = ExpressionConverter.ConvertO(bodylongUrl);
-            if (bodydomain != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                var apiCallPath = "/api/v1/link/shorten";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["long_url"] = SourceExpressionConverter.ConvertToken(bodylongUrl);
+                if (bodydomain != null)
+                {
+                    body["domain"] = SourceExpressionConverter.ConvertToken(bodydomain);
+                    bodypropCount++;
+                }
+
+                if (bodyexpireAtDatetime != null)
+                {
+                    body["expire_at_datetime"] = SourceExpressionConverter.ConvertToken(bodyexpireAtDatetime);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypublicStats != null)
+                {
+                    body["public_stats"] = SourceExpressionConverter.ConvertToken(bodypublicStats);
+                    bodypropCount++;
+                }
+
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetasmartUrls != null)
+                {
+                    metaObject["smart_urls"] = SourceExpressionConverter.ConvertToken(bodymetasmartUrls);
+                    metaObjectpropCount++;
+                }
+
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexpireAtDatetime != null)
-            {
-                body["expire_at_datetime"] = ExpressionConverter.ConvertO(bodyexpireAtDatetime);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypublicStats != null)
-            {
-                body["public_stats"] = ExpressionConverter.ConvertO(bodypublicStats);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetasmartUrls != null)
-            {
-                metaObject["smart_urls"] = ExpressionConverter.ConvertO(bodymetasmartUrls);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LinkPostResponse>(callPayload);
+            return new ApiConnectionAction<LinkPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkGetResponse> LinkGet(Expression<Func<string>> shortUrl = null)
+        public IBodyWorkflowAction<LinkGetResponse> LinkGet([WorkflowExpression] Func<string> shortUrl = null)
         {
-            var apiCallPath = "/api/v1/link";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (shortUrl != null)
-                callPayload.Queries["short_url"] = ExpressionConverter.Convert(shortUrl);
-            return new ApiConnectionAction<LinkGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/link";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (shortUrl != null)
+                    callPayload.Queries["short_url"] = SourceExpressionConverter.ConvertO(shortUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LinkGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> LinkDelete(Expression<Func<string>> bodyshortUrl = null)
+        public IBodyWorkflowAction<string> LinkDelete([WorkflowExpression] Func<string> bodyshortUrl = null)
         {
-            var apiCallPath = "/api/v1/link";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyshortUrl != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/link";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyshortUrl != null)
+                {
+                    body["short_url"] = SourceExpressionConverter.ConvertToken(bodyshortUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkPutResponse> LinkPut(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodylongUrl = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyshortId = null, Expression<Func<string>> bodyexpireAtViews = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<string>> bodyqrCodeUrl = null, Expression<Func<string>> bodyqrCodeBase64 = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
+        public IBodyWorkflowAction<LinkPutResponse> LinkPut([WorkflowExpression] Func<string> bodyshortUrl = null, [WorkflowExpression] Func<string> bodylongUrl = null, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyshortId = null, [WorkflowExpression] Func<string> bodyexpireAtViews = null, [WorkflowExpression] Func<string> bodyexpireAtDatetime = null, [WorkflowExpression] Func<bool> bodypublicStats = null, [WorkflowExpression] Func<string> bodyqrCodeUrl = null, [WorkflowExpression] Func<string> bodyqrCodeBase64 = null, [WorkflowExpression] Func<int[]> bodytags = null, [WorkflowExpression] Func<int[]> bodypixels = null)
         {
-            var apiCallPath = "/api/v1/link";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyshortUrl != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/link";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyshortUrl != null)
+                {
+                    body["short_url"] = SourceExpressionConverter.ConvertToken(bodyshortUrl);
+                    bodypropCount++;
+                }
+
+                if (bodylongUrl != null)
+                {
+                    body["long_url"] = SourceExpressionConverter.ConvertToken(bodylongUrl);
+                    bodypropCount++;
+                }
+
+                if (bodydomain != null)
+                {
+                    body["domain"] = SourceExpressionConverter.ConvertToken(bodydomain);
+                    bodypropCount++;
+                }
+
+                if (bodyshortId != null)
+                {
+                    body["short_id"] = SourceExpressionConverter.ConvertToken(bodyshortId);
+                    bodypropCount++;
+                }
+
+                if (bodyexpireAtViews != null)
+                {
+                    body["expire_at_views"] = SourceExpressionConverter.ConvertToken(bodyexpireAtViews);
+                    bodypropCount++;
+                }
+
+                if (bodyexpireAtDatetime != null)
+                {
+                    body["expire_at_datetime"] = SourceExpressionConverter.ConvertToken(bodyexpireAtDatetime);
+                    bodypropCount++;
+                }
+
+                if (bodypublicStats != null)
+                {
+                    body["public_stats"] = SourceExpressionConverter.ConvertToken(bodypublicStats);
+                    bodypropCount++;
+                }
+
+                if (bodyqrCodeUrl != null)
+                {
+                    body["qr_code_url"] = SourceExpressionConverter.ConvertToken(bodyqrCodeUrl);
+                    bodypropCount++;
+                }
+
+                if (bodyqrCodeBase64 != null)
+                {
+                    body["qr_code_base64"] = SourceExpressionConverter.ConvertToken(bodyqrCodeBase64);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypixels != null)
+                {
+                    body["pixels"] = SourceExpressionConverter.ConvertToken(bodypixels);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylongUrl != null)
-            {
-                body["long_url"] = ExpressionConverter.ConvertO(bodylongUrl);
-                bodypropCount++;
-            }
-
-            if (bodydomain != null)
-            {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
-                bodypropCount++;
-            }
-
-            if (bodyshortId != null)
-            {
-                body["short_id"] = ExpressionConverter.ConvertO(bodyshortId);
-                bodypropCount++;
-            }
-
-            if (bodyexpireAtViews != null)
-            {
-                body["expire_at_views"] = ExpressionConverter.ConvertO(bodyexpireAtViews);
-                bodypropCount++;
-            }
-
-            if (bodyexpireAtDatetime != null)
-            {
-                body["expire_at_datetime"] = ExpressionConverter.ConvertO(bodyexpireAtDatetime);
-                bodypropCount++;
-            }
-
-            if (bodypublicStats != null)
-            {
-                body["public_stats"] = ExpressionConverter.ConvertO(bodypublicStats);
-                bodypropCount++;
-            }
-
-            if (bodyqrCodeUrl != null)
-            {
-                body["qr_code_url"] = ExpressionConverter.ConvertO(bodyqrCodeUrl);
-                bodypropCount++;
-            }
-
-            if (bodyqrCodeBase64 != null)
-            {
-                body["qr_code_base64"] = ExpressionConverter.ConvertO(bodyqrCodeBase64);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypixels != null)
-            {
-                body["pixels"] = ExpressionConverter.ConvertO(bodypixels);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LinkPutResponse>(callPayload);
+            return new ApiConnectionAction<LinkPutResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkExpandPostResponse> LinkExpand(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodypassword = null)
+        public IBodyWorkflowAction<LinkExpandPostResponse> LinkExpand([WorkflowExpression] Func<string> bodyshortUrl = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            var apiCallPath = "/api/v1/link/expand";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyshortUrl != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/link/expand";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyshortUrl != null)
+                {
+                    body["short_url"] = SourceExpressionConverter.ConvertToken(bodyshortUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypassword != null)
-            {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LinkExpandPostResponse>(callPayload);
+            return new ApiConnectionAction<LinkExpandPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinksGetResponse> LinksGet(Expression<Func<string>> search = null, Expression<Func<string>> tagIds = null, Expression<Func<string>> pixelIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> domains = null)
+        public IBodyWorkflowAction<LinksGetResponse> LinksGet([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> tagIds = null, [WorkflowExpression] Func<string> pixelIds = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> domains = null)
         {
-            var apiCallPath = "/api/v1/link/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (tagIds != null)
-                callPayload.Queries["tag_ids"] = ExpressionConverter.Convert(tagIds);
-            if (pixelIds != null)
-                callPayload.Queries["pixel_ids"] = ExpressionConverter.Convert(pixelIds);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            if (domains != null)
-                callPayload.Queries["domains"] = ExpressionConverter.Convert(domains);
-            return new ApiConnectionAction<LinksGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/link/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (tagIds != null)
+                    callPayload.Queries["tag_ids"] = SourceExpressionConverter.ConvertO(tagIds);
+                if (pixelIds != null)
+                    callPayload.Queries["pixel_ids"] = SourceExpressionConverter.ConvertO(pixelIds);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (domains != null)
+                    callPayload.Queries["domains"] = SourceExpressionConverter.ConvertO(domains);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LinksGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> LinkBulk(Expression<Func<string>> bodydomain = null, Expression<Func<bodylinksInputItem[]>> bodylinks = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
+        public IBodyWorkflowAction<string> LinkBulk([WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<bodylinksInputItem[]> bodylinks = null, [WorkflowExpression] Func<int[]> bodytags = null, [WorkflowExpression] Func<int[]> bodypixels = null)
         {
-            var apiCallPath = "/api/v1/link/bulk";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydomain != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
-                bodypropCount++;
+                var apiCallPath = "/api/v1/link/bulk";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydomain != null)
+                {
+                    body["domain"] = SourceExpressionConverter.ConvertToken(bodydomain);
+                    bodypropCount++;
+                }
+
+                if (bodylinks != null)
+                {
+                    body["links"] = SourceExpressionConverter.ConvertToken(bodylinks);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypixels != null)
+                {
+                    body["pixels"] = SourceExpressionConverter.ConvertToken(bodypixels);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylinks != null)
-            {
-                body["links"] = ExpressionConverter.ConvertO(bodylinks);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypixels != null)
-            {
-                body["pixels"] = ExpressionConverter.ConvertO(bodypixels);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<StatGetResponse> StatGet(Expression<Func<string>> shortLink)
+        public IBodyWorkflowAction<StatGetResponse> StatGet([WorkflowExpression] Func<string> shortLink)
         {
-            var apiCallPath = "/api/v1/link/stats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["short_link"] = ExpressionConverter.Convert(shortLink);
-            return new ApiConnectionAction<StatGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/link/stats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["short_link"] = SourceExpressionConverter.ConvertO(shortLink);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
         public IBodyWorkflowAction<TagsGetResponseItem[]> TagsGet()
         {
-            var apiCallPath = "/api/v1/link/tag";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagsGetResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPostResponse> Tag(Expression<Func<string>> bodytag)
-        {
-            var apiCallPath = "/api/v1/link/tag";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/v1/link/tag";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TagPostResponse>(callPayload);
+            return new ApiConnectionAction<TagsGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<TagPostResponse> Tag([WorkflowExpression] Func<string> bodytag)
         {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> TagDelete(Expression<Func<string>> tagId)
-        {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPutResponse> TagPut(Expression<Func<string>> tagId, Expression<Func<string>> bodytag)
-        {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/v1/link/tag";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["tag"] = SourceExpressionConverter.ConvertToken(bodytag);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TagPutResponse>(callPayload);
+            return new ApiConnectionAction<TagPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
+        public IBodyWorkflowAction<TagGetResponse> TagGet([WorkflowExpression] Func<string> tagId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TagGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
+        public IBodyWorkflowAction<string> TagDelete([WorkflowExpression] Func<string> tagId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
+        public IBodyWorkflowAction<TagPutResponse> TagPut([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodytag)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["tag"] = SourceExpressionConverter.ConvertToken(bodytag);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TagPutResponse>(BuildSourceInput);
         }
     }
 

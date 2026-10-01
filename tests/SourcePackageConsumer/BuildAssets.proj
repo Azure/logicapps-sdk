@@ -1,0 +1,167 @@
+<Project>
+  <Import Project="..\..\src\buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" />
+  <PropertyGroup>
+    <FixtureOutput>$(MSBuildThisFileDirectory)obj\build-assets\</FixtureOutput>
+  </PropertyGroup>
+  <Target Name="ValidateBuildAssets">
+    <MakeDir Directories="$(FixtureOutput)" />
+    <ItemGroup>
+      <Original Include="$(MSBuildThisFileDirectory)Consumer\Program.cs">
+        <Link>Linked\Program.cs</Link>
+      </Original>
+      <Reference Include="$(MSBuildToolsPath)\Microsoft.Build.dll">
+        <Aliases>global,buildAlias</Aliases>
+        <EmbedInteropTypes>true</EmbedInteropTypes>
+      </Reference>
+      <PlainReference Include="$(MSBuildToolsPath)\Microsoft.Build.dll" />
+      <Schema Include="$(MSBuildThisFileDirectory)MatrixFixtures\Schemas\operations.json" />
+    </ItemGroup>
+    <WriteWorkflowBuildManifest Sources="@(Original)" References="@(Reference)" SchemaFiles="@(Schema)" Defines="FIRST, SECOND;FIRST"
+                                LanguageVersion="preview" Nullable="enable" AllowUnsafe="true"
+                                CheckOverflow="true" OutputKind="Exe" AssemblyName="Quoted &quot; assembly"
+                                Platform="x64" StartupObject="Fixture.EntryPoint"
+                                SignAssembly="true" DelaySign="true" PublicSign="false"
+                                KeyFile="$(MSBuildThisFileDirectory)..\..\eng\res\key.snk" KeyContainer="quoted &quot; container"
+                                ManifestPath="$(FixtureOutput)manifest.json" />
+    <WriteWorkflowBuildManifest Sources="@(Original)" References="@(PlainReference)"
+                                LanguageVersion="latest" OutputKind="Library" AssemblyName="Unsigned"
+                                ManifestPath="$(FixtureOutput)unsigned-manifest.json" />
+    <WriteLinesToFile File="$(FixtureOutput)compiled-files.txt" Lines="@(Original->'%(FullPath)')" Overwrite="true" />
+    <ReadWorkflowCompiledFiles Sources="@(Original)" ListPath="$(FixtureOutput)compiled-files.txt">
+      <Output TaskParameter="CompiledFiles" ItemName="Transformed" />
+    </ReadWorkflowCompiledFiles>
+    <Error Condition="'@(Transformed->'%(Link)')' != 'Linked\Program.cs'" Text="Compile item metadata was not preserved." />
+    <Message Importance="high" Text="Build manifest and Compile-item metadata validation passed." />
+  </Target>
+  <Target Name="ValidateGeneratedSchemaInputs">
+    <MakeDir Directories="$(FixtureOutput)" />
+    <ItemGroup>
+      <SchemaOriginal Include="$(MSBuildThisFileDirectory)Consumer\Program.cs">
+        <Link>Original\Program.cs</Link>
+      </SchemaOriginal>
+    </ItemGroup>
+    <WriteLinesToFile File="$(FixtureOutput)Generated.g.cs" Lines="internal class Generated {}" Overwrite="true" />
+    <WriteLinesToFile File="$(FixtureOutput)schema-compiled-files.txt"
+                      Lines="@(SchemaOriginal->'%(FullPath)');$(FixtureOutput)Generated.g.cs" Overwrite="true" />
+    <ReadWorkflowCompiledFiles Sources="@(SchemaOriginal)" ListPath="$(FixtureOutput)schema-compiled-files.txt" AllowGeneratedFiles="true">
+      <Output TaskParameter="CompiledFiles" ItemName="SchemaCompiled" />
+    </ReadWorkflowCompiledFiles>
+    <ItemGroup>
+      <SchemaGenerated Include="@(SchemaCompiled)" Condition="'%(SchemaCompiled.AutoGen)' == 'true'" />
+      <SchemaPreserved Include="@(SchemaCompiled)" Condition="'%(SchemaCompiled.AutoGen)' != 'true'" />
+    </ItemGroup>
+    <Error Condition="'@(SchemaPreserved->'%(Link)')' != 'Original\Program.cs'" Text="Generated inputs displaced original metadata." />
+    <Error Condition="'@(SchemaGenerated->'%(Filename)%(Extension)')' != 'Generated.g.cs' or '@(SchemaGenerated->'%(Visible)')' != 'false'"
+           Text="Schema-generated files were not safely appended as generated inputs." />
+  </Target>
+  <Target Name="UndeclaredGeneratedInputs" DependsOnTargets="ValidateGeneratedSchemaInputs">
+    <ReadWorkflowCompiledFiles Sources="@(SchemaOriginal)" ListPath="$(FixtureOutput)schema-compiled-files.txt" />
+  </Target>
+  <Target Name="PrepareMissingSchema" DependsOnTargets="PrepareFailureFixture">
+    <PropertyGroup>
+      <WorkflowBuildToolPath>$(MSBuildToolsPath)\Microsoft.Build.dll</WorkflowBuildToolPath>
+    </PropertyGroup>
+    <ItemGroup>
+      <WorkflowExpressionSchema Include="$(FixtureOutput)absent-schema.json" />
+    </ItemGroup>
+  </Target>
+  <Target Name="MissingSchema" DependsOnTargets="PrepareMissingSchema;TransformWorkflowSources" />
+  <Target Name="DuplicateCompilerInputs">
+    <MakeDir Directories="$(FixtureOutput)" />
+    <ItemGroup>
+      <DuplicateFixtureSources Include="$(MSBuildThisFileDirectory)Consumer\Program.cs;$(MSBuildThisFileDirectory)MatrixFixtures\Shared\Workflow.cs" />
+    </ItemGroup>
+    <WriteLinesToFile File="$(FixtureOutput)duplicate-files.txt"
+                      Lines="$(MSBuildThisFileDirectory)Consumer\Program.cs;$(MSBuildThisFileDirectory)Consumer\Program.cs" Overwrite="true" />
+    <ReadWorkflowCompiledFiles Sources="@(DuplicateFixtureSources)" ListPath="$(FixtureOutput)duplicate-files.txt" />
+  </Target>
+  <Target Name="PrepareRequirementFixtures">
+    <PropertyGroup>
+      <WorkflowSourceTransformEnabled>true</WorkflowSourceTransformEnabled>
+      <Configuration>Fixture</Configuration>
+      <TargetFramework>net9.0</TargetFramework>
+      <AssemblyName>BuildAssetsFixture</AssemblyName>
+      <TargetName>BuildAssetsFixture</TargetName>
+      <IntermediateOutputPath>$(FixtureOutput)requirement-obj\</IntermediateOutputPath>
+      <TargetDir>$(FixtureOutput)requirement-output\</TargetDir>
+      <PublishDir>$(FixtureOutput)requirement-publish\</PublishDir>
+    </PropertyGroup>
+  </Target>
+  <Target Name="SeedRequirementFixtures" DependsOnTargets="PrepareRequirementFixtures;ResolveWorkflowExpressionRequirementPaths">
+    <MakeDir Directories="$(_WorkflowSourceRoot);$(FixtureOutput)reference;$(TargetDir);$(PublishDir)" />
+    <Delete Files="$(PublishDir)workflow.json" />
+    <WriteLinesToFile File="$(_WorkflowDependencySource)"
+                      Lines="{&quot;version&quot;:1,&quot;assemblyName&quot;:&quot;BuildAssetsFixture&quot;,&quot;dependencies&quot;:[]}" Overwrite="true" />
+    <WriteLinesToFile File="$(FixtureOutput)reference\Helper.dll" Lines="Copy-fixture placeholder, never loaded or executed." Overwrite="true" />
+    <WriteLinesToFile File="$(FixtureOutput)reference\Helper.workflow-expressions.json"
+                      Lines="{&quot;version&quot;:1,&quot;assemblyName&quot;:&quot;Helper&quot;,&quot;dependencies&quot;:[]}" Overwrite="true" />
+    <ItemGroup>
+      <ReferenceCopyLocalPaths Include="$(FixtureOutput)reference\Helper.dll" />
+    </ItemGroup>
+  </Target>
+  <Target Name="ValidateRequirementPropagation"
+          DependsOnTargets="SeedRequirementFixtures;CopyWorkflowExpressionRequirementsToOutput;IncludeWorkflowExpressionRequirementsInPackage;CopyWorkflowExpressionRequirementsToPublish;ValidateWorkflowExpressionDeployment">
+    <Error Condition="!Exists('$(TargetDir)BuildAssetsFixture.workflow-expressions.json') or !Exists('$(TargetDir)Helper.workflow-expressions.json')"
+           Text="Assembly-specific requirements were not copied to build output." />
+    <Error Condition="!Exists('$(PublishDir)BuildAssetsFixture.workflow-expressions.json') or !Exists('$(PublishDir)Helper.workflow-expressions.json')"
+           Text="Assembly-specific requirements were not copied to publish output." />
+    <Error Condition="'@(TfmSpecificPackageFile->'%(PackagePath)')' != 'lib\net9.0\BuildAssetsFixture.workflow-expressions.json'"
+           Text="Package requirement path must be assembly-specific and TFM-specific." />
+    <Message Importance="high" Text="Requirement copy/package metadata checks passed; no workflow deployment was validated." />
+  </Target>
+  <Target Name="RemoveRequirementFixture" DependsOnTargets="SeedRequirementFixtures">
+    <Delete Files="$(_WorkflowDependencySource)" />
+  </Target>
+  <Target Name="MissingRequirements" DependsOnTargets="RemoveRequirementFixture;CopyWorkflowExpressionRequirementsToOutput" />
+  <Target Name="PrepareMissingPublishTool"
+          DependsOnTargets="SeedRequirementFixtures;CopyWorkflowExpressionRequirementsToOutput;CopyWorkflowExpressionRequirementsToPublish">
+    <PropertyGroup>
+      <WorkflowBuildToolPath>$(FixtureOutput)absent-validator.dll</WorkflowBuildToolPath>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(PublishDir)workflow.json" Lines="{&quot;definition&quot;:{&quot;actions&quot;:{}}}" Overwrite="true" />
+  </Target>
+  <Target Name="MissingPublishTool" DependsOnTargets="PrepareMissingPublishTool;ValidateWorkflowExpressionDeployment" />
+  <Target Name="PrepareMissingHostProfile" DependsOnTargets="PrepareMissingPublishTool">
+    <PropertyGroup>
+      <WorkflowBuildToolPath>$(MSBuildToolsPath)\Microsoft.Build.dll</WorkflowBuildToolPath>
+      <WorkflowExpressionHostProfile>$(FixtureOutput)absent-host-profile.json</WorkflowExpressionHostProfile>
+    </PropertyGroup>
+  </Target>
+  <Target Name="MissingHostProfile" DependsOnTargets="PrepareMissingHostProfile;ValidateWorkflowExpressionDeployment" />
+  <Target Name="ValidateDesignTime" DependsOnTargets="PrepareFailureFixture;WorkflowSourceDesignTimeNotice;TransformWorkflowSources">
+    <Error Condition="'$(DesignTimeBuild)' != 'true'" Text="Pass DesignTimeBuild=true." />
+    <Error Condition="'@(Compile)' != '$(MSBuildThisFileDirectory)Consumer\Program.cs'" Text="Design-time inputs were replaced." />
+    <Error Condition="'@(_WorkflowTransformedCompile)' != ''" Text="Design-time transformation must not run." />
+    <Message Importance="high" Text="Design-time target retained original inputs without requiring a compiler." />
+  </Target>
+  <Target Name="MissingCompiler" DependsOnTargets="PrepareFailureFixture;TransformWorkflowSources" />
+  <Target Name="UnsupportedGenerator" DependsOnTargets="PrepareFailureFixture;AddUnsupportedGenerator;TransformWorkflowSources" />
+  <Target Name="ValidateAnalyzerMetadata">
+    <Error Condition="'$(AnalyzerPath)' == ''" Text="Pass AnalyzerPath to an analyzer or generator assembly." />
+    <ItemGroup>
+      <MetadataAnalyzer Include="$(AnalyzerPath)">
+        <NuGetPackageId>$(AnalyzerPackageId)</NuGetPackageId>
+        <NuGetPackageVersion>$(AnalyzerPackageVersion)</NuGetPackageVersion>
+      </MetadataAnalyzer>
+    </ItemGroup>
+    <ValidateWorkflowAnalyzers Analyzers="@(MetadataAnalyzer)" />
+  </Target>
+  <Target Name="PrepareFailureFixture">
+    <PropertyGroup>
+      <WorkflowSourceTransformEnabled>true</WorkflowSourceTransformEnabled>
+      <WorkflowBuildToolPath>$(FixtureOutput)missing.dll</WorkflowBuildToolPath>
+      <IntermediateOutputPath>$(FixtureOutput)</IntermediateOutputPath>
+    </PropertyGroup>
+    <ItemGroup>
+      <Compile Include="$(MSBuildThisFileDirectory)Consumer\Program.cs" />
+    </ItemGroup>
+  </Target>
+  <Target Name="AddUnsupportedGenerator">
+    <PropertyGroup>
+      <WorkflowBuildToolPath>$(MSBuildToolsPath)\Microsoft.Build.dll</WorkflowBuildToolPath>
+    </PropertyGroup>
+    <ItemGroup>
+      <Analyzer Include="$(FixtureOutput)CustomWorkflowGenerator.dll" />
+    </ItemGroup>
+  </Target>
+</Project>

@@ -12,36 +12,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
     public class MailboxvalidatoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/validation/single";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<ValidateSingleResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/validation/single";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidateSingleResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/email/disposable";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<ValidateDisposableResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/email/disposable";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidateDisposableResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/email/free";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<ValidateFreeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/email/free";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidateFreeResponse>(BuildSourceInput);
         }
     }
 

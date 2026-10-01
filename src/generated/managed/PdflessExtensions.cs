@@ -12,29 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
     public class PdflessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
-        public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF(Expression<Func<string>> version, Expression<Func<string>> commandtemplateId, Expression<Func<string>> commandpayload, Expression<Func<string>> commandreferenceId = null)
+        public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> commandtemplateId, [WorkflowExpression] Func<string> commandpayload, [WorkflowExpression] Func<string> commandreferenceId = null)
         {
-            var apiCallPath = String.Format("/v{0}/pdfs", ExpressionConverter.ConvertWithUrlEncoding(version, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var command = new JObject();
-            var commandpropCount = 0;
-            commandpropCount++;
-            command["template_id"] = ExpressionConverter.ConvertO(commandtemplateId);
-            commandpropCount++;
-            command["payload"] = ExpressionConverter.ConvertO(commandpayload);
-            if (commandreferenceId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                command["reference_id"] = ExpressionConverter.ConvertO(commandreferenceId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v{0}/pdfs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var command = new JObject();
+                var commandpropCount = 0;
                 commandpropCount++;
+                command["template_id"] = SourceExpressionConverter.ConvertToken(commandtemplateId);
+                commandpropCount++;
+                command["payload"] = SourceExpressionConverter.ConvertToken(commandpayload);
+                if (commandreferenceId != null)
+                {
+                    command["reference_id"] = SourceExpressionConverter.ConvertToken(commandreferenceId);
+                    commandpropCount++;
+                }
+
+                if (commandpropCount > 0)
+                {
+                    callPayload.Body = command;
+                }
+                return callPayload;
             }
 
-            if (commandpropCount > 0)
-            {
-                callPayload.Body = command;
-            }
-
-            return new ApiConnectionAction<PDFDtoApiResult>(callPayload);
+            return new ApiConnectionAction<PDFDtoApiResult>(BuildSourceInput);
         }
     }
 

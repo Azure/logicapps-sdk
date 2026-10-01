@@ -12,34 +12,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
     public class HvivehicleinspectionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
-        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyvehicleNumber, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate)
+        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle([WorkflowExpression] Func<string> sv, [WorkflowExpression] Func<string> bodymasterEmail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyvehicleNumber, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate)
         {
-            var apiCallPath = "/workflows/9bf21378f9924c97b16d3fed67e69200/triggers/manual/paths/invoke";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2016-06-01");
-            callPayload.Queries["sp"] = Convert.ToString("/triggers/manual/run");
-            callPayload.Queries["sv"] = ExpressionConverter.Convert(sv);
-            callPayload.Queries["sig"] = Convert.ToString("byht1JYW63X3X6hvP1B3cRjYvZExaWoV9BsLb_Mm_vI");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["master_email"] = ExpressionConverter.ConvertO(bodymasterEmail);
-            bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
-            bodypropCount++;
-            body["vehicle_number"] = ExpressionConverter.ConvertO(bodyvehicleNumber);
-            bodypropCount++;
-            body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
-            bodypropCount++;
-            body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/workflows/9bf21378f9924c97b16d3fed67e69200/triggers/manual/paths/invoke";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2016-06-01");
+                callPayload.Queries["sp"] = Convert.ToString("/triggers/manual/run");
+                callPayload.Queries["sv"] = SourceExpressionConverter.ConvertO(sv);
+                callPayload.Queries["sig"] = Convert.ToString("byht1JYW63X3X6hvP1B3cRjYvZExaWoV9BsLb_Mm_vI");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["master_email"] = SourceExpressionConverter.ConvertToken(bodymasterEmail);
+                bodypropCount++;
+                body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                bodypropCount++;
+                body["vehicle_number"] = SourceExpressionConverter.ConvertToken(bodyvehicleNumber);
+                bodypropCount++;
+                body["start_date"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                bodypropCount++;
+                body["end_date"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<InspectionPerVehicleResponseItem[]>(callPayload);
+            return new ApiConnectionAction<InspectionPerVehicleResponseItem[]>(BuildSourceInput);
         }
     }
 

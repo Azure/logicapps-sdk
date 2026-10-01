@@ -14,77 +14,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<S3RegionCollection> ListRegions()
         {
-            var apiCallPath = "/regions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<S3RegionCollection>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/regions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<S3RegionCollection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
         public IBodyWorkflowAction<S3BucketCollection> ListBuckets()
         {
-            var apiCallPath = "/buckets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<S3BucketCollection>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/buckets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<S3BucketCollection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
-        public IBodyWorkflowAction<S3ObjectCollection> ListObjects(Expression<Func<string>> bucketName, Expression<Func<string>> bucketRegion = null, Expression<Func<int>> maxObjectCount = null, Expression<Func<string>> continuationToken = null)
+        public IBodyWorkflowAction<S3ObjectCollection> ListObjects([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> bucketRegion = null, [WorkflowExpression] Func<int> maxObjectCount = null, [WorkflowExpression] Func<string> continuationToken = null)
         {
-            var apiCallPath = "/buckets/objects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-            callPayload.Queries["maxObjectCount"] = Convert.ToString(100);
-            if (maxObjectCount != null)
-                callPayload.Queries["maxObjectCount"] = ExpressionConverter.Convert(maxObjectCount);
-            if (continuationToken != null)
-                callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
-            return new ApiConnectionAction<S3ObjectCollection>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/buckets/objects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketName"] = SourceExpressionConverter.ConvertO(bucketName);
+                if (bucketRegion != null)
+                    callPayload.Queries["bucketRegion"] = SourceExpressionConverter.ConvertO(bucketRegion);
+                callPayload.Queries["maxObjectCount"] = Convert.ToString(100);
+                if (maxObjectCount != null)
+                    callPayload.Queries["maxObjectCount"] = SourceExpressionConverter.ConvertO(maxObjectCount);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<S3ObjectCollection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
-        public IBodyWorkflowAction<S3ObjectDeepMetadata> GetObjectMetadata(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null)
+        public IBodyWorkflowAction<S3ObjectDeepMetadata> GetObjectMetadata([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null)
         {
-            var apiCallPath = "/buckets/objects/metadata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
-            if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-            return new ApiConnectionAction<S3ObjectDeepMetadata>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/buckets/objects/metadata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketName"] = SourceExpressionConverter.ConvertO(bucketName);
+                callPayload.Queries["objectKey"] = SourceExpressionConverter.ConvertO(objectKey);
+                if (bucketRegion != null)
+                    callPayload.Queries["bucketRegion"] = SourceExpressionConverter.ConvertO(bucketRegion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<S3ObjectDeepMetadata>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3")]
-        public IBodyWorkflowAction<string> GetObjectContent(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null)
+        public IBodyWorkflowAction<string> GetObjectContent([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null)
         {
-            var apiCallPath = "/buckets/objects/content";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
-            if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/buckets/objects/content";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketName"] = SourceExpressionConverter.ConvertO(bucketName);
+                callPayload.Queries["objectKey"] = SourceExpressionConverter.ConvertO(objectKey);
+                if (bucketRegion != null)
+                    callPayload.Queries["bucketRegion"] = SourceExpressionConverter.ConvertO(bucketRegion);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 
     public class Amazons3Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate(Expression<Func<string>> bucketName, Expression<Func<string>> objectKey, Expression<Func<string>> bucketRegion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/buckets/objects/onupdate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketName"] = ExpressionConverter.Convert(bucketName);
-            callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
-            if (bucketRegion != null)
-                callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-            return new ApiConnectionTrigger<S3ObjectDeepMetadata>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/buckets/objects/onupdate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketName"] = SourceExpressionConverter.ConvertO(bucketName);
+                callPayload.Queries["objectKey"] = SourceExpressionConverter.ConvertO(objectKey);
+                if (bucketRegion != null)
+                    callPayload.Queries["bucketRegion"] = SourceExpressionConverter.ConvertO(bucketRegion);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<S3ObjectDeepMetadata>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

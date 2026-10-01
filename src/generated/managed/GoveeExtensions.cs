@@ -12,94 +12,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     public class GoveeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
+        public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice([WorkflowExpression] Func<string> bodydeviceMACAddress, [WorkflowExpression] Func<string> bodydeviceModel, [WorkflowExpression] Func<bodycmdcommandNameInput> bodycmdcommandName = null, [WorkflowExpression] Func<bodyturnInput> bodyturn = null, [WorkflowExpression] Func<int> bodybrightness = null, [WorkflowExpression] Func<int> bodycolorcolorRed = null, [WorkflowExpression] Func<int> bodycolorcolorGreen = null, [WorkflowExpression] Func<int> bodycolorcolorBlue = null, [WorkflowExpression] Func<int> bodycolorTemperature = null)
         {
-            var apiCallPath = "/devices/control";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceMACAddress);
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodydeviceModel);
-            var cmdObject = new JObject();
-            var cmdObjectpropCount = 0;
-            if (bodycmdcommandName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                cmdObject["name"] = ExpressionConverter.ConvertO(bodycmdcommandName);
-                cmdObjectpropCount++;
-            }
-
-            if (cmdObjectpropCount > 0)
-            {
-                body["cmd"] = cmdObject;
+                var apiCallPath = "/devices/control";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyturn != null)
-            {
-                body["turn"] = ExpressionConverter.ConvertO(bodyturn);
+                body["device"] = SourceExpressionConverter.ConvertToken(bodydeviceMACAddress);
                 bodypropCount++;
+                body["model"] = SourceExpressionConverter.ConvertToken(bodydeviceModel);
+                var cmdObject = new JObject();
+                var cmdObjectpropCount = 0;
+                if (bodycmdcommandName != null)
+                {
+                    cmdObject["name"] = SourceExpressionConverter.Convert(bodycmdcommandName);
+                    cmdObjectpropCount++;
+                }
+
+                if (cmdObjectpropCount > 0)
+                {
+                    body["cmd"] = cmdObject;
+                    bodypropCount++;
+                }
+
+                if (bodyturn != null)
+                {
+                    body["turn"] = SourceExpressionConverter.Convert(bodyturn);
+                    bodypropCount++;
+                }
+
+                if (bodybrightness != null)
+                {
+                    body["brightness"] = SourceExpressionConverter.ConvertToken(bodybrightness);
+                    bodypropCount++;
+                }
+
+                var colorObject = new JObject();
+                var colorObjectpropCount = 0;
+                if (bodycolorcolorRed != null)
+                {
+                    colorObject["r"] = SourceExpressionConverter.ConvertToken(bodycolorcolorRed);
+                    colorObjectpropCount++;
+                }
+
+                if (bodycolorcolorGreen != null)
+                {
+                    colorObject["g"] = SourceExpressionConverter.ConvertToken(bodycolorcolorGreen);
+                    colorObjectpropCount++;
+                }
+
+                if (bodycolorcolorBlue != null)
+                {
+                    colorObject["b"] = SourceExpressionConverter.ConvertToken(bodycolorcolorBlue);
+                    colorObjectpropCount++;
+                }
+
+                if (colorObjectpropCount > 0)
+                {
+                    body["color"] = colorObject;
+                    bodypropCount++;
+                }
+
+                if (bodycolorTemperature != null)
+                {
+                    body["colorTem"] = SourceExpressionConverter.ConvertToken(bodycolorTemperature);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybrightness != null)
-            {
-                body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
-                bodypropCount++;
-            }
-
-            var colorObject = new JObject();
-            var colorObjectpropCount = 0;
-            if (bodycolorcolorRed != null)
-            {
-                colorObject["r"] = ExpressionConverter.ConvertO(bodycolorcolorRed);
-                colorObjectpropCount++;
-            }
-
-            if (bodycolorcolorGreen != null)
-            {
-                colorObject["g"] = ExpressionConverter.ConvertO(bodycolorcolorGreen);
-                colorObjectpropCount++;
-            }
-
-            if (bodycolorcolorBlue != null)
-            {
-                colorObject["b"] = ExpressionConverter.ConvertO(bodycolorcolorBlue);
-                colorObjectpropCount++;
-            }
-
-            if (colorObjectpropCount > 0)
-            {
-                body["color"] = colorObject;
-                bodypropCount++;
-            }
-
-            if (bodycolorTemperature != null)
-            {
-                body["colorTem"] = ExpressionConverter.ConvertO(bodycolorTemperature);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RunCommandOnDeviceResponse>(callPayload);
+            return new ApiConnectionAction<RunCommandOnDeviceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation(Expression<Func<string>> device = null, Expression<Func<string>> model = null)
+        public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation([WorkflowExpression] Func<string> device = null, [WorkflowExpression] Func<string> model = null)
         {
-            var apiCallPath = "/devices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (device != null)
-                callPayload.Queries["device"] = ExpressionConverter.Convert(device);
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            return new ApiConnectionAction<GetDeviceInformationResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/devices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (device != null)
+                    callPayload.Queries["device"] = SourceExpressionConverter.ConvertO(device);
+                if (model != null)
+                    callPayload.Queries["model"] = SourceExpressionConverter.ConvertO(model);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDeviceInformationResponse>(BuildSourceInput);
         }
     }
 

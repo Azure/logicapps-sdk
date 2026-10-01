@@ -12,64 +12,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Oncehub
     public class OncehubActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
-        public IBodyWorkflowAction<GetTimeSlotsResponseItem[]> GetTimeSlots(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetTimeSlotsResponseItem[]> GetTimeSlots([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/v2/booking-calendars/{0}/time-slots", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTimeSlotsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/time-slots", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTimeSlotsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "oncehub")]
-        public IWorkflowAction BookATimeSlot(Expression<Func<string>> id, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyguestTimeZone, Expression<Func<string>> bodybookingFormname = null, Expression<Func<string>> bodybookingFormemail = null, Expression<Func<bodylocationTypeInput>> bodylocationType = null, Expression<Func<string>> bodylocationValue = null)
+        public IWorkflowAction BookATimeSlot([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyguestTimeZone, [WorkflowExpression] Func<string> bodybookingFormname = null, [WorkflowExpression] Func<string> bodybookingFormemail = null, [WorkflowExpression] Func<bodylocationTypeInput> bodylocationType = null, [WorkflowExpression] Func<string> bodylocationValue = null)
         {
-            var apiCallPath = String.Format("/v2/booking-calendars/{0}/schedule", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["guest_time_zone"] = ExpressionConverter.ConvertO(bodyguestTimeZone);
-            var bookingFormObject = new JObject();
-            var bookingFormObjectpropCount = 0;
-            if (bodybookingFormname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                bookingFormObject["name"] = ExpressionConverter.ConvertO(bodybookingFormname);
-                bookingFormObjectpropCount++;
-            }
-
-            if (bodybookingFormemail != null)
-            {
-                bookingFormObject["email"] = ExpressionConverter.ConvertO(bodybookingFormemail);
-                bookingFormObjectpropCount++;
-            }
-
-            if (bookingFormObjectpropCount > 0)
-            {
-                body["booking_form"] = bookingFormObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/booking-calendars/{0}/schedule", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodylocationType != null)
-            {
-                body["location_type"] = ExpressionConverter.ConvertO(bodylocationType);
+                body["start_time"] = SourceExpressionConverter.ConvertToken(bodystartTime);
                 bodypropCount++;
+                body["guest_time_zone"] = SourceExpressionConverter.ConvertToken(bodyguestTimeZone);
+                var bookingFormObject = new JObject();
+                var bookingFormObjectpropCount = 0;
+                if (bodybookingFormname != null)
+                {
+                    bookingFormObject["name"] = SourceExpressionConverter.ConvertToken(bodybookingFormname);
+                    bookingFormObjectpropCount++;
+                }
+
+                if (bodybookingFormemail != null)
+                {
+                    bookingFormObject["email"] = SourceExpressionConverter.ConvertToken(bodybookingFormemail);
+                    bookingFormObjectpropCount++;
+                }
+
+                if (bookingFormObjectpropCount > 0)
+                {
+                    body["booking_form"] = bookingFormObject;
+                    bodypropCount++;
+                }
+
+                if (bodylocationType != null)
+                {
+                    body["location_type"] = SourceExpressionConverter.Convert(bodylocationType);
+                    bodypropCount++;
+                }
+
+                if (bodylocationValue != null)
+                {
+                    body["location_value"] = SourceExpressionConverter.ConvertToken(bodylocationValue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylocationValue != null)
-            {
-                body["location_value"] = ExpressionConverter.ConvertO(bodylocationValue);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

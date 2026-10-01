@@ -14,39 +14,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yarado
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
         public IBodyWorkflowAction<GetRobotsResponseItem[]> GetRobots()
         {
-            var apiCallPath = "/v1/robots";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRobotsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/robots";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRobotsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
         public IBodyWorkflowAction<GetTaskFilesResponseItem[]> GetTaskFiles()
         {
-            var apiCallPath = "/v1/task-files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskFilesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/task-files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTaskFilesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yarado")]
-        public IWorkflowAction CreateScheduleTaskRun(Expression<Func<string>> bodyrobotId, Expression<Func<string>> bodytaskFileId)
+        public IWorkflowAction CreateScheduleTaskRun([WorkflowExpression] Func<string> bodyrobotId, [WorkflowExpression] Func<string> bodytaskFileId)
         {
-            var apiCallPath = "/v1/task-schedules";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["robot_id"] = ExpressionConverter.ConvertO(bodyrobotId);
-            bodypropCount++;
-            body["task_file_id"] = ExpressionConverter.ConvertO(bodytaskFileId);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/task-schedules";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["robot_id"] = SourceExpressionConverter.ConvertToken(bodyrobotId);
+                bodypropCount++;
+                body["task_file_id"] = SourceExpressionConverter.ConvertToken(bodytaskFileId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

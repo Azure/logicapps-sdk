@@ -12,23 +12,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
     public class ViesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
-        public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity(Expression<Func<bodycountryCodeInput>> bodycountryCode, Expression<Func<string>> bodyvatNumber)
+        public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity([WorkflowExpression] Func<bodycountryCodeInput> bodycountryCode, [WorkflowExpression] Func<string> bodyvatNumber)
         {
-            var apiCallPath = "/taxation_customs/vies/services/checkVatService";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
-            bodypropCount++;
-            body["vatNumber"] = ExpressionConverter.ConvertO(bodyvatNumber);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/taxation_customs/vies/services/checkVatService";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["countryCode"] = SourceExpressionConverter.Convert(bodycountryCode);
+                bodypropCount++;
+                body["vatNumber"] = SourceExpressionConverter.ConvertToken(bodyvatNumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CheckVATValidityResponse>(callPayload);
+            return new ApiConnectionAction<CheckVATValidityResponse>(BuildSourceInput);
         }
     }
 

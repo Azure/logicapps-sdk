@@ -10,7 +10,39 @@
     <LangVersion>latest</LangVersion>
     <Authors>Microsoft Corporation</Authors>
     <Description>Microsoft Azure Logic Apps SDK</Description>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeWorkflowBuildTool</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Build\**\*.cs" />
+    <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.BuildTasks.targets" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.BuildTasks.targets" />
+    <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" />
+    <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" />
+    <ProjectReference Include="Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+                      ReferenceOutputAssembly="false" PrivateAssets="all"
+                      SkipGetTargetFrameworkProperties="true"
+                      GlobalPropertiesToRemove="TargetFramework;RuntimeIdentifier;SelfContained" />
+  </ItemGroup>
+
+  <Import Project="Build\ConnectorValidation.targets" />
+
+  <Target Name="IncludeWorkflowBuildTool" DependsOnTargets="VerifyConnectorValidationAssembly">
+    <MSBuild Projects="$(MSBuildProjectDirectory)\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+             Targets="GetTargetPath" Properties="Configuration=$(Configuration)"
+             RemoveProperties="TargetFramework;RuntimeIdentifier;SelfContained">
+      <Output TaskParameter="TargetOutputs" ItemName="_WorkflowBuildToolAssembly" />
+    </MSBuild>
+    <PropertyGroup>
+      <_WorkflowBuildToolDirectory>@(_WorkflowBuildToolAssembly->'%(RootDir)%(Directory)')</_WorkflowBuildToolDirectory>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(_WorkflowBuildToolDirectory)Microsoft.Azure.Workflows.Sdk.Build.dll') or !Exists('$(_WorkflowBuildToolDirectory)Microsoft.Azure.Workflows.Sdk.Build.deps.json') or !Exists('$(_WorkflowBuildToolDirectory)Microsoft.Azure.Workflows.Sdk.Build.runtimeconfig.json')"
+           Text="The workflow compiler must be built before packing the SDK. Build the SDK and its build-tool project before using --no-build." />
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(_WorkflowBuildToolDirectory)**\*">
+        <PackagePath>tools\workflow-build\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+      </TfmSpecificPackageFile>
+    </ItemGroup>
+  </Target>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Rpc" Version="1.0.1" />
@@ -19,6 +51,15 @@
 
   <ItemGroup>
       <ExcludeFromStyleCop Include="**\*.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Microsoft.Azure.Workflows.Sdk.ExpressionTests, PublicKey=00240000048000009400000006020000002400005253413100040000010001002549e359674acd5c9973cb966c1af490eb6c45b74a87ce5406a4d48175c997cfa82e1d55214075fca0bfe8ada9e092c8544ddad07ab446a1147e59953a2318f2efeb6f2e988273d1da68db43748fcb0d7114aa8fdd1810bdd88a5b855aa3cb0a5c8893a178dd46c6645a5a820d7873894830391a153650b51f5880e4d05df9cc</_Parameter1>
+    </AssemblyAttribute>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">
+      <_Parameter1>Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests, PublicKey=00240000048000009400000006020000002400005253413100040000010001002549e359674acd5c9973cb966c1af490eb6c45b74a87ce5406a4d48175c997cfa82e1d55214075fca0bfe8ada9e092c8544ddad07ab446a1147e59953a2318f2efeb6f2e988273d1da68db43748fcb0d7114aa8fdd1810bdd88a5b855aa3cb0a5c8893a178dd46c6645a5a820d7873894830391a153650b51f5880e4d05df9cc</_Parameter1>
+    </AssemblyAttribute>
   </ItemGroup>
 
   <ItemGroup>

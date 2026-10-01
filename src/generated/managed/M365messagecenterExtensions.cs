@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365messagecenter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "m365messagecenter")]
         public IWorkflowAction SyncMessages()
         {
-            var apiCallPath = "/admin/api/messagecenter/SyncMessagesToPlanner";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/admin/api/messagecenter/SyncMessagesToPlanner";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

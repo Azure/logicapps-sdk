@@ -12,26 +12,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicerss
     public class VoicerssActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicerss")]
-        public IWorkflowAction ConvertTTS(Expression<Func<string>> hl, Expression<Func<string>> src, Expression<Func<cInput>> c = null, Expression<Func<string>> f = null, Expression<Func<string>> v = null, Expression<Func<int>> r = null, Expression<Func<bool>> ssml = null, Expression<Func<bool>> b64 = null)
+        public IWorkflowAction ConvertTTS([WorkflowExpression] Func<string> hl, [WorkflowExpression] Func<string> src, [WorkflowExpression] Func<cInput> c = null, [WorkflowExpression] Func<string> f = null, [WorkflowExpression] Func<string> v = null, [WorkflowExpression] Func<int> r = null, [WorkflowExpression] Func<bool> ssml = null, [WorkflowExpression] Func<bool> b64 = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["hl"] = ExpressionConverter.Convert(hl);
-            if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-            if (f != null)
-                callPayload.Queries["f"] = ExpressionConverter.Convert(f);
-            callPayload.Queries["src"] = ExpressionConverter.Convert(src);
-            if (v != null)
-                callPayload.Queries["v"] = ExpressionConverter.Convert(v);
-            if (r != null)
-                callPayload.Queries["r"] = ExpressionConverter.Convert(r);
-            if (ssml != null)
-                callPayload.Queries["ssml"] = ExpressionConverter.Convert(ssml);
-            if (b64 != null)
-                callPayload.Queries["b64"] = ExpressionConverter.Convert(b64);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["hl"] = SourceExpressionConverter.ConvertO(hl);
+                if (c != null)
+                    callPayload.Queries["c"] = SourceExpressionConverter.Convert(c);
+                if (f != null)
+                    callPayload.Queries["f"] = SourceExpressionConverter.ConvertO(f);
+                callPayload.Queries["src"] = SourceExpressionConverter.ConvertO(src);
+                if (v != null)
+                    callPayload.Queries["v"] = SourceExpressionConverter.ConvertO(v);
+                if (r != null)
+                    callPayload.Queries["r"] = SourceExpressionConverter.ConvertO(r);
+                if (ssml != null)
+                    callPayload.Queries["ssml"] = SourceExpressionConverter.ConvertO(ssml);
+                if (b64 != null)
+                    callPayload.Queries["b64"] = SourceExpressionConverter.ConvertO(b64);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

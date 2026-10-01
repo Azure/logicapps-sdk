@@ -12,237 +12,271 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagetracker
     public class ImanagetrackerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<GetTrackersForWorkspaceResponseBody> GetTrackersForWorkspace(Expression<Func<string>> workspaceId)
+        public IBodyWorkflowAction<GetTrackersForWorkspaceResponseBody> GetTrackersForWorkspace([WorkflowExpression] Func<string> workspaceId)
         {
-            var apiCallPath = "/getTrackersForWorkspace";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["showAllTrackers"] = Convert.ToString(false);
-            return new ApiConnectionAction<GetTrackersForWorkspaceResponseBody>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getTrackersForWorkspace";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = SourceExpressionConverter.ConvertO(workspaceId);
+                callPayload.Queries["showAllTrackers"] = Convert.ToString(false);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTrackersForWorkspaceResponseBody>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<GetStatusesForATrackerResponse> GetStatusesForATracker(Expression<Func<string>> workspaceId, Expression<Func<string>> trackerId)
+        public IBodyWorkflowAction<GetStatusesForATrackerResponse> GetStatusesForATracker([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> trackerId)
         {
-            var apiCallPath = "/getStatusesForATracker";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            callPayload.Queries["trackerId"] = ExpressionConverter.Convert(trackerId);
-            return new ApiConnectionAction<GetStatusesForATrackerResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getStatusesForATracker";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = SourceExpressionConverter.ConvertO(workspaceId);
+                callPayload.Queries["trackerId"] = SourceExpressionConverter.ConvertO(trackerId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStatusesForATrackerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<AddTaskResponse> AddTask(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodycontextId, Expression<Func<string>> bodytitle, Expression<Func<bodyassigneetyInput>> bodyassigneety, Expression<Func<string>> bodyassigneeworkId, Expression<Func<string>> bodyworkObjectwWstype, Expression<Func<string>> bodyworkObjectwId, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodydueTimeZone = null, Expression<Func<string>> bodytaskStatus = null, Expression<Func<string>> bodynotes = null, Expression<Func<string>> bodyparentId = null)
+        public IBodyWorkflowAction<AddTaskResponse> AddTask([WorkflowExpression] Func<string> bodycontextWorkId, [WorkflowExpression] Func<string> bodycontextId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bodyassigneetyInput> bodyassigneety, [WorkflowExpression] Func<string> bodyassigneeworkId, [WorkflowExpression] Func<string> bodyworkObjectwWstype, [WorkflowExpression] Func<string> bodyworkObjectwId, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodydueTimeZone = null, [WorkflowExpression] Func<string> bodytaskStatus = null, [WorkflowExpression] Func<string> bodynotes = null, [WorkflowExpression] Func<string> bodyparentId = null)
         {
-            var apiCallPath = "/addTask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["context_work_id"] = ExpressionConverter.ConvertO(bodycontextWorkId);
-            bodypropCount++;
-            body["context_id"] = ExpressionConverter.ConvertO(bodycontextId);
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            var assigneeObject = new JObject();
-            var assigneeObjectpropCount = 0;
-            assigneeObjectpropCount++;
-            assigneeObject["ty"] = ExpressionConverter.ConvertO(bodyassigneety);
-            assigneeObjectpropCount++;
-            assigneeObject["work_id"] = ExpressionConverter.ConvertO(bodyassigneeworkId);
-            if (assigneeObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["assignee"] = assigneeObject;
+                var apiCallPath = "/addTask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["due_date"] = ExpressionConverter.ConvertO(bodydueDate);
+                body["context_work_id"] = SourceExpressionConverter.ConvertToken(bodycontextWorkId);
                 bodypropCount++;
-            }
-
-            if (bodydueTimeZone != null)
-            {
-                body["due_time_zone"] = ExpressionConverter.ConvertO(bodydueTimeZone);
+                body["context_id"] = SourceExpressionConverter.ConvertToken(bodycontextId);
                 bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                var assigneeObject = new JObject();
+                var assigneeObjectpropCount = 0;
+                assigneeObjectpropCount++;
+                assigneeObject["ty"] = SourceExpressionConverter.Convert(bodyassigneety);
+                assigneeObjectpropCount++;
+                assigneeObject["work_id"] = SourceExpressionConverter.ConvertToken(bodyassigneeworkId);
+                if (assigneeObjectpropCount > 0)
+                {
+                    body["assignee"] = assigneeObject;
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["due_date"] = SourceExpressionConverter.ConvertToken(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodydueTimeZone != null)
+                {
+                    body["due_time_zone"] = SourceExpressionConverter.ConvertToken(bodydueTimeZone);
+                    bodypropCount++;
+                }
+
+                var workObjectObject = new JObject();
+                var workObjectObjectpropCount = 0;
+                workObjectObjectpropCount++;
+                workObjectObject["w_wstype"] = SourceExpressionConverter.ConvertToken(bodyworkObjectwWstype);
+                workObjectObjectpropCount++;
+                workObjectObject["w_id"] = SourceExpressionConverter.ConvertToken(bodyworkObjectwId);
+                if (workObjectObjectpropCount > 0)
+                {
+                    body["work_object"] = workObjectObject;
+                    bodypropCount++;
+                }
+
+                if (bodytaskStatus != null)
+                {
+                    body["task_status"] = SourceExpressionConverter.ConvertToken(bodytaskStatus);
+                    bodypropCount++;
+                }
+
+                if (bodynotes != null)
+                {
+                    body["notes"] = SourceExpressionConverter.ConvertToken(bodynotes);
+                    bodypropCount++;
+                }
+
+                if (bodyparentId != null)
+                {
+                    body["parent_id"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var workObjectObject = new JObject();
-            var workObjectObjectpropCount = 0;
-            workObjectObjectpropCount++;
-            workObjectObject["w_wstype"] = ExpressionConverter.ConvertO(bodyworkObjectwWstype);
-            workObjectObjectpropCount++;
-            workObjectObject["w_id"] = ExpressionConverter.ConvertO(bodyworkObjectwId);
-            if (workObjectObjectpropCount > 0)
-            {
-                body["work_object"] = workObjectObject;
-                bodypropCount++;
-            }
-
-            if (bodytaskStatus != null)
-            {
-                body["task_status"] = ExpressionConverter.ConvertO(bodytaskStatus);
-                bodypropCount++;
-            }
-
-            if (bodynotes != null)
-            {
-                body["notes"] = ExpressionConverter.ConvertO(bodynotes);
-                bodypropCount++;
-            }
-
-            if (bodyparentId != null)
-            {
-                body["parent_id"] = ExpressionConverter.ConvertO(bodyparentId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddTaskResponse>(callPayload);
+            return new ApiConnectionAction<AddTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<UpdateSingleTaskFieldResponse> UpdateSingleTaskField(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodyfieldType, Expression<Func<string>> bodyfieldId, Expression<Func<object>> bodyfieldData)
+        public IBodyWorkflowAction<UpdateSingleTaskFieldResponse> UpdateSingleTaskField([WorkflowExpression] Func<string> bodycontextWorkId, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<string> bodyfieldId, [WorkflowExpression] Func<object> bodyfieldData)
         {
-            var apiCallPath = "/updateSingleTaskField";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["context_work_id"] = ExpressionConverter.ConvertO(bodycontextWorkId);
-            bodypropCount++;
-            body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
-            bodypropCount++;
-            body["field_type"] = ExpressionConverter.ConvertO(bodyfieldType);
-            bodypropCount++;
-            body["field_id"] = ExpressionConverter.ConvertO(bodyfieldId);
-            bodypropCount++;
-            body["field_data"] = ExpressionConverter.ConvertO(bodyfieldData);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateSingleTaskFieldResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<CreateTrackerResponse> CreateTracker(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytrackerOwner = null)
-        {
-            var apiCallPath = "/createTracker";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["context_work_id"] = ExpressionConverter.ConvertO(bodycontextWorkId);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodytrackerOwner != null)
-            {
-                body["tracker_owner"] = ExpressionConverter.ConvertO(bodytrackerOwner);
+                var apiCallPath = "/updateSingleTaskField";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTrackerResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<AddCustomFieldResponse> AddCustomField(Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycontextId, Expression<Func<bodyviewOptionInput>> bodyviewOption, Expression<Func<string>> bodyfieldTitle, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldData = null)
-        {
-            var apiCallPath = "/addCustomField";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
-            bodypropCount++;
-            body["context_id"] = ExpressionConverter.ConvertO(bodycontextId);
-            bodypropCount++;
-            body["viewOption"] = ExpressionConverter.ConvertO(bodyviewOption);
-            bodypropCount++;
-            body["field_title"] = ExpressionConverter.ConvertO(bodyfieldTitle);
-            bodypropCount++;
-            body["field_type"] = ExpressionConverter.ConvertO(bodyfieldType);
-            if (bodyfieldData != null)
-            {
-                body["field_data"] = ExpressionConverter.ConvertO(bodyfieldData);
+                body["context_work_id"] = SourceExpressionConverter.ConvertToken(bodycontextWorkId);
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddCustomFieldResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<ClearSingleTaskFieldResponse> ClearSingleTaskField(Expression<Func<string>> bodycontextWorkId, Expression<Func<string>> bodytaskId, Expression<Func<string>> bodyfieldId)
-        {
-            var apiCallPath = "/clearSingleTaskField";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["context_work_id"] = ExpressionConverter.ConvertO(bodycontextWorkId);
-            bodypropCount++;
-            body["task_id"] = ExpressionConverter.ConvertO(bodytaskId);
-            bodypropCount++;
-            body["field_id"] = ExpressionConverter.ConvertO(bodyfieldId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ClearSingleTaskFieldResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
-        public IBodyWorkflowAction<ImportTrackerResponse> ImportTracker(Expression<Func<string>> bodysourceWorkspaceId, Expression<Func<string>> bodysourceTrackerId, Expression<Func<string>> bodydestinationWorkspaceId, Expression<Func<string>> bodyimportType, Expression<Func<object>> bodyoptions = null)
-        {
-            var apiCallPath = "/importTracker";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["source_workspace_id"] = ExpressionConverter.ConvertO(bodysourceWorkspaceId);
-            bodypropCount++;
-            body["source_tracker_id"] = ExpressionConverter.ConvertO(bodysourceTrackerId);
-            bodypropCount++;
-            body["destination_workspace_id"] = ExpressionConverter.ConvertO(bodydestinationWorkspaceId);
-            bodypropCount++;
-            body["import_type"] = ExpressionConverter.ConvertO(bodyimportType);
-            if (bodyoptions != null)
-            {
-                body["options"] = ExpressionConverter.ConvertO(bodyoptions);
+                body["task_id"] = SourceExpressionConverter.ConvertToken(bodytaskId);
                 bodypropCount++;
+                body["field_type"] = SourceExpressionConverter.ConvertToken(bodyfieldType);
+                bodypropCount++;
+                body["field_id"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                bodypropCount++;
+                body["field_data"] = SourceExpressionConverter.ConvertToken(bodyfieldData);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<UpdateSingleTaskFieldResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
+        public IBodyWorkflowAction<CreateTrackerResponse> CreateTracker([WorkflowExpression] Func<string> bodycontextWorkId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytrackerOwner = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/createTracker";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["context_work_id"] = SourceExpressionConverter.ConvertToken(bodycontextWorkId);
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodytrackerOwner != null)
+                {
+                    body["tracker_owner"] = SourceExpressionConverter.ConvertToken(bodytrackerOwner);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ImportTrackerResponse>(callPayload);
+            return new ApiConnectionAction<CreateTrackerResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
+        public IBodyWorkflowAction<AddCustomFieldResponse> AddCustomField([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodycontextId, [WorkflowExpression] Func<bodyviewOptionInput> bodyviewOption, [WorkflowExpression] Func<string> bodyfieldTitle, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<object> bodyfieldData = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/addCustomField";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                bodypropCount++;
+                body["context_id"] = SourceExpressionConverter.ConvertToken(bodycontextId);
+                bodypropCount++;
+                body["viewOption"] = SourceExpressionConverter.Convert(bodyviewOption);
+                bodypropCount++;
+                body["field_title"] = SourceExpressionConverter.ConvertToken(bodyfieldTitle);
+                bodypropCount++;
+                body["field_type"] = SourceExpressionConverter.ConvertToken(bodyfieldType);
+                if (bodyfieldData != null)
+                {
+                    body["field_data"] = SourceExpressionConverter.ConvertToken(bodyfieldData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddCustomFieldResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
+        public IBodyWorkflowAction<ClearSingleTaskFieldResponse> ClearSingleTaskField([WorkflowExpression] Func<string> bodycontextWorkId, [WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodyfieldId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/clearSingleTaskField";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["context_work_id"] = SourceExpressionConverter.ConvertToken(bodycontextWorkId);
+                bodypropCount++;
+                body["task_id"] = SourceExpressionConverter.ConvertToken(bodytaskId);
+                bodypropCount++;
+                body["field_id"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ClearSingleTaskFieldResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagetracker")]
+        public IBodyWorkflowAction<ImportTrackerResponse> ImportTracker([WorkflowExpression] Func<string> bodysourceWorkspaceId, [WorkflowExpression] Func<string> bodysourceTrackerId, [WorkflowExpression] Func<string> bodydestinationWorkspaceId, [WorkflowExpression] Func<string> bodyimportType, [WorkflowExpression] Func<object> bodyoptions = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/importTracker";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["source_workspace_id"] = SourceExpressionConverter.ConvertToken(bodysourceWorkspaceId);
+                bodypropCount++;
+                body["source_tracker_id"] = SourceExpressionConverter.ConvertToken(bodysourceTrackerId);
+                bodypropCount++;
+                body["destination_workspace_id"] = SourceExpressionConverter.ConvertToken(bodydestinationWorkspaceId);
+                bodypropCount++;
+                body["import_type"] = SourceExpressionConverter.ConvertToken(bodyimportType);
+                if (bodyoptions != null)
+                {
+                    body["options"] = SourceExpressionConverter.ConvertToken(bodyoptions);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImportTrackerResponse>(BuildSourceInput);
         }
     }
 

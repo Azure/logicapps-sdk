@@ -12,12 +12,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
     public class TractionguestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tractionguest")]
-        public IWorkflowAction DeleteWebhook(Expression<Func<string>> hookId)
+        public IWorkflowAction DeleteWebhook([WorkflowExpression] Func<string> hookId)
         {
-            var apiCallPath = String.Format("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhooks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
@@ -25,78 +30,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
     {
         public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateInviteWebhook(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/invite";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "invite";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/invite";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "invite";
+                bodypropCount++;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateSigninWebhook(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/signin";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "signin";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/signin";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "signin";
+                bodypropCount++;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateSignoutWebhook(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/signout";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "signout";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/signout";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "signout";
+                bodypropCount++;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateWatchlistWebhook(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/watchlist";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["event"] = "watchlist";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/watchlist";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["event"] = "watchlist";
+                bodypropCount++;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,84 +12,119 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
     public class NearearthobjectwebipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedResponse> Feed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<FeedResponse> Feed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<bool> detailed = null)
         {
-            var apiCallPath = "/feed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            return new ApiConnectionAction<FeedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/feed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedTodayResponse> FeedToday(Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<FeedTodayResponse> FeedToday([WorkflowExpression] Func<bool> detailed = null)
         {
-            var apiCallPath = "/feed/today";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            return new ApiConnectionAction<FeedTodayResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/feed/today";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedTodayResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoResponse> Neo(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<NeoResponse> Neo([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/neo/browse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<NeoResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/neo/browse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NeoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoIDResponse> NeoID(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<NeoIdResponse> NeoId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/neo/{0}", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NeoIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NeoIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryResponse> Sentry(Expression<Func<bool>> isActive = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<SentryResponse> Sentry([WorkflowExpression] Func<bool> isActive = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/neo/sentry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (isActive != null)
-                callPayload.Queries["is_active"] = ExpressionConverter.Convert(isActive);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<SentryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/neo/sentry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (isActive != null)
+                    callPayload.Queries["is_active"] = SourceExpressionConverter.ConvertO(isActive);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SentryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryIDResponse> SentryID(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<SentryIdResponse> SentryId([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/neo/sentry/{0}", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentryIDResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/sentry/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SentryIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<StatsResponse> Stats()
         {
-            var apiCallPath = "/stats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatsResponse>(BuildSourceInput);
         }
     }
 
@@ -874,10 +909,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string OrbitClassRange { get; set; }
     }
 
-    public class NeoIDResponse
+    public class NeoIdResponse
     {
         [JsonProperty("links")]
-        public NeoIDResponseLinksType Links { get; set; }
+        public NeoIdResponseLinksType Links { get; set; }
 
         [JsonProperty("id")]
         public string Id { get; set; }
@@ -901,43 +936,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double AbsoluteMagnitudeH { get; set; }
 
         [JsonProperty("estimated_diameter")]
-        public NeoIDResponseEstimatedDiameterType EstimatedDiameter { get; set; }
+        public NeoIdResponseEstimatedDiameterType EstimatedDiameter { get; set; }
 
         [JsonProperty("is_potentially_hazardous_asteroid")]
         public bool IsPotentiallyHazardousAsteroid { get; set; }
 
         [JsonProperty("close_approach_data")]
-        public NeoIDResponseCloseApproachDataTypeItem[] CloseApproachData { get; set; }
+        public NeoIdResponseCloseApproachDataTypeItem[] CloseApproachData { get; set; }
 
         [JsonProperty("orbital_data")]
-        public NeoIDResponseOrbitalDataType OrbitalData { get; set; }
+        public NeoIdResponseOrbitalDataType OrbitalData { get; set; }
 
         [JsonProperty("is_sentry_object")]
         public bool IsSentryObject { get; set; }
     }
 
-    public class NeoIDResponseLinksType
+    public class NeoIdResponseLinksType
     {
         [JsonProperty("self")]
         public string Self { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterType
+    public class NeoIdResponseEstimatedDiameterType
     {
         [JsonProperty("kilometers")]
-        public NeoIDResponseEstimatedDiameterTypeKilometersType Kilometers { get; set; }
+        public NeoIdResponseEstimatedDiameterTypeKilometersType Kilometers { get; set; }
 
         [JsonProperty("meters")]
-        public NeoIDResponseEstimatedDiameterTypeMetersType Meters { get; set; }
+        public NeoIdResponseEstimatedDiameterTypeMetersType Meters { get; set; }
 
         [JsonProperty("miles")]
-        public NeoIDResponseEstimatedDiameterTypeMilesType Miles { get; set; }
+        public NeoIdResponseEstimatedDiameterTypeMilesType Miles { get; set; }
 
         [JsonProperty("feet")]
-        public NeoIDResponseEstimatedDiameterTypeFeetType Feet { get; set; }
+        public NeoIdResponseEstimatedDiameterTypeFeetType Feet { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterTypeKilometersType
+    public class NeoIdResponseEstimatedDiameterTypeKilometersType
     {
         [JsonProperty("estimated_diameter_min")]
         public double EstimatedDiameterMin { get; set; }
@@ -946,7 +981,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double EstimatedDiameterMax { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterTypeMetersType
+    public class NeoIdResponseEstimatedDiameterTypeMetersType
     {
         [JsonProperty("estimated_diameter_min")]
         public double EstimatedDiameterMin { get; set; }
@@ -955,7 +990,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double EstimatedDiameterMax { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterTypeMilesType
+    public class NeoIdResponseEstimatedDiameterTypeMilesType
     {
         [JsonProperty("estimated_diameter_min")]
         public double EstimatedDiameterMin { get; set; }
@@ -964,7 +999,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double EstimatedDiameterMax { get; set; }
     }
 
-    public class NeoIDResponseEstimatedDiameterTypeFeetType
+    public class NeoIdResponseEstimatedDiameterTypeFeetType
     {
         [JsonProperty("estimated_diameter_min")]
         public double EstimatedDiameterMin { get; set; }
@@ -973,7 +1008,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double EstimatedDiameterMax { get; set; }
     }
 
-    public class NeoIDResponseCloseApproachDataTypeItem
+    public class NeoIdResponseCloseApproachDataTypeItem
     {
         [JsonProperty("close_approach_date")]
         public string CloseApproachDate { get; set; }
@@ -985,16 +1020,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public int EpochDateCloseApproach { get; set; }
 
         [JsonProperty("relative_velocity")]
-        public NeoIDResponseCloseApproachDataTypeItemRelativeVelocityType RelativeVelocity { get; set; }
+        public NeoIdResponseCloseApproachDataTypeItemRelativeVelocityType RelativeVelocity { get; set; }
 
         [JsonProperty("miss_distance")]
-        public NeoIDResponseCloseApproachDataTypeItemMissDistanceType MissDistance { get; set; }
+        public NeoIdResponseCloseApproachDataTypeItemMissDistanceType MissDistance { get; set; }
 
         [JsonProperty("orbiting_body")]
         public string OrbitingBody { get; set; }
     }
 
-    public class NeoIDResponseCloseApproachDataTypeItemRelativeVelocityType
+    public class NeoIdResponseCloseApproachDataTypeItemRelativeVelocityType
     {
         [JsonProperty("kilometers_per_second")]
         public string KilometersPerSecond { get; set; }
@@ -1006,7 +1041,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string MilesPerHour { get; set; }
     }
 
-    public class NeoIDResponseCloseApproachDataTypeItemMissDistanceType
+    public class NeoIdResponseCloseApproachDataTypeItemMissDistanceType
     {
         [JsonProperty("astronomical")]
         public string Astronomical { get; set; }
@@ -1021,7 +1056,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string Miles { get; set; }
     }
 
-    public class NeoIDResponseOrbitalDataType
+    public class NeoIdResponseOrbitalDataType
     {
         [JsonProperty("orbit_id")]
         public string OrbitId { get; set; }
@@ -1090,10 +1125,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string Equinox { get; set; }
 
         [JsonProperty("orbit_class")]
-        public NeoIDResponseOrbitalDataTypeOrbitClassType OrbitClass { get; set; }
+        public NeoIdResponseOrbitalDataTypeOrbitClassType OrbitClass { get; set; }
     }
 
-    public class NeoIDResponseOrbitalDataTypeOrbitClassType
+    public class NeoIdResponseOrbitalDataTypeOrbitClassType
     {
         [JsonProperty("orbit_class_type")]
         public string OrbitClassType { get; set; }
@@ -1216,10 +1251,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public string Self { get; set; }
     }
 
-    public class SentryIDResponse
+    public class SentryIdResponse
     {
         [JsonProperty("links")]
-        public SentryIDResponseLinksType Links { get; set; }
+        public SentryIdResponseLinksType Links { get; set; }
 
         [JsonProperty("spkId")]
         public string SpkId { get; set; }
@@ -1282,7 +1317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         public double AverageLunarDistance { get; set; }
     }
 
-    public class SentryIDResponseLinksType
+    public class SentryIdResponseLinksType
     {
         [JsonProperty("near_earth_object_parent")]
         public string NearEarthObjectParent { get; set; }

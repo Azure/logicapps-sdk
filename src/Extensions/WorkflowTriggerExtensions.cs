@@ -64,6 +64,10 @@ namespace Microsoft.Azure.Workflows.Sdk
                         { trigger.Name, new[] { FlowStatus.Succeeded } }
                     };
                 }
+                else
+                {
+                    actionDefinition.RunAfter = new Dictionary<string, FlowStatus[]>();
+                }
 
                 actions[node.Name] = actionDefinition;
 

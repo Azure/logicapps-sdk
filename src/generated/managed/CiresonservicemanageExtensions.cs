@@ -12,850 +12,912 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
     public class CiresonservicemanageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemGetResponse> GetWorkItem(Expression<Func<string>> workItemId)
+        public IBodyWorkflowAction<WorkItemGetResponse> GetWorkItem([WorkflowExpression] Func<string> workItemId)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/WorkItems/{0}", ExpressionConverter.ConvertWithUrlEncoding(workItemId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<WorkItemGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workItemId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WorkItemGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<DeleteWorkItemResponse> DeleteWorkItem(Expression<Func<string>> id)
+        public IBodyWorkflowAction<DeleteWorkItemResponse> DeleteWorkItem([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/WorkItems/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteWorkItemResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteWorkItemResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateIncident(Expression<Func<string>> bodyclassification, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodyimpact, Expression<Func<string>> bodysource, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateIncident([WorkflowExpression] Func<string> bodyclassification, [WorkflowExpression] Func<string> bodyurgency, [WorkflowExpression] Func<string> bodyimpact, [WorkflowExpression] Func<string> bodysource, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodysupportGroup = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyaffectedUser = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/Incident";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                var apiCallPath = "/api/CloudConnector/Incident";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Classification"] = SourceExpressionConverter.ConvertToken(bodyclassification);
                 bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Urgency"] = SourceExpressionConverter.ConvertToken(bodyurgency);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
-            bodypropCount++;
-            body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-            bodypropCount++;
-            body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-            bodypropCount++;
-            body["Source"] = ExpressionConverter.ConvertO(bodysource);
-            if (bodysupportGroup != null)
-            {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
                 bodypropCount++;
+                body["Source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                if (bodysupportGroup != null)
+                {
+                    body["SupportGroup"] = SourceExpressionConverter.ConvertToken(bodysupportGroup);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyaffectedUser != null)
+                {
+                    body["RequestedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyaffectedUser);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyaffectedUser != null)
-            {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedIRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateIncident(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateIncident([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodyclassification = null, [WorkflowExpression] Func<string> bodyurgency = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodysupportGroup = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyaffectedUser = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/Incident/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Incident/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyclassification != null)
+                {
+                    body["Classification"] = SourceExpressionConverter.ConvertToken(bodyclassification);
+                    bodypropCount++;
+                }
+
+                if (bodyurgency != null)
+                {
+                    body["Urgency"] = SourceExpressionConverter.ConvertToken(bodyurgency);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodysource != null)
+                {
+                    body["Source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                    bodypropCount++;
+                }
+
+                if (bodysupportGroup != null)
+                {
+                    body["SupportGroup"] = SourceExpressionConverter.ConvertToken(bodysupportGroup);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyaffectedUser != null)
+                {
+                    body["RequestedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyaffectedUser);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyclassification != null)
-            {
-                body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
-                bodypropCount++;
-            }
-
-            if (bodyurgency != null)
-            {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
-
-            if (bodysupportGroup != null)
-            {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyaffectedUser != null)
-            {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedIRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateServiceRequest(Expression<Func<string>> bodyarea, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodysource, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateServiceRequest([WorkflowExpression] Func<string> bodyarea, [WorkflowExpression] Func<string> bodyurgency, [WorkflowExpression] Func<string> bodysource, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodysupportGroup = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyaffectedUser = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/ServiceRequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                var apiCallPath = "/api/CloudConnector/ServiceRequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                body["Area"] = SourceExpressionConverter.ConvertToken(bodyarea);
                 bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["Urgency"] = SourceExpressionConverter.ConvertToken(bodyurgency);
                 bodypropCount++;
+                body["Source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                if (bodysupportGroup != null)
+                {
+                    body["SupportGroup"] = SourceExpressionConverter.ConvertToken(bodysupportGroup);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyaffectedUser != null)
+                {
+                    body["RequestedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyaffectedUser);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["Area"] = ExpressionConverter.ConvertO(bodyarea);
-            bodypropCount++;
-            body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-            bodypropCount++;
-            body["Source"] = ExpressionConverter.ConvertO(bodysource);
-            if (bodysupportGroup != null)
-            {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyaffectedUser != null)
-            {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedSRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateServiceRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateServiceRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodyclassification = null, [WorkflowExpression] Func<string> bodyurgency = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodysupportGroup = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyaffectedUser = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/ServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ServiceRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyclassification != null)
+                {
+                    body["Classification"] = SourceExpressionConverter.ConvertToken(bodyclassification);
+                    bodypropCount++;
+                }
+
+                if (bodyurgency != null)
+                {
+                    body["Urgency"] = SourceExpressionConverter.ConvertToken(bodyurgency);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodysource != null)
+                {
+                    body["Source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                    bodypropCount++;
+                }
+
+                if (bodysupportGroup != null)
+                {
+                    body["SupportGroup"] = SourceExpressionConverter.ConvertToken(bodysupportGroup);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyaffectedUser != null)
+                {
+                    body["RequestedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyaffectedUser);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyclassification != null)
-            {
-                body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
-                bodypropCount++;
-            }
-
-            if (bodyurgency != null)
-            {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
-
-            if (bodysupportGroup != null)
-            {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyaffectedUser != null)
-            {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedSRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateChangeRequest(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateChangeRequest([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyarea = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyrisk = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/ChangeRequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = "/api/CloudConnector/ChangeRequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyarea != null)
+                {
+                    body["Area"] = SourceExpressionConverter.ConvertToken(bodyarea);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyrisk != null)
+                {
+                    body["Risk"] = SourceExpressionConverter.ConvertToken(bodyrisk);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyarea != null)
-            {
-                body["Area"] = ExpressionConverter.ConvertO(bodyarea);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyrisk != null)
-            {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedSRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateChangeRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateChangeRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyarea = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyrisk = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/ChangeRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ChangeRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyarea != null)
+                {
+                    body["Area"] = SourceExpressionConverter.ConvertToken(bodyarea);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyrisk != null)
+                {
+                    body["Risk"] = SourceExpressionConverter.ConvertToken(bodyrisk);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyarea != null)
-            {
-                body["Area"] = ExpressionConverter.ConvertO(bodyarea);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyrisk != null)
-            {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedSRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateProblem(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateProblem([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyurgency = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/Problem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = "/api/CloudConnector/Problem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodysource != null)
+                {
+                    body["Source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["Category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyurgency != null)
+                {
+                    body["Urgency"] = SourceExpressionConverter.ConvertToken(bodyurgency);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyurgency != null)
-            {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedIRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateProblem(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateProblem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyurgency = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/Problem/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Problem/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodysource != null)
+                {
+                    body["Source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["Category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyurgency != null)
+                {
+                    body["Urgency"] = SourceExpressionConverter.ConvertToken(bodyurgency);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyurgency != null)
-            {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedIRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateReleaseRecord(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateReleaseRecord([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyrisk = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/ReleaseRecord";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = "/api/CloudConnector/ReleaseRecord";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["Type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["Category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyrisk != null)
+                {
+                    body["Risk"] = SourceExpressionConverter.ConvertToken(bodyrisk);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyrisk != null)
-            {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedSRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateReleaseRecord(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateReleaseRecord([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyrisk = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/ReleaseRecord/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ReleaseRecord/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["Type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["Category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = SourceExpressionConverter.ConvertToken(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyrisk != null)
+                {
+                    body["Risk"] = SourceExpressionConverter.ConvertToken(bodyrisk);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = SourceExpressionConverter.ConvertToken(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyrisk != null)
-            {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemCreatedSRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemActionLogResponse> AddCommentLog(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyenteredBy = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null)
+        public IBodyWorkflowAction<WorkItemActionLogResponse> AddCommentLog([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyenteredBy = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<bodyactionTypeInput> bodyactionType = null)
         {
-            var apiCallPath = String.Format("/api/cloudconnector/workItems/{0}/ActionLogComment", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/cloudconnector/workItems/{0}/ActionLogComment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyenteredBy != null)
+                {
+                    body["EnteredBy"] = SourceExpressionConverter.ConvertToken(bodyenteredBy);
+                    bodypropCount++;
+                }
+
+                if (bodyisPrivate != null)
+                {
+                    body["IsPrivate"] = SourceExpressionConverter.ConvertToken(bodyisPrivate);
+                    bodypropCount++;
+                }
+
+                if (bodyactionType != null)
+                {
+                    body["ActionType"] = SourceExpressionConverter.Convert(bodyactionType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyenteredBy != null)
-            {
-                body["EnteredBy"] = ExpressionConverter.ConvertO(bodyenteredBy);
-                bodypropCount++;
-            }
-
-            if (bodyisPrivate != null)
-            {
-                body["IsPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
-                bodypropCount++;
-            }
-
-            if (bodyactionType != null)
-            {
-                body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemActionLogResponse>(callPayload);
+            return new ApiConnectionAction<WorkItemActionLogResponse>(BuildSourceInput);
         }
     }
 
     public class CiresonservicemanageTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSettings> CreateWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings> CreateWebhook([WorkflowExpression] Func<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/platform/api/CreateWebhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webhookSettingsObject = new JObject();
-            var webhookSettingsObjectpropCount = 0;
-            webhookSettingsObject["Url"] = "@listCallbackUrl()";
-            webhookSettingsObjectpropCount++;
-            if (bodywebhookSettingsworkItemClassType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/platform/api/CreateWebhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webhookSettingsObject = new JObject();
+                var webhookSettingsObjectpropCount = 0;
+                webhookSettingsObject["Url"] = "#{listCallbackUrl()}";
+                webhookSettingsObjectpropCount++;
                 if (bodywebhookSettingsworkItemClassType != null)
                 {
-                    webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                    if (bodywebhookSettingsworkItemClassType != null)
+                    {
+                        webhookSettingsObject["WorkItemClassType"] = SourceExpressionConverter.Convert(bodywebhookSettingsworkItemClassType);
+                        webhookSettingsObjectpropCount++;
+                    }
+
+                    webhookSettingsObjectpropCount++;
+                }
+                else
+                {
+                    webhookSettingsObject["WorkItemClassType"] = "Incident";
                     webhookSettingsObjectpropCount++;
                 }
 
-                webhookSettingsObjectpropCount++;
-            }
-            else
-            {
-                webhookSettingsObject["WorkItemClassType"] = "Incident";
-                webhookSettingsObjectpropCount++;
+                if (webhookSettingsObjectpropCount > 0)
+                {
+                    body["webhookSettings"] = webhookSettingsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (webhookSettingsObjectpropCount > 0)
-            {
-                body["webhookSettings"] = webhookSettingsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookSettings>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook([WorkflowExpression] Func<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/platform/api/CreateActionLogWebhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webhookSettingsObject = new JObject();
-            var webhookSettingsObjectpropCount = 0;
-            webhookSettingsObject["Url"] = "@listCallbackUrl()";
-            webhookSettingsObjectpropCount++;
-            if (bodywebhookSettingsworkItemClassType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/platform/api/CreateActionLogWebhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webhookSettingsObject = new JObject();
+                var webhookSettingsObjectpropCount = 0;
+                webhookSettingsObject["Url"] = "#{listCallbackUrl()}";
+                webhookSettingsObjectpropCount++;
                 if (bodywebhookSettingsworkItemClassType != null)
                 {
-                    webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                    if (bodywebhookSettingsworkItemClassType != null)
+                    {
+                        webhookSettingsObject["WorkItemClassType"] = SourceExpressionConverter.Convert(bodywebhookSettingsworkItemClassType);
+                        webhookSettingsObjectpropCount++;
+                    }
+
+                    webhookSettingsObjectpropCount++;
+                }
+                else
+                {
+                    webhookSettingsObject["WorkItemClassType"] = "Analyst Comment";
                     webhookSettingsObjectpropCount++;
                 }
 
-                webhookSettingsObjectpropCount++;
-            }
-            else
-            {
-                webhookSettingsObject["WorkItemClassType"] = "Analyst Comment";
-                webhookSettingsObjectpropCount++;
+                if (webhookSettingsObjectpropCount > 0)
+                {
+                    body["webhookSettings"] = webhookSettingsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (webhookSettingsObjectpropCount > 0)
-            {
-                body["webhookSettings"] = webhookSettingsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookSettings>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

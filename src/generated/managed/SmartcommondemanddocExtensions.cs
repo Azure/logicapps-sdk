@@ -12,70 +12,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartcommondemanddoc
     public class SmartcommondemanddocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartcommondemanddoc")]
-        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<bool>> includeDocumentData, Expression<Func<string>> bodytransactionData, Expression<Func<int>> bodybatchConfigResId, Expression<Func<int>> bodyprojectID = null, Expression<Func<int>> bodytransactionRange = null, Expression<Func<bodytransactionDataTypeInput>> bodytransactionDataType = null, Expression<Func<bodypropertiesInputItem[]>> bodyproperties = null)
+        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<bool> includeDocumentData, [WorkflowExpression] Func<string> bodytransactionData, [WorkflowExpression] Func<int> bodybatchConfigResId, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodytransactionRange = null, [WorkflowExpression] Func<bodytransactionDataTypeInput> bodytransactionDataType = null, [WorkflowExpression] Func<bodypropertiesInputItem[]> bodyproperties = null)
         {
-            var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeDocumentData"] = ExpressionConverter.Convert(includeDocumentData);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprojectID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectID);
-                bodypropCount++;
-            }
+                var apiCallPath = "/one/oauth2/api/v11/job/generateDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeDocumentData"] = SourceExpressionConverter.ConvertO(includeDocumentData);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprojectId != null)
+                {
+                    body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["transactionData"] = ExpressionConverter.ConvertO(bodytransactionData);
-            bodypropCount++;
-            body["batchConfigResId"] = ExpressionConverter.ConvertO(bodybatchConfigResId);
-            if (bodytransactionRange != null)
-            {
+                bodypropCount++;
+                body["transactionData"] = SourceExpressionConverter.ConvertToken(bodytransactionData);
+                bodypropCount++;
+                body["batchConfigResId"] = SourceExpressionConverter.ConvertToken(bodybatchConfigResId);
                 if (bodytransactionRange != null)
                 {
-                    body["transactionRange"] = ExpressionConverter.ConvertO(bodytransactionRange);
+                    if (bodytransactionRange != null)
+                    {
+                        body["transactionRange"] = SourceExpressionConverter.ConvertToken(bodytransactionRange);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["transactionRange"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["transactionRange"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodytransactionDataType != null)
-            {
                 if (bodytransactionDataType != null)
                 {
-                    body["transactionDataType"] = ExpressionConverter.ConvertO(bodytransactionDataType);
+                    if (bodytransactionDataType != null)
+                    {
+                        body["transactionDataType"] = SourceExpressionConverter.Convert(bodytransactionDataType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["transactionDataType"] = "application/xml";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["transactionDataType"] = "application/xml";
-                bodypropCount++;
+                if (bodyproperties != null)
+                {
+                    body["properties"] = SourceExpressionConverter.ConvertToken(bodyproperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+            return new ApiConnectionAction<GenerateDocumentResponse>(BuildSourceInput);
         }
     }
 

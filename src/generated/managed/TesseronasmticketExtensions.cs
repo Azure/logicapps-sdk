@@ -12,361 +12,401 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
     public class TesseronasmticketActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<CreateTicketResponse> CreateTicket(Expression<Func<int>> bodyticketType, Expression<Func<string>> bodyticketHeader, Expression<Func<string>> bodyticketText, Expression<Func<int>> bodyenterpriseId, Expression<Func<int>> bodyentranceType, Expression<Func<int>> bodyareaId, Expression<Func<bool>> bodyreleasedOption, Expression<Func<bool>> bodyprivateOption, Expression<Func<bool>> bodyinternalOption, Expression<Func<bodyurgencyTypeInput>> bodyurgencyType, Expression<Func<bodyeffectsTypeInput>> bodyeffectsType, Expression<Func<int>> bodycontactId = null, Expression<Func<int[]>> bodyrelatedAssetIds = null, Expression<Func<bodyfieldGroupsInputItem[]>> bodyfieldGroups = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodyserviceContractId = null, Expression<Func<int>> bodydelegatedTicketEditor = null)
+        public IBodyWorkflowAction<CreateTicketResponse> CreateTicket([WorkflowExpression] Func<int> bodyticketType, [WorkflowExpression] Func<string> bodyticketHeader, [WorkflowExpression] Func<string> bodyticketText, [WorkflowExpression] Func<int> bodyenterpriseId, [WorkflowExpression] Func<int> bodyentranceType, [WorkflowExpression] Func<int> bodyareaId, [WorkflowExpression] Func<bool> bodyreleasedOption, [WorkflowExpression] Func<bool> bodyprivateOption, [WorkflowExpression] Func<bool> bodyinternalOption, [WorkflowExpression] Func<bodyurgencyTypeInput> bodyurgencyType, [WorkflowExpression] Func<bodyeffectsTypeInput> bodyeffectsType, [WorkflowExpression] Func<int> bodycontactId = null, [WorkflowExpression] Func<int[]> bodyrelatedAssetIds = null, [WorkflowExpression] Func<bodyfieldGroupsInputItem[]> bodyfieldGroups = null, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<int> bodyserviceContractId = null, [WorkflowExpression] Func<int> bodydelegatedTicketEditor = null)
         {
-            var apiCallPath = "/CreateTicket";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ticketType"] = ExpressionConverter.ConvertO(bodyticketType);
-            bodypropCount++;
-            body["ticketHeader"] = ExpressionConverter.ConvertO(bodyticketHeader);
-            bodypropCount++;
-            body["ticketText"] = ExpressionConverter.ConvertO(bodyticketText);
-            bodypropCount++;
-            body["enterpriseId"] = ExpressionConverter.ConvertO(bodyenterpriseId);
-            if (bodycontactId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["contactId"] = ExpressionConverter.ConvertO(bodycontactId);
+                var apiCallPath = "/CreateTicket";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyrelatedAssetIds != null)
-            {
-                body["RelatedAssetIds"] = ExpressionConverter.ConvertO(bodyrelatedAssetIds);
+                body["ticketType"] = SourceExpressionConverter.ConvertToken(bodyticketType);
                 bodypropCount++;
-            }
-
-            if (bodyfieldGroups != null)
-            {
-                body["FieldGroups"] = ExpressionConverter.ConvertO(bodyfieldGroups);
+                body["ticketHeader"] = SourceExpressionConverter.ConvertToken(bodyticketHeader);
                 bodypropCount++;
-            }
-
-            if (bodyreferenceNumber != null)
-            {
-                body["referenceNumber"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
+                body["ticketText"] = SourceExpressionConverter.ConvertToken(bodyticketText);
                 bodypropCount++;
-            }
+                body["enterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                if (bodycontactId != null)
+                {
+                    body["contactId"] = SourceExpressionConverter.ConvertToken(bodycontactId);
+                    bodypropCount++;
+                }
 
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                if (bodyrelatedAssetIds != null)
+                {
+                    body["RelatedAssetIds"] = SourceExpressionConverter.ConvertToken(bodyrelatedAssetIds);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldGroups != null)
+                {
+                    body["FieldGroups"] = SourceExpressionConverter.ConvertToken(bodyfieldGroups);
+                    bodypropCount++;
+                }
+
+                if (bodyreferenceNumber != null)
+                {
+                    body["referenceNumber"] = SourceExpressionConverter.ConvertToken(bodyreferenceNumber);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["entranceType"] = ExpressionConverter.ConvertO(bodyentranceType);
-            bodypropCount++;
-            body["areaId"] = ExpressionConverter.ConvertO(bodyareaId);
-            bodypropCount++;
-            body["releasedOption"] = ExpressionConverter.ConvertO(bodyreleasedOption);
-            bodypropCount++;
-            body["privateOption"] = ExpressionConverter.ConvertO(bodyprivateOption);
-            bodypropCount++;
-            body["internalOption"] = ExpressionConverter.ConvertO(bodyinternalOption);
-            bodypropCount++;
-            body["urgencyType"] = ExpressionConverter.ConvertO(bodyurgencyType);
-            bodypropCount++;
-            body["effectsType"] = ExpressionConverter.ConvertO(bodyeffectsType);
-            if (bodyprojectId != null)
-            {
-                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                body["entranceType"] = SourceExpressionConverter.ConvertToken(bodyentranceType);
                 bodypropCount++;
-            }
-
-            if (bodyserviceContractId != null)
-            {
-                body["serviceContractId"] = ExpressionConverter.ConvertO(bodyserviceContractId);
+                body["areaId"] = SourceExpressionConverter.ConvertToken(bodyareaId);
                 bodypropCount++;
-            }
-
-            if (bodydelegatedTicketEditor != null)
-            {
-                body["delegatedTicketEditor"] = ExpressionConverter.ConvertO(bodydelegatedTicketEditor);
+                body["releasedOption"] = SourceExpressionConverter.ConvertToken(bodyreleasedOption);
                 bodypropCount++;
+                body["privateOption"] = SourceExpressionConverter.ConvertToken(bodyprivateOption);
+                bodypropCount++;
+                body["internalOption"] = SourceExpressionConverter.ConvertToken(bodyinternalOption);
+                bodypropCount++;
+                body["urgencyType"] = SourceExpressionConverter.Convert(bodyurgencyType);
+                bodypropCount++;
+                body["effectsType"] = SourceExpressionConverter.Convert(bodyeffectsType);
+                if (bodyprojectId != null)
+                {
+                    body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceContractId != null)
+                {
+                    body["serviceContractId"] = SourceExpressionConverter.ConvertToken(bodyserviceContractId);
+                    bodypropCount++;
+                }
+
+                if (bodydelegatedTicketEditor != null)
+                {
+                    body["delegatedTicketEditor"] = SourceExpressionConverter.ConvertToken(bodydelegatedTicketEditor);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTicketResponse>(callPayload);
+            return new ApiConnectionAction<CreateTicketResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<CreateTicketPositionResponse> CreateTicketPosition(Expression<Func<string>> bodyreferenceNumber, Expression<Func<string>> bodyticketPositionText, Expression<Func<bodyticketPositionTypeInput>> bodyticketPositionType, Expression<Func<bodyticketPositionVisibilityInput>> bodyticketPositionVisibility, Expression<Func<bodyfieldGroupsInputItem2[]>> bodyfieldGroups = null, Expression<Func<string>> bodyparkTicketparkUntil = null, Expression<Func<bodyparkTicketparkingReasonInput>> bodyparkTicketparkingReason = null, Expression<Func<string>> bodyparkTicketparkingPositionText = null, Expression<Func<bodyparkTicketafterParkingActionInput>> bodyparkTicketafterParkingAction = null)
+        public IBodyWorkflowAction<CreateTicketPositionResponse> CreateTicketPosition([WorkflowExpression] Func<string> bodyreferenceNumber, [WorkflowExpression] Func<string> bodyticketPositionText, [WorkflowExpression] Func<bodyticketPositionTypeInput> bodyticketPositionType, [WorkflowExpression] Func<bodyticketPositionVisibilityInput> bodyticketPositionVisibility, [WorkflowExpression] Func<bodyfieldGroupsInputItem2[]> bodyfieldGroups = null, [WorkflowExpression] Func<string> bodyparkTicketparkUntil = null, [WorkflowExpression] Func<bodyparkTicketparkingReasonInput> bodyparkTicketparkingReason = null, [WorkflowExpression] Func<string> bodyparkTicketparkingPositionText = null, [WorkflowExpression] Func<bodyparkTicketafterParkingActionInput> bodyparkTicketafterParkingAction = null)
         {
-            var apiCallPath = "/CreateTicketPosition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["referenceNumber"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
-            bodypropCount++;
-            body["ticketPositionText"] = ExpressionConverter.ConvertO(bodyticketPositionText);
-            bodypropCount++;
-            body["TicketPositionType"] = ExpressionConverter.ConvertO(bodyticketPositionType);
-            bodypropCount++;
-            body["TicketPositionVisibility"] = ExpressionConverter.ConvertO(bodyticketPositionVisibility);
-            if (bodyfieldGroups != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FieldGroups"] = ExpressionConverter.ConvertO(bodyfieldGroups);
+                var apiCallPath = "/CreateTicketPosition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var parkTicketObject = new JObject();
-            var parkTicketObjectpropCount = 0;
-            if (bodyparkTicketparkUntil != null)
-            {
-                parkTicketObject["ParkUntil"] = ExpressionConverter.ConvertO(bodyparkTicketparkUntil);
-                parkTicketObjectpropCount++;
-            }
-
-            if (bodyparkTicketparkingReason != null)
-            {
-                parkTicketObject["ParkingReason"] = ExpressionConverter.ConvertO(bodyparkTicketparkingReason);
-                parkTicketObjectpropCount++;
-            }
-
-            if (bodyparkTicketparkingPositionText != null)
-            {
-                parkTicketObject["ParkingPositionText"] = ExpressionConverter.ConvertO(bodyparkTicketparkingPositionText);
-                parkTicketObjectpropCount++;
-            }
-
-            if (bodyparkTicketafterParkingAction != null)
-            {
-                parkTicketObject["AfterParkingAction"] = ExpressionConverter.ConvertO(bodyparkTicketafterParkingAction);
-                parkTicketObjectpropCount++;
-            }
-
-            if (parkTicketObjectpropCount > 0)
-            {
-                body["ParkTicket"] = parkTicketObject;
+                body["referenceNumber"] = SourceExpressionConverter.ConvertToken(bodyreferenceNumber);
                 bodypropCount++;
+                body["ticketPositionText"] = SourceExpressionConverter.ConvertToken(bodyticketPositionText);
+                bodypropCount++;
+                body["TicketPositionType"] = SourceExpressionConverter.Convert(bodyticketPositionType);
+                bodypropCount++;
+                body["TicketPositionVisibility"] = SourceExpressionConverter.Convert(bodyticketPositionVisibility);
+                if (bodyfieldGroups != null)
+                {
+                    body["FieldGroups"] = SourceExpressionConverter.ConvertToken(bodyfieldGroups);
+                    bodypropCount++;
+                }
+
+                var parkTicketObject = new JObject();
+                var parkTicketObjectpropCount = 0;
+                if (bodyparkTicketparkUntil != null)
+                {
+                    parkTicketObject["ParkUntil"] = SourceExpressionConverter.ConvertToken(bodyparkTicketparkUntil);
+                    parkTicketObjectpropCount++;
+                }
+
+                if (bodyparkTicketparkingReason != null)
+                {
+                    parkTicketObject["ParkingReason"] = SourceExpressionConverter.Convert(bodyparkTicketparkingReason);
+                    parkTicketObjectpropCount++;
+                }
+
+                if (bodyparkTicketparkingPositionText != null)
+                {
+                    parkTicketObject["ParkingPositionText"] = SourceExpressionConverter.ConvertToken(bodyparkTicketparkingPositionText);
+                    parkTicketObjectpropCount++;
+                }
+
+                if (bodyparkTicketafterParkingAction != null)
+                {
+                    parkTicketObject["AfterParkingAction"] = SourceExpressionConverter.Convert(bodyparkTicketafterParkingAction);
+                    parkTicketObjectpropCount++;
+                }
+
+                if (parkTicketObjectpropCount > 0)
+                {
+                    body["ParkTicket"] = parkTicketObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTicketPositionResponse>(callPayload);
+            return new ApiConnectionAction<CreateTicketPositionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<AddAssetRelationResponse> AddAssetRelation(Expression<Func<string>> bodyreferenceNumber, Expression<Func<int[]>> bodyrelatedAssetIds)
+        public IBodyWorkflowAction<AddAssetRelationResponse> AddAssetRelation([WorkflowExpression] Func<string> bodyreferenceNumber, [WorkflowExpression] Func<int[]> bodyrelatedAssetIds)
         {
-            var apiCallPath = "/AddAssetRelation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["referenceNumber"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
-            bodypropCount++;
-            body["RelatedAssetIds"] = ExpressionConverter.ConvertO(bodyrelatedAssetIds);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/AddAssetRelation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["referenceNumber"] = SourceExpressionConverter.ConvertToken(bodyreferenceNumber);
+                bodypropCount++;
+                body["RelatedAssetIds"] = SourceExpressionConverter.ConvertToken(bodyrelatedAssetIds);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AddAssetRelationResponse>(callPayload);
+            return new ApiConnectionAction<AddAssetRelationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetTicketResponse> GetTicket(Expression<Func<string>> bodyreferenceNumber)
+        public IBodyWorkflowAction<GetTicketResponse> GetTicket([WorkflowExpression] Func<string> bodyreferenceNumber)
         {
-            var apiCallPath = "/GetTicket";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["referenceNumber"] = ExpressionConverter.ConvertO(bodyreferenceNumber);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/GetTicket";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["referenceNumber"] = SourceExpressionConverter.ConvertToken(bodyreferenceNumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetTicketResponse>(callPayload);
+            return new ApiConnectionAction<GetTicketResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<SearchTicketResponse> SearchTicket(Expression<Func<string>> bodyreferencenumber)
+        public IBodyWorkflowAction<SearchTicketResponse> SearchTicket([WorkflowExpression] Func<string> bodyreferencenumber)
         {
-            var apiCallPath = "/SearchTicket";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["referencenumber"] = ExpressionConverter.ConvertO(bodyreferencenumber);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/SearchTicket";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["referencenumber"] = SourceExpressionConverter.ConvertToken(bodyreferencenumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SearchTicketResponse>(callPayload);
+            return new ApiConnectionAction<SearchTicketResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<SearchTicketbyParameterResponse> SearchTicketbyParameter(Expression<Func<string>> bodysearchParam, Expression<Func<int>> bodytake, Expression<Func<int>> bodyskip)
+        public IBodyWorkflowAction<SearchTicketbyParameterResponse> SearchTicketbyParameter([WorkflowExpression] Func<string> bodysearchParam, [WorkflowExpression] Func<int> bodytake, [WorkflowExpression] Func<int> bodyskip)
         {
-            var apiCallPath = "/SearchTicketByParameter";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["searchParam"] = ExpressionConverter.ConvertO(bodysearchParam);
-            bodypropCount++;
-            body["take"] = ExpressionConverter.ConvertO(bodytake);
-            bodypropCount++;
-            body["skip"] = ExpressionConverter.ConvertO(bodyskip);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/SearchTicketByParameter";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["searchParam"] = SourceExpressionConverter.ConvertToken(bodysearchParam);
+                bodypropCount++;
+                body["take"] = SourceExpressionConverter.ConvertToken(bodytake);
+                bodypropCount++;
+                body["skip"] = SourceExpressionConverter.ConvertToken(bodyskip);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SearchTicketbyParameterResponse>(callPayload);
+            return new ApiConnectionAction<SearchTicketbyParameterResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetTicketFieldGroupConfigResponse> GetTicketFieldGroupConfig(Expression<Func<int>> bodyticketTypeId, Expression<Func<string>> bodyticketId = null, Expression<Func<string>> bodyfieldGroupSettingsId = null)
+        public IBodyWorkflowAction<GetTicketFieldGroupConfigResponse> GetTicketFieldGroupConfig([WorkflowExpression] Func<int> bodyticketTypeId, [WorkflowExpression] Func<string> bodyticketId = null, [WorkflowExpression] Func<string> bodyfieldGroupSettingsId = null)
         {
-            var apiCallPath = "/GetTicketFieldGroupConfig";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["TicketTypeId"] = ExpressionConverter.ConvertO(bodyticketTypeId);
-            if (bodyticketId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["TicketId"] = ExpressionConverter.ConvertO(bodyticketId);
+                var apiCallPath = "/GetTicketFieldGroupConfig";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["TicketTypeId"] = SourceExpressionConverter.ConvertToken(bodyticketTypeId);
+                if (bodyticketId != null)
+                {
+                    body["TicketId"] = SourceExpressionConverter.ConvertToken(bodyticketId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldGroupSettingsId != null)
+                {
+                    body["FieldGroupSettingsId"] = SourceExpressionConverter.ConvertToken(bodyfieldGroupSettingsId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldGroupSettingsId != null)
-            {
-                body["FieldGroupSettingsId"] = ExpressionConverter.ConvertO(bodyfieldGroupSettingsId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetTicketFieldGroupConfigResponse>(callPayload);
+            return new ApiConnectionAction<GetTicketFieldGroupConfigResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllTicketTypesResponse> GetAllTicketTypes(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
+        public IBodyWorkflowAction<GetAllTicketTypesResponse> GetAllTicketTypes([WorkflowExpression] Func<int> bodyresponseType, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null)
         {
-            var apiCallPath = "/GetAllTicketTypes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
-            if (bodysearch != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Search"] = ExpressionConverter.ConvertO(bodysearch);
+                var apiCallPath = "/GetAllTicketTypes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ResponseType"] = SourceExpressionConverter.ConvertToken(bodyresponseType);
+                if (bodysearch != null)
+                {
+                    body["Search"] = SourceExpressionConverter.ConvertToken(bodysearch);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["PageSize"] = ExpressionConverter.ConvertO(bodypageSize);
-            bodypropCount++;
-            body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
-            if (bodyorderByAsc != null)
-            {
-                body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
                 bodypropCount++;
+                body["PageSize"] = SourceExpressionConverter.ConvertToken(bodypageSize);
+                bodypropCount++;
+                body["Skip"] = SourceExpressionConverter.ConvertToken(bodyskip);
+                if (bodyorderByAsc != null)
+                {
+                    body["OrderByAsc"] = SourceExpressionConverter.ConvertToken(bodyorderByAsc);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetAllTicketTypesResponse>(callPayload);
+            return new ApiConnectionAction<GetAllTicketTypesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllAreasResponse> GetAllAreas(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
+        public IBodyWorkflowAction<GetAllAreasResponse> GetAllAreas([WorkflowExpression] Func<int> bodyresponseType, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null)
         {
-            var apiCallPath = "/GetAllAreas";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
-            if (bodysearch != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Search"] = ExpressionConverter.ConvertO(bodysearch);
+                var apiCallPath = "/GetAllAreas";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ResponseType"] = SourceExpressionConverter.ConvertToken(bodyresponseType);
+                if (bodysearch != null)
+                {
+                    body["Search"] = SourceExpressionConverter.ConvertToken(bodysearch);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["PageSize"] = ExpressionConverter.ConvertO(bodypageSize);
-            bodypropCount++;
-            body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
-            if (bodyorderByAsc != null)
-            {
-                body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
                 bodypropCount++;
+                body["PageSize"] = SourceExpressionConverter.ConvertToken(bodypageSize);
+                bodypropCount++;
+                body["Skip"] = SourceExpressionConverter.ConvertToken(bodyskip);
+                if (bodyorderByAsc != null)
+                {
+                    body["OrderByAsc"] = SourceExpressionConverter.ConvertToken(bodyorderByAsc);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetAllAreasResponse>(callPayload);
+            return new ApiConnectionAction<GetAllAreasResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasmticket")]
-        public IBodyWorkflowAction<GetAllStartingAreasResponse> GetAllStartingAreas(Expression<Func<int>> bodyresponseType, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<bool>> bodyorderByAsc = null)
+        public IBodyWorkflowAction<GetAllStartingAreasResponse> GetAllStartingAreas([WorkflowExpression] Func<int> bodyresponseType, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null)
         {
-            var apiCallPath = "/GetAllStartAreas";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ResponseType"] = ExpressionConverter.ConvertO(bodyresponseType);
-            if (bodysearch != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Search"] = ExpressionConverter.ConvertO(bodysearch);
+                var apiCallPath = "/GetAllStartAreas";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ResponseType"] = SourceExpressionConverter.ConvertToken(bodyresponseType);
+                if (bodysearch != null)
+                {
+                    body["Search"] = SourceExpressionConverter.ConvertToken(bodysearch);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["PageSize"] = ExpressionConverter.ConvertO(bodypageSize);
-            bodypropCount++;
-            body["Skip"] = ExpressionConverter.ConvertO(bodyskip);
-            if (bodyorderByAsc != null)
-            {
-                body["OrderByAsc"] = ExpressionConverter.ConvertO(bodyorderByAsc);
                 bodypropCount++;
+                body["PageSize"] = SourceExpressionConverter.ConvertToken(bodypageSize);
+                bodypropCount++;
+                body["Skip"] = SourceExpressionConverter.ConvertToken(bodyskip);
+                if (bodyorderByAsc != null)
+                {
+                    body["OrderByAsc"] = SourceExpressionConverter.ConvertToken(bodyorderByAsc);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetAllStartingAreasResponse>(callPayload);
+            return new ApiConnectionAction<GetAllStartingAreasResponse>(BuildSourceInput);
         }
     }
 
@@ -394,22 +434,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public enum bodyurgencyTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public enum bodyeffectsTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2
+        _0 = 0,
+        _1 = 1,
+        _2 = 2
     }
 
     public class bodyfieldGroupsInputItem
@@ -449,22 +483,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public enum bodyticketPositionTypeInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum bodyticketPositionVisibilityInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1
+        _0 = 0,
+        _1 = 1
     }
 
     public class bodyfieldGroupsInputItem2
@@ -487,26 +515,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasmticket
 
     public enum bodyparkTicketparkingReasonInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public enum bodyparkTicketafterParkingActionInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "3")]
-        _3
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _3 = 3
     }
 
     public class AddAssetRelationResponse

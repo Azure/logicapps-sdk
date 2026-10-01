@@ -12,49 +12,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftformspro
     public class MicrosoftformsproActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftformspro")]
-        public IBodyWorkflowAction<string> SendSurvey(Expression<Func<string>> to, Expression<Func<string>> projectId, Expression<Func<string>> formId, Expression<Func<string>> emailTemplateId, Expression<Func<string>> regarding = null, Expression<Func<string>> recipientInfo = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<string> SendSurvey([WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> emailTemplateId, [WorkflowExpression] Func<string> regarding = null, [WorkflowExpression] Func<string> recipientInfo = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<object> item = null)
         {
-            var apiCallPath = "/api/sendmail/flow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            callPayload.Queries["FormId"] = ExpressionConverter.Convert(formId);
-            callPayload.Queries["EmailTemplateId"] = ExpressionConverter.Convert(emailTemplateId);
-            if (regarding != null)
-                callPayload.Queries["Regarding"] = ExpressionConverter.Convert(regarding);
-            if (recipientInfo != null)
-                callPayload.Queries["RecipientInfo"] = ExpressionConverter.Convert(recipientInfo);
-            if (firstName != null)
-                callPayload.Queries["firstName"] = ExpressionConverter.Convert(firstName);
-            if (lastName != null)
-                callPayload.Queries["lastName"] = ExpressionConverter.Convert(lastName);
-            callPayload.Headers["ProjectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/sendmail/flow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                callPayload.Queries["FormId"] = SourceExpressionConverter.ConvertO(formId);
+                callPayload.Queries["EmailTemplateId"] = SourceExpressionConverter.ConvertO(emailTemplateId);
+                if (regarding != null)
+                    callPayload.Queries["Regarding"] = SourceExpressionConverter.ConvertO(regarding);
+                if (recipientInfo != null)
+                    callPayload.Queries["RecipientInfo"] = SourceExpressionConverter.ConvertO(recipientInfo);
+                if (firstName != null)
+                    callPayload.Queries["firstName"] = SourceExpressionConverter.ConvertO(firstName);
+                if (lastName != null)
+                    callPayload.Queries["lastName"] = SourceExpressionConverter.ConvertO(lastName);
+                callPayload.Headers["ProjectId"] = SourceExpressionConverter.ConvertO(projectId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftformspro")]
-        public IBodyWorkflowAction<CreateSurveyInviteResponse> CreateSurveyInvite(Expression<Func<string>> projectId, Expression<Func<string>> formId, Expression<Func<string>> email = null, Expression<Func<string>> subject = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> regarding = null, Expression<Func<string>> recipientInfo = null, Expression<Func<object>> item = null)
+        public IBodyWorkflowAction<CreateSurveyInviteResponse> CreateSurveyInvite([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> regarding = null, [WorkflowExpression] Func<string> recipientInfo = null, [WorkflowExpression] Func<object> item = null)
         {
-            var apiCallPath = "/api/createinvite";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FormId"] = ExpressionConverter.Convert(formId);
-            if (email != null)
-                callPayload.Queries["Email"] = ExpressionConverter.Convert(email);
-            if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
-            if (firstName != null)
-                callPayload.Queries["firstName"] = ExpressionConverter.Convert(firstName);
-            if (lastName != null)
-                callPayload.Queries["lastName"] = ExpressionConverter.Convert(lastName);
-            if (regarding != null)
-                callPayload.Queries["Regarding"] = ExpressionConverter.Convert(regarding);
-            if (recipientInfo != null)
-                callPayload.Queries["RecipientInfo"] = ExpressionConverter.Convert(recipientInfo);
-            callPayload.Headers["ProjectId"] = ExpressionConverter.Convert(projectId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
-            return new ApiConnectionAction<CreateSurveyInviteResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/createinvite";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FormId"] = SourceExpressionConverter.ConvertO(formId);
+                if (email != null)
+                    callPayload.Queries["Email"] = SourceExpressionConverter.ConvertO(email);
+                if (subject != null)
+                    callPayload.Queries["subject"] = SourceExpressionConverter.ConvertO(subject);
+                if (firstName != null)
+                    callPayload.Queries["firstName"] = SourceExpressionConverter.ConvertO(firstName);
+                if (lastName != null)
+                    callPayload.Queries["lastName"] = SourceExpressionConverter.ConvertO(lastName);
+                if (regarding != null)
+                    callPayload.Queries["Regarding"] = SourceExpressionConverter.ConvertO(regarding);
+                if (recipientInfo != null)
+                    callPayload.Queries["RecipientInfo"] = SourceExpressionConverter.ConvertO(recipientInfo);
+                callPayload.Headers["ProjectId"] = SourceExpressionConverter.ConvertO(projectId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateSurveyInviteResponse>(BuildSourceInput);
         }
     }
 

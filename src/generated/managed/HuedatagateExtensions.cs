@@ -12,16 +12,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huedatagate
     public class HuedatagateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huedatagate")]
-        public IWorkflowAction Odata(Expression<Func<string>> query, Expression<Func<string>> hostUrl, Expression<Func<string>> roleId, Expression<Func<string>> roleSecret)
+        public IWorkflowAction Odata([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> hostUrl, [WorkflowExpression] Func<string> roleId, [WorkflowExpression] Func<string> roleSecret)
         {
-            var apiCallPath = "/api/v2/odata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            callPayload.Queries["host_url"] = ExpressionConverter.Convert(hostUrl);
-            callPayload.Headers["role-id"] = ExpressionConverter.Convert(roleId);
-            callPayload.Headers["role-secret"] = ExpressionConverter.Convert(roleSecret);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/odata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                callPayload.Queries["host_url"] = SourceExpressionConverter.ConvertO(hostUrl);
+                callPayload.Headers["role-id"] = SourceExpressionConverter.ConvertO(roleId);
+                callPayload.Headers["role-secret"] = SourceExpressionConverter.ConvertO(roleSecret);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

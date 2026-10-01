@@ -12,54 +12,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
     public class DelijnipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<HaltesHits> SearchStops(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<HaltesHits> SearchStops([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/haltes/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
-            callPayload.Queries["startIndex"] = Convert.ToString(0);
-            if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
-            callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
-            if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
-            return new ApiConnectionAction<HaltesHits>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/zoek/haltes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(searchTerm, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (huidigePositie != null)
+                    callPayload.Queries["huidigePositie"] = SourceExpressionConverter.ConvertO(huidigePositie);
+                callPayload.Queries["startIndex"] = Convert.ToString(0);
+                if (startIndex != null)
+                    callPayload.Queries["startIndex"] = SourceExpressionConverter.ConvertO(startIndex);
+                callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
+                if (maxAantalHits != null)
+                    callPayload.Queries["maxAantalHits"] = SourceExpressionConverter.ConvertO(maxAantalHits);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HaltesHits>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<LijnRichtingHits> SearchLines(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<LijnRichtingHits> SearchLines([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/lijnrichtingen/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
-            callPayload.Queries["startIndex"] = Convert.ToString(0);
-            if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
-            callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
-            if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
-            return new ApiConnectionAction<LijnRichtingHits>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/zoek/lijnrichtingen/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(searchTerm, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (huidigePositie != null)
+                    callPayload.Queries["huidigePositie"] = SourceExpressionConverter.ConvertO(huidigePositie);
+                callPayload.Queries["startIndex"] = Convert.ToString(0);
+                if (startIndex != null)
+                    callPayload.Queries["startIndex"] = SourceExpressionConverter.ConvertO(startIndex);
+                callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
+                if (maxAantalHits != null)
+                    callPayload.Queries["maxAantalHits"] = SourceExpressionConverter.ConvertO(maxAantalHits);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LijnRichtingHits>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<LocatiesHits> SearchLocations(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        public IBodyWorkflowAction<LocatiesHits> SearchLocations([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/locaties/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
-            callPayload.Queries["startIndex"] = Convert.ToString(0);
-            if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
-            callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
-            if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
-            return new ApiConnectionAction<LocatiesHits>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/zoek/locaties/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(searchTerm, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (huidigePositie != null)
+                    callPayload.Queries["huidigePositie"] = SourceExpressionConverter.ConvertO(huidigePositie);
+                callPayload.Queries["startIndex"] = Convert.ToString(0);
+                if (startIndex != null)
+                    callPayload.Queries["startIndex"] = SourceExpressionConverter.ConvertO(startIndex);
+                callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
+                if (maxAantalHits != null)
+                    callPayload.Queries["maxAantalHits"] = SourceExpressionConverter.ConvertO(maxAantalHits);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LocatiesHits>(BuildSourceInput);
         }
     }
 

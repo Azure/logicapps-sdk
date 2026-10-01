@@ -14,667 +14,290 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
     public class MqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseMessageInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<BrowseMessageInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["includeInfo"] = SourceExpressionConverter.ConvertToken(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = SourceExpressionConverter.ConvertToken(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
+            return new ServiceProviderAction<BrowseMessageOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseBatchInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<BrowseBatchInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["includeInfo"] = SourceExpressionConverter.ConvertToken(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = SourceExpressionConverter.ConvertToken(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
+            return new ServiceProviderAction<BrowseBatchOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveMessageInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<ReceiveMessageInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["includeInfo"] = SourceExpressionConverter.ConvertToken(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = SourceExpressionConverter.ConvertToken(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
+            return new ServiceProviderAction<ReceiveMessageOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveBatchInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<ReceiveBatchInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["includeInfo"] = SourceExpressionConverter.ConvertToken(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = SourceExpressionConverter.ConvertToken(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
+            return new ServiceProviderAction<ReceiveBatchOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<SendMessageInputSendMessageOptionsType>> sendMessageOptions = null)
+        public IBodyWorkflowAction<SendMessageOutput> SendMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<SendMessageInputSendMessageOptionsType> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            if (sendMessageOptions != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["message"] = SourceExpressionConverter.ConvertToken(message);
+                if (sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = SourceExpressionConverter.ConvertToken(sendMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+            return new ServiceProviderAction<SendMessageOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendBatchOutput> SendBatch(Expression<Func<string>> queueName, Expression<Func<SendBatchInputMessageListTypeItem[]>> messageList, Expression<Func<SendBatchInputSendMessageOptionsType>> sendMessageOptions = null)
+        public IBodyWorkflowAction<SendBatchOutput> SendBatch([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<SendBatchInputMessageListTypeItem[]> messageList, [WorkflowExpression] Func<SendBatchInputSendMessageOptionsType> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["messageList"] = ExpressionConverter.ConvertO(messageList);
-            if (sendMessageOptions != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["messageList"] = SourceExpressionConverter.ConvertToken(messageList);
+                if (sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = SourceExpressionConverter.ConvertToken(sendMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
+            return new ServiceProviderAction<SendBatchOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<string>> uniqueId, Expression<Func<string>> messageId, Expression<Func<CompleteMessageInputCompleteActionType>> completeAction)
+        public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage([WorkflowExpression] Func<string> operationConnectionId, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> uniqueId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<CompleteMessageInputCompleteActionType> completeAction)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["uniqueId"] = ExpressionConverter.ConvertO(uniqueId);
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["connectionId"] = SourceExpressionConverter.ConvertToken(operationConnectionId);
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["uniqueId"] = SourceExpressionConverter.ConvertToken(uniqueId);
+                serviceProviderParameters["messageId"] = SourceExpressionConverter.ConvertToken(messageId);
+                serviceProviderParameters["completeAction"] = SourceExpressionConverter.ConvertToken(completeAction);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<CompleteMessageOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<CompleteBatchInputCompleteActionType>> completeAction)
+        public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch([WorkflowExpression] Func<string> operationConnectionId, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<CompleteBatchInputCompleteActionType> completeAction)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["connectionId"] = SourceExpressionConverter.ConvertToken(operationConnectionId);
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["completeAction"] = SourceExpressionConverter.ConvertToken(completeAction);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<CompleteBatchOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue(Expression<Func<object>> message, Expression<Func<int>> reasonCode, Expression<Func<string>> deadLetterQueueName = null, Expression<Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType>> sendMessageOptions = null)
+        public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue([WorkflowExpression] Func<object> message, [WorkflowExpression] Func<int> reasonCode, [WorkflowExpression] Func<string> deadLetterQueueName = null, [WorkflowExpression] Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            serviceProviderParameters["reasonCode"] = ExpressionConverter.ConvertO(reasonCode);
-            if (deadLetterQueueName != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["deadLetterQueueName"] = ExpressionConverter.ConvertO(deadLetterQueueName);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["message"] = SourceExpressionConverter.ConvertToken(message);
+                serviceProviderParameters["reasonCode"] = SourceExpressionConverter.ConvertToken(reasonCode);
+                if (deadLetterQueueName != null)
+                {
+                    serviceProviderParameters["deadLetterQueueName"] = SourceExpressionConverter.ConvertToken(deadLetterQueueName);
+                }
+
+                if (sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = SourceExpressionConverter.ConvertToken(sendMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "moveMessageToDeadLetterQueue", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            if (sendMessageOptions != null)
-            {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "moveMessageToDeadLetterQueue", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
+            return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(BuildSourceInput);
         }
     }
 
     public class MqTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (waitIntervalInSeconds != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["waitIntervalInSeconds"] = ExpressionConverter.ConvertO(waitIntervalInSeconds);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                if (waitIntervalInSeconds != null)
+                {
+                    serviceProviderParameters["waitIntervalInSeconds"] = SourceExpressionConverter.ConvertToken(waitIntervalInSeconds);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            return new ServiceProviderTrigger<PollAvailableOutput>(BuildSourceInput, isPolling: true, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesInputGetMessageOptionsType>> getMessageOptions = null)
+        public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<PollBrowseMessagesInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["includeInfo"] = SourceExpressionConverter.ConvertToken(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = SourceExpressionConverter.ConvertToken(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
+            return new ServiceProviderTrigger<PollBrowseMessagesOutput>(BuildSourceInput);
         }
 
-        public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<PollMessagesInputGetMessageOptionsType> getMessageOptions = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = SourceExpressionConverter.ConvertToken(queueName);
+                serviceProviderParameters["includeInfo"] = SourceExpressionConverter.ConvertToken(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = SourceExpressionConverter.ConvertToken(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            return new ServiceProviderTrigger<PollMessagesOutput>(BuildSourceInput, isPolling: true, recurrence: recurrence);
         }
-    }
-
-    public class PollAvailableOutput
-    {
-        [JsonProperty("queueName")]
-        public string QueueName { get; set; }
-
-        [JsonProperty("reasonCode")]
-        public int ReasonCode { get; set; }
-
-        [JsonProperty("reasonCodeDescription")]
-        public string ReasonCodeDescription { get; set; }
-
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
-    }
-
-    public class PollBrowseMessagesOutput
-    {
-        [JsonProperty("connectionId")]
-        public string ConnectionId { get; set; }
-
-        [JsonProperty("queueName")]
-        public string QueueName { get; set; }
-
-        [JsonProperty("reasonCode")]
-        public int ReasonCode { get; set; }
-
-        [JsonProperty("reasonCodeDescription")]
-        public string ReasonCodeDescription { get; set; }
-
-        [JsonProperty("count")]
-        public int Count { get; set; }
-
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
-
-        [JsonProperty("messages")]
-        public PollBrowseMessagesOutputMessagesTypeItem[] Messages { get; set; }
-    }
-
-    public class PollBrowseMessagesOutputMessagesTypeItem
-    {
-        [JsonProperty("uniqueId")]
-        public string UniqueId { get; set; }
-
-        [JsonProperty("contentData")]
-        public string ContentData { get; set; }
-
-        [JsonProperty("binaryContentData")]
-        public JToken BinaryContentData { get; set; }
-
-        [JsonProperty("report")]
-        public PollBrowseMessagesOutputMessagesTypeItemReportType Report { get; set; }
-
-        [JsonProperty("messageType")]
-        public PollBrowseMessagesOutputMessagesTypeItemMessageTypeType MessageType { get; set; }
-
-        [JsonProperty("expiry")]
-        public int Expiry { get; set; }
-
-        [JsonProperty("encoding")]
-        public int Encoding { get; set; }
-
-        [JsonProperty("codePage")]
-        public int CodePage { get; set; }
-
-        [JsonProperty("format")]
-        public string Format { get; set; }
-
-        [JsonProperty("priority")]
-        public PollBrowseMessagesOutputMessagesTypeItemPriorityType Priority { get; set; }
-
-        [JsonProperty("persistence")]
-        public PollBrowseMessagesOutputMessagesTypeItemPersistenceType Persistence { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("replyToQueue")]
-        public string ReplyToQueue { get; set; }
-
-        [JsonProperty("replyToQueueManager")]
-        public string ReplyToQueueManager { get; set; }
-
-        [JsonProperty("userIdentifier")]
-        public string UserIdentifier { get; set; }
-
-        [JsonProperty("accountingToken")]
-        public string AccountingToken { get; set; }
-
-        [JsonProperty("applicationIdData")]
-        public string ApplicationIdData { get; set; }
-
-        [JsonProperty("putApplicationType")]
-        public string PutApplicationType { get; set; }
-
-        [JsonProperty("putApplicationName")]
-        public string PutApplicationName { get; set; }
-
-        [JsonProperty("putDate")]
-        public string PutDate { get; set; }
-
-        [JsonProperty("putTime")]
-        public string PutTime { get; set; }
-
-        [JsonProperty("applicationOriginData")]
-        public string ApplicationOriginData { get; set; }
-
-        [JsonProperty("groupId")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public int SequenceNumber { get; set; }
-
-        [JsonProperty("offset")]
-        public int Offset { get; set; }
-
-        [JsonProperty("flags")]
-        public PollBrowseMessagesOutputMessagesTypeItemFlagsType Flags { get; set; }
-
-        [JsonProperty("originalLength")]
-        public int OriginalLength { get; set; }
-        public string OriginalConnectionId { get; set; }
-
-        [JsonProperty("originalQueueManagerName")]
-        public string OriginalQueueManagerName { get; set; }
-
-        [JsonProperty("originalQueueName")]
-        public string OriginalQueueName { get; set; }
-
-        [JsonProperty("cicsBridgeHeader")]
-        public JToken CicsBridgeHeader { get; set; }
-
-        [JsonProperty("imsBridgeHeader")]
-        public JToken ImsBridgeHeader { get; set; }
-
-        [JsonProperty("ruleAndFormattingVersion2Header")]
-        public JToken RuleAndFormattingVersion2Header { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemReportType
-    {
-        None,
-        [EnumMember(Value = "Pass Message ID")]
-        PassMessageId,
-        [EnumMember(Value = "Pass Correlator ID")]
-        PassCorrelatorId,
-        [EnumMember(Value = "Pass Discard and Expiry")]
-        PassDiscardAndExpiry,
-        [EnumMember(Value = "Discard Message")]
-        DiscardMessage
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemMessageTypeType
-    {
-        Datagram,
-        Request,
-        Reply
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemPriorityType
-    {
-        [EnumMember(Value = "As Published")]
-        AsPublished,
-        [EnumMember(Value = "As Queue Defined")]
-        AsQueueDefined,
-        [EnumMember(Value = "As Parent")]
-        AsParent
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemPersistenceType
-    {
-        None,
-        Persistent,
-        [EnumMember(Value = "As Queue Defined")]
-        AsQueueDefined
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesOutputMessagesTypeItemFlagsType
-    {
-        None,
-        [EnumMember(Value = "Segmentation Inhibited")]
-        SegmentationInhibited,
-        [EnumMember(Value = "Segmentation Allowed")]
-        SegmentationAllowed,
-        Segment,
-        [EnumMember(Value = "Last Segment")]
-        LastSegment,
-        [EnumMember(Value = "Message In Group")]
-        MessageInGroup,
-        [EnumMember(Value = "Last Message In Group")]
-        LastMessageInGroup
-    }
-
-    public class PollBrowseMessagesInputGetMessageOptionsType
-    {
-        [JsonProperty("format")]
-        public PollBrowseMessagesInputGetMessageOptionsTypeFormatType? Format { get; set; }
-
-        [JsonProperty("maximumMessagesInBatch")]
-        public int? MaximumMessagesInBatch { get; set; }
-
-        [JsonProperty("maximumBatchSizeInMB")]
-        public int? MaximumBatchSizeInMB { get; set; }
-
-        [JsonProperty("waitIntervalInSeconds")]
-        public int? WaitIntervalInSeconds { get; set; }
-
-        [JsonProperty("browseLockedTimeoutInSeconds")]
-        public int? BrowseLockedTimeoutInSeconds { get; set; }
-
-        [JsonProperty("pollingIntervalInSeconds")]
-        public int? PollingIntervalInSeconds { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollBrowseMessagesInputGetMessageOptionsTypeFormatType
-    {
-        String,
-        Binary
-    }
-
-    public class PollMessagesOutput
-    {
-        [JsonProperty("queueName")]
-        public string QueueName { get; set; }
-
-        [JsonProperty("reasonCode")]
-        public int ReasonCode { get; set; }
-
-        [JsonProperty("reasonCodeDescription")]
-        public string ReasonCodeDescription { get; set; }
-
-        [JsonProperty("count")]
-        public int Count { get; set; }
-
-        [JsonProperty("timestamp")]
-        public string Timestamp { get; set; }
-
-        [JsonProperty("messages")]
-        public PollMessagesOutputMessagesTypeItem[] Messages { get; set; }
-    }
-
-    public class PollMessagesOutputMessagesTypeItem
-    {
-        [JsonProperty("uniqueId")]
-        public string UniqueId { get; set; }
-
-        [JsonProperty("contentData")]
-        public string ContentData { get; set; }
-
-        [JsonProperty("binaryContentData")]
-        public JToken BinaryContentData { get; set; }
-
-        [JsonProperty("report")]
-        public PollMessagesOutputMessagesTypeItemReportType Report { get; set; }
-
-        [JsonProperty("messageType")]
-        public PollMessagesOutputMessagesTypeItemMessageTypeType MessageType { get; set; }
-
-        [JsonProperty("expiry")]
-        public int Expiry { get; set; }
-
-        [JsonProperty("encoding")]
-        public int Encoding { get; set; }
-
-        [JsonProperty("codePage")]
-        public int CodePage { get; set; }
-
-        [JsonProperty("format")]
-        public string Format { get; set; }
-
-        [JsonProperty("priority")]
-        public PollMessagesOutputMessagesTypeItemPriorityType Priority { get; set; }
-
-        [JsonProperty("persistence")]
-        public PollMessagesOutputMessagesTypeItemPersistenceType Persistence { get; set; }
-
-        [JsonProperty("messageId")]
-        public string MessageId { get; set; }
-
-        [JsonProperty("correlationId")]
-        public string CorrelationId { get; set; }
-
-        [JsonProperty("replyToQueue")]
-        public string ReplyToQueue { get; set; }
-
-        [JsonProperty("replyToQueueManager")]
-        public string ReplyToQueueManager { get; set; }
-
-        [JsonProperty("userIdentifier")]
-        public string UserIdentifier { get; set; }
-
-        [JsonProperty("accountingToken")]
-        public string AccountingToken { get; set; }
-
-        [JsonProperty("applicationIdData")]
-        public string ApplicationIdData { get; set; }
-
-        [JsonProperty("putApplicationType")]
-        public string PutApplicationType { get; set; }
-
-        [JsonProperty("putApplicationName")]
-        public string PutApplicationName { get; set; }
-
-        [JsonProperty("putDate")]
-        public string PutDate { get; set; }
-
-        [JsonProperty("putTime")]
-        public string PutTime { get; set; }
-
-        [JsonProperty("applicationOriginData")]
-        public string ApplicationOriginData { get; set; }
-
-        [JsonProperty("groupId")]
-        public string GroupId { get; set; }
-
-        [JsonProperty("sequenceNumber")]
-        public int SequenceNumber { get; set; }
-
-        [JsonProperty("offset")]
-        public int Offset { get; set; }
-
-        [JsonProperty("flags")]
-        public PollMessagesOutputMessagesTypeItemFlagsType Flags { get; set; }
-
-        [JsonProperty("originalLength")]
-        public int OriginalLength { get; set; }
-        public string OriginalConnectionId { get; set; }
-
-        [JsonProperty("originalQueueManagerName")]
-        public string OriginalQueueManagerName { get; set; }
-
-        [JsonProperty("originalQueueName")]
-        public string OriginalQueueName { get; set; }
-
-        [JsonProperty("cicsBridgeHeader")]
-        public JToken CicsBridgeHeader { get; set; }
-
-        [JsonProperty("imsBridgeHeader")]
-        public JToken ImsBridgeHeader { get; set; }
-
-        [JsonProperty("ruleAndFormattingVersion2Header")]
-        public JToken RuleAndFormattingVersion2Header { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemReportType
-    {
-        None,
-        [EnumMember(Value = "Pass Message ID")]
-        PassMessageId,
-        [EnumMember(Value = "Pass Correlator ID")]
-        PassCorrelatorId,
-        [EnumMember(Value = "Pass Discard and Expiry")]
-        PassDiscardAndExpiry,
-        [EnumMember(Value = "Discard Message")]
-        DiscardMessage
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemMessageTypeType
-    {
-        Datagram,
-        Request,
-        Reply
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemPriorityType
-    {
-        [EnumMember(Value = "As Published")]
-        AsPublished,
-        [EnumMember(Value = "As Queue Defined")]
-        AsQueueDefined,
-        [EnumMember(Value = "As Parent")]
-        AsParent
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemPersistenceType
-    {
-        None,
-        Persistent,
-        [EnumMember(Value = "As Queue Defined")]
-        AsQueueDefined
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesOutputMessagesTypeItemFlagsType
-    {
-        None,
-        [EnumMember(Value = "Segmentation Inhibited")]
-        SegmentationInhibited,
-        [EnumMember(Value = "Segmentation Allowed")]
-        SegmentationAllowed,
-        Segment,
-        [EnumMember(Value = "Last Segment")]
-        LastSegment,
-        [EnumMember(Value = "Message In Group")]
-        MessageInGroup,
-        [EnumMember(Value = "Last Message In Group")]
-        LastMessageInGroup
-    }
-
-    public class PollMessagesInputGetMessageOptionsType
-    {
-        [JsonProperty("format")]
-        public PollMessagesInputGetMessageOptionsTypeFormatType? Format { get; set; }
-
-        [JsonProperty("maximumMessagesInBatch")]
-        public int? MaximumMessagesInBatch { get; set; }
-
-        [JsonProperty("maximumBatchSizeInMB")]
-        public int? MaximumBatchSizeInMB { get; set; }
-
-        [JsonProperty("waitIntervalInSeconds")]
-        public int? WaitIntervalInSeconds { get; set; }
-
-        [JsonProperty("maximizeThroughput")]
-        public bool? MaximizeThroughput { get; set; }
-    }
-
-    [JsonConverter(typeof(StringEnumConverter))]
-    public enum PollMessagesInputGetMessageOptionsTypeFormatType
-    {
-        String,
-        Binary
     }
 
     public class BrowseMessageOutput
@@ -2020,6 +1643,443 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
         RrsBatch,
         Sib,
         NoContext
+    }
+
+    public class PollAvailableOutput
+    {
+        [JsonProperty("queueName")]
+        public string QueueName { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public int ReasonCode { get; set; }
+
+        [JsonProperty("reasonCodeDescription")]
+        public string ReasonCodeDescription { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+    }
+
+    public class PollBrowseMessagesOutput
+    {
+        [JsonProperty("connectionId")]
+        public string ConnectionId { get; set; }
+
+        [JsonProperty("queueName")]
+        public string QueueName { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public int ReasonCode { get; set; }
+
+        [JsonProperty("reasonCodeDescription")]
+        public string ReasonCodeDescription { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+
+        [JsonProperty("messages")]
+        public PollBrowseMessagesOutputMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class PollBrowseMessagesOutputMessagesTypeItem
+    {
+        [JsonProperty("uniqueId")]
+        public string UniqueId { get; set; }
+
+        [JsonProperty("contentData")]
+        public string ContentData { get; set; }
+
+        [JsonProperty("binaryContentData")]
+        public JToken BinaryContentData { get; set; }
+
+        [JsonProperty("report")]
+        public PollBrowseMessagesOutputMessagesTypeItemReportType Report { get; set; }
+
+        [JsonProperty("messageType")]
+        public PollBrowseMessagesOutputMessagesTypeItemMessageTypeType MessageType { get; set; }
+
+        [JsonProperty("expiry")]
+        public int Expiry { get; set; }
+
+        [JsonProperty("encoding")]
+        public int Encoding { get; set; }
+
+        [JsonProperty("codePage")]
+        public int CodePage { get; set; }
+
+        [JsonProperty("format")]
+        public string Format { get; set; }
+
+        [JsonProperty("priority")]
+        public PollBrowseMessagesOutputMessagesTypeItemPriorityType Priority { get; set; }
+
+        [JsonProperty("persistence")]
+        public PollBrowseMessagesOutputMessagesTypeItemPersistenceType Persistence { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("replyToQueue")]
+        public string ReplyToQueue { get; set; }
+
+        [JsonProperty("replyToQueueManager")]
+        public string ReplyToQueueManager { get; set; }
+
+        [JsonProperty("userIdentifier")]
+        public string UserIdentifier { get; set; }
+
+        [JsonProperty("accountingToken")]
+        public string AccountingToken { get; set; }
+
+        [JsonProperty("applicationIdData")]
+        public string ApplicationIdData { get; set; }
+
+        [JsonProperty("putApplicationType")]
+        public string PutApplicationType { get; set; }
+
+        [JsonProperty("putApplicationName")]
+        public string PutApplicationName { get; set; }
+
+        [JsonProperty("putDate")]
+        public string PutDate { get; set; }
+
+        [JsonProperty("putTime")]
+        public string PutTime { get; set; }
+
+        [JsonProperty("applicationOriginData")]
+        public string ApplicationOriginData { get; set; }
+
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public int SequenceNumber { get; set; }
+
+        [JsonProperty("offset")]
+        public int Offset { get; set; }
+
+        [JsonProperty("flags")]
+        public PollBrowseMessagesOutputMessagesTypeItemFlagsType Flags { get; set; }
+
+        [JsonProperty("originalLength")]
+        public int OriginalLength { get; set; }
+        public string OriginalConnectionId { get; set; }
+
+        [JsonProperty("originalQueueManagerName")]
+        public string OriginalQueueManagerName { get; set; }
+
+        [JsonProperty("originalQueueName")]
+        public string OriginalQueueName { get; set; }
+
+        [JsonProperty("cicsBridgeHeader")]
+        public JToken CicsBridgeHeader { get; set; }
+
+        [JsonProperty("imsBridgeHeader")]
+        public JToken ImsBridgeHeader { get; set; }
+
+        [JsonProperty("ruleAndFormattingVersion2Header")]
+        public JToken RuleAndFormattingVersion2Header { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemReportType
+    {
+        None,
+        [EnumMember(Value = "Pass Message ID")]
+        PassMessageId,
+        [EnumMember(Value = "Pass Correlator ID")]
+        PassCorrelatorId,
+        [EnumMember(Value = "Pass Discard and Expiry")]
+        PassDiscardAndExpiry,
+        [EnumMember(Value = "Discard Message")]
+        DiscardMessage
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemMessageTypeType
+    {
+        Datagram,
+        Request,
+        Reply
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemPriorityType
+    {
+        [EnumMember(Value = "As Published")]
+        AsPublished,
+        [EnumMember(Value = "As Queue Defined")]
+        AsQueueDefined,
+        [EnumMember(Value = "As Parent")]
+        AsParent
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemPersistenceType
+    {
+        None,
+        Persistent,
+        [EnumMember(Value = "As Queue Defined")]
+        AsQueueDefined
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesOutputMessagesTypeItemFlagsType
+    {
+        None,
+        [EnumMember(Value = "Segmentation Inhibited")]
+        SegmentationInhibited,
+        [EnumMember(Value = "Segmentation Allowed")]
+        SegmentationAllowed,
+        Segment,
+        [EnumMember(Value = "Last Segment")]
+        LastSegment,
+        [EnumMember(Value = "Message In Group")]
+        MessageInGroup,
+        [EnumMember(Value = "Last Message In Group")]
+        LastMessageInGroup
+    }
+
+    public class PollBrowseMessagesInputGetMessageOptionsType
+    {
+        [JsonProperty("format")]
+        public PollBrowseMessagesInputGetMessageOptionsTypeFormatType? Format { get; set; }
+
+        [JsonProperty("maximumMessagesInBatch")]
+        public int? MaximumMessagesInBatch { get; set; }
+
+        [JsonProperty("maximumBatchSizeInMB")]
+        public int? MaximumBatchSizeInMB { get; set; }
+
+        [JsonProperty("waitIntervalInSeconds")]
+        public int? WaitIntervalInSeconds { get; set; }
+
+        [JsonProperty("browseLockedTimeoutInSeconds")]
+        public int? BrowseLockedTimeoutInSeconds { get; set; }
+
+        [JsonProperty("pollingIntervalInSeconds")]
+        public int? PollingIntervalInSeconds { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollBrowseMessagesInputGetMessageOptionsTypeFormatType
+    {
+        String,
+        Binary
+    }
+
+    public class PollMessagesOutput
+    {
+        [JsonProperty("queueName")]
+        public string QueueName { get; set; }
+
+        [JsonProperty("reasonCode")]
+        public int ReasonCode { get; set; }
+
+        [JsonProperty("reasonCodeDescription")]
+        public string ReasonCodeDescription { get; set; }
+
+        [JsonProperty("count")]
+        public int Count { get; set; }
+
+        [JsonProperty("timestamp")]
+        public string Timestamp { get; set; }
+
+        [JsonProperty("messages")]
+        public PollMessagesOutputMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class PollMessagesOutputMessagesTypeItem
+    {
+        [JsonProperty("uniqueId")]
+        public string UniqueId { get; set; }
+
+        [JsonProperty("contentData")]
+        public string ContentData { get; set; }
+
+        [JsonProperty("binaryContentData")]
+        public JToken BinaryContentData { get; set; }
+
+        [JsonProperty("report")]
+        public PollMessagesOutputMessagesTypeItemReportType Report { get; set; }
+
+        [JsonProperty("messageType")]
+        public PollMessagesOutputMessagesTypeItemMessageTypeType MessageType { get; set; }
+
+        [JsonProperty("expiry")]
+        public int Expiry { get; set; }
+
+        [JsonProperty("encoding")]
+        public int Encoding { get; set; }
+
+        [JsonProperty("codePage")]
+        public int CodePage { get; set; }
+
+        [JsonProperty("format")]
+        public string Format { get; set; }
+
+        [JsonProperty("priority")]
+        public PollMessagesOutputMessagesTypeItemPriorityType Priority { get; set; }
+
+        [JsonProperty("persistence")]
+        public PollMessagesOutputMessagesTypeItemPersistenceType Persistence { get; set; }
+
+        [JsonProperty("messageId")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("correlationId")]
+        public string CorrelationId { get; set; }
+
+        [JsonProperty("replyToQueue")]
+        public string ReplyToQueue { get; set; }
+
+        [JsonProperty("replyToQueueManager")]
+        public string ReplyToQueueManager { get; set; }
+
+        [JsonProperty("userIdentifier")]
+        public string UserIdentifier { get; set; }
+
+        [JsonProperty("accountingToken")]
+        public string AccountingToken { get; set; }
+
+        [JsonProperty("applicationIdData")]
+        public string ApplicationIdData { get; set; }
+
+        [JsonProperty("putApplicationType")]
+        public string PutApplicationType { get; set; }
+
+        [JsonProperty("putApplicationName")]
+        public string PutApplicationName { get; set; }
+
+        [JsonProperty("putDate")]
+        public string PutDate { get; set; }
+
+        [JsonProperty("putTime")]
+        public string PutTime { get; set; }
+
+        [JsonProperty("applicationOriginData")]
+        public string ApplicationOriginData { get; set; }
+
+        [JsonProperty("groupId")]
+        public string GroupId { get; set; }
+
+        [JsonProperty("sequenceNumber")]
+        public int SequenceNumber { get; set; }
+
+        [JsonProperty("offset")]
+        public int Offset { get; set; }
+
+        [JsonProperty("flags")]
+        public PollMessagesOutputMessagesTypeItemFlagsType Flags { get; set; }
+
+        [JsonProperty("originalLength")]
+        public int OriginalLength { get; set; }
+        public string OriginalConnectionId { get; set; }
+
+        [JsonProperty("originalQueueManagerName")]
+        public string OriginalQueueManagerName { get; set; }
+
+        [JsonProperty("originalQueueName")]
+        public string OriginalQueueName { get; set; }
+
+        [JsonProperty("cicsBridgeHeader")]
+        public JToken CicsBridgeHeader { get; set; }
+
+        [JsonProperty("imsBridgeHeader")]
+        public JToken ImsBridgeHeader { get; set; }
+
+        [JsonProperty("ruleAndFormattingVersion2Header")]
+        public JToken RuleAndFormattingVersion2Header { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemReportType
+    {
+        None,
+        [EnumMember(Value = "Pass Message ID")]
+        PassMessageId,
+        [EnumMember(Value = "Pass Correlator ID")]
+        PassCorrelatorId,
+        [EnumMember(Value = "Pass Discard and Expiry")]
+        PassDiscardAndExpiry,
+        [EnumMember(Value = "Discard Message")]
+        DiscardMessage
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemMessageTypeType
+    {
+        Datagram,
+        Request,
+        Reply
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemPriorityType
+    {
+        [EnumMember(Value = "As Published")]
+        AsPublished,
+        [EnumMember(Value = "As Queue Defined")]
+        AsQueueDefined,
+        [EnumMember(Value = "As Parent")]
+        AsParent
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemPersistenceType
+    {
+        None,
+        Persistent,
+        [EnumMember(Value = "As Queue Defined")]
+        AsQueueDefined
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesOutputMessagesTypeItemFlagsType
+    {
+        None,
+        [EnumMember(Value = "Segmentation Inhibited")]
+        SegmentationInhibited,
+        [EnumMember(Value = "Segmentation Allowed")]
+        SegmentationAllowed,
+        Segment,
+        [EnumMember(Value = "Last Segment")]
+        LastSegment,
+        [EnumMember(Value = "Message In Group")]
+        MessageInGroup,
+        [EnumMember(Value = "Last Message In Group")]
+        LastMessageInGroup
+    }
+
+    public class PollMessagesInputGetMessageOptionsType
+    {
+        [JsonProperty("format")]
+        public PollMessagesInputGetMessageOptionsTypeFormatType? Format { get; set; }
+
+        [JsonProperty("maximumMessagesInBatch")]
+        public int? MaximumMessagesInBatch { get; set; }
+
+        [JsonProperty("maximumBatchSizeInMB")]
+        public int? MaximumBatchSizeInMB { get; set; }
+
+        [JsonProperty("waitIntervalInSeconds")]
+        public int? WaitIntervalInSeconds { get; set; }
+
+        [JsonProperty("maximizeThroughput")]
+        public bool? MaximizeThroughput { get; set; }
+    }
+
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum PollMessagesInputGetMessageOptionsTypeFormatType
+    {
+        String,
+        Binary
     }
 }
 

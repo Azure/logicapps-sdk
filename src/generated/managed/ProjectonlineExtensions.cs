@@ -12,221 +12,287 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
     public class ProjectonlineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<ProjectsWrapper> ListProjects(Expression<Func<string>> siteUrl)
+        public IBodyWorkflowAction<ProjectsWrapper> ListProjects([WorkflowExpression] Func<string> siteUrl)
         {
-            var apiCallPath = "/_api/ProjectServer/Projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<ProjectsWrapper>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/_api/ProjectServer/Projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectsWrapper>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<Project> CreateProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projprojectName, Expression<Func<string>> projprojectDescription = null, Expression<Func<string>> projprojectStartDate = null)
+        public IBodyWorkflowAction<Project> CreateProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projprojectName, [WorkflowExpression] Func<string> projprojectDescription = null, [WorkflowExpression] Func<string> projprojectStartDate = null)
         {
-            var apiCallPath = "/_api/ProjectServer/Projects";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            var proj = new JObject();
-            var projpropCount = 0;
-            projpropCount++;
-            proj["Name"] = ExpressionConverter.ConvertO(projprojectName);
-            if (projprojectDescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                proj["Description"] = ExpressionConverter.ConvertO(projprojectDescription);
+                var apiCallPath = "/_api/ProjectServer/Projects";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                var proj = new JObject();
+                var projpropCount = 0;
                 projpropCount++;
+                proj["Name"] = SourceExpressionConverter.ConvertToken(projprojectName);
+                if (projprojectDescription != null)
+                {
+                    proj["Description"] = SourceExpressionConverter.ConvertToken(projprojectDescription);
+                    projpropCount++;
+                }
+
+                if (projprojectStartDate != null)
+                {
+                    proj["Start"] = SourceExpressionConverter.ConvertToken(projprojectStartDate);
+                    projpropCount++;
+                }
+
+                if (projpropCount > 0)
+                {
+                    callPayload.Body = proj;
+                }
+                return callPayload;
             }
 
-            if (projprojectStartDate != null)
-            {
-                proj["Start"] = ExpressionConverter.ConvertO(projprojectStartDate);
-                projpropCount++;
-            }
-
-            if (projpropCount > 0)
-            {
-                callPayload.Body = proj;
-            }
-
-            return new ApiConnectionAction<Project>(callPayload);
+            return new ApiConnectionAction<Project>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<Project> ListProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<Project> ListProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/_api/ProjectServer/Projects('{0}')", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<Project>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Project>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<TaskObject> CreateTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> taskparameterstaskName, Expression<Func<string>> taskparameterstaskNotes = null, Expression<Func<string>> taskparameterstaskStartDate = null, Expression<Func<string>> taskparameterstaskDuration = null)
+        public IBodyWorkflowAction<TaskObject> CreateTask([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> taskparameterstaskName, [WorkflowExpression] Func<string> taskparameterstaskNotes = null, [WorkflowExpression] Func<string> taskparameterstaskStartDate = null, [WorkflowExpression] Func<string> taskparameterstaskDuration = null)
         {
-            var apiCallPath = String.Format("/_api/ProjectServer/Projects('{0}')/Draft/Tasks/Add", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            var task = new JObject();
-            var taskpropCount = 0;
-            var parametersObject = new JObject();
-            var parametersObjectpropCount = 0;
-            parametersObjectpropCount++;
-            parametersObject["Name"] = ExpressionConverter.ConvertO(taskparameterstaskName);
-            if (taskparameterstaskNotes != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parametersObject["Notes"] = ExpressionConverter.ConvertO(taskparameterstaskNotes);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Tasks/Add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                var task = new JObject();
+                var taskpropCount = 0;
+                var parametersObject = new JObject();
+                var parametersObjectpropCount = 0;
                 parametersObjectpropCount++;
+                parametersObject["Name"] = SourceExpressionConverter.ConvertToken(taskparameterstaskName);
+                if (taskparameterstaskNotes != null)
+                {
+                    parametersObject["Notes"] = SourceExpressionConverter.ConvertToken(taskparameterstaskNotes);
+                    parametersObjectpropCount++;
+                }
+
+                if (taskparameterstaskStartDate != null)
+                {
+                    parametersObject["Start"] = SourceExpressionConverter.ConvertToken(taskparameterstaskStartDate);
+                    parametersObjectpropCount++;
+                }
+
+                if (taskparameterstaskDuration != null)
+                {
+                    parametersObject["Duration"] = SourceExpressionConverter.ConvertToken(taskparameterstaskDuration);
+                    parametersObjectpropCount++;
+                }
+
+                if (parametersObjectpropCount > 0)
+                {
+                    task["parameters"] = parametersObject;
+                    taskpropCount++;
+                }
+
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+                return callPayload;
             }
 
-            if (taskparameterstaskStartDate != null)
-            {
-                parametersObject["Start"] = ExpressionConverter.ConvertO(taskparameterstaskStartDate);
-                parametersObjectpropCount++;
-            }
-
-            if (taskparameterstaskDuration != null)
-            {
-                parametersObject["Duration"] = ExpressionConverter.ConvertO(taskparameterstaskDuration);
-                parametersObjectpropCount++;
-            }
-
-            if (parametersObjectpropCount > 0)
-            {
-                task["parameters"] = parametersObject;
-                taskpropCount++;
-            }
-
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
-
-            return new ApiConnectionAction<TaskObject>(callPayload);
+            return new ApiConnectionAction<TaskObject>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<EnterpriseResource> CreateResource(Expression<Func<string>> siteUrl, Expression<Func<string>> resourceresourceName, Expression<Func<bool>> resourceisResourceInBudget = null, Expression<Func<bool>> resourceisResourceGeneric = null, Expression<Func<bool>> resourceisResourceInactive = null)
+        public IBodyWorkflowAction<EnterpriseResource> CreateResource([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> resourceresourceName, [WorkflowExpression] Func<bool> resourceisResourceInBudget = null, [WorkflowExpression] Func<bool> resourceisResourceGeneric = null, [WorkflowExpression] Func<bool> resourceisResourceInactive = null)
         {
-            var apiCallPath = "/_api/ProjectServer/EnterpriseResources";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            var resource = new JObject();
-            var resourcepropCount = 0;
-            resourcepropCount++;
-            resource["Name"] = ExpressionConverter.ConvertO(resourceresourceName);
-            if (resourceisResourceInBudget != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                resource["IsBudget"] = ExpressionConverter.ConvertO(resourceisResourceInBudget);
+                var apiCallPath = "/_api/ProjectServer/EnterpriseResources";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                var resource = new JObject();
+                var resourcepropCount = 0;
                 resourcepropCount++;
+                resource["Name"] = SourceExpressionConverter.ConvertToken(resourceresourceName);
+                if (resourceisResourceInBudget != null)
+                {
+                    resource["IsBudget"] = SourceExpressionConverter.ConvertToken(resourceisResourceInBudget);
+                    resourcepropCount++;
+                }
+
+                if (resourceisResourceGeneric != null)
+                {
+                    resource["IsGeneric"] = SourceExpressionConverter.ConvertToken(resourceisResourceGeneric);
+                    resourcepropCount++;
+                }
+
+                if (resourceisResourceInactive != null)
+                {
+                    resource["IsInactive"] = SourceExpressionConverter.ConvertToken(resourceisResourceInactive);
+                    resourcepropCount++;
+                }
+
+                if (resourcepropCount > 0)
+                {
+                    callPayload.Body = resource;
+                }
+                return callPayload;
             }
 
-            if (resourceisResourceGeneric != null)
+            return new ApiConnectionAction<EnterpriseResource>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
+        public IBodyWorkflowAction<TasksWrapper> ListTasks([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                resource["IsGeneric"] = ExpressionConverter.ConvertO(resourceisResourceGeneric);
-                resourcepropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
             }
 
-            if (resourceisResourceInactive != null)
+            return new ApiConnectionAction<TasksWrapper>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
+        public IBodyWorkflowAction<TaskObject> GetProjectSummaryTask([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                resource["IsInactive"] = ExpressionConverter.ConvertO(resourceisResourceInactive);
-                resourcepropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/ProjectSummaryTask", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
             }
 
-            if (resourcepropCount > 0)
+            return new ApiConnectionAction<TaskObject>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
+        public IBodyWorkflowAction<JToken> CheckoutProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = resource;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/checkOut", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EnterpriseResource>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<TasksWrapper> ListTasks(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<JToken> PublishProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/_api/ProjectServer/Projects('{0}')/Tasks", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<TasksWrapper>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/ProjectServer/Projects('{0}')/Draft/Publish(true)", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<TaskObject> GetProjectSummaryTask(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
-        {
-            var apiCallPath = String.Format("/_api/ProjectServer/Projects('{0}')/ProjectSummaryTask", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<TaskObject>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<JToken> CheckoutProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
-        {
-            var apiCallPath = String.Format("/_api/ProjectServer/Projects('{0}')/checkOut", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectonline")]
-        public IBodyWorkflowAction<JToken> PublishProject(Expression<Func<string>> siteUrl, Expression<Func<string>> projectId)
-        {
-            var apiCallPath = String.Format("/_api/ProjectServer/Projects('{0}')/Draft/Publish(true)", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
     public class ProjectonlineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnNewProject(Expression<Func<string>> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnNewProject([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> select, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/_api/ProjectData/Projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/trigger/_api/ProjectData/Projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerProjectsWrapper>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublished(Expression<Func<string>> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerResourcesWrapper> OnNewResource([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> select, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/_api/ProjectData/PublishedProjects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/trigger/_api/ProjectData/Resources";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerResourcesWrapper>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<TriggerResourcesWrapper> OnNewResource(Expression<Func<string>> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerTasksWrapper> OnNewTask([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> select, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/_api/ProjectData/Resources";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionTrigger<TriggerResourcesWrapper>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/trigger/_api/ProjectData/Tasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerTasksWrapper>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<TriggerTasksWrapper> OnNewTask(Expression<Func<string>> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublished([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> select, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/_api/ProjectData/Tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionTrigger<TriggerTasksWrapper>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/trigger/_api/ProjectData/PublishedProjects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerProjectsWrapper>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

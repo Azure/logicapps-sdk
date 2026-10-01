@@ -12,1203 +12,1354 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     public class SignatureapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<CreateEnvelopeOutput> CreateEnvelope(Expression<Func<string>> bodyenvelopeTitle = null, Expression<Func<string>> bodyenvelopeLabel = null, Expression<Func<string>> bodyenvelopeMessage = null, Expression<Func<bodyenvelopeModeInput>> bodyenvelopeMode = null, Expression<Func<bodyenvelopeRoutingInput>> bodyenvelopeRouting = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodytimestampFormat = null, Expression<Func<bodyenvelopeAttestationInput>> bodyenvelopeAttestation = null, Expression<Func<string>> bodysendername = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string[]>> bodyenvelopeTopics = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<CreateEnvelopeOutput> CreateEnvelope([WorkflowExpression] Func<string> bodyenvelopeTitle = null, [WorkflowExpression] Func<string> bodyenvelopeLabel = null, [WorkflowExpression] Func<string> bodyenvelopeMessage = null, [WorkflowExpression] Func<bodyenvelopeModeInput> bodyenvelopeMode = null, [WorkflowExpression] Func<bodyenvelopeRoutingInput> bodyenvelopeRouting = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodytimestampFormat = null, [WorkflowExpression] Func<bodyenvelopeAttestationInput> bodyenvelopeAttestation = null, [WorkflowExpression] Func<string> bodysendername = null, [WorkflowExpression] Func<string> bodysenderemail = null, [WorkflowExpression] Func<string[]> bodyenvelopeTopics = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            var apiCallPath = "/envelopes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["draft"] = true;
-            bodypropCount++;
-            if (bodyenvelopeTitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["title"] = ExpressionConverter.ConvertO(bodyenvelopeTitle);
+                var apiCallPath = "/envelopes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["draft"] = true;
                 bodypropCount++;
-            }
-
-            if (bodyenvelopeLabel != null)
-            {
-                body["label"] = ExpressionConverter.ConvertO(bodyenvelopeLabel);
-                bodypropCount++;
-            }
-
-            if (bodyenvelopeMessage != null)
-            {
-                body["message"] = ExpressionConverter.ConvertO(bodyenvelopeMessage);
-                bodypropCount++;
-            }
-
-            if (bodyenvelopeMode != null)
-            {
-                body["mode"] = ExpressionConverter.ConvertO(bodyenvelopeMode);
-                bodypropCount++;
-            }
-
-            if (bodyenvelopeRouting != null)
-            {
-                body["routing"] = ExpressionConverter.ConvertO(bodyenvelopeRouting);
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
-
-            if (bodytimeZone != null)
-            {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimeZone);
-                bodypropCount++;
-            }
-
-            if (bodytimestampFormat != null)
-            {
-                body["timestamp_format"] = ExpressionConverter.ConvertO(bodytimestampFormat);
-                bodypropCount++;
-            }
-
-            if (bodyenvelopeAttestation != null)
-            {
-                body["attestation"] = ExpressionConverter.ConvertO(bodyenvelopeAttestation);
-                bodypropCount++;
-            }
-
-            var senderObject = new JObject();
-            var senderObjectpropCount = 0;
-            if (bodysendername != null)
-            {
-                senderObject["name"] = ExpressionConverter.ConvertO(bodysendername);
-                senderObjectpropCount++;
-            }
-
-            if (bodysenderemail != null)
-            {
-                senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
-                senderObjectpropCount++;
-            }
-
-            if (senderObjectpropCount > 0)
-            {
-                body["sender"] = senderObject;
-                bodypropCount++;
-            }
-
-            if (bodyenvelopeTopics != null)
-            {
-                body["topics"] = ExpressionConverter.ConvertO(bodyenvelopeTopics);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateEnvelopeOutput>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction DeleteEnvelope(Expression<Func<string>> envelopeId)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<Envelope> GetEnvelope(Expression<Func<string>> envelopeId)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Envelope>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<Capture> GetCapture(Expression<Func<string>> envelopeId, Expression<Func<string>> captureKey)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}+alias1", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["captureKey"] = ExpressionConverter.Convert(captureKey);
-            return new ApiConnectionAction<Capture>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<StartEnvelopeOutput> StartEnvelope(Expression<Func<string>> envelopeId)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/start", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StartEnvelopeOutput>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput> AddDocument(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocumentTitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
-                bodypropCount++;
-            }
-
-            if (bodyfileContent != null)
-            {
-                body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
-                bodypropCount++;
-            }
-
-            body["format"] = "pdf";
-            bodypropCount++;
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddDocumentOutput>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput> AddDocumentDocx(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string>> bodyextraProperties = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/documents+alias1", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocumentTitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
-                bodypropCount++;
-            }
-
-            if (bodyfileContent != null)
-            {
-                body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
-                bodypropCount++;
-            }
-
-            body["format"] = "docx";
-            bodypropCount++;
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddDocumentOutput>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddDocumentOutput> AddTemplate(Expression<Func<string>> envelopeId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<string[]>> bodytemplateData = null, Expression<Func<string>> bodyextraProperties = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/documents+alias2", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocumentTitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodydocumentTitle);
-                bodypropCount++;
-            }
-
-            if (bodyfileContent != null)
-            {
-                body["file_content"] = ExpressionConverter.ConvertO(bodyfileContent);
-                bodypropCount++;
-            }
-
-            body["format"] = "docx";
-            bodypropCount++;
-            if (bodytemplateData != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodytemplateData);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddDocumentOutput>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction AddTemplateData(Expression<Func<string>> documentId, Expression<Func<string>> bodyfieldName = null, Expression<Func<string>> bodyvalue = null)
-        {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-data", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldName != null)
-            {
-                body["field_name"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyvalue != null)
-            {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction AddPlaceSignature(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<double>> bodyplaceHeight = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
-        {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-signature-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["type"] = "signature";
-            bodypropCount++;
-            if (bodyplaceKey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
-                bodypropCount++;
-            }
-
-            if (bodyrecipientKey != null)
-            {
-                body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
-                bodypropCount++;
-            }
-
-            if (bodyplaceHeight != null)
-            {
-                body["height"] = ExpressionConverter.ConvertO(bodyplaceHeight);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromTop != null)
-            {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromLeft != null)
-            {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction AddPlaceInitials(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<double>> bodyplaceHeight = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
-        {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-initials-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["type"] = "initials";
-            bodypropCount++;
-            if (bodyplaceKey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
-                bodypropCount++;
-            }
-
-            if (bodyrecipientKey != null)
-            {
-                body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
-                bodypropCount++;
-            }
-
-            if (bodyplaceHeight != null)
-            {
-                body["height"] = ExpressionConverter.ConvertO(bodyplaceHeight);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromTop != null)
-            {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromLeft != null)
-            {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction AddPlaceTextInput(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<string>> bodycaptureAs = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyprompt = null, Expression<Func<bodyrequirementInput>> bodyrequirement = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodyformatMessage = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
-        {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-text-input-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["type"] = "text_input";
-            bodypropCount++;
-            if (bodyplaceKey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
-                bodypropCount++;
-            }
-
-            if (bodyrecipientKey != null)
-            {
-                body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
-                bodypropCount++;
-            }
-
-            if (bodycaptureAs != null)
-            {
-                body["capture_as"] = ExpressionConverter.ConvertO(bodycaptureAs);
-                bodypropCount++;
-            }
-
-            if (bodyhint != null)
-            {
-                body["hint"] = ExpressionConverter.ConvertO(bodyhint);
-                bodypropCount++;
-            }
-
-            if (bodyprompt != null)
-            {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-                bodypropCount++;
-            }
-
-            if (bodyrequirement != null)
-            {
-                if (bodyrequirement != null)
+                if (bodyenvelopeTitle != null)
                 {
-                    body["requirement"] = ExpressionConverter.ConvertO(bodyrequirement);
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodyenvelopeTitle);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["requirement"] = "required";
-                bodypropCount++;
+                if (bodyenvelopeLabel != null)
+                {
+                    body["label"] = SourceExpressionConverter.ConvertToken(bodyenvelopeLabel);
+                    bodypropCount++;
+                }
+
+                if (bodyenvelopeMessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodyenvelopeMessage);
+                    bodypropCount++;
+                }
+
+                if (bodyenvelopeMode != null)
+                {
+                    body["mode"] = SourceExpressionConverter.Convert(bodyenvelopeMode);
+                    bodypropCount++;
+                }
+
+                if (bodyenvelopeRouting != null)
+                {
+                    body["routing"] = SourceExpressionConverter.Convert(bodyenvelopeRouting);
+                    bodypropCount++;
+                }
+
+                if (bodylanguage != null)
+                {
+                    body["language"] = SourceExpressionConverter.ConvertToken(bodylanguage);
+                    bodypropCount++;
+                }
+
+                if (bodytimeZone != null)
+                {
+                    body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimeZone);
+                    bodypropCount++;
+                }
+
+                if (bodytimestampFormat != null)
+                {
+                    body["timestamp_format"] = SourceExpressionConverter.ConvertToken(bodytimestampFormat);
+                    bodypropCount++;
+                }
+
+                if (bodyenvelopeAttestation != null)
+                {
+                    body["attestation"] = SourceExpressionConverter.Convert(bodyenvelopeAttestation);
+                    bodypropCount++;
+                }
+
+                var senderObject = new JObject();
+                var senderObjectpropCount = 0;
+                if (bodysendername != null)
+                {
+                    senderObject["name"] = SourceExpressionConverter.ConvertToken(bodysendername);
+                    senderObjectpropCount++;
+                }
+
+                if (bodysenderemail != null)
+                {
+                    senderObject["email"] = SourceExpressionConverter.ConvertToken(bodysenderemail);
+                    senderObjectpropCount++;
+                }
+
+                if (senderObjectpropCount > 0)
+                {
+                    body["sender"] = senderObject;
+                    bodypropCount++;
+                }
+
+                if (bodyenvelopeTopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodyenvelopeTopics);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyformat != null)
-            {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
-                bodypropCount++;
-            }
-
-            if (bodyformatMessage != null)
-            {
-                body["format_message"] = ExpressionConverter.ConvertO(bodyformatMessage);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromTop != null)
-            {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromLeft != null)
-            {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<CreateEnvelopeOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction AddPlaceText(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyvalue = null, Expression<Func<double>> bodyfontSize = null, Expression<Func<string>> bodyfontColor = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
+        public IWorkflowAction DeleteEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-text-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["type"] = "text";
-            bodypropCount++;
-            if (bodyplaceKey != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodyvalue != null)
-            {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-                bodypropCount++;
-            }
-
-            if (bodyfontSize != null)
-            {
-                body["font_size"] = ExpressionConverter.ConvertO(bodyfontSize);
-                bodypropCount++;
-            }
-
-            if (bodyfontColor != null)
-            {
-                body["font_color"] = ExpressionConverter.ConvertO(bodyfontColor);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromTop != null)
-            {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromLeft != null)
-            {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction AddPlaceRecipientCompletedDate(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<Envelope> GetEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-recipient-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["type"] = "recipient_completed_date";
-            bodypropCount++;
-            if (bodyplaceKey != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodyrecipientKey != null)
-            {
-                body["recipient_key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
-                bodypropCount++;
-            }
-
-            if (bodydateFormat != null)
-            {
-                body["date_format"] = ExpressionConverter.ConvertO(bodydateFormat);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromTop != null)
-            {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromLeft != null)
-            {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<Envelope>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IWorkflowAction AddPlaceEnvelopeCompletedDate(Expression<Func<string>> documentId, Expression<Func<string>> bodyplaceKey = null, Expression<Func<string>> bodydateFormat = null, Expression<Func<double>> bodypageNumber = null, Expression<Func<double>> bodydistanceFromTop = null, Expression<Func<double>> bodydistanceFromLeft = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<Capture> GetCapture([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> captureKey)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/documents/{0}/add-envelope-completed-date-place", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["type"] = "envelope_completed_date";
-            bodypropCount++;
-            if (bodyplaceKey != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["key"] = ExpressionConverter.ConvertO(bodyplaceKey);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}+alias1", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["captureKey"] = SourceExpressionConverter.ConvertO(captureKey);
+                return callPayload;
             }
 
-            if (bodydateFormat != null)
-            {
-                body["date_format"] = ExpressionConverter.ConvertO(bodydateFormat);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["page"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromTop != null)
-            {
-                body["top"] = ExpressionConverter.ConvertO(bodydistanceFromTop);
-                bodypropCount++;
-            }
-
-            if (bodydistanceFromLeft != null)
-            {
-                body["left"] = ExpressionConverter.ConvertO(bodydistanceFromLeft);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<Capture>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<AddRecipientSignerOutput> AddRecipient(Expression<Func<string>> envelopeId, Expression<Func<string>> bodyrecipientName = null, Expression<Func<string>> bodyrecipientEmail = null, Expression<Func<string>> bodyrecipientKey = null, Expression<Func<bodyrecipientCeremonyCreationInput>> bodyrecipientCeremonyCreation = null, Expression<Func<bodyrecipientDeliveryTypeInput>> bodyrecipientDeliveryType = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<StartEnvelopeOutput> StartEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["type"] = "signer";
-            bodypropCount++;
-            if (bodyrecipientName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyrecipientName);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodyrecipientEmail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyrecipientEmail);
-                bodypropCount++;
-            }
-
-            if (bodyrecipientKey != null)
-            {
-                body["key"] = ExpressionConverter.ConvertO(bodyrecipientKey);
-                bodypropCount++;
-            }
-
-            if (bodyrecipientCeremonyCreation != null)
-            {
-                body["ceremony_creation"] = ExpressionConverter.ConvertO(bodyrecipientCeremonyCreation);
-                bodypropCount++;
-            }
-
-            if (bodyrecipientDeliveryType != null)
-            {
-                body["delivery_type"] = ExpressionConverter.ConvertO(bodyrecipientDeliveryType);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddRecipientSignerOutput>(callPayload);
+            return new ApiConnectionAction<StartEnvelopeOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<Recipient> GetRecipient(Expression<Func<string>> recipientId)
+        public IBodyWorkflowAction<AddDocumentOutput> AddDocument([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/recipients/{0}", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Recipient>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydocumentTitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodydocumentTitle);
+                    bodypropCount++;
+                }
+
+                if (bodyfileContent != null)
+                {
+                    body["file_content"] = SourceExpressionConverter.ConvertToken(bodyfileContent);
+                    bodypropCount++;
+                }
+
+                body["format"] = "pdf";
+                bodypropCount++;
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddDocumentOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<JToken> CreateCeremonyEmailLink(Expression<Func<string>> recipientId, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddDocumentOutput> AddDocumentDocx([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/recipients/{0}/ceremony", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var authenticationObject = new JObject();
-            var authenticationObjectpropCount = 0;
-            authenticationObject["type"] = "email_link";
-            authenticationObjectpropCount++;
-            if (authenticationObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["authentication"] = authenticationObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias1", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydocumentTitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodydocumentTitle);
+                    bodypropCount++;
+                }
+
+                if (bodyfileContent != null)
+                {
+                    body["file_content"] = SourceExpressionConverter.ConvertToken(bodyfileContent);
+                    bodypropCount++;
+                }
+
+                body["format"] = "docx";
                 bodypropCount++;
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyredirectURL != null)
-            {
-                body["redirect_url"] = ExpressionConverter.ConvertO(bodyredirectURL);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<AddDocumentOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<CreateCeremonyCustomOutput> CreateCeremonyCustom(Expression<Func<string>> recipientId, Expression<Func<string>> bodyauthenticationauthenticationProvider = null, Expression<Func<string[]>> bodyauthenticationauthenticationData = null, Expression<Func<string>> bodyredirectURL = null, Expression<Func<string>> bodyextraProperties = null)
+        public IBodyWorkflowAction<AddDocumentOutput> AddTemplate([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<string[]> bodytemplateData = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
         {
-            var apiCallPath = String.Format("/recipients/{0}/ceremony+alias1", ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var authenticationObject = new JObject();
-            var authenticationObjectpropCount = 0;
-            authenticationObject["type"] = "custom";
-            authenticationObjectpropCount++;
-            if (bodyauthenticationauthenticationProvider != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                authenticationObject["provider"] = ExpressionConverter.ConvertO(bodyauthenticationauthenticationProvider);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents+alias2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydocumentTitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodydocumentTitle);
+                    bodypropCount++;
+                }
+
+                if (bodyfileContent != null)
+                {
+                    body["file_content"] = SourceExpressionConverter.ConvertToken(bodyfileContent);
+                    bodypropCount++;
+                }
+
+                body["format"] = "docx";
+                bodypropCount++;
+                if (bodytemplateData != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodytemplateData);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddDocumentOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IWorkflowAction AddTemplateData([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<string> bodyvalue = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-data", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldName != null)
+                {
+                    body["field_name"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyvalue != null)
+                {
+                    body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IWorkflowAction AddPlaceSignature([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<double> bodyplaceHeight = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-signature-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["type"] = "signature";
+                bodypropCount++;
+                if (bodyplaceKey != null)
+                {
+                    body["key"] = SourceExpressionConverter.ConvertToken(bodyplaceKey);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipientKey != null)
+                {
+                    body["recipient_key"] = SourceExpressionConverter.ConvertToken(bodyrecipientKey);
+                    bodypropCount++;
+                }
+
+                if (bodyplaceHeight != null)
+                {
+                    body["height"] = SourceExpressionConverter.ConvertToken(bodyplaceHeight);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["page"] = SourceExpressionConverter.ConvertToken(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromTop != null)
+                {
+                    body["top"] = SourceExpressionConverter.ConvertToken(bodydistanceFromTop);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromLeft != null)
+                {
+                    body["left"] = SourceExpressionConverter.ConvertToken(bodydistanceFromLeft);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IWorkflowAction AddPlaceInitials([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<double> bodyplaceHeight = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-initials-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["type"] = "initials";
+                bodypropCount++;
+                if (bodyplaceKey != null)
+                {
+                    body["key"] = SourceExpressionConverter.ConvertToken(bodyplaceKey);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipientKey != null)
+                {
+                    body["recipient_key"] = SourceExpressionConverter.ConvertToken(bodyrecipientKey);
+                    bodypropCount++;
+                }
+
+                if (bodyplaceHeight != null)
+                {
+                    body["height"] = SourceExpressionConverter.ConvertToken(bodyplaceHeight);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["page"] = SourceExpressionConverter.ConvertToken(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromTop != null)
+                {
+                    body["top"] = SourceExpressionConverter.ConvertToken(bodydistanceFromTop);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromLeft != null)
+                {
+                    body["left"] = SourceExpressionConverter.ConvertToken(bodydistanceFromLeft);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IWorkflowAction AddPlaceTextInput([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<string> bodycaptureAs = null, [WorkflowExpression] Func<string> bodyhint = null, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<bodyrequirementInput> bodyrequirement = null, [WorkflowExpression] Func<string> bodyformat = null, [WorkflowExpression] Func<string> bodyformatMessage = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-input-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["type"] = "text_input";
+                bodypropCount++;
+                if (bodyplaceKey != null)
+                {
+                    body["key"] = SourceExpressionConverter.ConvertToken(bodyplaceKey);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipientKey != null)
+                {
+                    body["recipient_key"] = SourceExpressionConverter.ConvertToken(bodyrecipientKey);
+                    bodypropCount++;
+                }
+
+                if (bodycaptureAs != null)
+                {
+                    body["capture_as"] = SourceExpressionConverter.ConvertToken(bodycaptureAs);
+                    bodypropCount++;
+                }
+
+                if (bodyhint != null)
+                {
+                    body["hint"] = SourceExpressionConverter.ConvertToken(bodyhint);
+                    bodypropCount++;
+                }
+
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                    bodypropCount++;
+                }
+
+                if (bodyrequirement != null)
+                {
+                    if (bodyrequirement != null)
+                    {
+                        body["requirement"] = SourceExpressionConverter.Convert(bodyrequirement);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["requirement"] = "required";
+                    bodypropCount++;
+                }
+
+                if (bodyformat != null)
+                {
+                    body["format"] = SourceExpressionConverter.ConvertToken(bodyformat);
+                    bodypropCount++;
+                }
+
+                if (bodyformatMessage != null)
+                {
+                    body["format_message"] = SourceExpressionConverter.ConvertToken(bodyformatMessage);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["page"] = SourceExpressionConverter.ConvertToken(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromTop != null)
+                {
+                    body["top"] = SourceExpressionConverter.ConvertToken(bodydistanceFromTop);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromLeft != null)
+                {
+                    body["left"] = SourceExpressionConverter.ConvertToken(bodydistanceFromLeft);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IWorkflowAction AddPlaceText([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyvalue = null, [WorkflowExpression] Func<double> bodyfontSize = null, [WorkflowExpression] Func<string> bodyfontColor = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-text-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["type"] = "text";
+                bodypropCount++;
+                if (bodyplaceKey != null)
+                {
+                    body["key"] = SourceExpressionConverter.ConvertToken(bodyplaceKey);
+                    bodypropCount++;
+                }
+
+                if (bodyvalue != null)
+                {
+                    body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodyfontSize != null)
+                {
+                    body["font_size"] = SourceExpressionConverter.ConvertToken(bodyfontSize);
+                    bodypropCount++;
+                }
+
+                if (bodyfontColor != null)
+                {
+                    body["font_color"] = SourceExpressionConverter.ConvertToken(bodyfontColor);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["page"] = SourceExpressionConverter.ConvertToken(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromTop != null)
+                {
+                    body["top"] = SourceExpressionConverter.ConvertToken(bodydistanceFromTop);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromLeft != null)
+                {
+                    body["left"] = SourceExpressionConverter.ConvertToken(bodydistanceFromLeft);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IWorkflowAction AddPlaceRecipientCompletedDate([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-recipient-completed-date-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["type"] = "recipient_completed_date";
+                bodypropCount++;
+                if (bodyplaceKey != null)
+                {
+                    body["key"] = SourceExpressionConverter.ConvertToken(bodyplaceKey);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipientKey != null)
+                {
+                    body["recipient_key"] = SourceExpressionConverter.ConvertToken(bodyrecipientKey);
+                    bodypropCount++;
+                }
+
+                if (bodydateFormat != null)
+                {
+                    body["date_format"] = SourceExpressionConverter.ConvertToken(bodydateFormat);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["page"] = SourceExpressionConverter.ConvertToken(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromTop != null)
+                {
+                    body["top"] = SourceExpressionConverter.ConvertToken(bodydistanceFromTop);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromLeft != null)
+                {
+                    body["left"] = SourceExpressionConverter.ConvertToken(bodydistanceFromLeft);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IWorkflowAction AddPlaceEnvelopeCompletedDate([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyplaceKey = null, [WorkflowExpression] Func<string> bodydateFormat = null, [WorkflowExpression] Func<double> bodypageNumber = null, [WorkflowExpression] Func<double> bodydistanceFromTop = null, [WorkflowExpression] Func<double> bodydistanceFromLeft = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/documents/{0}/add-envelope-completed-date-place", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["type"] = "envelope_completed_date";
+                bodypropCount++;
+                if (bodyplaceKey != null)
+                {
+                    body["key"] = SourceExpressionConverter.ConvertToken(bodyplaceKey);
+                    bodypropCount++;
+                }
+
+                if (bodydateFormat != null)
+                {
+                    body["date_format"] = SourceExpressionConverter.ConvertToken(bodydateFormat);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["page"] = SourceExpressionConverter.ConvertToken(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromTop != null)
+                {
+                    body["top"] = SourceExpressionConverter.ConvertToken(bodydistanceFromTop);
+                    bodypropCount++;
+                }
+
+                if (bodydistanceFromLeft != null)
+                {
+                    body["left"] = SourceExpressionConverter.ConvertToken(bodydistanceFromLeft);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IBodyWorkflowAction<AddRecipientSignerOutput> AddRecipient([WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodyrecipientName = null, [WorkflowExpression] Func<string> bodyrecipientEmail = null, [WorkflowExpression] Func<string> bodyrecipientKey = null, [WorkflowExpression] Func<bodyrecipientCeremonyCreationInput> bodyrecipientCeremonyCreation = null, [WorkflowExpression] Func<bodyrecipientDeliveryTypeInput> bodyrecipientDeliveryType = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["type"] = "signer";
+                bodypropCount++;
+                if (bodyrecipientName != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyrecipientName);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipientEmail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyrecipientEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipientKey != null)
+                {
+                    body["key"] = SourceExpressionConverter.ConvertToken(bodyrecipientKey);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipientCeremonyCreation != null)
+                {
+                    body["ceremony_creation"] = SourceExpressionConverter.Convert(bodyrecipientCeremonyCreation);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipientDeliveryType != null)
+                {
+                    body["delivery_type"] = SourceExpressionConverter.Convert(bodyrecipientDeliveryType);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddRecipientSignerOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IBodyWorkflowAction<Recipient> GetRecipient([WorkflowExpression] Func<string> recipientId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recipients/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Recipient>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IBodyWorkflowAction<JToken> CreateCeremonyEmailLink([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodyredirectURL = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var authenticationObject = new JObject();
+                var authenticationObjectpropCount = 0;
+                authenticationObject["type"] = "email_link";
                 authenticationObjectpropCount++;
+                if (authenticationObjectpropCount > 0)
+                {
+                    body["authentication"] = authenticationObject;
+                    bodypropCount++;
+                }
+
+                if (bodyredirectURL != null)
+                {
+                    body["redirect_url"] = SourceExpressionConverter.ConvertToken(bodyredirectURL);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyauthenticationauthenticationData != null)
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
+        public IBodyWorkflowAction<CreateCeremonyCustomOutput> CreateCeremonyCustom([WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodyauthenticationauthenticationProvider = null, [WorkflowExpression] Func<string[]> bodyauthenticationauthenticationData = null, [WorkflowExpression] Func<string> bodyredirectURL = null, [WorkflowExpression] Func<string> bodyextraProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                authenticationObject["data"] = ExpressionConverter.ConvertO(bodyauthenticationauthenticationData);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recipients/{0}/ceremony+alias1", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var authenticationObject = new JObject();
+                var authenticationObjectpropCount = 0;
+                authenticationObject["type"] = "custom";
                 authenticationObjectpropCount++;
+                if (bodyauthenticationauthenticationProvider != null)
+                {
+                    authenticationObject["provider"] = SourceExpressionConverter.ConvertToken(bodyauthenticationauthenticationProvider);
+                    authenticationObjectpropCount++;
+                }
+
+                if (bodyauthenticationauthenticationData != null)
+                {
+                    authenticationObject["data"] = SourceExpressionConverter.ConvertToken(bodyauthenticationauthenticationData);
+                    authenticationObjectpropCount++;
+                }
+
+                if (authenticationObjectpropCount > 0)
+                {
+                    body["authentication"] = authenticationObject;
+                    bodypropCount++;
+                }
+
+                if (bodyredirectURL != null)
+                {
+                    body["redirect_url"] = SourceExpressionConverter.ConvertToken(bodyredirectURL);
+                    bodypropCount++;
+                }
+
+                if (bodyextraProperties != null)
+                {
+                    body["extra"] = SourceExpressionConverter.ConvertToken(bodyextraProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (authenticationObjectpropCount > 0)
-            {
-                body["authentication"] = authenticationObject;
-                bodypropCount++;
-            }
-
-            if (bodyredirectURL != null)
-            {
-                body["redirect_url"] = ExpressionConverter.ConvertO(bodyredirectURL);
-                bodypropCount++;
-            }
-
-            if (bodyextraProperties != null)
-            {
-                body["extra"] = ExpressionConverter.ConvertO(bodyextraProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCeremonyCustomOutput>(callPayload);
+            return new ApiConnectionAction<CreateCeremonyCustomOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<Envelope> WaitEnvelope(Expression<Func<string>> envelopeId)
+        public IBodyWorkflowAction<Envelope> WaitEnvelope([WorkflowExpression] Func<string> envelopeId)
         {
-            var apiCallPath = String.Format("/integrations/power-platform/envelopes/{0}/wait", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Envelope>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integrations/power-platform/envelopes/{0}/wait", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Envelope>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signatureapi")]
-        public IBodyWorkflowAction<Deliverable> GetDeliverable(Expression<Func<string>> deliverableId)
+        public IBodyWorkflowAction<Deliverable> GetDeliverable([WorkflowExpression] Func<string> deliverableId)
         {
-            var apiCallPath = String.Format("/deliverables/{0}", ExpressionConverter.ConvertWithUrlEncoding(deliverableId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Deliverable>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/deliverables/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliverableId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Deliverable>(BuildSourceInput);
         }
     }
 
     public class SignatureapiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/envelope.created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/envelope.created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/envelope.started";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/envelope.started";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/envelope.completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/envelope.completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/envelope.failed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/envelope.failed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/envelope.canceled";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/envelope.canceled";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/recipient.released";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/recipient.released";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/recipient.sent";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/recipient.sent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/recipient.completed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/recipient.completed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/recipient.rejected";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/recipient.rejected";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/recipient.bounced";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/recipient.bounced";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/recipient.failed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/recipient.failed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/recipient.replaced";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/recipient.replaced";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/recipient.resent";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/recipient.resent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/deliverable.generated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/deliverable.generated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed(Expression<Func<string[]>> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integrations/power-platform/webhooks/deliverable.failed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopics != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["topics"] = ExpressionConverter.ConvertO(bodytopics);
+                var apiCallPath = "/integrations/power-platform/webhooks/deliverable.failed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopics != null)
+                {
+                    body["topics"] = SourceExpressionConverter.ConvertToken(bodytopics);
+                    bodypropCount++;
+                }
+
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

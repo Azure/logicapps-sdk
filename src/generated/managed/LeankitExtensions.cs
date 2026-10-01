@@ -12,308 +12,344 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
     public class LeankitActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CreateBoardResponse> CreateBoard(Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<CreateBoardResponse> CreateBoard([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            var apiCallPath = "/io/board";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/io/board";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateBoardResponse>(callPayload);
+            return new ApiConnectionAction<CreateBoardResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CreateCardResponse> CreateCard(Expression<Func<string>> bodyboardId, Expression<Func<string>> bodytype, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDate = null, Expression<Func<string>> bodyplannedFinishDate = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
+        public IBodyWorkflowAction<CreateCardResponse> CreateCard([WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodylaneId = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<int> bodysize = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyplannedStartDate = null, [WorkflowExpression] Func<string> bodyplannedFinishDate = null, [WorkflowExpression] Func<string> bodycardId = null, [WorkflowExpression] Func<bool> bodyisBlocked = null, [WorkflowExpression] Func<string> bodyblockReason = null, [WorkflowExpression] Func<string> bodyexternalLinkexternalLinkLabel = null, [WorkflowExpression] Func<string> bodyexternalLinkexternalLinkURL = null, [WorkflowExpression] Func<string[]> bodyassignees = null)
         {
-            var apiCallPath = "/io/card";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            bodypropCount++;
-            body["typeId"] = ExpressionConverter.ConvertO(bodytype);
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/io/card";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodylaneId != null)
-            {
-                body["laneId"] = ExpressionConverter.ConvertO(bodylaneId);
+                body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
                 bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                body["typeId"] = SourceExpressionConverter.ConvertToken(bodytype);
                 bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodylaneId != null)
+                {
+                    body["laneId"] = SourceExpressionConverter.ConvertToken(bodylaneId);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodysize != null)
+                {
+                    body["size"] = SourceExpressionConverter.ConvertToken(bodysize);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodyplannedStartDate != null)
+                {
+                    body["plannedStart"] = SourceExpressionConverter.ConvertToken(bodyplannedStartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyplannedFinishDate != null)
+                {
+                    body["plannedFinish"] = SourceExpressionConverter.ConvertToken(bodyplannedFinishDate);
+                    bodypropCount++;
+                }
+
+                if (bodycardId != null)
+                {
+                    body["customId"] = SourceExpressionConverter.ConvertToken(bodycardId);
+                    bodypropCount++;
+                }
+
+                if (bodyisBlocked != null)
+                {
+                    body["isBlocked"] = SourceExpressionConverter.ConvertToken(bodyisBlocked);
+                    bodypropCount++;
+                }
+
+                if (bodyblockReason != null)
+                {
+                    body["blockReason"] = SourceExpressionConverter.ConvertToken(bodyblockReason);
+                    bodypropCount++;
+                }
+
+                var externalLinkObject = new JObject();
+                var externalLinkObjectpropCount = 0;
+                if (bodyexternalLinkexternalLinkLabel != null)
+                {
+                    externalLinkObject["label"] = SourceExpressionConverter.ConvertToken(bodyexternalLinkexternalLinkLabel);
+                    externalLinkObjectpropCount++;
+                }
+
+                if (bodyexternalLinkexternalLinkURL != null)
+                {
+                    externalLinkObject["url"] = SourceExpressionConverter.ConvertToken(bodyexternalLinkexternalLinkURL);
+                    externalLinkObjectpropCount++;
+                }
+
+                if (externalLinkObjectpropCount > 0)
+                {
+                    body["externalLink"] = externalLinkObject;
+                    bodypropCount++;
+                }
+
+                if (bodyassignees != null)
+                {
+                    body["assignedUserIds"] = SourceExpressionConverter.ConvertToken(bodyassignees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysize != null)
-            {
-                body["size"] = ExpressionConverter.ConvertO(bodysize);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodyplannedStartDate != null)
-            {
-                body["plannedStart"] = ExpressionConverter.ConvertO(bodyplannedStartDate);
-                bodypropCount++;
-            }
-
-            if (bodyplannedFinishDate != null)
-            {
-                body["plannedFinish"] = ExpressionConverter.ConvertO(bodyplannedFinishDate);
-                bodypropCount++;
-            }
-
-            if (bodycardId != null)
-            {
-                body["customId"] = ExpressionConverter.ConvertO(bodycardId);
-                bodypropCount++;
-            }
-
-            if (bodyisBlocked != null)
-            {
-                body["isBlocked"] = ExpressionConverter.ConvertO(bodyisBlocked);
-                bodypropCount++;
-            }
-
-            if (bodyblockReason != null)
-            {
-                body["blockReason"] = ExpressionConverter.ConvertO(bodyblockReason);
-                bodypropCount++;
-            }
-
-            var externalLinkObject = new JObject();
-            var externalLinkObjectpropCount = 0;
-            if (bodyexternalLinkexternalLinkLabel != null)
-            {
-                externalLinkObject["label"] = ExpressionConverter.ConvertO(bodyexternalLinkexternalLinkLabel);
-                externalLinkObjectpropCount++;
-            }
-
-            if (bodyexternalLinkexternalLinkURL != null)
-            {
-                externalLinkObject["url"] = ExpressionConverter.ConvertO(bodyexternalLinkexternalLinkURL);
-                externalLinkObjectpropCount++;
-            }
-
-            if (externalLinkObjectpropCount > 0)
-            {
-                body["externalLink"] = externalLinkObject;
-                bodypropCount++;
-            }
-
-            if (bodyassignees != null)
-            {
-                body["assignedUserIds"] = ExpressionConverter.ConvertO(bodyassignees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCardResponse>(callPayload);
+            return new ApiConnectionAction<CreateCardResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CardResponse> GetCard(Expression<Func<string>> cardId)
+        public IBodyWorkflowAction<CardResponse> GetCard([WorkflowExpression] Func<string> cardId)
         {
-            var apiCallPath = String.Format("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/io/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CardResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CardResponse> UpdateCard(Expression<Func<string>> cardId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodylaneId = null, Expression<Func<string>> bodypriority = null, Expression<Func<int>> bodysize = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyplannedStartDateTime = null, Expression<Func<string>> bodyplannedFinishDateTime = null, Expression<Func<string>> bodycardId = null, Expression<Func<bool>> bodyisBlocked = null, Expression<Func<string>> bodyblockReason = null, Expression<Func<string>> bodyexternalLinkexternalLinkLabel = null, Expression<Func<string>> bodyexternalLinkexternalLinkURL = null, Expression<Func<string[]>> bodyassignees = null)
+        public IBodyWorkflowAction<CardResponse> UpdateCard([WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodylaneId = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<int> bodysize = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyplannedStartDateTime = null, [WorkflowExpression] Func<string> bodyplannedFinishDateTime = null, [WorkflowExpression] Func<string> bodycardId = null, [WorkflowExpression] Func<bool> bodyisBlocked = null, [WorkflowExpression] Func<string> bodyblockReason = null, [WorkflowExpression] Func<string> bodyexternalLinkexternalLinkLabel = null, [WorkflowExpression] Func<string> bodyexternalLinkexternalLinkURL = null, [WorkflowExpression] Func<string[]> bodyassignees = null)
         {
-            var apiCallPath = String.Format("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytype != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["typeId"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/io/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytype != null)
+                {
+                    body["typeId"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodylaneId != null)
+                {
+                    body["laneId"] = SourceExpressionConverter.ConvertToken(bodylaneId);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodysize != null)
+                {
+                    body["size"] = SourceExpressionConverter.ConvertToken(bodysize);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodyplannedStartDateTime != null)
+                {
+                    body["plannedStart"] = SourceExpressionConverter.ConvertToken(bodyplannedStartDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodyplannedFinishDateTime != null)
+                {
+                    body["plannedFinish"] = SourceExpressionConverter.ConvertToken(bodyplannedFinishDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodycardId != null)
+                {
+                    body["customId"] = SourceExpressionConverter.ConvertToken(bodycardId);
+                    bodypropCount++;
+                }
+
+                if (bodyisBlocked != null)
+                {
+                    body["isBlocked"] = SourceExpressionConverter.ConvertToken(bodyisBlocked);
+                    bodypropCount++;
+                }
+
+                if (bodyblockReason != null)
+                {
+                    body["blockReason"] = SourceExpressionConverter.ConvertToken(bodyblockReason);
+                    bodypropCount++;
+                }
+
+                var externalLinkObject = new JObject();
+                var externalLinkObjectpropCount = 0;
+                if (bodyexternalLinkexternalLinkLabel != null)
+                {
+                    externalLinkObject["label"] = SourceExpressionConverter.ConvertToken(bodyexternalLinkexternalLinkLabel);
+                    externalLinkObjectpropCount++;
+                }
+
+                if (bodyexternalLinkexternalLinkURL != null)
+                {
+                    externalLinkObject["url"] = SourceExpressionConverter.ConvertToken(bodyexternalLinkexternalLinkURL);
+                    externalLinkObjectpropCount++;
+                }
+
+                if (externalLinkObjectpropCount > 0)
+                {
+                    body["externalLink"] = externalLinkObject;
+                    bodypropCount++;
+                }
+
+                if (bodyassignees != null)
+                {
+                    body["assignedUserIds"] = SourceExpressionConverter.ConvertToken(bodyassignees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodylaneId != null)
-            {
-                body["laneId"] = ExpressionConverter.ConvertO(bodylaneId);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodysize != null)
-            {
-                body["size"] = ExpressionConverter.ConvertO(bodysize);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodyplannedStartDateTime != null)
-            {
-                body["plannedStart"] = ExpressionConverter.ConvertO(bodyplannedStartDateTime);
-                bodypropCount++;
-            }
-
-            if (bodyplannedFinishDateTime != null)
-            {
-                body["plannedFinish"] = ExpressionConverter.ConvertO(bodyplannedFinishDateTime);
-                bodypropCount++;
-            }
-
-            if (bodycardId != null)
-            {
-                body["customId"] = ExpressionConverter.ConvertO(bodycardId);
-                bodypropCount++;
-            }
-
-            if (bodyisBlocked != null)
-            {
-                body["isBlocked"] = ExpressionConverter.ConvertO(bodyisBlocked);
-                bodypropCount++;
-            }
-
-            if (bodyblockReason != null)
-            {
-                body["blockReason"] = ExpressionConverter.ConvertO(bodyblockReason);
-                bodypropCount++;
-            }
-
-            var externalLinkObject = new JObject();
-            var externalLinkObjectpropCount = 0;
-            if (bodyexternalLinkexternalLinkLabel != null)
-            {
-                externalLinkObject["label"] = ExpressionConverter.ConvertO(bodyexternalLinkexternalLinkLabel);
-                externalLinkObjectpropCount++;
-            }
-
-            if (bodyexternalLinkexternalLinkURL != null)
-            {
-                externalLinkObject["url"] = ExpressionConverter.ConvertO(bodyexternalLinkexternalLinkURL);
-                externalLinkObjectpropCount++;
-            }
-
-            if (externalLinkObjectpropCount > 0)
-            {
-                body["externalLink"] = externalLinkObject;
-                bodypropCount++;
-            }
-
-            if (bodyassignees != null)
-            {
-                body["assignedUserIds"] = ExpressionConverter.ConvertO(bodyassignees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CardResponse>(callPayload);
+            return new ApiConnectionAction<CardResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<CardResponse> DeleteCard(Expression<Func<string>> cardId)
+        public IBodyWorkflowAction<CardResponse> DeleteCard([WorkflowExpression] Func<string> cardId)
         {
-            var apiCallPath = String.Format("/io/card/{0}", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CardResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/io/card/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CardResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "leankit")]
-        public IBodyWorkflowAction<AddCommentResponse> AddComment(Expression<Func<string>> cardId, Expression<Func<string>> bodycomment)
+        public IBodyWorkflowAction<AddCommentResponse> AddComment([WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> bodycomment)
         {
-            var apiCallPath = String.Format("/io/card/{0}/comment", ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodycomment);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/io/card/{0}/comment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AddCommentResponse>(callPayload);
+            return new ApiConnectionAction<AddCommentResponse>(BuildSourceInput);
         }
     }
 
     public class LeankitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CardResponse[]> TrigNewCard(Expression<Func<string>> board, Expression<Func<string>> lane, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[]> TrigNewCard([WorkflowExpression] Func<string> board, [WorkflowExpression] Func<string> lane, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/add_card_trigger/io/card";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board"] = ExpressionConverter.Convert(board);
-            callPayload.Queries["lane"] = ExpressionConverter.Convert(lane);
-            return new ApiConnectionTrigger<CardResponse[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/add_card_trigger/io/card";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board"] = SourceExpressionConverter.ConvertO(board);
+                callPayload.Queries["lane"] = SourceExpressionConverter.ConvertO(lane);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CardResponse[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CardResponse[]> TrigUpdateCard(Expression<Func<string>> board, Expression<Func<string>> lane, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[]> TrigUpdateCard([WorkflowExpression] Func<string> board, [WorkflowExpression] Func<string> lane, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/update_card_trigger/io/card";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board"] = ExpressionConverter.Convert(board);
-            callPayload.Queries["lane"] = ExpressionConverter.Convert(lane);
-            return new ApiConnectionTrigger<CardResponse[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/update_card_trigger/io/card";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board"] = SourceExpressionConverter.ConvertO(board);
+                callPayload.Queries["lane"] = SourceExpressionConverter.ConvertO(lane);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CardResponse[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

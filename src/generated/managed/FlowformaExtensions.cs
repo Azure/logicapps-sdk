@@ -12,15 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flowforma
     public class FlowformaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flowforma")]
-        public IBodyWorkflowAction<FlowCreatedResponse> CreateForm(Expression<Func<string>> connectionUrl, Expression<Func<string>> flows, Expression<Func<object>> question = null)
+        public IBodyWorkflowAction<FlowCreatedResponse> CreateForm([WorkflowExpression] Func<string> connectionUrl, [WorkflowExpression] Func<string> flows, [WorkflowExpression] Func<object> question = null)
         {
-            var apiCallPath = "/api/flowforma";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["connectionUrl"] = ExpressionConverter.Convert(connectionUrl);
-            callPayload.Queries["flows"] = ExpressionConverter.Convert(flows);
-            callPayload.Body = ExpressionConverter.ConvertO(question);
-            return new ApiConnectionAction<FlowCreatedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/flowforma";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["connectionUrl"] = SourceExpressionConverter.ConvertO(connectionUrl);
+                callPayload.Queries["flows"] = SourceExpressionConverter.ConvertO(flows);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(question);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FlowCreatedResponse>(BuildSourceInput);
         }
     }
 

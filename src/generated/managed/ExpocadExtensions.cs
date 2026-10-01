@@ -12,1099 +12,1334 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Expocad
     public class ExpocadActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth> BoothsGet(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Booth> BoothsGet([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
         {
-            var apiCallPath = String.Format("/{0}/booths", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<Booth>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth[]> BoothsGetAllBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<deletedFilterInput>> deletedFilter = null)
-        {
-            var apiCallPath = String.Format("/{0}/booths/all", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (deletedFilter != null)
-                callPayload.Queries["deletedFilter"] = ExpressionConverter.Convert(deletedFilter);
-            return new ApiConnectionAction<Booth[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth[]> BoothsGetAllAvailableBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/all/available", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<Booth[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Booth[]> BoothsGetAllRentedBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/all/rented", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<Booth[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsRentBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> exhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlan = null, Expression<Func<string>> status = null, Expression<Func<string>> comment = null)
-        {
-            var apiCallPath = String.Format("/{0}/booths/rent", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["exhibitorId"] = ExpressionConverter.Convert(exhibitorId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (ratePlan != null)
-                callPayload.Queries["ratePlan"] = ExpressionConverter.Convert(ratePlan);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsUnRentBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/unrent", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsHoldBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> exhibitorName = null, Expression<Func<string>> comment = null)
-        {
-            var apiCallPath = String.Format("/{0}/booths/hold", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (exhibitorId != null)
-                callPayload.Queries["exhibitorId"] = ExpressionConverter.Convert(exhibitorId);
-            if (exhibitorName != null)
-                callPayload.Queries["exhibitorName"] = ExpressionConverter.Convert(exhibitorName);
-            if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsUnHoldBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/unhold", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsRentToHold(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/rentToHold", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsHoldToRent(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlan = null)
-        {
-            var apiCallPath = String.Format("/{0}/booths/holdToRent", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (ratePlan != null)
-                callPayload.Queries["ratePlan"] = ExpressionConverter.Convert(ratePlan);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsCombineBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<int>> boundary, Expression<Func<string[]>> boothNumbers = null)
-        {
-            var apiCallPath = String.Format("/{0}/booths/combine", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            callPayload.Queries["boundary"] = ExpressionConverter.Convert(boundary);
-            callPayload.Body = ExpressionConverter.ConvertO(boothNumbers);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsUncombineBooth(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/uncombine", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsDeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
-        {
-            var apiCallPath = String.Format("/{0}/booths/delete", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            callPayload.Body = ExpressionConverter.ConvertO(boothNumbers);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsUndeleteBooths(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string[]>> boothNumbers = null)
-        {
-            var apiCallPath = String.Format("/{0}/booths/undelete", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            callPayload.Body = ExpressionConverter.ConvertO(boothNumbers);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsChangeBoothNumber(Expression<Func<string>> clientName, Expression<Func<string>> oldNumber, Expression<Func<string>> newNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/changenumber", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["oldNumber"] = ExpressionConverter.Convert(oldNumber);
-            callPayload.Queries["newNumber"] = ExpressionConverter.Convert(newNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsSetBoothClass(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/classes/apply", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["classId"] = ExpressionConverter.Convert(classId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsClearBoothClass(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/classes/remove", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["classId"] = ExpressionConverter.Convert(classId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsSetBoothDisplayName(Expression<Func<string>> clientName, Expression<Func<string>> text, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/displayNameOverride/set", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["text"] = ExpressionConverter.Convert(text);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsClearBoothDisplayName(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/displayNameOverride/reset", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsAddChildExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> childExhibitorId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/childExhibitor/add", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["childExhibitorId"] = ExpressionConverter.Convert(childExhibitorId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> BoothsRemoveChildExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> childExhibitorId, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/booths/childExhibitor/remove", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["childExhibitorId"] = ExpressionConverter.Convert(childExhibitorId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass> ClassesGet(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/classes", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["classId"] = ExpressionConverter.Convert(classId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<BoothClass>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass[]> ClassesGetAllBoothClasses(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/classes/all", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<BoothClass[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass> ClassesCreate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
-        {
-            var apiCallPath = String.Format("/{0}/classes/add", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            var boothClass = new JObject();
-            var boothClasspropCount = 0;
-            boothClasspropCount++;
-            boothClass["Id"] = ExpressionConverter.ConvertO(boothClassid);
-            if (boothClassname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                boothClass["Name"] = ExpressionConverter.ConvertO(boothClassname);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Booth>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<Booth[]> BoothsGetAllBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<deletedFilterInput> deletedFilter = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (deletedFilter != null)
+                    callPayload.Queries["deletedFilter"] = SourceExpressionConverter.Convert(deletedFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Booth[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<Booth[]> BoothsGetAllAvailableBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/all/available", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Booth[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<Booth[]> BoothsGetAllRentedBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/all/rented", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Booth[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsRentBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> exhibitorId, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> ratePlan = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> comment = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/rent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["exhibitorId"] = SourceExpressionConverter.ConvertO(exhibitorId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (ratePlan != null)
+                    callPayload.Queries["ratePlan"] = SourceExpressionConverter.ConvertO(ratePlan);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                if (comment != null)
+                    callPayload.Queries["comment"] = SourceExpressionConverter.ConvertO(comment);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsUnRentBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/unrent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsHoldBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitorId = null, [WorkflowExpression] Func<string> exhibitorName = null, [WorkflowExpression] Func<string> comment = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/hold", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (exhibitorId != null)
+                    callPayload.Queries["exhibitorId"] = SourceExpressionConverter.ConvertO(exhibitorId);
+                if (exhibitorName != null)
+                    callPayload.Queries["exhibitorName"] = SourceExpressionConverter.ConvertO(exhibitorName);
+                if (comment != null)
+                    callPayload.Queries["comment"] = SourceExpressionConverter.ConvertO(comment);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsUnHoldBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/unhold", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsRentToHold([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/rentToHold", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsHoldToRent([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> ratePlan = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/holdToRent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (ratePlan != null)
+                    callPayload.Queries["ratePlan"] = SourceExpressionConverter.ConvertO(ratePlan);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsCombineBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<int> boundary, [WorkflowExpression] Func<string[]> boothNumbers = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/combine", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                callPayload.Queries["boundary"] = SourceExpressionConverter.ConvertO(boundary);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(boothNumbers);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsUncombineBooth([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/uncombine", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsDeleteBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string[]> boothNumbers = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(boothNumbers);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsUndeleteBooths([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string[]> boothNumbers = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/undelete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(boothNumbers);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsChangeBoothNumber([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> oldNumber, [WorkflowExpression] Func<string> newNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/changenumber", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["oldNumber"] = SourceExpressionConverter.ConvertO(oldNumber);
+                callPayload.Queries["newNumber"] = SourceExpressionConverter.ConvertO(newNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsSetBoothClass([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/classes/apply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["classId"] = SourceExpressionConverter.ConvertO(classId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsClearBoothClass([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/classes/remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["classId"] = SourceExpressionConverter.ConvertO(classId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsSetBoothDisplayName([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> text, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/displayNameOverride/set", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["text"] = SourceExpressionConverter.ConvertO(text);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsClearBoothDisplayName([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/displayNameOverride/reset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsAddChildExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> childExhibitorId, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/childExhibitor/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["childExhibitorId"] = SourceExpressionConverter.ConvertO(childExhibitorId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> BoothsRemoveChildExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> childExhibitorId, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/booths/childExhibitor/remove", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["childExhibitorId"] = SourceExpressionConverter.ConvertO(childExhibitorId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<BoothClass> ClassesGet([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["classId"] = SourceExpressionConverter.ConvertO(classId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BoothClass>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<BoothClass[]> ClassesGetAllBoothClasses([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BoothClass[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<BoothClass> ClassesCreate([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothClassid, [WorkflowExpression] Func<int> boothClasskeepWhenCombined, [WorkflowExpression] Func<int> boothClasscountAsInventory, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> boothClassname = null, [WorkflowExpression] Func<string> boothClassdescription = null, [WorkflowExpression] Func<string> boothClassprioritity = null, [WorkflowExpression] Func<int> boothClasscolor = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                var boothClass = new JObject();
+                var boothClasspropCount = 0;
                 boothClasspropCount++;
-            }
+                boothClass["Id"] = SourceExpressionConverter.ConvertToken(boothClassid);
+                if (boothClassname != null)
+                {
+                    boothClass["Name"] = SourceExpressionConverter.ConvertToken(boothClassname);
+                    boothClasspropCount++;
+                }
 
-            if (boothClassdescription != null)
-            {
-                boothClass["Description"] = ExpressionConverter.ConvertO(boothClassdescription);
+                if (boothClassdescription != null)
+                {
+                    boothClass["Description"] = SourceExpressionConverter.ConvertToken(boothClassdescription);
+                    boothClasspropCount++;
+                }
+
                 boothClasspropCount++;
-            }
-
-            boothClasspropCount++;
-            boothClass["KeepWhenCombined"] = ExpressionConverter.ConvertO(boothClasskeepWhenCombined);
-            boothClasspropCount++;
-            boothClass["CountAsInventory"] = ExpressionConverter.ConvertO(boothClasscountAsInventory);
-            if (boothClassprioritity != null)
-            {
-                boothClass["Prioritity"] = ExpressionConverter.ConvertO(boothClassprioritity);
+                boothClass["KeepWhenCombined"] = SourceExpressionConverter.ConvertToken(boothClasskeepWhenCombined);
                 boothClasspropCount++;
+                boothClass["CountAsInventory"] = SourceExpressionConverter.ConvertToken(boothClasscountAsInventory);
+                if (boothClassprioritity != null)
+                {
+                    boothClass["Prioritity"] = SourceExpressionConverter.ConvertToken(boothClassprioritity);
+                    boothClasspropCount++;
+                }
+
+                if (boothClasscolor != null)
+                {
+                    boothClass["Color"] = SourceExpressionConverter.ConvertToken(boothClasscolor);
+                    boothClasspropCount++;
+                }
+
+                if (boothClasspropCount > 0)
+                {
+                    callPayload.Body = boothClass;
+                }
+                return callPayload;
             }
 
-            if (boothClasscolor != null)
+            return new ApiConnectionAction<BoothClass>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<BoothClass> ClassesUpdate([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothClassid, [WorkflowExpression] Func<int> boothClasskeepWhenCombined, [WorkflowExpression] Func<int> boothClasscountAsInventory, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> boothClassname = null, [WorkflowExpression] Func<string> boothClassdescription = null, [WorkflowExpression] Func<string> boothClassprioritity = null, [WorkflowExpression] Func<int> boothClasscolor = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                boothClass["Color"] = ExpressionConverter.ConvertO(boothClasscolor);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes/update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["classId"] = SourceExpressionConverter.ConvertO(classId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                var boothClass = new JObject();
+                var boothClasspropCount = 0;
                 boothClasspropCount++;
-            }
+                boothClass["Id"] = SourceExpressionConverter.ConvertToken(boothClassid);
+                if (boothClassname != null)
+                {
+                    boothClass["Name"] = SourceExpressionConverter.ConvertToken(boothClassname);
+                    boothClasspropCount++;
+                }
 
-            if (boothClasspropCount > 0)
-            {
-                callPayload.Body = boothClass;
-            }
+                if (boothClassdescription != null)
+                {
+                    boothClass["Description"] = SourceExpressionConverter.ConvertToken(boothClassdescription);
+                    boothClasspropCount++;
+                }
 
-            return new ApiConnectionAction<BoothClass>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothClass> ClassesUpdate(Expression<Func<string>> clientName, Expression<Func<string>> boothClassid, Expression<Func<int>> boothClasskeepWhenCombined, Expression<Func<int>> boothClasscountAsInventory, Expression<Func<string>> classId, Expression<Func<string>> databaseName, Expression<Func<string>> boothClassname = null, Expression<Func<string>> boothClassdescription = null, Expression<Func<string>> boothClassprioritity = null, Expression<Func<int>> boothClasscolor = null)
-        {
-            var apiCallPath = String.Format("/{0}/classes/update", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["classId"] = ExpressionConverter.Convert(classId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            var boothClass = new JObject();
-            var boothClasspropCount = 0;
-            boothClasspropCount++;
-            boothClass["Id"] = ExpressionConverter.ConvertO(boothClassid);
-            if (boothClassname != null)
-            {
-                boothClass["Name"] = ExpressionConverter.ConvertO(boothClassname);
                 boothClasspropCount++;
-            }
-
-            if (boothClassdescription != null)
-            {
-                boothClass["Description"] = ExpressionConverter.ConvertO(boothClassdescription);
+                boothClass["KeepWhenCombined"] = SourceExpressionConverter.ConvertToken(boothClasskeepWhenCombined);
                 boothClasspropCount++;
+                boothClass["CountAsInventory"] = SourceExpressionConverter.ConvertToken(boothClasscountAsInventory);
+                if (boothClassprioritity != null)
+                {
+                    boothClass["Prioritity"] = SourceExpressionConverter.ConvertToken(boothClassprioritity);
+                    boothClasspropCount++;
+                }
+
+                if (boothClasscolor != null)
+                {
+                    boothClass["Color"] = SourceExpressionConverter.ConvertToken(boothClasscolor);
+                    boothClasspropCount++;
+                }
+
+                if (boothClasspropCount > 0)
+                {
+                    callPayload.Body = boothClass;
+                }
+                return callPayload;
             }
 
-            boothClasspropCount++;
-            boothClass["KeepWhenCombined"] = ExpressionConverter.ConvertO(boothClasskeepWhenCombined);
-            boothClasspropCount++;
-            boothClass["CountAsInventory"] = ExpressionConverter.ConvertO(boothClasscountAsInventory);
-            if (boothClassprioritity != null)
-            {
-                boothClass["Prioritity"] = ExpressionConverter.ConvertO(boothClassprioritity);
-                boothClasspropCount++;
-            }
-
-            if (boothClasscolor != null)
-            {
-                boothClass["Color"] = ExpressionConverter.ConvertO(boothClasscolor);
-                boothClasspropCount++;
-            }
-
-            if (boothClasspropCount > 0)
-            {
-                callPayload.Body = boothClass;
-            }
-
-            return new ApiConnectionAction<BoothClass>(callPayload);
+            return new ApiConnectionAction<BoothClass>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> ClassesDelete(Expression<Func<string>> clientName, Expression<Func<string>> classId, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken> ClassesDelete([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> classId, [WorkflowExpression] Func<string> databaseName)
         {
-            var apiCallPath = String.Format("/{0}/classes/delete", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["classId"] = ExpressionConverter.Convert(classId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/classes/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["classId"] = SourceExpressionConverter.ConvertO(classId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<ExpocadEvent[]> EventsGetAllEvents(Expression<Func<string>> clientName)
+        public IBodyWorkflowAction<ExpocadEvent[]> EventsGetAllEvents([WorkflowExpression] Func<string> clientName)
         {
-            var apiCallPath = String.Format("/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExpocadEvent[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExpocadEvent[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<EventStats> EventsGetEventStatistics(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<EventStats> EventsGetEventStatistics([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            var apiCallPath = String.Format("/{0}/events/stats", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<EventStats>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EventStats>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<ExpoEventInformation> EventsGetEventInformation(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<ExpoEventInformation> EventsGetEventInformation([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            var apiCallPath = String.Format("/{0}/events/info", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<ExpoEventInformation>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/events/info", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExpoEventInformation>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor> ExhibitorsGet(Expression<Func<string>> clientName, Expression<Func<string>> id, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Exhibitor> ExhibitorsGet([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> databaseName)
         {
-            var apiCallPath = String.Format("/{0}/exhibitors", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<Exhibitor>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Exhibitor>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor[]> ExhibitorsGetAllExhibitors(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Exhibitor[]> ExhibitorsGetAllExhibitors([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
         {
-            var apiCallPath = String.Format("/{0}/exhibitors/all", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<Exhibitor[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Exhibitor[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor> ExhibitorsAddExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
+        public IBodyWorkflowAction<Exhibitor> ExhibitorsAddExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> exhibitorexhibitorId, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitoraddress1 = null, [WorkflowExpression] Func<string> exhibitoraddress2 = null, [WorkflowExpression] Func<string> exhibitorcity = null, [WorkflowExpression] Func<string> exhibitorcomments = null, [WorkflowExpression] Func<string> exhibitorcomments2 = null, [WorkflowExpression] Func<string> exhibitorcontact = null, [WorkflowExpression] Func<string> exhibitorcountry = null, [WorkflowExpression] Func<string> exhibitorcellPhone = null, [WorkflowExpression] Func<string> exhibitordisplayOnDrawing = null, [WorkflowExpression] Func<string> exhibitordoingBusinessAs = null, [WorkflowExpression] Func<string> exhibitordoingBusinessAsDisplayOnDrawing = null, [WorkflowExpression] Func<string> exhibitoremail = null, [WorkflowExpression] Func<string> exhibitorexhibitorName = null, [WorkflowExpression] Func<string> exhibitorexhibitorNameLine2 = null, [WorkflowExpression] Func<string> exhibitorfax = null, [WorkflowExpression] Func<string> exhibitorfield1 = null, [WorkflowExpression] Func<string> exhibitorfield2 = null, [WorkflowExpression] Func<string> exhibitorfield3 = null, [WorkflowExpression] Func<string> exhibitorfield4 = null, [WorkflowExpression] Func<string> exhibitorfield5 = null, [WorkflowExpression] Func<string> exhibitorfield6 = null, [WorkflowExpression] Func<string> exhibitorfield7 = null, [WorkflowExpression] Func<string> exhibitorfield8 = null, [WorkflowExpression] Func<string> exhibitorfield9 = null, [WorkflowExpression] Func<string> exhibitornickName = null, [WorkflowExpression] Func<string> exhibitorsalutation = null, [WorkflowExpression] Func<string> exhibitortitle = null, [WorkflowExpression] Func<string> exhibitorphone = null, [WorkflowExpression] Func<string> exhibitorpostalCode = null, [WorkflowExpression] Func<string> exhibitorprimaryGroup = null, [WorkflowExpression] Func<string> exhibitorpriorityPoints = null, [WorkflowExpression] Func<string> exhibitorproductDescription = null, [WorkflowExpression] Func<string> exhibitorstate = null, [WorkflowExpression] Func<string> exhibitorwebSite = null)
         {
-            var apiCallPath = String.Format("/{0}/exhibitors/add", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            var exhibitor = new JObject();
-            var exhibitorpropCount = 0;
-            if (exhibitoraddress1 != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                exhibitor["Address1"] = ExpressionConverter.ConvertO(exhibitoraddress1);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                var exhibitor = new JObject();
+                var exhibitorpropCount = 0;
+                if (exhibitoraddress1 != null)
+                {
+                    exhibitor["Address1"] = SourceExpressionConverter.ConvertToken(exhibitoraddress1);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitoraddress2 != null)
+                {
+                    exhibitor["Address2"] = SourceExpressionConverter.ConvertToken(exhibitoraddress2);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcity != null)
+                {
+                    exhibitor["City"] = SourceExpressionConverter.ConvertToken(exhibitorcity);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcomments != null)
+                {
+                    exhibitor["Comments"] = SourceExpressionConverter.ConvertToken(exhibitorcomments);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcomments2 != null)
+                {
+                    exhibitor["Comments2"] = SourceExpressionConverter.ConvertToken(exhibitorcomments2);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcontact != null)
+                {
+                    exhibitor["Contact"] = SourceExpressionConverter.ConvertToken(exhibitorcontact);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcountry != null)
+                {
+                    exhibitor["Country"] = SourceExpressionConverter.ConvertToken(exhibitorcountry);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcellPhone != null)
+                {
+                    exhibitor["CellPhone"] = SourceExpressionConverter.ConvertToken(exhibitorcellPhone);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitordisplayOnDrawing != null)
+                {
+                    exhibitor["DisplayOnDrawing"] = SourceExpressionConverter.ConvertToken(exhibitordisplayOnDrawing);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitordoingBusinessAs != null)
+                {
+                    exhibitor["DoingBusinessAs"] = SourceExpressionConverter.ConvertToken(exhibitordoingBusinessAs);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitordoingBusinessAsDisplayOnDrawing != null)
+                {
+                    exhibitor["DoingBusinessAsDisplayOnDrawing"] = SourceExpressionConverter.ConvertToken(exhibitordoingBusinessAsDisplayOnDrawing);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitoremail != null)
+                {
+                    exhibitor["Email"] = SourceExpressionConverter.ConvertToken(exhibitoremail);
+                    exhibitorpropCount++;
+                }
+
                 exhibitorpropCount++;
+                exhibitor["ExhibitorId"] = SourceExpressionConverter.ConvertToken(exhibitorexhibitorId);
+                if (exhibitorexhibitorName != null)
+                {
+                    exhibitor["ExhibitorName"] = SourceExpressionConverter.ConvertToken(exhibitorexhibitorName);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorexhibitorNameLine2 != null)
+                {
+                    exhibitor["ExhibitorNameLine2"] = SourceExpressionConverter.ConvertToken(exhibitorexhibitorNameLine2);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfax != null)
+                {
+                    exhibitor["Fax"] = SourceExpressionConverter.ConvertToken(exhibitorfax);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield1 != null)
+                {
+                    exhibitor["Field1"] = SourceExpressionConverter.ConvertToken(exhibitorfield1);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield2 != null)
+                {
+                    exhibitor["Field2"] = SourceExpressionConverter.ConvertToken(exhibitorfield2);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield3 != null)
+                {
+                    exhibitor["Field3"] = SourceExpressionConverter.ConvertToken(exhibitorfield3);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield4 != null)
+                {
+                    exhibitor["Field4"] = SourceExpressionConverter.ConvertToken(exhibitorfield4);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield5 != null)
+                {
+                    exhibitor["Field5"] = SourceExpressionConverter.ConvertToken(exhibitorfield5);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield6 != null)
+                {
+                    exhibitor["Field6"] = SourceExpressionConverter.ConvertToken(exhibitorfield6);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield7 != null)
+                {
+                    exhibitor["Field7"] = SourceExpressionConverter.ConvertToken(exhibitorfield7);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield8 != null)
+                {
+                    exhibitor["Field8"] = SourceExpressionConverter.ConvertToken(exhibitorfield8);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield9 != null)
+                {
+                    exhibitor["Field9"] = SourceExpressionConverter.ConvertToken(exhibitorfield9);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitornickName != null)
+                {
+                    exhibitor["NickName"] = SourceExpressionConverter.ConvertToken(exhibitornickName);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorsalutation != null)
+                {
+                    exhibitor["Salutation"] = SourceExpressionConverter.ConvertToken(exhibitorsalutation);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitortitle != null)
+                {
+                    exhibitor["Title"] = SourceExpressionConverter.ConvertToken(exhibitortitle);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorphone != null)
+                {
+                    exhibitor["Phone"] = SourceExpressionConverter.ConvertToken(exhibitorphone);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorpostalCode != null)
+                {
+                    exhibitor["PostalCode"] = SourceExpressionConverter.ConvertToken(exhibitorpostalCode);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorprimaryGroup != null)
+                {
+                    exhibitor["PrimaryGroup"] = SourceExpressionConverter.ConvertToken(exhibitorprimaryGroup);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorpriorityPoints != null)
+                {
+                    exhibitor["PriorityPoints"] = SourceExpressionConverter.ConvertToken(exhibitorpriorityPoints);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorproductDescription != null)
+                {
+                    exhibitor["ProductDescription"] = SourceExpressionConverter.ConvertToken(exhibitorproductDescription);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorstate != null)
+                {
+                    exhibitor["State"] = SourceExpressionConverter.ConvertToken(exhibitorstate);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorwebSite != null)
+                {
+                    exhibitor["WebSite"] = SourceExpressionConverter.ConvertToken(exhibitorwebSite);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorpropCount > 0)
+                {
+                    callPayload.Body = exhibitor;
+                }
+                return callPayload;
             }
 
-            if (exhibitoraddress2 != null)
-            {
-                exhibitor["Address2"] = ExpressionConverter.ConvertO(exhibitoraddress2);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcity != null)
-            {
-                exhibitor["City"] = ExpressionConverter.ConvertO(exhibitorcity);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcomments != null)
-            {
-                exhibitor["Comments"] = ExpressionConverter.ConvertO(exhibitorcomments);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcomments2 != null)
-            {
-                exhibitor["Comments2"] = ExpressionConverter.ConvertO(exhibitorcomments2);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcontact != null)
-            {
-                exhibitor["Contact"] = ExpressionConverter.ConvertO(exhibitorcontact);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcountry != null)
-            {
-                exhibitor["Country"] = ExpressionConverter.ConvertO(exhibitorcountry);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcellPhone != null)
-            {
-                exhibitor["CellPhone"] = ExpressionConverter.ConvertO(exhibitorcellPhone);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitordisplayOnDrawing != null)
-            {
-                exhibitor["DisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitordisplayOnDrawing);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitordoingBusinessAs != null)
-            {
-                exhibitor["DoingBusinessAs"] = ExpressionConverter.ConvertO(exhibitordoingBusinessAs);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitordoingBusinessAsDisplayOnDrawing != null)
-            {
-                exhibitor["DoingBusinessAsDisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitordoingBusinessAsDisplayOnDrawing);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitoremail != null)
-            {
-                exhibitor["Email"] = ExpressionConverter.ConvertO(exhibitoremail);
-                exhibitorpropCount++;
-            }
-
-            exhibitorpropCount++;
-            exhibitor["ExhibitorId"] = ExpressionConverter.ConvertO(exhibitorexhibitorId);
-            if (exhibitorexhibitorName != null)
-            {
-                exhibitor["ExhibitorName"] = ExpressionConverter.ConvertO(exhibitorexhibitorName);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorexhibitorNameLine2 != null)
-            {
-                exhibitor["ExhibitorNameLine2"] = ExpressionConverter.ConvertO(exhibitorexhibitorNameLine2);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfax != null)
-            {
-                exhibitor["Fax"] = ExpressionConverter.ConvertO(exhibitorfax);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield1 != null)
-            {
-                exhibitor["Field1"] = ExpressionConverter.ConvertO(exhibitorfield1);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield2 != null)
-            {
-                exhibitor["Field2"] = ExpressionConverter.ConvertO(exhibitorfield2);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield3 != null)
-            {
-                exhibitor["Field3"] = ExpressionConverter.ConvertO(exhibitorfield3);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield4 != null)
-            {
-                exhibitor["Field4"] = ExpressionConverter.ConvertO(exhibitorfield4);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield5 != null)
-            {
-                exhibitor["Field5"] = ExpressionConverter.ConvertO(exhibitorfield5);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield6 != null)
-            {
-                exhibitor["Field6"] = ExpressionConverter.ConvertO(exhibitorfield6);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield7 != null)
-            {
-                exhibitor["Field7"] = ExpressionConverter.ConvertO(exhibitorfield7);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield8 != null)
-            {
-                exhibitor["Field8"] = ExpressionConverter.ConvertO(exhibitorfield8);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield9 != null)
-            {
-                exhibitor["Field9"] = ExpressionConverter.ConvertO(exhibitorfield9);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitornickName != null)
-            {
-                exhibitor["NickName"] = ExpressionConverter.ConvertO(exhibitornickName);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorsalutation != null)
-            {
-                exhibitor["Salutation"] = ExpressionConverter.ConvertO(exhibitorsalutation);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitortitle != null)
-            {
-                exhibitor["Title"] = ExpressionConverter.ConvertO(exhibitortitle);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorphone != null)
-            {
-                exhibitor["Phone"] = ExpressionConverter.ConvertO(exhibitorphone);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorpostalCode != null)
-            {
-                exhibitor["PostalCode"] = ExpressionConverter.ConvertO(exhibitorpostalCode);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorprimaryGroup != null)
-            {
-                exhibitor["PrimaryGroup"] = ExpressionConverter.ConvertO(exhibitorprimaryGroup);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorpriorityPoints != null)
-            {
-                exhibitor["PriorityPoints"] = ExpressionConverter.ConvertO(exhibitorpriorityPoints);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorproductDescription != null)
-            {
-                exhibitor["ProductDescription"] = ExpressionConverter.ConvertO(exhibitorproductDescription);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorstate != null)
-            {
-                exhibitor["State"] = ExpressionConverter.ConvertO(exhibitorstate);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorwebSite != null)
-            {
-                exhibitor["WebSite"] = ExpressionConverter.ConvertO(exhibitorwebSite);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorpropCount > 0)
-            {
-                callPayload.Body = exhibitor;
-            }
-
-            return new ApiConnectionAction<Exhibitor>(callPayload);
+            return new ApiConnectionAction<Exhibitor>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Exhibitor> ExhibitorsUpdateExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> exhibitorexhibitorId, Expression<Func<string>> id, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitoraddress1 = null, Expression<Func<string>> exhibitoraddress2 = null, Expression<Func<string>> exhibitorcity = null, Expression<Func<string>> exhibitorcomments = null, Expression<Func<string>> exhibitorcomments2 = null, Expression<Func<string>> exhibitorcontact = null, Expression<Func<string>> exhibitorcountry = null, Expression<Func<string>> exhibitorcellPhone = null, Expression<Func<string>> exhibitordisplayOnDrawing = null, Expression<Func<string>> exhibitordoingBusinessAs = null, Expression<Func<string>> exhibitordoingBusinessAsDisplayOnDrawing = null, Expression<Func<string>> exhibitoremail = null, Expression<Func<string>> exhibitorexhibitorName = null, Expression<Func<string>> exhibitorexhibitorNameLine2 = null, Expression<Func<string>> exhibitorfax = null, Expression<Func<string>> exhibitorfield1 = null, Expression<Func<string>> exhibitorfield2 = null, Expression<Func<string>> exhibitorfield3 = null, Expression<Func<string>> exhibitorfield4 = null, Expression<Func<string>> exhibitorfield5 = null, Expression<Func<string>> exhibitorfield6 = null, Expression<Func<string>> exhibitorfield7 = null, Expression<Func<string>> exhibitorfield8 = null, Expression<Func<string>> exhibitorfield9 = null, Expression<Func<string>> exhibitornickName = null, Expression<Func<string>> exhibitorsalutation = null, Expression<Func<string>> exhibitortitle = null, Expression<Func<string>> exhibitorphone = null, Expression<Func<string>> exhibitorpostalCode = null, Expression<Func<string>> exhibitorprimaryGroup = null, Expression<Func<string>> exhibitorpriorityPoints = null, Expression<Func<string>> exhibitorproductDescription = null, Expression<Func<string>> exhibitorstate = null, Expression<Func<string>> exhibitorwebSite = null)
+        public IBodyWorkflowAction<Exhibitor> ExhibitorsUpdateExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> exhibitorexhibitorId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitoraddress1 = null, [WorkflowExpression] Func<string> exhibitoraddress2 = null, [WorkflowExpression] Func<string> exhibitorcity = null, [WorkflowExpression] Func<string> exhibitorcomments = null, [WorkflowExpression] Func<string> exhibitorcomments2 = null, [WorkflowExpression] Func<string> exhibitorcontact = null, [WorkflowExpression] Func<string> exhibitorcountry = null, [WorkflowExpression] Func<string> exhibitorcellPhone = null, [WorkflowExpression] Func<string> exhibitordisplayOnDrawing = null, [WorkflowExpression] Func<string> exhibitordoingBusinessAs = null, [WorkflowExpression] Func<string> exhibitordoingBusinessAsDisplayOnDrawing = null, [WorkflowExpression] Func<string> exhibitoremail = null, [WorkflowExpression] Func<string> exhibitorexhibitorName = null, [WorkflowExpression] Func<string> exhibitorexhibitorNameLine2 = null, [WorkflowExpression] Func<string> exhibitorfax = null, [WorkflowExpression] Func<string> exhibitorfield1 = null, [WorkflowExpression] Func<string> exhibitorfield2 = null, [WorkflowExpression] Func<string> exhibitorfield3 = null, [WorkflowExpression] Func<string> exhibitorfield4 = null, [WorkflowExpression] Func<string> exhibitorfield5 = null, [WorkflowExpression] Func<string> exhibitorfield6 = null, [WorkflowExpression] Func<string> exhibitorfield7 = null, [WorkflowExpression] Func<string> exhibitorfield8 = null, [WorkflowExpression] Func<string> exhibitorfield9 = null, [WorkflowExpression] Func<string> exhibitornickName = null, [WorkflowExpression] Func<string> exhibitorsalutation = null, [WorkflowExpression] Func<string> exhibitortitle = null, [WorkflowExpression] Func<string> exhibitorphone = null, [WorkflowExpression] Func<string> exhibitorpostalCode = null, [WorkflowExpression] Func<string> exhibitorprimaryGroup = null, [WorkflowExpression] Func<string> exhibitorpriorityPoints = null, [WorkflowExpression] Func<string> exhibitorproductDescription = null, [WorkflowExpression] Func<string> exhibitorstate = null, [WorkflowExpression] Func<string> exhibitorwebSite = null)
         {
-            var apiCallPath = String.Format("/{0}/exhibitors/update", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            var exhibitor = new JObject();
-            var exhibitorpropCount = 0;
-            if (exhibitoraddress1 != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                exhibitor["Address1"] = ExpressionConverter.ConvertO(exhibitoraddress1);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/update", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                var exhibitor = new JObject();
+                var exhibitorpropCount = 0;
+                if (exhibitoraddress1 != null)
+                {
+                    exhibitor["Address1"] = SourceExpressionConverter.ConvertToken(exhibitoraddress1);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitoraddress2 != null)
+                {
+                    exhibitor["Address2"] = SourceExpressionConverter.ConvertToken(exhibitoraddress2);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcity != null)
+                {
+                    exhibitor["City"] = SourceExpressionConverter.ConvertToken(exhibitorcity);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcomments != null)
+                {
+                    exhibitor["Comments"] = SourceExpressionConverter.ConvertToken(exhibitorcomments);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcomments2 != null)
+                {
+                    exhibitor["Comments2"] = SourceExpressionConverter.ConvertToken(exhibitorcomments2);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcontact != null)
+                {
+                    exhibitor["Contact"] = SourceExpressionConverter.ConvertToken(exhibitorcontact);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcountry != null)
+                {
+                    exhibitor["Country"] = SourceExpressionConverter.ConvertToken(exhibitorcountry);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorcellPhone != null)
+                {
+                    exhibitor["CellPhone"] = SourceExpressionConverter.ConvertToken(exhibitorcellPhone);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitordisplayOnDrawing != null)
+                {
+                    exhibitor["DisplayOnDrawing"] = SourceExpressionConverter.ConvertToken(exhibitordisplayOnDrawing);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitordoingBusinessAs != null)
+                {
+                    exhibitor["DoingBusinessAs"] = SourceExpressionConverter.ConvertToken(exhibitordoingBusinessAs);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitordoingBusinessAsDisplayOnDrawing != null)
+                {
+                    exhibitor["DoingBusinessAsDisplayOnDrawing"] = SourceExpressionConverter.ConvertToken(exhibitordoingBusinessAsDisplayOnDrawing);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitoremail != null)
+                {
+                    exhibitor["Email"] = SourceExpressionConverter.ConvertToken(exhibitoremail);
+                    exhibitorpropCount++;
+                }
+
                 exhibitorpropCount++;
+                exhibitor["ExhibitorId"] = SourceExpressionConverter.ConvertToken(exhibitorexhibitorId);
+                if (exhibitorexhibitorName != null)
+                {
+                    exhibitor["ExhibitorName"] = SourceExpressionConverter.ConvertToken(exhibitorexhibitorName);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorexhibitorNameLine2 != null)
+                {
+                    exhibitor["ExhibitorNameLine2"] = SourceExpressionConverter.ConvertToken(exhibitorexhibitorNameLine2);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfax != null)
+                {
+                    exhibitor["Fax"] = SourceExpressionConverter.ConvertToken(exhibitorfax);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield1 != null)
+                {
+                    exhibitor["Field1"] = SourceExpressionConverter.ConvertToken(exhibitorfield1);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield2 != null)
+                {
+                    exhibitor["Field2"] = SourceExpressionConverter.ConvertToken(exhibitorfield2);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield3 != null)
+                {
+                    exhibitor["Field3"] = SourceExpressionConverter.ConvertToken(exhibitorfield3);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield4 != null)
+                {
+                    exhibitor["Field4"] = SourceExpressionConverter.ConvertToken(exhibitorfield4);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield5 != null)
+                {
+                    exhibitor["Field5"] = SourceExpressionConverter.ConvertToken(exhibitorfield5);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield6 != null)
+                {
+                    exhibitor["Field6"] = SourceExpressionConverter.ConvertToken(exhibitorfield6);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield7 != null)
+                {
+                    exhibitor["Field7"] = SourceExpressionConverter.ConvertToken(exhibitorfield7);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield8 != null)
+                {
+                    exhibitor["Field8"] = SourceExpressionConverter.ConvertToken(exhibitorfield8);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorfield9 != null)
+                {
+                    exhibitor["Field9"] = SourceExpressionConverter.ConvertToken(exhibitorfield9);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitornickName != null)
+                {
+                    exhibitor["NickName"] = SourceExpressionConverter.ConvertToken(exhibitornickName);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorsalutation != null)
+                {
+                    exhibitor["Salutation"] = SourceExpressionConverter.ConvertToken(exhibitorsalutation);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitortitle != null)
+                {
+                    exhibitor["Title"] = SourceExpressionConverter.ConvertToken(exhibitortitle);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorphone != null)
+                {
+                    exhibitor["Phone"] = SourceExpressionConverter.ConvertToken(exhibitorphone);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorpostalCode != null)
+                {
+                    exhibitor["PostalCode"] = SourceExpressionConverter.ConvertToken(exhibitorpostalCode);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorprimaryGroup != null)
+                {
+                    exhibitor["PrimaryGroup"] = SourceExpressionConverter.ConvertToken(exhibitorprimaryGroup);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorpriorityPoints != null)
+                {
+                    exhibitor["PriorityPoints"] = SourceExpressionConverter.ConvertToken(exhibitorpriorityPoints);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorproductDescription != null)
+                {
+                    exhibitor["ProductDescription"] = SourceExpressionConverter.ConvertToken(exhibitorproductDescription);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorstate != null)
+                {
+                    exhibitor["State"] = SourceExpressionConverter.ConvertToken(exhibitorstate);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorwebSite != null)
+                {
+                    exhibitor["WebSite"] = SourceExpressionConverter.ConvertToken(exhibitorwebSite);
+                    exhibitorpropCount++;
+                }
+
+                if (exhibitorpropCount > 0)
+                {
+                    callPayload.Body = exhibitor;
+                }
+                return callPayload;
             }
 
-            if (exhibitoraddress2 != null)
-            {
-                exhibitor["Address2"] = ExpressionConverter.ConvertO(exhibitoraddress2);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcity != null)
-            {
-                exhibitor["City"] = ExpressionConverter.ConvertO(exhibitorcity);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcomments != null)
-            {
-                exhibitor["Comments"] = ExpressionConverter.ConvertO(exhibitorcomments);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcomments2 != null)
-            {
-                exhibitor["Comments2"] = ExpressionConverter.ConvertO(exhibitorcomments2);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcontact != null)
-            {
-                exhibitor["Contact"] = ExpressionConverter.ConvertO(exhibitorcontact);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcountry != null)
-            {
-                exhibitor["Country"] = ExpressionConverter.ConvertO(exhibitorcountry);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorcellPhone != null)
-            {
-                exhibitor["CellPhone"] = ExpressionConverter.ConvertO(exhibitorcellPhone);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitordisplayOnDrawing != null)
-            {
-                exhibitor["DisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitordisplayOnDrawing);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitordoingBusinessAs != null)
-            {
-                exhibitor["DoingBusinessAs"] = ExpressionConverter.ConvertO(exhibitordoingBusinessAs);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitordoingBusinessAsDisplayOnDrawing != null)
-            {
-                exhibitor["DoingBusinessAsDisplayOnDrawing"] = ExpressionConverter.ConvertO(exhibitordoingBusinessAsDisplayOnDrawing);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitoremail != null)
-            {
-                exhibitor["Email"] = ExpressionConverter.ConvertO(exhibitoremail);
-                exhibitorpropCount++;
-            }
-
-            exhibitorpropCount++;
-            exhibitor["ExhibitorId"] = ExpressionConverter.ConvertO(exhibitorexhibitorId);
-            if (exhibitorexhibitorName != null)
-            {
-                exhibitor["ExhibitorName"] = ExpressionConverter.ConvertO(exhibitorexhibitorName);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorexhibitorNameLine2 != null)
-            {
-                exhibitor["ExhibitorNameLine2"] = ExpressionConverter.ConvertO(exhibitorexhibitorNameLine2);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfax != null)
-            {
-                exhibitor["Fax"] = ExpressionConverter.ConvertO(exhibitorfax);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield1 != null)
-            {
-                exhibitor["Field1"] = ExpressionConverter.ConvertO(exhibitorfield1);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield2 != null)
-            {
-                exhibitor["Field2"] = ExpressionConverter.ConvertO(exhibitorfield2);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield3 != null)
-            {
-                exhibitor["Field3"] = ExpressionConverter.ConvertO(exhibitorfield3);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield4 != null)
-            {
-                exhibitor["Field4"] = ExpressionConverter.ConvertO(exhibitorfield4);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield5 != null)
-            {
-                exhibitor["Field5"] = ExpressionConverter.ConvertO(exhibitorfield5);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield6 != null)
-            {
-                exhibitor["Field6"] = ExpressionConverter.ConvertO(exhibitorfield6);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield7 != null)
-            {
-                exhibitor["Field7"] = ExpressionConverter.ConvertO(exhibitorfield7);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield8 != null)
-            {
-                exhibitor["Field8"] = ExpressionConverter.ConvertO(exhibitorfield8);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorfield9 != null)
-            {
-                exhibitor["Field9"] = ExpressionConverter.ConvertO(exhibitorfield9);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitornickName != null)
-            {
-                exhibitor["NickName"] = ExpressionConverter.ConvertO(exhibitornickName);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorsalutation != null)
-            {
-                exhibitor["Salutation"] = ExpressionConverter.ConvertO(exhibitorsalutation);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitortitle != null)
-            {
-                exhibitor["Title"] = ExpressionConverter.ConvertO(exhibitortitle);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorphone != null)
-            {
-                exhibitor["Phone"] = ExpressionConverter.ConvertO(exhibitorphone);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorpostalCode != null)
-            {
-                exhibitor["PostalCode"] = ExpressionConverter.ConvertO(exhibitorpostalCode);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorprimaryGroup != null)
-            {
-                exhibitor["PrimaryGroup"] = ExpressionConverter.ConvertO(exhibitorprimaryGroup);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorpriorityPoints != null)
-            {
-                exhibitor["PriorityPoints"] = ExpressionConverter.ConvertO(exhibitorpriorityPoints);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorproductDescription != null)
-            {
-                exhibitor["ProductDescription"] = ExpressionConverter.ConvertO(exhibitorproductDescription);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorstate != null)
-            {
-                exhibitor["State"] = ExpressionConverter.ConvertO(exhibitorstate);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorwebSite != null)
-            {
-                exhibitor["WebSite"] = ExpressionConverter.ConvertO(exhibitorwebSite);
-                exhibitorpropCount++;
-            }
-
-            if (exhibitorpropCount > 0)
-            {
-                callPayload.Body = exhibitor;
-            }
-
-            return new ApiConnectionAction<Exhibitor>(callPayload);
+            return new ApiConnectionAction<Exhibitor>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> ExhibitorsDeleteExhibitor(Expression<Func<string>> clientName, Expression<Func<string>> id, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<JToken> ExhibitorsDeleteExhibitor([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> databaseName)
         {
-            var apiCallPath = String.Format("/{0}/exhibitors/delete", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Transaction[]> FinancialsGetAllTransactions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> boothNumber = null, Expression<Func<string>> expocadUser = null, Expression<Func<string>> glCode = null, Expression<Func<reversedFilterInput>> reversedFilter = null)
-        {
-            var apiCallPath = String.Format("/{0}/financials/transactions", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (exhibitorId != null)
-                callPayload.Queries["exhibitorId"] = ExpressionConverter.Convert(exhibitorId);
-            if (boothNumber != null)
-                callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            if (expocadUser != null)
-                callPayload.Queries["expocadUser"] = ExpressionConverter.Convert(expocadUser);
-            if (glCode != null)
-                callPayload.Queries["glCode"] = ExpressionConverter.Convert(glCode);
-            if (reversedFilter != null)
-                callPayload.Queries["reversedFilter"] = ExpressionConverter.Convert(reversedFilter);
-            return new ApiConnectionAction<Transaction[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<BoothFinancial> FinancialsGet(Expression<Func<string>> clientName, Expression<Func<string>> boothNumber, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/financials/booths", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boothNumber"] = ExpressionConverter.Convert(boothNumber);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<BoothFinancial>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Invoice> FinancialsGetInvoice(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> invoiceNo = null, Expression<Func<string>> exhibitorId = null)
-        {
-            var apiCallPath = String.Format("/{0}/financials/invoices", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (invoiceNo != null)
-                callPayload.Queries["invoiceNo"] = ExpressionConverter.Convert(invoiceNo);
-            if (exhibitorId != null)
-                callPayload.Queries["exhibitorId"] = ExpressionConverter.Convert(exhibitorId);
-            return new ApiConnectionAction<Invoice>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Invoice[]> FinancialsGetAllInvoices(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/financials/invoices/all", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<Invoice[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<MasterRequestItem[]> FinancialsGetRequestItemList(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> glCode = null, Expression<Func<string>> transactionCode = null)
-        {
-            var apiCallPath = String.Format("/{0}/financials/requestitemlist", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (glCode != null)
-                callPayload.Queries["glCode"] = ExpressionConverter.Convert(glCode);
-            if (transactionCode != null)
-                callPayload.Queries["transactionCode"] = ExpressionConverter.Convert(transactionCode);
-            return new ApiConnectionAction<MasterRequestItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<InvoiceRequestItem[]> FinancialsGetAssignedRequestItems(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> booth = null, Expression<Func<string>> glCode = null, Expression<Func<string>> transactionCode = null)
-        {
-            var apiCallPath = String.Format("/{0}/financials/requestitems", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (exhibitorId != null)
-                callPayload.Queries["exhibitorId"] = ExpressionConverter.Convert(exhibitorId);
-            if (invoiceNumber != null)
-                callPayload.Queries["invoiceNumber"] = ExpressionConverter.Convert(invoiceNumber);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (booth != null)
-                callPayload.Queries["booth"] = ExpressionConverter.Convert(booth);
-            if (glCode != null)
-                callPayload.Queries["glCode"] = ExpressionConverter.Convert(glCode);
-            if (transactionCode != null)
-                callPayload.Queries["transactionCode"] = ExpressionConverter.Convert(transactionCode);
-            return new ApiConnectionAction<InvoiceRequestItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<PaymentTypeItem[]> FinancialsGetPaymentTypeList(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/financials/paymenttypelist", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<PaymentTypeItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<InvoicePayment[]> FinancialsGetPayments(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> exhibitorId = null, Expression<Func<string>> depositId = null, Expression<Func<string>> invoiceNumber = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> paymentTypeCategory = null)
-        {
-            var apiCallPath = String.Format("/{0}/financials/payments", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            if (exhibitorId != null)
-                callPayload.Queries["ExhibitorId"] = ExpressionConverter.Convert(exhibitorId);
-            if (depositId != null)
-                callPayload.Queries["DepositId"] = ExpressionConverter.Convert(depositId);
-            if (invoiceNumber != null)
-                callPayload.Queries["InvoiceNumber"] = ExpressionConverter.Convert(invoiceNumber);
-            if (startDate != null)
-                callPayload.Queries["StartDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["EndDate"] = ExpressionConverter.Convert(endDate);
-            if (paymentTypeCategory != null)
-                callPayload.Queries["PaymentTypeCategory"] = ExpressionConverter.Convert(paymentTypeCategory);
-            return new ApiConnectionAction<InvoicePayment[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<Pavilion[]> PavilionsGetAllPavilions(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/pavilions/all", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<Pavilion[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan> RatePlansGetDefaultRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/rateplans/default", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<RatePlan>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<JToken> RatePlansSetDefaultRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> name)
-        {
-            var apiCallPath = String.Format("/{0}/rateplans/default", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan[]> RatePlansGetAllRatePlans(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
-        {
-            var apiCallPath = String.Format("/{0}/rateplans/all", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<RatePlan[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<RatePlan> RatePlansAddRatePlan(Expression<Func<string>> clientName, Expression<Func<string>> databaseName, Expression<Func<string>> ratePlanname, Expression<Func<string>> ratePlanshortCode, Expression<Func<double>> ratePlangrossRate, Expression<Func<double>> ratePlanfixedDiscountRate, Expression<Func<double>> ratePlanpercentDiscountRate, Expression<Func<bool>> ratePlanisFixed)
-        {
-            var apiCallPath = String.Format("/{0}/rateplans/add", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            var ratePlan = new JObject();
-            var ratePlanpropCount = 0;
-            ratePlanpropCount++;
-            ratePlan["Name"] = ExpressionConverter.ConvertO(ratePlanname);
-            ratePlanpropCount++;
-            ratePlan["ShortCode"] = ExpressionConverter.ConvertO(ratePlanshortCode);
-            ratePlanpropCount++;
-            ratePlan["GrossRate"] = ExpressionConverter.ConvertO(ratePlangrossRate);
-            ratePlanpropCount++;
-            ratePlan["FixedDiscountRate"] = ExpressionConverter.ConvertO(ratePlanfixedDiscountRate);
-            ratePlanpropCount++;
-            ratePlan["PercentDiscountRate"] = ExpressionConverter.ConvertO(ratePlanpercentDiscountRate);
-            ratePlanpropCount++;
-            ratePlan["IsFixed"] = ExpressionConverter.ConvertO(ratePlanisFixed);
-            if (ratePlanpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = ratePlan;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/exhibitors/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<RatePlan>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
-        public IBodyWorkflowAction<ShowInShow[]> ShowInShowsGetAllShowinShows(Expression<Func<string>> clientName, Expression<Func<string>> databaseName)
+        public IBodyWorkflowAction<Transaction[]> FinancialsGetAllTransactions([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> exhibitorId = null, [WorkflowExpression] Func<string> boothNumber = null, [WorkflowExpression] Func<string> expocadUser = null, [WorkflowExpression] Func<string> glCode = null, [WorkflowExpression] Func<reversedFilterInput> reversedFilter = null)
         {
-            var apiCallPath = String.Format("/{0}/showinshows/all", ExpressionConverter.ConvertWithUrlEncoding(clientName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["databaseName"] = ExpressionConverter.Convert(databaseName);
-            return new ApiConnectionAction<ShowInShow[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/transactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (exhibitorId != null)
+                    callPayload.Queries["exhibitorId"] = SourceExpressionConverter.ConvertO(exhibitorId);
+                if (boothNumber != null)
+                    callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                if (expocadUser != null)
+                    callPayload.Queries["expocadUser"] = SourceExpressionConverter.ConvertO(expocadUser);
+                if (glCode != null)
+                    callPayload.Queries["glCode"] = SourceExpressionConverter.ConvertO(glCode);
+                if (reversedFilter != null)
+                    callPayload.Queries["reversedFilter"] = SourceExpressionConverter.Convert(reversedFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Transaction[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<BoothFinancial> FinancialsGet([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> boothNumber, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/booths", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boothNumber"] = SourceExpressionConverter.ConvertO(boothNumber);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BoothFinancial>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<Invoice> FinancialsGetInvoice([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> invoiceNo = null, [WorkflowExpression] Func<string> exhibitorId = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/invoices", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (invoiceNo != null)
+                    callPayload.Queries["invoiceNo"] = SourceExpressionConverter.ConvertO(invoiceNo);
+                if (exhibitorId != null)
+                    callPayload.Queries["exhibitorId"] = SourceExpressionConverter.ConvertO(exhibitorId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Invoice>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<Invoice[]> FinancialsGetAllInvoices([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/invoices/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Invoice[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<MasterRequestItem[]> FinancialsGetRequestItemList([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> glCode = null, [WorkflowExpression] Func<string> transactionCode = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/requestitemlist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (glCode != null)
+                    callPayload.Queries["glCode"] = SourceExpressionConverter.ConvertO(glCode);
+                if (transactionCode != null)
+                    callPayload.Queries["transactionCode"] = SourceExpressionConverter.ConvertO(transactionCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MasterRequestItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<InvoiceRequestItem[]> FinancialsGetAssignedRequestItems([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitorId = null, [WorkflowExpression] Func<string> invoiceNumber = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> booth = null, [WorkflowExpression] Func<string> glCode = null, [WorkflowExpression] Func<string> transactionCode = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/requestitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (exhibitorId != null)
+                    callPayload.Queries["exhibitorId"] = SourceExpressionConverter.ConvertO(exhibitorId);
+                if (invoiceNumber != null)
+                    callPayload.Queries["invoiceNumber"] = SourceExpressionConverter.ConvertO(invoiceNumber);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (booth != null)
+                    callPayload.Queries["booth"] = SourceExpressionConverter.ConvertO(booth);
+                if (glCode != null)
+                    callPayload.Queries["glCode"] = SourceExpressionConverter.ConvertO(glCode);
+                if (transactionCode != null)
+                    callPayload.Queries["transactionCode"] = SourceExpressionConverter.ConvertO(transactionCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<InvoiceRequestItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<PaymentTypeItem[]> FinancialsGetPaymentTypeList([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/paymenttypelist", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PaymentTypeItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<InvoicePayment[]> FinancialsGetPayments([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> exhibitorId = null, [WorkflowExpression] Func<string> depositId = null, [WorkflowExpression] Func<string> invoiceNumber = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> paymentTypeCategory = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/financials/payments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                if (exhibitorId != null)
+                    callPayload.Queries["ExhibitorId"] = SourceExpressionConverter.ConvertO(exhibitorId);
+                if (depositId != null)
+                    callPayload.Queries["DepositId"] = SourceExpressionConverter.ConvertO(depositId);
+                if (invoiceNumber != null)
+                    callPayload.Queries["InvoiceNumber"] = SourceExpressionConverter.ConvertO(invoiceNumber);
+                if (startDate != null)
+                    callPayload.Queries["StartDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["EndDate"] = SourceExpressionConverter.ConvertO(endDate);
+                if (paymentTypeCategory != null)
+                    callPayload.Queries["PaymentTypeCategory"] = SourceExpressionConverter.ConvertO(paymentTypeCategory);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<InvoicePayment[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<Pavilion[]> PavilionsGetAllPavilions([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/pavilions/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Pavilion[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<RatePlan> RatePlansGetDefaultRatePlan([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/default", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RatePlan>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<JToken> RatePlansSetDefaultRatePlan([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> name)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/default", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<RatePlan[]> RatePlansGetAllRatePlans([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RatePlan[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<RatePlan> RatePlansAddRatePlan([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName, [WorkflowExpression] Func<string> ratePlanname, [WorkflowExpression] Func<string> ratePlanshortCode, [WorkflowExpression] Func<double> ratePlangrossRate, [WorkflowExpression] Func<double> ratePlanfixedDiscountRate, [WorkflowExpression] Func<double> ratePlanpercentDiscountRate, [WorkflowExpression] Func<bool> ratePlanisFixed)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/rateplans/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                var ratePlan = new JObject();
+                var ratePlanpropCount = 0;
+                ratePlanpropCount++;
+                ratePlan["Name"] = SourceExpressionConverter.ConvertToken(ratePlanname);
+                ratePlanpropCount++;
+                ratePlan["ShortCode"] = SourceExpressionConverter.ConvertToken(ratePlanshortCode);
+                ratePlanpropCount++;
+                ratePlan["GrossRate"] = SourceExpressionConverter.ConvertToken(ratePlangrossRate);
+                ratePlanpropCount++;
+                ratePlan["FixedDiscountRate"] = SourceExpressionConverter.ConvertToken(ratePlanfixedDiscountRate);
+                ratePlanpropCount++;
+                ratePlan["PercentDiscountRate"] = SourceExpressionConverter.ConvertToken(ratePlanpercentDiscountRate);
+                ratePlanpropCount++;
+                ratePlan["IsFixed"] = SourceExpressionConverter.ConvertToken(ratePlanisFixed);
+                if (ratePlanpropCount > 0)
+                {
+                    callPayload.Body = ratePlan;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RatePlan>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "expocad")]
+        public IBodyWorkflowAction<ShowInShow[]> ShowInShowsGetAllShowinShows([WorkflowExpression] Func<string> clientName, [WorkflowExpression] Func<string> databaseName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/showinshows/all", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(clientName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["databaseName"] = SourceExpressionConverter.ConvertO(databaseName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ShowInShow[]>(BuildSourceInput);
         }
     }
 

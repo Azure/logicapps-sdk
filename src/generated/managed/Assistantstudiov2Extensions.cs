@@ -12,54 +12,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assistantstudiov2
     public class Assistantstudiov2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        public IWorkflowAction CreateActionCard(Expression<Func<string>> organization, Expression<Func<string>> bodycardname, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydescription, Expression<Func<object>> bodydynamicproperties, Expression<Func<string>> actiontype, Expression<Func<string>> secondaryactiontype = null, Expression<Func<string>> regardingobjecttype = null, Expression<Func<string>> regardingobjectid = null, Expression<Func<string>> ownerid = null, Expression<Func<string>> startdate = null, Expression<Func<string>> expirydate = null)
+        public IWorkflowAction CreateActionCard([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> bodycardname, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<object> bodydynamicproperties, [WorkflowExpression] Func<string> actiontype, [WorkflowExpression] Func<string> secondaryactiontype = null, [WorkflowExpression] Func<string> regardingobjecttype = null, [WorkflowExpression] Func<string> regardingobjectid = null, [WorkflowExpression] Func<string> ownerid = null, [WorkflowExpression] Func<string> startdate = null, [WorkflowExpression] Func<string> expirydate = null)
         {
-            var apiCallPath = "/api/data/v9.0/msdyn_ActionCardCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Headers["actiontype"] = ExpressionConverter.Convert(actiontype);
-            if (secondaryactiontype != null)
-                callPayload.Headers["secondaryactiontype"] = ExpressionConverter.Convert(secondaryactiontype);
-            if (regardingobjecttype != null)
-                callPayload.Headers["regardingobjecttype"] = ExpressionConverter.Convert(regardingobjecttype);
-            if (regardingobjectid != null)
-                callPayload.Headers["regardingobjectid"] = ExpressionConverter.Convert(regardingobjectid);
-            if (ownerid != null)
-                callPayload.Headers["ownerid"] = ExpressionConverter.Convert(ownerid);
-            if (startdate != null)
-                callPayload.Headers["startdate"] = ExpressionConverter.Convert(startdate);
-            if (expirydate != null)
-                callPayload.Headers["expirydate"] = ExpressionConverter.Convert(expirydate);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["cardname"] = ExpressionConverter.ConvertO(bodycardname);
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
-            bodypropCount++;
-            body["dynamicproperties"] = ExpressionConverter.ConvertO(bodydynamicproperties);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/data/v9.0/msdyn_ActionCardCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["organization"] = SourceExpressionConverter.ConvertO(organization);
+                callPayload.Headers["actiontype"] = SourceExpressionConverter.ConvertO(actiontype);
+                if (secondaryactiontype != null)
+                    callPayload.Headers["secondaryactiontype"] = SourceExpressionConverter.ConvertO(secondaryactiontype);
+                if (regardingobjecttype != null)
+                    callPayload.Headers["regardingobjecttype"] = SourceExpressionConverter.ConvertO(regardingobjecttype);
+                if (regardingobjectid != null)
+                    callPayload.Headers["regardingobjectid"] = SourceExpressionConverter.ConvertO(regardingobjectid);
+                if (ownerid != null)
+                    callPayload.Headers["ownerid"] = SourceExpressionConverter.ConvertO(ownerid);
+                if (startdate != null)
+                    callPayload.Headers["startdate"] = SourceExpressionConverter.ConvertO(startdate);
+                if (expirydate != null)
+                    callPayload.Headers["expirydate"] = SourceExpressionConverter.ConvertO(expirydate);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["cardname"] = SourceExpressionConverter.ConvertToken(bodycardname);
+                bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                bodypropCount++;
+                body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                bodypropCount++;
+                body["dynamicproperties"] = SourceExpressionConverter.ConvertToken(bodydynamicproperties);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assistantstudiov2")]
-        public IBodyWorkflowAction<string> CreateCustomActionDefinition(Expression<Func<string>> organization, Expression<Func<string>> entityname, Expression<Func<string>> customaction, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<string> CreateCustomActionDefinition([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> entityname, [WorkflowExpression] Func<string> customaction, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/data/v9.0/msdyn_CreateCustomActionDefinition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["organization"] = ExpressionConverter.Convert(organization);
-            callPayload.Headers["entityname"] = ExpressionConverter.Convert(entityname);
-            callPayload.Headers["customaction"] = ExpressionConverter.Convert(customaction);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/data/v9.0/msdyn_CreateCustomActionDefinition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["organization"] = SourceExpressionConverter.ConvertO(organization);
+                callPayload.Headers["entityname"] = SourceExpressionConverter.ConvertO(entityname);
+                callPayload.Headers["customaction"] = SourceExpressionConverter.ConvertO(customaction);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

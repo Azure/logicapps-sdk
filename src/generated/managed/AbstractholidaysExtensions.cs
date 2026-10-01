@@ -12,19 +12,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
     public class AbstractholidaysActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractholidays")]
-        public IBodyWorkflowAction<ListHolidaysResponseItem[]> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year = null, Expression<Func<string>> month = null, Expression<Func<string>> day = null)
+        public IBodyWorkflowAction<ListHolidaysResponseItem[]> ListHolidays([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> day = null)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            if (day != null)
-                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-            return new ApiConnectionAction<ListHolidaysResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                if (year != null)
+                    callPayload.Queries["year"] = SourceExpressionConverter.ConvertO(year);
+                if (month != null)
+                    callPayload.Queries["month"] = SourceExpressionConverter.ConvertO(month);
+                if (day != null)
+                    callPayload.Queries["day"] = SourceExpressionConverter.ConvertO(day);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListHolidaysResponseItem[]>(BuildSourceInput);
         }
     }
 

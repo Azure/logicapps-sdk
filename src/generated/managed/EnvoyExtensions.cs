@@ -15,27 +15,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
 
     public class EnvoyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InviteCreated(Expression<Func<string>> bodytoken = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InviteCreated([WorkflowExpression] Func<string> bodytoken = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/register-invite-created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytoken != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["token"] = ExpressionConverter.ConvertO(bodytoken);
+                var apiCallPath = "/register-invite-created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytoken != null)
+                {
+                    body["token"] = SourceExpressionConverter.ConvertToken(bodytoken);
+                    bodypropCount++;
+                }
+
+                body["callback-url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["callback-url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

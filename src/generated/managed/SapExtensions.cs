@@ -12,438 +12,540 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     public class SapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> AddRfcToTransaction(Expression<Func<string>> rfcName, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<RfcTransactionDetails> AddRfcToTransaction([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = "/AddRfcToTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
-            if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
-            callPayload.Queries["autoCommit"] = Convert.ToString(false);
-            if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AddRfcToTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["rfcName"] = SourceExpressionConverter.ConvertO(rfcName);
+                if (rfcGroupFilter != null)
+                    callPayload.Queries["rfcGroupFilter"] = SourceExpressionConverter.ConvertO(rfcGroupFilter);
+                callPayload.Queries["autoCommit"] = Convert.ToString(false);
+                if (autoCommit != null)
+                    callPayload.Queries["autoCommit"] = SourceExpressionConverter.ConvertO(autoCommit);
+                if (tId != null)
+                    callPayload.Queries["tId"] = SourceExpressionConverter.ConvertO(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = SourceExpressionConverter.ConvertO(queueName);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RfcTransactionDetails>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CallBapiResponse> CallBapi(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<CallBapiResponse> CallBapi([WorkflowExpression] Func<string> businessObject, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = "/CallBapi";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["businessObject"] = ExpressionConverter.Convert(businessObject);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Queries["autoCommit"] = Convert.ToString(true);
-            if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CallBapiResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/CallBapi";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["businessObject"] = SourceExpressionConverter.ConvertO(businessObject);
+                callPayload.Queries["method"] = SourceExpressionConverter.ConvertO(method);
+                callPayload.Queries["autoCommit"] = Convert.ToString(true);
+                if (autoCommit != null)
+                    callPayload.Queries["autoCommit"] = SourceExpressionConverter.ConvertO(autoCommit);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallBapiResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CallRfcResponse> CallRfc(Expression<Func<string>> rfcName, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<CallRfcResponse> CallRfc([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = "/CallRfc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
-            if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
-            callPayload.Queries["autoCommit"] = Convert.ToString(false);
-            if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CallRfcResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/CallRfc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["rfcName"] = SourceExpressionConverter.ConvertO(rfcName);
+                if (rfcGroupFilter != null)
+                    callPayload.Queries["rfcGroupFilter"] = SourceExpressionConverter.ConvertO(rfcGroupFilter);
+                callPayload.Queries["autoCommit"] = Convert.ToString(false);
+                if (autoCommit != null)
+                    callPayload.Queries["autoCommit"] = SourceExpressionConverter.ConvertO(autoCommit);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = SourceExpressionConverter.ConvertO(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = SourceExpressionConverter.ConvertO(queueName);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallRfcResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CallRfc3(Expression<Func<string>> rfcName, Expression<Func<object>> rfcInputs = null, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<inputFormatInput>> inputFormat = null, Expression<Func<returnFormatInput>> returnFormat = null)
+        public IBodyWorkflowAction<JToken> CallRfc3([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<object> rfcInputs = null, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<inputFormatInput> inputFormat = null, [WorkflowExpression] Func<returnFormatInput> returnFormat = null)
         {
-            var apiCallPath = "/CallRfc3";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
-            if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
-            callPayload.Queries["autoCommit"] = Convert.ToString(false);
-            if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            callPayload.Queries["inputFormat"] = Convert.ToString("Json");
-            if (inputFormat != null)
-                callPayload.Queries["inputFormat"] = ExpressionConverter.Convert(inputFormat);
-            callPayload.Queries["returnFormat"] = Convert.ToString("Json");
-            if (returnFormat != null)
-                callPayload.Queries["returnFormat"] = ExpressionConverter.Convert(returnFormat);
-            callPayload.Body = ExpressionConverter.ConvertO(rfcInputs);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/CallRfc3";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["rfcName"] = SourceExpressionConverter.ConvertO(rfcName);
+                if (rfcGroupFilter != null)
+                    callPayload.Queries["rfcGroupFilter"] = SourceExpressionConverter.ConvertO(rfcGroupFilter);
+                callPayload.Queries["autoCommit"] = Convert.ToString(false);
+                if (autoCommit != null)
+                    callPayload.Queries["autoCommit"] = SourceExpressionConverter.ConvertO(autoCommit);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = SourceExpressionConverter.ConvertO(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = SourceExpressionConverter.ConvertO(queueName);
+                callPayload.Queries["inputFormat"] = Convert.ToString("Json");
+                if (inputFormat != null)
+                    callPayload.Queries["inputFormat"] = SourceExpressionConverter.Convert(inputFormat);
+                callPayload.Queries["returnFormat"] = Convert.ToString("Json");
+                if (returnFormat != null)
+                    callPayload.Queries["returnFormat"] = SourceExpressionConverter.Convert(returnFormat);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(rfcInputs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CloseSession(Expression<Func<string>> sessionId)
+        public IBodyWorkflowAction<JToken> CloseSession([WorkflowExpression] Func<string> sessionId)
         {
-            var apiCallPath = "/CloseSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/CloseSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiRet2> CommitBapiTransaction(Expression<Func<string>> sessionId, Expression<Func<bool>> wait = null, Expression<Func<bool>> closeSession = null)
+        public IBodyWorkflowAction<BapiRet2> CommitBapiTransaction([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> wait = null, [WorkflowExpression] Func<bool> closeSession = null)
         {
-            var apiCallPath = "/CommitBapiTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["wait"] = Convert.ToString(false);
-            if (wait != null)
-                callPayload.Queries["wait"] = ExpressionConverter.Convert(wait);
-            callPayload.Queries["closeSession"] = Convert.ToString(true);
-            if (closeSession != null)
-                callPayload.Queries["closeSession"] = ExpressionConverter.Convert(closeSession);
-            return new ApiConnectionAction<BapiRet2>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/CommitBapiTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                callPayload.Queries["wait"] = Convert.ToString(false);
+                if (wait != null)
+                    callPayload.Queries["wait"] = SourceExpressionConverter.ConvertO(wait);
+                callPayload.Queries["closeSession"] = Convert.ToString(true);
+                if (closeSession != null)
+                    callPayload.Queries["closeSession"] = SourceExpressionConverter.ConvertO(closeSession);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BapiRet2>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CommitRfcTransaction(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
+        public IBodyWorkflowAction<JToken> CommitRfcTransaction([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
         {
-            var apiCallPath = "/CommitRfcTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/CommitRfcTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = SourceExpressionConverter.ConvertO(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = SourceExpressionConverter.ConvertO(queueName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> ConfirmTid(Expression<Func<string>> tid)
+        public IBodyWorkflowAction<JToken> ConfirmTid([WorkflowExpression] Func<string> tid)
         {
-            var apiCallPath = "/ConfirmTid";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ConfirmTid";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tid"] = SourceExpressionConverter.ConvertO(tid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> CreateRfcTransaction(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
+        public IBodyWorkflowAction<RfcTransactionDetails> CreateRfcTransaction([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
         {
-            var apiCallPath = "/CreateRfcTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/CreateRfcTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = SourceExpressionConverter.ConvertO(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = SourceExpressionConverter.ConvertO(queueName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RfcTransactionDetails>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
         public IBodyWorkflowAction<CreateSessionResponse> CreateSession()
         {
-            var apiCallPath = "/CreateSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CreateSessionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse> GenerateSchemas(Expression<Func<string[]>> sapActionUris = null, Expression<Func<string>> fileNamePrefix = null)
-        {
-            var apiCallPath = "/GenerateSchemas";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileNamePrefix"] = Convert.ToString("");
-            if (fileNamePrefix != null)
-                callPayload.Queries["fileNamePrefix"] = ExpressionConverter.Convert(fileNamePrefix);
-            callPayload.Body = ExpressionConverter.ConvertO(sapActionUris);
-            return new ApiConnectionAction<SapConnectorGenerateSchemasResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<IdocStatusResponse> GetIdocStatus(Expression<Func<int>> idocNumber)
-        {
-            var apiCallPath = "/GetIdocStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idocNumber"] = ExpressionConverter.Convert(idocNumber);
-            return new ApiConnectionAction<IdocStatusResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> GetTransactionDetails(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
-        {
-            var apiCallPath = "/GetTransactionDetails";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<IdocNumbersList> GetTransactionIdocs(Expression<Func<directionInput>> direction, Expression<Func<string>> tId)
-        {
-            var apiCallPath = "/GetTransactionIdocs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["direction"] = ExpressionConverter.Convert(direction);
-            callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            return new ApiConnectionAction<IdocNumbersList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<ReadTableResponse> ReadTableVersion2(Expression<Func<string>> inputParameterstableName, Expression<Func<string[]>> inputParametersfieldsToRead = null, Expression<Func<string[]>> inputParameterswhereFilters = null, Expression<Func<int>> inputParametersstartingRowIndex = null, Expression<Func<int>> inputParameterscountOfRowsToRead = null, Expression<Func<string>> inputParametersfieldDelimiter = null)
-        {
-            var apiCallPath = "/ReadTableVersion2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputParameters = new JObject();
-            var inputParameterspropCount = 0;
-            inputParameterspropCount++;
-            inputParameters["tableName"] = ExpressionConverter.ConvertO(inputParameterstableName);
-            if (inputParametersfieldsToRead != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputParameters["FieldNames"] = ExpressionConverter.ConvertO(inputParametersfieldsToRead);
+                var apiCallPath = "/CreateSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateSessionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse> GenerateSchemas([WorkflowExpression] Func<string[]> sapActionUris = null, [WorkflowExpression] Func<string> fileNamePrefix = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GenerateSchemas";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileNamePrefix"] = Convert.ToString("");
+                if (fileNamePrefix != null)
+                    callPayload.Queries["fileNamePrefix"] = SourceExpressionConverter.ConvertO(fileNamePrefix);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(sapActionUris);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SapConnectorGenerateSchemasResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        public IBodyWorkflowAction<IdocStatusResponse> GetIdocStatus([WorkflowExpression] Func<int> idocNumber)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GetIdocStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["idocNumber"] = SourceExpressionConverter.ConvertO(idocNumber);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IdocStatusResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        public IBodyWorkflowAction<RfcTransactionDetails> GetTransactionDetails([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GetTransactionDetails";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = SourceExpressionConverter.ConvertO(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = SourceExpressionConverter.ConvertO(queueName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RfcTransactionDetails>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        public IBodyWorkflowAction<IdocNumbersList> GetTransactionIdocs([WorkflowExpression] Func<directionInput> direction, [WorkflowExpression] Func<string> tId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GetTransactionIdocs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["direction"] = SourceExpressionConverter.Convert(direction);
+                callPayload.Queries["tId"] = SourceExpressionConverter.ConvertO(tId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IdocNumbersList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        public IBodyWorkflowAction<ReadTableResponse> ReadTableVersion2([WorkflowExpression] Func<string> inputParameterstableName, [WorkflowExpression] Func<string[]> inputParametersfieldsToRead = null, [WorkflowExpression] Func<string[]> inputParameterswhereFilters = null, [WorkflowExpression] Func<int> inputParametersstartingRowIndex = null, [WorkflowExpression] Func<int> inputParameterscountOfRowsToRead = null, [WorkflowExpression] Func<string> inputParametersfieldDelimiter = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ReadTableVersion2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputParameters = new JObject();
+                var inputParameterspropCount = 0;
                 inputParameterspropCount++;
+                inputParameters["tableName"] = SourceExpressionConverter.ConvertToken(inputParameterstableName);
+                if (inputParametersfieldsToRead != null)
+                {
+                    inputParameters["FieldNames"] = SourceExpressionConverter.ConvertToken(inputParametersfieldsToRead);
+                    inputParameterspropCount++;
+                }
+
+                if (inputParameterswhereFilters != null)
+                {
+                    inputParameters["WhereFilters"] = SourceExpressionConverter.ConvertToken(inputParameterswhereFilters);
+                    inputParameterspropCount++;
+                }
+
+                if (inputParametersstartingRowIndex != null)
+                {
+                    inputParameters["StartIndex"] = SourceExpressionConverter.ConvertToken(inputParametersstartingRowIndex);
+                    inputParameterspropCount++;
+                }
+
+                if (inputParameterscountOfRowsToRead != null)
+                {
+                    inputParameters["RowCount"] = SourceExpressionConverter.ConvertToken(inputParameterscountOfRowsToRead);
+                    inputParameterspropCount++;
+                }
+
+                if (inputParametersfieldDelimiter != null)
+                {
+                    inputParameters["Delimiter"] = SourceExpressionConverter.ConvertToken(inputParametersfieldDelimiter);
+                    inputParameterspropCount++;
+                }
+
+                if (inputParameterspropCount > 0)
+                {
+                    callPayload.Body = inputParameters;
+                }
+                return callPayload;
             }
 
-            if (inputParameterswhereFilters != null)
-            {
-                inputParameters["WhereFilters"] = ExpressionConverter.ConvertO(inputParameterswhereFilters);
-                inputParameterspropCount++;
-            }
-
-            if (inputParametersstartingRowIndex != null)
-            {
-                inputParameters["StartIndex"] = ExpressionConverter.ConvertO(inputParametersstartingRowIndex);
-                inputParameterspropCount++;
-            }
-
-            if (inputParameterscountOfRowsToRead != null)
-            {
-                inputParameters["RowCount"] = ExpressionConverter.ConvertO(inputParameterscountOfRowsToRead);
-                inputParameterspropCount++;
-            }
-
-            if (inputParametersfieldDelimiter != null)
-            {
-                inputParameters["Delimiter"] = ExpressionConverter.ConvertO(inputParametersfieldDelimiter);
-                inputParameterspropCount++;
-            }
-
-            if (inputParameterspropCount > 0)
-            {
-                callPayload.Body = inputParameters;
-            }
-
-            return new ApiConnectionAction<ReadTableResponse>(callPayload);
+            return new ApiConnectionAction<ReadTableResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiRet2> RollbackBapiTransaction(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession = null)
+        public IBodyWorkflowAction<BapiRet2> RollbackBapiTransaction([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> closeSession = null)
         {
-            var apiCallPath = "/RollbackBapiTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["closeSession"] = Convert.ToString(true);
-            if (closeSession != null)
-                callPayload.Queries["closeSession"] = ExpressionConverter.Convert(closeSession);
-            return new ApiConnectionAction<BapiRet2>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/RollbackBapiTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                callPayload.Queries["closeSession"] = Convert.ToString(true);
+                if (closeSession != null)
+                    callPayload.Queries["closeSession"] = SourceExpressionConverter.ConvertO(closeSession);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BapiRet2>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> Send(Expression<Func<string>> sapAction, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<JToken> Send([WorkflowExpression] Func<string> sapAction, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = "/Send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sapAction"] = ExpressionConverter.Convert(sapAction);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sapAction"] = SourceExpressionConverter.ConvertO(sapAction);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIdocResponse> SendIDoc(Expression<Func<string>> idocType, Expression<Func<string>> releaseVersion = null, Expression<Func<recordTypesVersionInput>> recordTypesVersion = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<SendIdocResponse> SendIDoc([WorkflowExpression] Func<string> idocType, [WorkflowExpression] Func<string> releaseVersion = null, [WorkflowExpression] Func<recordTypesVersionInput> recordTypesVersion = null, [WorkflowExpression] Func<bool> confirmTid = null, [WorkflowExpression] Func<string> tid = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = "/SendIDoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idocType"] = ExpressionConverter.Convert(idocType);
-            callPayload.Queries["releaseVersion"] = Convert.ToString("");
-            if (releaseVersion != null)
-                callPayload.Queries["releaseVersion"] = ExpressionConverter.Convert(releaseVersion);
-            callPayload.Queries["recordTypesVersion"] = Convert.ToString("3");
-            if (recordTypesVersion != null)
-                callPayload.Queries["recordTypesVersion"] = ExpressionConverter.Convert(recordTypesVersion);
-            callPayload.Queries["confirmTid"] = Convert.ToString(false);
-            if (confirmTid != null)
-                callPayload.Queries["confirmTid"] = ExpressionConverter.Convert(confirmTid);
-            if (tid != null)
-                callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<SendIdocResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/SendIDoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["idocType"] = SourceExpressionConverter.ConvertO(idocType);
+                callPayload.Queries["releaseVersion"] = Convert.ToString("");
+                if (releaseVersion != null)
+                    callPayload.Queries["releaseVersion"] = SourceExpressionConverter.ConvertO(releaseVersion);
+                callPayload.Queries["recordTypesVersion"] = Convert.ToString("3");
+                if (recordTypesVersion != null)
+                    callPayload.Queries["recordTypesVersion"] = SourceExpressionConverter.Convert(recordTypesVersion);
+                callPayload.Queries["confirmTid"] = Convert.ToString(false);
+                if (confirmTid != null)
+                    callPayload.Queries["confirmTid"] = SourceExpressionConverter.ConvertO(confirmTid);
+                if (tid != null)
+                    callPayload.Queries["tid"] = SourceExpressionConverter.ConvertO(tid);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SendIdocResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIdocResponse> SendIDocVersion2(Expression<Func<object>> dynamicParameters = null, Expression<Func<idocFormatInput>> idocFormat = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null)
+        public IBodyWorkflowAction<SendIdocResponse> SendIDocVersion2([WorkflowExpression] Func<object> dynamicParameters = null, [WorkflowExpression] Func<idocFormatInput> idocFormat = null, [WorkflowExpression] Func<bool> confirmTid = null, [WorkflowExpression] Func<string> tid = null)
         {
-            var apiCallPath = "/SendIDoc/v2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idocFormat"] = Convert.ToString("Xml");
-            if (idocFormat != null)
-                callPayload.Queries["idocFormat"] = ExpressionConverter.Convert(idocFormat);
-            callPayload.Queries["confirmTid"] = Convert.ToString(false);
-            if (confirmTid != null)
-                callPayload.Queries["confirmTid"] = ExpressionConverter.Convert(confirmTid);
-            if (tid != null)
-                callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicParameters);
-            return new ApiConnectionAction<SendIdocResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/SendIDoc/v2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["idocFormat"] = Convert.ToString("Xml");
+                if (idocFormat != null)
+                    callPayload.Queries["idocFormat"] = SourceExpressionConverter.Convert(idocFormat);
+                callPayload.Queries["confirmTid"] = Convert.ToString(false);
+                if (confirmTid != null)
+                    callPayload.Queries["confirmTid"] = SourceExpressionConverter.ConvertO(confirmTid);
+                if (tid != null)
+                    callPayload.Queries["tid"] = SourceExpressionConverter.ConvertO(tid);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(dynamicParameters);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SendIdocResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SubscribeResponse> StartLongRunningRfc(Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCName, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, Expression<Func<bool>> callRfcSubscriptionrfcCallParametersautoCommit = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersqueueName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null)
+        public IBodyWorkflowAction<SubscribeResponse> StartLongRunningRfc([WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersrFCName, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, [WorkflowExpression] Func<bool> callRfcSubscriptionrfcCallParametersautoCommit = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersqueueName = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null)
         {
-            var apiCallPath = "/StartLongRunningRfc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            var callRfcSubscription = new JObject();
-            var callRfcSubscriptionpropCount = 0;
-            var rfcCallParametersObject = new JObject();
-            var rfcCallParametersObjectpropCount = 0;
-            rfcCallParametersObjectpropCount++;
-            rfcCallParametersObject["RfcName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCName);
-            if (callRfcSubscriptionrfcCallParametersinputRFCParametersInline != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                rfcCallParametersObject["Payload"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersInline);
+                var apiCallPath = "/StartLongRunningRfc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = SourceExpressionConverter.ConvertO(tId);
+                var callRfcSubscription = new JObject();
+                var callRfcSubscriptionpropCount = 0;
+                var rfcCallParametersObject = new JObject();
+                var rfcCallParametersObjectpropCount = 0;
                 rfcCallParametersObjectpropCount++;
-            }
+                rfcCallParametersObject["RfcName"] = SourceExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersrFCName);
+                if (callRfcSubscriptionrfcCallParametersinputRFCParametersInline != null)
+                {
+                    rfcCallParametersObject["Payload"] = SourceExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersinputRFCParametersInline);
+                    rfcCallParametersObjectpropCount++;
+                }
 
-            if (callRfcSubscriptionrfcCallParametersinputRFCParametersReference != null)
-            {
-                rfcCallParametersObject["PayloadReference"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersReference);
-                rfcCallParametersObjectpropCount++;
-            }
+                if (callRfcSubscriptionrfcCallParametersinputRFCParametersReference != null)
+                {
+                    rfcCallParametersObject["PayloadReference"] = SourceExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersinputRFCParametersReference);
+                    rfcCallParametersObjectpropCount++;
+                }
 
-            if (callRfcSubscriptionrfcCallParametersrFCGroupFilter != null)
-            {
-                rfcCallParametersObject["RfcGroupFilter"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCGroupFilter);
-                rfcCallParametersObjectpropCount++;
-            }
+                if (callRfcSubscriptionrfcCallParametersrFCGroupFilter != null)
+                {
+                    rfcCallParametersObject["RfcGroupFilter"] = SourceExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersrFCGroupFilter);
+                    rfcCallParametersObjectpropCount++;
+                }
 
-            if (callRfcSubscriptionrfcCallParametersautoCommit != null)
-            {
-                rfcCallParametersObject["AutoCommit"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersautoCommit);
-                rfcCallParametersObjectpropCount++;
-            }
+                if (callRfcSubscriptionrfcCallParametersautoCommit != null)
+                {
+                    rfcCallParametersObject["AutoCommit"] = SourceExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersautoCommit);
+                    rfcCallParametersObjectpropCount++;
+                }
 
-            if (callRfcSubscriptionrfcCallParametersqueueName != null)
-            {
-                rfcCallParametersObject["QueueName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersqueueName);
-                rfcCallParametersObjectpropCount++;
-            }
+                if (callRfcSubscriptionrfcCallParametersqueueName != null)
+                {
+                    rfcCallParametersObject["QueueName"] = SourceExpressionConverter.ConvertToken(callRfcSubscriptionrfcCallParametersqueueName);
+                    rfcCallParametersObjectpropCount++;
+                }
 
-            if (rfcCallParametersObjectpropCount > 0)
-            {
-                callRfcSubscription["RfcCallParameters"] = rfcCallParametersObject;
+                if (rfcCallParametersObjectpropCount > 0)
+                {
+                    callRfcSubscription["RfcCallParameters"] = rfcCallParametersObject;
+                    callRfcSubscriptionpropCount++;
+                }
+
+                callRfcSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 callRfcSubscriptionpropCount++;
+                if (callRfcSubscriptionpropCount > 0)
+                {
+                    callPayload.Body = callRfcSubscription;
+                }
+                return callPayload;
             }
 
-            callRfcSubscription["NotificationUrl"] = "@listCallbackUrl()";
-            callRfcSubscriptionpropCount++;
-            if (callRfcSubscriptionpropCount > 0)
-            {
-                callPayload.Body = callRfcSubscription;
-            }
-
-            return new ApiConnectionAction<SubscribeResponse>(callPayload);
+            return new ApiConnectionAction<SubscribeResponse>(BuildSourceInput);
         }
     }
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string[]>> subscriptionsapActions = null, Expression<Func<subscriptioniDOCFormatInput>> subscriptioniDOCFormat = null, Expression<Func<bool>> subscriptionreceiveIDOCsWithUnreleasedSegments = null, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe([WorkflowExpression] Func<string> gatewayHost, [WorkflowExpression] Func<string> gatewayService, [WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string[]> subscriptionsapActions = null, [WorkflowExpression] Func<subscriptionidOCFormatInput> subscriptionidOCFormat = null, [WorkflowExpression] Func<bool> subscriptionreceiveIdOCsWithUnreleasedSegments = null, [WorkflowExpression] Func<string> sncPartnerNames = null, [WorkflowExpression] Func<int> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhooktrigger/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["gatewayHost"] = ExpressionConverter.Convert(gatewayHost);
-            callPayload.Queries["gatewayService"] = ExpressionConverter.Convert(gatewayService);
-            callPayload.Queries["programId"] = ExpressionConverter.Convert(programId);
-            if (sncPartnerNames != null)
-                callPayload.Queries["sncPartnerNames"] = ExpressionConverter.Convert(sncPartnerNames);
-            callPayload.Queries["degreeOfParallelism"] = Convert.ToString(-1);
-            if (degreeOfParallelism != null)
-                callPayload.Queries["degreeOfParallelism"] = ExpressionConverter.Convert(degreeOfParallelism);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionsapActions != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subscription["SapActions"] = ExpressionConverter.ConvertO(subscriptionsapActions);
+                var apiCallPath = "/api/webhooktrigger/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["gatewayHost"] = SourceExpressionConverter.ConvertO(gatewayHost);
+                callPayload.Queries["gatewayService"] = SourceExpressionConverter.ConvertO(gatewayService);
+                callPayload.Queries["programId"] = SourceExpressionConverter.ConvertO(programId);
+                if (sncPartnerNames != null)
+                    callPayload.Queries["sncPartnerNames"] = SourceExpressionConverter.ConvertO(sncPartnerNames);
+                callPayload.Queries["degreeOfParallelism"] = Convert.ToString(-1);
+                if (degreeOfParallelism != null)
+                    callPayload.Queries["degreeOfParallelism"] = SourceExpressionConverter.ConvertO(degreeOfParallelism);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionsapActions != null)
+                {
+                    subscription["SapActions"] = SourceExpressionConverter.ConvertToken(subscriptionsapActions);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionidOCFormat != null)
+                {
+                    subscription["IdocFormat"] = SourceExpressionConverter.Convert(subscriptionidOCFormat);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionreceiveIdOCsWithUnreleasedSegments != null)
+                {
+                    subscription["ReceiveIdocsWithUnreleasedSegments"] = SourceExpressionConverter.ConvertToken(subscriptionreceiveIdOCsWithUnreleasedSegments);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            if (subscriptioniDOCFormat != null)
-            {
-                subscription["IdocFormat"] = ExpressionConverter.ConvertO(subscriptioniDOCFormat);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionreceiveIDOCsWithUnreleasedSegments != null)
-            {
-                subscription["ReceiveIdocsWithUnreleasedSegments"] = ExpressionConverter.ConvertO(subscriptionreceiveIDOCsWithUnreleasedSegments);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<SubscribeResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<SubscribeResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 
@@ -649,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         HttpVersionNotSupported
     }
 
-    public enum subscriptioniDOCFormatInput
+    public enum subscriptionidOCFormatInput
     {
         MicrosoftLobNamespaceXml,
         SapPlainXml,

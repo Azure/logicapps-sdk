@@ -12,164 +12,219 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
     public class UnofficialnetflixsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleSearchResponse> TitleSearch(Expression<Func<int>> query = null, Expression<Func<int>> type = null, Expression<Func<int>> genrelist = null, Expression<Func<string>> countrylist = null, Expression<Func<int>> startYear = null, Expression<Func<int>> endYear = null, Expression<Func<string>> audio = null, Expression<Func<string>> audiosubtitleAndor = null, Expression<Func<string>> subtitle = null, Expression<Func<string>> countryAndorunique = null, Expression<Func<string>> orderby = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleSearchResponse> TitleSearch([WorkflowExpression] Func<int> query = null, [WorkflowExpression] Func<int> type = null, [WorkflowExpression] Func<int> genrelist = null, [WorkflowExpression] Func<string> countrylist = null, [WorkflowExpression] Func<int> startYear = null, [WorkflowExpression] Func<int> endYear = null, [WorkflowExpression] Func<string> audio = null, [WorkflowExpression] Func<string> audiosubtitleAndor = null, [WorkflowExpression] Func<string> subtitle = null, [WorkflowExpression] Func<string> countryAndorunique = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (query != null)
-                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (genrelist != null)
-                callPayload.Queries["genrelist"] = ExpressionConverter.Convert(genrelist);
-            if (countrylist != null)
-                callPayload.Queries["countrylist"] = ExpressionConverter.Convert(countrylist);
-            if (startYear != null)
-                callPayload.Queries["start_year"] = ExpressionConverter.Convert(startYear);
-            if (endYear != null)
-                callPayload.Queries["end_year"] = ExpressionConverter.Convert(endYear);
-            if (audio != null)
-                callPayload.Queries["audio"] = ExpressionConverter.Convert(audio);
-            if (audiosubtitleAndor != null)
-                callPayload.Queries["audiosubtitle_andor"] = ExpressionConverter.Convert(audiosubtitleAndor);
-            if (subtitle != null)
-                callPayload.Queries["subtitle"] = ExpressionConverter.Convert(subtitle);
-            if (countryAndorunique != null)
-                callPayload.Queries["country_andorunique"] = ExpressionConverter.Convert(countryAndorunique);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<TitleSearchResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (query != null)
+                    callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                if (genrelist != null)
+                    callPayload.Queries["genrelist"] = SourceExpressionConverter.ConvertO(genrelist);
+                if (countrylist != null)
+                    callPayload.Queries["countrylist"] = SourceExpressionConverter.ConvertO(countrylist);
+                if (startYear != null)
+                    callPayload.Queries["start_year"] = SourceExpressionConverter.ConvertO(startYear);
+                if (endYear != null)
+                    callPayload.Queries["end_year"] = SourceExpressionConverter.ConvertO(endYear);
+                if (audio != null)
+                    callPayload.Queries["audio"] = SourceExpressionConverter.ConvertO(audio);
+                if (audiosubtitleAndor != null)
+                    callPayload.Queries["audiosubtitle_andor"] = SourceExpressionConverter.ConvertO(audiosubtitleAndor);
+                if (subtitle != null)
+                    callPayload.Queries["subtitle"] = SourceExpressionConverter.ConvertO(subtitle);
+                if (countryAndorunique != null)
+                    callPayload.Queries["country_andorunique"] = SourceExpressionConverter.ConvertO(countryAndorunique);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TitleSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<PeopleSearchResponse> PeopleSearch(Expression<Func<string>> name = null, Expression<Func<int>> netflixId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<PeopleSearchResponse> PeopleSearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> netflixId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/people";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (netflixId != null)
-                callPayload.Queries["netflix_id"] = ExpressionConverter.Convert(netflixId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<PeopleSearchResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/people";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (netflixId != null)
+                    callPayload.Queries["netflix_id"] = SourceExpressionConverter.ConvertO(netflixId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PeopleSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<DeletedSearchResponse> DeletedSearch(Expression<Func<int>> netflixId = null, Expression<Func<string>> countryList = null, Expression<Func<string>> date = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DeletedSearchResponse> DeletedSearch([WorkflowExpression] Func<int> netflixId = null, [WorkflowExpression] Func<string> countryList = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/titlesdel";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (netflixId != null)
-                callPayload.Queries["netflix_id"] = ExpressionConverter.Convert(netflixId);
-            if (countryList != null)
-                callPayload.Queries["country_list"] = ExpressionConverter.Convert(countryList);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<DeletedSearchResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/titlesdel";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (netflixId != null)
+                    callPayload.Queries["netflix_id"] = SourceExpressionConverter.ConvertO(netflixId);
+                if (countryList != null)
+                    callPayload.Queries["country_list"] = SourceExpressionConverter.ConvertO(countryList);
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeletedSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<GenresResponse> Genres()
         {
-            var apiCallPath = "/genres";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GenresResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/genres";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GenresResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
         public IBodyWorkflowAction<CountriesResponse> Countries()
         {
-            var apiCallPath = "/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CountriesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CountriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleDetailResponse> TitleDetail(Expression<Func<int>> netflixid, Expression<Func<int>> imdbid)
+        public IBodyWorkflowAction<TitleDetailResponse> TitleDetail([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> imdbid)
         {
-            var apiCallPath = "/title";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
-            callPayload.Queries["imdbid"] = ExpressionConverter.Convert(imdbid);
-            return new ApiConnectionAction<TitleDetailResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/title";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["netflixid"] = SourceExpressionConverter.ConvertO(netflixid);
+                callPayload.Queries["imdbid"] = SourceExpressionConverter.ConvertO(imdbid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TitleDetailResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleCountryResponse> TitleCountry(Expression<Func<int>> netflixid)
+        public IBodyWorkflowAction<TitleCountryResponse> TitleCountry([WorkflowExpression] Func<int> netflixid)
         {
-            var apiCallPath = "/titlecountries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
-            return new ApiConnectionAction<TitleCountryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/titlecountries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["netflixid"] = SourceExpressionConverter.ConvertO(netflixid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TitleCountryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleGenreResponse> TitleGenre(Expression<Func<int>> netflixid)
+        public IBodyWorkflowAction<TitleGenreResponse> TitleGenre([WorkflowExpression] Func<int> netflixid)
         {
-            var apiCallPath = "/titlegenres";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
-            return new ApiConnectionAction<TitleGenreResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/titlegenres";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["netflixid"] = SourceExpressionConverter.ConvertO(netflixid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TitleGenreResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleEpisodeResponse> TitleEpisode(Expression<Func<int>> netflixid, Expression<Func<int>> seasonid, Expression<Func<int>> episodeid = null)
+        public IBodyWorkflowAction<TitleEpisodeResponse> TitleEpisode([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> seasonid, [WorkflowExpression] Func<int> episodeid = null)
         {
-            var apiCallPath = "/episodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
-            callPayload.Queries["seasonid"] = ExpressionConverter.Convert(seasonid);
-            if (episodeid != null)
-                callPayload.Queries["episodeid"] = ExpressionConverter.Convert(episodeid);
-            return new ApiConnectionAction<TitleEpisodeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/episodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["netflixid"] = SourceExpressionConverter.ConvertO(netflixid);
+                callPayload.Queries["seasonid"] = SourceExpressionConverter.ConvertO(seasonid);
+                if (episodeid != null)
+                    callPayload.Queries["episodeid"] = SourceExpressionConverter.ConvertO(episodeid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TitleEpisodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleImageResponse> TitleImage(Expression<Func<int>> netflixid, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleImageResponse> TitleImage([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/images";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["netflixid"] = ExpressionConverter.Convert(netflixid);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<TitleImageResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/images";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["netflixid"] = SourceExpressionConverter.ConvertO(netflixid);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TitleImageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleExpiringResponse> TitleExpiring(Expression<Func<int>> countrylist, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleExpiringResponse> TitleExpiring([WorkflowExpression] Func<int> countrylist, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = "/expiring";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["countrylist"] = ExpressionConverter.Convert(countrylist);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            return new ApiConnectionAction<TitleExpiringResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/expiring";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["countrylist"] = SourceExpressionConverter.ConvertO(countrylist);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TitleExpiringResponse>(BuildSourceInput);
         }
     }
 

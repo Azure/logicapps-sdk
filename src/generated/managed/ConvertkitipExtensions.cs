@@ -14,666 +14,791 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<AccountResponse> Account()
         {
-            var apiCallPath = "/account";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/account";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AccountResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<FormListResponse> FormList()
         {
-            var apiCallPath = "/forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FormListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FormListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<FormSubAddResponse> FormSubAdd(Expression<Func<string>> formId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        public IBodyWorkflowAction<FormSubAddResponse> FormSubAdd([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
-            var apiCallPath = String.Format("/forms/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyfirstName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forms/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FormSubAddResponse>(callPayload);
+            return new ApiConnectionAction<FormSubAddResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<FormSubListResponse> FormSubList(Expression<Func<string>> formId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<FormSubListResponse> FormSubList([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/forms/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sort_order"] = Convert.ToString("asc");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["subscriber_state"] = Convert.ToString("active");
-            if (subscriberState != null)
-                callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<FormSubListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forms/{0}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = SourceExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["subscriber_state"] = Convert.ToString("active");
+                if (subscriberState != null)
+                    callPayload.Queries["subscriber_state"] = SourceExpressionConverter.Convert(subscriberState);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FormSubListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<SequenceListResponse> SequenceList()
         {
-            var apiCallPath = "/sequences";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SequenceListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/sequences";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SequenceListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SequenceSubAddResponse> SequenceSubAdd(Expression<Func<string>> sequenceId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        public IBodyWorkflowAction<SequenceSubAddResponse> SequenceSubAdd([WorkflowExpression] Func<string> sequenceId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
-            var apiCallPath = String.Format("/sequences/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(sequenceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodyfirstName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sequences/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sequenceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SequenceSubAddResponse>(callPayload);
+            return new ApiConnectionAction<SequenceSubAddResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SequenceSubListResponse> SequenceSubList(Expression<Func<string>> sequenceId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SequenceSubListResponse> SequenceSubList([WorkflowExpression] Func<string> sequenceId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/sequences/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(sequenceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sort_order"] = Convert.ToString("asc");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["subscriber_state"] = Convert.ToString("active");
-            if (subscriberState != null)
-                callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<SequenceSubListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sequences/{0}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sequenceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = SourceExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["subscriber_state"] = Convert.ToString("active");
+                if (subscriberState != null)
+                    callPayload.Queries["subscriber_state"] = SourceExpressionConverter.Convert(subscriberState);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SequenceSubListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<TagListResponse> TagList()
         {
-            var apiCallPath = "/tags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/tags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TagListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagAddResponse> TagAdd(Expression<Func<string>> bodytagname = null)
+        public IBodyWorkflowAction<TagAddResponse> TagAdd([WorkflowExpression] Func<string> bodytagname = null)
         {
-            var apiCallPath = "/tags";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var tagObject = new JObject();
-            var tagObjectpropCount = 0;
-            if (bodytagname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                tagObject["name"] = ExpressionConverter.ConvertO(bodytagname);
-                tagObjectpropCount++;
+                var apiCallPath = "/tags";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var tagObject = new JObject();
+                var tagObjectpropCount = 0;
+                if (bodytagname != null)
+                {
+                    tagObject["name"] = SourceExpressionConverter.ConvertToken(bodytagname);
+                    tagObjectpropCount++;
+                }
+
+                if (tagObjectpropCount > 0)
+                {
+                    body["tag"] = tagObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (tagObjectpropCount > 0)
+            return new ApiConnectionAction<TagAddResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<TagSubResponse> TagSub([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tag"] = tagObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tags/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TagSubResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<TagSubRemoveResponse> TagSubRemove([WorkflowExpression] Func<string> subscriberId, [WorkflowExpression] Func<string> tagId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TagSubRemoveResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<TagSubRemoveEmailResponse> TagSubRemoveEmail([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyemail)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tags/{0}/unsubscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TagAddResponse>(callPayload);
+            return new ApiConnectionAction<TagSubRemoveEmailResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubResponse> TagSub(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        public IBodyWorkflowAction<TagSubListResponse> TagSubList([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/tags/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tags/{0}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = SourceExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["subscriber_state"] = Convert.ToString("active");
+                if (subscriberState != null)
+                    callPayload.Queries["subscriber_state"] = SourceExpressionConverter.Convert(subscriberState);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TagSubListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<SubscriberListResponse> SubscriberList([WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> updatedFrom = null, [WorkflowExpression] Func<string> updatedTo = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<string> emailAddress = null, [WorkflowExpression] Func<int> page = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/subscribers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                if (updatedFrom != null)
+                    callPayload.Queries["updated_from"] = SourceExpressionConverter.ConvertO(updatedFrom);
+                if (updatedTo != null)
+                    callPayload.Queries["updated_to"] = SourceExpressionConverter.ConvertO(updatedTo);
+                callPayload.Queries["sort_order"] = Convert.ToString("asc");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = SourceExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["sort_field"] = Convert.ToString("");
+                if (sortField != null)
+                    callPayload.Queries["sort_field"] = SourceExpressionConverter.Convert(sortField);
+                if (emailAddress != null)
+                    callPayload.Queries["email_address"] = SourceExpressionConverter.ConvertO(emailAddress);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SubscriberListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<SubscriberGetResponse> SubscriberGet([WorkflowExpression] Func<string> subscriberId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SubscriberGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate([WorkflowExpression] Func<string> subscriberId, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodyemailAddress = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["email_address"] = SourceExpressionConverter.ConvertToken(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SubscriberUpdateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
+        public IBodyWorkflowAction<SubscriberUnsubResponse> SubscriberUnsub([WorkflowExpression] Func<string> bodyemail)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/unsubscribe";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TagSubResponse>(callPayload);
+            return new ApiConnectionAction<SubscriberUnsubResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubRemoveResponse> TagSubRemove(Expression<Func<string>> subscriberId, Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<SubscriberTagsResponse> SubscriberTags([WorkflowExpression] Func<string> subscriberId)
         {
-            var apiCallPath = String.Format("/subscribers/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagSubRemoveResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubRemoveEmailResponse> TagSubRemoveEmail(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail)
-        {
-            var apiCallPath = String.Format("/tags/{0}/unsubscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscribers/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriberId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TagSubRemoveEmailResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubListResponse> TagSubList(Expression<Func<string>> tagId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
-        {
-            var apiCallPath = String.Format("/tags/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sort_order"] = Convert.ToString("asc");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["subscriber_state"] = Convert.ToString("active");
-            if (subscriberState != null)
-                callPayload.Queries["subscriber_state"] = ExpressionConverter.Convert(subscriberState);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<TagSubListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberListResponse> SubscriberList(Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> updatedFrom = null, Expression<Func<string>> updatedTo = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<string>> emailAddress = null, Expression<Func<int>> page = null)
-        {
-            var apiCallPath = "/subscribers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            if (updatedFrom != null)
-                callPayload.Queries["updated_from"] = ExpressionConverter.Convert(updatedFrom);
-            if (updatedTo != null)
-                callPayload.Queries["updated_to"] = ExpressionConverter.Convert(updatedTo);
-            callPayload.Queries["sort_order"] = Convert.ToString("asc");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["sort_field"] = Convert.ToString("");
-            if (sortField != null)
-                callPayload.Queries["sort_field"] = ExpressionConverter.Convert(sortField);
-            if (emailAddress != null)
-                callPayload.Queries["email_address"] = ExpressionConverter.Convert(emailAddress);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<SubscriberListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberGetResponse> SubscriberGet(Expression<Func<string>> subscriberId)
-        {
-            var apiCallPath = String.Format("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SubscriberGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate(Expression<Func<string>> subscriberId, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodyemailAddress = null)
-        {
-            var apiCallPath = String.Format("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SubscriberUpdateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberUnsubResponse> SubscriberUnsub(Expression<Func<string>> bodyemail)
-        {
-            var apiCallPath = "/unsubscribe";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SubscriberUnsubResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberTagsResponse> SubscriberTags(Expression<Func<string>> subscriberId)
-        {
-            var apiCallPath = String.Format("/subscribers/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SubscriberTagsResponse>(callPayload);
+            return new ApiConnectionAction<SubscriberTagsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
         public IBodyWorkflowAction<BroadcastListResponse> BroadcastList()
         {
-            var apiCallPath = "/broadcasts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BroadcastListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/broadcasts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BroadcastListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
+        public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyemailLayoutTemplate = null, [WorkflowExpression] Func<bool> bodyPublic = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodysendAt = null, [WorkflowExpression] Func<string> bodythumbnailAlt = null, [WorkflowExpression] Func<string> bodythumbnailUrl = null)
         {
-            var apiCallPath = "/broadcasts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
+                var apiCallPath = "/broadcasts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["email_address"] = SourceExpressionConverter.ConvertToken(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemailLayoutTemplate != null)
+                {
+                    body["email_layout_template"] = SourceExpressionConverter.ConvertToken(bodyemailLayoutTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodyPublic != null)
+                {
+                    body["public"] = SourceExpressionConverter.ConvertToken(bodyPublic);
+                    bodypropCount++;
+                }
+
+                if (bodypublishedAt != null)
+                {
+                    body["published_at"] = SourceExpressionConverter.ConvertToken(bodypublishedAt);
+                    bodypropCount++;
+                }
+
+                if (bodysendAt != null)
+                {
+                    body["send_at"] = SourceExpressionConverter.ConvertToken(bodysendAt);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailAlt != null)
+                {
+                    body["thumbnail_alt"] = SourceExpressionConverter.ConvertToken(bodythumbnailAlt);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailUrl != null)
+                {
+                    body["thumbnail_url"] = SourceExpressionConverter.ConvertToken(bodythumbnailUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            if (bodyemailLayoutTemplate != null)
-            {
-                body["email_layout_template"] = ExpressionConverter.ConvertO(bodyemailLayoutTemplate);
-                bodypropCount++;
-            }
-
-            if (bodyPublic != null)
-            {
-                body["public"] = ExpressionConverter.ConvertO(bodyPublic);
-                bodypropCount++;
-            }
-
-            if (bodypublishedAt != null)
-            {
-                body["published_at"] = ExpressionConverter.ConvertO(bodypublishedAt);
-                bodypropCount++;
-            }
-
-            if (bodysendAt != null)
-            {
-                body["send_at"] = ExpressionConverter.ConvertO(bodysendAt);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailAlt != null)
-            {
-                body["thumbnail_alt"] = ExpressionConverter.ConvertO(bodythumbnailAlt);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailUrl != null)
-            {
-                body["thumbnail_url"] = ExpressionConverter.ConvertO(bodythumbnailUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BroadcastAddResponse>(callPayload);
+            return new ApiConnectionAction<BroadcastAddResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastGetResponse> BroadcastGet(Expression<Func<string>> broadcastId)
+        public IBodyWorkflowAction<BroadcastGetResponse> BroadcastGet([WorkflowExpression] Func<string> broadcastId)
         {
-            var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BroadcastGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(broadcastId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BroadcastGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate(Expression<Func<string>> broadcastId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
+        public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate([WorkflowExpression] Func<string> broadcastId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyemailLayoutTemplate = null, [WorkflowExpression] Func<bool> bodyPublic = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodysendAt = null, [WorkflowExpression] Func<string> bodythumbnailAlt = null, [WorkflowExpression] Func<string> bodythumbnailUrl = null)
         {
-            var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(broadcastId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodyemailAddress != null)
+                {
+                    body["email_address"] = SourceExpressionConverter.ConvertToken(bodyemailAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyemailLayoutTemplate != null)
+                {
+                    body["email_layout_template"] = SourceExpressionConverter.ConvertToken(bodyemailLayoutTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodyPublic != null)
+                {
+                    body["public"] = SourceExpressionConverter.ConvertToken(bodyPublic);
+                    bodypropCount++;
+                }
+
+                if (bodypublishedAt != null)
+                {
+                    body["published_at"] = SourceExpressionConverter.ConvertToken(bodypublishedAt);
+                    bodypropCount++;
+                }
+
+                if (bodysendAt != null)
+                {
+                    body["send_at"] = SourceExpressionConverter.ConvertToken(bodysendAt);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailAlt != null)
+                {
+                    body["thumbnail_alt"] = SourceExpressionConverter.ConvertToken(bodythumbnailAlt);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailUrl != null)
+                {
+                    body["thumbnail_url"] = SourceExpressionConverter.ConvertToken(bodythumbnailUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodyemailAddress != null)
-            {
-                body["email_address"] = ExpressionConverter.ConvertO(bodyemailAddress);
-                bodypropCount++;
-            }
-
-            if (bodyemailLayoutTemplate != null)
-            {
-                body["email_layout_template"] = ExpressionConverter.ConvertO(bodyemailLayoutTemplate);
-                bodypropCount++;
-            }
-
-            if (bodyPublic != null)
-            {
-                body["public"] = ExpressionConverter.ConvertO(bodyPublic);
-                bodypropCount++;
-            }
-
-            if (bodypublishedAt != null)
-            {
-                body["published_at"] = ExpressionConverter.ConvertO(bodypublishedAt);
-                bodypropCount++;
-            }
-
-            if (bodysendAt != null)
-            {
-                body["send_at"] = ExpressionConverter.ConvertO(bodysendAt);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailAlt != null)
-            {
-                body["thumbnail_alt"] = ExpressionConverter.ConvertO(bodythumbnailAlt);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailUrl != null)
-            {
-                body["thumbnail_url"] = ExpressionConverter.ConvertO(bodythumbnailUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BroadcastUpdateResponse>(callPayload);
+            return new ApiConnectionAction<BroadcastUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<string> BroadcastDelete(Expression<Func<string>> broadcastId)
+        public IBodyWorkflowAction<string> BroadcastDelete([WorkflowExpression] Func<string> broadcastId)
         {
-            var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(broadcastId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastGetStatResponse> BroadcastGetStat(Expression<Func<string>> broadcastId)
+        public IBodyWorkflowAction<BroadcastGetStatResponse> BroadcastGetStat([WorkflowExpression] Func<string> broadcastId)
         {
-            var apiCallPath = String.Format("/broadcasts/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BroadcastGetStatResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/broadcasts/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(broadcastId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BroadcastGetStatResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseListResponse> PurchaseList(Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<PurchaseListResponse> PurchaseList([WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/purchases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<PurchaseListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/purchases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PurchaseListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd(Expression<Func<string>> bodypurchasetransactionId = null, Expression<Func<string>> bodypurchaseemailAddress = null, Expression<Func<string>> bodypurchasefirstName = null, Expression<Func<string>> bodypurchasecurrency = null, Expression<Func<string>> bodypurchasetransactionTime = null, Expression<Func<int>> bodypurchasesubtotal = null, Expression<Func<int>> bodypurchasetax = null, Expression<Func<int>> bodypurchaseshipping = null, Expression<Func<int>> bodypurchasediscount = null, Expression<Func<int>> bodypurchasetotal = null, Expression<Func<string>> bodypurchasestatus = null, Expression<Func<bodypurchaseproductsInputItem[]>> bodypurchaseproducts = null)
+        public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd([WorkflowExpression] Func<string> bodypurchasetransactionId = null, [WorkflowExpression] Func<string> bodypurchaseemailAddress = null, [WorkflowExpression] Func<string> bodypurchasefirstName = null, [WorkflowExpression] Func<string> bodypurchasecurrency = null, [WorkflowExpression] Func<string> bodypurchasetransactionTime = null, [WorkflowExpression] Func<int> bodypurchasesubtotal = null, [WorkflowExpression] Func<int> bodypurchasetax = null, [WorkflowExpression] Func<int> bodypurchaseshipping = null, [WorkflowExpression] Func<int> bodypurchasediscount = null, [WorkflowExpression] Func<int> bodypurchasetotal = null, [WorkflowExpression] Func<string> bodypurchasestatus = null, [WorkflowExpression] Func<bodypurchaseproductsInputItem[]> bodypurchaseproducts = null)
         {
-            var apiCallPath = "/purchases";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var purchaseObject = new JObject();
-            var purchaseObjectpropCount = 0;
-            if (bodypurchasetransactionId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                purchaseObject["transaction_id"] = ExpressionConverter.ConvertO(bodypurchasetransactionId);
-                purchaseObjectpropCount++;
+                var apiCallPath = "/purchases";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var purchaseObject = new JObject();
+                var purchaseObjectpropCount = 0;
+                if (bodypurchasetransactionId != null)
+                {
+                    purchaseObject["transaction_id"] = SourceExpressionConverter.ConvertToken(bodypurchasetransactionId);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchaseemailAddress != null)
+                {
+                    purchaseObject["email_address"] = SourceExpressionConverter.ConvertToken(bodypurchaseemailAddress);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasefirstName != null)
+                {
+                    purchaseObject["first_name"] = SourceExpressionConverter.ConvertToken(bodypurchasefirstName);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasecurrency != null)
+                {
+                    purchaseObject["currency"] = SourceExpressionConverter.ConvertToken(bodypurchasecurrency);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasetransactionTime != null)
+                {
+                    purchaseObject["transaction_time"] = SourceExpressionConverter.ConvertToken(bodypurchasetransactionTime);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasesubtotal != null)
+                {
+                    purchaseObject["subtotal"] = SourceExpressionConverter.ConvertToken(bodypurchasesubtotal);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasetax != null)
+                {
+                    purchaseObject["tax"] = SourceExpressionConverter.ConvertToken(bodypurchasetax);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchaseshipping != null)
+                {
+                    purchaseObject["shipping"] = SourceExpressionConverter.ConvertToken(bodypurchaseshipping);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasediscount != null)
+                {
+                    purchaseObject["discount"] = SourceExpressionConverter.ConvertToken(bodypurchasediscount);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasetotal != null)
+                {
+                    purchaseObject["total"] = SourceExpressionConverter.ConvertToken(bodypurchasetotal);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchasestatus != null)
+                {
+                    purchaseObject["status"] = SourceExpressionConverter.ConvertToken(bodypurchasestatus);
+                    purchaseObjectpropCount++;
+                }
+
+                if (bodypurchaseproducts != null)
+                {
+                    purchaseObject["products"] = SourceExpressionConverter.ConvertToken(bodypurchaseproducts);
+                    purchaseObjectpropCount++;
+                }
+
+                if (purchaseObjectpropCount > 0)
+                {
+                    body["purchase"] = purchaseObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypurchaseemailAddress != null)
-            {
-                purchaseObject["email_address"] = ExpressionConverter.ConvertO(bodypurchaseemailAddress);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasefirstName != null)
-            {
-                purchaseObject["first_name"] = ExpressionConverter.ConvertO(bodypurchasefirstName);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasecurrency != null)
-            {
-                purchaseObject["currency"] = ExpressionConverter.ConvertO(bodypurchasecurrency);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasetransactionTime != null)
-            {
-                purchaseObject["transaction_time"] = ExpressionConverter.ConvertO(bodypurchasetransactionTime);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasesubtotal != null)
-            {
-                purchaseObject["subtotal"] = ExpressionConverter.ConvertO(bodypurchasesubtotal);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasetax != null)
-            {
-                purchaseObject["tax"] = ExpressionConverter.ConvertO(bodypurchasetax);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchaseshipping != null)
-            {
-                purchaseObject["shipping"] = ExpressionConverter.ConvertO(bodypurchaseshipping);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasediscount != null)
-            {
-                purchaseObject["discount"] = ExpressionConverter.ConvertO(bodypurchasediscount);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasetotal != null)
-            {
-                purchaseObject["total"] = ExpressionConverter.ConvertO(bodypurchasetotal);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchasestatus != null)
-            {
-                purchaseObject["status"] = ExpressionConverter.ConvertO(bodypurchasestatus);
-                purchaseObjectpropCount++;
-            }
-
-            if (bodypurchaseproducts != null)
-            {
-                purchaseObject["products"] = ExpressionConverter.ConvertO(bodypurchaseproducts);
-                purchaseObjectpropCount++;
-            }
-
-            if (purchaseObjectpropCount > 0)
-            {
-                body["purchase"] = purchaseObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PurchaseAddResponse>(callPayload);
+            return new ApiConnectionAction<PurchaseAddResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseGetResponse> PurchaseGet(Expression<Func<string>> purchaseId)
+        public IBodyWorkflowAction<PurchaseGetResponse> PurchaseGet([WorkflowExpression] Func<string> purchaseId)
         {
-            var apiCallPath = String.Format("/purchases/{0}", ExpressionConverter.ConvertWithUrlEncoding(purchaseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PurchaseGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/purchases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(purchaseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PurchaseGetResponse>(BuildSourceInput);
         }
     }
 

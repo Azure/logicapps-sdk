@@ -12,13 +12,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peltarion
     public class PeltarionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "peltarion")]
-        public IBodyWorkflowAction<CallapiResponse> Callapi(Expression<Func<string>> peltarionbody)
+        public IBodyWorkflowAction<CallapiResponse> Callapi([WorkflowExpression] Func<string> peltarionbody)
         {
-            var apiCallPath = "/api/forwardcall";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["peltarionbody"] = ExpressionConverter.Convert(peltarionbody);
-            return new ApiConnectionAction<CallapiResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/forwardcall";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["peltarionbody"] = SourceExpressionConverter.ConvertO(peltarionbody);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallapiResponse>(BuildSourceInput);
         }
     }
 

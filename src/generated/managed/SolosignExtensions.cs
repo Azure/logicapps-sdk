@@ -12,42 +12,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
     public class SolosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
-        public IWorkflowAction CreateHMAC(Expression<Func<string>> bodyrequestString, Expression<Func<string>> bodysecretKey, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyencodeTypeInput>> bodyencodeType = null, Expression<Func<bodyhashAlgorithmInput>> bodyhashAlgorithm = null)
+        public IWorkflowAction CreateHMAC([WorkflowExpression] Func<string> bodyrequestString, [WorkflowExpression] Func<string> bodysecretKey, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyencodeTypeInput> bodyencodeType = null, [WorkflowExpression] Func<bodyhashAlgorithmInput> bodyhashAlgorithm = null)
         {
-            var apiCallPath = "/generate-hmac";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["request_string"] = ExpressionConverter.ConvertO(bodyrequestString);
-            bodypropCount++;
-            body["secret_key"] = ExpressionConverter.ConvertO(bodysecretKey);
-            if (bodyoutputFormat != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                var apiCallPath = "/generate-hmac";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyencodeType != null)
-            {
-                body["encode_type"] = ExpressionConverter.ConvertO(bodyencodeType);
+                body["request_string"] = SourceExpressionConverter.ConvertToken(bodyrequestString);
                 bodypropCount++;
+                body["secret_key"] = SourceExpressionConverter.ConvertToken(bodysecretKey);
+                if (bodyoutputFormat != null)
+                {
+                    body["output_format"] = SourceExpressionConverter.Convert(bodyoutputFormat);
+                    bodypropCount++;
+                }
+
+                if (bodyencodeType != null)
+                {
+                    body["encode_type"] = SourceExpressionConverter.Convert(bodyencodeType);
+                    bodypropCount++;
+                }
+
+                if (bodyhashAlgorithm != null)
+                {
+                    body["hash_algorithm"] = SourceExpressionConverter.Convert(bodyhashAlgorithm);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyhashAlgorithm != null)
-            {
-                body["hash_algorithm"] = ExpressionConverter.ConvertO(bodyhashAlgorithm);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

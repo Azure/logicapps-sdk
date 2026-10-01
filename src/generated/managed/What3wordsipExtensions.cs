@@ -12,23 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.What3wordsip
     public class What3wordsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
-        public IBodyWorkflowAction<ConvertToWordResponse> ConvertToWord(Expression<Func<string>> coordinates)
+        public IBodyWorkflowAction<ConvertToWordResponse> ConvertToWord([WorkflowExpression] Func<string> coordinates)
         {
-            var apiCallPath = "/convert-to-3wa";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["coordinates"] = ExpressionConverter.Convert(coordinates);
-            return new ApiConnectionAction<ConvertToWordResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert-to-3wa";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["coordinates"] = SourceExpressionConverter.ConvertO(coordinates);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConvertToWordResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "what3wordsip")]
-        public IBodyWorkflowAction<ConvertToLatLngResponse> ConvertToLatLng(Expression<Func<string>> words)
+        public IBodyWorkflowAction<ConvertToLatLngResponse> ConvertToLatLng([WorkflowExpression] Func<string> words)
         {
-            var apiCallPath = "/convert-to-coordinates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["words"] = ExpressionConverter.Convert(words);
-            return new ApiConnectionAction<ConvertToLatLngResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert-to-coordinates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["words"] = SourceExpressionConverter.ConvertO(words);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConvertToLatLngResponse>(BuildSourceInput);
         }
     }
 

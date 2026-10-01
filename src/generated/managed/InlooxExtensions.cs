@@ -12,462 +12,517 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inloox
     public class InlooxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<GetContactsResponse> GetContacts(Expression<Func<string>> filter = null, Expression<Func<double>> top = null)
+        public IBodyWorkflowAction<GetContactsResponse> GetContacts([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<double> top = null)
         {
-            var apiCallPath = "/Contact";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<GetContactsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Contact";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetContactsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<GetProjectsResponse> GetProjects(Expression<Func<string>> filter = null, Expression<Func<double>> top = null)
+        public IBodyWorkflowAction<GetProjectsResponse> GetProjects([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<double> top = null)
         {
-            var apiCallPath = "/Project";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<GetProjectsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Project";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProjectsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<ApiProject> PostProjects(Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyisArchived = null, Expression<Func<bool>> bodyisRecycled = null, Expression<Func<int>> bodylockMode = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodynumberIncremential = null, Expression<Func<string>> bodynumberPrefix = null, Expression<Func<string>> bodynumberSuffix = null, Expression<Func<string>> bodyportfolioId = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyprojectStatusId = null, Expression<Func<int>> bodyriskScore = null, Expression<Func<int>> bodysizeScore = null, Expression<Func<string>> bodystartDate = null, Expression<Func<int>> bodyvalueScore = null)
+        public IBodyWorkflowAction<ApiProject> PostProjects([WorkflowExpression] Func<string> bodyclientId = null, [WorkflowExpression] Func<string> bodydescriptionHTML = null, [WorkflowExpression] Func<string> bodydivisionId = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<bool> bodyisArchived = null, [WorkflowExpression] Func<bool> bodyisRecycled = null, [WorkflowExpression] Func<int> bodylockMode = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodynumberIncremential = null, [WorkflowExpression] Func<string> bodynumberPrefix = null, [WorkflowExpression] Func<string> bodynumberSuffix = null, [WorkflowExpression] Func<string> bodyportfolioId = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodyprojectStatusId = null, [WorkflowExpression] Func<int> bodyriskScore = null, [WorkflowExpression] Func<int> bodysizeScore = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<int> bodyvalueScore = null)
         {
-            var apiCallPath = "/Project";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyclientId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ClientId"] = ExpressionConverter.ConvertO(bodyclientId);
-                bodypropCount++;
+                var apiCallPath = "/Project";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyclientId != null)
+                {
+                    body["ClientId"] = SourceExpressionConverter.ConvertToken(bodyclientId);
+                    bodypropCount++;
+                }
+
+                if (bodydescriptionHTML != null)
+                {
+                    body["DescriptionHTML"] = SourceExpressionConverter.ConvertToken(bodydescriptionHTML);
+                    bodypropCount++;
+                }
+
+                if (bodydivisionId != null)
+                {
+                    body["DivisionId"] = SourceExpressionConverter.ConvertToken(bodydivisionId);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["EndDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyisArchived != null)
+                {
+                    body["IsArchived"] = SourceExpressionConverter.ConvertToken(bodyisArchived);
+                    bodypropCount++;
+                }
+
+                if (bodyisRecycled != null)
+                {
+                    body["IsRecycled"] = SourceExpressionConverter.ConvertToken(bodyisRecycled);
+                    bodypropCount++;
+                }
+
+                if (bodylockMode != null)
+                {
+                    body["LockMode"] = SourceExpressionConverter.ConvertToken(bodylockMode);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodynumberIncremential != null)
+                {
+                    body["NumberIncremential"] = SourceExpressionConverter.ConvertToken(bodynumberIncremential);
+                    bodypropCount++;
+                }
+
+                if (bodynumberPrefix != null)
+                {
+                    body["NumberPrefix"] = SourceExpressionConverter.ConvertToken(bodynumberPrefix);
+                    bodypropCount++;
+                }
+
+                if (bodynumberSuffix != null)
+                {
+                    body["NumberSuffix"] = SourceExpressionConverter.ConvertToken(bodynumberSuffix);
+                    bodypropCount++;
+                }
+
+                if (bodyportfolioId != null)
+                {
+                    body["PortfolioId"] = SourceExpressionConverter.ConvertToken(bodyportfolioId);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectStatusId != null)
+                {
+                    body["ProjectStatusId"] = SourceExpressionConverter.ConvertToken(bodyprojectStatusId);
+                    bodypropCount++;
+                }
+
+                if (bodyriskScore != null)
+                {
+                    body["RiskScore"] = SourceExpressionConverter.ConvertToken(bodyriskScore);
+                    bodypropCount++;
+                }
+
+                if (bodysizeScore != null)
+                {
+                    body["SizeScore"] = SourceExpressionConverter.ConvertToken(bodysizeScore);
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["StartDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyvalueScore != null)
+                {
+                    body["ValueScore"] = SourceExpressionConverter.ConvertToken(bodyvalueScore);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescriptionHTML != null)
-            {
-                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodydescriptionHTML);
-                bodypropCount++;
-            }
-
-            if (bodydivisionId != null)
-            {
-                body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["EndDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyisArchived != null)
-            {
-                body["IsArchived"] = ExpressionConverter.ConvertO(bodyisArchived);
-                bodypropCount++;
-            }
-
-            if (bodyisRecycled != null)
-            {
-                body["IsRecycled"] = ExpressionConverter.ConvertO(bodyisRecycled);
-                bodypropCount++;
-            }
-
-            if (bodylockMode != null)
-            {
-                body["LockMode"] = ExpressionConverter.ConvertO(bodylockMode);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodynumberIncremential != null)
-            {
-                body["NumberIncremential"] = ExpressionConverter.ConvertO(bodynumberIncremential);
-                bodypropCount++;
-            }
-
-            if (bodynumberPrefix != null)
-            {
-                body["NumberPrefix"] = ExpressionConverter.ConvertO(bodynumberPrefix);
-                bodypropCount++;
-            }
-
-            if (bodynumberSuffix != null)
-            {
-                body["NumberSuffix"] = ExpressionConverter.ConvertO(bodynumberSuffix);
-                bodypropCount++;
-            }
-
-            if (bodyportfolioId != null)
-            {
-                body["PortfolioId"] = ExpressionConverter.ConvertO(bodyportfolioId);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyprojectStatusId != null)
-            {
-                body["ProjectStatusId"] = ExpressionConverter.ConvertO(bodyprojectStatusId);
-                bodypropCount++;
-            }
-
-            if (bodyriskScore != null)
-            {
-                body["RiskScore"] = ExpressionConverter.ConvertO(bodyriskScore);
-                bodypropCount++;
-            }
-
-            if (bodysizeScore != null)
-            {
-                body["SizeScore"] = ExpressionConverter.ConvertO(bodysizeScore);
-                bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["StartDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodyvalueScore != null)
-            {
-                body["ValueScore"] = ExpressionConverter.ConvertO(bodyvalueScore);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ApiProject>(callPayload);
+            return new ApiConnectionAction<ApiProject>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IWorkflowAction DeleteProject(Expression<Func<string>> projectId)
+        public IWorkflowAction DeleteProject([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<GetProjectByIdResponse> GetProjectById(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<GetProjectByIdResponse> GetProjectById([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProjectByIdResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProjectByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject(Expression<Func<string>> projectId, Expression<Func<string>> bodyclientId = null, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodydivisionId = null, Expression<Func<string>> bodyendDate = null, Expression<Func<bool>> bodyisArchived = null, Expression<Func<bool>> bodyisRecycled = null, Expression<Func<int>> bodylockMode = null, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodynumberIncremential = null, Expression<Func<string>> bodynumberPrefix = null, Expression<Func<string>> bodynumberSuffix = null, Expression<Func<string>> bodyportfolioId = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyprojectStatusId = null, Expression<Func<int>> bodyriskScore = null, Expression<Func<int>> bodysizeScore = null, Expression<Func<string>> bodystartDate = null, Expression<Func<int>> bodyvalueScore = null)
+        public IBodyWorkflowAction<UpdateProjectResponse> UpdateProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyclientId = null, [WorkflowExpression] Func<string> bodydescriptionHTML = null, [WorkflowExpression] Func<string> bodydivisionId = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<bool> bodyisArchived = null, [WorkflowExpression] Func<bool> bodyisRecycled = null, [WorkflowExpression] Func<int> bodylockMode = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodynumberIncremential = null, [WorkflowExpression] Func<string> bodynumberPrefix = null, [WorkflowExpression] Func<string> bodynumberSuffix = null, [WorkflowExpression] Func<string> bodyportfolioId = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodyprojectStatusId = null, [WorkflowExpression] Func<int> bodyriskScore = null, [WorkflowExpression] Func<int> bodysizeScore = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<int> bodyvalueScore = null)
         {
-            var apiCallPath = String.Format("/Project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyclientId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ClientId"] = ExpressionConverter.ConvertO(bodyclientId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Project/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyclientId != null)
+                {
+                    body["ClientId"] = SourceExpressionConverter.ConvertToken(bodyclientId);
+                    bodypropCount++;
+                }
+
+                if (bodydescriptionHTML != null)
+                {
+                    body["DescriptionHTML"] = SourceExpressionConverter.ConvertToken(bodydescriptionHTML);
+                    bodypropCount++;
+                }
+
+                if (bodydivisionId != null)
+                {
+                    body["DivisionId"] = SourceExpressionConverter.ConvertToken(bodydivisionId);
+                    bodypropCount++;
+                }
+
+                if (bodyendDate != null)
+                {
+                    body["EndDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                    bodypropCount++;
+                }
+
+                if (bodyisArchived != null)
+                {
+                    body["IsArchived"] = SourceExpressionConverter.ConvertToken(bodyisArchived);
+                    bodypropCount++;
+                }
+
+                if (bodyisRecycled != null)
+                {
+                    body["IsRecycled"] = SourceExpressionConverter.ConvertToken(bodyisRecycled);
+                    bodypropCount++;
+                }
+
+                if (bodylockMode != null)
+                {
+                    body["LockMode"] = SourceExpressionConverter.ConvertToken(bodylockMode);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodynumberIncremential != null)
+                {
+                    body["NumberIncremential"] = SourceExpressionConverter.ConvertToken(bodynumberIncremential);
+                    bodypropCount++;
+                }
+
+                if (bodynumberPrefix != null)
+                {
+                    body["NumberPrefix"] = SourceExpressionConverter.ConvertToken(bodynumberPrefix);
+                    bodypropCount++;
+                }
+
+                if (bodynumberSuffix != null)
+                {
+                    body["NumberSuffix"] = SourceExpressionConverter.ConvertToken(bodynumberSuffix);
+                    bodypropCount++;
+                }
+
+                if (bodyportfolioId != null)
+                {
+                    body["PortfolioId"] = SourceExpressionConverter.ConvertToken(bodyportfolioId);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectStatusId != null)
+                {
+                    body["ProjectStatusId"] = SourceExpressionConverter.ConvertToken(bodyprojectStatusId);
+                    bodypropCount++;
+                }
+
+                if (bodyriskScore != null)
+                {
+                    body["RiskScore"] = SourceExpressionConverter.ConvertToken(bodyriskScore);
+                    bodypropCount++;
+                }
+
+                if (bodysizeScore != null)
+                {
+                    body["SizeScore"] = SourceExpressionConverter.ConvertToken(bodysizeScore);
+                    bodypropCount++;
+                }
+
+                if (bodystartDate != null)
+                {
+                    body["StartDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodyvalueScore != null)
+                {
+                    body["ValueScore"] = SourceExpressionConverter.ConvertToken(bodyvalueScore);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescriptionHTML != null)
-            {
-                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodydescriptionHTML);
-                bodypropCount++;
-            }
-
-            if (bodydivisionId != null)
-            {
-                body["DivisionId"] = ExpressionConverter.ConvertO(bodydivisionId);
-                bodypropCount++;
-            }
-
-            if (bodyendDate != null)
-            {
-                body["EndDate"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
-
-            if (bodyisArchived != null)
-            {
-                body["IsArchived"] = ExpressionConverter.ConvertO(bodyisArchived);
-                bodypropCount++;
-            }
-
-            if (bodyisRecycled != null)
-            {
-                body["IsRecycled"] = ExpressionConverter.ConvertO(bodyisRecycled);
-                bodypropCount++;
-            }
-
-            if (bodylockMode != null)
-            {
-                body["LockMode"] = ExpressionConverter.ConvertO(bodylockMode);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodynumberIncremential != null)
-            {
-                body["NumberIncremential"] = ExpressionConverter.ConvertO(bodynumberIncremential);
-                bodypropCount++;
-            }
-
-            if (bodynumberPrefix != null)
-            {
-                body["NumberPrefix"] = ExpressionConverter.ConvertO(bodynumberPrefix);
-                bodypropCount++;
-            }
-
-            if (bodynumberSuffix != null)
-            {
-                body["NumberSuffix"] = ExpressionConverter.ConvertO(bodynumberSuffix);
-                bodypropCount++;
-            }
-
-            if (bodyportfolioId != null)
-            {
-                body["PortfolioId"] = ExpressionConverter.ConvertO(bodyportfolioId);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyprojectStatusId != null)
-            {
-                body["ProjectStatusId"] = ExpressionConverter.ConvertO(bodyprojectStatusId);
-                bodypropCount++;
-            }
-
-            if (bodyriskScore != null)
-            {
-                body["RiskScore"] = ExpressionConverter.ConvertO(bodyriskScore);
-                bodypropCount++;
-            }
-
-            if (bodysizeScore != null)
-            {
-                body["SizeScore"] = ExpressionConverter.ConvertO(bodysizeScore);
-                bodypropCount++;
-            }
-
-            if (bodystartDate != null)
-            {
-                body["StartDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodyvalueScore != null)
-            {
-                body["ValueScore"] = ExpressionConverter.ConvertO(bodyvalueScore);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateProjectResponse>(callPayload);
+            return new ApiConnectionAction<UpdateProjectResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IWorkflowAction AddProjectMember(Expression<Func<string>> projectId, Expression<Func<string>> bodycontactId, Expression<Func<int>> bodyrole)
+        public IWorkflowAction AddProjectMember([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodycontactId, [WorkflowExpression] Func<int> bodyrole)
         {
-            var apiCallPath = String.Format("/Project/{0}/AddMember", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["contactId"] = ExpressionConverter.ConvertO(bodycontactId);
-            bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Project/{0}/AddMember", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["contactId"] = SourceExpressionConverter.ConvertToken(bodycontactId);
+                bodypropCount++;
+                body["role"] = SourceExpressionConverter.ConvertToken(bodyrole);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<GetTasksResponse> GetTasks(Expression<Func<string>> filter = null, Expression<Func<double>> top = null)
+        public IBodyWorkflowAction<GetTasksResponse> GetTasks([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<double> top = null)
         {
-            var apiCallPath = "/Task";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<GetTasksResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Task";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTasksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<ApiTask> PostTask(Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodyendDateTime = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<double>> bodyworkAmount = null)
+        public IBodyWorkflowAction<ApiTask> PostTask([WorkflowExpression] Func<string> bodydescriptionHTML = null, [WorkflowExpression] Func<string> bodyendDateTime = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodystartDateTime = null, [WorkflowExpression] Func<double> bodyworkAmount = null)
         {
-            var apiCallPath = "/Task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescriptionHTML != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodydescriptionHTML);
-                bodypropCount++;
+                var apiCallPath = "/Task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescriptionHTML != null)
+                {
+                    body["DescriptionHTML"] = SourceExpressionConverter.ConvertToken(bodydescriptionHTML);
+                    bodypropCount++;
+                }
+
+                if (bodyendDateTime != null)
+                {
+                    body["EndDateTime"] = SourceExpressionConverter.ConvertToken(bodyendDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodygroupId != null)
+                {
+                    body["GroupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectId != null)
+                {
+                    body["ProjectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                if (bodystartDateTime != null)
+                {
+                    body["StartDateTime"] = SourceExpressionConverter.ConvertToken(bodystartDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodyworkAmount != null)
+                {
+                    body["WorkAmount"] = SourceExpressionConverter.ConvertToken(bodyworkAmount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyendDateTime != null)
-            {
-                body["EndDateTime"] = ExpressionConverter.ConvertO(bodyendDateTime);
-                bodypropCount++;
-            }
-
-            if (bodygroupId != null)
-            {
-                body["GroupId"] = ExpressionConverter.ConvertO(bodygroupId);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyprojectId != null)
-            {
-                body["ProjectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-                bodypropCount++;
-            }
-
-            if (bodystartDateTime != null)
-            {
-                body["StartDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
-                bodypropCount++;
-            }
-
-            if (bodyworkAmount != null)
-            {
-                body["WorkAmount"] = ExpressionConverter.ConvertO(bodyworkAmount);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ApiTask>(callPayload);
+            return new ApiConnectionAction<ApiTask>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IWorkflowAction DeleteTask(Expression<Func<string>> taskId)
+        public IWorkflowAction DeleteTask([WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = String.Format("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<GetTaskByIdResponse> GetTaskById(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetTaskByIdResponse> GetTaskById([WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = String.Format("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskByIdResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTaskByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "inloox")]
-        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> taskId, Expression<Func<string>> bodydescriptionHTML = null, Expression<Func<string>> bodyendDateTime = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodystartDateTime = null, Expression<Func<double>> bodyworkAmount = null)
+        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> bodydescriptionHTML = null, [WorkflowExpression] Func<string> bodyendDateTime = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodystartDateTime = null, [WorkflowExpression] Func<double> bodyworkAmount = null)
         {
-            var apiCallPath = String.Format("/Task/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescriptionHTML != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["DescriptionHTML"] = ExpressionConverter.ConvertO(bodydescriptionHTML);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescriptionHTML != null)
+                {
+                    body["DescriptionHTML"] = SourceExpressionConverter.ConvertToken(bodydescriptionHTML);
+                    bodypropCount++;
+                }
+
+                if (bodyendDateTime != null)
+                {
+                    body["EndDateTime"] = SourceExpressionConverter.ConvertToken(bodyendDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodygroupId != null)
+                {
+                    body["GroupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectId != null)
+                {
+                    body["ProjectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                if (bodystartDateTime != null)
+                {
+                    body["StartDateTime"] = SourceExpressionConverter.ConvertToken(bodystartDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodyworkAmount != null)
+                {
+                    body["WorkAmount"] = SourceExpressionConverter.ConvertToken(bodyworkAmount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyendDateTime != null)
-            {
-                body["EndDateTime"] = ExpressionConverter.ConvertO(bodyendDateTime);
-                bodypropCount++;
-            }
-
-            if (bodygroupId != null)
-            {
-                body["GroupId"] = ExpressionConverter.ConvertO(bodygroupId);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyprojectId != null)
-            {
-                body["ProjectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-                bodypropCount++;
-            }
-
-            if (bodystartDateTime != null)
-            {
-                body["StartDateTime"] = ExpressionConverter.ConvertO(bodystartDateTime);
-                bodypropCount++;
-            }
-
-            if (bodyworkAmount != null)
-            {
-                body["WorkAmount"] = ExpressionConverter.ConvertO(bodyworkAmount);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+            return new ApiConnectionAction<UpdateTaskResponse>(BuildSourceInput);
         }
     }
 

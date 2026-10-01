@@ -14,45 +14,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workmobile")]
         public IBodyWorkflowAction<UsergroupsResponseItem[]> Usergroups()
         {
-            var apiCallPath = "/api/usergroups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UsergroupsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/usergroups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UsergroupsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workmobile")]
         public IBodyWorkflowAction<RetrieveMobileUsersResponseItem[]> RetrieveMobileUsers()
         {
-            var apiCallPath = "/api/mobileusers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RetrieveMobileUsersResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/mobileusers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrieveMobileUsersResponseItem[]>(BuildSourceInput);
         }
     }
 
     public class WorkmobileTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormDataHook([WorkflowExpression] Func<int> bodyuserFormId, [WorkflowExpression] Func<bool> bodyincludeSubFormData, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/notifications/external";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userFormId"] = ExpressionConverter.ConvertO(bodyuserFormId);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["includeSubFormData"] = ExpressionConverter.ConvertO(bodyincludeSubFormData);
-            body["description"] = "Power Automate";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/notifications/external";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userFormId"] = SourceExpressionConverter.ConvertToken(bodyuserFormId);
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["includeSubFormData"] = SourceExpressionConverter.ConvertToken(bodyincludeSubFormData);
+                body["description"] = "Power Automate";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

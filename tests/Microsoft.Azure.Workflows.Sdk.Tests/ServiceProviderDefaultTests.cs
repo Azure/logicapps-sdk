@@ -46,5 +46,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
 
             Assert.False(inputs["parameters"].Value<bool>("inferContentType"));
         }
+
+        /// <summary>
+        /// Verifies JSON pass-through and typed operations both use native C#.
+        /// </summary>
+        [Fact]
+        public void GetActionDefinition_ExpressionsUseNativeConversion()
+        {
+            var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
+            var action = new WorkflowServiceProviderActions()
+                .AzureBlob("azureblob")
+                .BlobExists(
+                    containerName: () => source.Output,
+                    blobName: () => source.Output.ToUpperInvariant());
+
+            var definition = action.GetActionDefinition(flowName: null);
+            var inputs = Assert.IsType<JObject>(definition.Inputs);
+
+            Assert.Equal("#{outputs(\"Source\")}", inputs["parameters"].Value<string>("containerName"));
+            Assert.Equal(
+                "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
+                inputs["parameters"].Value<string>("blobName"));
+        }
     }
 }

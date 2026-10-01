@@ -12,57 +12,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
     public class SeismiclivedocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocVersionResp> GetLiveDocInputs(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId)
+        public IBodyWorkflowAction<SeismicLiveDocsLiveDocVersionResp> GetLiveDocInputs([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentVersionId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLiveDocsLiveDocVersionResp>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentVersionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLiveDocsLiveDocVersionResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp> SubmitLiveDocGeneration(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<bodyoutputsInputItem[]>> bodyoutputs, Expression<Func<JToken[]>> bodyadHocInputs = null)
+        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenSuccinctResultResp> SubmitLiveDocGeneration([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentVersionId, [WorkflowExpression] Func<bodyoutputsInputItem[]> bodyoutputs, [WorkflowExpression] Func<JToken[]> bodyadHocInputs = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyadHocInputs != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["adHocInputs"] = ExpressionConverter.ConvertO(bodyadHocInputs);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamsiteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(libraryContentVersionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyadHocInputs != null)
+                {
+                    body["adHocInputs"] = SourceExpressionConverter.ConvertToken(bodyadHocInputs);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["outputs"] = SourceExpressionConverter.ConvertToken(bodyoutputs);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["outputs"] = ExpressionConverter.ConvertO(bodyoutputs);
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<SeismicLiveDocsLiveDocGenSuccinctResultResp>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
+        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenResultResp> GetLiveDocGenerationStatus([WorkflowExpression] Func<string> generatedLivedocId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(generatedLivedocId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SeismicLiveDocsLiveDocGenSuccinctResultResp>(callPayload);
+            return new ApiConnectionAction<SeismicLiveDocsLiveDocGenResultResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        public IBodyWorkflowAction<SeismicLiveDocsLiveDocGenResultResp> GetLiveDocGenerationStatus(Expression<Func<string>> generatedLivedocId)
+        public IBodyWorkflowAction<SeismicLiveDocsDownloadLocationResp> DownloadGeneratedLiveDoc([WorkflowExpression] Func<string> generatedLivedocId, [WorkflowExpression] Func<string> outputId, [WorkflowExpression] Func<bool> redirect = null)
         {
-            var apiCallPath = String.Format("/generatedLivedocs/{0}", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLiveDocsLiveDocGenResultResp>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}/outputs/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(generatedLivedocId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(outputId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["redirect"] = Convert.ToString(false);
+                if (redirect != null)
+                    callPayload.Queries["redirect"] = SourceExpressionConverter.ConvertO(redirect);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiclivedoc")]
-        public IBodyWorkflowAction<SeismicLiveDocsDownloadLocationResp> DownloadGeneratedLiveDoc(Expression<Func<string>> generatedLivedocId, Expression<Func<string>> outputId, Expression<Func<bool>> redirect = null)
-        {
-            var apiCallPath = String.Format("/generatedLivedocs/{0}/outputs/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1), ExpressionConverter.ConvertWithUrlEncoding(outputId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["redirect"] = Convert.ToString(false);
-            if (redirect != null)
-                callPayload.Queries["redirect"] = ExpressionConverter.Convert(redirect);
-            return new ApiConnectionAction<SeismicLiveDocsDownloadLocationResp>(callPayload);
+            return new ApiConnectionAction<SeismicLiveDocsDownloadLocationResp>(BuildSourceInput);
         }
     }
 
@@ -182,20 +201,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 
     public enum bodyoutputsInputItemPptxOptionsTypeImageDpiType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "144")]
-        _144,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "400")]
-        _400
+        _0 = 0,
+        _96 = 96,
+        _120 = 120,
+        _144 = 144,
+        _200 = 200,
+        _300 = 300,
+        _400 = 400
     }
 
     public class bodyoutputsInputItemDocxOptionsType
@@ -206,20 +218,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiclivedoc
 
     public enum bodyoutputsInputItemDocxOptionsTypeImageDpiType
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "96")]
-        _96,
-        [EnumMember(Value = "120")]
-        _120,
-        [EnumMember(Value = "144")]
-        _144,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "400")]
-        _400
+        _0 = 0,
+        _96 = 96,
+        _120 = 120,
+        _144 = 144,
+        _200 = 200,
+        _300 = 300,
+        _400 = 400
     }
 
     public class bodyoutputsInputItemPdfOptionsType

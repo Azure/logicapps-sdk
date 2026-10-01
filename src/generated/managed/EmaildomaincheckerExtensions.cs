@@ -12,15 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emaildomainchecker
     public class EmaildomaincheckerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emaildomainchecker")]
-        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain, Expression<Func<endpointInput>> endpoint)
+        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<endpointInput> endpoint)
         {
-            var apiCallPath = "/checkDomain/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            callPayload.Queries["endpoint"] = ExpressionConverter.Convert(endpoint);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<CheckDomainResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/checkDomain/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = SourceExpressionConverter.ConvertO(domain);
+                callPayload.Queries["endpoint"] = SourceExpressionConverter.Convert(endpoint);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CheckDomainResponse>(BuildSourceInput);
         }
     }
 

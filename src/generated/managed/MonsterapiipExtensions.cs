@@ -12,327 +12,359 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monsterapiip
     public class MonsterapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<TextImageAddPostResponse> TextImageAdd(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasamples = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<string>> bodydataaspectRatio = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<int>> bodydataseed = null)
+        public IBodyWorkflowAction<TextImageAddPostResponse> TextImageAdd([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasamples = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<string> bodydataaspectRatio = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<int> bodydataseed = null)
         {
-            var apiCallPath = "/add-text-task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["model"] = "txt2img";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydataprompt != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatanegprompt != null)
-            {
-                dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatasamples != null)
-            {
-                dataObject["samples"] = ExpressionConverter.ConvertO(bodydatasamples);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatasteps != null)
-            {
-                dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataaspectRatio != null)
-            {
-                dataObject["aspect_ratio"] = ExpressionConverter.ConvertO(bodydataaspectRatio);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataguidanceScale != null)
-            {
-                dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataseed != null)
-            {
-                dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                var apiCallPath = "/add-text-task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["model"] = "txt2img";
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TextImageAddPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<TextImageStatusPostResponse> TextImageStatus(Expression<Func<string>> bodyprocessId)
-        {
-            var apiCallPath = "/task-text-status";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TextImageStatusPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<ImageImageAddPostResponse> ImageImageAdd(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<string>> bodydatainitImageUrl = null, Expression<Func<double>> bodydatastrength = null, Expression<Func<int>> bodydataseed = null)
-        {
-            var apiCallPath = "/add-image-task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["model"] = "img2img";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydataprompt != null)
-            {
-                dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatanegprompt != null)
-            {
-                dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatasteps != null)
-            {
-                dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataguidanceScale != null)
-            {
-                dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatainitImageUrl != null)
-            {
-                dataObject["init_image_url"] = ExpressionConverter.ConvertO(bodydatainitImageUrl);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatastrength != null)
-            {
-                dataObject["strength"] = ExpressionConverter.ConvertO(bodydatastrength);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataseed != null)
-            {
-                dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ImageImageAddPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<ImageImageStatusPostResponse> ImageImageStatus(Expression<Func<string>> bodyprocessId)
-        {
-            var apiCallPath = "/task-image-status";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ImageImageStatusPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit(Expression<Func<string>> bodydataprompt = null, Expression<Func<string>> bodydatanegprompt = null, Expression<Func<int>> bodydatasteps = null, Expression<Func<double>> bodydataguidanceScale = null, Expression<Func<string>> bodydatainitImageUrl = null, Expression<Func<double>> bodydataimageGuidanceScale = null, Expression<Func<int>> bodydataseed = null)
-        {
-            var apiCallPath = "/add-edit-task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["model"] = "pix2pix";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydataprompt != null)
-            {
-                dataObject["prompt"] = ExpressionConverter.ConvertO(bodydataprompt);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatanegprompt != null)
-            {
-                dataObject["negprompt"] = ExpressionConverter.ConvertO(bodydatanegprompt);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatasteps != null)
-            {
-                dataObject["steps"] = ExpressionConverter.ConvertO(bodydatasteps);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataguidanceScale != null)
-            {
-                dataObject["guidance_scale"] = ExpressionConverter.ConvertO(bodydataguidanceScale);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatainitImageUrl != null)
-            {
-                dataObject["init_image_url"] = ExpressionConverter.ConvertO(bodydatainitImageUrl);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataimageGuidanceScale != null)
-            {
-                dataObject["image_guidance_scale"] = ExpressionConverter.ConvertO(bodydataimageGuidanceScale);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataseed != null)
-            {
-                dataObject["seed"] = ExpressionConverter.ConvertO(bodydataseed);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ImageEditPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<ImageEditStatusPostResponse> ImageEditStatus(Expression<Func<string>> bodyprocessId)
-        {
-            var apiCallPath = "/task-edit-status";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ImageEditStatusPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<AudioPostResponse> Audio(Expression<Func<string>> bodydatafile = null, Expression<Func<bodydatatranscriptionFormatInput>> bodydatatranscriptionFormat = null)
-        {
-            var apiCallPath = "/add-audio-task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["model"] = "whisper";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydatafile != null)
-            {
-                dataObject["file"] = ExpressionConverter.ConvertO(bodydatafile);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatatranscriptionFormat != null)
-            {
-                if (bodydatatranscriptionFormat != null)
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydataprompt != null)
                 {
-                    dataObject["transcription_format"] = ExpressionConverter.ConvertO(bodydatatranscriptionFormat);
+                    dataObject["prompt"] = SourceExpressionConverter.ConvertToken(bodydataprompt);
                     dataObjectpropCount++;
                 }
 
-                dataObjectpropCount++;
-            }
-            else
-            {
-                dataObject["transcription_format"] = "text";
-                dataObjectpropCount++;
+                if (bodydatanegprompt != null)
+                {
+                    dataObject["negprompt"] = SourceExpressionConverter.ConvertToken(bodydatanegprompt);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatasamples != null)
+                {
+                    dataObject["samples"] = SourceExpressionConverter.ConvertToken(bodydatasamples);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatasteps != null)
+                {
+                    dataObject["steps"] = SourceExpressionConverter.ConvertToken(bodydatasteps);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataaspectRatio != null)
+                {
+                    dataObject["aspect_ratio"] = SourceExpressionConverter.ConvertToken(bodydataaspectRatio);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataguidanceScale != null)
+                {
+                    dataObject["guidance_scale"] = SourceExpressionConverter.ConvertToken(bodydataguidanceScale);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataseed != null)
+                {
+                    dataObject["seed"] = SourceExpressionConverter.ConvertToken(bodydataseed);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AudioPostResponse>(callPayload);
+            return new ApiConnectionAction<TextImageAddPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
-        public IBodyWorkflowAction<AudioStatusPostResponse> AudioStatus(Expression<Func<string>> bodyprocessId)
+        public IBodyWorkflowAction<TextImageStatusPostResponse> TextImageStatus([WorkflowExpression] Func<string> bodyprocessId)
         {
-            var apiCallPath = "/task-audio-status";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["process_id"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/task-text-status";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["process_id"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AudioStatusPostResponse>(callPayload);
+            return new ApiConnectionAction<TextImageStatusPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
+        public IBodyWorkflowAction<ImageImageAddPostResponse> ImageImageAdd([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<string> bodydatainitImageUrl = null, [WorkflowExpression] Func<double> bodydatastrength = null, [WorkflowExpression] Func<int> bodydataseed = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/add-image-task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["model"] = "img2img";
+                bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydataprompt != null)
+                {
+                    dataObject["prompt"] = SourceExpressionConverter.ConvertToken(bodydataprompt);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatanegprompt != null)
+                {
+                    dataObject["negprompt"] = SourceExpressionConverter.ConvertToken(bodydatanegprompt);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatasteps != null)
+                {
+                    dataObject["steps"] = SourceExpressionConverter.ConvertToken(bodydatasteps);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataguidanceScale != null)
+                {
+                    dataObject["guidance_scale"] = SourceExpressionConverter.ConvertToken(bodydataguidanceScale);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatainitImageUrl != null)
+                {
+                    dataObject["init_image_url"] = SourceExpressionConverter.ConvertToken(bodydatainitImageUrl);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatastrength != null)
+                {
+                    dataObject["strength"] = SourceExpressionConverter.ConvertToken(bodydatastrength);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataseed != null)
+                {
+                    dataObject["seed"] = SourceExpressionConverter.ConvertToken(bodydataseed);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImageImageAddPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
+        public IBodyWorkflowAction<ImageImageStatusPostResponse> ImageImageStatus([WorkflowExpression] Func<string> bodyprocessId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/task-image-status";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["process_id"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImageImageStatusPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
+        public IBodyWorkflowAction<ImageEditPostResponse> ImageEdit([WorkflowExpression] Func<string> bodydataprompt = null, [WorkflowExpression] Func<string> bodydatanegprompt = null, [WorkflowExpression] Func<int> bodydatasteps = null, [WorkflowExpression] Func<double> bodydataguidanceScale = null, [WorkflowExpression] Func<string> bodydatainitImageUrl = null, [WorkflowExpression] Func<double> bodydataimageGuidanceScale = null, [WorkflowExpression] Func<int> bodydataseed = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/add-edit-task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["model"] = "pix2pix";
+                bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydataprompt != null)
+                {
+                    dataObject["prompt"] = SourceExpressionConverter.ConvertToken(bodydataprompt);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatanegprompt != null)
+                {
+                    dataObject["negprompt"] = SourceExpressionConverter.ConvertToken(bodydatanegprompt);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatasteps != null)
+                {
+                    dataObject["steps"] = SourceExpressionConverter.ConvertToken(bodydatasteps);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataguidanceScale != null)
+                {
+                    dataObject["guidance_scale"] = SourceExpressionConverter.ConvertToken(bodydataguidanceScale);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatainitImageUrl != null)
+                {
+                    dataObject["init_image_url"] = SourceExpressionConverter.ConvertToken(bodydatainitImageUrl);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataimageGuidanceScale != null)
+                {
+                    dataObject["image_guidance_scale"] = SourceExpressionConverter.ConvertToken(bodydataimageGuidanceScale);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataseed != null)
+                {
+                    dataObject["seed"] = SourceExpressionConverter.ConvertToken(bodydataseed);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImageEditPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
+        public IBodyWorkflowAction<ImageEditStatusPostResponse> ImageEditStatus([WorkflowExpression] Func<string> bodyprocessId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/task-edit-status";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["process_id"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImageEditStatusPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
+        public IBodyWorkflowAction<AudioPostResponse> Audio([WorkflowExpression] Func<string> bodydataFile = null, [WorkflowExpression] Func<bodydatatranscriptionFormatInput> bodydatatranscriptionFormat = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/add-audio-task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["model"] = "whisper";
+                bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydataFile != null)
+                {
+                    dataObject["file"] = SourceExpressionConverter.ConvertToken(bodydataFile);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatatranscriptionFormat != null)
+                {
+                    if (bodydatatranscriptionFormat != null)
+                    {
+                        dataObject["transcription_format"] = SourceExpressionConverter.Convert(bodydatatranscriptionFormat);
+                        dataObjectpropCount++;
+                    }
+
+                    dataObjectpropCount++;
+                }
+                else
+                {
+                    dataObject["transcription_format"] = "text";
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AudioPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "monsterapiip")]
+        public IBodyWorkflowAction<AudioStatusPostResponse> AudioStatus([WorkflowExpression] Func<string> bodyprocessId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/task-audio-status";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["process_id"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AudioStatusPostResponse>(BuildSourceInput);
         }
     }
 

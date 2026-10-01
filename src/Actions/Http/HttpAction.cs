@@ -75,6 +75,13 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Method = this.Method,
                     Queries = this.Queries,
                 },
+                RuntimeConfiguration = new FlowTemplateRuntimeConfiguration
+                {
+                    ContentTransfer = new FlowTemplateContentTransferConfiguration
+                    {
+                        TransferMode = FlowTemplateContentTransferMode.Chunked,
+                    },
+                },
             };
         }
     }
@@ -94,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="requestBody">The request body (optional).</param>
         /// <param name="headers">The request headers (optional).</param>
         internal HttpAction(string uri, string method, object requestBody = null, Dictionary<string, string> queries = null, Dictionary<string, string> headers = null)
-            : base(uri, method, requestBody, queries, headers)
+            : base(uri, method, requestBody, headers, queries)
         {
         }
 

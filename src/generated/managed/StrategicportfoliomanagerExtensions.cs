@@ -12,692 +12,1253 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
     public class StrategicportfoliomanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Item[]> EntityTypesGetEntityTypes(Expression<Func<string>> siteUrl)
+        public IBodyWorkflowAction<bool> FinancialEntitiesExecuteStageValidation([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> stageId = null)
         {
-            var apiCallPath = "/EntityTypes/GetEntityTypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityLifecycle/ExecuteStageValidation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                if (stageId != null)
+                    callPayload.Queries["stageId"] = SourceExpressionConverter.ConvertO(stageId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<bool>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesCreateEntityNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityTypeUid, Expression<Func<string>> entityName)
+        public IWorkflowAction FinancialEntitiesExecuteStageTransition([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> stageId = null)
         {
-            var apiCallPath = "/FinancialEntities/CreateEntityNoRetry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityTypeUid"] = ExpressionConverter.Convert(entityTypeUid);
-            callPayload.Queries["entityName"] = ExpressionConverter.Convert(entityName);
-            return new ApiConnectionAction<CallResultWithData>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityLifecycle/ExecuteStageTransition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                if (stageId != null)
+                    callPayload.Queries["stageId"] = SourceExpressionConverter.ConvertO(stageId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Entity[]> FinancialEntitiesGetAllEntities(Expression<Func<string>> siteUrl, Expression<Func<string>> filter = null, Expression<Func<string>> selectColumns = null)
+        public IBodyWorkflowAction<EntityHistoryEntry[]> FinancialEntitiesGetEntityHistoryEntries([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            var apiCallPath = "/FinancialEntities/GetAllEntities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
-            return new ApiConnectionAction<Entity[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityLifecycle/GetEntityHistoryEntries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntityHistoryEntry[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetAllEntitiesNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> filter = null, Expression<Func<string>> selectColumns = null)
+        public IWorkflowAction FinancialEntitiesLogEntityHistoryEntry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> activityType, [WorkflowExpression] Func<string> activityTypeIcon, [WorkflowExpression] Func<string> activityDetails, [WorkflowExpression] Func<string> initiator)
         {
-            var apiCallPath = "/FinancialEntities/GetAllEntitiesNoRetry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
-            return new ApiConnectionAction<CallResultWithData>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityLifecycle/LogEntityHistoryEntry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["activityType"] = SourceExpressionConverter.ConvertO(activityType);
+                callPayload.Queries["activityTypeIcon"] = SourceExpressionConverter.ConvertO(activityTypeIcon);
+                callPayload.Queries["activityDetails"] = SourceExpressionConverter.ConvertO(activityDetails);
+                callPayload.Queries["initiator"] = SourceExpressionConverter.ConvertO(initiator);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Entity> FinancialEntitiesGetEntity(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> selectColumns = null)
+        public IBodyWorkflowAction<LifecycleApprovalRequest[]> EntityLifecycleGetLifecycleApprovalRequestsByUser([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> approver, [WorkflowExpression] Func<int> status = null)
         {
-            var apiCallPath = "/FinancialEntities/GetEntity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
-            return new ApiConnectionAction<Entity>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestsByUser";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["approver"] = SourceExpressionConverter.ConvertO(approver);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LifecycleApprovalRequest[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> selectColumns = null)
+        public IBodyWorkflowAction<LifecycleApprovalRequest[]> EntityLifecycleGetLifecycleApprovalRequestsByEntity([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<int> status = null)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityNoRetry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
-            return new ApiConnectionAction<CallResultWithData>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestsByEntity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LifecycleApprovalRequest[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Item[]> FinancialEntitiesGetEntityFields(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        public IBodyWorkflowAction<LifecycleApprovalRequest> EntityLifecycleGetLifecycleApprovalRequestDetails([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> requestInstanceId)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityFields";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityLifecycle/GetLifecycleApprovalRequestDetails";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["requestInstanceId"] = SourceExpressionConverter.ConvertO(requestInstanceId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LifecycleApprovalRequest>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityFieldValuesODataNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> filter = null)
+        public IWorkflowAction EntityLifecycleSetLifecycleApprovalResponse([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> requestUid, [WorkflowExpression] Func<int> response, [WorkflowExpression] Func<string> comment = null)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityFieldValuesODataNoRetry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            return new ApiConnectionAction<CallResultWithData>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityLifecycle/SetLifecycleApprovalResponse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["requestUid"] = SourceExpressionConverter.ConvertO(requestUid);
+                callPayload.Queries["response"] = SourceExpressionConverter.ConvertO(response);
+                if (comment != null)
+                    callPayload.Queries["comment"] = SourceExpressionConverter.ConvertO(comment);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<FieldValue[]> FinancialEntitiesGetEntityFieldValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        public IBodyWorkflowAction<Item[]> EntityTypesGetEntityTypes([WorkflowExpression] Func<string> siteUrl)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityFieldValues";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            return new ApiConnectionAction<FieldValue[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityTypes/GetEntityTypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<FieldValue> FinancialEntitiesGetEntityFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> fieldIdentifier)
+        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesCreateEntityNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityTypeUid, [WorkflowExpression] Func<string> entityName)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityFieldValue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            return new ApiConnectionAction<FieldValue>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/CreateEntityNoRetry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityTypeUid"] = SourceExpressionConverter.ConvertO(entityTypeUid);
+                callPayload.Queries["entityName"] = SourceExpressionConverter.ConvertO(entityName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallResultWithData>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<bool> FinancialEntitiesExecuteStageValidation(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
+        public IWorkflowAction FinancialEntitiesDeleteEntity([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            var apiCallPath = "/FinancialEntities/ExecuteStageValidation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
-            return new ApiConnectionAction<bool>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/DeleteEntity";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldValueNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> fieldIdentifier, Expression<Func<string>> value)
+        public IBodyWorkflowAction<Entity[]> FinancialEntitiesGetAllEntities([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            var apiCallPath = "/FinancialEntities/SetEntityFieldValueNoRetry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction<CallResult>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetAllEntities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (selectColumns != null)
+                    callPayload.Queries["selectColumns"] = SourceExpressionConverter.ConvertO(selectColumns);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Entity[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldsValuesNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<EntityFieldValuePair[]>> fieldValues = null)
+        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetAllEntitiesNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            var apiCallPath = "/FinancialEntities/SetEntityFieldsValuesNoRetry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Body = ExpressionConverter.ConvertO(fieldValues);
-            return new ApiConnectionAction<CallResult>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetAllEntitiesNoRetry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (selectColumns != null)
+                    callPayload.Queries["selectColumns"] = SourceExpressionConverter.ConvertO(selectColumns);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallResultWithData>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CustomFieldValueCreationInformation> FinancialEntitiesGetFinancialCustomFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<string>> fieldIdentifier)
+        public IBodyWorkflowAction<Entity> FinancialEntitiesGetEntity([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            var apiCallPath = "/FinancialEntities/GetFinancialCustomFieldValue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            return new ApiConnectionAction<CustomFieldValueCreationInformation>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetEntity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                if (selectColumns != null)
+                    callPayload.Queries["selectColumns"] = SourceExpressionConverter.ConvertO(selectColumns);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Entity>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<string>> fieldIdentifier, Expression<Func<string>> value)
+        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldValue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityNoRetry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                if (selectColumns != null)
+                    callPayload.Queries["selectColumns"] = SourceExpressionConverter.ConvertO(selectColumns);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallResultWithData>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<FinancialFieldValuePair[]>> fieldValues = null)
+        public IBodyWorkflowAction<Item[]> FinancialEntitiesGetEntityFields([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldsValues";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Body = ExpressionConverter.ConvertO(fieldValues);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityFields";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Resource[]> FinancialEntitiesGetEntityResources(Expression<Func<string>> siteUrl, Expression<Func<string>> entityUid)
+        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityFieldValuesODataNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> filter = null)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityResources";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityUid"] = ExpressionConverter.Convert(entityUid);
-            return new ApiConnectionAction<Resource[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityFieldValuesODataNoRetry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallResultWithData>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<string> FinancialEntitiesAddEntityResource(Expression<Func<string>> siteUrl, Expression<Func<string>> entityUid, Expression<Func<string>> resourceUid)
+        public IBodyWorkflowAction<FieldValue[]> FinancialEntitiesGetEntityFieldValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            var apiCallPath = "/FinancialEntities/AddEntityResource";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityUid"] = ExpressionConverter.Convert(entityUid);
-            callPayload.Queries["resourceUid"] = ExpressionConverter.Convert(resourceUid);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityFieldValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FieldValue[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction FinancialEntitiesExecuteStageTransition(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
+        public IBodyWorkflowAction<FieldValue> FinancialEntitiesGetEntityFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> fieldIdentifier)
         {
-            var apiCallPath = "/FinancialEntities/ExecuteStageTransition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["fieldIdentifier"] = SourceExpressionConverter.ConvertO(fieldIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FieldValue>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<EntityHistoryEntry[]> FinancialEntitiesGetEntityHistoryEntries(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        public IWorkflowAction FinancialEntitiesSetEntityFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> fieldIdentifier, [WorkflowExpression] Func<string> value)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityHistoryEntries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            return new ApiConnectionAction<EntityHistoryEntry[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/SetEntityFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["fieldIdentifier"] = SourceExpressionConverter.ConvertO(fieldIdentifier);
+                callPayload.Queries["value"] = SourceExpressionConverter.ConvertO(value);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResult> FinancialEntitiesCreateEntityRelationship(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> relatedEntityId)
+        public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldValueNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> fieldIdentifier, [WorkflowExpression] Func<string> value)
         {
-            var apiCallPath = "/FinancialEntities/CreateEntityRelationship";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["relatedEntityId"] = ExpressionConverter.Convert(relatedEntityId);
-            return new ApiConnectionAction<CallResult>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/SetEntityFieldValueNoRetry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["fieldIdentifier"] = SourceExpressionConverter.ConvertO(fieldIdentifier);
+                callPayload.Queries["value"] = SourceExpressionConverter.ConvertO(value);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction FinancialEntitiesLogEntityHistoryEntry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> activityType, Expression<Func<string>> activityTypeIcon, Expression<Func<string>> activityDetails, Expression<Func<string>> initiator)
+        public IWorkflowAction FinancialEntitiesSetEntityFieldsValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<EntityFieldValuePair[]> fieldValues = null)
         {
-            var apiCallPath = "/FinancialEntities/LogEntityHistoryEntry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["activityType"] = ExpressionConverter.Convert(activityType);
-            callPayload.Queries["activityTypeIcon"] = ExpressionConverter.Convert(activityTypeIcon);
-            callPayload.Queries["activityDetails"] = ExpressionConverter.Convert(activityDetails);
-            callPayload.Queries["initiator"] = ExpressionConverter.Convert(initiator);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/SetEntityFieldsValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fieldValues);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Item[]> LookupTableGetLookupTables(Expression<Func<string>> siteUrl)
+        public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldsValuesNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<EntityFieldValuePair[]> fieldValues = null)
         {
-            var apiCallPath = "/LookupTable/GetLookupTables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/SetEntityFieldsValuesNoRetry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fieldValues);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Item[]> LookupTableGetLookupTableValues(Expression<Func<string>> siteUrl, Expression<Func<string>> optionSetUid)
+        public IBodyWorkflowAction<CustomFieldValueCreationInformation> FinancialEntitiesGetFinancialCustomFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<string> fieldIdentifier)
         {
-            var apiCallPath = "/LookupTable/GetLookupTableValues";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["optionSetUid"] = ExpressionConverter.Convert(optionSetUid);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetFinancialCustomFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["eftId"] = SourceExpressionConverter.ConvertO(eftId);
+                callPayload.Queries["fdId"] = SourceExpressionConverter.ConvertO(fdId);
+                callPayload.Queries["fnId"] = SourceExpressionConverter.ConvertO(fnId);
+                callPayload.Queries["centerId"] = SourceExpressionConverter.ConvertO(centerId);
+                callPayload.Queries["fieldIdentifier"] = SourceExpressionConverter.ConvertO(fieldIdentifier);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CustomFieldValueCreationInformation>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<string> fieldIdentifier, [WorkflowExpression] Func<string> value)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["eftId"] = SourceExpressionConverter.ConvertO(eftId);
+                callPayload.Queries["fdId"] = SourceExpressionConverter.ConvertO(fdId);
+                callPayload.Queries["fnId"] = SourceExpressionConverter.ConvertO(fnId);
+                callPayload.Queries["centerId"] = SourceExpressionConverter.ConvertO(centerId);
+                callPayload.Queries["fieldIdentifier"] = SourceExpressionConverter.ConvertO(fieldIdentifier);
+                callPayload.Queries["value"] = SourceExpressionConverter.ConvertO(value);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldsValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<FinancialFieldValuePair[]> fieldValues = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldsValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["eftId"] = SourceExpressionConverter.ConvertO(eftId);
+                callPayload.Queries["fdId"] = SourceExpressionConverter.ConvertO(fdId);
+                callPayload.Queries["fnId"] = SourceExpressionConverter.ConvertO(fnId);
+                callPayload.Queries["centerId"] = SourceExpressionConverter.ConvertO(centerId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fieldValues);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<Resource[]> FinancialEntitiesGetEntityResources([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityUid)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityResources";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityUid"] = SourceExpressionConverter.ConvertO(entityUid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Resource[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<string> FinancialEntitiesAddEntityResource([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityUid, [WorkflowExpression] Func<string> resourceUid)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/AddEntityResource";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityUid"] = SourceExpressionConverter.ConvertO(entityUid);
+                callPayload.Queries["resourceUid"] = SourceExpressionConverter.ConvertO(resourceUid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<CallResult> FinancialEntitiesCreateEntityRelationship([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> relatedEntityId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialEntities/CreateEntityRelationship";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["relatedEntityId"] = SourceExpressionConverter.ConvertO(relatedEntityId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CallResult>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<Item[]> LookupTableGetLookupTables([WorkflowExpression] Func<string> siteUrl)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/LookupTable/GetLookupTables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<Item[]> LookupTableGetLookupTableValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> optionSetUid)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/LookupTable/GetLookupTableValues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["optionSetUid"] = SourceExpressionConverter.ConvertO(optionSetUid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<Item[]> MilestonesGetMilestones([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Milestones/GetMilestones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<string> MilestonesCreateMilestone([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> plannedDate, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<bool> showInRoadmaps = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Milestones/CreateMilestone";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Queries["plannedDate"] = SourceExpressionConverter.ConvertO(plannedDate);
+                if (description != null)
+                    callPayload.Queries["description"] = SourceExpressionConverter.ConvertO(description);
+                if (showInRoadmaps != null)
+                    callPayload.Queries["showInRoadmaps"] = SourceExpressionConverter.ConvertO(showInRoadmaps);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<EntityMilestone> MilestonesGetMilestone([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Milestones/GetMilestone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["milestoneId"] = SourceExpressionConverter.ConvertO(milestoneId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntityMilestone>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction MilestonesUpdateMilestone([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<string> plannedDate = null, [WorkflowExpression] Func<string> actualDate = null, [WorkflowExpression] Func<string> transitionalActualDate = null, [WorkflowExpression] Func<bool> showInRoadmaps = null, [WorkflowExpression] Func<string> status = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Milestones/UpdateMilestone";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["milestoneId"] = SourceExpressionConverter.ConvertO(milestoneId);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (description != null)
+                    callPayload.Queries["description"] = SourceExpressionConverter.ConvertO(description);
+                if (plannedDate != null)
+                    callPayload.Queries["plannedDate"] = SourceExpressionConverter.ConvertO(plannedDate);
+                if (actualDate != null)
+                    callPayload.Queries["actualDate"] = SourceExpressionConverter.ConvertO(actualDate);
+                if (transitionalActualDate != null)
+                    callPayload.Queries["transitionalActualDate"] = SourceExpressionConverter.ConvertO(transitionalActualDate);
+                if (showInRoadmaps != null)
+                    callPayload.Queries["showInRoadmaps"] = SourceExpressionConverter.ConvertO(showInRoadmaps);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<FieldValue[]> MilestonesGetMilestoneFieldValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Milestones/GetMilestoneFieldValues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["milestoneId"] = SourceExpressionConverter.ConvertO(milestoneId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FieldValue[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IBodyWorkflowAction<FieldValue> MilestonesGetMilestoneFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId, [WorkflowExpression] Func<string> fieldName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Milestones/GetMilestoneFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["milestoneId"] = SourceExpressionConverter.ConvertO(milestoneId);
+                callPayload.Queries["fieldName"] = SourceExpressionConverter.ConvertO(fieldName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FieldValue>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction MilestonesSetMilestoneFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId, [WorkflowExpression] Func<string> fieldName, [WorkflowExpression] Func<string> value)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Milestones/SetMilestoneFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["milestoneId"] = SourceExpressionConverter.ConvertO(milestoneId);
+                callPayload.Queries["fieldName"] = SourceExpressionConverter.ConvertO(fieldName);
+                callPayload.Queries["value"] = SourceExpressionConverter.ConvertO(value);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
+        public IWorkflowAction MilestonesSetMilestoneFieldsValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> milestoneId, [WorkflowExpression] Func<MilestoneFieldValuePair[]> fieldValues = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Milestones/SetMilestoneFieldsValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["entityId"] = SourceExpressionConverter.ConvertO(entityId);
+                callPayload.Queries["milestoneId"] = SourceExpressionConverter.ConvertO(milestoneId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fieldValues);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class StrategicportfoliomanagerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddFinancialValuesChangedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddFinancialValuesChangedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddEntityCreatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddEntityCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddEntityUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddEntityUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddEntityDeletedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddEntityDeletedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddStageTransitionHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddStageTransitionHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddChangeRequestCreatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddChangeRequestCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddChangeRequestDeletedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddChangeRequestDeletedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddMilestoneCreatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddMilestoneCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddMilestoneUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddMilestoneUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddMilestoneDeletedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddMilestoneDeletedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddRelationshipCreatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddRelationshipCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddRelationshipUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddRelationshipUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddRelationshipDeletedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eventCreationInformation;
+                var apiCallPath = "/Events/AddRelationshipDeletedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
+
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddApprovalRequestCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Events/AddApprovalRequestCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddApprovalRequestChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Events/AddApprovalRequestChangedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<EventCreationResponse>(BuildSourceInput, triggerName, recurrence);
+        }
+    }
+
+    public class EntityHistoryEntry
+    {
+        public string Id { get; set; }
+        public string EntityId { get; set; }
+        public string Date { get; set; }
+        public string DateString { get; set; }
+        public string Claim { get; set; }
+        public string Initiator { get; set; }
+        public string ActivityType { get; set; }
+        public string ActivityTypeIcon { get; set; }
+        public string ActivityDetails { get; set; }
+    }
+
+    public class LifecycleApprovalRequest
+    {
+        public string Id { get; set; }
+        public string RequestId { get; set; }
+        public string EntityId { get; set; }
+        public string EntityName { get; set; }
+        public string RequestName { get; set; }
+        public string ApproverName { get; set; }
+        public string ApproverEmail { get; set; }
+        public string StageId { get; set; }
+        public string StageName { get; set; }
+        public string Status { get; set; }
+        public string RequestedDate { get; set; }
+        public string CompletedDate { get; set; }
+        public string Comment { get; set; }
+        public string EntityTypeId { get; set; }
+        public string EntityTypeName { get; set; }
+        public string RequestedByName { get; set; }
+        public string RequestedByEmail { get; set; }
+        public string ResponseType { get; set; }
     }
 
     public class Item
@@ -745,6 +1306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         public string FieldName { get; set; }
         public string FieldUid { get; set; }
         public JToken Value { get; set; }
+        public JToken NormalizedValue { get; set; }
     }
 
     public class CallResult
@@ -784,17 +1346,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
         public string Name { get; set; }
     }
 
-    public class EntityHistoryEntry
+    public class EntityMilestone
     {
-        public string Id { get; set; }
-        public string EntityId { get; set; }
-        public string Date { get; set; }
-        public string DateString { get; set; }
-        public string Claim { get; set; }
-        public string Initiator { get; set; }
-        public string ActivityType { get; set; }
-        public string ActivityTypeIcon { get; set; }
-        public string ActivityDetails { get; set; }
+        public string MilestoneId { get; set; }
+        public string ActualDate { get; set; }
+        public string Description { get; set; }
+        public string Name { get; set; }
+        public string PlannedDate { get; set; }
+        public int Status { get; set; }
+        public string TransitionalActualDate { get; set; }
+    }
+
+    public class MilestoneFieldValuePair
+    {
+        public string Uid { get; set; }
+        public string Value { get; set; }
     }
 
     public class EventCreationResponse

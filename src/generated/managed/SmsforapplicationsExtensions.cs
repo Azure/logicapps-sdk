@@ -12,54 +12,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
     public class SmsforapplicationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<JobReport[]> ListJobs(Expression<Func<bool>> jobIdsOnly, Expression<Func<string>> fromTs = null, Expression<Func<string>> toTs = null, Expression<Func<bool>> open = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<JobReport[]> ListJobs([WorkflowExpression] Func<bool> jobIdsOnly, [WorkflowExpression] Func<string> fromTs = null, [WorkflowExpression] Func<string> toTs = null, [WorkflowExpression] Func<bool> open = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/jobs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jobIdsOnly"] = ExpressionConverter.Convert(jobIdsOnly);
-            if (fromTs != null)
-                callPayload.Queries["fromTs"] = ExpressionConverter.Convert(fromTs);
-            if (toTs != null)
-                callPayload.Queries["toTs"] = ExpressionConverter.Convert(toTs);
-            callPayload.Queries["open"] = Convert.ToString(false);
-            if (open != null)
-                callPayload.Queries["open"] = ExpressionConverter.Convert(open);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<JobReport[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/jobs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["jobIdsOnly"] = SourceExpressionConverter.ConvertO(jobIdsOnly);
+                if (fromTs != null)
+                    callPayload.Queries["fromTs"] = SourceExpressionConverter.ConvertO(fromTs);
+                if (toTs != null)
+                    callPayload.Queries["toTs"] = SourceExpressionConverter.ConvertO(toTs);
+                callPayload.Queries["open"] = Convert.ToString(false);
+                if (open != null)
+                    callPayload.Queries["open"] = SourceExpressionConverter.ConvertO(open);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JobReport[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<JobReport> GetJob(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<JobReport> GetJob([WorkflowExpression] Func<string> jobId)
         {
-            var apiCallPath = String.Format("/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JobReport>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JobReport>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<RecipientReport[]> ListRecipients(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<RecipientReport[]> ListRecipients([WorkflowExpression] Func<string> jobId)
         {
-            var apiCallPath = "/sms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jobId"] = ExpressionConverter.Convert(jobId);
-            return new ApiConnectionAction<RecipientReport[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/sms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["jobId"] = SourceExpressionConverter.ConvertO(jobId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecipientReport[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
         public IBodyWorkflowAction<VersionInfoResponse> Get()
         {
-            var apiCallPath = "/version";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VersionInfoResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/version";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VersionInfoResponse>(BuildSourceInput);
         }
     }
 

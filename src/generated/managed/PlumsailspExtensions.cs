@@ -12,1613 +12,1828 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
     public class PlumsailspActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateSiteFromTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttitle, Expression<Func<string>> requesttemplate, Expression<Func<string>> requestleafURL, Expression<Func<string>> requestdescription = null, Expression<Func<int>> requestlcid = null, Expression<Func<bool>> requestinheritPermissions = null, Expression<Func<bool>> requestinheritNavigation = null, Expression<Func<bool>> requestonTopNavigation = null, Expression<Func<bool>> requestonQuickLaunch = null)
+        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateSiteFromTemplate([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requesttitle, [WorkflowExpression] Func<string> requesttemplate, [WorkflowExpression] Func<string> requestleafURL, [WorkflowExpression] Func<string> requestdescription = null, [WorkflowExpression] Func<int> requestlcid = null, [WorkflowExpression] Func<bool> requestinheritPermissions = null, [WorkflowExpression] Func<bool> requestinheritNavigation = null, [WorkflowExpression] Func<bool> requestonTopNavigation = null, [WorkflowExpression] Func<bool> requestonQuickLaunch = null)
         {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateSiteFromTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
-            requestpropCount++;
-            request["template"] = ExpressionConverter.ConvertO(requesttemplate);
-            requestpropCount++;
-            request["leafUrl"] = ExpressionConverter.ConvertO(requestleafURL);
-            if (requestdescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["description"] = ExpressionConverter.ConvertO(requestdescription);
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateSiteFromTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestlcid != null)
-            {
-                request["lcid"] = ExpressionConverter.ConvertO(requestlcid);
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
                 requestpropCount++;
-            }
-
-            if (requestinheritPermissions != null)
-            {
-                request["inheritPermissions"] = ExpressionConverter.ConvertO(requestinheritPermissions);
+                request["title"] = SourceExpressionConverter.ConvertToken(requesttitle);
                 requestpropCount++;
-            }
-
-            if (requestinheritNavigation != null)
-            {
-                request["inheritNavigation"] = ExpressionConverter.ConvertO(requestinheritNavigation);
+                request["template"] = SourceExpressionConverter.ConvertToken(requesttemplate);
                 requestpropCount++;
-            }
-
-            if (requestonTopNavigation != null)
-            {
-                request["onTopNav"] = ExpressionConverter.ConvertO(requestonTopNavigation);
-                requestpropCount++;
-            }
-
-            if (requestonQuickLaunch != null)
-            {
-                request["onQuickLaunch"] = ExpressionConverter.ConvertO(requestonQuickLaunch);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<WebUrlResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsChangePermissions(Expression<Func<actionTypeInput>> actionType, Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/ChangePermissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-            callPayload.Body = ExpressionConverter.ConvertO(request);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsActivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/ActivateFeature";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["featureId"] = ExpressionConverter.ConvertO(requestfeatureID);
-            if (requestforce != null)
-            {
-                request["force"] = ExpressionConverter.ConvertO(requestforce);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsDeactivateFeature(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfeatureID, Expression<Func<bool>> requestforce = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeactivateFeature";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["featureId"] = ExpressionConverter.ConvertO(requestfeatureID);
-            if (requestforce != null)
-            {
-                request["force"] = ExpressionConverter.ConvertO(requestforce);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsCreateListOrLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttitle, Expression<Func<string>> requesttemplate, Expression<Func<string>> requestpartialURL = null, Expression<Func<string>> requestdescription = null, Expression<Func<bool>> requestonQuickLaunch = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateListOrLibrary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
-            requestpropCount++;
-            request["template"] = ExpressionConverter.ConvertO(requesttemplate);
-            if (requestpartialURL != null)
-            {
-                request["partialUrl"] = ExpressionConverter.ConvertO(requestpartialURL);
-                requestpropCount++;
-            }
-
-            if (requestdescription != null)
-            {
-                request["description"] = ExpressionConverter.ConvertO(requestdescription);
-                requestpropCount++;
-            }
-
-            if (requestonQuickLaunch != null)
-            {
-                request["onQuickLaunch"] = ExpressionConverter.ConvertO(requestonQuickLaunch);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsSetDefaultSiteGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestgroupTypeInput>> requestgroupType, Expression<Func<string>> requestgroupName)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/SetDefaultSiteGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupType"] = ExpressionConverter.ConvertO(requestgroupType);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCopyDocumentFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyDocumentFromLibrary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
-            requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<DocumentInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsMoveDocumentFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveDocumentFromLibrary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
-            requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<DocumentInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveDocumentByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveDocumentByUrl";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestdocumentURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCreateDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentSetName, Expression<Func<string>> requesttargetList, Expression<Func<string>> requestcontentType = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateDocumentSet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["documentSetName"] = ExpressionConverter.ConvertO(requestdocumentSetName);
-            requestpropCount++;
-            request["targetListUrl"] = ExpressionConverter.ConvertO(requesttargetList);
-            if (requestcontentType != null)
-            {
-                request["contentType"] = ExpressionConverter.ConvertO(requestcontentType);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<DocumentSetInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCopyDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyDocumentSet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
-            requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<DocumentSetInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsMoveDocumentSet(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveDocumentSet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
-            requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<DocumentSetInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfolderURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateFolderByUrl";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["folderUrl"] = ExpressionConverter.ConvertO(requestfolderURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<FolderInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderInList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttargetList, Expression<Func<string>> requestfolderPath)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateFolderInList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["targetListUrl"] = ExpressionConverter.ConvertO(requesttargetList);
-            requestpropCount++;
-            request["folderPath"] = ExpressionConverter.ConvertO(requestfolderPath);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<FolderInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveFolderByUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestfolderURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveFolderByUrl";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestfolderURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCopyFolderFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyFolderFromLibrary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
-            requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<FolderInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsMoveFolderFromLibrary(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsourceURL, Expression<Func<string>> requestdestinationURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveFolderFromLibrary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["sourceUrl"] = ExpressionConverter.ConvertO(requestsourceURL);
-            requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<FolderInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckInDocument(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL, Expression<Func<string>> requestcomment = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckInDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["documentUrl"] = ExpressionConverter.ConvertO(requestdocumentURL);
-            if (requestcomment != null)
-            {
-                request["comment"] = ExpressionConverter.ConvertO(requestcomment);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<DocumentInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckOutDocument(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestdocumentURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckOutDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["documentUrl"] = ExpressionConverter.ConvertO(requestdocumentURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<DocumentInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateModernSite(Expression<Func<siteTypeInput>> siteType, Expression<Func<object>> request = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateModernSite";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteType"] = ExpressionConverter.Convert(siteType);
-            callPayload.Body = ExpressionConverter.ConvertO(request);
-            return new ApiConnectionAction<WebUrlResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsApplySiteDesign(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestsiteDesign)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/ApplySiteDesign";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["url"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["siteDesign"] = ExpressionConverter.ConvertO(requestsiteDesign);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<WebUrlResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsCreateSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestgroupDescription = null, Expression<Func<string>> requestgroupOwner = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateSharePointGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            if (requestgroupDescription != null)
-            {
-                request["groupDescription"] = ExpressionConverter.ConvertO(requestgroupDescription);
-                requestpropCount++;
-            }
-
-            if (requestgroupOwner != null)
-            {
-                request["userLogin"] = ExpressionConverter.ConvertO(requestgroupOwner);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveSharePointGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointGroupProperties(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestpropertiestitle = null, Expression<Func<string>> requestpropertiesdescription = null, Expression<Func<string>> requestpropertiesowner = null, Expression<Func<bool>> requestpropertiesallowMembersEditMembership = null, Expression<Func<bool>> requestpropertiesallowRequestToJoinLeave = null, Expression<Func<bool>> requestpropertiesautoAcceptRequestToJoinLeave = null, Expression<Func<bool>> requestpropertiesonlyAllowMembersViewMembership = null, Expression<Func<string>> requestpropertiesrequestToJoinLeaveEmailSetting = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateSharePointGroupProperties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (requestpropertiestitle != null)
-            {
-                propertiesObject["title"] = ExpressionConverter.ConvertO(requestpropertiestitle);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesdescription != null)
-            {
-                propertiesObject["description"] = ExpressionConverter.ConvertO(requestpropertiesdescription);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesowner != null)
-            {
-                propertiesObject["owner"] = ExpressionConverter.ConvertO(requestpropertiesowner);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesallowMembersEditMembership != null)
-            {
-                propertiesObject["allowMembersEditMembership"] = ExpressionConverter.ConvertO(requestpropertiesallowMembersEditMembership);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesallowRequestToJoinLeave != null)
-            {
-                propertiesObject["allowRequestToJoinLeave"] = ExpressionConverter.ConvertO(requestpropertiesallowRequestToJoinLeave);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesautoAcceptRequestToJoinLeave != null)
-            {
-                propertiesObject["autoAcceptRequestToJoinLeave"] = ExpressionConverter.ConvertO(requestpropertiesautoAcceptRequestToJoinLeave);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesonlyAllowMembersViewMembership != null)
-            {
-                propertiesObject["onlyAllowMembersViewMembership"] = ExpressionConverter.ConvertO(requestpropertiesonlyAllowMembersViewMembership);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesrequestToJoinLeaveEmailSetting != null)
-            {
-                propertiesObject["requestToJoinLeaveEmailSetting"] = ExpressionConverter.ConvertO(requestpropertiesrequestToJoinLeaveEmailSetting);
-                propertiesObjectpropCount++;
-            }
-
-            if (propertiesObjectpropCount > 0)
-            {
-                request["properties"] = propertiesObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<GroupExistResponse> FlowV1SharePointFlowJobsCheckSharePointGroupExists(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckSharePointGroupExists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<GroupExistResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsAddUserToSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser, Expression<Func<bool>> requestsendEmail = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddUserToSharePointGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            requestpropCount++;
-            request["userLogin"] = ExpressionConverter.ConvertO(requestuser);
-            if (requestsendEmail != null)
-            {
-                request["sendEmail"] = ExpressionConverter.ConvertO(requestsendEmail);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveUserFromSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveUserFromSharePointGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            requestpropCount++;
-            request["userLogin"] = ExpressionConverter.ConvertO(requestuser);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<GetSPGroupMembersResponse> FlowV1SharePointFlowJobsGetSharePointGroupMembers(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetSharePointGroupMembers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<GetSPGroupMembersResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<UserExistsResponse> FlowV1SharePointFlowJobsUserExistInSharePointGroup(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestuser)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/UserExistInSharePointGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["groupName"] = ExpressionConverter.ConvertO(requestgroupName);
-            requestpropCount++;
-            request["userLogin"] = ExpressionConverter.ConvertO(requestuser);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<UserExistsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointSiteProperties(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestpropertiestitle = null, Expression<Func<string>> requestpropertiesdescription = null, Expression<Func<bool>> requestpropertiesquickLaunchEnabled = null, Expression<Func<bool>> requestpropertiestreeViewEnabled = null, Expression<Func<string>> requestpropertiessiteLogoURL = null, Expression<Func<string>> requestpropertiesalternateCssURL = null, Expression<Func<string>> requestpropertiesassociatedMemberGroup = null, Expression<Func<string>> requestpropertiesassociatedOwnerGroup = null, Expression<Func<string>> requestpropertiesassociatedVisitorGroup = null, Expression<Func<bool>> requestpropertiescontainsConfidentialInfo = null, Expression<Func<string>> requestpropertiescustomMasterURL = null, Expression<Func<bool>> requestpropertiesenableMinimalDownload = null, Expression<Func<bool>> requestpropertiesisMultilingual = null, Expression<Func<string>> requestpropertiesmasterURL = null, Expression<Func<bool>> requestpropertiesmembersCanShare = null, Expression<Func<bool>> requestpropertiesnoCrawl = null, Expression<Func<bool>> requestpropertiesoverwriteTranslationsOnChange = null, Expression<Func<string>> requestpropertiesrequestAccessEmail = null, Expression<Func<bool>> requestpropertiessaveSiteAsTemplateEnabled = null, Expression<Func<string>> requestpropertiesserverRelativeURL = null, Expression<Func<bool>> requestpropertiessyndicationEnabled = null, Expression<Func<int>> requestpropertiesuIVersion = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateSharePointSiteProperties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (requestpropertiestitle != null)
-            {
-                propertiesObject["title"] = ExpressionConverter.ConvertO(requestpropertiestitle);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesdescription != null)
-            {
-                propertiesObject["description"] = ExpressionConverter.ConvertO(requestpropertiesdescription);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesquickLaunchEnabled != null)
-            {
-                propertiesObject["quickLaunchEnabled"] = ExpressionConverter.ConvertO(requestpropertiesquickLaunchEnabled);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiestreeViewEnabled != null)
-            {
-                propertiesObject["treeViewEnabled"] = ExpressionConverter.ConvertO(requestpropertiestreeViewEnabled);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiessiteLogoURL != null)
-            {
-                propertiesObject["siteLogoUrl"] = ExpressionConverter.ConvertO(requestpropertiessiteLogoURL);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesalternateCssURL != null)
-            {
-                propertiesObject["alternateCssUrl"] = ExpressionConverter.ConvertO(requestpropertiesalternateCssURL);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesassociatedMemberGroup != null)
-            {
-                propertiesObject["associatedMemberGroup"] = ExpressionConverter.ConvertO(requestpropertiesassociatedMemberGroup);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesassociatedOwnerGroup != null)
-            {
-                propertiesObject["associatedOwnerGroup"] = ExpressionConverter.ConvertO(requestpropertiesassociatedOwnerGroup);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesassociatedVisitorGroup != null)
-            {
-                propertiesObject["associatedVisitorGroup"] = ExpressionConverter.ConvertO(requestpropertiesassociatedVisitorGroup);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiescontainsConfidentialInfo != null)
-            {
-                propertiesObject["containsConfidentialInfo"] = ExpressionConverter.ConvertO(requestpropertiescontainsConfidentialInfo);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiescustomMasterURL != null)
-            {
-                propertiesObject["customMasterUrl"] = ExpressionConverter.ConvertO(requestpropertiescustomMasterURL);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesenableMinimalDownload != null)
-            {
-                propertiesObject["enableMinimalDownload"] = ExpressionConverter.ConvertO(requestpropertiesenableMinimalDownload);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesisMultilingual != null)
-            {
-                propertiesObject["isMultilingual"] = ExpressionConverter.ConvertO(requestpropertiesisMultilingual);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesmasterURL != null)
-            {
-                propertiesObject["masterUrl"] = ExpressionConverter.ConvertO(requestpropertiesmasterURL);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesmembersCanShare != null)
-            {
-                propertiesObject["membersCanShare"] = ExpressionConverter.ConvertO(requestpropertiesmembersCanShare);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesnoCrawl != null)
-            {
-                propertiesObject["noCrawl"] = ExpressionConverter.ConvertO(requestpropertiesnoCrawl);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesoverwriteTranslationsOnChange != null)
-            {
-                propertiesObject["overwriteTranslationsOnChange"] = ExpressionConverter.ConvertO(requestpropertiesoverwriteTranslationsOnChange);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesrequestAccessEmail != null)
-            {
-                propertiesObject["requestAccessEmail"] = ExpressionConverter.ConvertO(requestpropertiesrequestAccessEmail);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiessaveSiteAsTemplateEnabled != null)
-            {
-                propertiesObject["saveSiteAsTemplateEnabled"] = ExpressionConverter.ConvertO(requestpropertiessaveSiteAsTemplateEnabled);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesserverRelativeURL != null)
-            {
-                propertiesObject["serverRelativeUrl"] = ExpressionConverter.ConvertO(requestpropertiesserverRelativeURL);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiessyndicationEnabled != null)
-            {
-                propertiesObject["syndicationEnabled"] = ExpressionConverter.ConvertO(requestpropertiessyndicationEnabled);
-                propertiesObjectpropCount++;
-            }
-
-            if (requestpropertiesuIVersion != null)
-            {
-                propertiesObject["uiVersion"] = ExpressionConverter.ConvertO(requestpropertiesuIVersion);
-                propertiesObjectpropCount++;
-            }
-
-            if (propertiesObjectpropCount > 0)
-            {
-                request["properties"] = propertiesObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsDeleteSharePointSite(Expression<Func<string>> requestsharePointSiteURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeleteSharePointSite";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<SPSiteOptionValueResponse> FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsString(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestoptionName)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetSharePointSiteOptionValueAsString";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["optionName"] = ExpressionConverter.ConvertO(requestoptionName);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<SPSiteOptionValueResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsInviteExternalUserToSharePoint(Expression<Func<targetInput>> target, Expression<Func<object>> request = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/InviteExternalUserToSharePoint";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-            callPayload.Body = ExpressionConverter.ConvertO(request);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsCopyAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyAttachmentsToUrl";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
-            requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationFolderURL);
-            if (requestoverwrite != null)
-            {
-                request["overwrite"] = ExpressionConverter.ConvertO(requestoverwrite);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<ListFileUrlsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsMoveAttachmentsToUrl(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestdestinationFolderURL, Expression<Func<bool>> requestoverwrite = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveAttachmentsToUrl";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
-            requestpropCount++;
-            request["destinationUrl"] = ExpressionConverter.ConvertO(requestdestinationFolderURL);
-            if (requestoverwrite != null)
-            {
-                request["overwrite"] = ExpressionConverter.ConvertO(requestoverwrite);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<ListFileUrlsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsAddContentTypeToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestcontentTypeName, Expression<Func<bool>> requestmakeItDefault = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddContentTypeToSharePointList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
-            requestpropCount++;
-            request["contentTypeName"] = ExpressionConverter.ConvertO(requestcontentTypeName);
-            if (requestmakeItDefault != null)
-            {
-                request["makeItDefault"] = ExpressionConverter.ConvertO(requestmakeItDefault);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsCopyListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestcopyAttachments = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyListItemToSharePointList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
-            requestpropCount++;
-            request["destinationListUrl"] = ExpressionConverter.ConvertO(requestdestinationListURL);
-            if (requestcopyAttachments != null)
-            {
-                request["copyAttachments"] = ExpressionConverter.ConvertO(requestcopyAttachments);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<ListItemIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsMoveListItemToSharePointList(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestitemID, Expression<Func<string>> requestdestinationListURL, Expression<Func<bool>> requestmoveAttachments = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveListItemToSharePointList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
-            requestpropCount++;
-            request["destinationListUrl"] = ExpressionConverter.ConvertO(requestdestinationListURL);
-            if (requestmoveAttachments != null)
-            {
-                request["copyAttachments"] = ExpressionConverter.ConvertO(requestmoveAttachments);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<ListItemIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartListWorkflow(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartListWorkflow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["workflowName"] = ExpressionConverter.ConvertO(requestworkflowName);
-            var inputParametersObject = new JObject();
-            var inputParametersObjectpropCount = 0;
-            if (inputParametersObjectpropCount > 0)
-            {
-                request["inputParameters"] = inputParametersObject;
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<WorkflowGuidResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartSiteWorkflow(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestworkflowName)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartSiteWorkflow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["workflowName"] = ExpressionConverter.ConvertO(requestworkflowName);
-            var inputParametersObject = new JObject();
-            var inputParametersObjectpropCount = 0;
-            if (inputParametersObjectpropCount > 0)
-            {
-                request["inputParameters"] = inputParametersObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<WorkflowGuidResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsGetItemsByCamlQuery(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<string>> requestcAMLQuery, Expression<Func<string>> requestfolderURL = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetItemsByCamlQuery";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
-            if (requestfolderURL != null)
-            {
-                request["folderUrl"] = ExpressionConverter.ConvertO(requestfolderURL);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["camlQuery"] = ExpressionConverter.ConvertO(requestcAMLQuery);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<VersionsHistoryResponse> FlowV1SharePointFlowJobsGetVersionsHistory(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistURL, Expression<Func<int>> requestitemID, Expression<Func<string>> requestfieldName)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetVersionsHistory";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listUrl"] = ExpressionConverter.ConvertO(requestlistURL);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemID);
-            requestpropCount++;
-            request["fieldName"] = ExpressionConverter.ConvertO(requestfieldName);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<VersionsHistoryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/ProvisionPnPTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["xmlTemplateContent"] = ExpressionConverter.ConvertO(requesttemplateContent);
-            if (requestoverwriteSystemPropertyBagValues != null)
-            {
-                request["overwriteSystemPropertyBagValues"] = ExpressionConverter.ConvertO(requestoverwriteSystemPropertyBagValues);
-                requestpropCount++;
-            }
-
-            if (requestignoreDuplicateDataRowErrors != null)
-            {
-                request["ignoreDuplicateDataRowErrors"] = ExpressionConverter.ConvertO(requestignoreDuplicateDataRowErrors);
-                requestpropCount++;
-            }
-
-            if (requestclearNavigation != null)
-            {
-                request["clearNavigation"] = ExpressionConverter.ConvertO(requestclearNavigation);
-                requestpropCount++;
-            }
-
-            if (requestprovisionContentTypesToSubWebs != null)
-            {
-                request["provisionContentTypesToSubWebs"] = ExpressionConverter.ConvertO(requestprovisionContentTypesToSubWebs);
-                requestpropCount++;
-            }
-
-            if (requestprovisionFieldsToSubWebs != null)
-            {
-                request["provisionFieldsToSubWebs"] = ExpressionConverter.ConvertO(requestprovisionFieldsToSubWebs);
-                requestpropCount++;
-            }
-
-            if (requesthandlers != null)
-            {
-                request["handlers"] = ExpressionConverter.ConvertO(requesthandlers);
-                requestpropCount++;
-            }
-
-            if (requestexcludeHandlers != null)
-            {
-                request["excludeHandlers"] = ExpressionConverter.ConvertO(requestexcludeHandlers);
-                requestpropCount++;
-            }
-
-            if (requestparameters != null)
-            {
-                request["parameters"] = ExpressionConverter.ConvertO(requestparameters);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTenantTemplate(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requesttemplateContent, Expression<Func<bool>> requestoverwriteSystemPropertyBagValues = null, Expression<Func<bool>> requestignoreDuplicateDataRowErrors = null, Expression<Func<bool>> requestclearNavigation = null, Expression<Func<bool>> requestprovisionContentTypesToSubWebs = null, Expression<Func<bool>> requestprovisionFieldsToSubWebs = null, Expression<Func<string>> requesthandlers = null, Expression<Func<string>> requestexcludeHandlers = null, Expression<Func<string>> requestparameters = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/ProvisionPnPTenantTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["xmlTemplateContent"] = ExpressionConverter.ConvertO(requesttemplateContent);
-            if (requestoverwriteSystemPropertyBagValues != null)
-            {
-                request["overwriteSystemPropertyBagValues"] = ExpressionConverter.ConvertO(requestoverwriteSystemPropertyBagValues);
-                requestpropCount++;
-            }
-
-            if (requestignoreDuplicateDataRowErrors != null)
-            {
-                request["ignoreDuplicateDataRowErrors"] = ExpressionConverter.ConvertO(requestignoreDuplicateDataRowErrors);
-                requestpropCount++;
-            }
-
-            if (requestclearNavigation != null)
-            {
-                request["clearNavigation"] = ExpressionConverter.ConvertO(requestclearNavigation);
-                requestpropCount++;
-            }
-
-            if (requestprovisionContentTypesToSubWebs != null)
-            {
-                request["provisionContentTypesToSubWebs"] = ExpressionConverter.ConvertO(requestprovisionContentTypesToSubWebs);
-                requestpropCount++;
-            }
-
-            if (requestprovisionFieldsToSubWebs != null)
-            {
-                request["provisionFieldsToSubWebs"] = ExpressionConverter.ConvertO(requestprovisionFieldsToSubWebs);
-                requestpropCount++;
-            }
-
-            if (requesthandlers != null)
-            {
-                request["handlers"] = ExpressionConverter.ConvertO(requesthandlers);
-                requestpropCount++;
-            }
-
-            if (requestexcludeHandlers != null)
-            {
-                request["excludeHandlers"] = ExpressionConverter.ConvertO(requestexcludeHandlers);
-                requestpropCount++;
-            }
-
-            if (requestparameters != null)
-            {
-                request["parameters"] = ExpressionConverter.ConvertO(requestparameters);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsAddSiteNavigation(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestlocationInput>> requestlocation, Expression<Func<string>> requesttitle, Expression<Func<string>> requestparent = null, Expression<Func<string>> requesturl = null, Expression<Func<bool>> requestprepend = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddSiteNavigation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["location"] = ExpressionConverter.ConvertO(requestlocation);
-            requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
-            if (requestparent != null)
-            {
-                request["parent"] = ExpressionConverter.ConvertO(requestparent);
-                requestpropCount++;
-            }
-
-            if (requesturl != null)
-            {
-                request["url"] = ExpressionConverter.ConvertO(requesturl);
-                requestpropCount++;
-            }
-
-            if (requestprepend != null)
-            {
-                request["prepend"] = ExpressionConverter.ConvertO(requestprepend);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsRemoveSiteNavigation(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<requestlocationInput>> requestlocation, Expression<Func<string>> requesttitle, Expression<Func<string>> requestparent = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveSiteNavigation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["location"] = ExpressionConverter.ConvertO(requestlocation);
-            requestpropCount++;
-            request["title"] = ExpressionConverter.ConvertO(requesttitle);
-            if (requestparent != null)
-            {
-                request["parent"] = ExpressionConverter.ConvertO(requestparent);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsUpdateListItem(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateListItem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listName"] = ExpressionConverter.ConvertO(requestlistName);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemIDOrURL);
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
-            {
-                request["data"] = dataObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsDeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeclareDocumentAsRecord";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listName"] = ExpressionConverter.ConvertO(requestlistName);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemIDOrURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IWorkflowAction FlowV1SharePointFlowJobsUndeclareDocumentAsRecord(Expression<Func<string>> requestsharePointSiteURL, Expression<Func<string>> requestlistName, Expression<Func<string>> requestitemIDOrURL)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/UndeclareDocumentAsRecord";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["spUrl"] = ExpressionConverter.ConvertO(requestsharePointSiteURL);
-            requestpropCount++;
-            request["listName"] = ExpressionConverter.ConvertO(requestlistName);
-            requestpropCount++;
-            request["itemId"] = ExpressionConverter.ConvertO(requestitemIDOrURL);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsParseCsv(Expression<Func<string>> requestcontentOfCSVDocument, Expression<Func<string>> requestheaders, Expression<Func<requestdelimiterInput>> requestdelimiter = null, Expression<Func<requestlocaleInput>> requestlocale = null, Expression<Func<int>> requestlimit = null, Expression<Func<bool>> requestskipFirstLine = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/ParseCsv";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["content"] = ExpressionConverter.ConvertO(requestcontentOfCSVDocument);
-            if (requestdelimiter != null)
-            {
-                request["delimiter"] = ExpressionConverter.ConvertO(requestdelimiter);
-                requestpropCount++;
-            }
-
-            if (requestlocale != null)
-            {
-                if (requestlocale != null)
+                request["leafUrl"] = SourceExpressionConverter.ConvertToken(requestleafURL);
+                if (requestdescription != null)
                 {
-                    request["locale"] = ExpressionConverter.ConvertO(requestlocale);
+                    request["description"] = SourceExpressionConverter.ConvertToken(requestdescription);
+                    requestpropCount++;
+                }
+
+                if (requestlcid != null)
+                {
+                    request["lcid"] = SourceExpressionConverter.ConvertToken(requestlcid);
+                    requestpropCount++;
+                }
+
+                if (requestinheritPermissions != null)
+                {
+                    request["inheritPermissions"] = SourceExpressionConverter.ConvertToken(requestinheritPermissions);
+                    requestpropCount++;
+                }
+
+                if (requestinheritNavigation != null)
+                {
+                    request["inheritNavigation"] = SourceExpressionConverter.ConvertToken(requestinheritNavigation);
+                    requestpropCount++;
+                }
+
+                if (requestonTopNavigation != null)
+                {
+                    request["onTopNav"] = SourceExpressionConverter.ConvertToken(requestonTopNavigation);
+                    requestpropCount++;
+                }
+
+                if (requestonQuickLaunch != null)
+                {
+                    request["onQuickLaunch"] = SourceExpressionConverter.ConvertToken(requestonQuickLaunch);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WebUrlResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsChangePermissions([WorkflowExpression] Func<actionTypeInput> actionType, [WorkflowExpression] Func<targetInput> target, [WorkflowExpression] Func<object> request = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/ChangePermissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["actionType"] = SourceExpressionConverter.Convert(actionType);
+                callPayload.Queries["target"] = SourceExpressionConverter.Convert(target);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(request);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsActivateFeature([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestfeatureId, [WorkflowExpression] Func<bool> requestforce = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/ActivateFeature";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["featureId"] = SourceExpressionConverter.ConvertToken(requestfeatureId);
+                if (requestforce != null)
+                {
+                    request["force"] = SourceExpressionConverter.ConvertToken(requestforce);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsDeactivateFeature([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestfeatureId, [WorkflowExpression] Func<bool> requestforce = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeactivateFeature";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["featureId"] = SourceExpressionConverter.ConvertToken(requestfeatureId);
+                if (requestforce != null)
+                {
+                    request["force"] = SourceExpressionConverter.ConvertToken(requestforce);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsCreateListOrLibrary([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requesttitle, [WorkflowExpression] Func<string> requesttemplate, [WorkflowExpression] Func<string> requestpartialURL = null, [WorkflowExpression] Func<string> requestdescription = null, [WorkflowExpression] Func<bool> requestonQuickLaunch = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateListOrLibrary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["title"] = SourceExpressionConverter.ConvertToken(requesttitle);
+                requestpropCount++;
+                request["template"] = SourceExpressionConverter.ConvertToken(requesttemplate);
+                if (requestpartialURL != null)
+                {
+                    request["partialUrl"] = SourceExpressionConverter.ConvertToken(requestpartialURL);
+                    requestpropCount++;
+                }
+
+                if (requestdescription != null)
+                {
+                    request["description"] = SourceExpressionConverter.ConvertToken(requestdescription);
+                    requestpropCount++;
+                }
+
+                if (requestonQuickLaunch != null)
+                {
+                    request["onQuickLaunch"] = SourceExpressionConverter.ConvertToken(requestonQuickLaunch);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsSetDefaultSiteGroup([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType, [WorkflowExpression] Func<string> requestgroupName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/SetDefaultSiteGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupType"] = SourceExpressionConverter.Convert(requestgroupType);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCopyDocumentFromLibrary([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestsourceURL, [WorkflowExpression] Func<string> requestdestinationURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyDocumentFromLibrary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["sourceUrl"] = SourceExpressionConverter.ConvertToken(requestsourceURL);
+                requestpropCount++;
+                request["destinationUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsMoveDocumentFromLibrary([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestsourceURL, [WorkflowExpression] Func<string> requestdestinationURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveDocumentFromLibrary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["sourceUrl"] = SourceExpressionConverter.ConvertToken(requestsourceURL);
+                requestpropCount++;
+                request["destinationUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveDocumentByUrl([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestdocumentURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveDocumentByUrl";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["sourceUrl"] = SourceExpressionConverter.ConvertToken(requestdocumentURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCreateDocumentSet([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestdocumentSetName, [WorkflowExpression] Func<string> requesttargetList, [WorkflowExpression] Func<string> requestcontentType = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateDocumentSet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["documentSetName"] = SourceExpressionConverter.ConvertToken(requestdocumentSetName);
+                requestpropCount++;
+                request["targetListUrl"] = SourceExpressionConverter.ConvertToken(requesttargetList);
+                if (requestcontentType != null)
+                {
+                    request["contentType"] = SourceExpressionConverter.ConvertToken(requestcontentType);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentSetInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsCopyDocumentSet([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestsourceURL, [WorkflowExpression] Func<string> requestdestinationURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyDocumentSet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["sourceUrl"] = SourceExpressionConverter.ConvertToken(requestsourceURL);
+                requestpropCount++;
+                request["destinationUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentSetInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<DocumentSetInfoResponse> FlowV1SharePointFlowJobsMoveDocumentSet([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestsourceURL, [WorkflowExpression] Func<string> requestdestinationURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveDocumentSet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["sourceUrl"] = SourceExpressionConverter.ConvertToken(requestsourceURL);
+                requestpropCount++;
+                request["destinationUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentSetInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderByUrl([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestfolderURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateFolderByUrl";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["folderUrl"] = SourceExpressionConverter.ConvertToken(requestfolderURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FolderInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCreateFolderInList([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requesttargetList, [WorkflowExpression] Func<string> requestfolderPath)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateFolderInList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["targetListUrl"] = SourceExpressionConverter.ConvertToken(requesttargetList);
+                requestpropCount++;
+                request["folderPath"] = SourceExpressionConverter.ConvertToken(requestfolderPath);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FolderInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveFolderByUrl([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestfolderURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveFolderByUrl";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["sourceUrl"] = SourceExpressionConverter.ConvertToken(requestfolderURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsCopyFolderFromLibrary([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestsourceURL, [WorkflowExpression] Func<string> requestdestinationURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyFolderFromLibrary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["sourceUrl"] = SourceExpressionConverter.ConvertToken(requestsourceURL);
+                requestpropCount++;
+                request["destinationUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FolderInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<FolderInfoResponse> FlowV1SharePointFlowJobsMoveFolderFromLibrary([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestsourceURL, [WorkflowExpression] Func<string> requestdestinationURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveFolderFromLibrary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["sourceUrl"] = SourceExpressionConverter.ConvertToken(requestsourceURL);
+                requestpropCount++;
+                request["destinationUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FolderInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckInDocument([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestdocumentURL, [WorkflowExpression] Func<string> requestcomment = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckInDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["documentUrl"] = SourceExpressionConverter.ConvertToken(requestdocumentURL);
+                if (requestcomment != null)
+                {
+                    request["comment"] = SourceExpressionConverter.ConvertToken(requestcomment);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<DocumentInfoResponse> FlowV1SharePointFlowJobsCheckOutDocument([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestdocumentURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckOutDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["documentUrl"] = SourceExpressionConverter.ConvertToken(requestdocumentURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsCreateModernSite([WorkflowExpression] Func<siteTypeInput> siteType, [WorkflowExpression] Func<object> request = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateModernSite";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteType"] = SourceExpressionConverter.Convert(siteType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(request);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WebUrlResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<WebUrlResponse> FlowV1SharePointFlowJobsApplySiteDesign([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestsiteDesign)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/ApplySiteDesign";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["url"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["siteDesign"] = SourceExpressionConverter.ConvertToken(requestsiteDesign);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WebUrlResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsCreateSharePointGroup([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestgroupDescription = null, [WorkflowExpression] Func<string> requestgroupOwner = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CreateSharePointGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                if (requestgroupDescription != null)
+                {
+                    request["groupDescription"] = SourceExpressionConverter.ConvertToken(requestgroupDescription);
+                    requestpropCount++;
+                }
+
+                if (requestgroupOwner != null)
+                {
+                    request["userLogin"] = SourceExpressionConverter.ConvertToken(requestgroupOwner);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveSharePointGroup([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestgroupName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveSharePointGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointGroupProperties([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestpropertiestitle = null, [WorkflowExpression] Func<string> requestpropertiesdescription = null, [WorkflowExpression] Func<string> requestpropertiesowner = null, [WorkflowExpression] Func<bool> requestpropertiesallowMembersEditMembership = null, [WorkflowExpression] Func<bool> requestpropertiesallowRequestToJoinLeave = null, [WorkflowExpression] Func<bool> requestpropertiesautoAcceptRequestToJoinLeave = null, [WorkflowExpression] Func<bool> requestpropertiesonlyAllowMembersViewMembership = null, [WorkflowExpression] Func<string> requestpropertiesrequestToJoinLeaveEmailSetting = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateSharePointGroupProperties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (requestpropertiestitle != null)
+                {
+                    propertiesObject["title"] = SourceExpressionConverter.ConvertToken(requestpropertiestitle);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesdescription != null)
+                {
+                    propertiesObject["description"] = SourceExpressionConverter.ConvertToken(requestpropertiesdescription);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesowner != null)
+                {
+                    propertiesObject["owner"] = SourceExpressionConverter.ConvertToken(requestpropertiesowner);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesallowMembersEditMembership != null)
+                {
+                    propertiesObject["allowMembersEditMembership"] = SourceExpressionConverter.ConvertToken(requestpropertiesallowMembersEditMembership);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesallowRequestToJoinLeave != null)
+                {
+                    propertiesObject["allowRequestToJoinLeave"] = SourceExpressionConverter.ConvertToken(requestpropertiesallowRequestToJoinLeave);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesautoAcceptRequestToJoinLeave != null)
+                {
+                    propertiesObject["autoAcceptRequestToJoinLeave"] = SourceExpressionConverter.ConvertToken(requestpropertiesautoAcceptRequestToJoinLeave);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesonlyAllowMembersViewMembership != null)
+                {
+                    propertiesObject["onlyAllowMembersViewMembership"] = SourceExpressionConverter.ConvertToken(requestpropertiesonlyAllowMembersViewMembership);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesrequestToJoinLeaveEmailSetting != null)
+                {
+                    propertiesObject["requestToJoinLeaveEmailSetting"] = SourceExpressionConverter.ConvertToken(requestpropertiesrequestToJoinLeaveEmailSetting);
+                    propertiesObjectpropCount++;
+                }
+
+                if (propertiesObjectpropCount > 0)
+                {
+                    request["properties"] = propertiesObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<GroupExistResponse> FlowV1SharePointFlowJobsCheckSharePointGroupExists([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestgroupName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CheckSharePointGroupExists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GroupExistResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsAddUserToSharePointGroup([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestuser, [WorkflowExpression] Func<bool> requestsendEmail = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddUserToSharePointGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                requestpropCount++;
+                request["userLogin"] = SourceExpressionConverter.ConvertToken(requestuser);
+                if (requestsendEmail != null)
+                {
+                    request["sendEmail"] = SourceExpressionConverter.ConvertToken(requestsendEmail);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveUserFromSharePointGroup([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestuser)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveUserFromSharePointGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                requestpropCount++;
+                request["userLogin"] = SourceExpressionConverter.ConvertToken(requestuser);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<GetSPGroupMembersResponse> FlowV1SharePointFlowJobsGetSharePointGroupMembers([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestgroupName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetSharePointGroupMembers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSPGroupMembersResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<UserExistsResponse> FlowV1SharePointFlowJobsUserExistInSharePointGroup([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestuser)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/UserExistInSharePointGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["groupName"] = SourceExpressionConverter.ConvertToken(requestgroupName);
+                requestpropCount++;
+                request["userLogin"] = SourceExpressionConverter.ConvertToken(requestuser);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserExistsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsUpdateSharePointSiteProperties([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestpropertiestitle = null, [WorkflowExpression] Func<string> requestpropertiesdescription = null, [WorkflowExpression] Func<bool> requestpropertiesquickLaunchEnabled = null, [WorkflowExpression] Func<bool> requestpropertiestreeViewEnabled = null, [WorkflowExpression] Func<string> requestpropertiessiteLogoURL = null, [WorkflowExpression] Func<string> requestpropertiesalternateCssURL = null, [WorkflowExpression] Func<string> requestpropertiesassociatedMemberGroup = null, [WorkflowExpression] Func<string> requestpropertiesassociatedOwnerGroup = null, [WorkflowExpression] Func<string> requestpropertiesassociatedVisitorGroup = null, [WorkflowExpression] Func<bool> requestpropertiescontainsConfidentialInfo = null, [WorkflowExpression] Func<string> requestpropertiescustomMasterURL = null, [WorkflowExpression] Func<bool> requestpropertiesenableMinimalDownload = null, [WorkflowExpression] Func<bool> requestpropertiesisMultilingual = null, [WorkflowExpression] Func<string> requestpropertiesmasterURL = null, [WorkflowExpression] Func<bool> requestpropertiesmembersCanShare = null, [WorkflowExpression] Func<bool> requestpropertiesnoCrawl = null, [WorkflowExpression] Func<bool> requestpropertiesoverwriteTranslationsOnChange = null, [WorkflowExpression] Func<string> requestpropertiesrequestAccessEmail = null, [WorkflowExpression] Func<bool> requestpropertiessaveSiteAsTemplateEnabled = null, [WorkflowExpression] Func<string> requestpropertiesserverRelativeURL = null, [WorkflowExpression] Func<bool> requestpropertiessyndicationEnabled = null, [WorkflowExpression] Func<int> requestpropertiesuIVersion = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateSharePointSiteProperties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (requestpropertiestitle != null)
+                {
+                    propertiesObject["title"] = SourceExpressionConverter.ConvertToken(requestpropertiestitle);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesdescription != null)
+                {
+                    propertiesObject["description"] = SourceExpressionConverter.ConvertToken(requestpropertiesdescription);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesquickLaunchEnabled != null)
+                {
+                    propertiesObject["quickLaunchEnabled"] = SourceExpressionConverter.ConvertToken(requestpropertiesquickLaunchEnabled);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiestreeViewEnabled != null)
+                {
+                    propertiesObject["treeViewEnabled"] = SourceExpressionConverter.ConvertToken(requestpropertiestreeViewEnabled);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiessiteLogoURL != null)
+                {
+                    propertiesObject["siteLogoUrl"] = SourceExpressionConverter.ConvertToken(requestpropertiessiteLogoURL);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesalternateCssURL != null)
+                {
+                    propertiesObject["alternateCssUrl"] = SourceExpressionConverter.ConvertToken(requestpropertiesalternateCssURL);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesassociatedMemberGroup != null)
+                {
+                    propertiesObject["associatedMemberGroup"] = SourceExpressionConverter.ConvertToken(requestpropertiesassociatedMemberGroup);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesassociatedOwnerGroup != null)
+                {
+                    propertiesObject["associatedOwnerGroup"] = SourceExpressionConverter.ConvertToken(requestpropertiesassociatedOwnerGroup);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesassociatedVisitorGroup != null)
+                {
+                    propertiesObject["associatedVisitorGroup"] = SourceExpressionConverter.ConvertToken(requestpropertiesassociatedVisitorGroup);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiescontainsConfidentialInfo != null)
+                {
+                    propertiesObject["containsConfidentialInfo"] = SourceExpressionConverter.ConvertToken(requestpropertiescontainsConfidentialInfo);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiescustomMasterURL != null)
+                {
+                    propertiesObject["customMasterUrl"] = SourceExpressionConverter.ConvertToken(requestpropertiescustomMasterURL);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesenableMinimalDownload != null)
+                {
+                    propertiesObject["enableMinimalDownload"] = SourceExpressionConverter.ConvertToken(requestpropertiesenableMinimalDownload);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesisMultilingual != null)
+                {
+                    propertiesObject["isMultilingual"] = SourceExpressionConverter.ConvertToken(requestpropertiesisMultilingual);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesmasterURL != null)
+                {
+                    propertiesObject["masterUrl"] = SourceExpressionConverter.ConvertToken(requestpropertiesmasterURL);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesmembersCanShare != null)
+                {
+                    propertiesObject["membersCanShare"] = SourceExpressionConverter.ConvertToken(requestpropertiesmembersCanShare);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesnoCrawl != null)
+                {
+                    propertiesObject["noCrawl"] = SourceExpressionConverter.ConvertToken(requestpropertiesnoCrawl);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesoverwriteTranslationsOnChange != null)
+                {
+                    propertiesObject["overwriteTranslationsOnChange"] = SourceExpressionConverter.ConvertToken(requestpropertiesoverwriteTranslationsOnChange);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesrequestAccessEmail != null)
+                {
+                    propertiesObject["requestAccessEmail"] = SourceExpressionConverter.ConvertToken(requestpropertiesrequestAccessEmail);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiessaveSiteAsTemplateEnabled != null)
+                {
+                    propertiesObject["saveSiteAsTemplateEnabled"] = SourceExpressionConverter.ConvertToken(requestpropertiessaveSiteAsTemplateEnabled);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesserverRelativeURL != null)
+                {
+                    propertiesObject["serverRelativeUrl"] = SourceExpressionConverter.ConvertToken(requestpropertiesserverRelativeURL);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiessyndicationEnabled != null)
+                {
+                    propertiesObject["syndicationEnabled"] = SourceExpressionConverter.ConvertToken(requestpropertiessyndicationEnabled);
+                    propertiesObjectpropCount++;
+                }
+
+                if (requestpropertiesuIVersion != null)
+                {
+                    propertiesObject["uiVersion"] = SourceExpressionConverter.ConvertToken(requestpropertiesuIVersion);
+                    propertiesObjectpropCount++;
+                }
+
+                if (propertiesObjectpropCount > 0)
+                {
+                    request["properties"] = propertiesObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsDeleteSharePointSite([WorkflowExpression] Func<string> requestsharePointSiteURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeleteSharePointSite";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<SPSiteOptionValueResponse> FlowV1SharePointFlowJobsGetSharePointSiteOptionValueAsString([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestoptionName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetSharePointSiteOptionValueAsString";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["optionName"] = SourceExpressionConverter.ConvertToken(requestoptionName);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPSiteOptionValueResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsInviteExternalUserToSharePoint([WorkflowExpression] Func<targetInput> target, [WorkflowExpression] Func<object> request = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/InviteExternalUserToSharePoint";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["target"] = SourceExpressionConverter.Convert(target);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(request);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsCopyAttachmentsToUrl([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistURL, [WorkflowExpression] Func<int> requestitemId, [WorkflowExpression] Func<string> requestdestinationFolderURL, [WorkflowExpression] Func<bool> requestoverwrite = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyAttachmentsToUrl";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listUrl"] = SourceExpressionConverter.ConvertToken(requestlistURL);
+                requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemId);
+                requestpropCount++;
+                request["destinationUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationFolderURL);
+                if (requestoverwrite != null)
+                {
+                    request["overwrite"] = SourceExpressionConverter.ConvertToken(requestoverwrite);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListFileUrlsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<ListFileUrlsResponse> FlowV1SharePointFlowJobsMoveAttachmentsToUrl([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistURL, [WorkflowExpression] Func<int> requestitemId, [WorkflowExpression] Func<string> requestdestinationFolderURL, [WorkflowExpression] Func<bool> requestoverwrite = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveAttachmentsToUrl";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listUrl"] = SourceExpressionConverter.ConvertToken(requestlistURL);
+                requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemId);
+                requestpropCount++;
+                request["destinationUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationFolderURL);
+                if (requestoverwrite != null)
+                {
+                    request["overwrite"] = SourceExpressionConverter.ConvertToken(requestoverwrite);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListFileUrlsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsAddContentTypeToSharePointList([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistURL, [WorkflowExpression] Func<string> requestcontentTypeName, [WorkflowExpression] Func<bool> requestmakeItDefault = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddContentTypeToSharePointList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listUrl"] = SourceExpressionConverter.ConvertToken(requestlistURL);
+                requestpropCount++;
+                request["contentTypeName"] = SourceExpressionConverter.ConvertToken(requestcontentTypeName);
+                if (requestmakeItDefault != null)
+                {
+                    request["makeItDefault"] = SourceExpressionConverter.ConvertToken(requestmakeItDefault);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsCopyListItemToSharePointList([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistURL, [WorkflowExpression] Func<string> requestitemId, [WorkflowExpression] Func<string> requestdestinationListURL, [WorkflowExpression] Func<bool> requestcopyAttachments = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/CopyListItemToSharePointList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listUrl"] = SourceExpressionConverter.ConvertToken(requestlistURL);
+                requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemId);
+                requestpropCount++;
+                request["destinationListUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationListURL);
+                if (requestcopyAttachments != null)
+                {
+                    request["copyAttachments"] = SourceExpressionConverter.ConvertToken(requestcopyAttachments);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListItemIdResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<ListItemIdResponse> FlowV1SharePointFlowJobsMoveListItemToSharePointList([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistURL, [WorkflowExpression] Func<string> requestitemId, [WorkflowExpression] Func<string> requestdestinationListURL, [WorkflowExpression] Func<bool> requestmoveAttachments = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/MoveListItemToSharePointList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listUrl"] = SourceExpressionConverter.ConvertToken(requestlistURL);
+                requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemId);
+                requestpropCount++;
+                request["destinationListUrl"] = SourceExpressionConverter.ConvertToken(requestdestinationListURL);
+                if (requestmoveAttachments != null)
+                {
+                    request["copyAttachments"] = SourceExpressionConverter.ConvertToken(requestmoveAttachments);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListItemIdResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartListWorkflow([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestworkflowName, [WorkflowExpression] Func<string> requestlistURL, [WorkflowExpression] Func<int> requestitemId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartListWorkflow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["workflowName"] = SourceExpressionConverter.ConvertToken(requestworkflowName);
+                var inputParametersObject = new JObject();
+                var inputParametersObjectpropCount = 0;
+                if (inputParametersObjectpropCount > 0)
+                {
+                    request["inputParameters"] = inputParametersObject;
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-            }
-            else
-            {
-                request["locale"] = "en-US";
+                request["listUrl"] = SourceExpressionConverter.ConvertToken(requestlistURL);
                 requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemId);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestlimit != null)
-            {
-                request["limit"] = ExpressionConverter.ConvertO(requestlimit);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["headers"] = ExpressionConverter.ConvertO(requestheaders);
-            if (requestskipFirstLine != null)
-            {
-                request["skipFirstLine"] = ExpressionConverter.ConvertO(requestskipFirstLine);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<WorkflowGuidResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsRegExpMatch(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext)
+        public IBodyWorkflowAction<WorkflowGuidResponse> FlowV1SharePointFlowJobsStartSiteWorkflow([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestworkflowName)
         {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpMatch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["pattern"] = ExpressionConverter.ConvertO(requestpattern);
-            requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<StringResultResponse> FlowV1SharePointFlowJobsRegExpReplace(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext, Expression<Func<string>> requestreplacement = null)
-        {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpReplace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["pattern"] = ExpressionConverter.ConvertO(requestpattern);
-            requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
-            if (requestreplacement != null)
-            {
-                request["replacement"] = ExpressionConverter.ConvertO(requestreplacement);
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/StartSiteWorkflow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["workflowName"] = SourceExpressionConverter.ConvertToken(requestworkflowName);
+                var inputParametersObject = new JObject();
+                var inputParametersObjectpropCount = 0;
+                if (inputParametersObjectpropCount > 0)
+                {
+                    request["inputParameters"] = inputParametersObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<StringResultResponse>(callPayload);
+            return new ApiConnectionAction<WorkflowGuidResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
-        public IBodyWorkflowAction<BooleanResultResponse> FlowV1SharePointFlowJobsRegExpTest(Expression<Func<string>> requestpattern, Expression<Func<string>> requesttext)
+        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsGetItemsByCamlQuery([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistURL, [WorkflowExpression] Func<string> requestcAMLQuery, [WorkflowExpression] Func<string> requestfolderURL = null)
         {
-            var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpTest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["pattern"] = ExpressionConverter.ConvertO(requestpattern);
-            requestpropCount++;
-            request["text"] = ExpressionConverter.ConvertO(requesttext);
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetItemsByCamlQuery";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listUrl"] = SourceExpressionConverter.ConvertToken(requestlistURL);
+                if (requestfolderURL != null)
+                {
+                    request["folderUrl"] = SourceExpressionConverter.ConvertToken(requestfolderURL);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+                request["camlQuery"] = SourceExpressionConverter.ConvertToken(requestcAMLQuery);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<BooleanResultResponse>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<VersionsHistoryResponse> FlowV1SharePointFlowJobsGetVersionsHistory([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistURL, [WorkflowExpression] Func<int> requestitemId, [WorkflowExpression] Func<string> requestfieldName)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/GetVersionsHistory";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listUrl"] = SourceExpressionConverter.ConvertToken(requestlistURL);
+                requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemId);
+                requestpropCount++;
+                request["fieldName"] = SourceExpressionConverter.ConvertToken(requestfieldName);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VersionsHistoryResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTemplate([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requesttemplateContent, [WorkflowExpression] Func<bool> requestoverwriteSystemPropertyBagValues = null, [WorkflowExpression] Func<bool> requestignoreDuplicateDataRowErrors = null, [WorkflowExpression] Func<bool> requestclearNavigation = null, [WorkflowExpression] Func<bool> requestprovisionContentTypesToSubWebs = null, [WorkflowExpression] Func<bool> requestprovisionFieldsToSubWebs = null, [WorkflowExpression] Func<string> requesthandlers = null, [WorkflowExpression] Func<string> requestexcludeHandlers = null, [WorkflowExpression] Func<string> requestparameters = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/ProvisionPnPTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["xmlTemplateContent"] = SourceExpressionConverter.ConvertToken(requesttemplateContent);
+                if (requestoverwriteSystemPropertyBagValues != null)
+                {
+                    request["overwriteSystemPropertyBagValues"] = SourceExpressionConverter.ConvertToken(requestoverwriteSystemPropertyBagValues);
+                    requestpropCount++;
+                }
+
+                if (requestignoreDuplicateDataRowErrors != null)
+                {
+                    request["ignoreDuplicateDataRowErrors"] = SourceExpressionConverter.ConvertToken(requestignoreDuplicateDataRowErrors);
+                    requestpropCount++;
+                }
+
+                if (requestclearNavigation != null)
+                {
+                    request["clearNavigation"] = SourceExpressionConverter.ConvertToken(requestclearNavigation);
+                    requestpropCount++;
+                }
+
+                if (requestprovisionContentTypesToSubWebs != null)
+                {
+                    request["provisionContentTypesToSubWebs"] = SourceExpressionConverter.ConvertToken(requestprovisionContentTypesToSubWebs);
+                    requestpropCount++;
+                }
+
+                if (requestprovisionFieldsToSubWebs != null)
+                {
+                    request["provisionFieldsToSubWebs"] = SourceExpressionConverter.ConvertToken(requestprovisionFieldsToSubWebs);
+                    requestpropCount++;
+                }
+
+                if (requesthandlers != null)
+                {
+                    request["handlers"] = SourceExpressionConverter.ConvertToken(requesthandlers);
+                    requestpropCount++;
+                }
+
+                if (requestexcludeHandlers != null)
+                {
+                    request["excludeHandlers"] = SourceExpressionConverter.ConvertToken(requestexcludeHandlers);
+                    requestpropCount++;
+                }
+
+                if (requestparameters != null)
+                {
+                    request["parameters"] = SourceExpressionConverter.ConvertToken(requestparameters);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsProvisionPnPTenantTemplate([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requesttemplateContent, [WorkflowExpression] Func<bool> requestoverwriteSystemPropertyBagValues = null, [WorkflowExpression] Func<bool> requestignoreDuplicateDataRowErrors = null, [WorkflowExpression] Func<bool> requestclearNavigation = null, [WorkflowExpression] Func<bool> requestprovisionContentTypesToSubWebs = null, [WorkflowExpression] Func<bool> requestprovisionFieldsToSubWebs = null, [WorkflowExpression] Func<string> requesthandlers = null, [WorkflowExpression] Func<string> requestexcludeHandlers = null, [WorkflowExpression] Func<string> requestparameters = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/ProvisionPnPTenantTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["xmlTemplateContent"] = SourceExpressionConverter.ConvertToken(requesttemplateContent);
+                if (requestoverwriteSystemPropertyBagValues != null)
+                {
+                    request["overwriteSystemPropertyBagValues"] = SourceExpressionConverter.ConvertToken(requestoverwriteSystemPropertyBagValues);
+                    requestpropCount++;
+                }
+
+                if (requestignoreDuplicateDataRowErrors != null)
+                {
+                    request["ignoreDuplicateDataRowErrors"] = SourceExpressionConverter.ConvertToken(requestignoreDuplicateDataRowErrors);
+                    requestpropCount++;
+                }
+
+                if (requestclearNavigation != null)
+                {
+                    request["clearNavigation"] = SourceExpressionConverter.ConvertToken(requestclearNavigation);
+                    requestpropCount++;
+                }
+
+                if (requestprovisionContentTypesToSubWebs != null)
+                {
+                    request["provisionContentTypesToSubWebs"] = SourceExpressionConverter.ConvertToken(requestprovisionContentTypesToSubWebs);
+                    requestpropCount++;
+                }
+
+                if (requestprovisionFieldsToSubWebs != null)
+                {
+                    request["provisionFieldsToSubWebs"] = SourceExpressionConverter.ConvertToken(requestprovisionFieldsToSubWebs);
+                    requestpropCount++;
+                }
+
+                if (requesthandlers != null)
+                {
+                    request["handlers"] = SourceExpressionConverter.ConvertToken(requesthandlers);
+                    requestpropCount++;
+                }
+
+                if (requestexcludeHandlers != null)
+                {
+                    request["excludeHandlers"] = SourceExpressionConverter.ConvertToken(requestexcludeHandlers);
+                    requestpropCount++;
+                }
+
+                if (requestparameters != null)
+                {
+                    request["parameters"] = SourceExpressionConverter.ConvertToken(requestparameters);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsAddSiteNavigation([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<requestlocationInput> requestlocation, [WorkflowExpression] Func<string> requesttitle, [WorkflowExpression] Func<string> requestparent = null, [WorkflowExpression] Func<string> requesturl = null, [WorkflowExpression] Func<bool> requestprepend = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/AddSiteNavigation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["location"] = SourceExpressionConverter.Convert(requestlocation);
+                requestpropCount++;
+                request["title"] = SourceExpressionConverter.ConvertToken(requesttitle);
+                if (requestparent != null)
+                {
+                    request["parent"] = SourceExpressionConverter.ConvertToken(requestparent);
+                    requestpropCount++;
+                }
+
+                if (requesturl != null)
+                {
+                    request["url"] = SourceExpressionConverter.ConvertToken(requesturl);
+                    requestpropCount++;
+                }
+
+                if (requestprepend != null)
+                {
+                    request["prepend"] = SourceExpressionConverter.ConvertToken(requestprepend);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsRemoveSiteNavigation([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<requestlocationInput> requestlocation, [WorkflowExpression] Func<string> requesttitle, [WorkflowExpression] Func<string> requestparent = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/RemoveSiteNavigation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["location"] = SourceExpressionConverter.Convert(requestlocation);
+                requestpropCount++;
+                request["title"] = SourceExpressionConverter.ConvertToken(requesttitle);
+                if (requestparent != null)
+                {
+                    request["parent"] = SourceExpressionConverter.ConvertToken(requestparent);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsUpdateListItem([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistName, [WorkflowExpression] Func<string> requestitemIdOrURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/UpdateListItem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listName"] = SourceExpressionConverter.ConvertToken(requestlistName);
+                requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemIdOrURL);
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    request["data"] = dataObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsDeclareDocumentAsRecord([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistName, [WorkflowExpression] Func<string> requestitemIdOrURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/DeclareDocumentAsRecord";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listName"] = SourceExpressionConverter.ConvertToken(requestlistName);
+                requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemIdOrURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IWorkflowAction FlowV1SharePointFlowJobsUndeclareDocumentAsRecord([WorkflowExpression] Func<string> requestsharePointSiteURL, [WorkflowExpression] Func<string> requestlistName, [WorkflowExpression] Func<string> requestitemIdOrURL)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/UndeclareDocumentAsRecord";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["spUrl"] = SourceExpressionConverter.ConvertToken(requestsharePointSiteURL);
+                requestpropCount++;
+                request["listName"] = SourceExpressionConverter.ConvertToken(requestlistName);
+                requestpropCount++;
+                request["itemId"] = SourceExpressionConverter.ConvertToken(requestitemIdOrURL);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsParseCsv([WorkflowExpression] Func<string> requestcontentOfCSVDocument, [WorkflowExpression] Func<string> requestheaders, [WorkflowExpression] Func<requestdelimiterInput> requestdelimiter = null, [WorkflowExpression] Func<requestlocaleInput> requestlocale = null, [WorkflowExpression] Func<int> requestlimit = null, [WorkflowExpression] Func<bool> requestskipFirstLine = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/ParseCsv";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["content"] = SourceExpressionConverter.ConvertToken(requestcontentOfCSVDocument);
+                if (requestdelimiter != null)
+                {
+                    request["delimiter"] = SourceExpressionConverter.Convert(requestdelimiter);
+                    requestpropCount++;
+                }
+
+                if (requestlocale != null)
+                {
+                    if (requestlocale != null)
+                    {
+                        request["locale"] = SourceExpressionConverter.Convert(requestlocale);
+                        requestpropCount++;
+                    }
+
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["locale"] = "en-US";
+                    requestpropCount++;
+                }
+
+                if (requestlimit != null)
+                {
+                    request["limit"] = SourceExpressionConverter.ConvertToken(requestlimit);
+                    requestpropCount++;
+                }
+
+                requestpropCount++;
+                request["headers"] = SourceExpressionConverter.ConvertToken(requestheaders);
+                if (requestskipFirstLine != null)
+                {
+                    request["skipFirstLine"] = SourceExpressionConverter.ConvertToken(requestskipFirstLine);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<JToken> FlowV1SharePointFlowJobsRegExpMatch([WorkflowExpression] Func<string> requestpattern, [WorkflowExpression] Func<string> requesttext)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpMatch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["pattern"] = SourceExpressionConverter.ConvertToken(requestpattern);
+                requestpropCount++;
+                request["text"] = SourceExpressionConverter.ConvertToken(requesttext);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<StringResultResponse> FlowV1SharePointFlowJobsRegExpReplace([WorkflowExpression] Func<string> requestpattern, [WorkflowExpression] Func<string> requesttext, [WorkflowExpression] Func<string> requestreplacement = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpReplace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["pattern"] = SourceExpressionConverter.ConvertToken(requestpattern);
+                requestpropCount++;
+                request["text"] = SourceExpressionConverter.ConvertToken(requesttext);
+                if (requestreplacement != null)
+                {
+                    request["replacement"] = SourceExpressionConverter.ConvertToken(requestreplacement);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StringResultResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailsp")]
+        public IBodyWorkflowAction<BooleanResultResponse> FlowV1SharePointFlowJobsRegExpTest([WorkflowExpression] Func<string> requestpattern, [WorkflowExpression] Func<string> requesttext)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flow/v1/SharePointFlow/jobs/RegExpTest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["pattern"] = SourceExpressionConverter.ConvertToken(requestpattern);
+                requestpropCount++;
+                request["text"] = SourceExpressionConverter.ConvertToken(requesttext);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BooleanResultResponse>(BuildSourceInput);
         }
     }
 
@@ -2417,7 +2632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [EnumMember(Value = "ia-001")]
         Ia001,
         [EnumMember(Value = "id-ID")]
-        IdID,
+        IdId,
         [EnumMember(Value = "ig-NG")]
         IgNG,
         [EnumMember(Value = "ii-CN")]
@@ -2443,7 +2658,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailsp
         [EnumMember(Value = "jmc-TZ")]
         JmcTZ,
         [EnumMember(Value = "jv-ID")]
-        JvID,
+        JvId,
         [EnumMember(Value = "ka-GE")]
         KaGE,
         [EnumMember(Value = "kab-DZ")]

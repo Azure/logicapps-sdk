@@ -12,384 +12,454 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Safetyculture
     public class SafetycultureActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<AuditSearchResponse> SearchAudits(Expression<Func<orderInput>> order = null, Expression<Func<string>> modifiedAfter = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> template = null, Expression<Func<archivedInput>> archived = null, Expression<Func<completedInput>> completed = null, Expression<Func<ownerInput>> owner = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<AuditSearchResponse> SearchAudits([WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> modifiedAfter = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> template = null, [WorkflowExpression] Func<archivedInput> archived = null, [WorkflowExpression] Func<completedInput> completed = null, [WorkflowExpression] Func<ownerInput> owner = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/audits/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            if (modifiedAfter != null)
-                callPayload.Queries["modified_after"] = ExpressionConverter.Convert(modifiedAfter);
-            if (modifiedBefore != null)
-                callPayload.Queries["modified_before"] = ExpressionConverter.Convert(modifiedBefore);
-            if (template != null)
-                callPayload.Queries["template"] = ExpressionConverter.Convert(template);
-            callPayload.Queries["archived"] = Convert.ToString("false");
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            callPayload.Queries["completed"] = Convert.ToString("true");
-            if (completed != null)
-                callPayload.Queries["completed"] = ExpressionConverter.Convert(completed);
-            callPayload.Queries["owner"] = Convert.ToString("all");
-            if (owner != null)
-                callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
-            callPayload.Queries["limit"] = Convert.ToString(1000);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<AuditSearchResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/audits/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.Convert(order);
+                if (modifiedAfter != null)
+                    callPayload.Queries["modified_after"] = SourceExpressionConverter.ConvertO(modifiedAfter);
+                if (modifiedBefore != null)
+                    callPayload.Queries["modified_before"] = SourceExpressionConverter.ConvertO(modifiedBefore);
+                if (template != null)
+                    callPayload.Queries["template"] = SourceExpressionConverter.ConvertO(template);
+                callPayload.Queries["archived"] = Convert.ToString("false");
+                if (archived != null)
+                    callPayload.Queries["archived"] = SourceExpressionConverter.Convert(archived);
+                callPayload.Queries["completed"] = Convert.ToString("true");
+                if (completed != null)
+                    callPayload.Queries["completed"] = SourceExpressionConverter.Convert(completed);
+                callPayload.Queries["owner"] = Convert.ToString("all");
+                if (owner != null)
+                    callPayload.Queries["owner"] = SourceExpressionConverter.Convert(owner);
+                callPayload.Queries["limit"] = Convert.ToString(1000);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AuditSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<GetAuditByIdResponse> GetAuditById(Expression<Func<string>> auditId)
+        public IBodyWorkflowAction<GetAuditByIdResponse> GetAuditById([WorkflowExpression] Func<string> auditId)
         {
-            var apiCallPath = String.Format("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAuditByIdResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAuditByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<GetAuditByIdResponse> ArchiveRestoreAudit(Expression<Func<string>> auditId, Expression<Func<bool>> bodyarchived = null)
+        public IBodyWorkflowAction<GetAuditByIdResponse> ArchiveRestoreAudit([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<bool> bodyarchived = null)
         {
-            var apiCallPath = String.Format("/audits/{0}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyarchived != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["archived"] = ExpressionConverter.ConvertO(bodyarchived);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyarchived != null)
+                {
+                    body["archived"] = SourceExpressionConverter.ConvertToken(bodyarchived);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetAuditByIdResponse>(callPayload);
+            return new ApiConnectionAction<GetAuditByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitExportResponse> InitiateAuditExport(Expression<Func<string>> auditId, Expression<Func<formatInput>> format, Expression<Func<timezoneInput>> timezone = null, Expression<Func<string>> exportProfile = null)
+        public IBodyWorkflowAction<InitExportResponse> InitiateAuditExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<timezoneInput> timezone = null, [WorkflowExpression] Func<string> exportProfile = null)
         {
-            var apiCallPath = String.Format("/audits/{0}/export", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Queries["timezone"] = Convert.ToString("Etc/UTC");
-            if (timezone != null)
-                callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
-            if (exportProfile != null)
-                callPayload.Queries["export_profile"] = ExpressionConverter.Convert(exportProfile);
-            return new ApiConnectionAction<InitExportResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/export", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Queries["timezone"] = Convert.ToString("Etc/UTC");
+                if (timezone != null)
+                    callPayload.Queries["timezone"] = SourceExpressionConverter.Convert(timezone);
+                if (exportProfile != null)
+                    callPayload.Queries["export_profile"] = SourceExpressionConverter.ConvertO(exportProfile);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<InitExportResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<ExportStatusResponse> PollExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
+        public IBodyWorkflowAction<ExportStatusResponse> PollExportStatus([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId)
         {
-            var apiCallPath = String.Format("/audits/{0}/exports/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExportStatusResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExportStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<string> GetAuditExport(Expression<Func<string>> auditId, Expression<Func<string>> exportId, Expression<Func<string>> filename)
+        public IBodyWorkflowAction<string> GetAuditExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId, [WorkflowExpression] Func<string> filename)
         {
-            var apiCallPath = String.Format("/audits/{0}/exports/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1), ExpressionConverter.ConvertWithUrlEncoding(filename, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/exports/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filename, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<GetAuditLinkResponse> GetWebReportLink(Expression<Func<string>> auditId)
+        public IBodyWorkflowAction<GetAuditLinkResponse> GetWebReportLink([WorkflowExpression] Func<string> auditId)
         {
-            var apiCallPath = String.Format("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAuditLinkResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAuditLinkResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IWorkflowAction DeleteWebReportLink(Expression<Func<string>> auditId)
+        public IWorkflowAction DeleteWebReportLink([WorkflowExpression] Func<string> auditId)
         {
-            var apiCallPath = String.Format("/audits/{0}/web_report_link", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/web_report_link", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<ActionsSearchResponse> SearchActions(Expression<Func<string[]>> searchActionsBodyauditIDS = null, Expression<Func<searchActionsBodyassigneesInputItem[]>> searchActionsBodyassignees = null, Expression<Func<string>> searchActionsBodycreatedafterDate = null, Expression<Func<string>> searchActionsBodycreatedbeforeDate = null, Expression<Func<string>> searchActionsBodymodifiedafterDate = null, Expression<Func<string>> searchActionsBodymodifiedbeforeDate = null, Expression<Func<string>> searchActionsBodydueafterDate = null, Expression<Func<string>> searchActionsBodyduebeforeDate = null)
+        public IBodyWorkflowAction<ActionsSearchResponse> SearchActions([WorkflowExpression] Func<string[]> searchActionsBodyauditIdS = null, [WorkflowExpression] Func<searchActionsBodyassigneesInputItem[]> searchActionsBodyassignees = null, [WorkflowExpression] Func<string> searchActionsBodycreatedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodycreatedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedafterDate = null, [WorkflowExpression] Func<string> searchActionsBodymodifiedbeforeDate = null, [WorkflowExpression] Func<string> searchActionsBodydueafterDate = null, [WorkflowExpression] Func<string> searchActionsBodyduebeforeDate = null)
         {
-            var apiCallPath = "/actions/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var searchActionsBody = new JObject();
-            var searchActionsBodypropCount = 0;
-            if (searchActionsBodyauditIDS != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                searchActionsBody["audit_id"] = ExpressionConverter.ConvertO(searchActionsBodyauditIDS);
-                searchActionsBodypropCount++;
+                var apiCallPath = "/actions/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var searchActionsBody = new JObject();
+                var searchActionsBodypropCount = 0;
+                if (searchActionsBodyauditIdS != null)
+                {
+                    searchActionsBody["audit_id"] = SourceExpressionConverter.ConvertToken(searchActionsBodyauditIdS);
+                    searchActionsBodypropCount++;
+                }
+
+                if (searchActionsBodyassignees != null)
+                {
+                    searchActionsBody["assignees"] = SourceExpressionConverter.ConvertToken(searchActionsBodyassignees);
+                    searchActionsBodypropCount++;
+                }
+
+                var createdAtObject = new JObject();
+                var createdAtObjectpropCount = 0;
+                if (searchActionsBodycreatedafterDate != null)
+                {
+                    createdAtObject["from"] = SourceExpressionConverter.ConvertToken(searchActionsBodycreatedafterDate);
+                    createdAtObjectpropCount++;
+                }
+
+                if (searchActionsBodycreatedbeforeDate != null)
+                {
+                    createdAtObject["to"] = SourceExpressionConverter.ConvertToken(searchActionsBodycreatedbeforeDate);
+                    createdAtObjectpropCount++;
+                }
+
+                if (createdAtObjectpropCount > 0)
+                {
+                    searchActionsBody["created_at"] = createdAtObject;
+                    searchActionsBodypropCount++;
+                }
+
+                var modifiedAtObject = new JObject();
+                var modifiedAtObjectpropCount = 0;
+                if (searchActionsBodymodifiedafterDate != null)
+                {
+                    modifiedAtObject["from"] = SourceExpressionConverter.ConvertToken(searchActionsBodymodifiedafterDate);
+                    modifiedAtObjectpropCount++;
+                }
+
+                if (searchActionsBodymodifiedbeforeDate != null)
+                {
+                    modifiedAtObject["to"] = SourceExpressionConverter.ConvertToken(searchActionsBodymodifiedbeforeDate);
+                    modifiedAtObjectpropCount++;
+                }
+
+                if (modifiedAtObjectpropCount > 0)
+                {
+                    searchActionsBody["modified_at"] = modifiedAtObject;
+                    searchActionsBodypropCount++;
+                }
+
+                var dueAtObject = new JObject();
+                var dueAtObjectpropCount = 0;
+                if (searchActionsBodydueafterDate != null)
+                {
+                    dueAtObject["from"] = SourceExpressionConverter.ConvertToken(searchActionsBodydueafterDate);
+                    dueAtObjectpropCount++;
+                }
+
+                if (searchActionsBodyduebeforeDate != null)
+                {
+                    dueAtObject["to"] = SourceExpressionConverter.ConvertToken(searchActionsBodyduebeforeDate);
+                    dueAtObjectpropCount++;
+                }
+
+                if (dueAtObjectpropCount > 0)
+                {
+                    searchActionsBody["due_at"] = dueAtObject;
+                    searchActionsBodypropCount++;
+                }
+
+                if (searchActionsBodypropCount > 0)
+                {
+                    callPayload.Body = searchActionsBody;
+                }
+                return callPayload;
             }
 
-            if (searchActionsBodyassignees != null)
-            {
-                searchActionsBody["assignees"] = ExpressionConverter.ConvertO(searchActionsBodyassignees);
-                searchActionsBodypropCount++;
-            }
-
-            var createdAtObject = new JObject();
-            var createdAtObjectpropCount = 0;
-            if (searchActionsBodycreatedafterDate != null)
-            {
-                createdAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodycreatedafterDate);
-                createdAtObjectpropCount++;
-            }
-
-            if (searchActionsBodycreatedbeforeDate != null)
-            {
-                createdAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodycreatedbeforeDate);
-                createdAtObjectpropCount++;
-            }
-
-            if (createdAtObjectpropCount > 0)
-            {
-                searchActionsBody["created_at"] = createdAtObject;
-                searchActionsBodypropCount++;
-            }
-
-            var modifiedAtObject = new JObject();
-            var modifiedAtObjectpropCount = 0;
-            if (searchActionsBodymodifiedafterDate != null)
-            {
-                modifiedAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedafterDate);
-                modifiedAtObjectpropCount++;
-            }
-
-            if (searchActionsBodymodifiedbeforeDate != null)
-            {
-                modifiedAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodymodifiedbeforeDate);
-                modifiedAtObjectpropCount++;
-            }
-
-            if (modifiedAtObjectpropCount > 0)
-            {
-                searchActionsBody["modified_at"] = modifiedAtObject;
-                searchActionsBodypropCount++;
-            }
-
-            var dueAtObject = new JObject();
-            var dueAtObjectpropCount = 0;
-            if (searchActionsBodydueafterDate != null)
-            {
-                dueAtObject["from"] = ExpressionConverter.ConvertO(searchActionsBodydueafterDate);
-                dueAtObjectpropCount++;
-            }
-
-            if (searchActionsBodyduebeforeDate != null)
-            {
-                dueAtObject["to"] = ExpressionConverter.ConvertO(searchActionsBodyduebeforeDate);
-                dueAtObjectpropCount++;
-            }
-
-            if (dueAtObjectpropCount > 0)
-            {
-                searchActionsBody["due_at"] = dueAtObject;
-                searchActionsBodypropCount++;
-            }
-
-            if (searchActionsBodypropCount > 0)
-            {
-                callPayload.Body = searchActionsBody;
-            }
-
-            return new ApiConnectionAction<ActionsSearchResponse>(callPayload);
+            return new ApiConnectionAction<ActionsSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action> CreateAction(Expression<Func<string>> createActionBodyauditID = null, Expression<Func<string>> createActionBodyitemID = null, Expression<Func<string>> createActionBodytitle = null, Expression<Func<string>> createActionBodydescription = null, Expression<Func<createActionBodypriorityInput>> createActionBodypriority = null, Expression<Func<createActionBodystatusInput>> createActionBodystatus = null, Expression<Func<string>> createActionBodydueAt = null, Expression<Func<createActionBodyassigneesInputItem[]>> createActionBodyassignees = null)
+        public IBodyWorkflowAction<Action> CreateAction([WorkflowExpression] Func<string> createActionBodyauditId = null, [WorkflowExpression] Func<string> createActionBodyitemId = null, [WorkflowExpression] Func<string> createActionBodytitle = null, [WorkflowExpression] Func<string> createActionBodydescription = null, [WorkflowExpression] Func<createActionBodypriorityInput> createActionBodypriority = null, [WorkflowExpression] Func<createActionBodystatusInput> createActionBodystatus = null, [WorkflowExpression] Func<string> createActionBodydueAt = null, [WorkflowExpression] Func<createActionBodyassigneesInputItem[]> createActionBodyassignees = null)
         {
-            var apiCallPath = "/actions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var createActionBody = new JObject();
-            var createActionBodypropCount = 0;
-            if (createActionBodyauditID != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                createActionBody["audit_id"] = ExpressionConverter.ConvertO(createActionBodyauditID);
-                createActionBodypropCount++;
+                var apiCallPath = "/actions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var createActionBody = new JObject();
+                var createActionBodypropCount = 0;
+                if (createActionBodyauditId != null)
+                {
+                    createActionBody["audit_id"] = SourceExpressionConverter.ConvertToken(createActionBodyauditId);
+                    createActionBodypropCount++;
+                }
+
+                if (createActionBodyitemId != null)
+                {
+                    createActionBody["item_id"] = SourceExpressionConverter.ConvertToken(createActionBodyitemId);
+                    createActionBodypropCount++;
+                }
+
+                if (createActionBodytitle != null)
+                {
+                    createActionBody["title"] = SourceExpressionConverter.ConvertToken(createActionBodytitle);
+                    createActionBodypropCount++;
+                }
+
+                if (createActionBodydescription != null)
+                {
+                    createActionBody["description"] = SourceExpressionConverter.ConvertToken(createActionBodydescription);
+                    createActionBodypropCount++;
+                }
+
+                if (createActionBodypriority != null)
+                {
+                    createActionBody["priority"] = SourceExpressionConverter.Convert(createActionBodypriority);
+                    createActionBodypropCount++;
+                }
+
+                if (createActionBodystatus != null)
+                {
+                    createActionBody["status"] = SourceExpressionConverter.Convert(createActionBodystatus);
+                    createActionBodypropCount++;
+                }
+
+                if (createActionBodydueAt != null)
+                {
+                    createActionBody["due_at"] = SourceExpressionConverter.ConvertToken(createActionBodydueAt);
+                    createActionBodypropCount++;
+                }
+
+                if (createActionBodyassignees != null)
+                {
+                    createActionBody["assignees"] = SourceExpressionConverter.ConvertToken(createActionBodyassignees);
+                    createActionBodypropCount++;
+                }
+
+                if (createActionBodypropCount > 0)
+                {
+                    callPayload.Body = createActionBody;
+                }
+                return callPayload;
             }
 
-            if (createActionBodyitemID != null)
-            {
-                createActionBody["item_id"] = ExpressionConverter.ConvertO(createActionBodyitemID);
-                createActionBodypropCount++;
-            }
-
-            if (createActionBodytitle != null)
-            {
-                createActionBody["title"] = ExpressionConverter.ConvertO(createActionBodytitle);
-                createActionBodypropCount++;
-            }
-
-            if (createActionBodydescription != null)
-            {
-                createActionBody["description"] = ExpressionConverter.ConvertO(createActionBodydescription);
-                createActionBodypropCount++;
-            }
-
-            if (createActionBodypriority != null)
-            {
-                createActionBody["priority"] = ExpressionConverter.ConvertO(createActionBodypriority);
-                createActionBodypropCount++;
-            }
-
-            if (createActionBodystatus != null)
-            {
-                createActionBody["status"] = ExpressionConverter.ConvertO(createActionBodystatus);
-                createActionBodypropCount++;
-            }
-
-            if (createActionBodydueAt != null)
-            {
-                createActionBody["due_at"] = ExpressionConverter.ConvertO(createActionBodydueAt);
-                createActionBodypropCount++;
-            }
-
-            if (createActionBodyassignees != null)
-            {
-                createActionBody["assignees"] = ExpressionConverter.ConvertO(createActionBodyassignees);
-                createActionBodypropCount++;
-            }
-
-            if (createActionBodypropCount > 0)
-            {
-                callPayload.Body = createActionBody;
-            }
-
-            return new ApiConnectionAction<Action>(callPayload);
+            return new ApiConnectionAction<Action>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<DeleteActionResponse> DeleteAction(Expression<Func<string>> actionId)
+        public IBodyWorkflowAction<DeleteActionResponse> DeleteAction([WorkflowExpression] Func<string> actionId)
         {
-            var apiCallPath = String.Format("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteActionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteActionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<Action> UpdateAction(Expression<Func<string>> actionId, Expression<Func<string>> updateActionBodytitle = null, Expression<Func<string>> updateActionBodydescription = null, Expression<Func<updateActionBodypriorityInput>> updateActionBodypriority = null, Expression<Func<updateActionBodystatusInput>> updateActionBodystatus = null, Expression<Func<string>> updateActionBodydueAt = null, Expression<Func<updateActionBodyassigneesInputItem[]>> updateActionBodyassignees = null)
+        public IBodyWorkflowAction<Action> UpdateAction([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> updateActionBodytitle = null, [WorkflowExpression] Func<string> updateActionBodydescription = null, [WorkflowExpression] Func<updateActionBodypriorityInput> updateActionBodypriority = null, [WorkflowExpression] Func<updateActionBodystatusInput> updateActionBodystatus = null, [WorkflowExpression] Func<string> updateActionBodydueAt = null, [WorkflowExpression] Func<updateActionBodyassigneesInputItem[]> updateActionBodyassignees = null)
         {
-            var apiCallPath = String.Format("/actions/{0}", ExpressionConverter.ConvertWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var updateActionBody = new JObject();
-            var updateActionBodypropCount = 0;
-            if (updateActionBodytitle != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                updateActionBody["title"] = ExpressionConverter.ConvertO(updateActionBodytitle);
-                updateActionBodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var updateActionBody = new JObject();
+                var updateActionBodypropCount = 0;
+                if (updateActionBodytitle != null)
+                {
+                    updateActionBody["title"] = SourceExpressionConverter.ConvertToken(updateActionBodytitle);
+                    updateActionBodypropCount++;
+                }
+
+                if (updateActionBodydescription != null)
+                {
+                    updateActionBody["description"] = SourceExpressionConverter.ConvertToken(updateActionBodydescription);
+                    updateActionBodypropCount++;
+                }
+
+                if (updateActionBodypriority != null)
+                {
+                    updateActionBody["priority"] = SourceExpressionConverter.Convert(updateActionBodypriority);
+                    updateActionBodypropCount++;
+                }
+
+                if (updateActionBodystatus != null)
+                {
+                    updateActionBody["status"] = SourceExpressionConverter.Convert(updateActionBodystatus);
+                    updateActionBodypropCount++;
+                }
+
+                if (updateActionBodydueAt != null)
+                {
+                    updateActionBody["due_at"] = SourceExpressionConverter.ConvertToken(updateActionBodydueAt);
+                    updateActionBodypropCount++;
+                }
+
+                if (updateActionBodyassignees != null)
+                {
+                    updateActionBody["assignees"] = SourceExpressionConverter.ConvertToken(updateActionBodyassignees);
+                    updateActionBodypropCount++;
+                }
+
+                if (updateActionBodypropCount > 0)
+                {
+                    callPayload.Body = updateActionBody;
+                }
+                return callPayload;
             }
 
-            if (updateActionBodydescription != null)
-            {
-                updateActionBody["description"] = ExpressionConverter.ConvertO(updateActionBodydescription);
-                updateActionBodypropCount++;
-            }
-
-            if (updateActionBodypriority != null)
-            {
-                updateActionBody["priority"] = ExpressionConverter.ConvertO(updateActionBodypriority);
-                updateActionBodypropCount++;
-            }
-
-            if (updateActionBodystatus != null)
-            {
-                updateActionBody["status"] = ExpressionConverter.ConvertO(updateActionBodystatus);
-                updateActionBodypropCount++;
-            }
-
-            if (updateActionBodydueAt != null)
-            {
-                updateActionBody["due_at"] = ExpressionConverter.ConvertO(updateActionBodydueAt);
-                updateActionBodypropCount++;
-            }
-
-            if (updateActionBodyassignees != null)
-            {
-                updateActionBody["assignees"] = ExpressionConverter.ConvertO(updateActionBodyassignees);
-                updateActionBodypropCount++;
-            }
-
-            if (updateActionBodypropCount > 0)
-            {
-                callPayload.Body = updateActionBody;
-            }
-
-            return new ApiConnectionAction<Action>(callPayload);
+            return new ApiConnectionAction<Action>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<string> GetMedia(Expression<Func<string>> auditId, Expression<Func<string>> mediaId)
+        public IBodyWorkflowAction<string> GetMedia([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> mediaId)
         {
-            var apiCallPath = String.Format("/audits/{0}/media/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(mediaId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/media/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediaId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport(Expression<Func<string>> auditId, Expression<Func<formatexportFormatInput>> formatexportFormat = null, Expression<Func<string>> formatpreferenceID = null)
+        public IBodyWorkflowAction<InitInspectionExportResponse> InitiateInspectionExport([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<formatexportFormatInput> formatexportFormat = null, [WorkflowExpression] Func<string> formatpreferenceId = null)
         {
-            var apiCallPath = String.Format("/audits/{0}/report", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var format = new JObject();
-            var formatpropCount = 0;
-            if (formatexportFormat != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/report", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var format = new JObject();
+                var formatpropCount = 0;
                 if (formatexportFormat != null)
                 {
-                    format["format"] = ExpressionConverter.ConvertO(formatexportFormat);
+                    if (formatexportFormat != null)
+                    {
+                        format["format"] = SourceExpressionConverter.Convert(formatexportFormat);
+                        formatpropCount++;
+                    }
+
+                    formatpropCount++;
+                }
+                else
+                {
+                    format["format"] = "PDF";
                     formatpropCount++;
                 }
 
-                formatpropCount++;
-            }
-            else
-            {
-                format["format"] = "PDF";
-                formatpropCount++;
+                if (formatpreferenceId != null)
+                {
+                    format["preference_id"] = SourceExpressionConverter.ConvertToken(formatpreferenceId);
+                    formatpropCount++;
+                }
+
+                if (formatpropCount > 0)
+                {
+                    callPayload.Body = format;
+                }
+                return callPayload;
             }
 
-            if (formatpreferenceID != null)
-            {
-                format["preference_id"] = ExpressionConverter.ConvertO(formatpreferenceID);
-                formatpropCount++;
-            }
-
-            if (formatpropCount > 0)
-            {
-                callPayload.Body = format;
-            }
-
-            return new ApiConnectionAction<InitInspectionExportResponse>(callPayload);
+            return new ApiConnectionAction<InitInspectionExportResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "safetyculture")]
-        public IBodyWorkflowAction<InspectionExportStatusResponse> PollInspectionExportStatus(Expression<Func<string>> auditId, Expression<Func<string>> exportId)
+        public IBodyWorkflowAction<InspectionExportStatusResponse> PollInspectionExportStatus([WorkflowExpression] Func<string> auditId, [WorkflowExpression] Func<string> exportId)
         {
-            var apiCallPath = String.Format("/audits/{0}/report/{1}", ExpressionConverter.ConvertWithUrlEncoding(auditId, 1), ExpressionConverter.ConvertWithUrlEncoding(exportId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<InspectionExportStatusResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/audits/{0}/report/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(auditId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(exportId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<InspectionExportStatusResponse>(BuildSourceInput);
         }
     }
 

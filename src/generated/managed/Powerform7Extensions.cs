@@ -12,45 +12,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
     public class Powerform7Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
-        public IWorkflowAction SubmitForm(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, Expression<Func<object>> query = null)
+        public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms([WorkflowExpression] Func<string> wPSITEURL)
         {
-            var apiCallPath = String.Format("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
-            callPayload.Body = ExpressionConverter.ConvertO(query);
-            return new ApiConnectionAction(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WP_SITEURL"] = SourceExpressionConverter.ConvertO(wPSITEURL);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
-        public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms(Expression<Func<string>> wPSITEURL)
-        {
-            var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
-            return new ApiConnectionAction<GetCF7FormsResponseItem[]>(callPayload);
+            return new ApiConnectionAction<GetCF7FormsResponseItem[]>(BuildSourceInput);
         }
     }
 
     public class Powerform7Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> wPSITEURL, [WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/proxy/power-form-7/v1/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
-            var callbackUrl = new JObject();
-            var callbackUrlpropCount = 0;
-            callbackUrl["callback_url"] = "@listCallbackUrl()";
-            callbackUrlpropCount++;
-            if (callbackUrlpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = callbackUrl;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WP_SITEURL"] = SourceExpressionConverter.ConvertO(wPSITEURL);
+                var callbackUrl = new JObject();
+                var callbackUrlpropCount = 0;
+                callbackUrl["callback_url"] = "#{listCallbackUrl()}";
+                callbackUrlpropCount++;
+                if (callbackUrlpropCount > 0)
+                {
+                    callPayload.Body = callbackUrl;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

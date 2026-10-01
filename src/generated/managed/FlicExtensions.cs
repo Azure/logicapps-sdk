@@ -15,54 +15,62 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
 
     public class FlicTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FlicButtonTrigger(Expression<Func<string>> buttonUuid, Expression<Func<requestBodyOfWebhookeventsInput>> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FlicButtonTrigger([WorkflowExpression] Func<string> buttonUuid, [WorkflowExpression] Func<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(buttonUuid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookevents != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(buttonUuid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
                 if (requestBodyOfWebhookevents != null)
                 {
-                    requestBodyOfWebhook["events"] = ExpressionConverter.ConvertO(requestBodyOfWebhookevents);
+                    if (requestBodyOfWebhookevents != null)
+                    {
+                        requestBodyOfWebhook["events"] = SourceExpressionConverter.Convert(requestBodyOfWebhookevents);
+                        requestBodyOfWebhookpropCount++;
+                    }
+
+                    requestBodyOfWebhookpropCount++;
+                }
+                else
+                {
+                    requestBodyOfWebhook["events"] = "any";
                     requestBodyOfWebhookpropCount++;
                 }
 
-                requestBodyOfWebhookpropCount++;
-            }
-            else
-            {
-                requestBodyOfWebhook["events"] = "any";
-                requestBodyOfWebhookpropCount++;
-            }
-
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger FlicTaskTrigger(Expression<Func<string>> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FlicTaskTrigger([WorkflowExpression] Func<string> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/v1/msflow/subscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(taskUuid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = requestBodyOfWebhook;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/msflow/subscribe/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskUuid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
+                requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

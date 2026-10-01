@@ -1,0 +1,24 @@
+<Project>
+  <Target Name="IncludeParityGeneratedConnectors" BeforeTargets="BeforeCompile"
+          Condition="'$(MSBuildProjectName)' == 'Microsoft.Azure.Workflows.Sdk'">
+    <Error Condition="'$(GeneratedConnectorDirectory)' == '' or !Exists('$(GeneratedConnectorDirectory)')"
+           Text="GeneratedConnectorDirectory must identify a fresh generated-source root." />
+    <Error Condition="$([System.IO.Path]::GetFullPath('$(ArtifactsPath)')) == $([System.IO.Path]::GetFullPath('$(RepoRoot)out'))"
+           Text="Set ArtifactsPath to a separate directory for this candidate SDK build." />
+    <ItemGroup>
+      <_ParityGeneratedConnector Include="$(GeneratedConnectorDirectory)\managed\**\*.cs">
+        <GeneratedFamily>managed</GeneratedFamily>
+      </_ParityGeneratedConnector>
+      <_ParityGeneratedConnector Include="$(GeneratedConnectorDirectory)\serviceProviders\**\*.cs">
+        <GeneratedFamily>serviceProviders</GeneratedFamily>
+      </_ParityGeneratedConnector>
+    </ItemGroup>
+    <Error Condition="'@(_ParityGeneratedConnector)' == ''" Text="No generated connector sources were found." />
+    <ItemGroup>
+      <Compile Remove="@(_ParityGeneratedConnector->'generated\%(GeneratedFamily)\%(RecursiveDir)%(Filename)%(Extension)')" />
+      <Compile Include="@(_ParityGeneratedConnector)" />
+    </ItemGroup>
+    <WriteLinesToFile File="$(IntermediateOutputPath)parity-generated-sources.txt"
+                      Lines="@(_ParityGeneratedConnector->'%(FullPath)')" Overwrite="true" />
+  </Target>
+</Project>

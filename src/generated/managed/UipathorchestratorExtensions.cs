@@ -12,157 +12,165 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Uipathorchestrator
     public class UipathorchestratorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodystartInfoprocessName = null, Expression<Func<int>> bodystartInfojobsCount = null, Expression<Func<bodystartInfosourceInput>> bodystartInfosource = null, Expression<Func<bodystartInfojobPriorityInput>> bodystartInfojobPriority = null, Expression<Func<bodystartInforuntimeTypeInput>> bodystartInforuntimeType = null, Expression<Func<string>> bodystartInfoinputArguments = null, Expression<Func<string>> bodystartInforeference = null)
+        public IBodyWorkflowAction<ODataValueOfIEnumerableOfJobDto> StartJobs([WorkflowExpression] Func<int> xUIPATHOrganizationUnitId, [WorkflowExpression] Func<string> bodystartInfoprocessName = null, [WorkflowExpression] Func<int> bodystartInfojobsCount = null, [WorkflowExpression] Func<bodystartInfosourceInput> bodystartInfosource = null, [WorkflowExpression] Func<bodystartInfojobPriorityInput> bodystartInfojobPriority = null, [WorkflowExpression] Func<bodystartInforuntimeTypeInput> bodystartInforuntimeType = null, [WorkflowExpression] Func<string> bodystartInfoinputArguments = null, [WorkflowExpression] Func<string> bodystartInforeference = null)
         {
-            var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var startInfoObject = new JObject();
-            var startInfoObjectpropCount = 0;
-            if (bodystartInfoprocessName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                startInfoObject["ReleaseKey"] = ExpressionConverter.ConvertO(bodystartInfoprocessName);
+                var apiCallPath = "/odata/Jobs/UiPath.Server.Configuration.OData.StartJobs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = SourceExpressionConverter.ConvertO(xUIPATHOrganizationUnitId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var startInfoObject = new JObject();
+                var startInfoObjectpropCount = 0;
+                if (bodystartInfoprocessName != null)
+                {
+                    startInfoObject["ReleaseKey"] = SourceExpressionConverter.ConvertToken(bodystartInfoprocessName);
+                    startInfoObjectpropCount++;
+                }
+
+                startInfoObject["Strategy"] = "ModernJobsCount";
                 startInfoObjectpropCount++;
+                if (bodystartInfojobsCount != null)
+                {
+                    startInfoObject["JobsCount"] = SourceExpressionConverter.ConvertToken(bodystartInfojobsCount);
+                    startInfoObjectpropCount++;
+                }
+
+                if (bodystartInfosource != null)
+                {
+                    startInfoObject["Source"] = SourceExpressionConverter.Convert(bodystartInfosource);
+                    startInfoObjectpropCount++;
+                }
+
+                if (bodystartInfojobPriority != null)
+                {
+                    startInfoObject["JobPriority"] = SourceExpressionConverter.Convert(bodystartInfojobPriority);
+                    startInfoObjectpropCount++;
+                }
+
+                if (bodystartInforuntimeType != null)
+                {
+                    startInfoObject["RuntimeType"] = SourceExpressionConverter.Convert(bodystartInforuntimeType);
+                    startInfoObjectpropCount++;
+                }
+
+                if (bodystartInfoinputArguments != null)
+                {
+                    startInfoObject["InputArguments"] = SourceExpressionConverter.ConvertToken(bodystartInfoinputArguments);
+                    startInfoObjectpropCount++;
+                }
+
+                if (bodystartInforeference != null)
+                {
+                    startInfoObject["Reference"] = SourceExpressionConverter.ConvertToken(bodystartInforeference);
+                    startInfoObjectpropCount++;
+                }
+
+                if (startInfoObjectpropCount > 0)
+                {
+                    body["startInfo"] = startInfoObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            startInfoObject["Strategy"] = "ModernJobsCount";
-            startInfoObjectpropCount++;
-            if (bodystartInfojobsCount != null)
-            {
-                startInfoObject["JobsCount"] = ExpressionConverter.ConvertO(bodystartInfojobsCount);
-                startInfoObjectpropCount++;
-            }
-
-            if (bodystartInfosource != null)
-            {
-                startInfoObject["Source"] = ExpressionConverter.ConvertO(bodystartInfosource);
-                startInfoObjectpropCount++;
-            }
-
-            if (bodystartInfojobPriority != null)
-            {
-                startInfoObject["JobPriority"] = ExpressionConverter.ConvertO(bodystartInfojobPriority);
-                startInfoObjectpropCount++;
-            }
-
-            if (bodystartInforuntimeType != null)
-            {
-                startInfoObject["RuntimeType"] = ExpressionConverter.ConvertO(bodystartInforuntimeType);
-                startInfoObjectpropCount++;
-            }
-
-            if (bodystartInfoinputArguments != null)
-            {
-                startInfoObject["InputArguments"] = ExpressionConverter.ConvertO(bodystartInfoinputArguments);
-                startInfoObjectpropCount++;
-            }
-
-            if (bodystartInforeference != null)
-            {
-                startInfoObject["Reference"] = ExpressionConverter.ConvertO(bodystartInforeference);
-                startInfoObjectpropCount++;
-            }
-
-            if (startInfoObjectpropCount > 0)
-            {
-                body["startInfo"] = startInfoObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ODataValueOfIEnumerableOfJobDto>(callPayload);
+            return new ApiConnectionAction<ODataValueOfIEnumerableOfJobDto>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "uipathorchestrator")]
-        public IBodyWorkflowAction<QueueItemDto> AddQueueItem(Expression<Func<int>> xUIPATHOrganizationUnitId, Expression<Func<string>> bodyitemDataname = null, Expression<Func<bodyitemDatapriorityInput>> bodyitemDatapriority = null, Expression<Func<string>> bodyitemDatadeferDate = null, Expression<Func<string>> bodyitemDatadueDate = null, Expression<Func<string>> bodyitemDatariskSLADate = null, Expression<Func<string>> bodyitemDatareference = null, Expression<Func<string>> bodyitemDataprogress = null)
+        public IBodyWorkflowAction<QueueItemDto> AddQueueItem([WorkflowExpression] Func<int> xUIPATHOrganizationUnitId, [WorkflowExpression] Func<string> bodyitemDataname = null, [WorkflowExpression] Func<bodyitemDatapriorityInput> bodyitemDatapriority = null, [WorkflowExpression] Func<string> bodyitemDatadeferDate = null, [WorkflowExpression] Func<string> bodyitemDatadueDate = null, [WorkflowExpression] Func<string> bodyitemDatariskSLADate = null, [WorkflowExpression] Func<string> bodyitemDatareference = null, [WorkflowExpression] Func<string> bodyitemDataprogress = null)
         {
-            var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-UIPATH-OrganizationUnitId"] = ExpressionConverter.Convert(xUIPATHOrganizationUnitId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var itemDataObject = new JObject();
-            var itemDataObjectpropCount = 0;
-            if (bodyitemDataname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                itemDataObject["Name"] = ExpressionConverter.ConvertO(bodyitemDataname);
-                itemDataObjectpropCount++;
-            }
-
-            if (bodyitemDatapriority != null)
-            {
-                if (bodyitemDatapriority != null)
+                var apiCallPath = "/odata/Queues/UiPathODataSvc.AddQueueItem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-UIPATH-OrganizationUnitId"] = SourceExpressionConverter.ConvertO(xUIPATHOrganizationUnitId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var itemDataObject = new JObject();
+                var itemDataObjectpropCount = 0;
+                if (bodyitemDataname != null)
                 {
-                    itemDataObject["Priority"] = ExpressionConverter.ConvertO(bodyitemDatapriority);
+                    itemDataObject["Name"] = SourceExpressionConverter.ConvertToken(bodyitemDataname);
                     itemDataObjectpropCount++;
                 }
 
-                itemDataObjectpropCount++;
-            }
-            else
-            {
-                itemDataObject["Priority"] = "Normal";
-                itemDataObjectpropCount++;
+                if (bodyitemDatapriority != null)
+                {
+                    if (bodyitemDatapriority != null)
+                    {
+                        itemDataObject["Priority"] = SourceExpressionConverter.Convert(bodyitemDatapriority);
+                        itemDataObjectpropCount++;
+                    }
+
+                    itemDataObjectpropCount++;
+                }
+                else
+                {
+                    itemDataObject["Priority"] = "Normal";
+                    itemDataObjectpropCount++;
+                }
+
+                var specificContentObject = new JObject();
+                var specificContentObjectpropCount = 0;
+                if (specificContentObjectpropCount > 0)
+                {
+                    itemDataObject["SpecificContent"] = specificContentObject;
+                    itemDataObjectpropCount++;
+                }
+
+                if (bodyitemDatadeferDate != null)
+                {
+                    itemDataObject["DeferDate"] = SourceExpressionConverter.ConvertToken(bodyitemDatadeferDate);
+                    itemDataObjectpropCount++;
+                }
+
+                if (bodyitemDatadueDate != null)
+                {
+                    itemDataObject["DueDate"] = SourceExpressionConverter.ConvertToken(bodyitemDatadueDate);
+                    itemDataObjectpropCount++;
+                }
+
+                if (bodyitemDatariskSLADate != null)
+                {
+                    itemDataObject["RiskSlaDate"] = SourceExpressionConverter.ConvertToken(bodyitemDatariskSLADate);
+                    itemDataObjectpropCount++;
+                }
+
+                if (bodyitemDatareference != null)
+                {
+                    itemDataObject["Reference"] = SourceExpressionConverter.ConvertToken(bodyitemDatareference);
+                    itemDataObjectpropCount++;
+                }
+
+                if (bodyitemDataprogress != null)
+                {
+                    itemDataObject["Progress"] = SourceExpressionConverter.ConvertToken(bodyitemDataprogress);
+                    itemDataObjectpropCount++;
+                }
+
+                if (itemDataObjectpropCount > 0)
+                {
+                    body["itemData"] = itemDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var specificContentObject = new JObject();
-            var specificContentObjectpropCount = 0;
-            if (specificContentObjectpropCount > 0)
-            {
-                itemDataObject["SpecificContent"] = specificContentObject;
-                itemDataObjectpropCount++;
-            }
-
-            if (bodyitemDatadeferDate != null)
-            {
-                itemDataObject["DeferDate"] = ExpressionConverter.ConvertO(bodyitemDatadeferDate);
-                itemDataObjectpropCount++;
-            }
-
-            if (bodyitemDatadueDate != null)
-            {
-                itemDataObject["DueDate"] = ExpressionConverter.ConvertO(bodyitemDatadueDate);
-                itemDataObjectpropCount++;
-            }
-
-            if (bodyitemDatariskSLADate != null)
-            {
-                itemDataObject["RiskSlaDate"] = ExpressionConverter.ConvertO(bodyitemDatariskSLADate);
-                itemDataObjectpropCount++;
-            }
-
-            if (bodyitemDatareference != null)
-            {
-                itemDataObject["Reference"] = ExpressionConverter.ConvertO(bodyitemDatareference);
-                itemDataObjectpropCount++;
-            }
-
-            if (bodyitemDataprogress != null)
-            {
-                itemDataObject["Progress"] = ExpressionConverter.ConvertO(bodyitemDataprogress);
-                itemDataObjectpropCount++;
-            }
-
-            if (itemDataObjectpropCount > 0)
-            {
-                body["itemData"] = itemDataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QueueItemDto>(callPayload);
+            return new ApiConnectionAction<QueueItemDto>(BuildSourceInput);
         }
     }
 

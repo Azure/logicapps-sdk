@@ -12,25 +12,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
     public class DataflowsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflows")]
-        public IBodyWorkflowAction<DataflowModel> RefreshDataflow(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForRefreshDataflow, Expression<Func<string>> dataflowIdForRefreshDataflow)
+        public IBodyWorkflowAction<DataflowModel> RefreshDataflow([WorkflowExpression] Func<workspaceTypeInput> workspaceType, [WorkflowExpression] Func<string> groupIdForRefreshDataflow, [WorkflowExpression] Func<string> dataflowIdForRefreshDataflow)
         {
-            var apiCallPath = String.Format("/api/groups/{0}/dataflows/{1}/refreshdataflow", ExpressionConverter.ConvertWithUrlEncoding(groupIdForRefreshDataflow, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForRefreshDataflow, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-            return new ApiConnectionAction<DataflowModel>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/refreshdataflow", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdForRefreshDataflow, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataflowIdForRefreshDataflow, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceType"] = SourceExpressionConverter.Convert(workspaceType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DataflowModel>(BuildSourceInput);
         }
     }
 
     public class DataflowsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete([WorkflowExpression] Func<workspaceTypeInput> workspaceType, [WorkflowExpression] Func<string> groupIdForOnRefreshComplete, [WorkflowExpression] Func<string> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", ExpressionConverter.ConvertWithUrlEncoding(groupIdForOnRefreshComplete, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForOnRefreshComplete, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-            return new ApiConnectionTrigger<RefreshModel>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupIdForOnRefreshComplete, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataflowIdForOnRefreshComplete, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceType"] = SourceExpressionConverter.Convert(workspaceType);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<RefreshModel>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

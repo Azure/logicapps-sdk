@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>annotations</Nullable>
+    <WorkflowRepositoryConsumer Condition="'$(ComparisonSdkAssembly)' == ''">true</WorkflowRepositoryConsumer>
+    <InterceptorsNamespaces Condition="'$(ComparisonSdkAssembly)' != ''">Microsoft.Azure.Workflows.Sdk.GeneratedInterceptors</InterceptorsNamespaces>
+  </PropertyGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="1.21.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Core" Version="1.19.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="1.17.1" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(E2EFrameworkOnly)' == 'true' or '$(E2ECompileCase)' != ''">
+    <Compile Remove="Workflows\**\*.cs" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(E2ECompileCase)' != ''">
+    <Compile Include="$(E2ECompileCase)" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(E2EExcludedSources)' != ''">
+    <Compile Remove="$([MSBuild]::Unescape('$(E2EExcludedSources)'))" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(ComparisonSdkAssembly)' == ''">
+    <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(ComparisonSdkAssembly)' != ''">
+    <Reference Include="Microsoft.Azure.Workflows.Sdk" HintPath="$(ComparisonSdkAssembly)" />
+    <Analyzer Include="$(ComparisonGeneratorAssembly)" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Rpc" Version="1.0.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Google.Protobuf" Version="3.25.2" />
+    <PackageReference Include="Grpc.Core.Api" Version="2.60.0" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.60.0" />
+    <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Abstractions" Version="1.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+  <Target Name="ValidateComparisonInputs" BeforeTargets="CoreCompile" Condition="'$(ComparisonSdkAssembly)' != ''">
+    <Error Condition="!Exists('$(ComparisonSdkAssembly)')" Text="The comparison SDK assembly does not exist." />
+    <Error Condition="!Exists('$(ComparisonGeneratorAssembly)')" Text="The comparison source generator does not exist." />
+  </Target>
+  <Target Name="SetCodefulWorkerLanguage" AfterTargets="Build">
+    <PropertyGroup>
+      <CodefulWorkerConfig>$(OutputPath)worker.config.json</CodefulWorkerConfig>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(CodefulWorkerConfig)"
+                     Lines="$([System.IO.File]::ReadAllText('$(CodefulWorkerConfig)').Replace('dotnet-isolated','dotnet'))"
+                     Overwrite="true" Condition="Exists('$(CodefulWorkerConfig)')" />
+  </Target>
+</Project>

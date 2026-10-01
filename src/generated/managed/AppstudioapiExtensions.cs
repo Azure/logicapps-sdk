@@ -15,22 +15,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
 
     public class AppstudioapiTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ApiHooksSubscribePost(Expression<Func<string>> solutionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ApiHooksSubscribePost([WorkflowExpression] Func<string> solutionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Hooks/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["solutionId"] = ExpressionConverter.Convert(solutionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            data["url"] = "@listCallbackUrl()";
-            datapropCount++;
-            if (datapropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = data;
+                var apiCallPath = "/api/Hooks/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["solutionId"] = SourceExpressionConverter.ConvertO(solutionId);
+                var data = new JObject();
+                var datapropCount = 0;
+                data["url"] = "#{listCallbackUrl()}";
+                datapropCount++;
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

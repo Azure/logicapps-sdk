@@ -12,42 +12,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shieldsioip
     public class ShieldsioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
-        public IBodyWorkflowAction<JToken> BadgeCreate(Expression<Func<string>> label = null, Expression<Func<string>> labelColor = null, Expression<Func<string>> message = null, Expression<Func<string>> color = null, Expression<Func<string>> style = null, Expression<Func<string>> logo = null, Expression<Func<string>> logoColor = null, Expression<Func<int>> logoWidth = null, Expression<Func<string>> link = null, Expression<Func<int>> cacheSeconds = null)
+        public IBodyWorkflowAction<JToken> BadgeCreate([WorkflowExpression] Func<string> label = null, [WorkflowExpression] Func<string> labelColor = null, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<string> style = null, [WorkflowExpression] Func<string> logo = null, [WorkflowExpression] Func<string> logoColor = null, [WorkflowExpression] Func<int> logoWidth = null, [WorkflowExpression] Func<string> link = null, [WorkflowExpression] Func<int> cacheSeconds = null)
         {
-            var apiCallPath = "/static/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (label != null)
-                callPayload.Queries["label"] = ExpressionConverter.Convert(label);
-            if (labelColor != null)
-                callPayload.Queries["labelColor"] = ExpressionConverter.Convert(labelColor);
-            if (message != null)
-                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-            if (color != null)
-                callPayload.Queries["color"] = ExpressionConverter.Convert(color);
-            if (style != null)
-                callPayload.Queries["style"] = ExpressionConverter.Convert(style);
-            if (logo != null)
-                callPayload.Queries["logo"] = ExpressionConverter.Convert(logo);
-            if (logoColor != null)
-                callPayload.Queries["logoColor"] = ExpressionConverter.Convert(logoColor);
-            if (logoWidth != null)
-                callPayload.Queries["logoWidth"] = ExpressionConverter.Convert(logoWidth);
-            if (link != null)
-                callPayload.Queries["link"] = ExpressionConverter.Convert(link);
-            callPayload.Queries["cacheSeconds"] = Convert.ToString(3600);
-            if (cacheSeconds != null)
-                callPayload.Queries["cacheSeconds"] = ExpressionConverter.Convert(cacheSeconds);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/static/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (label != null)
+                    callPayload.Queries["label"] = SourceExpressionConverter.ConvertO(label);
+                if (labelColor != null)
+                    callPayload.Queries["labelColor"] = SourceExpressionConverter.ConvertO(labelColor);
+                if (message != null)
+                    callPayload.Queries["message"] = SourceExpressionConverter.ConvertO(message);
+                if (color != null)
+                    callPayload.Queries["color"] = SourceExpressionConverter.ConvertO(color);
+                if (style != null)
+                    callPayload.Queries["style"] = SourceExpressionConverter.ConvertO(style);
+                if (logo != null)
+                    callPayload.Queries["logo"] = SourceExpressionConverter.ConvertO(logo);
+                if (logoColor != null)
+                    callPayload.Queries["logoColor"] = SourceExpressionConverter.ConvertO(logoColor);
+                if (logoWidth != null)
+                    callPayload.Queries["logoWidth"] = SourceExpressionConverter.ConvertO(logoWidth);
+                if (link != null)
+                    callPayload.Queries["link"] = SourceExpressionConverter.ConvertO(link);
+                callPayload.Queries["cacheSeconds"] = Convert.ToString(3600);
+                if (cacheSeconds != null)
+                    callPayload.Queries["cacheSeconds"] = SourceExpressionConverter.ConvertO(cacheSeconds);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shieldsioip")]
-        public IBodyWorkflowAction<JToken> BadgeGet(Expression<Func<string>> parameters)
+        public IBodyWorkflowAction<JToken> BadgeGet([WorkflowExpression] Func<string> parameters)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(parameters, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parameters, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

@@ -12,89 +12,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usgsearthquakehazaip
     public class UsgsearthquakehazaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usgsearthquakehazaip")]
-        public IBodyWorkflowAction<GetResponse> Get(Expression<Func<string>> endtime = null, Expression<Func<string>> starttime = null, Expression<Func<string>> updatedafter = null, Expression<Func<double>> minlatitude = null, Expression<Func<double>> minlongitude = null, Expression<Func<double>> maxlatitude = null, Expression<Func<double>> maxlongitude = null, Expression<Func<double>> latitude = null, Expression<Func<double>> longitude = null, Expression<Func<double>> maxradius = null, Expression<Func<double>> maxradiuskm = null, Expression<Func<string>> catalog = null, Expression<Func<string>> contributor = null, Expression<Func<string>> eventid = null, Expression<Func<bool>> includeallmagnitudes = null, Expression<Func<bool>> includeallorigins = null, Expression<Func<bool>> includedeleted = null, Expression<Func<bool>> includesuperseded = null, Expression<Func<double>> maxdepth = null, Expression<Func<double>> maxmagnitude = null, Expression<Func<double>> mindepth = null, Expression<Func<double>> minmagnitude = null, Expression<Func<string>> alertlevel = null, Expression<Func<string>> eventtype = null, Expression<Func<double>> maxcdi = null, Expression<Func<double>> maxgap = null, Expression<Func<double>> maxmmi = null, Expression<Func<int>> maxsig = null, Expression<Func<double>> mincdi = null, Expression<Func<int>> minfelt = null, Expression<Func<double>> mingap = null, Expression<Func<int>> minsig = null, Expression<Func<string>> producttype = null, Expression<Func<string>> productcode = null, Expression<Func<string>> reviewstatus = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> orderby = null)
+        public IBodyWorkflowAction<GetResponse> Get([WorkflowExpression] Func<string> endtime = null, [WorkflowExpression] Func<string> starttime = null, [WorkflowExpression] Func<string> updatedafter = null, [WorkflowExpression] Func<double> minlatitude = null, [WorkflowExpression] Func<double> minlongitude = null, [WorkflowExpression] Func<double> maxlatitude = null, [WorkflowExpression] Func<double> maxlongitude = null, [WorkflowExpression] Func<double> latitude = null, [WorkflowExpression] Func<double> longitude = null, [WorkflowExpression] Func<double> maxradius = null, [WorkflowExpression] Func<double> maxradiuskm = null, [WorkflowExpression] Func<string> catalog = null, [WorkflowExpression] Func<string> contributor = null, [WorkflowExpression] Func<string> eventid = null, [WorkflowExpression] Func<bool> includeallmagnitudes = null, [WorkflowExpression] Func<bool> includeallorigins = null, [WorkflowExpression] Func<bool> includedeleted = null, [WorkflowExpression] Func<bool> includesuperseded = null, [WorkflowExpression] Func<double> maxdepth = null, [WorkflowExpression] Func<double> maxmagnitude = null, [WorkflowExpression] Func<double> mindepth = null, [WorkflowExpression] Func<double> minmagnitude = null, [WorkflowExpression] Func<string> alertlevel = null, [WorkflowExpression] Func<string> eventtype = null, [WorkflowExpression] Func<double> maxcdi = null, [WorkflowExpression] Func<double> maxgap = null, [WorkflowExpression] Func<double> maxmmi = null, [WorkflowExpression] Func<int> maxsig = null, [WorkflowExpression] Func<double> mincdi = null, [WorkflowExpression] Func<int> minfelt = null, [WorkflowExpression] Func<double> mingap = null, [WorkflowExpression] Func<int> minsig = null, [WorkflowExpression] Func<string> producttype = null, [WorkflowExpression] Func<string> productcode = null, [WorkflowExpression] Func<string> reviewstatus = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            var apiCallPath = "/query";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("geojson");
-            if (endtime != null)
-                callPayload.Queries["endtime"] = ExpressionConverter.Convert(endtime);
-            if (starttime != null)
-                callPayload.Queries["starttime"] = ExpressionConverter.Convert(starttime);
-            if (updatedafter != null)
-                callPayload.Queries["updatedafter"] = ExpressionConverter.Convert(updatedafter);
-            if (minlatitude != null)
-                callPayload.Queries["minlatitude"] = ExpressionConverter.Convert(minlatitude);
-            if (minlongitude != null)
-                callPayload.Queries["minlongitude"] = ExpressionConverter.Convert(minlongitude);
-            if (maxlatitude != null)
-                callPayload.Queries["maxlatitude"] = ExpressionConverter.Convert(maxlatitude);
-            if (maxlongitude != null)
-                callPayload.Queries["maxlongitude"] = ExpressionConverter.Convert(maxlongitude);
-            if (latitude != null)
-                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            if (longitude != null)
-                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            if (maxradius != null)
-                callPayload.Queries["maxradius"] = ExpressionConverter.Convert(maxradius);
-            if (maxradiuskm != null)
-                callPayload.Queries["maxradiuskm"] = ExpressionConverter.Convert(maxradiuskm);
-            if (catalog != null)
-                callPayload.Queries["catalog"] = ExpressionConverter.Convert(catalog);
-            if (contributor != null)
-                callPayload.Queries["contributor"] = ExpressionConverter.Convert(contributor);
-            if (eventid != null)
-                callPayload.Queries["eventid"] = ExpressionConverter.Convert(eventid);
-            if (includeallmagnitudes != null)
-                callPayload.Queries["includeallmagnitudes"] = ExpressionConverter.Convert(includeallmagnitudes);
-            if (includeallorigins != null)
-                callPayload.Queries["includeallorigins"] = ExpressionConverter.Convert(includeallorigins);
-            if (includedeleted != null)
-                callPayload.Queries["includedeleted"] = ExpressionConverter.Convert(includedeleted);
-            if (includesuperseded != null)
-                callPayload.Queries["includesuperseded"] = ExpressionConverter.Convert(includesuperseded);
-            if (maxdepth != null)
-                callPayload.Queries["maxdepth"] = ExpressionConverter.Convert(maxdepth);
-            if (maxmagnitude != null)
-                callPayload.Queries["maxmagnitude"] = ExpressionConverter.Convert(maxmagnitude);
-            if (mindepth != null)
-                callPayload.Queries["mindepth"] = ExpressionConverter.Convert(mindepth);
-            if (minmagnitude != null)
-                callPayload.Queries["minmagnitude"] = ExpressionConverter.Convert(minmagnitude);
-            if (alertlevel != null)
-                callPayload.Queries["alertlevel"] = ExpressionConverter.Convert(alertlevel);
-            if (eventtype != null)
-                callPayload.Queries["eventtype"] = ExpressionConverter.Convert(eventtype);
-            if (maxcdi != null)
-                callPayload.Queries["maxcdi"] = ExpressionConverter.Convert(maxcdi);
-            if (maxgap != null)
-                callPayload.Queries["maxgap"] = ExpressionConverter.Convert(maxgap);
-            if (maxmmi != null)
-                callPayload.Queries["maxmmi"] = ExpressionConverter.Convert(maxmmi);
-            if (maxsig != null)
-                callPayload.Queries["maxsig"] = ExpressionConverter.Convert(maxsig);
-            if (mincdi != null)
-                callPayload.Queries["mincdi"] = ExpressionConverter.Convert(mincdi);
-            if (minfelt != null)
-                callPayload.Queries["minfelt"] = ExpressionConverter.Convert(minfelt);
-            if (mingap != null)
-                callPayload.Queries["mingap"] = ExpressionConverter.Convert(mingap);
-            if (minsig != null)
-                callPayload.Queries["minsig"] = ExpressionConverter.Convert(minsig);
-            if (producttype != null)
-                callPayload.Queries["producttype"] = ExpressionConverter.Convert(producttype);
-            if (productcode != null)
-                callPayload.Queries["productcode"] = ExpressionConverter.Convert(productcode);
-            if (reviewstatus != null)
-                callPayload.Queries["reviewstatus"] = ExpressionConverter.Convert(reviewstatus);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-            return new ApiConnectionAction<GetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/query";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("geojson");
+                if (endtime != null)
+                    callPayload.Queries["endtime"] = SourceExpressionConverter.ConvertO(endtime);
+                if (starttime != null)
+                    callPayload.Queries["starttime"] = SourceExpressionConverter.ConvertO(starttime);
+                if (updatedafter != null)
+                    callPayload.Queries["updatedafter"] = SourceExpressionConverter.ConvertO(updatedafter);
+                if (minlatitude != null)
+                    callPayload.Queries["minlatitude"] = SourceExpressionConverter.ConvertO(minlatitude);
+                if (minlongitude != null)
+                    callPayload.Queries["minlongitude"] = SourceExpressionConverter.ConvertO(minlongitude);
+                if (maxlatitude != null)
+                    callPayload.Queries["maxlatitude"] = SourceExpressionConverter.ConvertO(maxlatitude);
+                if (maxlongitude != null)
+                    callPayload.Queries["maxlongitude"] = SourceExpressionConverter.ConvertO(maxlongitude);
+                if (latitude != null)
+                    callPayload.Queries["latitude"] = SourceExpressionConverter.ConvertO(latitude);
+                if (longitude != null)
+                    callPayload.Queries["longitude"] = SourceExpressionConverter.ConvertO(longitude);
+                if (maxradius != null)
+                    callPayload.Queries["maxradius"] = SourceExpressionConverter.ConvertO(maxradius);
+                if (maxradiuskm != null)
+                    callPayload.Queries["maxradiuskm"] = SourceExpressionConverter.ConvertO(maxradiuskm);
+                if (catalog != null)
+                    callPayload.Queries["catalog"] = SourceExpressionConverter.ConvertO(catalog);
+                if (contributor != null)
+                    callPayload.Queries["contributor"] = SourceExpressionConverter.ConvertO(contributor);
+                if (eventid != null)
+                    callPayload.Queries["eventid"] = SourceExpressionConverter.ConvertO(eventid);
+                if (includeallmagnitudes != null)
+                    callPayload.Queries["includeallmagnitudes"] = SourceExpressionConverter.ConvertO(includeallmagnitudes);
+                if (includeallorigins != null)
+                    callPayload.Queries["includeallorigins"] = SourceExpressionConverter.ConvertO(includeallorigins);
+                if (includedeleted != null)
+                    callPayload.Queries["includedeleted"] = SourceExpressionConverter.ConvertO(includedeleted);
+                if (includesuperseded != null)
+                    callPayload.Queries["includesuperseded"] = SourceExpressionConverter.ConvertO(includesuperseded);
+                if (maxdepth != null)
+                    callPayload.Queries["maxdepth"] = SourceExpressionConverter.ConvertO(maxdepth);
+                if (maxmagnitude != null)
+                    callPayload.Queries["maxmagnitude"] = SourceExpressionConverter.ConvertO(maxmagnitude);
+                if (mindepth != null)
+                    callPayload.Queries["mindepth"] = SourceExpressionConverter.ConvertO(mindepth);
+                if (minmagnitude != null)
+                    callPayload.Queries["minmagnitude"] = SourceExpressionConverter.ConvertO(minmagnitude);
+                if (alertlevel != null)
+                    callPayload.Queries["alertlevel"] = SourceExpressionConverter.ConvertO(alertlevel);
+                if (eventtype != null)
+                    callPayload.Queries["eventtype"] = SourceExpressionConverter.ConvertO(eventtype);
+                if (maxcdi != null)
+                    callPayload.Queries["maxcdi"] = SourceExpressionConverter.ConvertO(maxcdi);
+                if (maxgap != null)
+                    callPayload.Queries["maxgap"] = SourceExpressionConverter.ConvertO(maxgap);
+                if (maxmmi != null)
+                    callPayload.Queries["maxmmi"] = SourceExpressionConverter.ConvertO(maxmmi);
+                if (maxsig != null)
+                    callPayload.Queries["maxsig"] = SourceExpressionConverter.ConvertO(maxsig);
+                if (mincdi != null)
+                    callPayload.Queries["mincdi"] = SourceExpressionConverter.ConvertO(mincdi);
+                if (minfelt != null)
+                    callPayload.Queries["minfelt"] = SourceExpressionConverter.ConvertO(minfelt);
+                if (mingap != null)
+                    callPayload.Queries["mingap"] = SourceExpressionConverter.ConvertO(mingap);
+                if (minsig != null)
+                    callPayload.Queries["minsig"] = SourceExpressionConverter.ConvertO(minsig);
+                if (producttype != null)
+                    callPayload.Queries["producttype"] = SourceExpressionConverter.ConvertO(producttype);
+                if (productcode != null)
+                    callPayload.Queries["productcode"] = SourceExpressionConverter.ConvertO(productcode);
+                if (reviewstatus != null)
+                    callPayload.Queries["reviewstatus"] = SourceExpressionConverter.ConvertO(reviewstatus);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetResponse>(BuildSourceInput);
         }
     }
 

@@ -12,158 +12,198 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
     public class PolygonActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetDailyOpenCloseResponse> GetDailyOpenClose(Expression<Func<string>> stocksTicker, Expression<Func<string>> date, Expression<Func<bool>> adjusted = null)
+        public IBodyWorkflowAction<GetDailyOpenCloseResponse> GetDailyOpenClose([WorkflowExpression] Func<string> stocksTicker, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<bool> adjusted = null)
         {
-            var apiCallPath = String.Format("/v1/open-close/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(stocksTicker, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (adjusted != null)
-                callPayload.Queries["adjusted"] = ExpressionConverter.Convert(adjusted);
-            return new ApiConnectionAction<GetDailyOpenCloseResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/open-close/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stocksTicker, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (adjusted != null)
+                    callPayload.Queries["adjusted"] = SourceExpressionConverter.ConvertO(adjusted);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDailyOpenCloseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetTickersResponse> GetTickers(Expression<Func<string>> ticker = null, Expression<Func<typeInput>> type = null, Expression<Func<marketInput>> market = null, Expression<Func<string>> exchange = null, Expression<Func<string>> cusip = null, Expression<Func<string>> cik = null, Expression<Func<string>> date = null, Expression<Func<string>> search = null, Expression<Func<bool>> active = null, Expression<Func<orderInput>> order = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<GetTickersResponse> GetTickers([WorkflowExpression] Func<string> ticker = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<marketInput> market = null, [WorkflowExpression] Func<string> exchange = null, [WorkflowExpression] Func<string> cusip = null, [WorkflowExpression] Func<string> cik = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/v3/reference/tickers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ticker != null)
-                callPayload.Queries["ticker"] = ExpressionConverter.Convert(ticker);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (market != null)
-                callPayload.Queries["market"] = ExpressionConverter.Convert(market);
-            if (exchange != null)
-                callPayload.Queries["exchange"] = ExpressionConverter.Convert(exchange);
-            if (cusip != null)
-                callPayload.Queries["cusip"] = ExpressionConverter.Convert(cusip);
-            if (cik != null)
-                callPayload.Queries["cik"] = ExpressionConverter.Convert(cik);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetTickersResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/reference/tickers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ticker != null)
+                    callPayload.Queries["ticker"] = SourceExpressionConverter.ConvertO(ticker);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                if (market != null)
+                    callPayload.Queries["market"] = SourceExpressionConverter.Convert(market);
+                if (exchange != null)
+                    callPayload.Queries["exchange"] = SourceExpressionConverter.ConvertO(exchange);
+                if (cusip != null)
+                    callPayload.Queries["cusip"] = SourceExpressionConverter.ConvertO(cusip);
+                if (cik != null)
+                    callPayload.Queries["cik"] = SourceExpressionConverter.ConvertO(cik);
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (active != null)
+                    callPayload.Queries["active"] = SourceExpressionConverter.ConvertO(active);
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.Convert(order);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.Convert(sort);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTickersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetTickerDetailsResponse> GetTickerDetails(Expression<Func<string>> ticker, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<GetTickerDetailsResponse> GetTickerDetails([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> date = null)
         {
-            var apiCallPath = String.Format("/v3/reference/tickers/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticker, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (date != null)
-                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            return new ApiConnectionAction<GetTickerDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/reference/tickers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticker, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTickerDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetTickerEventsResponse> GetTickerEvents(Expression<Func<string>> id, Expression<Func<string>> types = null)
+        public IBodyWorkflowAction<GetTickerEventsResponse> GetTickerEvents([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> types = null)
         {
-            var apiCallPath = String.Format("/vX/reference/tickers/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (types != null)
-                callPayload.Queries["types"] = ExpressionConverter.Convert(types);
-            return new ApiConnectionAction<GetTickerEventsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/vX/reference/tickers/{0}/events", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (types != null)
+                    callPayload.Queries["types"] = SourceExpressionConverter.ConvertO(types);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTickerEventsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetStockSplitsResponse> GetStockSplits(Expression<Func<string>> ticker, Expression<Func<string>> executionDate = null, Expression<Func<bool>> reverseSplit = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
+        public IBodyWorkflowAction<GetStockSplitsResponse> GetStockSplits([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> executionDate = null, [WorkflowExpression] Func<bool> reverseSplit = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<sortInput> sort = null)
         {
-            var apiCallPath = "/v3/reference/splits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ticker"] = ExpressionConverter.Convert(ticker);
-            if (executionDate != null)
-                callPayload.Queries["execution_date"] = ExpressionConverter.Convert(executionDate);
-            if (reverseSplit != null)
-                callPayload.Queries["reverse_split"] = ExpressionConverter.Convert(reverseSplit);
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<GetStockSplitsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/reference/splits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ticker"] = SourceExpressionConverter.ConvertO(ticker);
+                if (executionDate != null)
+                    callPayload.Queries["execution_date"] = SourceExpressionConverter.ConvertO(executionDate);
+                if (reverseSplit != null)
+                    callPayload.Queries["reverse_split"] = SourceExpressionConverter.ConvertO(reverseSplit);
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.Convert(order);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.Convert(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStockSplitsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetStockDividendsResponse> GetStockDividends(Expression<Func<string>> ticker, Expression<Func<string>> exDividendDate = null, Expression<Func<string>> recordDate = null, Expression<Func<string>> declarationDate = null, Expression<Func<string>> payDate = null, Expression<Func<frequencyInput>> frequency = null, Expression<Func<double>> cashAmount = null, Expression<Func<dividendTypeInput>> dividendType = null)
+        public IBodyWorkflowAction<GetStockDividendsResponse> GetStockDividends([WorkflowExpression] Func<string> ticker, [WorkflowExpression] Func<string> exDividendDate = null, [WorkflowExpression] Func<string> recordDate = null, [WorkflowExpression] Func<string> declarationDate = null, [WorkflowExpression] Func<string> payDate = null, [WorkflowExpression] Func<frequencyInput> frequency = null, [WorkflowExpression] Func<double> cashAmount = null, [WorkflowExpression] Func<dividendTypeInput> dividendType = null)
         {
-            var apiCallPath = "/v3/reference/dividends";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ticker"] = ExpressionConverter.Convert(ticker);
-            if (exDividendDate != null)
-                callPayload.Queries["ex_dividend_date"] = ExpressionConverter.Convert(exDividendDate);
-            if (recordDate != null)
-                callPayload.Queries["record_date"] = ExpressionConverter.Convert(recordDate);
-            if (declarationDate != null)
-                callPayload.Queries["declaration_date"] = ExpressionConverter.Convert(declarationDate);
-            if (payDate != null)
-                callPayload.Queries["pay_date"] = ExpressionConverter.Convert(payDate);
-            if (frequency != null)
-                callPayload.Queries["frequency"] = ExpressionConverter.Convert(frequency);
-            if (cashAmount != null)
-                callPayload.Queries["cash_amount"] = ExpressionConverter.Convert(cashAmount);
-            if (dividendType != null)
-                callPayload.Queries["dividend_type"] = ExpressionConverter.Convert(dividendType);
-            return new ApiConnectionAction<GetStockDividendsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/reference/dividends";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ticker"] = SourceExpressionConverter.ConvertO(ticker);
+                if (exDividendDate != null)
+                    callPayload.Queries["ex_dividend_date"] = SourceExpressionConverter.ConvertO(exDividendDate);
+                if (recordDate != null)
+                    callPayload.Queries["record_date"] = SourceExpressionConverter.ConvertO(recordDate);
+                if (declarationDate != null)
+                    callPayload.Queries["declaration_date"] = SourceExpressionConverter.ConvertO(declarationDate);
+                if (payDate != null)
+                    callPayload.Queries["pay_date"] = SourceExpressionConverter.ConvertO(payDate);
+                if (frequency != null)
+                    callPayload.Queries["frequency"] = SourceExpressionConverter.Convert(frequency);
+                if (cashAmount != null)
+                    callPayload.Queries["cash_amount"] = SourceExpressionConverter.ConvertO(cashAmount);
+                if (dividendType != null)
+                    callPayload.Queries["dividend_type"] = SourceExpressionConverter.Convert(dividendType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStockDividendsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetStockFinancialDetailsResponse> GetStockFinancialDetails(Expression<Func<string>> ticker = null, Expression<Func<string>> cik = null, Expression<Func<string>> companyName = null, Expression<Func<string>> sic = null, Expression<Func<string>> filingDate = null, Expression<Func<string>> periodOfReportDate = null, Expression<Func<timeframeInput>> timeframe = null, Expression<Func<bool>> includeSources = null, Expression<Func<orderInput>> order = null, Expression<Func<int>> limit = null, Expression<Func<sortInput>> sort = null)
+        public IBodyWorkflowAction<GetStockFinancialDetailsResponse> GetStockFinancialDetails([WorkflowExpression] Func<string> ticker = null, [WorkflowExpression] Func<string> cik = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<string> sic = null, [WorkflowExpression] Func<string> filingDate = null, [WorkflowExpression] Func<string> periodOfReportDate = null, [WorkflowExpression] Func<timeframeInput> timeframe = null, [WorkflowExpression] Func<bool> includeSources = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<sortInput> sort = null)
         {
-            var apiCallPath = "/vX/reference/financials";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ticker != null)
-                callPayload.Queries["ticker"] = ExpressionConverter.Convert(ticker);
-            if (cik != null)
-                callPayload.Queries["cik"] = ExpressionConverter.Convert(cik);
-            if (companyName != null)
-                callPayload.Queries["company_name"] = ExpressionConverter.Convert(companyName);
-            if (sic != null)
-                callPayload.Queries["sic"] = ExpressionConverter.Convert(sic);
-            if (filingDate != null)
-                callPayload.Queries["filing_date"] = ExpressionConverter.Convert(filingDate);
-            if (periodOfReportDate != null)
-                callPayload.Queries["period_of_report_date"] = ExpressionConverter.Convert(periodOfReportDate);
-            if (timeframe != null)
-                callPayload.Queries["timeframe"] = ExpressionConverter.Convert(timeframe);
-            if (includeSources != null)
-                callPayload.Queries["include_sources"] = ExpressionConverter.Convert(includeSources);
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            return new ApiConnectionAction<GetStockFinancialDetailsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/vX/reference/financials";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ticker != null)
+                    callPayload.Queries["ticker"] = SourceExpressionConverter.ConvertO(ticker);
+                if (cik != null)
+                    callPayload.Queries["cik"] = SourceExpressionConverter.ConvertO(cik);
+                if (companyName != null)
+                    callPayload.Queries["company_name"] = SourceExpressionConverter.ConvertO(companyName);
+                if (sic != null)
+                    callPayload.Queries["sic"] = SourceExpressionConverter.ConvertO(sic);
+                if (filingDate != null)
+                    callPayload.Queries["filing_date"] = SourceExpressionConverter.ConvertO(filingDate);
+                if (periodOfReportDate != null)
+                    callPayload.Queries["period_of_report_date"] = SourceExpressionConverter.ConvertO(periodOfReportDate);
+                if (timeframe != null)
+                    callPayload.Queries["timeframe"] = SourceExpressionConverter.Convert(timeframe);
+                if (includeSources != null)
+                    callPayload.Queries["include_sources"] = SourceExpressionConverter.ConvertO(includeSources);
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.Convert(order);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.Convert(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStockFinancialDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "polygon")]
-        public IBodyWorkflowAction<GetExchangesResponse> GetExchanges(Expression<Func<assetClassInput>> assetClass = null, Expression<Func<localeInput>> locale = null)
+        public IBodyWorkflowAction<GetExchangesResponse> GetExchanges([WorkflowExpression] Func<assetClassInput> assetClass = null, [WorkflowExpression] Func<localeInput> locale = null)
         {
-            var apiCallPath = "/v3/reference/exchanges";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (assetClass != null)
-                callPayload.Queries["asset_class"] = ExpressionConverter.Convert(assetClass);
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            return new ApiConnectionAction<GetExchangesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/reference/exchanges";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (assetClass != null)
+                    callPayload.Queries["asset_class"] = SourceExpressionConverter.Convert(assetClass);
+                if (locale != null)
+                    callPayload.Queries["locale"] = SourceExpressionConverter.Convert(locale);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetExchangesResponse>(BuildSourceInput);
         }
     }
 
@@ -497,16 +537,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Polygon
 
     public enum frequencyInput
     {
-        [EnumMember(Value = "0")]
-        _0,
-        [EnumMember(Value = "1")]
-        _1,
-        [EnumMember(Value = "2")]
-        _2,
-        [EnumMember(Value = "4")]
-        _4,
-        [EnumMember(Value = "12")]
-        _12
+        _0 = 0,
+        _1 = 1,
+        _2 = 2,
+        _4 = 4,
+        _12 = 12
     }
 
     public enum dividendTypeInput

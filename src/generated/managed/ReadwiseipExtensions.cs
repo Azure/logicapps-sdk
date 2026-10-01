@@ -12,279 +12,353 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Readwiseip
     public class ReadwiseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightListGetResponse> HighlightListGet(Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<int>> bookId = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> hightlightedAtLt = null, Expression<Func<string>> highlightedAtGt = null)
+        public IBodyWorkflowAction<HighlightListGetResponse> HighlightListGet([WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> bookId = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> hightlightedAtLt = null, [WorkflowExpression] Func<string> highlightedAtGt = null)
         {
-            var apiCallPath = "/highlights/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pageSize != null)
-                callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (bookId != null)
-                callPayload.Queries["book_id"] = ExpressionConverter.Convert(bookId);
-            if (updatedLt != null)
-                callPayload.Queries["updated__lt"] = ExpressionConverter.Convert(updatedLt);
-            if (updatedGt != null)
-                callPayload.Queries["updated__gt"] = ExpressionConverter.Convert(updatedGt);
-            if (hightlightedAtLt != null)
-                callPayload.Queries["hightlighted_at__lt"] = ExpressionConverter.Convert(hightlightedAtLt);
-            if (highlightedAtGt != null)
-                callPayload.Queries["highlighted_at__gt"] = ExpressionConverter.Convert(highlightedAtGt);
-            return new ApiConnectionAction<HighlightListGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightSavePostResponseItem[]> HighlightSave(Expression<Func<bodyhighlightsInputItem[]>> bodyhighlights)
-        {
-            var apiCallPath = "/highlights/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["highlights"] = ExpressionConverter.ConvertO(bodyhighlights);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/highlights/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (pageSize != null)
+                    callPayload.Queries["page_size"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (bookId != null)
+                    callPayload.Queries["book_id"] = SourceExpressionConverter.ConvertO(bookId);
+                if (updatedLt != null)
+                    callPayload.Queries["updated__lt"] = SourceExpressionConverter.ConvertO(updatedLt);
+                if (updatedGt != null)
+                    callPayload.Queries["updated__gt"] = SourceExpressionConverter.ConvertO(updatedGt);
+                if (hightlightedAtLt != null)
+                    callPayload.Queries["hightlighted_at__lt"] = SourceExpressionConverter.ConvertO(hightlightedAtLt);
+                if (highlightedAtGt != null)
+                    callPayload.Queries["highlighted_at__gt"] = SourceExpressionConverter.ConvertO(highlightedAtGt);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HighlightSavePostResponseItem[]>(callPayload);
+            return new ApiConnectionAction<HighlightListGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightExportGetResponse> HighlightExportGet(Expression<Func<string>> updatedAfter = null, Expression<Func<string>> ids = null, Expression<Func<string>> pageCursor = null)
+        public IBodyWorkflowAction<HighlightSavePostResponseItem[]> HighlightSave([WorkflowExpression] Func<bodyhighlightsInputItem[]> bodyhighlights)
         {
-            var apiCallPath = "/export/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (updatedAfter != null)
-                callPayload.Queries["updatedAfter"] = ExpressionConverter.Convert(updatedAfter);
-            if (ids != null)
-                callPayload.Queries["ids"] = ExpressionConverter.Convert(ids);
-            if (pageCursor != null)
-                callPayload.Queries["pageCursor"] = ExpressionConverter.Convert(pageCursor);
-            return new ApiConnectionAction<HighlightExportGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HightlightDetailGetResponse> HightlightDetailGet(Expression<Func<string>> highlightId)
-        {
-            var apiCallPath = String.Format("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<HightlightDetailGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> HighlightDelete(Expression<Func<string>> highlightId)
-        {
-            var apiCallPath = String.Format("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightUpdatePatchResponse> HighlightUpdatePatch(Expression<Func<string>> highlightId, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodynote = null, Expression<Func<int>> bodylocation = null, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodycolor = null)
-        {
-            var apiCallPath = String.Format("/highlights/{0}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                var apiCallPath = "/highlights/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["highlights"] = SourceExpressionConverter.ConvertToken(bodyhighlights);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodynote != null)
+            return new ApiConnectionAction<HighlightSavePostResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<HighlightExportGetResponse> HighlightExportGet([WorkflowExpression] Func<string> updatedAfter = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> pageCursor = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
+                var apiCallPath = "/export/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (updatedAfter != null)
+                    callPayload.Queries["updatedAfter"] = SourceExpressionConverter.ConvertO(updatedAfter);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (pageCursor != null)
+                    callPayload.Queries["pageCursor"] = SourceExpressionConverter.ConvertO(pageCursor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HighlightExportGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<HightlightDetailGetResponse> HightlightDetailGet([WorkflowExpression] Func<string> highlightId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HightlightDetailGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<string> HighlightDelete([WorkflowExpression] Func<string> highlightId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<HighlightUpdatePatchResponse> HighlightUpdatePatch([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<int> bodylocation = null, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodycolor = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                    bodypropCount++;
+                }
+
+                if (bodynote != null)
+                {
+                    body["note"] = SourceExpressionConverter.ConvertToken(bodynote);
+                    bodypropCount++;
+                }
+
+                if (bodylocation != null)
+                {
+                    body["location"] = SourceExpressionConverter.ConvertToken(bodylocation);
+                    bodypropCount++;
+                }
+
+                if (bodyurl != null)
+                {
+                    body["url"] = SourceExpressionConverter.ConvertToken(bodyurl);
+                    bodypropCount++;
+                }
+
+                if (bodycolor != null)
+                {
+                    body["color"] = SourceExpressionConverter.ConvertToken(bodycolor);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HighlightUpdatePatchResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<HighlightTagsGetResponse> HighlightTagsGet([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (pageSize != null)
+                    callPayload.Queries["page_size"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HighlightTagsGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<HighlightTagsPostResponse> HighlightTags([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<string> bodyname)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylocation != null)
+            return new ApiConnectionAction<HighlightTagsPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<string> HighlightTagsDelete([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<string> tagId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["location"] = ExpressionConverter.ConvertO(bodylocation);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<HighlightTagsUpdateResponse> HighlightTagsUpdate([WorkflowExpression] Func<string> highlightId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyname)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlights/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(highlightId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyurl != null)
+            return new ApiConnectionAction<HighlightTagsUpdateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<BookListGetResponse> BookListGet([WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<int> numHighlights = null, [WorkflowExpression] Func<int> numHighlightsLt = null, [WorkflowExpression] Func<int> numHighlightsGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> lastHighlightAtLt = null, [WorkflowExpression] Func<string> lastHighlightGt = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                var apiCallPath = "/books/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (pageSize != null)
+                    callPayload.Queries["page_size"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                if (source != null)
+                    callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
+                if (numHighlights != null)
+                    callPayload.Queries["num_highlights"] = SourceExpressionConverter.ConvertO(numHighlights);
+                if (numHighlightsLt != null)
+                    callPayload.Queries["num_highlights__lt"] = SourceExpressionConverter.ConvertO(numHighlightsLt);
+                if (numHighlightsGt != null)
+                    callPayload.Queries["num_highlights__gt"] = SourceExpressionConverter.ConvertO(numHighlightsGt);
+                if (updatedLt != null)
+                    callPayload.Queries["updated__lt"] = SourceExpressionConverter.ConvertO(updatedLt);
+                if (updatedGt != null)
+                    callPayload.Queries["updated__gt"] = SourceExpressionConverter.ConvertO(updatedGt);
+                if (lastHighlightAtLt != null)
+                    callPayload.Queries["last_highlight_at__lt"] = SourceExpressionConverter.ConvertO(lastHighlightAtLt);
+                if (lastHighlightGt != null)
+                    callPayload.Queries["last_highlight_gt"] = SourceExpressionConverter.ConvertO(lastHighlightGt);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookListGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<BookGetResponse> BookGet([WorkflowExpression] Func<string> bookId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<BookTagsGetResponse> BookTagsGet([WorkflowExpression] Func<string> bookId, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> page = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (pageSize != null)
+                    callPayload.Queries["page_size"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookTagsGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<BookTagsCreateResponse> BookTagsCreate([WorkflowExpression] Func<string> bookId, [WorkflowExpression] Func<string> bodyname)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycolor != null)
+            return new ApiConnectionAction<BookTagsCreateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<string> BookTagsDelete([WorkflowExpression] Func<string> bookId, [WorkflowExpression] Func<string> tagId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
+        public IBodyWorkflowAction<BookTagsUpdateResponse> BookTagsUpdate([WorkflowExpression] Func<string> bookId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyname)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/books/{0}/tags/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<HighlightUpdatePatchResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsGetResponse> HighlightTagsGet(Expression<Func<string>> highlightId, Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null)
-        {
-            var apiCallPath = String.Format("/highlights/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pageSize != null)
-                callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<HighlightTagsGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsPostResponse> HighlightTags(Expression<Func<string>> highlightId, Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = String.Format("/highlights/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<HighlightTagsPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> HighlightTagsDelete(Expression<Func<string>> highlightId, Expression<Func<string>> tagId)
-        {
-            var apiCallPath = String.Format("/highlights/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<HighlightTagsUpdateResponse> HighlightTagsUpdate(Expression<Func<string>> highlightId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = String.Format("/highlights/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(highlightId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<HighlightTagsUpdateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookListGetResponse> BookListGet(Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null, Expression<Func<string>> category = null, Expression<Func<string>> source = null, Expression<Func<int>> numHighlights = null, Expression<Func<int>> numHighlightsLt = null, Expression<Func<int>> numHighlightsGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> lastHighlightAtLt = null, Expression<Func<string>> lastHighlightGt = null)
-        {
-            var apiCallPath = "/books/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pageSize != null)
-                callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (source != null)
-                callPayload.Queries["source"] = ExpressionConverter.Convert(source);
-            if (numHighlights != null)
-                callPayload.Queries["num_highlights"] = ExpressionConverter.Convert(numHighlights);
-            if (numHighlightsLt != null)
-                callPayload.Queries["num_highlights__lt"] = ExpressionConverter.Convert(numHighlightsLt);
-            if (numHighlightsGt != null)
-                callPayload.Queries["num_highlights__gt"] = ExpressionConverter.Convert(numHighlightsGt);
-            if (updatedLt != null)
-                callPayload.Queries["updated__lt"] = ExpressionConverter.Convert(updatedLt);
-            if (updatedGt != null)
-                callPayload.Queries["updated__gt"] = ExpressionConverter.Convert(updatedGt);
-            if (lastHighlightAtLt != null)
-                callPayload.Queries["last_highlight_at__lt"] = ExpressionConverter.Convert(lastHighlightAtLt);
-            if (lastHighlightGt != null)
-                callPayload.Queries["last_highlight_gt"] = ExpressionConverter.Convert(lastHighlightGt);
-            return new ApiConnectionAction<BookListGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookGetResponse> BookGet(Expression<Func<string>> bookId)
-        {
-            var apiCallPath = String.Format("/books/{0}", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BookGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsGetResponse> BookTagsGet(Expression<Func<string>> bookId, Expression<Func<int>> pageSize = null, Expression<Func<string>> page = null)
-        {
-            var apiCallPath = String.Format("/books/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pageSize != null)
-                callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<BookTagsGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsCreateResponse> BookTagsCreate(Expression<Func<string>> bookId, Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = String.Format("/books/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BookTagsCreateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<string> BookTagsDelete(Expression<Func<string>> bookId, Expression<Func<string>> tagId)
-        {
-            var apiCallPath = String.Format("/books/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "readwiseip")]
-        public IBodyWorkflowAction<BookTagsUpdateResponse> BookTagsUpdate(Expression<Func<string>> bookId, Expression<Func<string>> tagId, Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = String.Format("/books/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(bookId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BookTagsUpdateResponse>(callPayload);
+            return new ApiConnectionAction<BookTagsUpdateResponse>(BuildSourceInput);
         }
     }
 

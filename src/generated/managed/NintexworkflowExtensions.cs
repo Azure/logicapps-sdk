@@ -12,27 +12,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
     public class NintexworkflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nintexworkflow")]
-        public IWorkflowAction CreateWorkflowInstance(Expression<Func<string>> workflowId, Expression<Func<object>> bodystartData = null)
+        public IWorkflowAction CreateWorkflowInstance([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<object> bodystartData = null)
         {
-            var apiCallPath = String.Format("/workflows/v1/designs/{0}/instances", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystartData != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["startData"] = ExpressionConverter.ConvertO(bodystartData);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflows/v1/designs/{0}/instances", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystartData != null)
+                {
+                    body["startData"] = SourceExpressionConverter.ConvertToken(bodystartData);
+                    bodypropCount++;
+                }
+
+                body["x-ntx-callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["x-ntx-callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

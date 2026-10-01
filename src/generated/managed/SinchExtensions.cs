@@ -12,85 +12,146 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
     public class SinchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage, Expression<Func<string>> bodysourceNumber = null, Expression<Func<bool>> bodydeliveryReport = null, Expression<Func<string>> bodycallbackUrl = null, Expression<Func<bodymetadataInputItem[]>> bodymetadata = null)
+        public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodysourceNumber = null, [WorkflowExpression] Func<bool> bodydeliveryReport = null, [WorkflowExpression] Func<string> bodycallbackUrl = null, [WorkflowExpression] Func<bodymetadataInputItem[]> bodymetadata = null)
         {
-            var apiCallPath = "/v1/int-power-automate/send-message";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysourceNumber != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["source_number"] = ExpressionConverter.ConvertO(bodysourceNumber);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodydeliveryReport != null)
-            {
-                if (bodydeliveryReport != null)
+                var apiCallPath = "/v1/int-power-automate/send-message";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysourceNumber != null)
                 {
-                    body["delivery_report"] = ExpressionConverter.ConvertO(bodydeliveryReport);
+                    body["source_number"] = SourceExpressionConverter.ConvertToken(bodysourceNumber);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["delivery_report"] = true;
+                body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
                 bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodydeliveryReport != null)
+                {
+                    if (bodydeliveryReport != null)
+                    {
+                        body["delivery_report"] = SourceExpressionConverter.ConvertToken(bodydeliveryReport);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["delivery_report"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodycallbackUrl != null)
+                {
+                    body["callback_url"] = SourceExpressionConverter.ConvertToken(bodycallbackUrl);
+                    bodypropCount++;
+                }
+
+                if (bodymetadata != null)
+                {
+                    body["metadata"] = SourceExpressionConverter.ConvertToken(bodymetadata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycallbackUrl != null)
-            {
-                body["callback_url"] = ExpressionConverter.ConvertO(bodycallbackUrl);
-                bodypropCount++;
-            }
-
-            if (bodymetadata != null)
-            {
-                body["metadata"] = ExpressionConverter.ConvertO(bodymetadata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            return new ApiConnectionAction<SendSmsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
         public IBodyWorkflowAction<GetSenderIdResponse> GetSenderId()
         {
-            var apiCallPath = "/v1/int-crm/integrations/account/sender-id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSenderIdResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/int-power-automate/v1/int-crm/integrations/account/sender-id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSenderIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<Message> GetMessageStatus(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<SendMmsResponse> SendMms([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodymedia = null, [WorkflowExpression] Func<string> bodysourceNumber = null, [WorkflowExpression] Func<bodymetadataInputItem[]> bodymetadata = null)
         {
-            var apiCallPath = String.Format("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Message>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/int-power-automate/send-mms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodymedia != null)
+                {
+                    body["media"] = SourceExpressionConverter.ConvertToken(bodymedia);
+                    bodypropCount++;
+                }
+
+                if (bodysourceNumber != null)
+                {
+                    body["source_number"] = SourceExpressionConverter.ConvertToken(bodysourceNumber);
+                    bodypropCount++;
+                }
+
+                if (bodymetadata != null)
+                {
+                    body["metadata"] = SourceExpressionConverter.ConvertToken(bodymetadata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SendMmsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IWorkflowAction SendRCS(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<Message> GetMessageStatus([WorkflowExpression] Func<string> messageId)
         {
-            var apiCallPath = "/v2/int-power-automate/message";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Message>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
+        public IWorkflowAction SendRCS([WorkflowExpression] Func<object> body = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/int-power-automate/send-message-v2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
@@ -98,68 +159,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
     {
         public IWorkflowTrigger MessageArrived(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["method"] = "POST";
-            bodypropCount++;
-            body["encoding"] = "JSON";
-            bodypropCount++;
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            headersObject["Platform"] = "PowerAutomate";
-            headersObjectpropCount++;
-            if (headersObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["headers"] = headersObject;
+                var apiCallPath = "/v1/webhooks/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                body["method"] = "POST";
+                bodypropCount++;
+                body["encoding"] = "JSON";
+                bodypropCount++;
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                headersObject["Platform"] = "PowerAutomate";
+                headersObjectpropCount++;
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
+
+                body["template"] = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end#if($messageId)\"message_id\": \"$messageId\",#end\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["template"] = "{#if($version == 2)\"contact_message\":$jsonUtils.toJson($contact_message),#end#if($moContent)\"content\":\"$esc.json($moContent)\",#end\"message_id\": \"$messageId\",\"type\":\"$type\",#if($moId)\"reply_id\":\"$moId\",#end#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"source_address\":\"$sourceAddress\",#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end\"attachments\": [#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if($foreach.hasNext),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if($foreach.hasNext),#end#end]}";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger GetDeliveryReceipt(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhooks/deliveryreports";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["method"] = "POST";
-            bodypropCount++;
-            body["encoding"] = "JSON";
-            bodypropCount++;
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            headersObject["Platform"] = "PowerAutomate";
-            headersObjectpropCount++;
-            if (headersObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["headers"] = headersObject;
+                var apiCallPath = "/v1/webhooks/deliveryreports";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                body["method"] = "POST";
+                bodypropCount++;
+                body["encoding"] = "JSON";
+                bodypropCount++;
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                headersObject["Platform"] = "PowerAutomate";
+                headersObjectpropCount++;
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
+
+                body["template"] = "{\"delivery_report_id\":\"$drId\",#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"type\":\"$type\",\"message_id\":\"$messageId\",\"source_address\":\"$sourceAddress\",\"content\":\"$esc.json($mtContent)\",\"attachments\":[#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if( $foreach.hasNext ),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if( $foreach.hasNext ),#end#end]}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["template"] = "{\"delivery_report_id\":\"$drId\",#if($statusCode)\"status_code\":\"$statusCode\",#end#if($status)\"status\":\"$status\",#end#if($destinationAddress)\"destination_address\":\"$destinationAddress\",#end#if($submittedTimestamp)\"submitted_date\":\"$submittedTimestamp\",#end#if($receivedTimestamp)\"date_received\":\"$receivedTimestamp\",#end\"type\":\"$type\",\"message_id\":\"$messageId\",\"source_address\":\"$sourceAddress\",\"content\":\"$esc.json($mtContent)\",\"attachments\":[#foreach ($entry in $attachments){\"attachment_type\":\"$entry.contentType\",\"attachment_content\":\"$entry.base64\",\"attachment_name\":\"$entry.originalName\"}#if( $foreach.hasNext ),#end#end],\"metadata\":[#foreach ($entry in $metadata.entrySet()){\"metadata_key\":\"$entry.key\",\"metadata_value\":\"$esc.json($entry.value)\"}#if( $foreach.hasNext ),#end#end]}";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 
@@ -293,6 +362,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         [JsonProperty("number")]
         public string Number { get; set; }
 
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
         [JsonProperty("number_id")]
         public string NumberId { get; set; }
 
@@ -304,6 +376,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
         [JsonProperty("number_status")]
         public string NumberStatus { get; set; }
+    }
+
+    public class SendMmsResponse
+    {
+        [JsonProperty("messages")]
+        public SendMmsResponseMessagesTypeItem[] Messages { get; set; }
+    }
+
+    public class SendMmsResponseMessagesTypeItem
+    {
+        [JsonProperty("callback_url")]
+        public string CallbackUrl { get; set; }
+
+        [JsonProperty("delivery_report")]
+        public bool DeliveryReport { get; set; }
+
+        [JsonProperty("destination_number")]
+        public string DestinationNumber { get; set; }
+
+        [JsonProperty("format")]
+        public string Format { get; set; }
+
+        [JsonProperty("message_expiry_timestamp")]
+        public string MessageExpiryTimestamp { get; set; }
+
+        [JsonProperty("message_id")]
+        public string MessageId { get; set; }
+
+        [JsonProperty("metadata")]
+        public SendMmsResponseMessagesTypeItemMetadataType Metadata { get; set; }
+
+        [JsonProperty("scheduled")]
+        public string Scheduled { get; set; }
+
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("content")]
+        public string Content { get; set; }
+
+        [JsonProperty("source_number")]
+        public string SourceNumber { get; set; }
+
+        [JsonProperty("media")]
+        public string[] Media { get; set; }
+
+        [JsonProperty("subject")]
+        public string Subject { get; set; }
+    }
+
+    public class SendMmsResponseMessagesTypeItemMetadataType
+    {
+        public string Source { get; set; }
     }
 
     public class Message

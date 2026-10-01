@@ -12,68 +12,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentaikonfuzio
     public class DocumentaikonfuzioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IBodyWorkflowAction<V2DocsCreateResponse> DocsCreate(Expression<Func<object>> dataFile, Expression<Func<int>> project, Expression<Func<bool>> sync = null)
+        public IWorkflowAction DocsDelete([WorkflowExpression] Func<string> doc)
         {
-            var apiCallPath = "/v2/docs/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2DocsCreateResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction DocsDelete(Expression<Func<string>> doc)
+        public IWorkflowAction DocsPartialUpdate([WorkflowExpression] Func<string> doc)
         {
-            var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction DocsPartialUpdate(Expression<Func<string>> doc)
+        public IWorkflowAction DocsRead([WorkflowExpression] Func<string> doc)
         {
-            var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/docs/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(doc, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentaikonfuzio")]
-        public IWorkflowAction DocsRead(Expression<Func<string>> doc)
-        {
-            var apiCallPath = String.Format("/v2/docs/{0}/", ExpressionConverter.ConvertWithUrlEncoding(doc, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class DocumentaikonfuzioTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class V2DocsCreateResponse
-    {
-        [JsonProperty("data_file")]
-        public string DataFile { get; set; }
-
-        [JsonProperty("id")]
-        public int Id { get; set; }
-
-        [JsonProperty("project")]
-        public int Project { get; set; }
-
-        [JsonProperty("data_file_name")]
-        public string DataFileName { get; set; }
-
-        [JsonProperty("callback_url")]
-        public string CallbackUrl { get; set; }
-
-        [JsonProperty("sync")]
-        public bool Sync { get; set; }
-
-        [JsonProperty("extraction_url")]
-        public string ExtractionUrl { get; set; }
     }
 }
 

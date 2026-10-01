@@ -12,220 +12,244 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hume
     public class HumeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
-        public IBodyWorkflowAction<JobsGetResponseItem[]> JobsGet(Expression<Func<int>> limit = null, Expression<Func<statusInput>> status = null, Expression<Func<whenInput>> when = null, Expression<Func<string>> timestampMs = null, Expression<Func<sortByInput>> sortBy = null, Expression<Func<directionInput>> direction = null)
+        public IBodyWorkflowAction<JobsGetResponseItem[]> JobsGet([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<whenInput> when = null, [WorkflowExpression] Func<string> timestampMs = null, [WorkflowExpression] Func<sortByInput> sortBy = null, [WorkflowExpression] Func<directionInput> direction = null)
         {
-            var apiCallPath = "/batch/jobs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (when != null)
-                callPayload.Queries["when"] = ExpressionConverter.Convert(when);
-            if (timestampMs != null)
-                callPayload.Queries["timestamp_ms"] = ExpressionConverter.Convert(timestampMs);
-            if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
-            if (direction != null)
-                callPayload.Queries["direction"] = ExpressionConverter.Convert(direction);
-            return new ApiConnectionAction<JobsGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/batch/jobs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                if (when != null)
+                    callPayload.Queries["when"] = SourceExpressionConverter.Convert(when);
+                if (timestampMs != null)
+                    callPayload.Queries["timestamp_ms"] = SourceExpressionConverter.ConvertO(timestampMs);
+                if (sortBy != null)
+                    callPayload.Queries["sort_by"] = SourceExpressionConverter.Convert(sortBy);
+                if (direction != null)
+                    callPayload.Queries["direction"] = SourceExpressionConverter.Convert(direction);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JobsGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
-        public IBodyWorkflowAction<JobPostResponse> Job(Expression<Func<double>> bodymodelsfacefpsPred = null, Expression<Func<double>> bodymodelsfaceprobThreshold = null, Expression<Func<bool>> bodymodelsfaceidentifyFaces = null, Expression<Func<int>> bodymodelsfaceminFaceSize = null, Expression<Func<bool>> bodymodelsfacesaveFaces = null, Expression<Func<string>> bodymodelsprosodygranularity = null, Expression<Func<bool>> bodymodelsprosodyidentifySpeakers = null, Expression<Func<int>> bodymodelsprosodywindowlength = null, Expression<Func<int>> bodymodelsprosodywindowstep = null, Expression<Func<string>> bodymodelslanguagegranularity = null, Expression<Func<bool>> bodymodelslanguageidentifySpeakers = null, Expression<Func<bool>> bodymodelsneridentifySpeakers = null, Expression<Func<string>> bodytranscriptionlanguage = null, Expression<Func<string[]>> bodyurls = null, Expression<Func<string>> bodycallbackUrl = null, Expression<Func<bool>> bodynotify = null)
+        public IBodyWorkflowAction<JobPostResponse> Job([WorkflowExpression] Func<double> bodymodelsfacefpsPred = null, [WorkflowExpression] Func<double> bodymodelsfaceprobThreshold = null, [WorkflowExpression] Func<bool> bodymodelsfaceidentifyFaces = null, [WorkflowExpression] Func<int> bodymodelsfaceminFaceSize = null, [WorkflowExpression] Func<bool> bodymodelsfacesaveFaces = null, [WorkflowExpression] Func<string> bodymodelsprosodygranularity = null, [WorkflowExpression] Func<bool> bodymodelsprosodyidentifySpeakers = null, [WorkflowExpression] Func<int> bodymodelsprosodywindowlength = null, [WorkflowExpression] Func<int> bodymodelsprosodywindowstep = null, [WorkflowExpression] Func<string> bodymodelslanguagegranularity = null, [WorkflowExpression] Func<bool> bodymodelslanguageidentifySpeakers = null, [WorkflowExpression] Func<bool> bodymodelsneridentifySpeakers = null, [WorkflowExpression] Func<string> bodytranscriptionlanguage = null, [WorkflowExpression] Func<string[]> bodyurls = null, [WorkflowExpression] Func<string> bodycallbackUrl = null, [WorkflowExpression] Func<bool> bodynotify = null)
         {
-            var apiCallPath = "/batch/jobs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var modelsObject = new JObject();
-            var modelsObjectpropCount = 0;
-            var faceObject = new JObject();
-            var faceObjectpropCount = 0;
-            if (bodymodelsfacefpsPred != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                faceObject["fps_pred"] = ExpressionConverter.ConvertO(bodymodelsfacefpsPred);
-                faceObjectpropCount++;
+                var apiCallPath = "/batch/jobs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var modelsObject = new JObject();
+                var modelsObjectpropCount = 0;
+                var faceObject = new JObject();
+                var faceObjectpropCount = 0;
+                if (bodymodelsfacefpsPred != null)
+                {
+                    faceObject["fps_pred"] = SourceExpressionConverter.ConvertToken(bodymodelsfacefpsPred);
+                    faceObjectpropCount++;
+                }
+
+                if (bodymodelsfaceprobThreshold != null)
+                {
+                    faceObject["prob_threshold"] = SourceExpressionConverter.ConvertToken(bodymodelsfaceprobThreshold);
+                    faceObjectpropCount++;
+                }
+
+                if (bodymodelsfaceidentifyFaces != null)
+                {
+                    faceObject["identify_faces"] = SourceExpressionConverter.ConvertToken(bodymodelsfaceidentifyFaces);
+                    faceObjectpropCount++;
+                }
+
+                if (bodymodelsfaceminFaceSize != null)
+                {
+                    faceObject["min_face_size"] = SourceExpressionConverter.ConvertToken(bodymodelsfaceminFaceSize);
+                    faceObjectpropCount++;
+                }
+
+                if (bodymodelsfacesaveFaces != null)
+                {
+                    faceObject["save_faces"] = SourceExpressionConverter.ConvertToken(bodymodelsfacesaveFaces);
+                    faceObjectpropCount++;
+                }
+
+                if (faceObjectpropCount > 0)
+                {
+                    modelsObject["face"] = faceObject;
+                    modelsObjectpropCount++;
+                }
+
+                var prosodyObject = new JObject();
+                var prosodyObjectpropCount = 0;
+                if (bodymodelsprosodygranularity != null)
+                {
+                    prosodyObject["granularity"] = SourceExpressionConverter.ConvertToken(bodymodelsprosodygranularity);
+                    prosodyObjectpropCount++;
+                }
+
+                if (bodymodelsprosodyidentifySpeakers != null)
+                {
+                    prosodyObject["identify_speakers"] = SourceExpressionConverter.ConvertToken(bodymodelsprosodyidentifySpeakers);
+                    prosodyObjectpropCount++;
+                }
+
+                var windowObject = new JObject();
+                var windowObjectpropCount = 0;
+                if (bodymodelsprosodywindowlength != null)
+                {
+                    windowObject["length"] = SourceExpressionConverter.ConvertToken(bodymodelsprosodywindowlength);
+                    windowObjectpropCount++;
+                }
+
+                if (bodymodelsprosodywindowstep != null)
+                {
+                    windowObject["step"] = SourceExpressionConverter.ConvertToken(bodymodelsprosodywindowstep);
+                    windowObjectpropCount++;
+                }
+
+                if (windowObjectpropCount > 0)
+                {
+                    prosodyObject["window"] = windowObject;
+                    prosodyObjectpropCount++;
+                }
+
+                if (prosodyObjectpropCount > 0)
+                {
+                    modelsObject["prosody"] = prosodyObject;
+                    modelsObjectpropCount++;
+                }
+
+                var languageObject = new JObject();
+                var languageObjectpropCount = 0;
+                if (bodymodelslanguagegranularity != null)
+                {
+                    languageObject["granularity"] = SourceExpressionConverter.ConvertToken(bodymodelslanguagegranularity);
+                    languageObjectpropCount++;
+                }
+
+                if (bodymodelslanguageidentifySpeakers != null)
+                {
+                    languageObject["identify_speakers"] = SourceExpressionConverter.ConvertToken(bodymodelslanguageidentifySpeakers);
+                    languageObjectpropCount++;
+                }
+
+                if (languageObjectpropCount > 0)
+                {
+                    modelsObject["language"] = languageObject;
+                    modelsObjectpropCount++;
+                }
+
+                var nerObject = new JObject();
+                var nerObjectpropCount = 0;
+                if (bodymodelsneridentifySpeakers != null)
+                {
+                    nerObject["identify_speakers"] = SourceExpressionConverter.ConvertToken(bodymodelsneridentifySpeakers);
+                    nerObjectpropCount++;
+                }
+
+                if (nerObjectpropCount > 0)
+                {
+                    modelsObject["ner"] = nerObject;
+                    modelsObjectpropCount++;
+                }
+
+                if (modelsObjectpropCount > 0)
+                {
+                    body["models"] = modelsObject;
+                    bodypropCount++;
+                }
+
+                var transcriptionObject = new JObject();
+                var transcriptionObjectpropCount = 0;
+                if (bodytranscriptionlanguage != null)
+                {
+                    transcriptionObject["language"] = SourceExpressionConverter.ConvertToken(bodytranscriptionlanguage);
+                    transcriptionObjectpropCount++;
+                }
+
+                if (transcriptionObjectpropCount > 0)
+                {
+                    body["transcription"] = transcriptionObject;
+                    bodypropCount++;
+                }
+
+                if (bodyurls != null)
+                {
+                    body["urls"] = SourceExpressionConverter.ConvertToken(bodyurls);
+                    bodypropCount++;
+                }
+
+                if (bodycallbackUrl != null)
+                {
+                    body["callback_url"] = SourceExpressionConverter.ConvertToken(bodycallbackUrl);
+                    bodypropCount++;
+                }
+
+                if (bodynotify != null)
+                {
+                    body["notify"] = SourceExpressionConverter.ConvertToken(bodynotify);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymodelsfaceprobThreshold != null)
-            {
-                faceObject["prob_threshold"] = ExpressionConverter.ConvertO(bodymodelsfaceprobThreshold);
-                faceObjectpropCount++;
-            }
-
-            if (bodymodelsfaceidentifyFaces != null)
-            {
-                faceObject["identify_faces"] = ExpressionConverter.ConvertO(bodymodelsfaceidentifyFaces);
-                faceObjectpropCount++;
-            }
-
-            if (bodymodelsfaceminFaceSize != null)
-            {
-                faceObject["min_face_size"] = ExpressionConverter.ConvertO(bodymodelsfaceminFaceSize);
-                faceObjectpropCount++;
-            }
-
-            if (bodymodelsfacesaveFaces != null)
-            {
-                faceObject["save_faces"] = ExpressionConverter.ConvertO(bodymodelsfacesaveFaces);
-                faceObjectpropCount++;
-            }
-
-            if (faceObjectpropCount > 0)
-            {
-                modelsObject["face"] = faceObject;
-                modelsObjectpropCount++;
-            }
-
-            var prosodyObject = new JObject();
-            var prosodyObjectpropCount = 0;
-            if (bodymodelsprosodygranularity != null)
-            {
-                prosodyObject["granularity"] = ExpressionConverter.ConvertO(bodymodelsprosodygranularity);
-                prosodyObjectpropCount++;
-            }
-
-            if (bodymodelsprosodyidentifySpeakers != null)
-            {
-                prosodyObject["identify_speakers"] = ExpressionConverter.ConvertO(bodymodelsprosodyidentifySpeakers);
-                prosodyObjectpropCount++;
-            }
-
-            var windowObject = new JObject();
-            var windowObjectpropCount = 0;
-            if (bodymodelsprosodywindowlength != null)
-            {
-                windowObject["length"] = ExpressionConverter.ConvertO(bodymodelsprosodywindowlength);
-                windowObjectpropCount++;
-            }
-
-            if (bodymodelsprosodywindowstep != null)
-            {
-                windowObject["step"] = ExpressionConverter.ConvertO(bodymodelsprosodywindowstep);
-                windowObjectpropCount++;
-            }
-
-            if (windowObjectpropCount > 0)
-            {
-                prosodyObject["window"] = windowObject;
-                prosodyObjectpropCount++;
-            }
-
-            if (prosodyObjectpropCount > 0)
-            {
-                modelsObject["prosody"] = prosodyObject;
-                modelsObjectpropCount++;
-            }
-
-            var languageObject = new JObject();
-            var languageObjectpropCount = 0;
-            if (bodymodelslanguagegranularity != null)
-            {
-                languageObject["granularity"] = ExpressionConverter.ConvertO(bodymodelslanguagegranularity);
-                languageObjectpropCount++;
-            }
-
-            if (bodymodelslanguageidentifySpeakers != null)
-            {
-                languageObject["identify_speakers"] = ExpressionConverter.ConvertO(bodymodelslanguageidentifySpeakers);
-                languageObjectpropCount++;
-            }
-
-            if (languageObjectpropCount > 0)
-            {
-                modelsObject["language"] = languageObject;
-                modelsObjectpropCount++;
-            }
-
-            var nerObject = new JObject();
-            var nerObjectpropCount = 0;
-            if (bodymodelsneridentifySpeakers != null)
-            {
-                nerObject["identify_speakers"] = ExpressionConverter.ConvertO(bodymodelsneridentifySpeakers);
-                nerObjectpropCount++;
-            }
-
-            if (nerObjectpropCount > 0)
-            {
-                modelsObject["ner"] = nerObject;
-                modelsObjectpropCount++;
-            }
-
-            if (modelsObjectpropCount > 0)
-            {
-                body["models"] = modelsObject;
-                bodypropCount++;
-            }
-
-            var transcriptionObject = new JObject();
-            var transcriptionObjectpropCount = 0;
-            if (bodytranscriptionlanguage != null)
-            {
-                transcriptionObject["language"] = ExpressionConverter.ConvertO(bodytranscriptionlanguage);
-                transcriptionObjectpropCount++;
-            }
-
-            if (transcriptionObjectpropCount > 0)
-            {
-                body["transcription"] = transcriptionObject;
-                bodypropCount++;
-            }
-
-            if (bodyurls != null)
-            {
-                body["urls"] = ExpressionConverter.ConvertO(bodyurls);
-                bodypropCount++;
-            }
-
-            if (bodycallbackUrl != null)
-            {
-                body["callback_url"] = ExpressionConverter.ConvertO(bodycallbackUrl);
-                bodypropCount++;
-            }
-
-            if (bodynotify != null)
-            {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JobPostResponse>(callPayload);
+            return new ApiConnectionAction<JobPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
-        public IBodyWorkflowAction<JobPredictionsGetResponseItem[]> JobPredictionsGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<JobPredictionsGetResponseItem[]> JobPredictionsGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/batch/jobs/{0}/predictions", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JobPredictionsGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}/predictions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JobPredictionsGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
-        public IBodyWorkflowAction<string> JobArtifactsGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<string> JobArtifactsGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/batch/jobs/{0}/artifacts", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}/artifacts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hume")]
-        public IBodyWorkflowAction<JobDetailsGetResponse> JobDetailsGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<JobDetailsGetResponse> JobDetailsGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/batch/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JobDetailsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JobDetailsGetResponse>(BuildSourceInput);
         }
     }
 

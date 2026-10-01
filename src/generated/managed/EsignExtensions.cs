@@ -12,130 +12,142 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
     public class EsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> bodybase64, Expression<Func<string>> bodytitle)
+        public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<string> bodybase64, [WorkflowExpression] Func<string> bodytitle)
         {
-            var apiCallPath = "/v3/pa_uploads";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["base64"] = ExpressionConverter.ConvertO(bodybase64);
-            body["extension"] = "pdf";
-            bodypropCount++;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            body["type"] = "document";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/pa_uploads";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["base64"] = SourceExpressionConverter.ConvertToken(bodybase64);
+                body["extension"] = "pdf";
+                bodypropCount++;
+                bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                body["type"] = "document";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UploadFileResponse>(callPayload);
+            return new ApiConnectionAction<UploadFileResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IWorkflowAction CreateEnvelopeFromTemplate(Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytemplateTitle = null, Expression<Func<string>> bodyuploadFile = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodysignersInputItem[]>> bodysigners = null)
+        public IWorkflowAction CreateEnvelopeFromTemplate([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytemplateTitle = null, [WorkflowExpression] Func<string> bodyuploadFile = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodysignersInputItem[]> bodysigners = null)
         {
-            var apiCallPath = "/v3/pa_envelopes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
+                var apiCallPath = "/v3/pa_envelopes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateTitle != null)
+                {
+                    body["template_title"] = SourceExpressionConverter.ConvertToken(bodytemplateTitle);
+                    bodypropCount++;
+                }
+
+                if (bodyuploadFile != null)
+                {
+                    body["upload_file"] = SourceExpressionConverter.ConvertToken(bodyuploadFile);
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodysigners != null)
+                {
+                    body["signers"] = SourceExpressionConverter.ConvertToken(bodysigners);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytemplateTitle != null)
-            {
-                body["template_title"] = ExpressionConverter.ConvertO(bodytemplateTitle);
-                bodypropCount++;
-            }
-
-            if (bodyuploadFile != null)
-            {
-                body["upload_file"] = ExpressionConverter.ConvertO(bodyuploadFile);
-                bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodysigners != null)
-            {
-                body["signers"] = ExpressionConverter.ConvertO(bodysigners);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "esign")]
-        public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelope(Expression<Func<string>> bodytitle, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodysignersInputItem[]>> bodysigners, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodyenvelopeOptionssignInSequentialOrder = null, Expression<Func<bodycarbonCopiesInputItem[]>> bodycarbonCopies = null)
+        public IBodyWorkflowAction<CreateEnvelopeResponse> CreateEnvelope([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments, [WorkflowExpression] Func<bodysignersInputItem[]> bodysigners, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodyenvelopeOptionssignInSequentialOrder = null, [WorkflowExpression] Func<bodycarbonCopiesInputItem[]> bodycarbonCopies = null)
         {
-            var apiCallPath = "/v3/pa_send_envelope";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodysubject != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                var apiCallPath = "/v3/pa_send_envelope";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-            bodypropCount++;
-            body["signers"] = ExpressionConverter.ConvertO(bodysigners);
-            var envelopeOptionsObject = new JObject();
-            var envelopeOptionsObjectpropCount = 0;
-            if (bodyenvelopeOptionssignInSequentialOrder != null)
-            {
-                envelopeOptionsObject["sign_in_sequential_order"] = ExpressionConverter.ConvertO(bodyenvelopeOptionssignInSequentialOrder);
-                envelopeOptionsObjectpropCount++;
-            }
-
-            if (envelopeOptionsObjectpropCount > 0)
-            {
-                body["envelope_options"] = envelopeOptionsObject;
+                body["documents"] = SourceExpressionConverter.ConvertToken(bodydocuments);
                 bodypropCount++;
+                body["signers"] = SourceExpressionConverter.ConvertToken(bodysigners);
+                var envelopeOptionsObject = new JObject();
+                var envelopeOptionsObjectpropCount = 0;
+                if (bodyenvelopeOptionssignInSequentialOrder != null)
+                {
+                    envelopeOptionsObject["sign_in_sequential_order"] = SourceExpressionConverter.ConvertToken(bodyenvelopeOptionssignInSequentialOrder);
+                    envelopeOptionsObjectpropCount++;
+                }
+
+                if (envelopeOptionsObjectpropCount > 0)
+                {
+                    body["envelope_options"] = envelopeOptionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodycarbonCopies != null)
+                {
+                    body["carbon_copies"] = SourceExpressionConverter.ConvertToken(bodycarbonCopies);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycarbonCopies != null)
-            {
-                body["carbon_copies"] = ExpressionConverter.ConvertO(bodycarbonCopies);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateEnvelopeResponse>(callPayload);
+            return new ApiConnectionAction<CreateEnvelopeResponse>(BuildSourceInput);
         }
     }
 
@@ -143,59 +155,71 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
     {
         public IWorkflowTrigger SignDocument(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v3/pa_create_webhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target_url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["event"] = "document_signed";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/pa_create_webhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target_url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["event"] = "document_signed";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CreatedEnvelope(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v3/pa_create_webhook_two";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target_url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["event"] = "envelope_created";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/pa_create_webhook_two";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target_url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["event"] = "envelope_created";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CompletedEnvelope(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v3/pa_create_webhook_three";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target_url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["event"] = "envelope_completed";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v3/pa_create_webhook_three";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target_url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["event"] = "envelope_completed";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,47 +12,51 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
     public class PrexviewipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prexviewip")]
-        public IBodyWorkflowAction<TransformPostResponse> Transform(Expression<Func<bodyoutputInput>> bodyoutput, Expression<Func<string>> bodytemplate, Expression<Func<string>> bodyxml = null, Expression<Func<string>> bodyjson = null, Expression<Func<string>> bodytemplateBackup = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<TransformPostResponse> Transform([WorkflowExpression] Func<bodyoutputInput> bodyoutput, [WorkflowExpression] Func<string> bodytemplate, [WorkflowExpression] Func<string> bodyxml = null, [WorkflowExpression] Func<string> bodyjson = null, [WorkflowExpression] Func<string> bodytemplateBackup = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            var apiCallPath = "/transform";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyxml != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["xml"] = ExpressionConverter.ConvertO(bodyxml);
+                var apiCallPath = "/transform";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyxml != null)
+                {
+                    body["xml"] = SourceExpressionConverter.ConvertToken(bodyxml);
+                    bodypropCount++;
+                }
+
+                if (bodyjson != null)
+                {
+                    body["json"] = SourceExpressionConverter.ConvertToken(bodyjson);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyjson != null)
-            {
-                body["json"] = ExpressionConverter.ConvertO(bodyjson);
+                body["output"] = SourceExpressionConverter.Convert(bodyoutput);
                 bodypropCount++;
+                body["template"] = SourceExpressionConverter.ConvertToken(bodytemplate);
+                if (bodytemplateBackup != null)
+                {
+                    body["templateBackup"] = SourceExpressionConverter.ConvertToken(bodytemplateBackup);
+                    bodypropCount++;
+                }
+
+                if (bodynote != null)
+                {
+                    body["note"] = SourceExpressionConverter.ConvertToken(bodynote);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["output"] = ExpressionConverter.ConvertO(bodyoutput);
-            bodypropCount++;
-            body["template"] = ExpressionConverter.ConvertO(bodytemplate);
-            if (bodytemplateBackup != null)
-            {
-                body["templateBackup"] = ExpressionConverter.ConvertO(bodytemplateBackup);
-                bodypropCount++;
-            }
-
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TransformPostResponse>(callPayload);
+            return new ApiConnectionAction<TransformPostResponse>(BuildSourceInput);
         }
     }
 

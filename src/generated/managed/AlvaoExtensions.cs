@@ -12,68 +12,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     public class AlvaoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
-        public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<AMObjectsExpandedApiResponse> GetObjects([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            var apiCallPath = "/v1/objects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderBy != null)
-                callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(orderBy);
-            callPayload.Queries["$expand"] = Convert.ToString("properties");
-            return new ApiConnectionAction<AMObjectsExpandedApiResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/objects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (search != null)
+                    callPayload.Queries["$search"] = SourceExpressionConverter.ConvertO(search);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (orderBy != null)
+                    callPayload.Queries["$orderBy"] = SourceExpressionConverter.ConvertO(orderBy);
+                callPayload.Queries["$expand"] = Convert.ToString("properties");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AMObjectsExpandedApiResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alvao")]
-        public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers(Expression<Func<int>> top = null, Expression<Func<string>> search = null, Expression<Func<string>> filter = null, Expression<Func<string>> orderBy = null)
+        public IBodyWorkflowAction<CommonUsersApiResponse> GetUsers([WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderBy = null)
         {
-            var apiCallPath = "/v1/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderBy != null)
-                callPayload.Queries["$orderBy"] = ExpressionConverter.Convert(orderBy);
-            return new ApiConnectionAction<CommonUsersApiResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (search != null)
+                    callPayload.Queries["$search"] = SourceExpressionConverter.ConvertO(search);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (orderBy != null)
+                    callPayload.Queries["$orderBy"] = SourceExpressionConverter.ConvertO(orderBy);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CommonUsersApiResponse>(BuildSourceInput);
         }
     }
 
     public class AlvaoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus(Expression<Func<string>> bodyprocessName, Expression<Func<string>> bodyticketStatusName, Expression<Func<string>> bodyserviceName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus([WorkflowExpression] Func<string> bodyprocessName, [WorkflowExpression] Func<string> bodyticketStatusName, [WorkflowExpression] Func<string> bodyserviceName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/tickettransitionstostatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["process"] = ExpressionConverter.ConvertO(bodyprocessName);
-            bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodyticketStatusName);
-            if (bodyserviceName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["service"] = ExpressionConverter.ConvertO(bodyserviceName);
+                var apiCallPath = "/webhooks/tickettransitionstostatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                bodypropCount++;
+                body["process"] = SourceExpressionConverter.ConvertToken(bodyprocessName);
+                bodypropCount++;
+                body["status"] = SourceExpressionConverter.ConvertToken(bodyticketStatusName);
+                if (bodyserviceName != null)
+                {
+                    body["service"] = SourceExpressionConverter.ConvertToken(bodyserviceName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

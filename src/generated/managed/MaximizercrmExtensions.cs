@@ -12,515 +12,725 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     public class MaximizercrmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFind(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/AbEntry/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/AbEntry/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AbEntryFindSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryCreateSchema> ActionAbEntryCreate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AbEntryCreateSchema> ActionAbEntryCreate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/AbEntry/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AbEntryCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/AbEntry/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["applyActionTo"] = SourceExpressionConverter.Convert(applyActionTo);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AbEntryCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryUpdateSchema> ActionAbEntryUpdate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AbEntryUpdateSchema> ActionAbEntryUpdate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/AbEntry/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AbEntryUpdateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/AbEntry/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["applyActionTo"] = SourceExpressionConverter.Convert(applyActionTo);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AbEntryUpdateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFindOrCreate(Expression<Func<applyActionToInput>> applyActionTo, Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AbEntryFindSchema> ActionAbEntryFindOrCreate([WorkflowExpression] Func<applyActionToInput> applyActionTo, [WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/AbEntry/action/findOrCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["applyActionTo"] = ExpressionConverter.Convert(applyActionTo);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AbEntryFindSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/AbEntry/action/findOrCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["applyActionTo"] = SourceExpressionConverter.Convert(applyActionTo);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AbEntryFindSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentCreate(Expression<Func<linkWithTypeInput>> linkWithType = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentCreate([WorkflowExpression] Func<linkWithTypeInput> linkWithType = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Appointment/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (linkWithType != null)
-                callPayload.Queries["linkWithType"] = ExpressionConverter.Convert(linkWithType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Appointment/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (linkWithType != null)
+                    callPayload.Queries["linkWithType"] = SourceExpressionConverter.Convert(linkWithType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AppointmentCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentUpdateSchema> ActionAppointmentUpdate(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AppointmentUpdateSchema> ActionAppointmentUpdate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Appointment/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AppointmentUpdateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Appointment/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AppointmentUpdateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentFind(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentFind([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Appointment/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Appointment/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AppointmentCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentDelete(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<AppointmentCreateSchema> ActionAppointmentDelete([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Appointment/action/delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AppointmentCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Appointment/action/delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AppointmentCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<PACaseView> ActionCaseCreate(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<PACaseView> ActionCaseCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Case/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PACaseView>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Case/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PACaseView>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<PACaseView> ActionCaseUpdate(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<PACaseView> ActionCaseUpdate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Case/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PACaseView>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Case/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PACaseView>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<CaseFindOrCreateSchema> ActionCaseFindOrCreate(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<CaseFindOrCreateSchema> ActionCaseFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Case/api/Case/action/findOrCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CaseFindOrCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Case/api/Case/action/findOrCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CaseFindOrCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<HotlistTaskCreateSchema> ActionHTaskCreate(Expression<Func<parentTypeInput>> parentType, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<HotlistTaskCreateSchema> ActionHTaskCreate([WorkflowExpression] Func<parentTypeInput> parentType, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/HTask/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parentType"] = ExpressionConverter.Convert(parentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<HotlistTaskCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/HTask/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["parentType"] = SourceExpressionConverter.Convert(parentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HotlistTaskCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<InteractionLogCreateSchema> ActionInteractionCreate(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<InteractionLogCreateSchema> ActionInteractionCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Interaction/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<InteractionLogCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Interaction/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<InteractionLogCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadFindSchema> ActionLeadFind(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<LeadFindSchema> ActionLeadFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadFindSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Lead/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadFindSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadCreateSchema> ActionLeadCreate(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<LeadCreateSchema> ActionLeadCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Lead/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadUpdateSchema> ActionLeadUpdate(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<LeadUpdateSchema> ActionLeadUpdate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadUpdateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Lead/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadUpdateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadFindOrCreateSchema> ActionLeadFindOrCreate(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<LeadFindOrCreateSchema> ActionLeadFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/findOrCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadFindOrCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Lead/action/findOrCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadFindOrCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<LeadConvertSchema> ActionLeadConvert(Expression<Func<convertOptionInput>> convertOption = null, Expression<Func<doNotCreateAContactInput>> doNotCreateAContact = null, Expression<Func<doNotCreateAnOpportunityInput>> doNotCreateAnOpportunity = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<LeadConvertSchema> ActionLeadConvert([WorkflowExpression] Func<convertOptionInput> convertOption = null, [WorkflowExpression] Func<doNotCreateAContactInput> doNotCreateAContact = null, [WorkflowExpression] Func<doNotCreateAnOpportunityInput> doNotCreateAnOpportunity = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Lead/action/convert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["convertOption"] = Convert.ToString("newIndividual");
-            if (convertOption != null)
-                callPayload.Queries["convertOption"] = ExpressionConverter.Convert(convertOption);
-            callPayload.Queries["doNotCreateAContact"] = Convert.ToString("false");
-            if (doNotCreateAContact != null)
-                callPayload.Queries["doNotCreateAContact"] = ExpressionConverter.Convert(doNotCreateAContact);
-            callPayload.Queries["doNotCreateAnOpportunity"] = Convert.ToString("false");
-            if (doNotCreateAnOpportunity != null)
-                callPayload.Queries["doNotCreateAnOpportunity"] = ExpressionConverter.Convert(doNotCreateAnOpportunity);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<LeadConvertSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Lead/action/convert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["convertOption"] = Convert.ToString("newIndividual");
+                if (convertOption != null)
+                    callPayload.Queries["convertOption"] = SourceExpressionConverter.Convert(convertOption);
+                callPayload.Queries["doNotCreateAContact"] = Convert.ToString("false");
+                if (doNotCreateAContact != null)
+                    callPayload.Queries["doNotCreateAContact"] = SourceExpressionConverter.Convert(doNotCreateAContact);
+                callPayload.Queries["doNotCreateAnOpportunity"] = Convert.ToString("false");
+                if (doNotCreateAnOpportunity != null)
+                    callPayload.Queries["doNotCreateAnOpportunity"] = SourceExpressionConverter.Convert(doNotCreateAnOpportunity);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadConvertSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<NoteCreateSchema> ActionNoteCreate(Expression<Func<parentTypeInput>> parentType, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<NoteCreateSchema> ActionNoteCreate([WorkflowExpression] Func<parentTypeInput> parentType, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Note/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parentType"] = ExpressionConverter.Convert(parentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<NoteCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Note/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["parentType"] = SourceExpressionConverter.Convert(parentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NoteCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<OpportunityFindSchema> ActionOpportunityFind(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<OpportunityFindSchema> ActionOpportunityFind([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Opportunity/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<OpportunityFindSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Opportunity/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpportunityFindSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<OpportunityCreateSchema> ActionOpportunityCreate(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<OpportunityCreateSchema> ActionOpportunityCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Opportunity/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<OpportunityCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Opportunity/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpportunityCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<OpportunityFindOrCreateSchema> ActionOpportunityFindOrCreate(Expression<Func<string>> udf1 = null, Expression<Func<string>> udf2 = null, Expression<Func<string>> udf3 = null, Expression<Func<string>> udf4 = null, Expression<Func<string>> udf5 = null, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<OpportunityFindOrCreateSchema> ActionOpportunityFindOrCreate([WorkflowExpression] Func<string> udf1 = null, [WorkflowExpression] Func<string> udf2 = null, [WorkflowExpression] Func<string> udf3 = null, [WorkflowExpression] Func<string> udf4 = null, [WorkflowExpression] Func<string> udf5 = null, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Opportunity/action/findOrCreate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (udf1 != null)
-                callPayload.Queries["udf1"] = ExpressionConverter.Convert(udf1);
-            if (udf2 != null)
-                callPayload.Queries["udf2"] = ExpressionConverter.Convert(udf2);
-            if (udf3 != null)
-                callPayload.Queries["udf3"] = ExpressionConverter.Convert(udf3);
-            if (udf4 != null)
-                callPayload.Queries["udf4"] = ExpressionConverter.Convert(udf4);
-            if (udf5 != null)
-                callPayload.Queries["udf5"] = ExpressionConverter.Convert(udf5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<OpportunityFindOrCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Opportunity/action/findOrCreate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (udf1 != null)
+                    callPayload.Queries["udf1"] = SourceExpressionConverter.ConvertO(udf1);
+                if (udf2 != null)
+                    callPayload.Queries["udf2"] = SourceExpressionConverter.ConvertO(udf2);
+                if (udf3 != null)
+                    callPayload.Queries["udf3"] = SourceExpressionConverter.ConvertO(udf3);
+                if (udf4 != null)
+                    callPayload.Queries["udf4"] = SourceExpressionConverter.ConvertO(udf4);
+                if (udf5 != null)
+                    callPayload.Queries["udf5"] = SourceExpressionConverter.ConvertO(udf5);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpportunityFindOrCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<OpportunityUpdateSchema> ActionOpportunityUpdate(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<OpportunityUpdateSchema> ActionOpportunityUpdate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/Opportunity/action/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<OpportunityUpdateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Opportunity/action/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpportunityUpdateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<PersonalTaskCreateSchema> ActionPTaskCreate(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<PersonalTaskCreateSchema> ActionPTaskCreate([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/PTask/action/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PersonalTaskCreateSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/PTask/action/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PersonalTaskCreateSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maximizercrm")]
-        public IBodyWorkflowAction<UserFindSchema> ActionUserFind(Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<UserFindSchema> ActionUserFind([WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/api/User/action/find";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<UserFindSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/User/action/find";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserFindSchema>(BuildSourceInput);
         }
     }
 
     public class MaximizercrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/AbEntry/trigger/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/AbEntry/trigger/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<AbEntryTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/AbEntry/trigger/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/AbEntry/trigger/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<AbEntryTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/AbEntry/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/AbEntry/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<AbEntryTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Appointment/trigger/Updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Appointment/trigger/Updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<AppointmentTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Appointment/trigger/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Appointment/trigger/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<AppointmentTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Appointment/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Appointment/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<AppointmentTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Case/api/Case/trigger/Updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Case/api/Case/trigger/Updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CaseTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Case/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Case/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CaseTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Case/api/Case/trigger/Created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Case/api/Case/trigger/Created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CaseTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/HotlistTask/trigger/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/HotlistTask/trigger/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Lead/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Lead/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<LeadTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Lead/trigger/updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Lead/trigger/updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<LeadTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Lead/trigger/created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Lead/trigger/created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<LeadTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebhookCreated> WebhookOppStageChanged(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreated> WebhookOppStageChanged([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<WebhookCreated>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Opportunity/webhook/OpportunityStageChanged";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<WebhookCreated>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Opportunity/trigger/Created";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Opportunity/trigger/Created";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<OpportunityTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Opportunity/trigger/Updated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Opportunity/trigger/Updated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<OpportunityTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification(Expression<Func<object>> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/Opportunity/trigger/DateNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Opportunity/trigger/DateNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<OpportunityTriggerSchema>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

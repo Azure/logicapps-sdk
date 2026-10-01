@@ -12,91 +12,109 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
     public class IbmwatsonassistantipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<CreateSessionResponse> CreateSession(Expression<Func<string>> version)
+        public IBodyWorkflowAction<CreateSessionResponse> CreateSession([WorkflowExpression] Func<string> version)
         {
-            var apiCallPath = "/sessions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            return new ApiConnectionAction<CreateSessionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/sessions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = SourceExpressionConverter.ConvertO(version);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateSessionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IWorkflowAction DeleteSession(Expression<Func<string>> session, Expression<Func<string>> version = null)
+        public IWorkflowAction DeleteSession([WorkflowExpression] Func<string> session, [WorkflowExpression] Func<string> version = null)
         {
-            var apiCallPath = String.Format("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sessions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(session, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2021-11-27");
+                if (version != null)
+                    callPayload.Queries["version"] = SourceExpressionConverter.ConvertO(version);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage(Expression<Func<string>> session, Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
+        public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage([WorkflowExpression] Func<string> session, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
         {
-            var apiCallPath = String.Format("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputObject = new JObject();
-            var inputObjectpropCount = 0;
-            if (bodyinputtext != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
-                inputObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sessions/{0}/message", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(session, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2021-11-27");
+                if (version != null)
+                    callPayload.Queries["version"] = SourceExpressionConverter.ConvertO(version);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputObject = new JObject();
+                var inputObjectpropCount = 0;
+                if (bodyinputtext != null)
+                {
+                    inputObject["text"] = SourceExpressionConverter.ConvertToken(bodyinputtext);
+                    inputObjectpropCount++;
+                }
+
+                if (inputObjectpropCount > 0)
+                {
+                    body["input"] = inputObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (inputObjectpropCount > 0)
-            {
-                body["input"] = inputObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StatefulMessageResponse>(callPayload);
+            return new ApiConnectionAction<StatefulMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage(Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
+        public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage([WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
         {
-            var apiCallPath = "/message";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputObject = new JObject();
-            var inputObjectpropCount = 0;
-            if (bodyinputtext != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
-                inputObjectpropCount++;
+                var apiCallPath = "/message";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2021-11-27");
+                if (version != null)
+                    callPayload.Queries["version"] = SourceExpressionConverter.ConvertO(version);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputObject = new JObject();
+                var inputObjectpropCount = 0;
+                if (bodyinputtext != null)
+                {
+                    inputObject["text"] = SourceExpressionConverter.ConvertToken(bodyinputtext);
+                    inputObjectpropCount++;
+                }
+
+                if (inputObjectpropCount > 0)
+                {
+                    body["input"] = inputObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (inputObjectpropCount > 0)
-            {
-                body["input"] = inputObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StatelessMessageResponse>(callPayload);
+            return new ApiConnectionAction<StatelessMessageResponse>(BuildSourceInput);
         }
     }
 

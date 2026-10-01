@@ -12,43 +12,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
     public class WaailaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots(Expression<Func<string>> wauth)
+        public IBodyWorkflowAction<GetDepotsResponseItem[]> GetDepots([WorkflowExpression] Func<string> wauth)
         {
-            var apiCallPath = "/v1/depots";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Wauth"] = ExpressionConverter.Convert(wauth);
-            return new ApiConnectionAction<GetDepotsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite(Expression<Func<string>> depot, Expression<Func<string>> testsuite, Expression<Func<string>> wauth)
-        {
-            var apiCallPath = String.Format("/v1/depot/{0}/testsuite/{1}", ExpressionConverter.ConvertWithUrlEncoding(depot, 1), ExpressionConverter.ConvertWithUrlEncoding(testsuite, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Wauth"] = ExpressionConverter.Convert(wauth);
-            return new ApiConnectionAction<GetTestsuiteResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
-        public IBodyWorkflowAction<GetTokenResponse> GetToken(Expression<Func<string>> bodycode, Expression<Func<string>> bodyemail)
-        {
-            var apiCallPath = "/v1/auth/exchange-api-code";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/depots";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Wauth"] = SourceExpressionConverter.ConvertO(wauth);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetTokenResponse>(callPayload);
+            return new ApiConnectionAction<GetDepotsResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
+        public IBodyWorkflowAction<GetTestsuiteResponse> GetTestsuite([WorkflowExpression] Func<string> depot, [WorkflowExpression] Func<string> testsuite, [WorkflowExpression] Func<string> wauth)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/depot/{0}/testsuite/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(depot, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(testsuite, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Wauth"] = SourceExpressionConverter.ConvertO(wauth);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTestsuiteResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waaila")]
+        public IBodyWorkflowAction<GetTokenResponse> GetToken([WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<string> bodyemail)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/auth/exchange-api-code";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTokenResponse>(BuildSourceInput);
         }
     }
 
@@ -488,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waaila
         [JsonProperty("sourceTestId")]
         public string SourceTestId { get; set; }
 
-        [JsonProperty("??ourceLibraryId")]
+        [JsonProperty("🇸ourceLibraryId")]
         public string OurceLibraryId { get; set; }
 
         [JsonProperty("sourceVersion")]

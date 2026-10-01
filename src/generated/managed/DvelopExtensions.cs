@@ -15,27 +15,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
 
     public class DvelopTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DynamicWebhookTrigger(Expression<Func<string>> triggerId, Expression<Func<bodyconditionInputItem[]>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DynamicWebhookTrigger([WorkflowExpression] Func<string> triggerId, [WorkflowExpression] Func<bodyconditionInputItem[]> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/triggers/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(triggerId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callback_url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodycondition != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["conditions"] = ExpressionConverter.ConvertO(bodycondition);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/triggers/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(triggerId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callback_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
+                if (bodycondition != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodycondition);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -14,43 +14,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cohesitygaia
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
         public IBodyWorkflowAction<GetLlmListResponse> GetLlmList()
         {
-            var apiCallPath = "/mcm/gaia/llms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetLlmListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/mcm/gaia/llms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLlmListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
         public IBodyWorkflowAction<GetDatasetsResponse> GetDatasets()
         {
-            var apiCallPath = "/mcm/gaia/datasets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDatasetsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/mcm/gaia/datasets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDatasetsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cohesitygaia")]
-        public IBodyWorkflowAction<QueryResponse> SendQuery(Expression<Func<string>> bodyllmName, Expression<Func<string>> bodyllmId, Expression<Func<string[]>> bodydatasetNames, Expression<Func<string>> bodyqueryString)
+        public IBodyWorkflowAction<QueryResponse> SendQuery([WorkflowExpression] Func<string> bodyllmName, [WorkflowExpression] Func<string> bodyllmId, [WorkflowExpression] Func<string[]> bodydatasetNames, [WorkflowExpression] Func<string> bodyqueryString)
         {
-            var apiCallPath = "/mcm/gaia/ask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["llmName"] = ExpressionConverter.ConvertO(bodyllmName);
-            bodypropCount++;
-            body["llmId"] = ExpressionConverter.ConvertO(bodyllmId);
-            bodypropCount++;
-            body["datasetNames"] = ExpressionConverter.ConvertO(bodydatasetNames);
-            bodypropCount++;
-            body["queryString"] = ExpressionConverter.ConvertO(bodyqueryString);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/mcm/gaia/ask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["llmName"] = SourceExpressionConverter.ConvertToken(bodyllmName);
+                bodypropCount++;
+                body["llmId"] = SourceExpressionConverter.ConvertToken(bodyllmId);
+                bodypropCount++;
+                body["datasetNames"] = SourceExpressionConverter.ConvertToken(bodydatasetNames);
+                bodypropCount++;
+                body["queryString"] = SourceExpressionConverter.ConvertToken(bodyqueryString);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<QueryResponse>(callPayload);
+            return new ApiConnectionAction<QueryResponse>(BuildSourceInput);
         }
     }
 

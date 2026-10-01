@@ -12,598 +12,699 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
     public class KaizalaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> groupId, Expression<Func<string>> requestmessage, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmessage, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sendToAll != null)
-                callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["Message"] = ExpressionConverter.ConvertO(requestmessage);
-            if (requestsubscribers != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sendToAll != null)
+                    callPayload.Queries["sendToAll"] = SourceExpressionConverter.Convert(sendToAll);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
+                request["Message"] = SourceExpressionConverter.ConvertToken(requestmessage);
+                if (requestsubscribers != null)
+                {
+                    request["subscribers"] = SourceExpressionConverter.ConvertToken(requestsubscribers);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            return new ApiConnectionAction<SendMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendActionResponse> SendActions(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType = null, Expression<Func<string>> id = null, Expression<Func<object>> requestactionBody = null, Expression<Func<string>> requestsubscribers = null, Expression<Func<sendToAllInput>> sendToAll = null)
+        public IBodyWorkflowAction<SendActionResponse> SendActionReminder([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<object> requestactionId = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/actions", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (actionType != null)
-                callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (sendToAll != null)
-                callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestactionBody != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["actionBody"] = ExpressionConverter.ConvertO(requestactionBody);
-                requestpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/actions/$actionId$/reminder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["actionType"] = SourceExpressionConverter.Convert(actionType);
+                if (sendToAll != null)
+                    callPayload.Queries["sendToAll"] = SourceExpressionConverter.Convert(sendToAll);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestsubscribers != null)
+                {
+                    request["subscribers"] = SourceExpressionConverter.ConvertToken(requestsubscribers);
+                    requestpropCount++;
+                }
+
+                if (requestactionId != null)
+                {
+                    request["actionWrapper"] = SourceExpressionConverter.ConvertToken(requestactionId);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestsubscribers != null)
-            {
-                request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<SendActionResponse>(callPayload);
+            return new ApiConnectionAction<SendActionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendActionResponse> SendActionReminder(Expression<Func<string>> groupId, Expression<Func<actionTypeInput>> actionType, Expression<Func<string>> requestsubscribers = null, Expression<Func<object>> requestactionId = null, Expression<Func<sendToAllInput>> sendToAll = null)
+        public IBodyWorkflowAction<PostReactionResponse> PostReaction([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestsourceGroupId = null, [WorkflowExpression] Func<string> requestmessageId = null, [WorkflowExpression] Func<requestreactionTypeInput> requestreactionType = null, [WorkflowExpression] Func<string> requestcomment = null)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/actions/$actionId$/reminder", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["actionType"] = ExpressionConverter.Convert(actionType);
-            if (sendToAll != null)
-                callPayload.Queries["sendToAll"] = ExpressionConverter.Convert(sendToAll);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestsubscribers != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
-                requestpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/reaction", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestsourceGroupId != null)
+                {
+                    request["SourceGroupId"] = SourceExpressionConverter.ConvertToken(requestsourceGroupId);
+                    requestpropCount++;
+                }
+
+                if (requestmessageId != null)
+                {
+                    request["ReferenceId"] = SourceExpressionConverter.ConvertToken(requestmessageId);
+                    requestpropCount++;
+                }
+
+                if (requestreactionType != null)
+                {
+                    request["ReactionType"] = SourceExpressionConverter.Convert(requestreactionType);
+                    requestpropCount++;
+                }
+
+                if (requestcomment != null)
+                {
+                    request["Comment"] = SourceExpressionConverter.ConvertToken(requestcomment);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestactionId != null)
-            {
-                request["actionWrapper"] = ExpressionConverter.ConvertO(requestactionId);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<SendActionResponse>(callPayload);
+            return new ApiConnectionAction<PostReactionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<PostReactionResponse> PostReaction(Expression<Func<string>> groupId, Expression<Func<string>> requestsourceGroupId = null, Expression<Func<string>> requestmessageId = null, Expression<Func<requestreactionTypeInput>> requestreactionType = null, Expression<Func<string>> requestcomment = null)
+        public IBodyWorkflowAction<SendMessageResponse> SendReply([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmessageId, [WorkflowExpression] Func<string> requestmessage)
         {
-            var apiCallPath = String.Format("/v1/groups/{0}/reaction", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestsourceGroupId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["SourceGroupId"] = ExpressionConverter.ConvertO(requestsourceGroupId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestmessageId != null)
-            {
-                request["ReferenceId"] = ExpressionConverter.ConvertO(requestmessageId);
+                request["replyToReferenceId"] = SourceExpressionConverter.ConvertToken(requestmessageId);
                 requestpropCount++;
+                request["message"] = SourceExpressionConverter.ConvertToken(requestmessage);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestreactionType != null)
-            {
-                request["ReactionType"] = ExpressionConverter.ConvertO(requestreactionType);
-                requestpropCount++;
-            }
-
-            if (requestcomment != null)
-            {
-                request["Comment"] = ExpressionConverter.ConvertO(requestcomment);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<PostReactionResponse>(callPayload);
+            return new ApiConnectionAction<SendMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<SendMessageResponse> SendReply(Expression<Func<string>> groupId, Expression<Func<string>> requestmessageId, Expression<Func<string>> requestmessage)
+        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestwelcomeMessage, [WorkflowExpression] Func<string> requestmembers = null, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType = null, [WorkflowExpression] Func<string> requestshortDescription = null, [WorkflowExpression] Func<string> requestlongDescription = null)
         {
-            var apiCallPath = String.Format("/groups/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["replyToReferenceId"] = ExpressionConverter.ConvertO(requestmessageId);
-            requestpropCount++;
-            request["message"] = ExpressionConverter.ConvertO(requestmessage);
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
-        {
-            var apiCallPath = "/v1/groups";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["Name"] = ExpressionConverter.ConvertO(requestgroupName);
-            requestpropCount++;
-            request["WelcomeMessage"] = ExpressionConverter.ConvertO(requestwelcomeMessage);
-            if (requestmembers != null)
-            {
-                request["Members"] = ExpressionConverter.ConvertO(requestmembers);
+                var apiCallPath = "/v1/groups";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestgroupType != null)
-            {
-                request["GroupType"] = ExpressionConverter.ConvertO(requestgroupType);
+                request["Name"] = SourceExpressionConverter.ConvertToken(requestgroupName);
                 requestpropCount++;
+                request["WelcomeMessage"] = SourceExpressionConverter.ConvertToken(requestwelcomeMessage);
+                if (requestmembers != null)
+                {
+                    request["Members"] = SourceExpressionConverter.ConvertToken(requestmembers);
+                    requestpropCount++;
+                }
+
+                if (requestgroupType != null)
+                {
+                    request["GroupType"] = SourceExpressionConverter.Convert(requestgroupType);
+                    requestpropCount++;
+                }
+
+                if (requestshortDescription != null)
+                {
+                    request["ShortDescriptionString"] = SourceExpressionConverter.ConvertToken(requestshortDescription);
+                    requestpropCount++;
+                }
+
+                if (requestlongDescription != null)
+                {
+                    request["LongDescriptionString"] = SourceExpressionConverter.ConvertToken(requestlongDescription);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestshortDescription != null)
+            return new ApiConnectionAction<CreateGroupResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IWorkflowAction AddGroupToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string[]> requestsubGroups)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["ShortDescriptionString"] = ExpressionConverter.ConvertO(requestshortDescription);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
+                request["SubGroups"] = SourceExpressionConverter.ConvertToken(requestsubGroups);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestlongDescription != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IWorkflowAction CreateSubgroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestgroupName, [WorkflowExpression] Func<string> requestwelcomeMessage, [WorkflowExpression] Func<string> requestmembers = null, [WorkflowExpression] Func<requestgroupTypeInput> requestgroupType = null, [WorkflowExpression] Func<string> requestshortDescription = null, [WorkflowExpression] Func<string> requestlongDescription = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["LongDescriptionString"] = ExpressionConverter.ConvertO(requestlongDescription);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<CreateGroupResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction AddGroupToGroup(Expression<Func<string>> groupId, Expression<Func<string[]>> requestsubGroups)
-        {
-            var apiCallPath = String.Format("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["SubGroups"] = ExpressionConverter.ConvertO(requestsubGroups);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction CreateSubgroup(Expression<Func<string>> groupId, Expression<Func<string>> requestgroupName, Expression<Func<string>> requestwelcomeMessage, Expression<Func<string>> requestmembers = null, Expression<Func<requestgroupTypeInput>> requestgroupType = null, Expression<Func<string>> requestshortDescription = null, Expression<Func<string>> requestlongDescription = null)
-        {
-            var apiCallPath = String.Format("/v1/groups/{0}/subgroups", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["Name"] = ExpressionConverter.ConvertO(requestgroupName);
-            requestpropCount++;
-            request["WelcomeMessage"] = ExpressionConverter.ConvertO(requestwelcomeMessage);
-            if (requestmembers != null)
-            {
-                request["Members"] = ExpressionConverter.ConvertO(requestmembers);
+                request["Name"] = SourceExpressionConverter.ConvertToken(requestgroupName);
                 requestpropCount++;
+                request["WelcomeMessage"] = SourceExpressionConverter.ConvertToken(requestwelcomeMessage);
+                if (requestmembers != null)
+                {
+                    request["Members"] = SourceExpressionConverter.ConvertToken(requestmembers);
+                    requestpropCount++;
+                }
+
+                if (requestgroupType != null)
+                {
+                    request["GroupType"] = SourceExpressionConverter.Convert(requestgroupType);
+                    requestpropCount++;
+                }
+
+                if (requestshortDescription != null)
+                {
+                    request["ShortDescriptionString"] = SourceExpressionConverter.ConvertToken(requestshortDescription);
+                    requestpropCount++;
+                }
+
+                if (requestlongDescription != null)
+                {
+                    request["LongDescriptionString"] = SourceExpressionConverter.ConvertToken(requestlongDescription);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestgroupType != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IWorkflowAction RemoveGroupFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> subGroupId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["GroupType"] = ExpressionConverter.ConvertO(requestgroupType);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subgroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subGroupId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IWorkflowAction AddUserToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestmembers)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
+                request["Members"] = SourceExpressionConverter.ConvertToken(requestmembers);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestshortDescription != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IWorkflowAction AddSubscriberToGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> requestsubscribers)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["ShortDescriptionString"] = ExpressionConverter.ConvertO(requestshortDescription);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/subscribers/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
+                request["subscribers"] = SourceExpressionConverter.ConvertToken(requestsubscribers);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestlongDescription != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IWorkflowAction RemoveUserFromGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> memberId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["LongDescriptionString"] = ExpressionConverter.ConvertO(requestlongDescription);
-                requestpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/groups/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (requestpropCount > 0)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL([WorkflowExpression] Func<string> mediaUrlmediaUrl)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/media/url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var mediaUrl = new JObject();
+                var mediaUrlpropCount = 0;
+                mediaUrlpropCount++;
+                mediaUrl["mediaUrl"] = SourceExpressionConverter.ConvertToken(mediaUrlmediaUrl);
+                if (mediaUrlpropCount > 0)
+                {
+                    callPayload.Body = mediaUrl;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction RemoveGroupFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> subGroupId)
-        {
-            var apiCallPath = String.Format("/v1/groups/{0}/subgroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(subGroupId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction AddUserToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestmembers)
-        {
-            var apiCallPath = String.Format("/v1/groups/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["Members"] = ExpressionConverter.ConvertO(requestmembers);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction AddSubscriberToGroup(Expression<Func<string>> groupId, Expression<Func<string>> requestsubscribers)
-        {
-            var apiCallPath = String.Format("/v1/groups/{0}/subscribers/add", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["subscribers"] = ExpressionConverter.ConvertO(requestsubscribers);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction RemoveUserFromGroup(Expression<Func<string>> groupId, Expression<Func<string>> memberId)
-        {
-            var apiCallPath = String.Format("/v1/groups/{0}/members/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(memberId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFileContent(Expression<Func<object>> fileContent)
-        {
-            var apiCallPath = "/v1/media";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromURL(Expression<Func<string>> mediaUrlmediaUrl)
-        {
-            var apiCallPath = "/v1/media/url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var mediaUrl = new JObject();
-            var mediaUrlpropCount = 0;
-            mediaUrlpropCount++;
-            mediaUrl["mediaUrl"] = ExpressionConverter.ConvertO(mediaUrlmediaUrl);
-            if (mediaUrlpropCount > 0)
-            {
-                callPayload.Body = mediaUrl;
-            }
-
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            return new ApiConnectionAction<UploadMediaResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
         public IBodyWorkflowAction<UploadMediaResponse> UploadMediaFromAttachment()
         {
-            var apiCallPath = "/v1/media/attachment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var fileContentObject = new JObject();
-            var fileContentObjectpropCount = 0;
-            if (fileContentObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["fileContent"] = fileContentObject;
-                requestpropCount++;
+                var apiCallPath = "/v1/media/attachment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var fileContentObject = new JObject();
+                var fileContentObjectpropCount = 0;
+                if (fileContentObjectpropCount > 0)
+                {
+                    request["fileContent"] = fileContentObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            return new ApiConnectionAction<UploadMediaResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
-        public IWorkflowAction DeleteTrigger(Expression<Func<string>> webhookId)
+        public IWorkflowAction DeleteTrigger([WorkflowExpression] Func<string> webhookId)
         {
-            var apiCallPath = String.Format("/v1/webhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/webhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kaizala")]
+        public IBodyWorkflowAction<SendActionResponse> SendActions([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<actionTypeInput> actionType = null, [WorkflowExpression] Func<object> requestactionBody = null, [WorkflowExpression] Func<string> requestsubscribers = null, [WorkflowExpression] Func<sendToAllInput> sendToAll = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["actionType"] = Convert.ToString("Action Package");
+                if (actionType != null)
+                    callPayload.Queries["actionType"] = SourceExpressionConverter.Convert(actionType);
+                if (sendToAll != null)
+                    callPayload.Queries["sendToAll"] = SourceExpressionConverter.Convert(sendToAll);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestactionBody != null)
+                {
+                    request["actionBody"] = SourceExpressionConverter.ConvertToken(requestactionBody);
+                    requestpropCount++;
+                }
+
+                if (requestsubscribers != null)
+                {
+                    request["subscribers"] = SourceExpressionConverter.ConvertToken(requestsubscribers);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SendActionResponse>(BuildSourceInput);
         }
     }
 
     public class KaizalaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ActionCreatedOnGroup(Expression<Func<string>> objectId, Expression<Func<string>> actionPackageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionCreatedOnGroup([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> actionPackageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/ActionCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            if (actionPackageId != null)
-                callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(actionPackageId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/ActionCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                if (actionPackageId != null)
+                    callPayload.Queries["actionPackageId"] = SourceExpressionConverter.ConvertO(actionPackageId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AnnouncementOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AnnouncementOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/Announcement";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/Announcement";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger GroupAddedToGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupAddedToGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/GroupAdded";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/GroupAdded";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger GroupRemovedFromGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupRemovedFromGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/GroupRemoved";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/GroupRemoved";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger MemberAddedToGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MemberAddedToGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/MemberAdded";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/MemberAdded";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger MemberRemovedFromGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MemberRemovedFromGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/MemberRemoved";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/MemberRemoved";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger SurveyCreatedOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SurveyCreatedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/SurveyCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/SurveyCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger TextMessageCreatedOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TextMessageCreatedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/TextMessageCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger SurveyResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SurveyResponseOnGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Action/SurveyResponse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Action/SurveyResponse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = SourceExpressionConverter.ConvertO(groupId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger AttachmentOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttachmentOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/AttachmentCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ActionResponseOnGroup(Expression<Func<string>> groupId, Expression<Func<string>> actionPackageId, Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionResponseOnGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> actionPackageId, [WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(actionPackageId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = SourceExpressionConverter.ConvertO(groupId);
+                callPayload.Queries["actionPackageId"] = SourceExpressionConverter.ConvertO(actionPackageId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UserJoinedOnGroup(Expression<Func<string>> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserJoinedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v1/webhook/Group/UserJoined";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v1/webhook/Group/UserJoined";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["objectId"] = SourceExpressionConverter.ConvertO(objectId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["CallbackUrl"] = "#{listCallbackUrl()}";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

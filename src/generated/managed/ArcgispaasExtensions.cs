@@ -12,130 +12,198 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Arcgispaas
     public class ArcgispaasActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<ReverseGeocodeResponse> ReverseGeocode(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null, Expression<Func<locationTypeInput>> locationType = null)
+        public IBodyWorkflowAction<JToken> FeatureLayerApplyEdits([WorkflowExpression] Func<string> appLayer, [WorkflowExpression] Func<object> data = null)
         {
-            var apiCallPath = "/v1/geocode/reverseGeocode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x"] = ExpressionConverter.Convert(x);
-            callPayload.Queries["y"] = ExpressionConverter.Convert(y);
-            if (srs != null)
-                callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
-            callPayload.Queries["locationType"] = Convert.ToString("Rooftop");
-            if (locationType != null)
-                callPayload.Queries["locationType"] = ExpressionConverter.Convert(locationType);
-            return new ApiConnectionAction<ReverseGeocodeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<JToken> GeometryService(Expression<Func<string>> operation, Expression<Func<object>> data = null)
-        {
-            var apiCallPath = "/v1/geometry/process";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["operation"] = ExpressionConverter.Convert(operation);
-            callPayload.Body = ExpressionConverter.ConvertO(data);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<TimeConversionHelperResponse> TimeConversionHelper(Expression<Func<string>> datadateTime)
-        {
-            var apiCallPath = "/v1/helper/convertTime";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            datapropCount++;
-            data["dateTime"] = ExpressionConverter.ConvertO(datadateTime);
-            if (datapropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = data;
+                var apiCallPath = "/v1/featureLayer/applyEdits";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["appLayer"] = SourceExpressionConverter.ConvertO(appLayer);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(data);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TimeConversionHelperResponse>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<CreatePointGeometryHelperResponse> CreatePointGeometryHelper(Expression<Func<double>> x, Expression<Func<double>> y, Expression<Func<string>> srs = null)
+        public IBodyWorkflowAction<JToken> GetFeatureLayerInfo([WorkflowExpression] Func<string> appLayer)
         {
-            var apiCallPath = "/v1/helper/createPointGeometry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x"] = ExpressionConverter.Convert(x);
-            callPayload.Queries["y"] = ExpressionConverter.Convert(y);
-            if (srs != null)
-                callPayload.Queries["srs"] = ExpressionConverter.Convert(srs);
-            return new ApiConnectionAction<CreatePointGeometryHelperResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<JToken> EXIF(Expression<Func<string>> data = null)
-        {
-            var apiCallPath = "/v1/helper/exif";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(data);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<JToken> GeocodeAddresses(Expression<Func<string>> dataaddresses)
-        {
-            var apiCallPath = "/v2/geocode/geocodeAddresses";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            datapropCount++;
-            data["addresses"] = ExpressionConverter.ConvertO(dataaddresses);
-            if (datapropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = data;
+                var apiCallPath = "/v1/featureLayer/information";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["appLayer"] = SourceExpressionConverter.ConvertO(appLayer);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<GeoenrichV2Response> Geoenrich(Expression<Func<string>> country, Expression<Func<string>> datacollection, Expression<Func<string>> parameter, Expression<Func<buffertypeInput>> buffertype, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<ReverseGeocodeResponse> ReverseGeocode([WorkflowExpression] Func<double> x, [WorkflowExpression] Func<double> y, [WorkflowExpression] Func<string> srs = null, [WorkflowExpression] Func<locationTypeInput> locationType = null)
         {
-            var apiCallPath = "/v2/geoenrichment/enrich";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["datacollection"] = ExpressionConverter.Convert(datacollection);
-            callPayload.Queries["parameter"] = ExpressionConverter.Convert(parameter);
-            callPayload.Queries["buffertype"] = ExpressionConverter.Convert(buffertype);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<GeoenrichV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
-        public IBodyWorkflowAction<GetRouteV2Response> GetRoute(Expression<Func<string>> routingroutingStops, Expression<Func<string>> travelModeName = null, Expression<Func<bool>> findBestSequence = null, Expression<Func<bool>> preserveFirstStop = null, Expression<Func<bool>> returnDirections = null)
-        {
-            var apiCallPath = "/v2/routing";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (travelModeName != null)
-                callPayload.Queries["travelModeName"] = ExpressionConverter.Convert(travelModeName);
-            if (findBestSequence != null)
-                callPayload.Queries["findBestSequence"] = ExpressionConverter.Convert(findBestSequence);
-            if (preserveFirstStop != null)
-                callPayload.Queries["preserveFirstStop"] = ExpressionConverter.Convert(preserveFirstStop);
-            callPayload.Queries["returnDirections"] = Convert.ToString(true);
-            if (returnDirections != null)
-                callPayload.Queries["returnDirections"] = ExpressionConverter.Convert(returnDirections);
-            var routing = new JObject();
-            var routingpropCount = 0;
-            routingpropCount++;
-            routing["stops"] = ExpressionConverter.ConvertO(routingroutingStops);
-            if (routingpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = routing;
+                var apiCallPath = "/v1/geocode/reverseGeocode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x"] = SourceExpressionConverter.ConvertO(x);
+                callPayload.Queries["y"] = SourceExpressionConverter.ConvertO(y);
+                if (srs != null)
+                    callPayload.Queries["srs"] = SourceExpressionConverter.ConvertO(srs);
+                callPayload.Queries["locationType"] = Convert.ToString("Rooftop");
+                if (locationType != null)
+                    callPayload.Queries["locationType"] = SourceExpressionConverter.Convert(locationType);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetRouteV2Response>(callPayload);
+            return new ApiConnectionAction<ReverseGeocodeResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<JToken> GeometryService([WorkflowExpression] Func<string> operation, [WorkflowExpression] Func<object> data = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/geometry/process";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["operation"] = SourceExpressionConverter.ConvertO(operation);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(data);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<TimeConversionHelperResponse> TimeConversionHelper([WorkflowExpression] Func<string> datadateTime)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/helper/convertTime";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var data = new JObject();
+                var datapropCount = 0;
+                datapropCount++;
+                data["dateTime"] = SourceExpressionConverter.ConvertToken(datadateTime);
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeConversionHelperResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<CreatePointGeometryHelperResponse> CreatePointGeometryHelper([WorkflowExpression] Func<double> x, [WorkflowExpression] Func<double> y, [WorkflowExpression] Func<string> srs = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/helper/createPointGeometry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x"] = SourceExpressionConverter.ConvertO(x);
+                callPayload.Queries["y"] = SourceExpressionConverter.ConvertO(y);
+                if (srs != null)
+                    callPayload.Queries["srs"] = SourceExpressionConverter.ConvertO(srs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreatePointGeometryHelperResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<JToken> EXIF([WorkflowExpression] Func<string> data = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/helper/exif";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(data);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<JToken> GeocodeAddresses([WorkflowExpression] Func<string> dataaddresses)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/geocode/geocodeAddresses";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var data = new JObject();
+                var datapropCount = 0;
+                datapropCount++;
+                data["addresses"] = SourceExpressionConverter.ConvertToken(dataaddresses);
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<GeoenrichV2Response> Geoenrich([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> datacollection, [WorkflowExpression] Func<string> parameter, [WorkflowExpression] Func<buffertypeInput> buffertype, [WorkflowExpression] Func<object> body = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/geoenrichment/enrich";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                callPayload.Queries["datacollection"] = SourceExpressionConverter.ConvertO(datacollection);
+                callPayload.Queries["parameter"] = SourceExpressionConverter.ConvertO(parameter);
+                callPayload.Queries["buffertype"] = SourceExpressionConverter.Convert(buffertype);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GeoenrichV2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "arcgispaas")]
+        public IBodyWorkflowAction<GetRouteV2Response> GetRoute([WorkflowExpression] Func<string> routingroutingStops, [WorkflowExpression] Func<string> travelModeName = null, [WorkflowExpression] Func<bool> findBestSequence = null, [WorkflowExpression] Func<bool> preserveFirstStop = null, [WorkflowExpression] Func<bool> returnDirections = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/routing";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (travelModeName != null)
+                    callPayload.Queries["travelModeName"] = SourceExpressionConverter.ConvertO(travelModeName);
+                if (findBestSequence != null)
+                    callPayload.Queries["findBestSequence"] = SourceExpressionConverter.ConvertO(findBestSequence);
+                if (preserveFirstStop != null)
+                    callPayload.Queries["preserveFirstStop"] = SourceExpressionConverter.ConvertO(preserveFirstStop);
+                callPayload.Queries["returnDirections"] = Convert.ToString(true);
+                if (returnDirections != null)
+                    callPayload.Queries["returnDirections"] = SourceExpressionConverter.ConvertO(returnDirections);
+                var routing = new JObject();
+                var routingpropCount = 0;
+                routingpropCount++;
+                routing["stops"] = SourceExpressionConverter.ConvertToken(routingroutingStops);
+                if (routingpropCount > 0)
+                {
+                    callPayload.Body = routing;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRouteV2Response>(BuildSourceInput);
         }
     }
 

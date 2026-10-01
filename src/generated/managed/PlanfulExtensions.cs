@@ -14,35 +14,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
         public IBodyWorkflowAction<GetRulesResponseItem[]> GetRules()
         {
-            var apiCallPath = "/financemodel/data/rules";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRulesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/financemodel/data/rules";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRulesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<FileLoadResponse> FileLoad(Expression<Func<string>> columnDelimiter, Expression<Func<string>> dataLoadRuleName = null, Expression<Func<object>> file = null)
+        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata([WorkflowExpression] Func<string> scenario, [WorkflowExpression] Func<int> fiscalYear, [WorkflowExpression] Func<string> filter = null)
         {
-            var apiCallPath = "/financemodel/data/transferfile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (dataLoadRuleName != null)
-                callPayload.Queries["DataLoadRuleName"] = ExpressionConverter.Convert(dataLoadRuleName);
-            callPayload.Queries["ColumnDelimiter"] = ExpressionConverter.Convert(columnDelimiter);
-            return new ApiConnectionAction<FileLoadResponse>(callPayload);
-        }
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/financemodel/data/extract/gldata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Scenario"] = SourceExpressionConverter.ConvertO(scenario);
+                callPayload.Queries["FiscalYear"] = SourceExpressionConverter.ConvertO(fiscalYear);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata(Expression<Func<string>> scenario, Expression<Func<int>> fiscalYear, Expression<Func<string>> filter = null)
-        {
-            var apiCallPath = "/financemodel/data/extract/gldata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Scenario"] = ExpressionConverter.Convert(scenario);
-            callPayload.Queries["FiscalYear"] = ExpressionConverter.Convert(fiscalYear);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            return new ApiConnectionAction<GetGLdataResponseItem[]>(callPayload);
+            return new ApiConnectionAction<GetGLdataResponseItem[]>(BuildSourceInput);
         }
     }
 
@@ -55,21 +53,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         public int DataLoadRuleId { get; set; }
         public string Name { get; set; }
         public string LoadItem { get; set; }
-    }
-
-    public class FileLoadResponse
-    {
-        public int DataLoadRuleId { get; set; }
-        public string ExcecutionId { get; set; }
-        public bool RunAsynchronously { get; set; }
-        public int Attempts { get; set; }
-        public FileLoadResponseTransferResponseType TransferResponse { get; set; }
-    }
-
-    public class FileLoadResponseTransferResponseType
-    {
-        public bool Success { get; set; }
-        public string Message { get; set; }
     }
 
     public class GetGLdataResponseItem

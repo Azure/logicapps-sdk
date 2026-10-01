@@ -12,113 +12,133 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicestextanalytic
     public class CognitiveservicestextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntityLinkingResult> EntitiesLinking([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/entities/linking";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = input;
+                var apiCallPath = "/text/analytics/v3.0/entities/linking";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = SourceExpressionConverter.ConvertO(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = SourceExpressionConverter.ConvertO(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = SourceExpressionConverter.ConvertToken(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntityLinkingResult>(callPayload);
+            return new ApiConnectionAction<EntityLinkingResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<EntitiesResultV3> EntitiesRecognitionGeneral([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = input;
+                var apiCallPath = "/text/analytics/v3.0/entities/recognition/general";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = SourceExpressionConverter.ConvertO(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = SourceExpressionConverter.ConvertO(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = SourceExpressionConverter.ConvertToken(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntitiesResultV3>(callPayload);
+            return new ApiConnectionAction<EntitiesResultV3>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<KeyPhraseResultV3> KeyPhrase([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/keyPhrases";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = input;
+                var apiCallPath = "/text/analytics/v3.0/keyPhrases";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = SourceExpressionConverter.ConvertO(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = SourceExpressionConverter.ConvertO(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = SourceExpressionConverter.ConvertToken(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<KeyPhraseResultV3>(callPayload);
+            return new ApiConnectionAction<KeyPhraseResultV3>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<LanguageResultV3> Languages(Expression<Func<LanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<LanguageResultV3> Languages([WorkflowExpression] Func<LanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/languages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = input;
+                var apiCallPath = "/text/analytics/v3.0/languages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = SourceExpressionConverter.ConvertO(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = SourceExpressionConverter.ConvertO(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = SourceExpressionConverter.ConvertToken(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<LanguageResultV3>(callPayload);
+            return new ApiConnectionAction<LanguageResultV3>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicestextanalytics")]
-        public IBodyWorkflowAction<SentimentResponse> Sentiment(Expression<Func<MultiLanguageInputV3[]>> inputdocuments, Expression<Func<string>> modelVersion = null, Expression<Func<bool>> showStats = null)
+        public IBodyWorkflowAction<SentimentResponse> Sentiment([WorkflowExpression] Func<MultiLanguageInputV3[]> inputdocuments, [WorkflowExpression] Func<string> modelVersion = null, [WorkflowExpression] Func<bool> showStats = null)
         {
-            var apiCallPath = "/text/analytics/v3.0/sentiment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (modelVersion != null)
-                callPayload.Queries["model-version"] = ExpressionConverter.Convert(modelVersion);
-            if (showStats != null)
-                callPayload.Queries["showStats"] = ExpressionConverter.Convert(showStats);
-            var input = new JObject();
-            var inputpropCount = 0;
-            inputpropCount++;
-            input["documents"] = ExpressionConverter.ConvertO(inputdocuments);
-            if (inputpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = input;
+                var apiCallPath = "/text/analytics/v3.0/sentiment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (modelVersion != null)
+                    callPayload.Queries["model-version"] = SourceExpressionConverter.ConvertO(modelVersion);
+                if (showStats != null)
+                    callPayload.Queries["showStats"] = SourceExpressionConverter.ConvertO(showStats);
+                var input = new JObject();
+                var inputpropCount = 0;
+                inputpropCount++;
+                input["documents"] = SourceExpressionConverter.ConvertToken(inputdocuments);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SentimentResponse>(callPayload);
+            return new ApiConnectionAction<SentimentResponse>(BuildSourceInput);
         }
     }
 

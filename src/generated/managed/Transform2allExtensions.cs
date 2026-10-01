@@ -12,23 +12,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
     public class Transform2allActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
-        public IWorkflowAction Transform(Expression<Func<string>> bodybase64Content, Expression<Func<string>> bodyconfigId)
+        public IWorkflowAction Transform([WorkflowExpression] Func<string> bodyconfigId, [WorkflowExpression] Func<string> bodybase64Content)
         {
-            var apiCallPath = "/api/1.0/translate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["base64Content"] = ExpressionConverter.ConvertO(bodybase64Content);
-            bodypropCount++;
-            body["configId"] = ExpressionConverter.ConvertO(bodyconfigId);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/1.0/translate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["configId"] = SourceExpressionConverter.ConvertToken(bodyconfigId);
+                bodypropCount++;
+                body["base64Content"] = SourceExpressionConverter.ConvertToken(bodybase64Content);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

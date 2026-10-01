@@ -14,21 +14,41 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
     public class DocumentIntelligenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
-        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
+        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument([WorkflowExpression] Func<AnalyzeDocumentInputModelIdType> modelId, [WorkflowExpression] Func<object> modelIdInputs = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(modelId);
-            if (modelIdInputs != null)
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["modelId"] = SourceExpressionConverter.ConvertToken(modelId);
+                if (modelIdInputs != null)
+                {
+                    serviceProviderParameters["modelIdInputs"] = SourceExpressionConverter.ConvertToken(modelIdInputs);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+            return new ServiceProviderAction<AnalyzeDocumentOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
+        public IOutputWorkflowAction<string> GetOutputContentTypes()
+        {
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "getOutputContentTypes", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<string>(BuildSourceInput);
         }
     }
 

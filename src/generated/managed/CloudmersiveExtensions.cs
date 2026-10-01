@@ -12,51 +12,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<VirusScanResult> ScanFile(Expression<Func<string>> inputFile)
+        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite([WorkflowExpression] Func<string> inputurl = null)
         {
-            var apiCallPath = "/virus/scan/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VirusScanResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputurl = null)
-        {
-            var apiCallPath = "/virus/scan/website";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputurl != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                input["Url"] = ExpressionConverter.ConvertO(inputurl);
-                inputpropCount++;
+                var apiCallPath = "/virus/scan/website";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputurl != null)
+                {
+                    input["Url"] = SourceExpressionConverter.ConvertToken(inputurl);
+                    inputpropCount++;
+                }
+
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+                return callPayload;
             }
 
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
-
-            return new ApiConnectionAction<WebsiteScanResult>(callPayload);
+            return new ApiConnectionAction<WebsiteScanResult>(BuildSourceInput);
         }
     }
 
     public class CloudmersiveTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class VirusScanResult
-    {
-        public bool CleanResult { get; set; }
-        public VirusFound[] FoundViruses { get; set; }
-    }
-
-    public class VirusFound
-    {
-        public string FileName { get; set; }
-        public string VirusName { get; set; }
     }
 
     public class WebsiteScanResult

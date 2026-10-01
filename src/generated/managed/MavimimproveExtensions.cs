@@ -12,2036 +12,2221 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mavimimprove
     public class MavimimproveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IChart[]> GetTopicCharts(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<IChart[]> GetTopicCharts([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/charts", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IChart[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/charts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IChart[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> CreateTopicAfter(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytype, Expression<Func<string>> bodyicon)
+        public IBodyWorkflowAction<ITopic> CreateTopicAfter([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodyicon)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            bodypropCount++;
-            body["icon"] = ExpressionConverter.ConvertO(bodyicon);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                bodypropCount++;
+                body["icon"] = SourceExpressionConverter.ConvertToken(bodyicon);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ITopic>(callPayload);
+            return new ApiConnectionAction<ITopic>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> DeleteTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic> DeleteTopic([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ITopic>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ITopic>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> GetTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic> GetTopic([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ITopic>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ITopic>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> UpdateTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<ITopic> UpdateTopic([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyname = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ITopic>(callPayload);
+            return new ApiConnectionAction<ITopic>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> CreateChildTopic(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> bodyname, Expression<Func<string>> bodytype, Expression<Func<string>> bodyicon)
+        public IBodyWorkflowAction<ITopic> CreateChildTopic([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodyicon)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/children", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            bodypropCount++;
-            body["icon"] = ExpressionConverter.ConvertO(bodyicon);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                bodypropCount++;
+                body["icon"] = SourceExpressionConverter.ConvertToken(bodyicon);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ITopic>(callPayload);
+            return new ApiConnectionAction<ITopic>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[]> GetTopicChildren(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic[]> GetTopicChildren([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/children", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ITopic[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/children", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ITopic[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField[]> GetTopicFields(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<IField[]> GetTopicFields([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IField[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IField[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> GetFieldByDcvAndFieldsetId(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId)
+        public IBodyWorkflowAction<IField> GetFieldByDcvAndFieldsetId([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IField>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateBooleanSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<bool>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateBooleanSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<bool> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/bool/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/bool/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateTextSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateTextSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<string> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/text/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/text/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateTextMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateTextMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<string[]> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multitext/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multitext/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateNumberSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateNumberSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<int> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/number/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/number/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateNumberMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<int[]>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateNumberMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<int[]> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multinumber/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multinumber/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateDecimalSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateDecimalSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<double> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/decimal/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/decimal/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateDecimalMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<double[]>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateDecimalMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<double[]> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidecimal/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidecimal/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateDateSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateDateSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<string> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/date/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/date/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateDateMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null, Expression<Func<string[]>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateDateMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null, [WorkflowExpression] Func<string[]> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidate/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multidate/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateListSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodyfieldId = null, Expression<Func<int>> bodysetOrder = null, Expression<Func<int>> bodyorder = null, Expression<Func<string>> bodytopicId = null, Expression<Func<string>> bodysetName = null, Expression<Func<string>> bodyfieldName = null, Expression<Func<bodyfieldValueTypeInput>> bodyfieldValueType = null, Expression<Func<bool>> bodyrequired = null, Expression<Func<bool>> bodyreadonly = null, Expression<Func<string>> bodyusage = null, Expression<Func<string>> bodyrelationshipCategorydcv = null, Expression<Func<string>> bodyrelationshipCategoryname = null, Expression<Func<string>> bodyrelationshipCategoryicon = null, Expression<Func<string>> bodycharacteristicdcv = null, Expression<Func<string>> bodycharacteristicname = null, Expression<Func<string>> bodycharacteristicicon = null, Expression<Func<string>> bodyopenLocation = null)
+        public IBodyWorkflowAction<IField> UpdateListSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<int> bodysetOrder = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<string> bodytopicId = null, [WorkflowExpression] Func<string> bodysetName = null, [WorkflowExpression] Func<string> bodyfieldName = null, [WorkflowExpression] Func<bodyfieldValueTypeInput> bodyfieldValueType = null, [WorkflowExpression] Func<bool> bodyRequired = null, [WorkflowExpression] Func<bool> bodyReadonly = null, [WorkflowExpression] Func<string> bodyusage = null, [WorkflowExpression] Func<string> bodyrelationshipCategorydcv = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryname = null, [WorkflowExpression] Func<string> bodyrelationshipCategoryicon = null, [WorkflowExpression] Func<string> bodycharacteristicdcv = null, [WorkflowExpression] Func<string> bodycharacteristicname = null, [WorkflowExpression] Func<string> bodycharacteristicicon = null, [WorkflowExpression] Func<string> bodyopenLocation = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/list/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldsetId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/list/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodysetOrder != null)
+                {
+                    body["setOrder"] = SourceExpressionConverter.ConvertToken(bodysetOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyorder != null)
+                {
+                    body["order"] = SourceExpressionConverter.ConvertToken(bodyorder);
+                    bodypropCount++;
+                }
+
+                if (bodytopicId != null)
+                {
+                    body["topicId"] = SourceExpressionConverter.ConvertToken(bodytopicId);
+                    bodypropCount++;
+                }
+
+                if (bodysetName != null)
+                {
+                    body["setName"] = SourceExpressionConverter.ConvertToken(bodysetName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldName != null)
+                {
+                    body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldValueType != null)
+                {
+                    body["fieldValueType"] = SourceExpressionConverter.Convert(bodyfieldValueType);
+                    bodypropCount++;
+                }
+
+                if (bodyRequired != null)
+                {
+                    body["required"] = SourceExpressionConverter.ConvertToken(bodyRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyReadonly != null)
+                {
+                    body["readonly"] = SourceExpressionConverter.ConvertToken(bodyReadonly);
+                    bodypropCount++;
+                }
+
+                if (bodyusage != null)
+                {
+                    body["usage"] = SourceExpressionConverter.ConvertToken(bodyusage);
+                    bodypropCount++;
+                }
+
+                var relationshipCategoryObject = new JObject();
+                var relationshipCategoryObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    relationshipCategoryObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    relationshipCategoryObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    relationshipCategoryObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    relationshipCategoryObjectpropCount++;
+                }
+
+                if (relationshipCategoryObjectpropCount > 0)
+                {
+                    body["relationshipCategory"] = relationshipCategoryObject;
+                    bodypropCount++;
+                }
+
+                var characteristicObject = new JObject();
+                var characteristicObjectpropCount = 0;
+                if (bodyrelationshipCategorydcv != null)
+                {
+                    characteristicObject["dcv"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategorydcv);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryname != null)
+                {
+                    characteristicObject["name"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryname);
+                    characteristicObjectpropCount++;
+                }
+
+                if (bodyrelationshipCategoryicon != null)
+                {
+                    characteristicObject["icon"] = SourceExpressionConverter.ConvertToken(bodyrelationshipCategoryicon);
+                    characteristicObjectpropCount++;
+                }
+
+                if (characteristicObjectpropCount > 0)
+                {
+                    body["characteristic"] = characteristicObject;
+                    bodypropCount++;
+                }
+
+                if (bodyopenLocation != null)
+                {
+                    body["openLocation"] = SourceExpressionConverter.ConvertToken(bodyopenLocation);
+                    bodypropCount++;
+                }
+
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (optionsObjectpropCount > 0)
+                {
+                    body["options"] = optionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldId != null)
-            {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
-            }
-
-            if (bodysetOrder != null)
-            {
-                body["setOrder"] = ExpressionConverter.ConvertO(bodysetOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
-                bodypropCount++;
-            }
-
-            if (bodytopicId != null)
-            {
-                body["topicId"] = ExpressionConverter.ConvertO(bodytopicId);
-                bodypropCount++;
-            }
-
-            if (bodysetName != null)
-            {
-                body["setName"] = ExpressionConverter.ConvertO(bodysetName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldName != null)
-            {
-                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-                bodypropCount++;
-            }
-
-            if (bodyfieldValueType != null)
-            {
-                body["fieldValueType"] = ExpressionConverter.ConvertO(bodyfieldValueType);
-                bodypropCount++;
-            }
-
-            if (bodyrequired != null)
-            {
-                body["required"] = ExpressionConverter.ConvertO(bodyrequired);
-                bodypropCount++;
-            }
-
-            if (bodyreadonly != null)
-            {
-                body["readonly"] = ExpressionConverter.ConvertO(bodyreadonly);
-                bodypropCount++;
-            }
-
-            if (bodyusage != null)
-            {
-                body["usage"] = ExpressionConverter.ConvertO(bodyusage);
-                bodypropCount++;
-            }
-
-            var relationshipCategoryObject = new JObject();
-            var relationshipCategoryObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                relationshipCategoryObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                relationshipCategoryObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                relationshipCategoryObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                relationshipCategoryObjectpropCount++;
-            }
-
-            if (relationshipCategoryObjectpropCount > 0)
-            {
-                body["relationshipCategory"] = relationshipCategoryObject;
-                bodypropCount++;
-            }
-
-            var characteristicObject = new JObject();
-            var characteristicObjectpropCount = 0;
-            if (bodyrelationshipCategorydcv != null)
-            {
-                characteristicObject["dcv"] = ExpressionConverter.ConvertO(bodyrelationshipCategorydcv);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryname != null)
-            {
-                characteristicObject["name"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryname);
-                characteristicObjectpropCount++;
-            }
-
-            if (bodyrelationshipCategoryicon != null)
-            {
-                characteristicObject["icon"] = ExpressionConverter.ConvertO(bodyrelationshipCategoryicon);
-                characteristicObjectpropCount++;
-            }
-
-            if (characteristicObjectpropCount > 0)
-            {
-                body["characteristic"] = characteristicObject;
-                bodypropCount++;
-            }
-
-            if (bodyopenLocation != null)
-            {
-                body["openLocation"] = ExpressionConverter.ConvertO(bodyopenLocation);
-                bodypropCount++;
-            }
-
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (optionsObjectpropCount > 0)
-            {
-                body["options"] = optionsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateRelationshipSingleField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<string>> bodydatadcv = null, Expression<Func<string>> bodydataname = null, Expression<Func<string>> bodydataicon = null)
+        public IBodyWorkflowAction<IField> UpdateRelationshipSingleField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<string> bodydatadcv = null, [WorkflowExpression] Func<string> bodydataname = null, [WorkflowExpression] Func<string> bodydataicon = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationship/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationship/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydatadcv != null)
+                {
+                    dataObject["dcv"] = SourceExpressionConverter.ConvertToken(bodydatadcv);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataname != null)
+                {
+                    dataObject["name"] = SourceExpressionConverter.ConvertToken(bodydataname);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydataicon != null)
+                {
+                    dataObject["icon"] = SourceExpressionConverter.ConvertToken(bodydataicon);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldsetId != null)
-            {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
-            }
-
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydatadcv != null)
-            {
-                dataObject["dcv"] = ExpressionConverter.ConvertO(bodydatadcv);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataname != null)
-            {
-                dataObject["name"] = ExpressionConverter.ConvertO(bodydataname);
-                dataObjectpropCount++;
-            }
-
-            if (bodydataicon != null)
-            {
-                dataObject["icon"] = ExpressionConverter.ConvertO(bodydataicon);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateRelationshipMultiField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null, Expression<Func<RelationshipElement[]>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateRelationshipMultiField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<string> bodyfieldsetId = null, [WorkflowExpression] Func<RelationshipElement[]> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multirelationship/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multirelationship/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldsetId != null)
-            {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateRelationshipListField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodyfieldId = null, Expression<Func<string>> bodyfieldsetId = null)
+        public IBodyWorkflowAction<IField> UpdateRelationshipListField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodyfieldId = null, [WorkflowExpression] Func<string> bodyfieldsetId = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationshiplist/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfieldId != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldId"] = ExpressionConverter.ConvertO(bodyfieldId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/relationshiplist/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfieldId != null)
+                {
+                    body["fieldId"] = SourceExpressionConverter.ConvertToken(bodyfieldId);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldsetId != null)
+                {
+                    body["fieldsetId"] = SourceExpressionConverter.ConvertToken(bodyfieldsetId);
+                    bodypropCount++;
+                }
+
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldsetId != null)
-            {
-                body["fieldsetId"] = ExpressionConverter.ConvertO(bodyfieldsetId);
-                bodypropCount++;
-            }
-
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateFields(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<SingleTextField[]>> bodysingleTextFields = null, Expression<Func<MultiTextField[]>> bodymultiTextFields = null, Expression<Func<SingleNumberField[]>> bodysingleNumberFields = null, Expression<Func<MultiNumberField[]>> bodymultiNumberFields = null, Expression<Func<SingleBooleanField[]>> bodysingleBooleanFields = null, Expression<Func<SingleDecimalField[]>> bodysingleDecimalFields = null, Expression<Func<MultiDecimalField[]>> bodymultiDecimalFields = null, Expression<Func<SingleDateField[]>> bodysingleDateFields = null, Expression<Func<MultiDateField[]>> bodymultiDateFields = null, Expression<Func<SingleListField[]>> bodysingleListFields = null, Expression<Func<RelationshipField[]>> bodysingleRelationshipFields = null, Expression<Func<MultiRelationshipField[]>> bodymultiRelationshipFields = null, Expression<Func<RelationshipListField[]>> bodysingleRelationshipListFields = null, Expression<Func<SingleHyperlinkField[]>> bodysingleHyperlinkFields = null, Expression<Func<MultiHyperlinkField[]>> bodymultiHyperlinkFields = null)
+        public IBodyWorkflowAction<IField> UpdateFields([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<SingleTextField[]> bodysingleTextFields = null, [WorkflowExpression] Func<MultiTextField[]> bodymultiTextFields = null, [WorkflowExpression] Func<SingleNumberField[]> bodysingleNumberFields = null, [WorkflowExpression] Func<MultiNumberField[]> bodymultiNumberFields = null, [WorkflowExpression] Func<SingleBooleanField[]> bodysingleBooleanFields = null, [WorkflowExpression] Func<SingleDecimalField[]> bodysingleDecimalFields = null, [WorkflowExpression] Func<MultiDecimalField[]> bodymultiDecimalFields = null, [WorkflowExpression] Func<SingleDateField[]> bodysingleDateFields = null, [WorkflowExpression] Func<MultiDateField[]> bodymultiDateFields = null, [WorkflowExpression] Func<SingleListField[]> bodysingleListFields = null, [WorkflowExpression] Func<RelationshipField[]> bodysingleRelationshipFields = null, [WorkflowExpression] Func<MultiRelationshipField[]> bodymultiRelationshipFields = null, [WorkflowExpression] Func<RelationshipListField[]> bodysingleRelationshipListFields = null, [WorkflowExpression] Func<SingleHyperlinkField[]> bodysingleHyperlinkFields = null, [WorkflowExpression] Func<MultiHyperlinkField[]> bodymultiHyperlinkFields = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fields", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysingleTextFields != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["singleTextFields"] = ExpressionConverter.ConvertO(bodysingleTextFields);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysingleTextFields != null)
+                {
+                    body["singleTextFields"] = SourceExpressionConverter.ConvertToken(bodysingleTextFields);
+                    bodypropCount++;
+                }
+
+                if (bodymultiTextFields != null)
+                {
+                    body["multiTextFields"] = SourceExpressionConverter.ConvertToken(bodymultiTextFields);
+                    bodypropCount++;
+                }
+
+                if (bodysingleNumberFields != null)
+                {
+                    body["singleNumberFields"] = SourceExpressionConverter.ConvertToken(bodysingleNumberFields);
+                    bodypropCount++;
+                }
+
+                if (bodymultiNumberFields != null)
+                {
+                    body["multiNumberFields"] = SourceExpressionConverter.ConvertToken(bodymultiNumberFields);
+                    bodypropCount++;
+                }
+
+                if (bodysingleBooleanFields != null)
+                {
+                    body["singleBooleanFields"] = SourceExpressionConverter.ConvertToken(bodysingleBooleanFields);
+                    bodypropCount++;
+                }
+
+                if (bodysingleDecimalFields != null)
+                {
+                    body["singleDecimalFields"] = SourceExpressionConverter.ConvertToken(bodysingleDecimalFields);
+                    bodypropCount++;
+                }
+
+                if (bodymultiDecimalFields != null)
+                {
+                    body["multiDecimalFields"] = SourceExpressionConverter.ConvertToken(bodymultiDecimalFields);
+                    bodypropCount++;
+                }
+
+                if (bodysingleDateFields != null)
+                {
+                    body["singleDateFields"] = SourceExpressionConverter.ConvertToken(bodysingleDateFields);
+                    bodypropCount++;
+                }
+
+                if (bodymultiDateFields != null)
+                {
+                    body["multiDateFields"] = SourceExpressionConverter.ConvertToken(bodymultiDateFields);
+                    bodypropCount++;
+                }
+
+                if (bodysingleListFields != null)
+                {
+                    body["singleListFields"] = SourceExpressionConverter.ConvertToken(bodysingleListFields);
+                    bodypropCount++;
+                }
+
+                if (bodysingleRelationshipFields != null)
+                {
+                    body["singleRelationshipFields"] = SourceExpressionConverter.ConvertToken(bodysingleRelationshipFields);
+                    bodypropCount++;
+                }
+
+                if (bodymultiRelationshipFields != null)
+                {
+                    body["multiRelationshipFields"] = SourceExpressionConverter.ConvertToken(bodymultiRelationshipFields);
+                    bodypropCount++;
+                }
+
+                if (bodysingleRelationshipListFields != null)
+                {
+                    body["singleRelationshipListFields"] = SourceExpressionConverter.ConvertToken(bodysingleRelationshipListFields);
+                    bodypropCount++;
+                }
+
+                if (bodysingleHyperlinkFields != null)
+                {
+                    body["singleHyperlinkFields"] = SourceExpressionConverter.ConvertToken(bodysingleHyperlinkFields);
+                    bodypropCount++;
+                }
+
+                if (bodymultiHyperlinkFields != null)
+                {
+                    body["multiHyperlinkFields"] = SourceExpressionConverter.ConvertToken(bodymultiHyperlinkFields);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymultiTextFields != null)
-            {
-                body["multiTextFields"] = ExpressionConverter.ConvertO(bodymultiTextFields);
-                bodypropCount++;
-            }
-
-            if (bodysingleNumberFields != null)
-            {
-                body["singleNumberFields"] = ExpressionConverter.ConvertO(bodysingleNumberFields);
-                bodypropCount++;
-            }
-
-            if (bodymultiNumberFields != null)
-            {
-                body["multiNumberFields"] = ExpressionConverter.ConvertO(bodymultiNumberFields);
-                bodypropCount++;
-            }
-
-            if (bodysingleBooleanFields != null)
-            {
-                body["singleBooleanFields"] = ExpressionConverter.ConvertO(bodysingleBooleanFields);
-                bodypropCount++;
-            }
-
-            if (bodysingleDecimalFields != null)
-            {
-                body["singleDecimalFields"] = ExpressionConverter.ConvertO(bodysingleDecimalFields);
-                bodypropCount++;
-            }
-
-            if (bodymultiDecimalFields != null)
-            {
-                body["multiDecimalFields"] = ExpressionConverter.ConvertO(bodymultiDecimalFields);
-                bodypropCount++;
-            }
-
-            if (bodysingleDateFields != null)
-            {
-                body["singleDateFields"] = ExpressionConverter.ConvertO(bodysingleDateFields);
-                bodypropCount++;
-            }
-
-            if (bodymultiDateFields != null)
-            {
-                body["multiDateFields"] = ExpressionConverter.ConvertO(bodymultiDateFields);
-                bodypropCount++;
-            }
-
-            if (bodysingleListFields != null)
-            {
-                body["singleListFields"] = ExpressionConverter.ConvertO(bodysingleListFields);
-                bodypropCount++;
-            }
-
-            if (bodysingleRelationshipFields != null)
-            {
-                body["singleRelationshipFields"] = ExpressionConverter.ConvertO(bodysingleRelationshipFields);
-                bodypropCount++;
-            }
-
-            if (bodymultiRelationshipFields != null)
-            {
-                body["multiRelationshipFields"] = ExpressionConverter.ConvertO(bodymultiRelationshipFields);
-                bodypropCount++;
-            }
-
-            if (bodysingleRelationshipListFields != null)
-            {
-                body["singleRelationshipListFields"] = ExpressionConverter.ConvertO(bodysingleRelationshipListFields);
-                bodypropCount++;
-            }
-
-            if (bodysingleHyperlinkFields != null)
-            {
-                body["singleHyperlinkFields"] = ExpressionConverter.ConvertO(bodysingleHyperlinkFields);
-                bodypropCount++;
-            }
-
-            if (bodymultiHyperlinkFields != null)
-            {
-                body["multiHyperlinkFields"] = ExpressionConverter.ConvertO(bodymultiHyperlinkFields);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateSingleHyperlinkField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string>> bodydata = null)
+        public IBodyWorkflowAction<IField> UpdateSingleHyperlinkField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string> bodydata = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/hyperlink/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/hyperlink/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<IField>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
+        public IBodyWorkflowAction<IField> UpdateMultiHyperlinkField([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> fieldsetId, [WorkflowExpression] Func<string> fieldId, [WorkflowExpression] Func<string[]> bodydata = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multihyperlink/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldsetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction<IField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IField> UpdateMultiHyperlinkField(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> fieldsetId, Expression<Func<string>> fieldId, Expression<Func<string[]>> bodydata = null)
+        public IWorkflowAction MoveTopicToTop([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/fieldsets/{3}/multihyperlink/{4}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldsetId, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movetotop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
+        public IWorkflowAction MoveTopicToBottom([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movetobottom", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<IField>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicToTop(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction MoveTopicUp([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/movetotop", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicToBottom(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
-        {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/movetobottom", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicUp(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
-        {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/moveup", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicDown(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
-        {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/movedown", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicLevelUp(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
-        {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/movelevelup", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction MoveTopicLevelDown(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
-        {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/moveleveldown", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IRelationship[]> GetTopicRelations(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
-        {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/relations", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IRelationship[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<IRelationship> SaveRelation(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> bodyfromElementDcv = null, Expression<Func<string>> bodytoElementDcv = null, Expression<Func<bodyrelationshipTypeInput>> bodyrelationshipType = null)
-        {
-            var apiCallPath = String.Format("/v1/{0}/{1}/relation", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfromElementDcv != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fromElementDcv"] = ExpressionConverter.ConvertO(bodyfromElementDcv);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/moveup", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodytoElementDcv != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
+        public IWorkflowAction MoveTopicDown([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["toElementDcv"] = ExpressionConverter.ConvertO(bodytoElementDcv);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movedown", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodyrelationshipType != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
+        public IWorkflowAction MoveTopicLevelUp([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["relationshipType"] = ExpressionConverter.ConvertO(bodyrelationshipType);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/movelevelup", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
+        public IWorkflowAction MoveTopicLevelDown([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/moveleveldown", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<IRelationship>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IWorkflowAction DeleteRelation(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId, Expression<Func<string>> relationId)
+        public IBodyWorkflowAction<IRelationship[]> GetTopicRelations([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/relation/{3}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1), ExpressionConverter.ConvertWithUrlEncoding(relationId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/relations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IRelationship[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic> GetTopicRoot(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage)
+        public IBodyWorkflowAction<IRelationship> SaveRelation([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> bodyfromElementDcv = null, [WorkflowExpression] Func<string> bodytoElementDcv = null, [WorkflowExpression] Func<bodyrelationshipTypeInput> bodyrelationshipType = null)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/root", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ITopic>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/relation", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfromElementDcv != null)
+                {
+                    body["fromElementDcv"] = SourceExpressionConverter.ConvertToken(bodyfromElementDcv);
+                    bodypropCount++;
+                }
+
+                if (bodytoElementDcv != null)
+                {
+                    body["toElementDcv"] = SourceExpressionConverter.ConvertToken(bodytoElementDcv);
+                    bodypropCount++;
+                }
+
+                if (bodyrelationshipType != null)
+                {
+                    body["relationshipType"] = SourceExpressionConverter.Convert(bodyrelationshipType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IRelationship>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopicPath> GetPathToRoot(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IWorkflowAction DeleteRelation([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId, [WorkflowExpression] Func<string> relationId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/path/{2}", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ITopicPath>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/relation/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(relationId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[]> GetTopicSiblings(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic> GetTopicRoot([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/siblings", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ITopic[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/root", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ITopic>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<ITopic[]> GetRelationCategories(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage)
+        public IBodyWorkflowAction<ITopicPath> GetPathToRoot([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/categories", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ITopic[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/path/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ITopicPath>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<JToken> GetTopicTypes(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicId)
+        public IBodyWorkflowAction<ITopic[]> GetTopicSiblings([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/topic/{2}/types", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/siblings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ITopic[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
-        public IBodyWorkflowAction<JToken> GetTopicIcons(Expression<Func<string>> dbId, Expression<Func<dataLanguageInput>> dataLanguage, Expression<Func<string>> topicType)
+        public IBodyWorkflowAction<ITopic[]> GetRelationCategories([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage)
         {
-            var apiCallPath = String.Format("/v1/{0}/{1}/types/{2}/icons", ExpressionConverter.ConvertWithUrlEncoding(dbId, 1), ExpressionConverter.ConvertWithUrlEncoding(dataLanguage, 1), ExpressionConverter.ConvertWithUrlEncoding(topicType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/categories", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ITopic[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
+        public IBodyWorkflowAction<JToken> GetTopicTypes([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/topic/{2}/types", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
+        public IBodyWorkflowAction<JToken> GetTopicIcons([WorkflowExpression] Func<string> dbId, [WorkflowExpression] Func<dataLanguageInput> dataLanguage, [WorkflowExpression] Func<string> topicType)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/{0}/{1}/types/{2}/icons", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dbId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataLanguage, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(topicType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mavimimprove")]
         public IBodyWorkflowAction<string> Version()
         {
-            var apiCallPath = "/v1/version";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/version";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

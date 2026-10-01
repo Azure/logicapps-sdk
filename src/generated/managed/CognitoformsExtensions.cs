@@ -15,61 +15,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
     public class CognitoformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEntry(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewEntry([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribenewentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = endpoint;
+                var apiCallPath = "/integration/oauth/subscribenewentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = SourceExpressionConverter.ConvertO(publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UpdateEntry([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribeupdateentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = endpoint;
+                var apiCallPath = "/integration/oauth/subscribeupdateentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = SourceExpressionConverter.ConvertO(publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EntryDeleted([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribeentrydeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = endpoint;
+                var apiCallPath = "/integration/oauth/subscribeentrydeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = SourceExpressionConverter.ConvertO(publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

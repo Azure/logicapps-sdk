@@ -12,69 +12,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfec
     public class OpenfecActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
-        public IBodyWorkflowAction<CommitteeCandidateHistoryResponse> CommitteeCommitteeIdCandidatesHistory(Expression<Func<string>> committeeId, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> page = null, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sort = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> perPage = null, Expression<Func<string>> electionFull = null)
+        public IBodyWorkflowAction<CommitteeCandidateHistoryResponse> CommitteeCommitteeIdCandidatesHistory([WorkflowExpression] Func<string> committeeId, [WorkflowExpression] Func<string> sortHideNull = null, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> sortNullsLast = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> sortNullOnly = null, [WorkflowExpression] Func<string> perPage = null, [WorkflowExpression] Func<string> electionFull = null)
         {
-            var apiCallPath = String.Format("/committee/{0}/candidates/history/", ExpressionConverter.ConvertWithUrlEncoding(committeeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sort_hide_null"] = Convert.ToString("false");
-            if (sortHideNull != null)
-                callPayload.Queries["sort_hide_null"] = ExpressionConverter.Convert(sortHideNull);
-            callPayload.Queries["page"] = Convert.ToString("1");
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["sort_nulls_last"] = Convert.ToString("false");
-            if (sortNullsLast != null)
-                callPayload.Queries["sort_nulls_last"] = ExpressionConverter.Convert(sortNullsLast);
-            callPayload.Queries["sort"] = Convert.ToString("");
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Queries["sort_null_only"] = Convert.ToString("false");
-            if (sortNullOnly != null)
-                callPayload.Queries["sort_null_only"] = ExpressionConverter.Convert(sortNullOnly);
-            callPayload.Queries["per_page"] = Convert.ToString("20");
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            callPayload.Queries["election_full"] = Convert.ToString("true");
-            if (electionFull != null)
-                callPayload.Queries["election_full"] = ExpressionConverter.Convert(electionFull);
-            return new ApiConnectionAction<CommitteeCandidateHistoryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/committee/{0}/candidates/history/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(committeeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sort_hide_null"] = Convert.ToString("false");
+                if (sortHideNull != null)
+                    callPayload.Queries["sort_hide_null"] = SourceExpressionConverter.ConvertO(sortHideNull);
+                callPayload.Queries["page"] = Convert.ToString("1");
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["sort_nulls_last"] = Convert.ToString("false");
+                if (sortNullsLast != null)
+                    callPayload.Queries["sort_nulls_last"] = SourceExpressionConverter.ConvertO(sortNullsLast);
+                callPayload.Queries["sort"] = Convert.ToString("");
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                callPayload.Queries["sort_null_only"] = Convert.ToString("false");
+                if (sortNullOnly != null)
+                    callPayload.Queries["sort_null_only"] = SourceExpressionConverter.ConvertO(sortNullOnly);
+                callPayload.Queries["per_page"] = Convert.ToString("20");
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                callPayload.Queries["election_full"] = Convert.ToString("true");
+                if (electionFull != null)
+                    callPayload.Queries["election_full"] = SourceExpressionConverter.ConvertO(electionFull);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CommitteeCandidateHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfec")]
-        public IBodyWorkflowAction<OperationsLogResponse> OperationsLog(Expression<Func<string>> formType, Expression<Func<string>> reportYear, Expression<Func<string>> sort, Expression<Func<string>> maxReceiptDate, Expression<Func<string>> reportType, Expression<Func<string>> perPage, Expression<Func<string>> candidateCommitteeId, Expression<Func<string>> minReceiptDate, Expression<Func<string>> minCoverageEndDate, Expression<Func<string>> page, Expression<Func<string>> statusNum, Expression<Func<string>> minTransactionDataCompleteDate, Expression<Func<string>> maxCoverageEndDate, Expression<Func<string>> maxTransactionDataCompleteDate, Expression<Func<string>> beginningImageNumber, Expression<Func<string>> sortNullsLast = null, Expression<Func<string>> sortNullOnly = null, Expression<Func<string>> sortHideNull = null, Expression<Func<string>> amendmentIndicator = null)
+        public IBodyWorkflowAction<OperationsLogResponse> OperationsLog([WorkflowExpression] Func<string> formType, [WorkflowExpression] Func<string> reportYear, [WorkflowExpression] Func<string> sort, [WorkflowExpression] Func<string> maxReceiptDate, [WorkflowExpression] Func<string> reportType, [WorkflowExpression] Func<string> perPage, [WorkflowExpression] Func<string> candidateCommitteeId, [WorkflowExpression] Func<string> minReceiptDate, [WorkflowExpression] Func<string> minCoverageEndDate, [WorkflowExpression] Func<string> page, [WorkflowExpression] Func<string> statusNum, [WorkflowExpression] Func<string> minTransactionDataCompleteDate, [WorkflowExpression] Func<string> maxCoverageEndDate, [WorkflowExpression] Func<string> maxTransactionDataCompleteDate, [WorkflowExpression] Func<string> beginningImageNumber, [WorkflowExpression] Func<string> sortNullsLast = null, [WorkflowExpression] Func<string> sortNullOnly = null, [WorkflowExpression] Func<string> sortHideNull = null, [WorkflowExpression] Func<string> amendmentIndicator = null)
         {
-            var apiCallPath = "/operations-log/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_type"] = ExpressionConverter.Convert(formType);
-            callPayload.Queries["report_year"] = ExpressionConverter.Convert(reportYear);
-            callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Queries["max_receipt_date"] = ExpressionConverter.Convert(maxReceiptDate);
-            callPayload.Queries["report_type"] = ExpressionConverter.Convert(reportType);
-            callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            callPayload.Queries["candidate_committee_id"] = ExpressionConverter.Convert(candidateCommitteeId);
-            callPayload.Queries["min_receipt_date"] = ExpressionConverter.Convert(minReceiptDate);
-            callPayload.Queries["min_coverage_end_date"] = ExpressionConverter.Convert(minCoverageEndDate);
-            callPayload.Queries["sort_nulls_last"] = Convert.ToString("false");
-            if (sortNullsLast != null)
-                callPayload.Queries["sort_nulls_last"] = ExpressionConverter.Convert(sortNullsLast);
-            callPayload.Queries["sort_null_only"] = Convert.ToString("false");
-            if (sortNullOnly != null)
-                callPayload.Queries["sort_null_only"] = ExpressionConverter.Convert(sortNullOnly);
-            callPayload.Queries["sort_hide_null"] = Convert.ToString("false");
-            if (sortHideNull != null)
-                callPayload.Queries["sort_hide_null"] = ExpressionConverter.Convert(sortHideNull);
-            callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["amendment_indicator"] = Convert.ToString("N");
-            if (amendmentIndicator != null)
-                callPayload.Queries["amendment_indicator"] = ExpressionConverter.Convert(amendmentIndicator);
-            callPayload.Queries["status_num"] = ExpressionConverter.Convert(statusNum);
-            callPayload.Queries["min_transaction_data_complete_date"] = ExpressionConverter.Convert(minTransactionDataCompleteDate);
-            callPayload.Queries["max_coverage_end_date"] = ExpressionConverter.Convert(maxCoverageEndDate);
-            callPayload.Queries["max_transaction_data_complete_date"] = ExpressionConverter.Convert(maxTransactionDataCompleteDate);
-            callPayload.Queries["beginning_image_number"] = ExpressionConverter.Convert(beginningImageNumber);
-            return new ApiConnectionAction<OperationsLogResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/operations-log/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_type"] = SourceExpressionConverter.ConvertO(formType);
+                callPayload.Queries["report_year"] = SourceExpressionConverter.ConvertO(reportYear);
+                callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                callPayload.Queries["max_receipt_date"] = SourceExpressionConverter.ConvertO(maxReceiptDate);
+                callPayload.Queries["report_type"] = SourceExpressionConverter.ConvertO(reportType);
+                callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                callPayload.Queries["candidate_committee_id"] = SourceExpressionConverter.ConvertO(candidateCommitteeId);
+                callPayload.Queries["min_receipt_date"] = SourceExpressionConverter.ConvertO(minReceiptDate);
+                callPayload.Queries["min_coverage_end_date"] = SourceExpressionConverter.ConvertO(minCoverageEndDate);
+                callPayload.Queries["sort_nulls_last"] = Convert.ToString("false");
+                if (sortNullsLast != null)
+                    callPayload.Queries["sort_nulls_last"] = SourceExpressionConverter.ConvertO(sortNullsLast);
+                callPayload.Queries["sort_null_only"] = Convert.ToString("false");
+                if (sortNullOnly != null)
+                    callPayload.Queries["sort_null_only"] = SourceExpressionConverter.ConvertO(sortNullOnly);
+                callPayload.Queries["sort_hide_null"] = Convert.ToString("false");
+                if (sortHideNull != null)
+                    callPayload.Queries["sort_hide_null"] = SourceExpressionConverter.ConvertO(sortHideNull);
+                callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["amendment_indicator"] = Convert.ToString("N");
+                if (amendmentIndicator != null)
+                    callPayload.Queries["amendment_indicator"] = SourceExpressionConverter.ConvertO(amendmentIndicator);
+                callPayload.Queries["status_num"] = SourceExpressionConverter.ConvertO(statusNum);
+                callPayload.Queries["min_transaction_data_complete_date"] = SourceExpressionConverter.ConvertO(minTransactionDataCompleteDate);
+                callPayload.Queries["max_coverage_end_date"] = SourceExpressionConverter.ConvertO(maxCoverageEndDate);
+                callPayload.Queries["max_transaction_data_complete_date"] = SourceExpressionConverter.ConvertO(maxTransactionDataCompleteDate);
+                callPayload.Queries["beginning_image_number"] = SourceExpressionConverter.ConvertO(beginningImageNumber);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OperationsLogResponse>(BuildSourceInput);
         }
     }
 

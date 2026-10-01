@@ -12,14 +12,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
     public class GienitsservermcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gienitsservermcp")]
-        public IBodyWorkflowAction<QueryResponse> GieniTSserver(Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<QueryResponse> GieniTSserver([WorkflowExpression] Func<string> sessionId = null)
         {
-            var apiCallPath = "/sse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            return new ApiConnectionAction<QueryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/sse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = SourceExpressionConverter.ConvertO(sessionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QueryResponse>(BuildSourceInput);
         }
     }
 

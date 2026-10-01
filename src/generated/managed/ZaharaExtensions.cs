@@ -12,299 +12,306 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
     public class ZaharaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int> CreateDraftInvoice(Expression<Func<string>> senderEmail, Expression<Func<string>> recipientEmail, Expression<Func<string>> raisedDate = null, Expression<Func<object>> file = null)
+        public IBodyWorkflowAction<int> CreateInvoice([WorkflowExpression] Func<string> modelinvoiceNumber = null, [WorkflowExpression] Func<string> modelpurchaseOrderNumber = null, [WorkflowExpression] Func<string> modelraisedDate = null, [WorkflowExpression] Func<string> modeldueDate = null, [WorkflowExpression] Func<string> modelsupplierReferenceNumber = null, [WorkflowExpression] Func<string> modeldescription = null, [WorkflowExpression] Func<string> modelcomments = null, [WorkflowExpression] Func<string> modeldivisionName = null, [WorkflowExpression] Func<string> modelcurrencyCode = null, [WorkflowExpression] Func<LineItemAddIntegrationModel[]> modellineItems = null)
         {
-            var apiCallPath = "/api/DraftInvoiceIntegration/Add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<int>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/InvoiceIntegration/Add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var model = new JObject();
+                var modelpropCount = 0;
+                if (modelinvoiceNumber != null)
+                {
+                    model["InvoiceNumber"] = SourceExpressionConverter.ConvertToken(modelinvoiceNumber);
+                    modelpropCount++;
+                }
+
+                if (modelpurchaseOrderNumber != null)
+                {
+                    model["PurchaseOrderNumber"] = SourceExpressionConverter.ConvertToken(modelpurchaseOrderNumber);
+                    modelpropCount++;
+                }
+
+                if (modelraisedDate != null)
+                {
+                    model["RaisedDate"] = SourceExpressionConverter.ConvertToken(modelraisedDate);
+                    modelpropCount++;
+                }
+
+                if (modeldueDate != null)
+                {
+                    model["DueDate"] = SourceExpressionConverter.ConvertToken(modeldueDate);
+                    modelpropCount++;
+                }
+
+                if (modelsupplierReferenceNumber != null)
+                {
+                    model["SupplierReferenceNumber"] = SourceExpressionConverter.ConvertToken(modelsupplierReferenceNumber);
+                    modelpropCount++;
+                }
+
+                if (modeldescription != null)
+                {
+                    model["Description"] = SourceExpressionConverter.ConvertToken(modeldescription);
+                    modelpropCount++;
+                }
+
+                if (modelcomments != null)
+                {
+                    model["Comments"] = SourceExpressionConverter.ConvertToken(modelcomments);
+                    modelpropCount++;
+                }
+
+                if (modeldivisionName != null)
+                {
+                    model["DivisionName"] = SourceExpressionConverter.ConvertToken(modeldivisionName);
+                    modelpropCount++;
+                }
+
+                if (modelcurrencyCode != null)
+                {
+                    model["CurrencyCode"] = SourceExpressionConverter.ConvertToken(modelcurrencyCode);
+                    modelpropCount++;
+                }
+
+                if (modellineItems != null)
+                {
+                    model["LineItems"] = SourceExpressionConverter.ConvertToken(modellineItems);
+                    modelpropCount++;
+                }
+
+                if (modelpropCount > 0)
+                {
+                    callPayload.Body = model;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<int>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int> CreateInvoice(Expression<Func<string>> modelinvoiceNumber = null, Expression<Func<string>> modelpurchaseOrderNumber = null, Expression<Func<string>> modelraisedDate = null, Expression<Func<string>> modeldueDate = null, Expression<Func<string>> modelsupplierReferenceNumber = null, Expression<Func<string>> modeldescription = null, Expression<Func<string>> modelcomments = null, Expression<Func<string>> modeldivisionName = null, Expression<Func<string>> modelcurrencyCode = null, Expression<Func<LineItemAddIntegrationModel[]>> modellineItems = null)
+        public IBodyWorkflowAction<int> CreatePurchaseOrder([WorkflowExpression] Func<string> modelrequisitorName = null, [WorkflowExpression] Func<string> modelrequiredDate = null, [WorkflowExpression] Func<string> modelsupplierReferenceNumber = null, [WorkflowExpression] Func<string> modeldescription = null, [WorkflowExpression] Func<string> modelcomments = null, [WorkflowExpression] Func<string> modeldivisionName = null, [WorkflowExpression] Func<string> modelcurrencyCode = null, [WorkflowExpression] Func<LineItemAddIntegrationModel[]> modellineItems = null)
         {
-            var apiCallPath = "/api/InvoiceIntegration/Add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var model = new JObject();
-            var modelpropCount = 0;
-            if (modelinvoiceNumber != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                model["InvoiceNumber"] = ExpressionConverter.ConvertO(modelinvoiceNumber);
-                modelpropCount++;
+                var apiCallPath = "/api/PurchaseOrderIntegration/Add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var model = new JObject();
+                var modelpropCount = 0;
+                if (modelrequisitorName != null)
+                {
+                    model["RequisitorName"] = SourceExpressionConverter.ConvertToken(modelrequisitorName);
+                    modelpropCount++;
+                }
+
+                if (modelrequiredDate != null)
+                {
+                    model["RequiredDate"] = SourceExpressionConverter.ConvertToken(modelrequiredDate);
+                    modelpropCount++;
+                }
+
+                if (modelsupplierReferenceNumber != null)
+                {
+                    model["SupplierReferenceNumber"] = SourceExpressionConverter.ConvertToken(modelsupplierReferenceNumber);
+                    modelpropCount++;
+                }
+
+                if (modeldescription != null)
+                {
+                    model["Description"] = SourceExpressionConverter.ConvertToken(modeldescription);
+                    modelpropCount++;
+                }
+
+                if (modelcomments != null)
+                {
+                    model["Comments"] = SourceExpressionConverter.ConvertToken(modelcomments);
+                    modelpropCount++;
+                }
+
+                if (modeldivisionName != null)
+                {
+                    model["DivisionName"] = SourceExpressionConverter.ConvertToken(modeldivisionName);
+                    modelpropCount++;
+                }
+
+                if (modelcurrencyCode != null)
+                {
+                    model["CurrencyCode"] = SourceExpressionConverter.ConvertToken(modelcurrencyCode);
+                    modelpropCount++;
+                }
+
+                if (modellineItems != null)
+                {
+                    model["LineItems"] = SourceExpressionConverter.ConvertToken(modellineItems);
+                    modelpropCount++;
+                }
+
+                if (modelpropCount > 0)
+                {
+                    callPayload.Body = model;
+                }
+                return callPayload;
             }
 
-            if (modelpurchaseOrderNumber != null)
-            {
-                model["PurchaseOrderNumber"] = ExpressionConverter.ConvertO(modelpurchaseOrderNumber);
-                modelpropCount++;
-            }
-
-            if (modelraisedDate != null)
-            {
-                model["RaisedDate"] = ExpressionConverter.ConvertO(modelraisedDate);
-                modelpropCount++;
-            }
-
-            if (modeldueDate != null)
-            {
-                model["DueDate"] = ExpressionConverter.ConvertO(modeldueDate);
-                modelpropCount++;
-            }
-
-            if (modelsupplierReferenceNumber != null)
-            {
-                model["SupplierReferenceNumber"] = ExpressionConverter.ConvertO(modelsupplierReferenceNumber);
-                modelpropCount++;
-            }
-
-            if (modeldescription != null)
-            {
-                model["Description"] = ExpressionConverter.ConvertO(modeldescription);
-                modelpropCount++;
-            }
-
-            if (modelcomments != null)
-            {
-                model["Comments"] = ExpressionConverter.ConvertO(modelcomments);
-                modelpropCount++;
-            }
-
-            if (modeldivisionName != null)
-            {
-                model["DivisionName"] = ExpressionConverter.ConvertO(modeldivisionName);
-                modelpropCount++;
-            }
-
-            if (modelcurrencyCode != null)
-            {
-                model["CurrencyCode"] = ExpressionConverter.ConvertO(modelcurrencyCode);
-                modelpropCount++;
-            }
-
-            if (modellineItems != null)
-            {
-                model["LineItems"] = ExpressionConverter.ConvertO(modellineItems);
-                modelpropCount++;
-            }
-
-            if (modelpropCount > 0)
-            {
-                callPayload.Body = model;
-            }
-
-            return new ApiConnectionAction<int>(callPayload);
+            return new ApiConnectionAction<int>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int> CreatePurchaseOrder(Expression<Func<string>> modelrequisitorName = null, Expression<Func<string>> modelrequiredDate = null, Expression<Func<string>> modelsupplierReferenceNumber = null, Expression<Func<string>> modeldescription = null, Expression<Func<string>> modelcomments = null, Expression<Func<string>> modeldivisionName = null, Expression<Func<string>> modelcurrencyCode = null, Expression<Func<LineItemAddIntegrationModel[]>> modellineItems = null)
+        public IBodyWorkflowAction<int> CreateSupplier([WorkflowExpression] Func<string> modeladdressLines = null, [WorkflowExpression] Func<string> modelcontactName = null, [WorkflowExpression] Func<string> modelcountryCode = null, [WorkflowExpression] Func<string> modelemail = null, [WorkflowExpression] Func<string> modelpostCode = null, [WorkflowExpression] Func<string> modelreferenceNumber = null, [WorkflowExpression] Func<string> modelsupplierName = null, [WorkflowExpression] Func<string> modeltelephone = null, [WorkflowExpression] Func<string> modeltype = null)
         {
-            var apiCallPath = "/api/PurchaseOrderIntegration/Add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var model = new JObject();
-            var modelpropCount = 0;
-            if (modelrequisitorName != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                model["RequisitorName"] = ExpressionConverter.ConvertO(modelrequisitorName);
-                modelpropCount++;
+                var apiCallPath = "/api/SupplierIntegration/Add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var model = new JObject();
+                var modelpropCount = 0;
+                if (modeladdressLines != null)
+                {
+                    model["AddressLines"] = SourceExpressionConverter.ConvertToken(modeladdressLines);
+                    modelpropCount++;
+                }
+
+                if (modelcontactName != null)
+                {
+                    model["ContactName"] = SourceExpressionConverter.ConvertToken(modelcontactName);
+                    modelpropCount++;
+                }
+
+                if (modelcountryCode != null)
+                {
+                    model["CountryCode"] = SourceExpressionConverter.ConvertToken(modelcountryCode);
+                    modelpropCount++;
+                }
+
+                if (modelemail != null)
+                {
+                    model["Email"] = SourceExpressionConverter.ConvertToken(modelemail);
+                    modelpropCount++;
+                }
+
+                if (modelpostCode != null)
+                {
+                    model["PostCode"] = SourceExpressionConverter.ConvertToken(modelpostCode);
+                    modelpropCount++;
+                }
+
+                if (modelreferenceNumber != null)
+                {
+                    model["ReferenceNumber"] = SourceExpressionConverter.ConvertToken(modelreferenceNumber);
+                    modelpropCount++;
+                }
+
+                if (modelsupplierName != null)
+                {
+                    model["SupplierName"] = SourceExpressionConverter.ConvertToken(modelsupplierName);
+                    modelpropCount++;
+                }
+
+                if (modeltelephone != null)
+                {
+                    model["Telephone"] = SourceExpressionConverter.ConvertToken(modeltelephone);
+                    modelpropCount++;
+                }
+
+                if (modeltype != null)
+                {
+                    model["Type"] = SourceExpressionConverter.ConvertToken(modeltype);
+                    modelpropCount++;
+                }
+
+                if (modelpropCount > 0)
+                {
+                    callPayload.Body = model;
+                }
+                return callPayload;
             }
 
-            if (modelrequiredDate != null)
-            {
-                model["RequiredDate"] = ExpressionConverter.ConvertO(modelrequiredDate);
-                modelpropCount++;
-            }
-
-            if (modelsupplierReferenceNumber != null)
-            {
-                model["SupplierReferenceNumber"] = ExpressionConverter.ConvertO(modelsupplierReferenceNumber);
-                modelpropCount++;
-            }
-
-            if (modeldescription != null)
-            {
-                model["Description"] = ExpressionConverter.ConvertO(modeldescription);
-                modelpropCount++;
-            }
-
-            if (modelcomments != null)
-            {
-                model["Comments"] = ExpressionConverter.ConvertO(modelcomments);
-                modelpropCount++;
-            }
-
-            if (modeldivisionName != null)
-            {
-                model["DivisionName"] = ExpressionConverter.ConvertO(modeldivisionName);
-                modelpropCount++;
-            }
-
-            if (modelcurrencyCode != null)
-            {
-                model["CurrencyCode"] = ExpressionConverter.ConvertO(modelcurrencyCode);
-                modelpropCount++;
-            }
-
-            if (modellineItems != null)
-            {
-                model["LineItems"] = ExpressionConverter.ConvertO(modellineItems);
-                modelpropCount++;
-            }
-
-            if (modelpropCount > 0)
-            {
-                callPayload.Body = model;
-            }
-
-            return new ApiConnectionAction<int>(callPayload);
+            return new ApiConnectionAction<int>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<int> CreateSupplier(Expression<Func<string>> modeladdressLines = null, Expression<Func<string>> modelcontactName = null, Expression<Func<string>> modelcountryCode = null, Expression<Func<string>> modelemail = null, Expression<Func<string>> modelpostCode = null, Expression<Func<string>> modelreferenceNumber = null, Expression<Func<string>> modelsupplierName = null, Expression<Func<string>> modeltelephone = null, Expression<Func<string>> modeltype = null)
+        public IBodyWorkflowAction<JToken> UpdateSupplier([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> modelid = null, [WorkflowExpression] Func<string> modeladdressLines = null, [WorkflowExpression] Func<string> modelcontactName = null, [WorkflowExpression] Func<string> modelcountryCode = null, [WorkflowExpression] Func<string> modelemail = null, [WorkflowExpression] Func<string> modelpostCode = null, [WorkflowExpression] Func<string> modelreferenceNumber = null, [WorkflowExpression] Func<string> modelsupplierName = null, [WorkflowExpression] Func<string> modeltelephone = null, [WorkflowExpression] Func<string> modeltype = null)
         {
-            var apiCallPath = "/api/SupplierIntegration/Add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var model = new JObject();
-            var modelpropCount = 0;
-            if (modeladdressLines != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                model["AddressLines"] = ExpressionConverter.ConvertO(modeladdressLines);
-                modelpropCount++;
+                var apiCallPath = "/api/SupplierIntegration/Update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                var model = new JObject();
+                var modelpropCount = 0;
+                if (modelid != null)
+                {
+                    model["Id"] = SourceExpressionConverter.ConvertToken(modelid);
+                    modelpropCount++;
+                }
+
+                if (modeladdressLines != null)
+                {
+                    model["AddressLines"] = SourceExpressionConverter.ConvertToken(modeladdressLines);
+                    modelpropCount++;
+                }
+
+                if (modelcontactName != null)
+                {
+                    model["ContactName"] = SourceExpressionConverter.ConvertToken(modelcontactName);
+                    modelpropCount++;
+                }
+
+                if (modelcountryCode != null)
+                {
+                    model["CountryCode"] = SourceExpressionConverter.ConvertToken(modelcountryCode);
+                    modelpropCount++;
+                }
+
+                if (modelemail != null)
+                {
+                    model["Email"] = SourceExpressionConverter.ConvertToken(modelemail);
+                    modelpropCount++;
+                }
+
+                if (modelpostCode != null)
+                {
+                    model["PostCode"] = SourceExpressionConverter.ConvertToken(modelpostCode);
+                    modelpropCount++;
+                }
+
+                if (modelreferenceNumber != null)
+                {
+                    model["ReferenceNumber"] = SourceExpressionConverter.ConvertToken(modelreferenceNumber);
+                    modelpropCount++;
+                }
+
+                if (modelsupplierName != null)
+                {
+                    model["SupplierName"] = SourceExpressionConverter.ConvertToken(modelsupplierName);
+                    modelpropCount++;
+                }
+
+                if (modeltelephone != null)
+                {
+                    model["Telephone"] = SourceExpressionConverter.ConvertToken(modeltelephone);
+                    modelpropCount++;
+                }
+
+                if (modeltype != null)
+                {
+                    model["Type"] = SourceExpressionConverter.ConvertToken(modeltype);
+                    modelpropCount++;
+                }
+
+                if (modelpropCount > 0)
+                {
+                    callPayload.Body = model;
+                }
+                return callPayload;
             }
 
-            if (modelcontactName != null)
-            {
-                model["ContactName"] = ExpressionConverter.ConvertO(modelcontactName);
-                modelpropCount++;
-            }
-
-            if (modelcountryCode != null)
-            {
-                model["CountryCode"] = ExpressionConverter.ConvertO(modelcountryCode);
-                modelpropCount++;
-            }
-
-            if (modelemail != null)
-            {
-                model["Email"] = ExpressionConverter.ConvertO(modelemail);
-                modelpropCount++;
-            }
-
-            if (modelpostCode != null)
-            {
-                model["PostCode"] = ExpressionConverter.ConvertO(modelpostCode);
-                modelpropCount++;
-            }
-
-            if (modelreferenceNumber != null)
-            {
-                model["ReferenceNumber"] = ExpressionConverter.ConvertO(modelreferenceNumber);
-                modelpropCount++;
-            }
-
-            if (modelsupplierName != null)
-            {
-                model["SupplierName"] = ExpressionConverter.ConvertO(modelsupplierName);
-                modelpropCount++;
-            }
-
-            if (modeltelephone != null)
-            {
-                model["Telephone"] = ExpressionConverter.ConvertO(modeltelephone);
-                modelpropCount++;
-            }
-
-            if (modeltype != null)
-            {
-                model["Type"] = ExpressionConverter.ConvertO(modeltype);
-                modelpropCount++;
-            }
-
-            if (modelpropCount > 0)
-            {
-                callPayload.Body = model;
-            }
-
-            return new ApiConnectionAction<int>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zahara")]
-        public IBodyWorkflowAction<JToken> UpdateSupplier(Expression<Func<int>> id, Expression<Func<int>> modelid = null, Expression<Func<string>> modeladdressLines = null, Expression<Func<string>> modelcontactName = null, Expression<Func<string>> modelcountryCode = null, Expression<Func<string>> modelemail = null, Expression<Func<string>> modelpostCode = null, Expression<Func<string>> modelreferenceNumber = null, Expression<Func<string>> modelsupplierName = null, Expression<Func<string>> modeltelephone = null, Expression<Func<string>> modeltype = null)
-        {
-            var apiCallPath = "/api/SupplierIntegration/Update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            var model = new JObject();
-            var modelpropCount = 0;
-            if (modelid != null)
-            {
-                model["Id"] = ExpressionConverter.ConvertO(modelid);
-                modelpropCount++;
-            }
-
-            if (modeladdressLines != null)
-            {
-                model["AddressLines"] = ExpressionConverter.ConvertO(modeladdressLines);
-                modelpropCount++;
-            }
-
-            if (modelcontactName != null)
-            {
-                model["ContactName"] = ExpressionConverter.ConvertO(modelcontactName);
-                modelpropCount++;
-            }
-
-            if (modelcountryCode != null)
-            {
-                model["CountryCode"] = ExpressionConverter.ConvertO(modelcountryCode);
-                modelpropCount++;
-            }
-
-            if (modelemail != null)
-            {
-                model["Email"] = ExpressionConverter.ConvertO(modelemail);
-                modelpropCount++;
-            }
-
-            if (modelpostCode != null)
-            {
-                model["PostCode"] = ExpressionConverter.ConvertO(modelpostCode);
-                modelpropCount++;
-            }
-
-            if (modelreferenceNumber != null)
-            {
-                model["ReferenceNumber"] = ExpressionConverter.ConvertO(modelreferenceNumber);
-                modelpropCount++;
-            }
-
-            if (modelsupplierName != null)
-            {
-                model["SupplierName"] = ExpressionConverter.ConvertO(modelsupplierName);
-                modelpropCount++;
-            }
-
-            if (modeltelephone != null)
-            {
-                model["Telephone"] = ExpressionConverter.ConvertO(modeltelephone);
-                modelpropCount++;
-            }
-
-            if (modeltype != null)
-            {
-                model["Type"] = ExpressionConverter.ConvertO(modeltype);
-                modelpropCount++;
-            }
-
-            if (modelpropCount > 0)
-            {
-                callPayload.Body = model;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
@@ -312,107 +319,172 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
     {
         public IBodyWorkflowTrigger<CostCodeIntegrationModel[]> NewCostCode(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/CostCodeIntegration/GetAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CostCodeIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/CostCodeIntegration/GetAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CostCodeIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewApprovalComment(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/DocumentsIntegration/GetApprovalComments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/DocumentsIntegration/GetApprovalComments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewDocumentApproved(Expression<Func<documentTypeInput>> documentType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewDocumentApproved([WorkflowExpression] Func<documentTypeInput> documentType, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/DocumentsIntegration/GetApproved";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentType"] = ExpressionConverter.Convert(documentType);
-            return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/DocumentsIntegration/GetApproved";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documentType"] = SourceExpressionConverter.Convert(documentType);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoice(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/InvoiceIntegration/GetAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/InvoiceIntegration/GetAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoiceSetAsExported(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/InvoiceIntegration/GetExported";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/InvoiceIntegration/GetExported";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<NominalCodeIntegrationModel[]> NewNominalCode(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/NominalCodeIntegration/GetAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NominalCodeIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/NominalCodeIntegration/GetAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<NominalCodeIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<ProjectIntegrationModel[]> NewProject(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/ProjectIntegration/getall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ProjectIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/ProjectIntegration/getall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ProjectIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrder(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/PurchaseOrderIntegration/GetAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/PurchaseOrderIntegration/GetAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrderSentToSupplier(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/PurchaseOrderIntegration/GetSentToSupplier";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/PurchaseOrderIntegration/GetSentToSupplier";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<PurchaseRequsitionIntegrationModel[]> NewPurchaseRequsition(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/PurchaseRequsitionIntegration/getall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PurchaseRequsitionIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/PurchaseRequsitionIntegration/getall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PurchaseRequsitionIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<SupplierIntegrationModel[]> NewSupplier(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/SupplierIntegration/GetAll";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<SupplierIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/SupplierIntegration/GetAll";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<SupplierIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<SupplierUpdateIntegrationModel[]> SupplierAmended(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/SupplierIntegration/GetAllUpdated";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<SupplierUpdateIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/SupplierIntegration/GetAllUpdated";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<SupplierUpdateIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<TaxCodeIntegrationModel[]> NewTaxCode(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/TaxCodeIntegration/getall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaxCodeIntegrationModel[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/TaxCodeIntegration/getall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TaxCodeIntegrationModel[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

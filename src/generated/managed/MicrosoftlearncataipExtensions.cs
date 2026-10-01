@@ -12,30 +12,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftlearncataip
     public class MicrosoftlearncataipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftlearncataip")]
-        public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent(Expression<Func<string>> locale = null, Expression<Func<string>> type = null, Expression<Func<string>> uid = null, Expression<Func<string>> lastModified = null, Expression<Func<string>> popularity = null, Expression<Func<string>> level = null, Expression<Func<string>> role = null, Expression<Func<string>> product = null, Expression<Func<string>> subject = null)
+        public IBodyWorkflowAction<GetLearningContentResponse> GetLearningContent([WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> uid = null, [WorkflowExpression] Func<string> lastModified = null, [WorkflowExpression] Func<string> popularity = null, [WorkflowExpression] Func<string> level = null, [WorkflowExpression] Func<string> role = null, [WorkflowExpression] Func<string> product = null, [WorkflowExpression] Func<string> subject = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (locale != null)
-                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (uid != null)
-                callPayload.Queries["uid"] = ExpressionConverter.Convert(uid);
-            if (lastModified != null)
-                callPayload.Queries["last_modified"] = ExpressionConverter.Convert(lastModified);
-            if (popularity != null)
-                callPayload.Queries["popularity"] = ExpressionConverter.Convert(popularity);
-            if (level != null)
-                callPayload.Queries["level"] = ExpressionConverter.Convert(level);
-            if (role != null)
-                callPayload.Queries["role"] = ExpressionConverter.Convert(role);
-            if (product != null)
-                callPayload.Queries["product"] = ExpressionConverter.Convert(product);
-            if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
-            return new ApiConnectionAction<GetLearningContentResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (locale != null)
+                    callPayload.Queries["locale"] = SourceExpressionConverter.ConvertO(locale);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                if (uid != null)
+                    callPayload.Queries["uid"] = SourceExpressionConverter.ConvertO(uid);
+                if (lastModified != null)
+                    callPayload.Queries["last_modified"] = SourceExpressionConverter.ConvertO(lastModified);
+                if (popularity != null)
+                    callPayload.Queries["popularity"] = SourceExpressionConverter.ConvertO(popularity);
+                if (level != null)
+                    callPayload.Queries["level"] = SourceExpressionConverter.ConvertO(level);
+                if (role != null)
+                    callPayload.Queries["role"] = SourceExpressionConverter.ConvertO(role);
+                if (product != null)
+                    callPayload.Queries["product"] = SourceExpressionConverter.ConvertO(product);
+                if (subject != null)
+                    callPayload.Queries["subject"] = SourceExpressionConverter.ConvertO(subject);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLearningContentResponse>(BuildSourceInput);
         }
     }
 

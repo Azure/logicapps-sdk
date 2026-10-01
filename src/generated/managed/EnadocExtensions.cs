@@ -11,23 +11,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enadoc
 
     public class EnadocActions([ConnectionName] string connectionId)
     {
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enadoc")]
-        public IBodyWorkflowAction<SuccessResponse> SendToMyWorkspace(Expression<Func<string>> document, Expression<Func<string>> name)
-        {
-            var apiCallPath = "/api/v3/workspace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SuccessResponse>(callPayload);
-        }
     }
 
     public class EnadocTriggers([ConnectionName] string connectionId)
     {
-    }
-
-    public class SuccessResponse
-    {
-        public string Status { get; set; }
     }
 }
 

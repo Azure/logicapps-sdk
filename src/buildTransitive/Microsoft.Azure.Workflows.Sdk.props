@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <WorkflowSourceTransformEnabled Condition="'$(WorkflowSourceTransformEnabled)' == ''">true</WorkflowSourceTransformEnabled>
+    <WorkflowBuildToolPath Condition="'$(WorkflowBuildToolPath)' == ''">$(MSBuildThisFileDirectory)..\tools\workflow-build\Microsoft.Azure.Workflows.Sdk.Build.dll</WorkflowBuildToolPath>
+  </PropertyGroup>
+</Project>

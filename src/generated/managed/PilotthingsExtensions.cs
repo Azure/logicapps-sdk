@@ -12,3776 +12,4025 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
     public class PilotthingsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageAlertRo> GetAlerts(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> dateStart = null, Expression<Func<int>> dateEnd = null)
+        public IBodyWorkflowAction<PageAlertRo> GetAlerts([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> dateStart = null, [WorkflowExpression] Func<int> dateEnd = null)
         {
-            var apiCallPath = "/api/alerts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            callPayload.Queries["dateStart"] = Convert.ToString(0);
-            if (dateStart != null)
-                callPayload.Queries["dateStart"] = ExpressionConverter.Convert(dateStart);
-            callPayload.Queries["dateEnd"] = Convert.ToString(0);
-            if (dateEnd != null)
-                callPayload.Queries["dateEnd"] = ExpressionConverter.Convert(dateEnd);
-            return new ApiConnectionAction<PageAlertRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<AlertRo> UpdateAlertState(Expression<Func<string>> id, Expression<Func<string>> paramJson = null)
-        {
-            var apiCallPath = String.Format("/api/alerts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(paramJson);
-            return new ApiConnectionAction<AlertRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMeasureRo> GetMeasures(Expression<Func<bool>> detailed = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
-        {
-            var apiCallPath = "/api/measures";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["detailed"] = Convert.ToString(false);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageMeasureRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<CountRo> GetCount(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
-        {
-            var apiCallPath = "/api/measures/count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<CountRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MeasureRo> GetMeasure(Expression<Func<string>> id, Expression<Func<bool>> detailed = null)
-        {
-            var apiCallPath = String.Format("/api/measures/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["detailed"] = Convert.ToString(false);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            return new ApiConnectionAction<MeasureRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMessageRo> GetMessages(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
-        {
-            var apiCallPath = "/api/messages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageMessageRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMessageRo> GetMessagesAndMeasurements(Expression<Func<string>> thingId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
-        {
-            var apiCallPath = String.Format("/api/messages/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(thingId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageMessageRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageRo> AddMessage(Expression<Func<string>> thingId, Expression<Func<string>> messageRobody, Expression<Func<string>> messageRocreationDate, Expression<Func<string>> messageRoerrorMessage, Expression<Func<double>> messageRolatitude, Expression<Func<double>> messageRolongitude, Expression<Func<string>> messageRometadata, Expression<Func<int>> messageRonumber, Expression<Func<messageRoprocessedInput>> messageRoprocessed, Expression<Func<string>> messageRothingname, Expression<Func<string>> messageRotimestamp, Expression<Func<string>> messageRotopic, Expression<Func<string>> messageRoid = null, Expression<Func<bool>> messageRolinkabsolute = null, Expression<Func<string>> messageRolinkauthority = null, Expression<Func<string>> messageRolinkfragment = null, Expression<Func<string>> messageRolinkhost = null, Expression<Func<bool>> messageRolinkopaque = null, Expression<Func<string>> messageRolinkpath = null, Expression<Func<int>> messageRolinkport = null, Expression<Func<string>> messageRolinkquery = null, Expression<Func<string>> messageRolinkrawAuthority = null, Expression<Func<string>> messageRolinkrawFragment = null, Expression<Func<string>> messageRolinkrawPath = null, Expression<Func<string>> messageRolinkrawQuery = null, Expression<Func<string>> messageRolinkrawSchemeSpecificPart = null, Expression<Func<string>> messageRolinkrawUserInfo = null, Expression<Func<string>> messageRolinkscheme = null, Expression<Func<string>> messageRolinkschemeSpecificPart = null, Expression<Func<string>> messageRolinkuserInfo = null, Expression<Func<bool>> messageRorawMeasurementsarray = null, Expression<Func<bool>> messageRorawMeasurementsbigDecimal = null, Expression<Func<bool>> messageRorawMeasurementsbigInteger = null, Expression<Func<bool>> messageRorawMeasurementsbinary = null, Expression<Func<bool>> messageRorawMeasurementsboolean = null, Expression<Func<bool>> messageRorawMeasurementscontainerNode = null, Expression<Func<bool>> messageRorawMeasurementsdouble = null, Expression<Func<bool>> messageRorawMeasurementsfloat = null, Expression<Func<bool>> messageRorawMeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRorawMeasurementsint = null, Expression<Func<bool>> messageRorawMeasurementsintegralNumber = null, Expression<Func<bool>> messageRorawMeasurementsLong = null, Expression<Func<bool>> messageRorawMeasurementsmissingNode = null, Expression<Func<messageRorawMeasurementsnodeTypeInput>> messageRorawMeasurementsnodeType = null, Expression<Func<bool>> messageRorawMeasurementsnull = null, Expression<Func<bool>> messageRorawMeasurementsnumber = null, Expression<Func<bool>> messageRorawMeasurementsObject = null, Expression<Func<bool>> messageRorawMeasurementspojo = null, Expression<Func<bool>> messageRorawMeasurementsShort = null, Expression<Func<bool>> messageRorawMeasurementstextual = null, Expression<Func<bool>> messageRorawMeasurementsvalueNode = null, Expression<Func<string>> messageRothingdisplayName = null, Expression<Func<string>> messageRothingfixedName = null, Expression<Func<string>> messageRothingid = null, Expression<Func<int>> messageRothingnbAlerts = null, Expression<Func<ThingTagRo[]>> messageRothingtags = null)
-        {
-            var apiCallPath = String.Format("/api/messages/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(thingId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var messageRo = new JObject();
-            var messageRopropCount = 0;
-            messageRopropCount++;
-            messageRo["body"] = ExpressionConverter.ConvertO(messageRobody);
-            messageRopropCount++;
-            messageRo["creationDate"] = ExpressionConverter.ConvertO(messageRocreationDate);
-            messageRopropCount++;
-            messageRo["errorMessage"] = ExpressionConverter.ConvertO(messageRoerrorMessage);
-            if (messageRoid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                messageRo["id"] = ExpressionConverter.ConvertO(messageRoid);
+                var apiCallPath = "/api/alerts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                callPayload.Queries["dateStart"] = Convert.ToString(0);
+                if (dateStart != null)
+                    callPayload.Queries["dateStart"] = SourceExpressionConverter.ConvertO(dateStart);
+                callPayload.Queries["dateEnd"] = Convert.ToString(0);
+                if (dateEnd != null)
+                    callPayload.Queries["dateEnd"] = SourceExpressionConverter.ConvertO(dateEnd);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageAlertRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<AlertRo> UpdateAlertState([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> paramJson = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/alerts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(paramJson);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AlertRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<PageMeasureRo> GetMeasures([WorkflowExpression] Func<bool> detailed = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/measures";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["detailed"] = Convert.ToString(false);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageMeasureRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<CountRo> GetCount([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/measures/count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CountRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<MeasureRo> GetMeasure([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/measures/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["detailed"] = Convert.ToString(false);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MeasureRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<PageMessageRo> GetMessages([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/messages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageMessageRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<PageMessageRo> GetMessagesAndMeasurements([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageMessageRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<MessageRo> AddMessage([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<string> messageRobody, [WorkflowExpression] Func<string> messageRocreationDate, [WorkflowExpression] Func<string> messageRoerrorMessage, [WorkflowExpression] Func<double> messageRolatitude, [WorkflowExpression] Func<double> messageRolongitude, [WorkflowExpression] Func<string> messageRometadata, [WorkflowExpression] Func<int> messageRonumber, [WorkflowExpression] Func<messageRoprocessedInput> messageRoprocessed, [WorkflowExpression] Func<string> messageRothingname, [WorkflowExpression] Func<string> messageRotimestamp, [WorkflowExpression] Func<string> messageRotopic, [WorkflowExpression] Func<string> messageRoid = null, [WorkflowExpression] Func<bool> messageRolinkabsolute = null, [WorkflowExpression] Func<string> messageRolinkauthority = null, [WorkflowExpression] Func<string> messageRolinkfragment = null, [WorkflowExpression] Func<string> messageRolinkhost = null, [WorkflowExpression] Func<bool> messageRolinkopaque = null, [WorkflowExpression] Func<string> messageRolinkpath = null, [WorkflowExpression] Func<int> messageRolinkport = null, [WorkflowExpression] Func<string> messageRolinkquery = null, [WorkflowExpression] Func<string> messageRolinkrawAuthority = null, [WorkflowExpression] Func<string> messageRolinkrawFragment = null, [WorkflowExpression] Func<string> messageRolinkrawPath = null, [WorkflowExpression] Func<string> messageRolinkrawQuery = null, [WorkflowExpression] Func<string> messageRolinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkrawUserInfo = null, [WorkflowExpression] Func<string> messageRolinkscheme = null, [WorkflowExpression] Func<string> messageRolinkschemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkuserInfo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsarray = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRorawMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsDouble = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsFloat = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsInt = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsLong = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsmissingNode = null, [WorkflowExpression] Func<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsNull = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsObject = null, [WorkflowExpression] Func<bool> messageRorawMeasurementspojo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsShort = null, [WorkflowExpression] Func<bool> messageRorawMeasurementstextual = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsvalueNode = null, [WorkflowExpression] Func<string> messageRothingdisplayName = null, [WorkflowExpression] Func<string> messageRothingfixedName = null, [WorkflowExpression] Func<string> messageRothingid = null, [WorkflowExpression] Func<int> messageRothingnbAlerts = null, [WorkflowExpression] Func<ThingTagRo[]> messageRothingtags = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/messages/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thingId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var messageRo = new JObject();
+                var messageRopropCount = 0;
                 messageRopropCount++;
-            }
-
-            messageRopropCount++;
-            messageRo["latitude"] = ExpressionConverter.ConvertO(messageRolatitude);
-            var linkObject = new JObject();
-            var linkObjectpropCount = 0;
-            if (messageRolinkabsolute != null)
-            {
-                linkObject["absolute"] = ExpressionConverter.ConvertO(messageRolinkabsolute);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkauthority != null)
-            {
-                linkObject["authority"] = ExpressionConverter.ConvertO(messageRolinkauthority);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkfragment != null)
-            {
-                linkObject["fragment"] = ExpressionConverter.ConvertO(messageRolinkfragment);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkhost != null)
-            {
-                linkObject["host"] = ExpressionConverter.ConvertO(messageRolinkhost);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkopaque != null)
-            {
-                linkObject["opaque"] = ExpressionConverter.ConvertO(messageRolinkopaque);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkpath != null)
-            {
-                linkObject["path"] = ExpressionConverter.ConvertO(messageRolinkpath);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkport != null)
-            {
-                linkObject["port"] = ExpressionConverter.ConvertO(messageRolinkport);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkquery != null)
-            {
-                linkObject["query"] = ExpressionConverter.ConvertO(messageRolinkquery);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawAuthority != null)
-            {
-                linkObject["rawAuthority"] = ExpressionConverter.ConvertO(messageRolinkrawAuthority);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawFragment != null)
-            {
-                linkObject["rawFragment"] = ExpressionConverter.ConvertO(messageRolinkrawFragment);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawPath != null)
-            {
-                linkObject["rawPath"] = ExpressionConverter.ConvertO(messageRolinkrawPath);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawQuery != null)
-            {
-                linkObject["rawQuery"] = ExpressionConverter.ConvertO(messageRolinkrawQuery);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawSchemeSpecificPart != null)
-            {
-                linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(messageRolinkrawSchemeSpecificPart);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawUserInfo != null)
-            {
-                linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(messageRolinkrawUserInfo);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkscheme != null)
-            {
-                linkObject["scheme"] = ExpressionConverter.ConvertO(messageRolinkscheme);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkschemeSpecificPart != null)
-            {
-                linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(messageRolinkschemeSpecificPart);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkuserInfo != null)
-            {
-                linkObject["userInfo"] = ExpressionConverter.ConvertO(messageRolinkuserInfo);
-                linkObjectpropCount++;
-            }
-
-            if (linkObjectpropCount > 0)
-            {
-                messageRo["link"] = linkObject;
+                messageRo["body"] = SourceExpressionConverter.ConvertToken(messageRobody);
                 messageRopropCount++;
-            }
-
-            messageRopropCount++;
-            messageRo["longitude"] = ExpressionConverter.ConvertO(messageRolongitude);
-            var measurementsObject = new JObject();
-            var measurementsObjectpropCount = 0;
-            if (measurementsObjectpropCount > 0)
-            {
-                messageRo["measurements"] = measurementsObject;
+                messageRo["creationDate"] = SourceExpressionConverter.ConvertToken(messageRocreationDate);
                 messageRopropCount++;
-            }
+                messageRo["errorMessage"] = SourceExpressionConverter.ConvertToken(messageRoerrorMessage);
+                if (messageRoid != null)
+                {
+                    messageRo["id"] = SourceExpressionConverter.ConvertToken(messageRoid);
+                    messageRopropCount++;
+                }
 
-            messageRopropCount++;
-            messageRo["metadata"] = ExpressionConverter.ConvertO(messageRometadata);
-            messageRopropCount++;
-            messageRo["number"] = ExpressionConverter.ConvertO(messageRonumber);
-            messageRopropCount++;
-            messageRo["processed"] = ExpressionConverter.ConvertO(messageRoprocessed);
-            var rawMeasurementsObject = new JObject();
-            var rawMeasurementsObjectpropCount = 0;
-            if (messageRorawMeasurementsarray != null)
-            {
-                rawMeasurementsObject["array"] = ExpressionConverter.ConvertO(messageRorawMeasurementsarray);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsbigDecimal != null)
-            {
-                rawMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(messageRorawMeasurementsbigDecimal);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsbigInteger != null)
-            {
-                rawMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(messageRorawMeasurementsbigInteger);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsbinary != null)
-            {
-                rawMeasurementsObject["binary"] = ExpressionConverter.ConvertO(messageRorawMeasurementsbinary);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsboolean != null)
-            {
-                rawMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(messageRorawMeasurementsboolean);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementscontainerNode != null)
-            {
-                rawMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(messageRorawMeasurementscontainerNode);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsdouble != null)
-            {
-                rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(messageRorawMeasurementsdouble);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsfloat != null)
-            {
-                rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(messageRorawMeasurementsfloat);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsfloatingPointNumber != null)
-            {
-                rawMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(messageRorawMeasurementsfloatingPointNumber);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsint != null)
-            {
-                rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(messageRorawMeasurementsint);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsintegralNumber != null)
-            {
-                rawMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(messageRorawMeasurementsintegralNumber);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsLong != null)
-            {
-                rawMeasurementsObject["long"] = ExpressionConverter.ConvertO(messageRorawMeasurementsLong);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsmissingNode != null)
-            {
-                rawMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(messageRorawMeasurementsmissingNode);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsnodeType != null)
-            {
-                rawMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(messageRorawMeasurementsnodeType);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsnull != null)
-            {
-                rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(messageRorawMeasurementsnull);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsnumber != null)
-            {
-                rawMeasurementsObject["number"] = ExpressionConverter.ConvertO(messageRorawMeasurementsnumber);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsObject != null)
-            {
-                rawMeasurementsObject["object"] = ExpressionConverter.ConvertO(messageRorawMeasurementsObject);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementspojo != null)
-            {
-                rawMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(messageRorawMeasurementspojo);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsShort != null)
-            {
-                rawMeasurementsObject["short"] = ExpressionConverter.ConvertO(messageRorawMeasurementsShort);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementstextual != null)
-            {
-                rawMeasurementsObject["textual"] = ExpressionConverter.ConvertO(messageRorawMeasurementstextual);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRorawMeasurementsvalueNode != null)
-            {
-                rawMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(messageRorawMeasurementsvalueNode);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (rawMeasurementsObjectpropCount > 0)
-            {
-                messageRo["rawMeasurements"] = rawMeasurementsObject;
                 messageRopropCount++;
-            }
+                messageRo["latitude"] = SourceExpressionConverter.ConvertToken(messageRolatitude);
+                var linkObject = new JObject();
+                var linkObjectpropCount = 0;
+                if (messageRolinkabsolute != null)
+                {
+                    linkObject["absolute"] = SourceExpressionConverter.ConvertToken(messageRolinkabsolute);
+                    linkObjectpropCount++;
+                }
 
-            var thingObject = new JObject();
-            var thingObjectpropCount = 0;
-            if (messageRothingdisplayName != null)
-            {
-                thingObject["displayName"] = ExpressionConverter.ConvertO(messageRothingdisplayName);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkauthority != null)
+                {
+                    linkObject["authority"] = SourceExpressionConverter.ConvertToken(messageRolinkauthority);
+                    linkObjectpropCount++;
+                }
 
-            if (messageRothingfixedName != null)
-            {
-                thingObject["fixedName"] = ExpressionConverter.ConvertO(messageRothingfixedName);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkfragment != null)
+                {
+                    linkObject["fragment"] = SourceExpressionConverter.ConvertToken(messageRolinkfragment);
+                    linkObjectpropCount++;
+                }
 
-            if (messageRothingid != null)
-            {
-                thingObject["id"] = ExpressionConverter.ConvertO(messageRothingid);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkhost != null)
+                {
+                    linkObject["host"] = SourceExpressionConverter.ConvertToken(messageRolinkhost);
+                    linkObjectpropCount++;
+                }
 
-            thingObjectpropCount++;
-            thingObject["name"] = ExpressionConverter.ConvertO(messageRothingname);
-            if (messageRothingnbAlerts != null)
-            {
-                thingObject["nbAlerts"] = ExpressionConverter.ConvertO(messageRothingnbAlerts);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkopaque != null)
+                {
+                    linkObject["opaque"] = SourceExpressionConverter.ConvertToken(messageRolinkopaque);
+                    linkObjectpropCount++;
+                }
 
-            if (messageRothingtags != null)
-            {
-                thingObject["tags"] = ExpressionConverter.ConvertO(messageRothingtags);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkpath != null)
+                {
+                    linkObject["path"] = SourceExpressionConverter.ConvertToken(messageRolinkpath);
+                    linkObjectpropCount++;
+                }
 
-            if (thingObjectpropCount > 0)
-            {
-                messageRo["thing"] = thingObject;
+                if (messageRolinkport != null)
+                {
+                    linkObject["port"] = SourceExpressionConverter.ConvertToken(messageRolinkport);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkquery != null)
+                {
+                    linkObject["query"] = SourceExpressionConverter.ConvertToken(messageRolinkquery);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawAuthority != null)
+                {
+                    linkObject["rawAuthority"] = SourceExpressionConverter.ConvertToken(messageRolinkrawAuthority);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawFragment != null)
+                {
+                    linkObject["rawFragment"] = SourceExpressionConverter.ConvertToken(messageRolinkrawFragment);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawPath != null)
+                {
+                    linkObject["rawPath"] = SourceExpressionConverter.ConvertToken(messageRolinkrawPath);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawQuery != null)
+                {
+                    linkObject["rawQuery"] = SourceExpressionConverter.ConvertToken(messageRolinkrawQuery);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawSchemeSpecificPart != null)
+                {
+                    linkObject["rawSchemeSpecificPart"] = SourceExpressionConverter.ConvertToken(messageRolinkrawSchemeSpecificPart);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawUserInfo != null)
+                {
+                    linkObject["rawUserInfo"] = SourceExpressionConverter.ConvertToken(messageRolinkrawUserInfo);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkscheme != null)
+                {
+                    linkObject["scheme"] = SourceExpressionConverter.ConvertToken(messageRolinkscheme);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkschemeSpecificPart != null)
+                {
+                    linkObject["schemeSpecificPart"] = SourceExpressionConverter.ConvertToken(messageRolinkschemeSpecificPart);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkuserInfo != null)
+                {
+                    linkObject["userInfo"] = SourceExpressionConverter.ConvertToken(messageRolinkuserInfo);
+                    linkObjectpropCount++;
+                }
+
+                if (linkObjectpropCount > 0)
+                {
+                    messageRo["link"] = linkObject;
+                    messageRopropCount++;
+                }
+
                 messageRopropCount++;
+                messageRo["longitude"] = SourceExpressionConverter.ConvertToken(messageRolongitude);
+                var measurementsObject = new JObject();
+                var measurementsObjectpropCount = 0;
+                if (measurementsObjectpropCount > 0)
+                {
+                    messageRo["measurements"] = measurementsObject;
+                    messageRopropCount++;
+                }
+
+                messageRopropCount++;
+                messageRo["metadata"] = SourceExpressionConverter.ConvertToken(messageRometadata);
+                messageRopropCount++;
+                messageRo["number"] = SourceExpressionConverter.ConvertToken(messageRonumber);
+                messageRopropCount++;
+                messageRo["processed"] = SourceExpressionConverter.Convert(messageRoprocessed);
+                var rawMeasurementsObject = new JObject();
+                var rawMeasurementsObjectpropCount = 0;
+                if (messageRorawMeasurementsarray != null)
+                {
+                    rawMeasurementsObject["array"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsarray);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsbigDecimal != null)
+                {
+                    rawMeasurementsObject["bigDecimal"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsbigDecimal);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsbigInteger != null)
+                {
+                    rawMeasurementsObject["bigInteger"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsbigInteger);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsbinary != null)
+                {
+                    rawMeasurementsObject["binary"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsbinary);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsboolean != null)
+                {
+                    rawMeasurementsObject["boolean"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsboolean);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementscontainerNode != null)
+                {
+                    rawMeasurementsObject["containerNode"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementscontainerNode);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsDouble != null)
+                {
+                    rawMeasurementsObject["double"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsDouble);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsFloat != null)
+                {
+                    rawMeasurementsObject["float"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsFloat);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsfloatingPointNumber != null)
+                {
+                    rawMeasurementsObject["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsfloatingPointNumber);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsInt != null)
+                {
+                    rawMeasurementsObject["int"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsInt);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsintegralNumber != null)
+                {
+                    rawMeasurementsObject["integralNumber"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsintegralNumber);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsLong != null)
+                {
+                    rawMeasurementsObject["long"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsLong);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsmissingNode != null)
+                {
+                    rawMeasurementsObject["missingNode"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsmissingNode);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsnodeType != null)
+                {
+                    rawMeasurementsObject["nodeType"] = SourceExpressionConverter.Convert(messageRorawMeasurementsnodeType);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsNull != null)
+                {
+                    rawMeasurementsObject["null"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsNull);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsnumber != null)
+                {
+                    rawMeasurementsObject["number"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsnumber);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsObject != null)
+                {
+                    rawMeasurementsObject["object"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsObject);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementspojo != null)
+                {
+                    rawMeasurementsObject["pojo"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementspojo);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsShort != null)
+                {
+                    rawMeasurementsObject["short"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsShort);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementstextual != null)
+                {
+                    rawMeasurementsObject["textual"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementstextual);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRorawMeasurementsvalueNode != null)
+                {
+                    rawMeasurementsObject["valueNode"] = SourceExpressionConverter.ConvertToken(messageRorawMeasurementsvalueNode);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (rawMeasurementsObjectpropCount > 0)
+                {
+                    messageRo["rawMeasurements"] = rawMeasurementsObject;
+                    messageRopropCount++;
+                }
+
+                var thingObject = new JObject();
+                var thingObjectpropCount = 0;
+                if (messageRothingdisplayName != null)
+                {
+                    thingObject["displayName"] = SourceExpressionConverter.ConvertToken(messageRothingdisplayName);
+                    thingObjectpropCount++;
+                }
+
+                if (messageRothingfixedName != null)
+                {
+                    thingObject["fixedName"] = SourceExpressionConverter.ConvertToken(messageRothingfixedName);
+                    thingObjectpropCount++;
+                }
+
+                if (messageRothingid != null)
+                {
+                    thingObject["id"] = SourceExpressionConverter.ConvertToken(messageRothingid);
+                    thingObjectpropCount++;
+                }
+
+                thingObjectpropCount++;
+                thingObject["name"] = SourceExpressionConverter.ConvertToken(messageRothingname);
+                if (messageRothingnbAlerts != null)
+                {
+                    thingObject["nbAlerts"] = SourceExpressionConverter.ConvertToken(messageRothingnbAlerts);
+                    thingObjectpropCount++;
+                }
+
+                if (messageRothingtags != null)
+                {
+                    thingObject["tags"] = SourceExpressionConverter.ConvertToken(messageRothingtags);
+                    thingObjectpropCount++;
+                }
+
+                if (thingObjectpropCount > 0)
+                {
+                    messageRo["thing"] = thingObject;
+                    messageRopropCount++;
+                }
+
+                messageRopropCount++;
+                messageRo["timestamp"] = SourceExpressionConverter.ConvertToken(messageRotimestamp);
+                messageRopropCount++;
+                messageRo["topic"] = SourceExpressionConverter.ConvertToken(messageRotopic);
+                if (messageRopropCount > 0)
+                {
+                    callPayload.Body = messageRo;
+                }
+                return callPayload;
             }
 
-            messageRopropCount++;
-            messageRo["timestamp"] = ExpressionConverter.ConvertO(messageRotimestamp);
-            messageRopropCount++;
-            messageRo["topic"] = ExpressionConverter.ConvertO(messageRotopic);
-            if (messageRopropCount > 0)
-            {
-                callPayload.Body = messageRo;
-            }
-
-            return new ApiConnectionAction<MessageRo>(callPayload);
+            return new ApiConnectionAction<MessageRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageRo> GetMessage(Expression<Func<string>> id)
+        public IBodyWorkflowAction<MessageRo> GetMessage([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MessageRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/messages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MessageRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageRo> GetPreviousMessage(Expression<Func<string>> id)
+        public IBodyWorkflowAction<MessageRo> GetPreviousMessage([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/messages/{0}/previous", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MessageRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/messages/{0}/previous", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MessageRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageSiteRo> GetSites(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageSiteRo> GetSites([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            var apiCallPath = "/api/sites";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageSiteRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/sites";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageSiteRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SiteRo[]> CreateSite(Expression<Func<bool>> nodearray = null, Expression<Func<bool>> nodebigDecimal = null, Expression<Func<bool>> nodebigInteger = null, Expression<Func<bool>> nodebinary = null, Expression<Func<bool>> nodeboolean = null, Expression<Func<bool>> nodecontainerNode = null, Expression<Func<bool>> nodedouble = null, Expression<Func<bool>> nodefloat = null, Expression<Func<bool>> nodefloatingPointNumber = null, Expression<Func<bool>> nodeint = null, Expression<Func<bool>> nodeintegralNumber = null, Expression<Func<bool>> nodeLong = null, Expression<Func<bool>> nodemissingNode = null, Expression<Func<nodenodeTypeInput>> nodenodeType = null, Expression<Func<bool>> nodenull = null, Expression<Func<bool>> nodenumber = null, Expression<Func<bool>> nodeObject = null, Expression<Func<bool>> nodepojo = null, Expression<Func<bool>> nodeShort = null, Expression<Func<bool>> nodetextual = null, Expression<Func<bool>> nodevalueNode = null)
+        public IBodyWorkflowAction<SiteRo[]> CreateSite([WorkflowExpression] Func<bool> nodearray = null, [WorkflowExpression] Func<bool> nodebigDecimal = null, [WorkflowExpression] Func<bool> nodebigInteger = null, [WorkflowExpression] Func<bool> nodebinary = null, [WorkflowExpression] Func<bool> nodeboolean = null, [WorkflowExpression] Func<bool> nodecontainerNode = null, [WorkflowExpression] Func<bool> nodeDouble = null, [WorkflowExpression] Func<bool> nodeFloat = null, [WorkflowExpression] Func<bool> nodefloatingPointNumber = null, [WorkflowExpression] Func<bool> nodeInt = null, [WorkflowExpression] Func<bool> nodeintegralNumber = null, [WorkflowExpression] Func<bool> nodeLong = null, [WorkflowExpression] Func<bool> nodemissingNode = null, [WorkflowExpression] Func<nodenodeTypeInput> nodenodeType = null, [WorkflowExpression] Func<bool> nodeNull = null, [WorkflowExpression] Func<bool> nodenumber = null, [WorkflowExpression] Func<bool> nodeObject = null, [WorkflowExpression] Func<bool> nodepojo = null, [WorkflowExpression] Func<bool> nodeShort = null, [WorkflowExpression] Func<bool> nodetextual = null, [WorkflowExpression] Func<bool> nodevalueNode = null)
         {
-            var apiCallPath = "/api/sites";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var node = new JObject();
-            var nodepropCount = 0;
-            if (nodearray != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                node["array"] = ExpressionConverter.ConvertO(nodearray);
-                nodepropCount++;
+                var apiCallPath = "/api/sites";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var node = new JObject();
+                var nodepropCount = 0;
+                if (nodearray != null)
+                {
+                    node["array"] = SourceExpressionConverter.ConvertToken(nodearray);
+                    nodepropCount++;
+                }
+
+                if (nodebigDecimal != null)
+                {
+                    node["bigDecimal"] = SourceExpressionConverter.ConvertToken(nodebigDecimal);
+                    nodepropCount++;
+                }
+
+                if (nodebigInteger != null)
+                {
+                    node["bigInteger"] = SourceExpressionConverter.ConvertToken(nodebigInteger);
+                    nodepropCount++;
+                }
+
+                if (nodebinary != null)
+                {
+                    node["binary"] = SourceExpressionConverter.ConvertToken(nodebinary);
+                    nodepropCount++;
+                }
+
+                if (nodeboolean != null)
+                {
+                    node["boolean"] = SourceExpressionConverter.ConvertToken(nodeboolean);
+                    nodepropCount++;
+                }
+
+                if (nodecontainerNode != null)
+                {
+                    node["containerNode"] = SourceExpressionConverter.ConvertToken(nodecontainerNode);
+                    nodepropCount++;
+                }
+
+                if (nodeDouble != null)
+                {
+                    node["double"] = SourceExpressionConverter.ConvertToken(nodeDouble);
+                    nodepropCount++;
+                }
+
+                if (nodeFloat != null)
+                {
+                    node["float"] = SourceExpressionConverter.ConvertToken(nodeFloat);
+                    nodepropCount++;
+                }
+
+                if (nodefloatingPointNumber != null)
+                {
+                    node["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(nodefloatingPointNumber);
+                    nodepropCount++;
+                }
+
+                if (nodeInt != null)
+                {
+                    node["int"] = SourceExpressionConverter.ConvertToken(nodeInt);
+                    nodepropCount++;
+                }
+
+                if (nodeintegralNumber != null)
+                {
+                    node["integralNumber"] = SourceExpressionConverter.ConvertToken(nodeintegralNumber);
+                    nodepropCount++;
+                }
+
+                if (nodeLong != null)
+                {
+                    node["long"] = SourceExpressionConverter.ConvertToken(nodeLong);
+                    nodepropCount++;
+                }
+
+                if (nodemissingNode != null)
+                {
+                    node["missingNode"] = SourceExpressionConverter.ConvertToken(nodemissingNode);
+                    nodepropCount++;
+                }
+
+                if (nodenodeType != null)
+                {
+                    node["nodeType"] = SourceExpressionConverter.Convert(nodenodeType);
+                    nodepropCount++;
+                }
+
+                if (nodeNull != null)
+                {
+                    node["null"] = SourceExpressionConverter.ConvertToken(nodeNull);
+                    nodepropCount++;
+                }
+
+                if (nodenumber != null)
+                {
+                    node["number"] = SourceExpressionConverter.ConvertToken(nodenumber);
+                    nodepropCount++;
+                }
+
+                if (nodeObject != null)
+                {
+                    node["object"] = SourceExpressionConverter.ConvertToken(nodeObject);
+                    nodepropCount++;
+                }
+
+                if (nodepojo != null)
+                {
+                    node["pojo"] = SourceExpressionConverter.ConvertToken(nodepojo);
+                    nodepropCount++;
+                }
+
+                if (nodeShort != null)
+                {
+                    node["short"] = SourceExpressionConverter.ConvertToken(nodeShort);
+                    nodepropCount++;
+                }
+
+                if (nodetextual != null)
+                {
+                    node["textual"] = SourceExpressionConverter.ConvertToken(nodetextual);
+                    nodepropCount++;
+                }
+
+                if (nodevalueNode != null)
+                {
+                    node["valueNode"] = SourceExpressionConverter.ConvertToken(nodevalueNode);
+                    nodepropCount++;
+                }
+
+                if (nodepropCount > 0)
+                {
+                    callPayload.Body = node;
+                }
+                return callPayload;
             }
 
-            if (nodebigDecimal != null)
-            {
-                node["bigDecimal"] = ExpressionConverter.ConvertO(nodebigDecimal);
-                nodepropCount++;
-            }
-
-            if (nodebigInteger != null)
-            {
-                node["bigInteger"] = ExpressionConverter.ConvertO(nodebigInteger);
-                nodepropCount++;
-            }
-
-            if (nodebinary != null)
-            {
-                node["binary"] = ExpressionConverter.ConvertO(nodebinary);
-                nodepropCount++;
-            }
-
-            if (nodeboolean != null)
-            {
-                node["boolean"] = ExpressionConverter.ConvertO(nodeboolean);
-                nodepropCount++;
-            }
-
-            if (nodecontainerNode != null)
-            {
-                node["containerNode"] = ExpressionConverter.ConvertO(nodecontainerNode);
-                nodepropCount++;
-            }
-
-            if (nodedouble != null)
-            {
-                node["double"] = ExpressionConverter.ConvertO(nodedouble);
-                nodepropCount++;
-            }
-
-            if (nodefloat != null)
-            {
-                node["float"] = ExpressionConverter.ConvertO(nodefloat);
-                nodepropCount++;
-            }
-
-            if (nodefloatingPointNumber != null)
-            {
-                node["floatingPointNumber"] = ExpressionConverter.ConvertO(nodefloatingPointNumber);
-                nodepropCount++;
-            }
-
-            if (nodeint != null)
-            {
-                node["int"] = ExpressionConverter.ConvertO(nodeint);
-                nodepropCount++;
-            }
-
-            if (nodeintegralNumber != null)
-            {
-                node["integralNumber"] = ExpressionConverter.ConvertO(nodeintegralNumber);
-                nodepropCount++;
-            }
-
-            if (nodeLong != null)
-            {
-                node["long"] = ExpressionConverter.ConvertO(nodeLong);
-                nodepropCount++;
-            }
-
-            if (nodemissingNode != null)
-            {
-                node["missingNode"] = ExpressionConverter.ConvertO(nodemissingNode);
-                nodepropCount++;
-            }
-
-            if (nodenodeType != null)
-            {
-                node["nodeType"] = ExpressionConverter.ConvertO(nodenodeType);
-                nodepropCount++;
-            }
-
-            if (nodenull != null)
-            {
-                node["null"] = ExpressionConverter.ConvertO(nodenull);
-                nodepropCount++;
-            }
-
-            if (nodenumber != null)
-            {
-                node["number"] = ExpressionConverter.ConvertO(nodenumber);
-                nodepropCount++;
-            }
-
-            if (nodeObject != null)
-            {
-                node["object"] = ExpressionConverter.ConvertO(nodeObject);
-                nodepropCount++;
-            }
-
-            if (nodepojo != null)
-            {
-                node["pojo"] = ExpressionConverter.ConvertO(nodepojo);
-                nodepropCount++;
-            }
-
-            if (nodeShort != null)
-            {
-                node["short"] = ExpressionConverter.ConvertO(nodeShort);
-                nodepropCount++;
-            }
-
-            if (nodetextual != null)
-            {
-                node["textual"] = ExpressionConverter.ConvertO(nodetextual);
-                nodepropCount++;
-            }
-
-            if (nodevalueNode != null)
-            {
-                node["valueNode"] = ExpressionConverter.ConvertO(nodevalueNode);
-                nodepropCount++;
-            }
-
-            if (nodepropCount > 0)
-            {
-                callPayload.Body = node;
-            }
-
-            return new ApiConnectionAction<SiteRo[]>(callPayload);
+            return new ApiConnectionAction<SiteRo[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SiteRo> GetSite(Expression<Func<string>> id)
+        public IBodyWorkflowAction<SiteRo> GetSite([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SiteRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IWorkflowAction DeleteSite(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SiteRo> UpdateSite(Expression<Func<string>> id, Expression<Func<string>> siteRoaddress, Expression<Func<string>> siteRocity, Expression<Func<string>> siteRoname, Expression<Func<string>> siteRopostalCode, Expression<Func<string>> siteRoid = null, Expression<Func<double>> siteRolatitude = null, Expression<Func<double>> siteRolongitude = null)
-        {
-            var apiCallPath = String.Format("/api/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var siteRo = new JObject();
-            var siteRopropCount = 0;
-            siteRopropCount++;
-            siteRo["address"] = ExpressionConverter.ConvertO(siteRoaddress);
-            siteRopropCount++;
-            siteRo["city"] = ExpressionConverter.ConvertO(siteRocity);
-            if (siteRoid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                siteRo["id"] = ExpressionConverter.ConvertO(siteRoid);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SiteRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IWorkflowAction DeleteSite([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<SiteRo> UpdateSite([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> siteRoaddress, [WorkflowExpression] Func<string> siteRocity, [WorkflowExpression] Func<string> siteRoname, [WorkflowExpression] Func<string> siteRopostalCode, [WorkflowExpression] Func<string> siteRoid = null, [WorkflowExpression] Func<double> siteRolatitude = null, [WorkflowExpression] Func<double> siteRolongitude = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/sites/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var siteRo = new JObject();
+                var siteRopropCount = 0;
                 siteRopropCount++;
-            }
-
-            if (siteRolatitude != null)
-            {
-                siteRo["latitude"] = ExpressionConverter.ConvertO(siteRolatitude);
+                siteRo["address"] = SourceExpressionConverter.ConvertToken(siteRoaddress);
                 siteRopropCount++;
-            }
+                siteRo["city"] = SourceExpressionConverter.ConvertToken(siteRocity);
+                if (siteRoid != null)
+                {
+                    siteRo["id"] = SourceExpressionConverter.ConvertToken(siteRoid);
+                    siteRopropCount++;
+                }
 
-            if (siteRolongitude != null)
-            {
-                siteRo["longitude"] = ExpressionConverter.ConvertO(siteRolongitude);
+                if (siteRolatitude != null)
+                {
+                    siteRo["latitude"] = SourceExpressionConverter.ConvertToken(siteRolatitude);
+                    siteRopropCount++;
+                }
+
+                if (siteRolongitude != null)
+                {
+                    siteRo["longitude"] = SourceExpressionConverter.ConvertToken(siteRolongitude);
+                    siteRopropCount++;
+                }
+
                 siteRopropCount++;
+                siteRo["name"] = SourceExpressionConverter.ConvertToken(siteRoname);
+                siteRopropCount++;
+                siteRo["postalCode"] = SourceExpressionConverter.ConvertToken(siteRopostalCode);
+                if (siteRopropCount > 0)
+                {
+                    callPayload.Body = siteRo;
+                }
+                return callPayload;
             }
 
-            siteRopropCount++;
-            siteRo["name"] = ExpressionConverter.ConvertO(siteRoname);
-            siteRopropCount++;
-            siteRo["postalCode"] = ExpressionConverter.ConvertO(siteRopostalCode);
-            if (siteRopropCount > 0)
-            {
-                callPayload.Body = siteRo;
-            }
-
-            return new ApiConnectionAction<SiteRo>(callPayload);
+            return new ApiConnectionAction<SiteRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageThingTagRo> GetTags(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageThingTagRo> GetTags([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            var apiCallPath = "/api/tags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageThingTagRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/tags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageThingTagRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<TagRo> UpdateThingTag(Expression<Func<string>> thingTagRoid = null, Expression<Func<string>> thingTagRotag = null)
+        public IBodyWorkflowAction<TagRo> UpdateThingTag([WorkflowExpression] Func<string> thingTagRoid = null, [WorkflowExpression] Func<string> thingTagRotag = null)
         {
-            var apiCallPath = "/api/tags";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var thingTagRo = new JObject();
-            var thingTagRopropCount = 0;
-            if (thingTagRoid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                thingTagRo["id"] = ExpressionConverter.ConvertO(thingTagRoid);
-                thingTagRopropCount++;
+                var apiCallPath = "/api/tags";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var thingTagRo = new JObject();
+                var thingTagRopropCount = 0;
+                if (thingTagRoid != null)
+                {
+                    thingTagRo["id"] = SourceExpressionConverter.ConvertToken(thingTagRoid);
+                    thingTagRopropCount++;
+                }
+
+                if (thingTagRotag != null)
+                {
+                    thingTagRo["tag"] = SourceExpressionConverter.ConvertToken(thingTagRotag);
+                    thingTagRopropCount++;
+                }
+
+                if (thingTagRopropCount > 0)
+                {
+                    callPayload.Body = thingTagRo;
+                }
+                return callPayload;
             }
 
-            if (thingTagRotag != null)
-            {
-                thingTagRo["tag"] = ExpressionConverter.ConvertO(thingTagRotag);
-                thingTagRopropCount++;
-            }
-
-            if (thingTagRopropCount > 0)
-            {
-                callPayload.Body = thingTagRo;
-            }
-
-            return new ApiConnectionAction<TagRo>(callPayload);
+            return new ApiConnectionAction<TagRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<TagRo> AddThingTag(Expression<Func<string>> thingId, Expression<Func<string>> thingTagRoid = null, Expression<Func<string>> thingTagRotag = null)
+        public IBodyWorkflowAction<TagRo> AddThingTag([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<string> thingTagRoid = null, [WorkflowExpression] Func<string> thingTagRotag = null)
         {
-            var apiCallPath = String.Format("/api/tags/thing/{0}", ExpressionConverter.ConvertWithUrlEncoding(thingId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var thingTagRo = new JObject();
-            var thingTagRopropCount = 0;
-            if (thingTagRoid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                thingTagRo["id"] = ExpressionConverter.ConvertO(thingTagRoid);
-                thingTagRopropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/tags/thing/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thingId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var thingTagRo = new JObject();
+                var thingTagRopropCount = 0;
+                if (thingTagRoid != null)
+                {
+                    thingTagRo["id"] = SourceExpressionConverter.ConvertToken(thingTagRoid);
+                    thingTagRopropCount++;
+                }
+
+                if (thingTagRotag != null)
+                {
+                    thingTagRo["tag"] = SourceExpressionConverter.ConvertToken(thingTagRotag);
+                    thingTagRopropCount++;
+                }
+
+                if (thingTagRopropCount > 0)
+                {
+                    callPayload.Body = thingTagRo;
+                }
+                return callPayload;
             }
 
-            if (thingTagRotag != null)
-            {
-                thingTagRo["tag"] = ExpressionConverter.ConvertO(thingTagRotag);
-                thingTagRopropCount++;
-            }
-
-            if (thingTagRopropCount > 0)
-            {
-                callPayload.Body = thingTagRo;
-            }
-
-            return new ApiConnectionAction<TagRo>(callPayload);
+            return new ApiConnectionAction<TagRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<TagRo> GetThingTag(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TagRo> GetThingTag([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/tags/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TagRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageSingleThingRo> GetThings(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<PageSingleThingRo> GetThings([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<bool> detailed = null)
         {
-            var apiCallPath = "/api/things";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            callPayload.Queries["detailed"] = Convert.ToString(false);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            return new ApiConnectionAction<PageSingleThingRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/things";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                callPayload.Queries["detailed"] = Convert.ToString(false);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageSingleThingRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity> AddThingsCsv(Expression<Func<object>> file)
+        public IBodyWorkflowAction<SingleThingRo[]> AssociateThingsWithProduct([WorkflowExpression] Func<bool> jsonarray = null, [WorkflowExpression] Func<bool> jsonbigDecimal = null, [WorkflowExpression] Func<bool> jsonbigInteger = null, [WorkflowExpression] Func<bool> jsonbinary = null, [WorkflowExpression] Func<bool> jsonboolean = null, [WorkflowExpression] Func<bool> jsoncontainerNode = null, [WorkflowExpression] Func<bool> jsonDouble = null, [WorkflowExpression] Func<bool> jsonFloat = null, [WorkflowExpression] Func<bool> jsonfloatingPointNumber = null, [WorkflowExpression] Func<bool> jsonInt = null, [WorkflowExpression] Func<bool> jsonintegralNumber = null, [WorkflowExpression] Func<bool> jsonLong = null, [WorkflowExpression] Func<bool> jsonmissingNode = null, [WorkflowExpression] Func<jsonnodeTypeInput> jsonnodeType = null, [WorkflowExpression] Func<bool> jsonNull = null, [WorkflowExpression] Func<bool> jsonnumber = null, [WorkflowExpression] Func<bool> jsonObject = null, [WorkflowExpression] Func<bool> jsonpojo = null, [WorkflowExpression] Func<bool> jsonShort = null, [WorkflowExpression] Func<bool> jsontextual = null, [WorkflowExpression] Func<bool> jsonvalueNode = null)
         {
-            var apiCallPath = "/api/things";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResponseEntity>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/things";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var json = new JObject();
+                var jsonpropCount = 0;
+                if (jsonarray != null)
+                {
+                    json["array"] = SourceExpressionConverter.ConvertToken(jsonarray);
+                    jsonpropCount++;
+                }
+
+                if (jsonbigDecimal != null)
+                {
+                    json["bigDecimal"] = SourceExpressionConverter.ConvertToken(jsonbigDecimal);
+                    jsonpropCount++;
+                }
+
+                if (jsonbigInteger != null)
+                {
+                    json["bigInteger"] = SourceExpressionConverter.ConvertToken(jsonbigInteger);
+                    jsonpropCount++;
+                }
+
+                if (jsonbinary != null)
+                {
+                    json["binary"] = SourceExpressionConverter.ConvertToken(jsonbinary);
+                    jsonpropCount++;
+                }
+
+                if (jsonboolean != null)
+                {
+                    json["boolean"] = SourceExpressionConverter.ConvertToken(jsonboolean);
+                    jsonpropCount++;
+                }
+
+                if (jsoncontainerNode != null)
+                {
+                    json["containerNode"] = SourceExpressionConverter.ConvertToken(jsoncontainerNode);
+                    jsonpropCount++;
+                }
+
+                if (jsonDouble != null)
+                {
+                    json["double"] = SourceExpressionConverter.ConvertToken(jsonDouble);
+                    jsonpropCount++;
+                }
+
+                if (jsonFloat != null)
+                {
+                    json["float"] = SourceExpressionConverter.ConvertToken(jsonFloat);
+                    jsonpropCount++;
+                }
+
+                if (jsonfloatingPointNumber != null)
+                {
+                    json["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(jsonfloatingPointNumber);
+                    jsonpropCount++;
+                }
+
+                if (jsonInt != null)
+                {
+                    json["int"] = SourceExpressionConverter.ConvertToken(jsonInt);
+                    jsonpropCount++;
+                }
+
+                if (jsonintegralNumber != null)
+                {
+                    json["integralNumber"] = SourceExpressionConverter.ConvertToken(jsonintegralNumber);
+                    jsonpropCount++;
+                }
+
+                if (jsonLong != null)
+                {
+                    json["long"] = SourceExpressionConverter.ConvertToken(jsonLong);
+                    jsonpropCount++;
+                }
+
+                if (jsonmissingNode != null)
+                {
+                    json["missingNode"] = SourceExpressionConverter.ConvertToken(jsonmissingNode);
+                    jsonpropCount++;
+                }
+
+                if (jsonnodeType != null)
+                {
+                    json["nodeType"] = SourceExpressionConverter.Convert(jsonnodeType);
+                    jsonpropCount++;
+                }
+
+                if (jsonNull != null)
+                {
+                    json["null"] = SourceExpressionConverter.ConvertToken(jsonNull);
+                    jsonpropCount++;
+                }
+
+                if (jsonnumber != null)
+                {
+                    json["number"] = SourceExpressionConverter.ConvertToken(jsonnumber);
+                    jsonpropCount++;
+                }
+
+                if (jsonObject != null)
+                {
+                    json["object"] = SourceExpressionConverter.ConvertToken(jsonObject);
+                    jsonpropCount++;
+                }
+
+                if (jsonpojo != null)
+                {
+                    json["pojo"] = SourceExpressionConverter.ConvertToken(jsonpojo);
+                    jsonpropCount++;
+                }
+
+                if (jsonShort != null)
+                {
+                    json["short"] = SourceExpressionConverter.ConvertToken(jsonShort);
+                    jsonpropCount++;
+                }
+
+                if (jsontextual != null)
+                {
+                    json["textual"] = SourceExpressionConverter.ConvertToken(jsontextual);
+                    jsonpropCount++;
+                }
+
+                if (jsonvalueNode != null)
+                {
+                    json["valueNode"] = SourceExpressionConverter.ConvertToken(jsonvalueNode);
+                    jsonpropCount++;
+                }
+
+                if (jsonpropCount > 0)
+                {
+                    callPayload.Body = json;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleThingRo[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo[]> AssociateThingsWithProduct(Expression<Func<bool>> jsonarray = null, Expression<Func<bool>> jsonbigDecimal = null, Expression<Func<bool>> jsonbigInteger = null, Expression<Func<bool>> jsonbinary = null, Expression<Func<bool>> jsonboolean = null, Expression<Func<bool>> jsoncontainerNode = null, Expression<Func<bool>> jsondouble = null, Expression<Func<bool>> jsonfloat = null, Expression<Func<bool>> jsonfloatingPointNumber = null, Expression<Func<bool>> jsonint = null, Expression<Func<bool>> jsonintegralNumber = null, Expression<Func<bool>> jsonLong = null, Expression<Func<bool>> jsonmissingNode = null, Expression<Func<jsonnodeTypeInput>> jsonnodeType = null, Expression<Func<bool>> jsonnull = null, Expression<Func<bool>> jsonnumber = null, Expression<Func<bool>> jsonObject = null, Expression<Func<bool>> jsonpojo = null, Expression<Func<bool>> jsonShort = null, Expression<Func<bool>> jsontextual = null, Expression<Func<bool>> jsonvalueNode = null)
+        public IBodyWorkflowAction<SingleThingRo[]> GetThingList([WorkflowExpression] Func<string[]> thingIds = null)
         {
-            var apiCallPath = "/api/things";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var json = new JObject();
-            var jsonpropCount = 0;
-            if (jsonarray != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                json["array"] = ExpressionConverter.ConvertO(jsonarray);
-                jsonpropCount++;
+                var apiCallPath = "/api/things/list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(thingIds);
+                return callPayload;
             }
 
-            if (jsonbigDecimal != null)
-            {
-                json["bigDecimal"] = ExpressionConverter.ConvertO(jsonbigDecimal);
-                jsonpropCount++;
-            }
-
-            if (jsonbigInteger != null)
-            {
-                json["bigInteger"] = ExpressionConverter.ConvertO(jsonbigInteger);
-                jsonpropCount++;
-            }
-
-            if (jsonbinary != null)
-            {
-                json["binary"] = ExpressionConverter.ConvertO(jsonbinary);
-                jsonpropCount++;
-            }
-
-            if (jsonboolean != null)
-            {
-                json["boolean"] = ExpressionConverter.ConvertO(jsonboolean);
-                jsonpropCount++;
-            }
-
-            if (jsoncontainerNode != null)
-            {
-                json["containerNode"] = ExpressionConverter.ConvertO(jsoncontainerNode);
-                jsonpropCount++;
-            }
-
-            if (jsondouble != null)
-            {
-                json["double"] = ExpressionConverter.ConvertO(jsondouble);
-                jsonpropCount++;
-            }
-
-            if (jsonfloat != null)
-            {
-                json["float"] = ExpressionConverter.ConvertO(jsonfloat);
-                jsonpropCount++;
-            }
-
-            if (jsonfloatingPointNumber != null)
-            {
-                json["floatingPointNumber"] = ExpressionConverter.ConvertO(jsonfloatingPointNumber);
-                jsonpropCount++;
-            }
-
-            if (jsonint != null)
-            {
-                json["int"] = ExpressionConverter.ConvertO(jsonint);
-                jsonpropCount++;
-            }
-
-            if (jsonintegralNumber != null)
-            {
-                json["integralNumber"] = ExpressionConverter.ConvertO(jsonintegralNumber);
-                jsonpropCount++;
-            }
-
-            if (jsonLong != null)
-            {
-                json["long"] = ExpressionConverter.ConvertO(jsonLong);
-                jsonpropCount++;
-            }
-
-            if (jsonmissingNode != null)
-            {
-                json["missingNode"] = ExpressionConverter.ConvertO(jsonmissingNode);
-                jsonpropCount++;
-            }
-
-            if (jsonnodeType != null)
-            {
-                json["nodeType"] = ExpressionConverter.ConvertO(jsonnodeType);
-                jsonpropCount++;
-            }
-
-            if (jsonnull != null)
-            {
-                json["null"] = ExpressionConverter.ConvertO(jsonnull);
-                jsonpropCount++;
-            }
-
-            if (jsonnumber != null)
-            {
-                json["number"] = ExpressionConverter.ConvertO(jsonnumber);
-                jsonpropCount++;
-            }
-
-            if (jsonObject != null)
-            {
-                json["object"] = ExpressionConverter.ConvertO(jsonObject);
-                jsonpropCount++;
-            }
-
-            if (jsonpojo != null)
-            {
-                json["pojo"] = ExpressionConverter.ConvertO(jsonpojo);
-                jsonpropCount++;
-            }
-
-            if (jsonShort != null)
-            {
-                json["short"] = ExpressionConverter.ConvertO(jsonShort);
-                jsonpropCount++;
-            }
-
-            if (jsontextual != null)
-            {
-                json["textual"] = ExpressionConverter.ConvertO(jsontextual);
-                jsonpropCount++;
-            }
-
-            if (jsonvalueNode != null)
-            {
-                json["valueNode"] = ExpressionConverter.ConvertO(jsonvalueNode);
-                jsonpropCount++;
-            }
-
-            if (jsonpropCount > 0)
-            {
-                callPayload.Body = json;
-            }
-
-            return new ApiConnectionAction<SingleThingRo[]>(callPayload);
+            return new ApiConnectionAction<SingleThingRo[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo[]> GetThingList(Expression<Func<string[]>> thingIds = null)
+        public IBodyWorkflowAction<SingleThingRo> GetThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null)
         {
-            var apiCallPath = "/api/things/list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(thingIds);
-            return new ApiConnectionAction<SingleThingRo[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["detailed"] = Convert.ToString(false);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleThingRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo> GetThing(Expression<Func<string>> id, Expression<Func<bool>> detailed = null)
+        public IWorkflowAction IgnoreThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> force = null)
         {
-            var apiCallPath = String.Format("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["detailed"] = Convert.ToString(false);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            return new ApiConnectionAction<SingleThingRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (force != null)
+                    callPayload.Queries["force"] = SourceExpressionConverter.ConvertO(force);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IWorkflowAction IgnoreThing(Expression<Func<string>> id, Expression<Func<bool>> force = null)
+        public IBodyWorkflowAction<ThingRo> PutThing([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> thingRoname, [WorkflowExpression] Func<string> thingRositeaddress, [WorkflowExpression] Func<string> thingRositecity, [WorkflowExpression] Func<string> thingRositename, [WorkflowExpression] Func<string> thingRositepostalCode, [WorkflowExpression] Func<string> thingRoapplicationid = null, [WorkflowExpression] Func<string> thingRoapplicationlink = null, [WorkflowExpression] Func<string> thingRoapplicationname = null, [WorkflowExpression] Func<string> thingRoconnectivityid = null, [WorkflowExpression] Func<string> thingRoconnectivityrawStatus = null, [WorkflowExpression] Func<thingRoconnectivitystatusInput> thingRoconnectivitystatus = null, [WorkflowExpression] Func<thingRoconnectivitytypeInput> thingRoconnectivitytype = null, [WorkflowExpression] Func<CustomFieldRo[]> thingRocustomFields = null, [WorkflowExpression] Func<string> thingRocustomModelcolor = null, [WorkflowExpression] Func<string> thingRocustomModelicon = null, [WorkflowExpression] Func<string> thingRocustomModelid = null, [WorkflowExpression] Func<string> thingRocustomModellink = null, [WorkflowExpression] Func<string> thingRocustomModelname = null, [WorkflowExpression] Func<string> thingRodescription = null, [WorkflowExpression] Func<int> thingRodevicebatteryLevel = null, [WorkflowExpression] Func<thingRodevicebatteryStatusInput> thingRodevicebatteryStatus = null, [WorkflowExpression] Func<string> thingRodevicedeviceType = null, [WorkflowExpression] Func<string> thingRodeviceid = null, [WorkflowExpression] Func<string> thingRodevicemanufacturer = null, [WorkflowExpression] Func<int> thingRodevicememoryFree = null, [WorkflowExpression] Func<int> thingRodevicememoryTotal = null, [WorkflowExpression] Func<string> thingRodevicemodel = null, [WorkflowExpression] Func<string> thingRodevicemodelNumber = null, [WorkflowExpression] Func<string> thingRodevicename = null, [WorkflowExpression] Func<string> thingRodeviceserialNumber = null, [WorkflowExpression] Func<thingRodevicestatusInput> thingRodevicestatus = null, [WorkflowExpression] Func<string> thingRodisplayName = null, [WorkflowExpression] Func<bool> thingRodynamicGps = null, [WorkflowExpression] Func<double> thingRofixedLatitude = null, [WorkflowExpression] Func<double> thingRofixedLongitude = null, [WorkflowExpression] Func<string> thingRofixedName = null, [WorkflowExpression] Func<string> thingRoid = null, [WorkflowExpression] Func<int> thingRolastActivityDate = null, [WorkflowExpression] Func<double> thingRolastLatitude = null, [WorkflowExpression] Func<double> thingRolastLongitude = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsDouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsFloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsInt = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsNull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsvalueNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsDouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsFloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsInt = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsNull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsvalueNode = null, [WorkflowExpression] Func<int> thingRolastMessageDate = null, [WorkflowExpression] Func<int> thingRomessageActivityTimeoutPeriod = null, [WorkflowExpression] Func<int> thingRonbAlerts = null, [WorkflowExpression] Func<thingRoproductconnectivityTypesInputItem[]> thingRoproductconnectivityTypes = null, [WorkflowExpression] Func<bool> thingRoproductgenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductid = null, [WorkflowExpression] Func<string> thingRoproductlink = null, [WorkflowExpression] Func<bool> thingRoproductmanufacturergenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductmanufacturerid = null, [WorkflowExpression] Func<string> thingRoproductmanufacturerlink = null, [WorkflowExpression] Func<string> thingRoproductmanufacturername = null, [WorkflowExpression] Func<string> thingRoproductmodelcolor = null, [WorkflowExpression] Func<bool> thingRoproductmodelgenerateLinks = null, [WorkflowExpression] Func<string> thingRoproductmodelicon = null, [WorkflowExpression] Func<string> thingRoproductmodelid = null, [WorkflowExpression] Func<bool> thingRoproductmodelisCustomModel = null, [WorkflowExpression] Func<bool> thingRoproductmodellinkabsolute = null, [WorkflowExpression] Func<string> thingRoproductmodellinkauthority = null, [WorkflowExpression] Func<string> thingRoproductmodellinkfragment = null, [WorkflowExpression] Func<string> thingRoproductmodellinkhost = null, [WorkflowExpression] Func<bool> thingRoproductmodellinkopaque = null, [WorkflowExpression] Func<string> thingRoproductmodellinkpath = null, [WorkflowExpression] Func<int> thingRoproductmodellinkport = null, [WorkflowExpression] Func<string> thingRoproductmodellinkquery = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawAuthority = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawFragment = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawPath = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawQuery = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> thingRoproductmodellinkrawUserInfo = null, [WorkflowExpression] Func<string> thingRoproductmodellinkscheme = null, [WorkflowExpression] Func<string> thingRoproductmodellinkschemeSpecificPart = null, [WorkflowExpression] Func<string> thingRoproductmodellinkuserInfo = null, [WorkflowExpression] Func<string> thingRoproductmodelname = null, [WorkflowExpression] Func<string> thingRoproductname = null, [WorkflowExpression] Func<string> thingRoproductreference = null, [WorkflowExpression] Func<string> thingRositeid = null, [WorkflowExpression] Func<double> thingRositelatitude = null, [WorkflowExpression] Func<double> thingRositelongitude = null, [WorkflowExpression] Func<string> thingRosourceId = null, [WorkflowExpression] Func<thingRostatusInput> thingRostatus = null, [WorkflowExpression] Func<ThingTagRo[]> thingRotags = null)
         {
-            var apiCallPath = String.Format("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (force != null)
-                callPayload.Queries["force"] = ExpressionConverter.Convert(force);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ThingRo> PutThing(Expression<Func<string>> id, Expression<Func<string>> thingRoname, Expression<Func<string>> thingRositeaddress, Expression<Func<string>> thingRositecity, Expression<Func<string>> thingRositename, Expression<Func<string>> thingRositepostalCode, Expression<Func<string>> thingRoapplicationid = null, Expression<Func<string>> thingRoapplicationlink = null, Expression<Func<string>> thingRoapplicationname = null, Expression<Func<string>> thingRoconnectivityid = null, Expression<Func<string>> thingRoconnectivityrawStatus = null, Expression<Func<thingRoconnectivitystatusInput>> thingRoconnectivitystatus = null, Expression<Func<thingRoconnectivitytypeInput>> thingRoconnectivitytype = null, Expression<Func<CustomFieldRo[]>> thingRocustomFields = null, Expression<Func<string>> thingRocustomModelcolor = null, Expression<Func<string>> thingRocustomModelicon = null, Expression<Func<string>> thingRocustomModelid = null, Expression<Func<string>> thingRocustomModellink = null, Expression<Func<string>> thingRocustomModelname = null, Expression<Func<string>> thingRodescription = null, Expression<Func<int>> thingRodevicebatteryLevel = null, Expression<Func<thingRodevicebatteryStatusInput>> thingRodevicebatteryStatus = null, Expression<Func<string>> thingRodevicedeviceType = null, Expression<Func<string>> thingRodeviceid = null, Expression<Func<string>> thingRodevicemanufacturer = null, Expression<Func<int>> thingRodevicememoryFree = null, Expression<Func<int>> thingRodevicememoryTotal = null, Expression<Func<string>> thingRodevicemodel = null, Expression<Func<string>> thingRodevicemodelNumber = null, Expression<Func<string>> thingRodevicename = null, Expression<Func<string>> thingRodeviceserialNumber = null, Expression<Func<thingRodevicestatusInput>> thingRodevicestatus = null, Expression<Func<string>> thingRodisplayName = null, Expression<Func<bool>> thingRodynamicGps = null, Expression<Func<double>> thingRofixedLatitude = null, Expression<Func<double>> thingRofixedLongitude = null, Expression<Func<string>> thingRofixedName = null, Expression<Func<string>> thingRoid = null, Expression<Func<int>> thingRolastActivityDate = null, Expression<Func<double>> thingRolastLatitude = null, Expression<Func<double>> thingRolastLongitude = null, Expression<Func<bool>> thingRolastMeasurementsarray = null, Expression<Func<bool>> thingRolastMeasurementsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsbinary = null, Expression<Func<bool>> thingRolastMeasurementsboolean = null, Expression<Func<bool>> thingRolastMeasurementscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsdouble = null, Expression<Func<bool>> thingRolastMeasurementsfloat = null, Expression<Func<bool>> thingRolastMeasurementsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsint = null, Expression<Func<bool>> thingRolastMeasurementsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsLong = null, Expression<Func<bool>> thingRolastMeasurementsmissingNode = null, Expression<Func<thingRolastMeasurementsnodeTypeInput>> thingRolastMeasurementsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsnull = null, Expression<Func<bool>> thingRolastMeasurementsnumber = null, Expression<Func<bool>> thingRolastMeasurementsObject = null, Expression<Func<bool>> thingRolastMeasurementspojo = null, Expression<Func<bool>> thingRolastMeasurementsShort = null, Expression<Func<bool>> thingRolastMeasurementstextual = null, Expression<Func<bool>> thingRolastMeasurementsvalueNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsarray = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbinary = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsboolean = null, Expression<Func<bool>> thingRolastMeasurementsTimestampscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsdouble = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloat = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsint = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsLong = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsmissingNode = null, Expression<Func<thingRolastMeasurementsTimestampsnodeTypeInput>> thingRolastMeasurementsTimestampsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnull = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsObject = null, Expression<Func<bool>> thingRolastMeasurementsTimestampspojo = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsShort = null, Expression<Func<bool>> thingRolastMeasurementsTimestampstextual = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsvalueNode = null, Expression<Func<int>> thingRolastMessageDate = null, Expression<Func<int>> thingRomessageActivityTimeoutPeriod = null, Expression<Func<int>> thingRonbAlerts = null, Expression<Func<thingRoproductconnectivityTypesInputItem[]>> thingRoproductconnectivityTypes = null, Expression<Func<bool>> thingRoproductgenerateLinks = null, Expression<Func<string>> thingRoproductid = null, Expression<Func<string>> thingRoproductlink = null, Expression<Func<bool>> thingRoproductmanufacturergenerateLinks = null, Expression<Func<string>> thingRoproductmanufacturerid = null, Expression<Func<string>> thingRoproductmanufacturerlink = null, Expression<Func<string>> thingRoproductmanufacturername = null, Expression<Func<string>> thingRoproductmodelcolor = null, Expression<Func<bool>> thingRoproductmodelgenerateLinks = null, Expression<Func<string>> thingRoproductmodelicon = null, Expression<Func<string>> thingRoproductmodelid = null, Expression<Func<bool>> thingRoproductmodelisCustomModel = null, Expression<Func<bool>> thingRoproductmodellinkabsolute = null, Expression<Func<string>> thingRoproductmodellinkauthority = null, Expression<Func<string>> thingRoproductmodellinkfragment = null, Expression<Func<string>> thingRoproductmodellinkhost = null, Expression<Func<bool>> thingRoproductmodellinkopaque = null, Expression<Func<string>> thingRoproductmodellinkpath = null, Expression<Func<int>> thingRoproductmodellinkport = null, Expression<Func<string>> thingRoproductmodellinkquery = null, Expression<Func<string>> thingRoproductmodellinkrawAuthority = null, Expression<Func<string>> thingRoproductmodellinkrawFragment = null, Expression<Func<string>> thingRoproductmodellinkrawPath = null, Expression<Func<string>> thingRoproductmodellinkrawQuery = null, Expression<Func<string>> thingRoproductmodellinkrawSchemeSpecificPart = null, Expression<Func<string>> thingRoproductmodellinkrawUserInfo = null, Expression<Func<string>> thingRoproductmodellinkscheme = null, Expression<Func<string>> thingRoproductmodellinkschemeSpecificPart = null, Expression<Func<string>> thingRoproductmodellinkuserInfo = null, Expression<Func<string>> thingRoproductmodelname = null, Expression<Func<string>> thingRoproductname = null, Expression<Func<string>> thingRoproductreference = null, Expression<Func<string>> thingRositeid = null, Expression<Func<double>> thingRositelatitude = null, Expression<Func<double>> thingRositelongitude = null, Expression<Func<string>> thingRosourceId = null, Expression<Func<thingRostatusInput>> thingRostatus = null, Expression<Func<ThingTagRo[]>> thingRotags = null)
-        {
-            var apiCallPath = String.Format("/api/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var thingRo = new JObject();
-            var thingRopropCount = 0;
-            var applicationObject = new JObject();
-            var applicationObjectpropCount = 0;
-            if (thingRoapplicationid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                applicationObject["id"] = ExpressionConverter.ConvertO(thingRoapplicationid);
-                applicationObjectpropCount++;
-            }
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var thingRo = new JObject();
+                var thingRopropCount = 0;
+                var applicationObject = new JObject();
+                var applicationObjectpropCount = 0;
+                if (thingRoapplicationid != null)
+                {
+                    applicationObject["id"] = SourceExpressionConverter.ConvertToken(thingRoapplicationid);
+                    applicationObjectpropCount++;
+                }
 
-            if (thingRoapplicationlink != null)
-            {
-                applicationObject["link"] = ExpressionConverter.ConvertO(thingRoapplicationlink);
-                applicationObjectpropCount++;
-            }
+                if (thingRoapplicationlink != null)
+                {
+                    applicationObject["link"] = SourceExpressionConverter.ConvertToken(thingRoapplicationlink);
+                    applicationObjectpropCount++;
+                }
 
-            if (thingRoapplicationname != null)
-            {
-                applicationObject["name"] = ExpressionConverter.ConvertO(thingRoapplicationname);
-                applicationObjectpropCount++;
-            }
+                if (thingRoapplicationname != null)
+                {
+                    applicationObject["name"] = SourceExpressionConverter.ConvertToken(thingRoapplicationname);
+                    applicationObjectpropCount++;
+                }
 
-            if (applicationObjectpropCount > 0)
-            {
-                thingRo["application"] = applicationObject;
+                if (applicationObjectpropCount > 0)
+                {
+                    thingRo["application"] = applicationObject;
+                    thingRopropCount++;
+                }
+
+                var connectivityObject = new JObject();
+                var connectivityObjectpropCount = 0;
+                var additionalPropertiesObject = new JObject();
+                var additionalPropertiesObjectpropCount = 0;
+                if (additionalPropertiesObjectpropCount > 0)
+                {
+                    connectivityObject["additionalProperties"] = additionalPropertiesObject;
+                    connectivityObjectpropCount++;
+                }
+
+                if (thingRoconnectivityid != null)
+                {
+                    connectivityObject["id"] = SourceExpressionConverter.ConvertToken(thingRoconnectivityid);
+                    connectivityObjectpropCount++;
+                }
+
+                if (thingRoconnectivityrawStatus != null)
+                {
+                    connectivityObject["rawStatus"] = SourceExpressionConverter.ConvertToken(thingRoconnectivityrawStatus);
+                    connectivityObjectpropCount++;
+                }
+
+                if (thingRoconnectivitystatus != null)
+                {
+                    connectivityObject["status"] = SourceExpressionConverter.Convert(thingRoconnectivitystatus);
+                    connectivityObjectpropCount++;
+                }
+
+                if (thingRoconnectivitytype != null)
+                {
+                    connectivityObject["type"] = SourceExpressionConverter.Convert(thingRoconnectivitytype);
+                    connectivityObjectpropCount++;
+                }
+
+                if (connectivityObjectpropCount > 0)
+                {
+                    thingRo["connectivity"] = connectivityObject;
+                    thingRopropCount++;
+                }
+
+                if (thingRocustomFields != null)
+                {
+                    thingRo["customFields"] = SourceExpressionConverter.ConvertToken(thingRocustomFields);
+                    thingRopropCount++;
+                }
+
+                var customModelObject = new JObject();
+                var customModelObjectpropCount = 0;
+                if (thingRocustomModelcolor != null)
+                {
+                    customModelObject["color"] = SourceExpressionConverter.ConvertToken(thingRocustomModelcolor);
+                    customModelObjectpropCount++;
+                }
+
+                if (thingRocustomModelicon != null)
+                {
+                    customModelObject["icon"] = SourceExpressionConverter.ConvertToken(thingRocustomModelicon);
+                    customModelObjectpropCount++;
+                }
+
+                if (thingRocustomModelid != null)
+                {
+                    customModelObject["id"] = SourceExpressionConverter.ConvertToken(thingRocustomModelid);
+                    customModelObjectpropCount++;
+                }
+
+                if (thingRocustomModellink != null)
+                {
+                    customModelObject["link"] = SourceExpressionConverter.ConvertToken(thingRocustomModellink);
+                    customModelObjectpropCount++;
+                }
+
+                if (thingRocustomModelname != null)
+                {
+                    customModelObject["name"] = SourceExpressionConverter.ConvertToken(thingRocustomModelname);
+                    customModelObjectpropCount++;
+                }
+
+                if (customModelObjectpropCount > 0)
+                {
+                    thingRo["customModel"] = customModelObject;
+                    thingRopropCount++;
+                }
+
+                if (thingRodescription != null)
+                {
+                    thingRo["description"] = SourceExpressionConverter.ConvertToken(thingRodescription);
+                    thingRopropCount++;
+                }
+
+                var deviceObject = new JObject();
+                var deviceObjectpropCount = 0;
+                if (thingRodevicebatteryLevel != null)
+                {
+                    deviceObject["batteryLevel"] = SourceExpressionConverter.ConvertToken(thingRodevicebatteryLevel);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicebatteryStatus != null)
+                {
+                    deviceObject["batteryStatus"] = SourceExpressionConverter.Convert(thingRodevicebatteryStatus);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicedeviceType != null)
+                {
+                    deviceObject["deviceType"] = SourceExpressionConverter.ConvertToken(thingRodevicedeviceType);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodeviceid != null)
+                {
+                    deviceObject["id"] = SourceExpressionConverter.ConvertToken(thingRodeviceid);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicemanufacturer != null)
+                {
+                    deviceObject["manufacturer"] = SourceExpressionConverter.ConvertToken(thingRodevicemanufacturer);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicememoryFree != null)
+                {
+                    deviceObject["memoryFree"] = SourceExpressionConverter.ConvertToken(thingRodevicememoryFree);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicememoryTotal != null)
+                {
+                    deviceObject["memoryTotal"] = SourceExpressionConverter.ConvertToken(thingRodevicememoryTotal);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicemodel != null)
+                {
+                    deviceObject["model"] = SourceExpressionConverter.ConvertToken(thingRodevicemodel);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicemodelNumber != null)
+                {
+                    deviceObject["modelNumber"] = SourceExpressionConverter.ConvertToken(thingRodevicemodelNumber);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicename != null)
+                {
+                    deviceObject["name"] = SourceExpressionConverter.ConvertToken(thingRodevicename);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodeviceserialNumber != null)
+                {
+                    deviceObject["serialNumber"] = SourceExpressionConverter.ConvertToken(thingRodeviceserialNumber);
+                    deviceObjectpropCount++;
+                }
+
+                if (thingRodevicestatus != null)
+                {
+                    deviceObject["status"] = SourceExpressionConverter.Convert(thingRodevicestatus);
+                    deviceObjectpropCount++;
+                }
+
+                if (deviceObjectpropCount > 0)
+                {
+                    thingRo["device"] = deviceObject;
+                    thingRopropCount++;
+                }
+
+                if (thingRodisplayName != null)
+                {
+                    thingRo["displayName"] = SourceExpressionConverter.ConvertToken(thingRodisplayName);
+                    thingRopropCount++;
+                }
+
+                if (thingRodynamicGps != null)
+                {
+                    thingRo["dynamicGps"] = SourceExpressionConverter.ConvertToken(thingRodynamicGps);
+                    thingRopropCount++;
+                }
+
+                if (thingRofixedLatitude != null)
+                {
+                    thingRo["fixedLatitude"] = SourceExpressionConverter.ConvertToken(thingRofixedLatitude);
+                    thingRopropCount++;
+                }
+
+                if (thingRofixedLongitude != null)
+                {
+                    thingRo["fixedLongitude"] = SourceExpressionConverter.ConvertToken(thingRofixedLongitude);
+                    thingRopropCount++;
+                }
+
+                if (thingRofixedName != null)
+                {
+                    thingRo["fixedName"] = SourceExpressionConverter.ConvertToken(thingRofixedName);
+                    thingRopropCount++;
+                }
+
+                if (thingRoid != null)
+                {
+                    thingRo["id"] = SourceExpressionConverter.ConvertToken(thingRoid);
+                    thingRopropCount++;
+                }
+
+                if (thingRolastActivityDate != null)
+                {
+                    thingRo["lastActivityDate"] = SourceExpressionConverter.ConvertToken(thingRolastActivityDate);
+                    thingRopropCount++;
+                }
+
+                if (thingRolastLatitude != null)
+                {
+                    thingRo["lastLatitude"] = SourceExpressionConverter.ConvertToken(thingRolastLatitude);
+                    thingRopropCount++;
+                }
+
+                if (thingRolastLongitude != null)
+                {
+                    thingRo["lastLongitude"] = SourceExpressionConverter.ConvertToken(thingRolastLongitude);
+                    thingRopropCount++;
+                }
+
+                var lastMeasurementsObject = new JObject();
+                var lastMeasurementsObjectpropCount = 0;
+                if (thingRolastMeasurementsarray != null)
+                {
+                    lastMeasurementsObject["array"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsarray);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbigDecimal != null)
+                {
+                    lastMeasurementsObject["bigDecimal"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbigDecimal);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbigInteger != null)
+                {
+                    lastMeasurementsObject["bigInteger"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbigInteger);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbinary != null)
+                {
+                    lastMeasurementsObject["binary"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbinary);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsboolean != null)
+                {
+                    lastMeasurementsObject["boolean"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsboolean);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementscontainerNode != null)
+                {
+                    lastMeasurementsObject["containerNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementscontainerNode);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsDouble != null)
+                {
+                    lastMeasurementsObject["double"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsDouble);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsFloat != null)
+                {
+                    lastMeasurementsObject["float"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsFloat);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsfloatingPointNumber != null)
+                {
+                    lastMeasurementsObject["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsfloatingPointNumber);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsInt != null)
+                {
+                    lastMeasurementsObject["int"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsInt);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsintegralNumber != null)
+                {
+                    lastMeasurementsObject["integralNumber"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsintegralNumber);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsLong != null)
+                {
+                    lastMeasurementsObject["long"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsLong);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsmissingNode != null)
+                {
+                    lastMeasurementsObject["missingNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsmissingNode);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsnodeType != null)
+                {
+                    lastMeasurementsObject["nodeType"] = SourceExpressionConverter.Convert(thingRolastMeasurementsnodeType);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsNull != null)
+                {
+                    lastMeasurementsObject["null"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsNull);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsnumber != null)
+                {
+                    lastMeasurementsObject["number"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsnumber);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsObject != null)
+                {
+                    lastMeasurementsObject["object"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsObject);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementspojo != null)
+                {
+                    lastMeasurementsObject["pojo"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementspojo);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsShort != null)
+                {
+                    lastMeasurementsObject["short"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsShort);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementstextual != null)
+                {
+                    lastMeasurementsObject["textual"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementstextual);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsvalueNode != null)
+                {
+                    lastMeasurementsObject["valueNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsvalueNode);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (lastMeasurementsObjectpropCount > 0)
+                {
+                    thingRo["lastMeasurements"] = lastMeasurementsObject;
+                    thingRopropCount++;
+                }
+
+                var lastMeasurementsTimestampsObject = new JObject();
+                var lastMeasurementsTimestampsObjectpropCount = 0;
+                if (thingRolastMeasurementsarray != null)
+                {
+                    lastMeasurementsTimestampsObject["array"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsarray);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbigDecimal != null)
+                {
+                    lastMeasurementsTimestampsObject["bigDecimal"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbigDecimal);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbigInteger != null)
+                {
+                    lastMeasurementsTimestampsObject["bigInteger"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbigInteger);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbinary != null)
+                {
+                    lastMeasurementsTimestampsObject["binary"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbinary);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsboolean != null)
+                {
+                    lastMeasurementsTimestampsObject["boolean"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsboolean);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementscontainerNode != null)
+                {
+                    lastMeasurementsTimestampsObject["containerNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementscontainerNode);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsDouble != null)
+                {
+                    lastMeasurementsTimestampsObject["double"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsDouble);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsFloat != null)
+                {
+                    lastMeasurementsTimestampsObject["float"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsFloat);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsfloatingPointNumber != null)
+                {
+                    lastMeasurementsTimestampsObject["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsfloatingPointNumber);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsInt != null)
+                {
+                    lastMeasurementsTimestampsObject["int"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsInt);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsintegralNumber != null)
+                {
+                    lastMeasurementsTimestampsObject["integralNumber"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsintegralNumber);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsLong != null)
+                {
+                    lastMeasurementsTimestampsObject["long"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsLong);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsmissingNode != null)
+                {
+                    lastMeasurementsTimestampsObject["missingNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsmissingNode);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsnodeType != null)
+                {
+                    lastMeasurementsTimestampsObject["nodeType"] = SourceExpressionConverter.Convert(thingRolastMeasurementsnodeType);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsNull != null)
+                {
+                    lastMeasurementsTimestampsObject["null"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsNull);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsnumber != null)
+                {
+                    lastMeasurementsTimestampsObject["number"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsnumber);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsObject != null)
+                {
+                    lastMeasurementsTimestampsObject["object"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsObject);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementspojo != null)
+                {
+                    lastMeasurementsTimestampsObject["pojo"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementspojo);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsShort != null)
+                {
+                    lastMeasurementsTimestampsObject["short"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsShort);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementstextual != null)
+                {
+                    lastMeasurementsTimestampsObject["textual"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementstextual);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsvalueNode != null)
+                {
+                    lastMeasurementsTimestampsObject["valueNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsvalueNode);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (lastMeasurementsTimestampsObjectpropCount > 0)
+                {
+                    thingRo["lastMeasurementsTimestamps"] = lastMeasurementsTimestampsObject;
+                    thingRopropCount++;
+                }
+
+                if (thingRolastMessageDate != null)
+                {
+                    thingRo["lastMessageDate"] = SourceExpressionConverter.ConvertToken(thingRolastMessageDate);
+                    thingRopropCount++;
+                }
+
+                if (thingRomessageActivityTimeoutPeriod != null)
+                {
+                    thingRo["messageActivityTimeoutPeriod"] = SourceExpressionConverter.ConvertToken(thingRomessageActivityTimeoutPeriod);
+                    thingRopropCount++;
+                }
+
                 thingRopropCount++;
-            }
-
-            var connectivityObject = new JObject();
-            var connectivityObjectpropCount = 0;
-            var additionalPropertiesObject = new JObject();
-            var additionalPropertiesObjectpropCount = 0;
-            if (additionalPropertiesObjectpropCount > 0)
-            {
-                connectivityObject["additionalProperties"] = additionalPropertiesObject;
-                connectivityObjectpropCount++;
-            }
-
-            if (thingRoconnectivityid != null)
-            {
-                connectivityObject["id"] = ExpressionConverter.ConvertO(thingRoconnectivityid);
-                connectivityObjectpropCount++;
-            }
-
-            if (thingRoconnectivityrawStatus != null)
-            {
-                connectivityObject["rawStatus"] = ExpressionConverter.ConvertO(thingRoconnectivityrawStatus);
-                connectivityObjectpropCount++;
-            }
-
-            if (thingRoconnectivitystatus != null)
-            {
-                connectivityObject["status"] = ExpressionConverter.ConvertO(thingRoconnectivitystatus);
-                connectivityObjectpropCount++;
-            }
-
-            if (thingRoconnectivitytype != null)
-            {
-                connectivityObject["type"] = ExpressionConverter.ConvertO(thingRoconnectivitytype);
-                connectivityObjectpropCount++;
-            }
-
-            if (connectivityObjectpropCount > 0)
-            {
-                thingRo["connectivity"] = connectivityObject;
-                thingRopropCount++;
-            }
-
-            if (thingRocustomFields != null)
-            {
-                thingRo["customFields"] = ExpressionConverter.ConvertO(thingRocustomFields);
-                thingRopropCount++;
-            }
-
-            var customModelObject = new JObject();
-            var customModelObjectpropCount = 0;
-            if (thingRocustomModelcolor != null)
-            {
-                customModelObject["color"] = ExpressionConverter.ConvertO(thingRocustomModelcolor);
-                customModelObjectpropCount++;
-            }
-
-            if (thingRocustomModelicon != null)
-            {
-                customModelObject["icon"] = ExpressionConverter.ConvertO(thingRocustomModelicon);
-                customModelObjectpropCount++;
-            }
-
-            if (thingRocustomModelid != null)
-            {
-                customModelObject["id"] = ExpressionConverter.ConvertO(thingRocustomModelid);
-                customModelObjectpropCount++;
-            }
-
-            if (thingRocustomModellink != null)
-            {
-                customModelObject["link"] = ExpressionConverter.ConvertO(thingRocustomModellink);
-                customModelObjectpropCount++;
-            }
-
-            if (thingRocustomModelname != null)
-            {
-                customModelObject["name"] = ExpressionConverter.ConvertO(thingRocustomModelname);
-                customModelObjectpropCount++;
-            }
-
-            if (customModelObjectpropCount > 0)
-            {
-                thingRo["customModel"] = customModelObject;
-                thingRopropCount++;
-            }
-
-            if (thingRodescription != null)
-            {
-                thingRo["description"] = ExpressionConverter.ConvertO(thingRodescription);
-                thingRopropCount++;
-            }
-
-            var deviceObject = new JObject();
-            var deviceObjectpropCount = 0;
-            if (thingRodevicebatteryLevel != null)
-            {
-                deviceObject["batteryLevel"] = ExpressionConverter.ConvertO(thingRodevicebatteryLevel);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicebatteryStatus != null)
-            {
-                deviceObject["batteryStatus"] = ExpressionConverter.ConvertO(thingRodevicebatteryStatus);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicedeviceType != null)
-            {
-                deviceObject["deviceType"] = ExpressionConverter.ConvertO(thingRodevicedeviceType);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodeviceid != null)
-            {
-                deviceObject["id"] = ExpressionConverter.ConvertO(thingRodeviceid);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicemanufacturer != null)
-            {
-                deviceObject["manufacturer"] = ExpressionConverter.ConvertO(thingRodevicemanufacturer);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicememoryFree != null)
-            {
-                deviceObject["memoryFree"] = ExpressionConverter.ConvertO(thingRodevicememoryFree);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicememoryTotal != null)
-            {
-                deviceObject["memoryTotal"] = ExpressionConverter.ConvertO(thingRodevicememoryTotal);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicemodel != null)
-            {
-                deviceObject["model"] = ExpressionConverter.ConvertO(thingRodevicemodel);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicemodelNumber != null)
-            {
-                deviceObject["modelNumber"] = ExpressionConverter.ConvertO(thingRodevicemodelNumber);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicename != null)
-            {
-                deviceObject["name"] = ExpressionConverter.ConvertO(thingRodevicename);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodeviceserialNumber != null)
-            {
-                deviceObject["serialNumber"] = ExpressionConverter.ConvertO(thingRodeviceserialNumber);
-                deviceObjectpropCount++;
-            }
-
-            if (thingRodevicestatus != null)
-            {
-                deviceObject["status"] = ExpressionConverter.ConvertO(thingRodevicestatus);
-                deviceObjectpropCount++;
-            }
-
-            if (deviceObjectpropCount > 0)
-            {
-                thingRo["device"] = deviceObject;
-                thingRopropCount++;
-            }
-
-            if (thingRodisplayName != null)
-            {
-                thingRo["displayName"] = ExpressionConverter.ConvertO(thingRodisplayName);
-                thingRopropCount++;
-            }
-
-            if (thingRodynamicGps != null)
-            {
-                thingRo["dynamicGps"] = ExpressionConverter.ConvertO(thingRodynamicGps);
-                thingRopropCount++;
-            }
-
-            if (thingRofixedLatitude != null)
-            {
-                thingRo["fixedLatitude"] = ExpressionConverter.ConvertO(thingRofixedLatitude);
-                thingRopropCount++;
-            }
-
-            if (thingRofixedLongitude != null)
-            {
-                thingRo["fixedLongitude"] = ExpressionConverter.ConvertO(thingRofixedLongitude);
-                thingRopropCount++;
-            }
-
-            if (thingRofixedName != null)
-            {
-                thingRo["fixedName"] = ExpressionConverter.ConvertO(thingRofixedName);
-                thingRopropCount++;
-            }
-
-            if (thingRoid != null)
-            {
-                thingRo["id"] = ExpressionConverter.ConvertO(thingRoid);
-                thingRopropCount++;
-            }
-
-            if (thingRolastActivityDate != null)
-            {
-                thingRo["lastActivityDate"] = ExpressionConverter.ConvertO(thingRolastActivityDate);
-                thingRopropCount++;
-            }
-
-            if (thingRolastLatitude != null)
-            {
-                thingRo["lastLatitude"] = ExpressionConverter.ConvertO(thingRolastLatitude);
-                thingRopropCount++;
-            }
-
-            if (thingRolastLongitude != null)
-            {
-                thingRo["lastLongitude"] = ExpressionConverter.ConvertO(thingRolastLongitude);
-                thingRopropCount++;
-            }
-
-            var lastMeasurementsObject = new JObject();
-            var lastMeasurementsObjectpropCount = 0;
-            if (thingRolastMeasurementsarray != null)
-            {
-                lastMeasurementsObject["array"] = ExpressionConverter.ConvertO(thingRolastMeasurementsarray);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbigDecimal != null)
-            {
-                lastMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigDecimal);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbigInteger != null)
-            {
-                lastMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigInteger);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbinary != null)
-            {
-                lastMeasurementsObject["binary"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbinary);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsboolean != null)
-            {
-                lastMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(thingRolastMeasurementsboolean);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementscontainerNode != null)
-            {
-                lastMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementscontainerNode);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsdouble != null)
-            {
-                lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(thingRolastMeasurementsdouble);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsfloat != null)
-            {
-                lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloat);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsfloatingPointNumber != null)
-            {
-                lastMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloatingPointNumber);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsint != null)
-            {
-                lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(thingRolastMeasurementsint);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsintegralNumber != null)
-            {
-                lastMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsintegralNumber);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsLong != null)
-            {
-                lastMeasurementsObject["long"] = ExpressionConverter.ConvertO(thingRolastMeasurementsLong);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsmissingNode != null)
-            {
-                lastMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsmissingNode);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnodeType != null)
-            {
-                lastMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnodeType);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnull != null)
-            {
-                lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnull);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnumber != null)
-            {
-                lastMeasurementsObject["number"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnumber);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsObject != null)
-            {
-                lastMeasurementsObject["object"] = ExpressionConverter.ConvertO(thingRolastMeasurementsObject);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementspojo != null)
-            {
-                lastMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(thingRolastMeasurementspojo);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsShort != null)
-            {
-                lastMeasurementsObject["short"] = ExpressionConverter.ConvertO(thingRolastMeasurementsShort);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementstextual != null)
-            {
-                lastMeasurementsObject["textual"] = ExpressionConverter.ConvertO(thingRolastMeasurementstextual);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsvalueNode != null)
-            {
-                lastMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsvalueNode);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (lastMeasurementsObjectpropCount > 0)
-            {
-                thingRo["lastMeasurements"] = lastMeasurementsObject;
-                thingRopropCount++;
-            }
-
-            var lastMeasurementsTimestampsObject = new JObject();
-            var lastMeasurementsTimestampsObjectpropCount = 0;
-            if (thingRolastMeasurementsarray != null)
-            {
-                lastMeasurementsTimestampsObject["array"] = ExpressionConverter.ConvertO(thingRolastMeasurementsarray);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbigDecimal != null)
-            {
-                lastMeasurementsTimestampsObject["bigDecimal"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigDecimal);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbigInteger != null)
-            {
-                lastMeasurementsTimestampsObject["bigInteger"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigInteger);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbinary != null)
-            {
-                lastMeasurementsTimestampsObject["binary"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbinary);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsboolean != null)
-            {
-                lastMeasurementsTimestampsObject["boolean"] = ExpressionConverter.ConvertO(thingRolastMeasurementsboolean);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementscontainerNode != null)
-            {
-                lastMeasurementsTimestampsObject["containerNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementscontainerNode);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsdouble != null)
-            {
-                lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(thingRolastMeasurementsdouble);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsfloat != null)
-            {
-                lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloat);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsfloatingPointNumber != null)
-            {
-                lastMeasurementsTimestampsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloatingPointNumber);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsint != null)
-            {
-                lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(thingRolastMeasurementsint);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsintegralNumber != null)
-            {
-                lastMeasurementsTimestampsObject["integralNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsintegralNumber);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsLong != null)
-            {
-                lastMeasurementsTimestampsObject["long"] = ExpressionConverter.ConvertO(thingRolastMeasurementsLong);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsmissingNode != null)
-            {
-                lastMeasurementsTimestampsObject["missingNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsmissingNode);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnodeType != null)
-            {
-                lastMeasurementsTimestampsObject["nodeType"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnodeType);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnull != null)
-            {
-                lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnull);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnumber != null)
-            {
-                lastMeasurementsTimestampsObject["number"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnumber);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsObject != null)
-            {
-                lastMeasurementsTimestampsObject["object"] = ExpressionConverter.ConvertO(thingRolastMeasurementsObject);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementspojo != null)
-            {
-                lastMeasurementsTimestampsObject["pojo"] = ExpressionConverter.ConvertO(thingRolastMeasurementspojo);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsShort != null)
-            {
-                lastMeasurementsTimestampsObject["short"] = ExpressionConverter.ConvertO(thingRolastMeasurementsShort);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementstextual != null)
-            {
-                lastMeasurementsTimestampsObject["textual"] = ExpressionConverter.ConvertO(thingRolastMeasurementstextual);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsvalueNode != null)
-            {
-                lastMeasurementsTimestampsObject["valueNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsvalueNode);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (lastMeasurementsTimestampsObjectpropCount > 0)
-            {
-                thingRo["lastMeasurementsTimestamps"] = lastMeasurementsTimestampsObject;
-                thingRopropCount++;
-            }
-
-            if (thingRolastMessageDate != null)
-            {
-                thingRo["lastMessageDate"] = ExpressionConverter.ConvertO(thingRolastMessageDate);
-                thingRopropCount++;
-            }
-
-            if (thingRomessageActivityTimeoutPeriod != null)
-            {
-                thingRo["messageActivityTimeoutPeriod"] = ExpressionConverter.ConvertO(thingRomessageActivityTimeoutPeriod);
-                thingRopropCount++;
-            }
-
-            thingRopropCount++;
-            thingRo["name"] = ExpressionConverter.ConvertO(thingRoname);
-            if (thingRonbAlerts != null)
-            {
-                thingRo["nbAlerts"] = ExpressionConverter.ConvertO(thingRonbAlerts);
-                thingRopropCount++;
-            }
-
-            var productObject = new JObject();
-            var productObjectpropCount = 0;
-            if (thingRoproductconnectivityTypes != null)
-            {
-                productObject["connectivityTypes"] = ExpressionConverter.ConvertO(thingRoproductconnectivityTypes);
-                productObjectpropCount++;
-            }
-
-            if (thingRoproductgenerateLinks != null)
-            {
-                productObject["generateLinks"] = ExpressionConverter.ConvertO(thingRoproductgenerateLinks);
-                productObjectpropCount++;
-            }
-
-            if (thingRoproductid != null)
-            {
-                productObject["id"] = ExpressionConverter.ConvertO(thingRoproductid);
-                productObjectpropCount++;
-            }
-
-            if (thingRoproductlink != null)
-            {
-                productObject["link"] = ExpressionConverter.ConvertO(thingRoproductlink);
-                productObjectpropCount++;
-            }
-
-            var manufacturerObject = new JObject();
-            var manufacturerObjectpropCount = 0;
-            if (thingRoproductmanufacturergenerateLinks != null)
-            {
-                manufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(thingRoproductmanufacturergenerateLinks);
-                manufacturerObjectpropCount++;
-            }
-
-            if (thingRoproductmanufacturerid != null)
-            {
-                manufacturerObject["id"] = ExpressionConverter.ConvertO(thingRoproductmanufacturerid);
-                manufacturerObjectpropCount++;
-            }
-
-            if (thingRoproductmanufacturerlink != null)
-            {
-                manufacturerObject["link"] = ExpressionConverter.ConvertO(thingRoproductmanufacturerlink);
-                manufacturerObjectpropCount++;
-            }
-
-            if (thingRoproductmanufacturername != null)
-            {
-                manufacturerObject["name"] = ExpressionConverter.ConvertO(thingRoproductmanufacturername);
-                manufacturerObjectpropCount++;
-            }
-
-            if (manufacturerObjectpropCount > 0)
-            {
-                productObject["manufacturer"] = manufacturerObject;
-                productObjectpropCount++;
-            }
-
-            var modelObject = new JObject();
-            var modelObjectpropCount = 0;
-            if (thingRoproductmodelcolor != null)
-            {
-                modelObject["color"] = ExpressionConverter.ConvertO(thingRoproductmodelcolor);
-                modelObjectpropCount++;
-            }
-
-            if (thingRoproductmodelgenerateLinks != null)
-            {
-                modelObject["generateLinks"] = ExpressionConverter.ConvertO(thingRoproductmodelgenerateLinks);
-                modelObjectpropCount++;
-            }
-
-            if (thingRoproductmodelicon != null)
-            {
-                modelObject["icon"] = ExpressionConverter.ConvertO(thingRoproductmodelicon);
-                modelObjectpropCount++;
-            }
-
-            if (thingRoproductmodelid != null)
-            {
-                modelObject["id"] = ExpressionConverter.ConvertO(thingRoproductmodelid);
-                modelObjectpropCount++;
-            }
-
-            if (thingRoproductmodelisCustomModel != null)
-            {
-                modelObject["isCustomModel"] = ExpressionConverter.ConvertO(thingRoproductmodelisCustomModel);
-                modelObjectpropCount++;
-            }
-
-            var linkObject = new JObject();
-            var linkObjectpropCount = 0;
-            if (thingRoproductmodellinkabsolute != null)
-            {
-                linkObject["absolute"] = ExpressionConverter.ConvertO(thingRoproductmodellinkabsolute);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkauthority != null)
-            {
-                linkObject["authority"] = ExpressionConverter.ConvertO(thingRoproductmodellinkauthority);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkfragment != null)
-            {
-                linkObject["fragment"] = ExpressionConverter.ConvertO(thingRoproductmodellinkfragment);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkhost != null)
-            {
-                linkObject["host"] = ExpressionConverter.ConvertO(thingRoproductmodellinkhost);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkopaque != null)
-            {
-                linkObject["opaque"] = ExpressionConverter.ConvertO(thingRoproductmodellinkopaque);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkpath != null)
-            {
-                linkObject["path"] = ExpressionConverter.ConvertO(thingRoproductmodellinkpath);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkport != null)
-            {
-                linkObject["port"] = ExpressionConverter.ConvertO(thingRoproductmodellinkport);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkquery != null)
-            {
-                linkObject["query"] = ExpressionConverter.ConvertO(thingRoproductmodellinkquery);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkrawAuthority != null)
-            {
-                linkObject["rawAuthority"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawAuthority);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkrawFragment != null)
-            {
-                linkObject["rawFragment"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawFragment);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkrawPath != null)
-            {
-                linkObject["rawPath"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawPath);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkrawQuery != null)
-            {
-                linkObject["rawQuery"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawQuery);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkrawSchemeSpecificPart != null)
-            {
-                linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawSchemeSpecificPart);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkrawUserInfo != null)
-            {
-                linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(thingRoproductmodellinkrawUserInfo);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkscheme != null)
-            {
-                linkObject["scheme"] = ExpressionConverter.ConvertO(thingRoproductmodellinkscheme);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkschemeSpecificPart != null)
-            {
-                linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(thingRoproductmodellinkschemeSpecificPart);
-                linkObjectpropCount++;
-            }
-
-            if (thingRoproductmodellinkuserInfo != null)
-            {
-                linkObject["userInfo"] = ExpressionConverter.ConvertO(thingRoproductmodellinkuserInfo);
-                linkObjectpropCount++;
-            }
-
-            if (linkObjectpropCount > 0)
-            {
-                modelObject["link"] = linkObject;
-                modelObjectpropCount++;
-            }
-
-            if (thingRoproductmodelname != null)
-            {
-                modelObject["name"] = ExpressionConverter.ConvertO(thingRoproductmodelname);
-                modelObjectpropCount++;
-            }
-
-            if (modelObjectpropCount > 0)
-            {
-                productObject["model"] = modelObject;
-                productObjectpropCount++;
-            }
-
-            if (thingRoproductname != null)
-            {
-                productObject["name"] = ExpressionConverter.ConvertO(thingRoproductname);
-                productObjectpropCount++;
-            }
-
-            if (thingRoproductreference != null)
-            {
-                productObject["reference"] = ExpressionConverter.ConvertO(thingRoproductreference);
-                productObjectpropCount++;
-            }
-
-            if (productObjectpropCount > 0)
-            {
-                thingRo["product"] = productObject;
-                thingRopropCount++;
-            }
-
-            var siteObject = new JObject();
-            var siteObjectpropCount = 0;
-            siteObjectpropCount++;
-            siteObject["address"] = ExpressionConverter.ConvertO(thingRositeaddress);
-            siteObjectpropCount++;
-            siteObject["city"] = ExpressionConverter.ConvertO(thingRositecity);
-            if (thingRositeid != null)
-            {
-                siteObject["id"] = ExpressionConverter.ConvertO(thingRositeid);
+                thingRo["name"] = SourceExpressionConverter.ConvertToken(thingRoname);
+                if (thingRonbAlerts != null)
+                {
+                    thingRo["nbAlerts"] = SourceExpressionConverter.ConvertToken(thingRonbAlerts);
+                    thingRopropCount++;
+                }
+
+                var productObject = new JObject();
+                var productObjectpropCount = 0;
+                if (thingRoproductconnectivityTypes != null)
+                {
+                    productObject["connectivityTypes"] = SourceExpressionConverter.ConvertToken(thingRoproductconnectivityTypes);
+                    productObjectpropCount++;
+                }
+
+                if (thingRoproductgenerateLinks != null)
+                {
+                    productObject["generateLinks"] = SourceExpressionConverter.ConvertToken(thingRoproductgenerateLinks);
+                    productObjectpropCount++;
+                }
+
+                if (thingRoproductid != null)
+                {
+                    productObject["id"] = SourceExpressionConverter.ConvertToken(thingRoproductid);
+                    productObjectpropCount++;
+                }
+
+                if (thingRoproductlink != null)
+                {
+                    productObject["link"] = SourceExpressionConverter.ConvertToken(thingRoproductlink);
+                    productObjectpropCount++;
+                }
+
+                var manufacturerObject = new JObject();
+                var manufacturerObjectpropCount = 0;
+                if (thingRoproductmanufacturergenerateLinks != null)
+                {
+                    manufacturerObject["generateLinks"] = SourceExpressionConverter.ConvertToken(thingRoproductmanufacturergenerateLinks);
+                    manufacturerObjectpropCount++;
+                }
+
+                if (thingRoproductmanufacturerid != null)
+                {
+                    manufacturerObject["id"] = SourceExpressionConverter.ConvertToken(thingRoproductmanufacturerid);
+                    manufacturerObjectpropCount++;
+                }
+
+                if (thingRoproductmanufacturerlink != null)
+                {
+                    manufacturerObject["link"] = SourceExpressionConverter.ConvertToken(thingRoproductmanufacturerlink);
+                    manufacturerObjectpropCount++;
+                }
+
+                if (thingRoproductmanufacturername != null)
+                {
+                    manufacturerObject["name"] = SourceExpressionConverter.ConvertToken(thingRoproductmanufacturername);
+                    manufacturerObjectpropCount++;
+                }
+
+                if (manufacturerObjectpropCount > 0)
+                {
+                    productObject["manufacturer"] = manufacturerObject;
+                    productObjectpropCount++;
+                }
+
+                var modelObject = new JObject();
+                var modelObjectpropCount = 0;
+                if (thingRoproductmodelcolor != null)
+                {
+                    modelObject["color"] = SourceExpressionConverter.ConvertToken(thingRoproductmodelcolor);
+                    modelObjectpropCount++;
+                }
+
+                if (thingRoproductmodelgenerateLinks != null)
+                {
+                    modelObject["generateLinks"] = SourceExpressionConverter.ConvertToken(thingRoproductmodelgenerateLinks);
+                    modelObjectpropCount++;
+                }
+
+                if (thingRoproductmodelicon != null)
+                {
+                    modelObject["icon"] = SourceExpressionConverter.ConvertToken(thingRoproductmodelicon);
+                    modelObjectpropCount++;
+                }
+
+                if (thingRoproductmodelid != null)
+                {
+                    modelObject["id"] = SourceExpressionConverter.ConvertToken(thingRoproductmodelid);
+                    modelObjectpropCount++;
+                }
+
+                if (thingRoproductmodelisCustomModel != null)
+                {
+                    modelObject["isCustomModel"] = SourceExpressionConverter.ConvertToken(thingRoproductmodelisCustomModel);
+                    modelObjectpropCount++;
+                }
+
+                var linkObject = new JObject();
+                var linkObjectpropCount = 0;
+                if (thingRoproductmodellinkabsolute != null)
+                {
+                    linkObject["absolute"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkabsolute);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkauthority != null)
+                {
+                    linkObject["authority"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkauthority);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkfragment != null)
+                {
+                    linkObject["fragment"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkfragment);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkhost != null)
+                {
+                    linkObject["host"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkhost);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkopaque != null)
+                {
+                    linkObject["opaque"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkopaque);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkpath != null)
+                {
+                    linkObject["path"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkpath);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkport != null)
+                {
+                    linkObject["port"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkport);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkquery != null)
+                {
+                    linkObject["query"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkquery);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkrawAuthority != null)
+                {
+                    linkObject["rawAuthority"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkrawAuthority);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkrawFragment != null)
+                {
+                    linkObject["rawFragment"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkrawFragment);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkrawPath != null)
+                {
+                    linkObject["rawPath"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkrawPath);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkrawQuery != null)
+                {
+                    linkObject["rawQuery"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkrawQuery);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkrawSchemeSpecificPart != null)
+                {
+                    linkObject["rawSchemeSpecificPart"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkrawSchemeSpecificPart);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkrawUserInfo != null)
+                {
+                    linkObject["rawUserInfo"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkrawUserInfo);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkscheme != null)
+                {
+                    linkObject["scheme"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkscheme);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkschemeSpecificPart != null)
+                {
+                    linkObject["schemeSpecificPart"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkschemeSpecificPart);
+                    linkObjectpropCount++;
+                }
+
+                if (thingRoproductmodellinkuserInfo != null)
+                {
+                    linkObject["userInfo"] = SourceExpressionConverter.ConvertToken(thingRoproductmodellinkuserInfo);
+                    linkObjectpropCount++;
+                }
+
+                if (linkObjectpropCount > 0)
+                {
+                    modelObject["link"] = linkObject;
+                    modelObjectpropCount++;
+                }
+
+                if (thingRoproductmodelname != null)
+                {
+                    modelObject["name"] = SourceExpressionConverter.ConvertToken(thingRoproductmodelname);
+                    modelObjectpropCount++;
+                }
+
+                if (modelObjectpropCount > 0)
+                {
+                    productObject["model"] = modelObject;
+                    productObjectpropCount++;
+                }
+
+                if (thingRoproductname != null)
+                {
+                    productObject["name"] = SourceExpressionConverter.ConvertToken(thingRoproductname);
+                    productObjectpropCount++;
+                }
+
+                if (thingRoproductreference != null)
+                {
+                    productObject["reference"] = SourceExpressionConverter.ConvertToken(thingRoproductreference);
+                    productObjectpropCount++;
+                }
+
+                if (productObjectpropCount > 0)
+                {
+                    thingRo["product"] = productObject;
+                    thingRopropCount++;
+                }
+
+                var siteObject = new JObject();
+                var siteObjectpropCount = 0;
                 siteObjectpropCount++;
-            }
-
-            if (thingRositelatitude != null)
-            {
-                siteObject["latitude"] = ExpressionConverter.ConvertO(thingRositelatitude);
+                siteObject["address"] = SourceExpressionConverter.ConvertToken(thingRositeaddress);
                 siteObjectpropCount++;
-            }
+                siteObject["city"] = SourceExpressionConverter.ConvertToken(thingRositecity);
+                if (thingRositeid != null)
+                {
+                    siteObject["id"] = SourceExpressionConverter.ConvertToken(thingRositeid);
+                    siteObjectpropCount++;
+                }
 
-            if (thingRositelongitude != null)
-            {
-                siteObject["longitude"] = ExpressionConverter.ConvertO(thingRositelongitude);
+                if (thingRositelatitude != null)
+                {
+                    siteObject["latitude"] = SourceExpressionConverter.ConvertToken(thingRositelatitude);
+                    siteObjectpropCount++;
+                }
+
+                if (thingRositelongitude != null)
+                {
+                    siteObject["longitude"] = SourceExpressionConverter.ConvertToken(thingRositelongitude);
+                    siteObjectpropCount++;
+                }
+
                 siteObjectpropCount++;
+                siteObject["name"] = SourceExpressionConverter.ConvertToken(thingRositename);
+                siteObjectpropCount++;
+                siteObject["postalCode"] = SourceExpressionConverter.ConvertToken(thingRositepostalCode);
+                if (siteObjectpropCount > 0)
+                {
+                    thingRo["site"] = siteObject;
+                    thingRopropCount++;
+                }
+
+                if (thingRosourceId != null)
+                {
+                    thingRo["sourceId"] = SourceExpressionConverter.ConvertToken(thingRosourceId);
+                    thingRopropCount++;
+                }
+
+                if (thingRostatus != null)
+                {
+                    thingRo["status"] = SourceExpressionConverter.Convert(thingRostatus);
+                    thingRopropCount++;
+                }
+
+                if (thingRotags != null)
+                {
+                    thingRo["tags"] = SourceExpressionConverter.ConvertToken(thingRotags);
+                    thingRopropCount++;
+                }
+
+                if (thingRopropCount > 0)
+                {
+                    callPayload.Body = thingRo;
+                }
+                return callPayload;
             }
 
-            siteObjectpropCount++;
-            siteObject["name"] = ExpressionConverter.ConvertO(thingRositename);
-            siteObjectpropCount++;
-            siteObject["postalCode"] = ExpressionConverter.ConvertO(thingRositepostalCode);
-            if (siteObjectpropCount > 0)
-            {
-                thingRo["site"] = siteObject;
-                thingRopropCount++;
-            }
-
-            if (thingRosourceId != null)
-            {
-                thingRo["sourceId"] = ExpressionConverter.ConvertO(thingRosourceId);
-                thingRopropCount++;
-            }
-
-            if (thingRostatus != null)
-            {
-                thingRo["status"] = ExpressionConverter.ConvertO(thingRostatus);
-                thingRopropCount++;
-            }
-
-            if (thingRotags != null)
-            {
-                thingRo["tags"] = ExpressionConverter.ConvertO(thingRotags);
-                thingRopropCount++;
-            }
-
-            if (thingRopropCount > 0)
-            {
-                callPayload.Body = thingRo;
-            }
-
-            return new ApiConnectionAction<ThingRo>(callPayload);
+            return new ApiConnectionAction<ThingRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ModelRo> GetThingActiveModel(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ModelRo> GetThingActiveModel([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/things/{0}/active_model", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/active_model", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ModelRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageCustomFieldRo> GetCustomField(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PageCustomFieldRo> GetCustomField([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PageCustomFieldRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageCustomFieldRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<CustomFieldRo> CreateCustomField(Expression<Func<string>> id, Expression<Func<string>> customFieldRoid = null, Expression<Func<string>> customFieldRoimageLink = null, Expression<Func<string>> customFieldRolabel = null, Expression<Func<string>> customFieldRoname = null, Expression<Func<customFieldRotypeInput>> customFieldRotype = null, Expression<Func<string>> customFieldRovalue = null)
+        public IBodyWorkflowAction<CustomFieldRo> CreateCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> customFieldRoid = null, [WorkflowExpression] Func<string> customFieldRoimageLink = null, [WorkflowExpression] Func<string> customFieldRolabel = null, [WorkflowExpression] Func<string> customFieldRoname = null, [WorkflowExpression] Func<customFieldRotypeInput> customFieldRotype = null, [WorkflowExpression] Func<string> customFieldRovalue = null)
         {
-            var apiCallPath = String.Format("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var customFieldRo = new JObject();
-            var customFieldRopropCount = 0;
-            if (customFieldRoid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                customFieldRo["id"] = ExpressionConverter.ConvertO(customFieldRoid);
-                customFieldRopropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var customFieldRo = new JObject();
+                var customFieldRopropCount = 0;
+                if (customFieldRoid != null)
+                {
+                    customFieldRo["id"] = SourceExpressionConverter.ConvertToken(customFieldRoid);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRoimageLink != null)
+                {
+                    customFieldRo["imageLink"] = SourceExpressionConverter.ConvertToken(customFieldRoimageLink);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRolabel != null)
+                {
+                    customFieldRo["label"] = SourceExpressionConverter.ConvertToken(customFieldRolabel);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRoname != null)
+                {
+                    customFieldRo["name"] = SourceExpressionConverter.ConvertToken(customFieldRoname);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRotype != null)
+                {
+                    customFieldRo["type"] = SourceExpressionConverter.Convert(customFieldRotype);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRovalue != null)
+                {
+                    customFieldRo["value"] = SourceExpressionConverter.ConvertToken(customFieldRovalue);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRopropCount > 0)
+                {
+                    callPayload.Body = customFieldRo;
+                }
+                return callPayload;
             }
 
-            if (customFieldRoimageLink != null)
-            {
-                customFieldRo["imageLink"] = ExpressionConverter.ConvertO(customFieldRoimageLink);
-                customFieldRopropCount++;
-            }
-
-            if (customFieldRolabel != null)
-            {
-                customFieldRo["label"] = ExpressionConverter.ConvertO(customFieldRolabel);
-                customFieldRopropCount++;
-            }
-
-            if (customFieldRoname != null)
-            {
-                customFieldRo["name"] = ExpressionConverter.ConvertO(customFieldRoname);
-                customFieldRopropCount++;
-            }
-
-            if (customFieldRotype != null)
-            {
-                customFieldRo["type"] = ExpressionConverter.ConvertO(customFieldRotype);
-                customFieldRopropCount++;
-            }
-
-            if (customFieldRovalue != null)
-            {
-                customFieldRo["value"] = ExpressionConverter.ConvertO(customFieldRovalue);
-                customFieldRopropCount++;
-            }
-
-            if (customFieldRopropCount > 0)
-            {
-                callPayload.Body = customFieldRo;
-            }
-
-            return new ApiConnectionAction<CustomFieldRo>(callPayload);
+            return new ApiConnectionAction<CustomFieldRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<CustomFieldRo> UpdateCustomField(Expression<Func<string>> id, Expression<Func<string>> customFieldRoid = null, Expression<Func<string>> customFieldRoimageLink = null, Expression<Func<string>> customFieldRolabel = null, Expression<Func<string>> customFieldRoname = null, Expression<Func<customFieldRotypeInput>> customFieldRotype = null, Expression<Func<string>> customFieldRovalue = null)
+        public IBodyWorkflowAction<CustomFieldRo> UpdateCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> customFieldRoid = null, [WorkflowExpression] Func<string> customFieldRoimageLink = null, [WorkflowExpression] Func<string> customFieldRolabel = null, [WorkflowExpression] Func<string> customFieldRoname = null, [WorkflowExpression] Func<customFieldRotypeInput> customFieldRotype = null, [WorkflowExpression] Func<string> customFieldRovalue = null)
         {
-            var apiCallPath = String.Format("/api/things/{0}/custom_fields", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var customFieldRo = new JObject();
-            var customFieldRopropCount = 0;
-            if (customFieldRoid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                customFieldRo["id"] = ExpressionConverter.ConvertO(customFieldRoid);
-                customFieldRopropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var customFieldRo = new JObject();
+                var customFieldRopropCount = 0;
+                if (customFieldRoid != null)
+                {
+                    customFieldRo["id"] = SourceExpressionConverter.ConvertToken(customFieldRoid);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRoimageLink != null)
+                {
+                    customFieldRo["imageLink"] = SourceExpressionConverter.ConvertToken(customFieldRoimageLink);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRolabel != null)
+                {
+                    customFieldRo["label"] = SourceExpressionConverter.ConvertToken(customFieldRolabel);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRoname != null)
+                {
+                    customFieldRo["name"] = SourceExpressionConverter.ConvertToken(customFieldRoname);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRotype != null)
+                {
+                    customFieldRo["type"] = SourceExpressionConverter.Convert(customFieldRotype);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRovalue != null)
+                {
+                    customFieldRo["value"] = SourceExpressionConverter.ConvertToken(customFieldRovalue);
+                    customFieldRopropCount++;
+                }
+
+                if (customFieldRopropCount > 0)
+                {
+                    callPayload.Body = customFieldRo;
+                }
+                return callPayload;
             }
 
-            if (customFieldRoimageLink != null)
+            return new ApiConnectionAction<CustomFieldRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<ResponseEntity> DeleteCustomField([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fieldId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                customFieldRo["imageLink"] = ExpressionConverter.ConvertO(customFieldRoimageLink);
-                customFieldRopropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (customFieldRolabel != null)
+            return new ApiConnectionAction<ResponseEntity>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<ResponseEntity> GetCustomFieldImage([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fieldId)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                customFieldRo["label"] = ExpressionConverter.ConvertO(customFieldRolabel);
-                customFieldRopropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/custom_fields/{1}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (customFieldRoname != null)
+            return new ApiConnectionAction<ResponseEntity>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<ResponseEntity> GetThingImage([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                customFieldRo["name"] = ExpressionConverter.ConvertO(customFieldRoname);
-                customFieldRopropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (customFieldRotype != null)
+            return new ApiConnectionAction<ResponseEntity>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<MeasureTinyRo[]> GetLastMeasures([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                customFieldRo["type"] = ExpressionConverter.ConvertO(customFieldRotype);
-                customFieldRopropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_measurements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (customFieldRovalue != null)
+            return new ApiConnectionAction<MeasureTinyRo[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<MessageTinyRo> GetLastMessage([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                customFieldRo["value"] = ExpressionConverter.ConvertO(customFieldRovalue);
-                customFieldRopropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/last_message", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (customFieldRopropCount > 0)
+            return new ApiConnectionAction<MessageTinyRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<PageMeasureRo> GetThingMeasures([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> detailed = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = customFieldRo;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/measures", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["detailed"] = Convert.ToString(false);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CustomFieldRo>(callPayload);
+            return new ApiConnectionAction<PageMeasureRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity> DeleteCustomField(Expression<Func<string>> id, Expression<Func<string>> fieldId)
+        public IBodyWorkflowAction<PageMessageRo> GetThingMessages([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            var apiCallPath = String.Format("/api/things/{0}/custom_fields/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResponseEntity>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity> GetCustomFieldImage(Expression<Func<string>> id, Expression<Func<string>> fieldId)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/custom_fields/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResponseEntity>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity> PostCustomFieldImage(Expression<Func<string>> id, Expression<Func<string>> fieldId, Expression<Func<object>> file)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/custom_fields/{1}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResponseEntity>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity> GetThingImage(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/image", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ResponseEntity>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MeasureTinyRo[]> GetLastMeasures(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/last_measurements", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MeasureTinyRo[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageTinyRo> GetLastMessage(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/last_message", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MessageTinyRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMeasureRo> GetThingMeasures(Expression<Func<string>> id, Expression<Func<bool>> detailed = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/measures", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["detailed"] = Convert.ToString(false);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = ExpressionConverter.Convert(detailed);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageMeasureRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageMessageRo> GetThingMessages(Expression<Func<string>> id, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageMessageRo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IWorkflowAction DeleteThingMessages(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<MessageRo> CreateThingMessages(Expression<Func<string>> id, Expression<Func<string>> messageRobody, Expression<Func<string>> messageRocreationDate, Expression<Func<string>> messageRoerrorMessage, Expression<Func<double>> messageRolatitude, Expression<Func<double>> messageRolongitude, Expression<Func<string>> messageRometadata, Expression<Func<int>> messageRonumber, Expression<Func<messageRoprocessedInput>> messageRoprocessed, Expression<Func<string>> messageRothingname, Expression<Func<string>> messageRotimestamp, Expression<Func<string>> messageRotopic, Expression<Func<string>> messageRoid = null, Expression<Func<bool>> messageRolinkabsolute = null, Expression<Func<string>> messageRolinkauthority = null, Expression<Func<string>> messageRolinkfragment = null, Expression<Func<string>> messageRolinkhost = null, Expression<Func<bool>> messageRolinkopaque = null, Expression<Func<string>> messageRolinkpath = null, Expression<Func<int>> messageRolinkport = null, Expression<Func<string>> messageRolinkquery = null, Expression<Func<string>> messageRolinkrawAuthority = null, Expression<Func<string>> messageRolinkrawFragment = null, Expression<Func<string>> messageRolinkrawPath = null, Expression<Func<string>> messageRolinkrawQuery = null, Expression<Func<string>> messageRolinkrawSchemeSpecificPart = null, Expression<Func<string>> messageRolinkrawUserInfo = null, Expression<Func<string>> messageRolinkscheme = null, Expression<Func<string>> messageRolinkschemeSpecificPart = null, Expression<Func<string>> messageRolinkuserInfo = null, Expression<Func<bool>> messageRomeasurementsarray = null, Expression<Func<bool>> messageRomeasurementsbigDecimal = null, Expression<Func<bool>> messageRomeasurementsbigInteger = null, Expression<Func<bool>> messageRomeasurementsbinary = null, Expression<Func<bool>> messageRomeasurementsboolean = null, Expression<Func<bool>> messageRomeasurementscontainerNode = null, Expression<Func<bool>> messageRomeasurementsdouble = null, Expression<Func<bool>> messageRomeasurementsfloat = null, Expression<Func<bool>> messageRomeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRomeasurementsint = null, Expression<Func<bool>> messageRomeasurementsintegralNumber = null, Expression<Func<bool>> messageRomeasurementsLong = null, Expression<Func<bool>> messageRomeasurementsmissingNode = null, Expression<Func<messageRomeasurementsnodeTypeInput>> messageRomeasurementsnodeType = null, Expression<Func<bool>> messageRomeasurementsnull = null, Expression<Func<bool>> messageRomeasurementsnumber = null, Expression<Func<bool>> messageRomeasurementsObject = null, Expression<Func<bool>> messageRomeasurementspojo = null, Expression<Func<bool>> messageRomeasurementsShort = null, Expression<Func<bool>> messageRomeasurementstextual = null, Expression<Func<bool>> messageRomeasurementsvalueNode = null, Expression<Func<bool>> messageRorawMeasurementsarray = null, Expression<Func<bool>> messageRorawMeasurementsbigDecimal = null, Expression<Func<bool>> messageRorawMeasurementsbigInteger = null, Expression<Func<bool>> messageRorawMeasurementsbinary = null, Expression<Func<bool>> messageRorawMeasurementsboolean = null, Expression<Func<bool>> messageRorawMeasurementscontainerNode = null, Expression<Func<bool>> messageRorawMeasurementsdouble = null, Expression<Func<bool>> messageRorawMeasurementsfloat = null, Expression<Func<bool>> messageRorawMeasurementsfloatingPointNumber = null, Expression<Func<bool>> messageRorawMeasurementsint = null, Expression<Func<bool>> messageRorawMeasurementsintegralNumber = null, Expression<Func<bool>> messageRorawMeasurementsLong = null, Expression<Func<bool>> messageRorawMeasurementsmissingNode = null, Expression<Func<messageRorawMeasurementsnodeTypeInput>> messageRorawMeasurementsnodeType = null, Expression<Func<bool>> messageRorawMeasurementsnull = null, Expression<Func<bool>> messageRorawMeasurementsnumber = null, Expression<Func<bool>> messageRorawMeasurementsObject = null, Expression<Func<bool>> messageRorawMeasurementspojo = null, Expression<Func<bool>> messageRorawMeasurementsShort = null, Expression<Func<bool>> messageRorawMeasurementstextual = null, Expression<Func<bool>> messageRorawMeasurementsvalueNode = null, Expression<Func<string>> messageRothingdisplayName = null, Expression<Func<string>> messageRothingfixedName = null, Expression<Func<string>> messageRothingid = null, Expression<Func<int>> messageRothingnbAlerts = null, Expression<Func<ThingTagRo[]>> messageRothingtags = null)
-        {
-            var apiCallPath = String.Format("/api/things/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var messageRo = new JObject();
-            var messageRopropCount = 0;
-            messageRopropCount++;
-            messageRo["body"] = ExpressionConverter.ConvertO(messageRobody);
-            messageRopropCount++;
-            messageRo["creationDate"] = ExpressionConverter.ConvertO(messageRocreationDate);
-            messageRopropCount++;
-            messageRo["errorMessage"] = ExpressionConverter.ConvertO(messageRoerrorMessage);
-            if (messageRoid != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                messageRo["id"] = ExpressionConverter.ConvertO(messageRoid);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageMessageRo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IWorkflowAction DeleteThingMessages([WorkflowExpression] Func<string> id)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
+        public IBodyWorkflowAction<MessageRo> CreateThingMessages([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> messageRobody, [WorkflowExpression] Func<string> messageRocreationDate, [WorkflowExpression] Func<string> messageRoerrorMessage, [WorkflowExpression] Func<double> messageRolatitude, [WorkflowExpression] Func<double> messageRolongitude, [WorkflowExpression] Func<string> messageRometadata, [WorkflowExpression] Func<int> messageRonumber, [WorkflowExpression] Func<messageRoprocessedInput> messageRoprocessed, [WorkflowExpression] Func<string> messageRothingname, [WorkflowExpression] Func<string> messageRotimestamp, [WorkflowExpression] Func<string> messageRotopic, [WorkflowExpression] Func<string> messageRoid = null, [WorkflowExpression] Func<bool> messageRolinkabsolute = null, [WorkflowExpression] Func<string> messageRolinkauthority = null, [WorkflowExpression] Func<string> messageRolinkfragment = null, [WorkflowExpression] Func<string> messageRolinkhost = null, [WorkflowExpression] Func<bool> messageRolinkopaque = null, [WorkflowExpression] Func<string> messageRolinkpath = null, [WorkflowExpression] Func<int> messageRolinkport = null, [WorkflowExpression] Func<string> messageRolinkquery = null, [WorkflowExpression] Func<string> messageRolinkrawAuthority = null, [WorkflowExpression] Func<string> messageRolinkrawFragment = null, [WorkflowExpression] Func<string> messageRolinkrawPath = null, [WorkflowExpression] Func<string> messageRolinkrawQuery = null, [WorkflowExpression] Func<string> messageRolinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkrawUserInfo = null, [WorkflowExpression] Func<string> messageRolinkscheme = null, [WorkflowExpression] Func<string> messageRolinkschemeSpecificPart = null, [WorkflowExpression] Func<string> messageRolinkuserInfo = null, [WorkflowExpression] Func<bool> messageRomeasurementsarray = null, [WorkflowExpression] Func<bool> messageRomeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRomeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRomeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRomeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRomeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRomeasurementsDouble = null, [WorkflowExpression] Func<bool> messageRomeasurementsFloat = null, [WorkflowExpression] Func<bool> messageRomeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsInt = null, [WorkflowExpression] Func<bool> messageRomeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsLong = null, [WorkflowExpression] Func<bool> messageRomeasurementsmissingNode = null, [WorkflowExpression] Func<messageRomeasurementsnodeTypeInput> messageRomeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRomeasurementsNull = null, [WorkflowExpression] Func<bool> messageRomeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRomeasurementsObject = null, [WorkflowExpression] Func<bool> messageRomeasurementspojo = null, [WorkflowExpression] Func<bool> messageRomeasurementsShort = null, [WorkflowExpression] Func<bool> messageRomeasurementstextual = null, [WorkflowExpression] Func<bool> messageRomeasurementsvalueNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsarray = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsbinary = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsboolean = null, [WorkflowExpression] Func<bool> messageRorawMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsDouble = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsFloat = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsInt = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsLong = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsmissingNode = null, [WorkflowExpression] Func<messageRorawMeasurementsnodeTypeInput> messageRorawMeasurementsnodeType = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsNull = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsnumber = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsObject = null, [WorkflowExpression] Func<bool> messageRorawMeasurementspojo = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsShort = null, [WorkflowExpression] Func<bool> messageRorawMeasurementstextual = null, [WorkflowExpression] Func<bool> messageRorawMeasurementsvalueNode = null, [WorkflowExpression] Func<string> messageRothingdisplayName = null, [WorkflowExpression] Func<string> messageRothingfixedName = null, [WorkflowExpression] Func<string> messageRothingid = null, [WorkflowExpression] Func<int> messageRothingnbAlerts = null, [WorkflowExpression] Func<ThingTagRo[]> messageRothingtags = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var messageRo = new JObject();
+                var messageRopropCount = 0;
                 messageRopropCount++;
-            }
-
-            messageRopropCount++;
-            messageRo["latitude"] = ExpressionConverter.ConvertO(messageRolatitude);
-            var linkObject = new JObject();
-            var linkObjectpropCount = 0;
-            if (messageRolinkabsolute != null)
-            {
-                linkObject["absolute"] = ExpressionConverter.ConvertO(messageRolinkabsolute);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkauthority != null)
-            {
-                linkObject["authority"] = ExpressionConverter.ConvertO(messageRolinkauthority);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkfragment != null)
-            {
-                linkObject["fragment"] = ExpressionConverter.ConvertO(messageRolinkfragment);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkhost != null)
-            {
-                linkObject["host"] = ExpressionConverter.ConvertO(messageRolinkhost);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkopaque != null)
-            {
-                linkObject["opaque"] = ExpressionConverter.ConvertO(messageRolinkopaque);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkpath != null)
-            {
-                linkObject["path"] = ExpressionConverter.ConvertO(messageRolinkpath);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkport != null)
-            {
-                linkObject["port"] = ExpressionConverter.ConvertO(messageRolinkport);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkquery != null)
-            {
-                linkObject["query"] = ExpressionConverter.ConvertO(messageRolinkquery);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawAuthority != null)
-            {
-                linkObject["rawAuthority"] = ExpressionConverter.ConvertO(messageRolinkrawAuthority);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawFragment != null)
-            {
-                linkObject["rawFragment"] = ExpressionConverter.ConvertO(messageRolinkrawFragment);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawPath != null)
-            {
-                linkObject["rawPath"] = ExpressionConverter.ConvertO(messageRolinkrawPath);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawQuery != null)
-            {
-                linkObject["rawQuery"] = ExpressionConverter.ConvertO(messageRolinkrawQuery);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawSchemeSpecificPart != null)
-            {
-                linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(messageRolinkrawSchemeSpecificPart);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkrawUserInfo != null)
-            {
-                linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(messageRolinkrawUserInfo);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkscheme != null)
-            {
-                linkObject["scheme"] = ExpressionConverter.ConvertO(messageRolinkscheme);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkschemeSpecificPart != null)
-            {
-                linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(messageRolinkschemeSpecificPart);
-                linkObjectpropCount++;
-            }
-
-            if (messageRolinkuserInfo != null)
-            {
-                linkObject["userInfo"] = ExpressionConverter.ConvertO(messageRolinkuserInfo);
-                linkObjectpropCount++;
-            }
-
-            if (linkObjectpropCount > 0)
-            {
-                messageRo["link"] = linkObject;
+                messageRo["body"] = SourceExpressionConverter.ConvertToken(messageRobody);
                 messageRopropCount++;
-            }
-
-            messageRopropCount++;
-            messageRo["longitude"] = ExpressionConverter.ConvertO(messageRolongitude);
-            var measurementsObject = new JObject();
-            var measurementsObjectpropCount = 0;
-            if (messageRomeasurementsarray != null)
-            {
-                measurementsObject["array"] = ExpressionConverter.ConvertO(messageRomeasurementsarray);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsbigDecimal != null)
-            {
-                measurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(messageRomeasurementsbigDecimal);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsbigInteger != null)
-            {
-                measurementsObject["bigInteger"] = ExpressionConverter.ConvertO(messageRomeasurementsbigInteger);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsbinary != null)
-            {
-                measurementsObject["binary"] = ExpressionConverter.ConvertO(messageRomeasurementsbinary);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsboolean != null)
-            {
-                measurementsObject["boolean"] = ExpressionConverter.ConvertO(messageRomeasurementsboolean);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementscontainerNode != null)
-            {
-                measurementsObject["containerNode"] = ExpressionConverter.ConvertO(messageRomeasurementscontainerNode);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsdouble != null)
-            {
-                measurementsObject["double"] = ExpressionConverter.ConvertO(messageRomeasurementsdouble);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsfloat != null)
-            {
-                measurementsObject["float"] = ExpressionConverter.ConvertO(messageRomeasurementsfloat);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsfloatingPointNumber != null)
-            {
-                measurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(messageRomeasurementsfloatingPointNumber);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsint != null)
-            {
-                measurementsObject["int"] = ExpressionConverter.ConvertO(messageRomeasurementsint);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsintegralNumber != null)
-            {
-                measurementsObject["integralNumber"] = ExpressionConverter.ConvertO(messageRomeasurementsintegralNumber);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsLong != null)
-            {
-                measurementsObject["long"] = ExpressionConverter.ConvertO(messageRomeasurementsLong);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsmissingNode != null)
-            {
-                measurementsObject["missingNode"] = ExpressionConverter.ConvertO(messageRomeasurementsmissingNode);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsnodeType != null)
-            {
-                measurementsObject["nodeType"] = ExpressionConverter.ConvertO(messageRomeasurementsnodeType);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsnull != null)
-            {
-                measurementsObject["null"] = ExpressionConverter.ConvertO(messageRomeasurementsnull);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsnumber != null)
-            {
-                measurementsObject["number"] = ExpressionConverter.ConvertO(messageRomeasurementsnumber);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsObject != null)
-            {
-                measurementsObject["object"] = ExpressionConverter.ConvertO(messageRomeasurementsObject);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementspojo != null)
-            {
-                measurementsObject["pojo"] = ExpressionConverter.ConvertO(messageRomeasurementspojo);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsShort != null)
-            {
-                measurementsObject["short"] = ExpressionConverter.ConvertO(messageRomeasurementsShort);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementstextual != null)
-            {
-                measurementsObject["textual"] = ExpressionConverter.ConvertO(messageRomeasurementstextual);
-                measurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsvalueNode != null)
-            {
-                measurementsObject["valueNode"] = ExpressionConverter.ConvertO(messageRomeasurementsvalueNode);
-                measurementsObjectpropCount++;
-            }
-
-            if (measurementsObjectpropCount > 0)
-            {
-                messageRo["measurements"] = measurementsObject;
+                messageRo["creationDate"] = SourceExpressionConverter.ConvertToken(messageRocreationDate);
                 messageRopropCount++;
-            }
+                messageRo["errorMessage"] = SourceExpressionConverter.ConvertToken(messageRoerrorMessage);
+                if (messageRoid != null)
+                {
+                    messageRo["id"] = SourceExpressionConverter.ConvertToken(messageRoid);
+                    messageRopropCount++;
+                }
 
-            messageRopropCount++;
-            messageRo["metadata"] = ExpressionConverter.ConvertO(messageRometadata);
-            messageRopropCount++;
-            messageRo["number"] = ExpressionConverter.ConvertO(messageRonumber);
-            messageRopropCount++;
-            messageRo["processed"] = ExpressionConverter.ConvertO(messageRoprocessed);
-            var rawMeasurementsObject = new JObject();
-            var rawMeasurementsObjectpropCount = 0;
-            if (messageRomeasurementsarray != null)
-            {
-                rawMeasurementsObject["array"] = ExpressionConverter.ConvertO(messageRomeasurementsarray);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsbigDecimal != null)
-            {
-                rawMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(messageRomeasurementsbigDecimal);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsbigInteger != null)
-            {
-                rawMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(messageRomeasurementsbigInteger);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsbinary != null)
-            {
-                rawMeasurementsObject["binary"] = ExpressionConverter.ConvertO(messageRomeasurementsbinary);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsboolean != null)
-            {
-                rawMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(messageRomeasurementsboolean);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementscontainerNode != null)
-            {
-                rawMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(messageRomeasurementscontainerNode);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsdouble != null)
-            {
-                rawMeasurementsObject["double"] = ExpressionConverter.ConvertO(messageRomeasurementsdouble);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsfloat != null)
-            {
-                rawMeasurementsObject["float"] = ExpressionConverter.ConvertO(messageRomeasurementsfloat);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsfloatingPointNumber != null)
-            {
-                rawMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(messageRomeasurementsfloatingPointNumber);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsint != null)
-            {
-                rawMeasurementsObject["int"] = ExpressionConverter.ConvertO(messageRomeasurementsint);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsintegralNumber != null)
-            {
-                rawMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(messageRomeasurementsintegralNumber);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsLong != null)
-            {
-                rawMeasurementsObject["long"] = ExpressionConverter.ConvertO(messageRomeasurementsLong);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsmissingNode != null)
-            {
-                rawMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(messageRomeasurementsmissingNode);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsnodeType != null)
-            {
-                rawMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(messageRomeasurementsnodeType);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsnull != null)
-            {
-                rawMeasurementsObject["null"] = ExpressionConverter.ConvertO(messageRomeasurementsnull);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsnumber != null)
-            {
-                rawMeasurementsObject["number"] = ExpressionConverter.ConvertO(messageRomeasurementsnumber);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsObject != null)
-            {
-                rawMeasurementsObject["object"] = ExpressionConverter.ConvertO(messageRomeasurementsObject);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementspojo != null)
-            {
-                rawMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(messageRomeasurementspojo);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsShort != null)
-            {
-                rawMeasurementsObject["short"] = ExpressionConverter.ConvertO(messageRomeasurementsShort);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementstextual != null)
-            {
-                rawMeasurementsObject["textual"] = ExpressionConverter.ConvertO(messageRomeasurementstextual);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (messageRomeasurementsvalueNode != null)
-            {
-                rawMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(messageRomeasurementsvalueNode);
-                rawMeasurementsObjectpropCount++;
-            }
-
-            if (rawMeasurementsObjectpropCount > 0)
-            {
-                messageRo["rawMeasurements"] = rawMeasurementsObject;
                 messageRopropCount++;
-            }
+                messageRo["latitude"] = SourceExpressionConverter.ConvertToken(messageRolatitude);
+                var linkObject = new JObject();
+                var linkObjectpropCount = 0;
+                if (messageRolinkabsolute != null)
+                {
+                    linkObject["absolute"] = SourceExpressionConverter.ConvertToken(messageRolinkabsolute);
+                    linkObjectpropCount++;
+                }
 
-            var thingObject = new JObject();
-            var thingObjectpropCount = 0;
-            if (messageRothingdisplayName != null)
-            {
-                thingObject["displayName"] = ExpressionConverter.ConvertO(messageRothingdisplayName);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkauthority != null)
+                {
+                    linkObject["authority"] = SourceExpressionConverter.ConvertToken(messageRolinkauthority);
+                    linkObjectpropCount++;
+                }
 
-            if (messageRothingfixedName != null)
-            {
-                thingObject["fixedName"] = ExpressionConverter.ConvertO(messageRothingfixedName);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkfragment != null)
+                {
+                    linkObject["fragment"] = SourceExpressionConverter.ConvertToken(messageRolinkfragment);
+                    linkObjectpropCount++;
+                }
 
-            if (messageRothingid != null)
-            {
-                thingObject["id"] = ExpressionConverter.ConvertO(messageRothingid);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkhost != null)
+                {
+                    linkObject["host"] = SourceExpressionConverter.ConvertToken(messageRolinkhost);
+                    linkObjectpropCount++;
+                }
 
-            thingObjectpropCount++;
-            thingObject["name"] = ExpressionConverter.ConvertO(messageRothingname);
-            if (messageRothingnbAlerts != null)
-            {
-                thingObject["nbAlerts"] = ExpressionConverter.ConvertO(messageRothingnbAlerts);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkopaque != null)
+                {
+                    linkObject["opaque"] = SourceExpressionConverter.ConvertToken(messageRolinkopaque);
+                    linkObjectpropCount++;
+                }
 
-            if (messageRothingtags != null)
-            {
-                thingObject["tags"] = ExpressionConverter.ConvertO(messageRothingtags);
-                thingObjectpropCount++;
-            }
+                if (messageRolinkpath != null)
+                {
+                    linkObject["path"] = SourceExpressionConverter.ConvertToken(messageRolinkpath);
+                    linkObjectpropCount++;
+                }
 
-            if (thingObjectpropCount > 0)
-            {
-                messageRo["thing"] = thingObject;
+                if (messageRolinkport != null)
+                {
+                    linkObject["port"] = SourceExpressionConverter.ConvertToken(messageRolinkport);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkquery != null)
+                {
+                    linkObject["query"] = SourceExpressionConverter.ConvertToken(messageRolinkquery);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawAuthority != null)
+                {
+                    linkObject["rawAuthority"] = SourceExpressionConverter.ConvertToken(messageRolinkrawAuthority);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawFragment != null)
+                {
+                    linkObject["rawFragment"] = SourceExpressionConverter.ConvertToken(messageRolinkrawFragment);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawPath != null)
+                {
+                    linkObject["rawPath"] = SourceExpressionConverter.ConvertToken(messageRolinkrawPath);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawQuery != null)
+                {
+                    linkObject["rawQuery"] = SourceExpressionConverter.ConvertToken(messageRolinkrawQuery);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawSchemeSpecificPart != null)
+                {
+                    linkObject["rawSchemeSpecificPart"] = SourceExpressionConverter.ConvertToken(messageRolinkrawSchemeSpecificPart);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkrawUserInfo != null)
+                {
+                    linkObject["rawUserInfo"] = SourceExpressionConverter.ConvertToken(messageRolinkrawUserInfo);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkscheme != null)
+                {
+                    linkObject["scheme"] = SourceExpressionConverter.ConvertToken(messageRolinkscheme);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkschemeSpecificPart != null)
+                {
+                    linkObject["schemeSpecificPart"] = SourceExpressionConverter.ConvertToken(messageRolinkschemeSpecificPart);
+                    linkObjectpropCount++;
+                }
+
+                if (messageRolinkuserInfo != null)
+                {
+                    linkObject["userInfo"] = SourceExpressionConverter.ConvertToken(messageRolinkuserInfo);
+                    linkObjectpropCount++;
+                }
+
+                if (linkObjectpropCount > 0)
+                {
+                    messageRo["link"] = linkObject;
+                    messageRopropCount++;
+                }
+
                 messageRopropCount++;
+                messageRo["longitude"] = SourceExpressionConverter.ConvertToken(messageRolongitude);
+                var measurementsObject = new JObject();
+                var measurementsObjectpropCount = 0;
+                if (messageRomeasurementsarray != null)
+                {
+                    measurementsObject["array"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsarray);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsbigDecimal != null)
+                {
+                    measurementsObject["bigDecimal"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsbigDecimal);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsbigInteger != null)
+                {
+                    measurementsObject["bigInteger"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsbigInteger);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsbinary != null)
+                {
+                    measurementsObject["binary"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsbinary);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsboolean != null)
+                {
+                    measurementsObject["boolean"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsboolean);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementscontainerNode != null)
+                {
+                    measurementsObject["containerNode"] = SourceExpressionConverter.ConvertToken(messageRomeasurementscontainerNode);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsDouble != null)
+                {
+                    measurementsObject["double"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsDouble);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsFloat != null)
+                {
+                    measurementsObject["float"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsFloat);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsfloatingPointNumber != null)
+                {
+                    measurementsObject["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsfloatingPointNumber);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsInt != null)
+                {
+                    measurementsObject["int"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsInt);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsintegralNumber != null)
+                {
+                    measurementsObject["integralNumber"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsintegralNumber);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsLong != null)
+                {
+                    measurementsObject["long"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsLong);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsmissingNode != null)
+                {
+                    measurementsObject["missingNode"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsmissingNode);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsnodeType != null)
+                {
+                    measurementsObject["nodeType"] = SourceExpressionConverter.Convert(messageRomeasurementsnodeType);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsNull != null)
+                {
+                    measurementsObject["null"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsNull);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsnumber != null)
+                {
+                    measurementsObject["number"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsnumber);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsObject != null)
+                {
+                    measurementsObject["object"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsObject);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementspojo != null)
+                {
+                    measurementsObject["pojo"] = SourceExpressionConverter.ConvertToken(messageRomeasurementspojo);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsShort != null)
+                {
+                    measurementsObject["short"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsShort);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementstextual != null)
+                {
+                    measurementsObject["textual"] = SourceExpressionConverter.ConvertToken(messageRomeasurementstextual);
+                    measurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsvalueNode != null)
+                {
+                    measurementsObject["valueNode"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsvalueNode);
+                    measurementsObjectpropCount++;
+                }
+
+                if (measurementsObjectpropCount > 0)
+                {
+                    messageRo["measurements"] = measurementsObject;
+                    messageRopropCount++;
+                }
+
+                messageRopropCount++;
+                messageRo["metadata"] = SourceExpressionConverter.ConvertToken(messageRometadata);
+                messageRopropCount++;
+                messageRo["number"] = SourceExpressionConverter.ConvertToken(messageRonumber);
+                messageRopropCount++;
+                messageRo["processed"] = SourceExpressionConverter.Convert(messageRoprocessed);
+                var rawMeasurementsObject = new JObject();
+                var rawMeasurementsObjectpropCount = 0;
+                if (messageRomeasurementsarray != null)
+                {
+                    rawMeasurementsObject["array"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsarray);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsbigDecimal != null)
+                {
+                    rawMeasurementsObject["bigDecimal"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsbigDecimal);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsbigInteger != null)
+                {
+                    rawMeasurementsObject["bigInteger"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsbigInteger);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsbinary != null)
+                {
+                    rawMeasurementsObject["binary"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsbinary);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsboolean != null)
+                {
+                    rawMeasurementsObject["boolean"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsboolean);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementscontainerNode != null)
+                {
+                    rawMeasurementsObject["containerNode"] = SourceExpressionConverter.ConvertToken(messageRomeasurementscontainerNode);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsDouble != null)
+                {
+                    rawMeasurementsObject["double"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsDouble);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsFloat != null)
+                {
+                    rawMeasurementsObject["float"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsFloat);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsfloatingPointNumber != null)
+                {
+                    rawMeasurementsObject["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsfloatingPointNumber);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsInt != null)
+                {
+                    rawMeasurementsObject["int"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsInt);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsintegralNumber != null)
+                {
+                    rawMeasurementsObject["integralNumber"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsintegralNumber);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsLong != null)
+                {
+                    rawMeasurementsObject["long"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsLong);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsmissingNode != null)
+                {
+                    rawMeasurementsObject["missingNode"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsmissingNode);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsnodeType != null)
+                {
+                    rawMeasurementsObject["nodeType"] = SourceExpressionConverter.Convert(messageRomeasurementsnodeType);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsNull != null)
+                {
+                    rawMeasurementsObject["null"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsNull);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsnumber != null)
+                {
+                    rawMeasurementsObject["number"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsnumber);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsObject != null)
+                {
+                    rawMeasurementsObject["object"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsObject);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementspojo != null)
+                {
+                    rawMeasurementsObject["pojo"] = SourceExpressionConverter.ConvertToken(messageRomeasurementspojo);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsShort != null)
+                {
+                    rawMeasurementsObject["short"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsShort);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementstextual != null)
+                {
+                    rawMeasurementsObject["textual"] = SourceExpressionConverter.ConvertToken(messageRomeasurementstextual);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (messageRomeasurementsvalueNode != null)
+                {
+                    rawMeasurementsObject["valueNode"] = SourceExpressionConverter.ConvertToken(messageRomeasurementsvalueNode);
+                    rawMeasurementsObjectpropCount++;
+                }
+
+                if (rawMeasurementsObjectpropCount > 0)
+                {
+                    messageRo["rawMeasurements"] = rawMeasurementsObject;
+                    messageRopropCount++;
+                }
+
+                var thingObject = new JObject();
+                var thingObjectpropCount = 0;
+                if (messageRothingdisplayName != null)
+                {
+                    thingObject["displayName"] = SourceExpressionConverter.ConvertToken(messageRothingdisplayName);
+                    thingObjectpropCount++;
+                }
+
+                if (messageRothingfixedName != null)
+                {
+                    thingObject["fixedName"] = SourceExpressionConverter.ConvertToken(messageRothingfixedName);
+                    thingObjectpropCount++;
+                }
+
+                if (messageRothingid != null)
+                {
+                    thingObject["id"] = SourceExpressionConverter.ConvertToken(messageRothingid);
+                    thingObjectpropCount++;
+                }
+
+                thingObjectpropCount++;
+                thingObject["name"] = SourceExpressionConverter.ConvertToken(messageRothingname);
+                if (messageRothingnbAlerts != null)
+                {
+                    thingObject["nbAlerts"] = SourceExpressionConverter.ConvertToken(messageRothingnbAlerts);
+                    thingObjectpropCount++;
+                }
+
+                if (messageRothingtags != null)
+                {
+                    thingObject["tags"] = SourceExpressionConverter.ConvertToken(messageRothingtags);
+                    thingObjectpropCount++;
+                }
+
+                if (thingObjectpropCount > 0)
+                {
+                    messageRo["thing"] = thingObject;
+                    messageRopropCount++;
+                }
+
+                messageRopropCount++;
+                messageRo["timestamp"] = SourceExpressionConverter.ConvertToken(messageRotimestamp);
+                messageRopropCount++;
+                messageRo["topic"] = SourceExpressionConverter.ConvertToken(messageRotopic);
+                if (messageRopropCount > 0)
+                {
+                    callPayload.Body = messageRo;
+                }
+                return callPayload;
             }
 
-            messageRopropCount++;
-            messageRo["timestamp"] = ExpressionConverter.ConvertO(messageRotimestamp);
-            messageRopropCount++;
-            messageRo["topic"] = ExpressionConverter.ConvertO(messageRotopic);
-            if (messageRopropCount > 0)
-            {
-                callPayload.Body = messageRo;
-            }
-
-            return new ApiConnectionAction<MessageRo>(callPayload);
+            return new ApiConnectionAction<MessageRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ModelRo> GetThingModel(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ModelRo> GetThingModel([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/things/{0}/model", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/model", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ModelRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageOperationRo> GetThingOperations(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PageOperationRo> GetThingOperations([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/things/{0}/operations", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PageOperationRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageOperationRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ResponseEntity> ExecuteThingOperation(Expression<Func<string>> id, Expression<Func<string>> operationId, Expression<Func<bool>> placeholdersValuesarray = null, Expression<Func<bool>> placeholdersValuesbigDecimal = null, Expression<Func<bool>> placeholdersValuesbigInteger = null, Expression<Func<bool>> placeholdersValuesbinary = null, Expression<Func<bool>> placeholdersValuesboolean = null, Expression<Func<bool>> placeholdersValuescontainerNode = null, Expression<Func<bool>> placeholdersValuesdouble = null, Expression<Func<bool>> placeholdersValuesfloat = null, Expression<Func<bool>> placeholdersValuesfloatingPointNumber = null, Expression<Func<bool>> placeholdersValuesint = null, Expression<Func<bool>> placeholdersValuesintegralNumber = null, Expression<Func<bool>> placeholdersValuesLong = null, Expression<Func<bool>> placeholdersValuesmissingNode = null, Expression<Func<placeholdersValuesnodeTypeInput>> placeholdersValuesnodeType = null, Expression<Func<bool>> placeholdersValuesnull = null, Expression<Func<bool>> placeholdersValuesnumber = null, Expression<Func<bool>> placeholdersValuesObject = null, Expression<Func<bool>> placeholdersValuespojo = null, Expression<Func<bool>> placeholdersValuesShort = null, Expression<Func<bool>> placeholdersValuestextual = null, Expression<Func<bool>> placeholdersValuesvalueNode = null)
+        public IBodyWorkflowAction<ResponseEntity> ExecuteThingOperation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operationId, [WorkflowExpression] Func<bool> placeholdersValuesarray = null, [WorkflowExpression] Func<bool> placeholdersValuesbigDecimal = null, [WorkflowExpression] Func<bool> placeholdersValuesbigInteger = null, [WorkflowExpression] Func<bool> placeholdersValuesbinary = null, [WorkflowExpression] Func<bool> placeholdersValuesboolean = null, [WorkflowExpression] Func<bool> placeholdersValuescontainerNode = null, [WorkflowExpression] Func<bool> placeholdersValuesDouble = null, [WorkflowExpression] Func<bool> placeholdersValuesFloat = null, [WorkflowExpression] Func<bool> placeholdersValuesfloatingPointNumber = null, [WorkflowExpression] Func<bool> placeholdersValuesInt = null, [WorkflowExpression] Func<bool> placeholdersValuesintegralNumber = null, [WorkflowExpression] Func<bool> placeholdersValuesLong = null, [WorkflowExpression] Func<bool> placeholdersValuesmissingNode = null, [WorkflowExpression] Func<placeholdersValuesnodeTypeInput> placeholdersValuesnodeType = null, [WorkflowExpression] Func<bool> placeholdersValuesNull = null, [WorkflowExpression] Func<bool> placeholdersValuesnumber = null, [WorkflowExpression] Func<bool> placeholdersValuesObject = null, [WorkflowExpression] Func<bool> placeholdersValuespojo = null, [WorkflowExpression] Func<bool> placeholdersValuesShort = null, [WorkflowExpression] Func<bool> placeholdersValuestextual = null, [WorkflowExpression] Func<bool> placeholdersValuesvalueNode = null)
         {
-            var apiCallPath = String.Format("/api/things/{0}/operations/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(operationId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var placeholdersValues = new JObject();
-            var placeholdersValuespropCount = 0;
-            if (placeholdersValuesarray != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                placeholdersValues["array"] = ExpressionConverter.ConvertO(placeholdersValuesarray);
-                placeholdersValuespropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/operations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var placeholdersValues = new JObject();
+                var placeholdersValuespropCount = 0;
+                if (placeholdersValuesarray != null)
+                {
+                    placeholdersValues["array"] = SourceExpressionConverter.ConvertToken(placeholdersValuesarray);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesbigDecimal != null)
+                {
+                    placeholdersValues["bigDecimal"] = SourceExpressionConverter.ConvertToken(placeholdersValuesbigDecimal);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesbigInteger != null)
+                {
+                    placeholdersValues["bigInteger"] = SourceExpressionConverter.ConvertToken(placeholdersValuesbigInteger);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesbinary != null)
+                {
+                    placeholdersValues["binary"] = SourceExpressionConverter.ConvertToken(placeholdersValuesbinary);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesboolean != null)
+                {
+                    placeholdersValues["boolean"] = SourceExpressionConverter.ConvertToken(placeholdersValuesboolean);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuescontainerNode != null)
+                {
+                    placeholdersValues["containerNode"] = SourceExpressionConverter.ConvertToken(placeholdersValuescontainerNode);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesDouble != null)
+                {
+                    placeholdersValues["double"] = SourceExpressionConverter.ConvertToken(placeholdersValuesDouble);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesFloat != null)
+                {
+                    placeholdersValues["float"] = SourceExpressionConverter.ConvertToken(placeholdersValuesFloat);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesfloatingPointNumber != null)
+                {
+                    placeholdersValues["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(placeholdersValuesfloatingPointNumber);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesInt != null)
+                {
+                    placeholdersValues["int"] = SourceExpressionConverter.ConvertToken(placeholdersValuesInt);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesintegralNumber != null)
+                {
+                    placeholdersValues["integralNumber"] = SourceExpressionConverter.ConvertToken(placeholdersValuesintegralNumber);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesLong != null)
+                {
+                    placeholdersValues["long"] = SourceExpressionConverter.ConvertToken(placeholdersValuesLong);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesmissingNode != null)
+                {
+                    placeholdersValues["missingNode"] = SourceExpressionConverter.ConvertToken(placeholdersValuesmissingNode);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesnodeType != null)
+                {
+                    placeholdersValues["nodeType"] = SourceExpressionConverter.Convert(placeholdersValuesnodeType);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesNull != null)
+                {
+                    placeholdersValues["null"] = SourceExpressionConverter.ConvertToken(placeholdersValuesNull);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesnumber != null)
+                {
+                    placeholdersValues["number"] = SourceExpressionConverter.ConvertToken(placeholdersValuesnumber);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesObject != null)
+                {
+                    placeholdersValues["object"] = SourceExpressionConverter.ConvertToken(placeholdersValuesObject);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuespojo != null)
+                {
+                    placeholdersValues["pojo"] = SourceExpressionConverter.ConvertToken(placeholdersValuespojo);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesShort != null)
+                {
+                    placeholdersValues["short"] = SourceExpressionConverter.ConvertToken(placeholdersValuesShort);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuestextual != null)
+                {
+                    placeholdersValues["textual"] = SourceExpressionConverter.ConvertToken(placeholdersValuestextual);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuesvalueNode != null)
+                {
+                    placeholdersValues["valueNode"] = SourceExpressionConverter.ConvertToken(placeholdersValuesvalueNode);
+                    placeholdersValuespropCount++;
+                }
+
+                if (placeholdersValuespropCount > 0)
+                {
+                    callPayload.Body = placeholdersValues;
+                }
+                return callPayload;
             }
 
-            if (placeholdersValuesbigDecimal != null)
-            {
-                placeholdersValues["bigDecimal"] = ExpressionConverter.ConvertO(placeholdersValuesbigDecimal);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesbigInteger != null)
-            {
-                placeholdersValues["bigInteger"] = ExpressionConverter.ConvertO(placeholdersValuesbigInteger);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesbinary != null)
-            {
-                placeholdersValues["binary"] = ExpressionConverter.ConvertO(placeholdersValuesbinary);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesboolean != null)
-            {
-                placeholdersValues["boolean"] = ExpressionConverter.ConvertO(placeholdersValuesboolean);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuescontainerNode != null)
-            {
-                placeholdersValues["containerNode"] = ExpressionConverter.ConvertO(placeholdersValuescontainerNode);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesdouble != null)
-            {
-                placeholdersValues["double"] = ExpressionConverter.ConvertO(placeholdersValuesdouble);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesfloat != null)
-            {
-                placeholdersValues["float"] = ExpressionConverter.ConvertO(placeholdersValuesfloat);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesfloatingPointNumber != null)
-            {
-                placeholdersValues["floatingPointNumber"] = ExpressionConverter.ConvertO(placeholdersValuesfloatingPointNumber);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesint != null)
-            {
-                placeholdersValues["int"] = ExpressionConverter.ConvertO(placeholdersValuesint);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesintegralNumber != null)
-            {
-                placeholdersValues["integralNumber"] = ExpressionConverter.ConvertO(placeholdersValuesintegralNumber);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesLong != null)
-            {
-                placeholdersValues["long"] = ExpressionConverter.ConvertO(placeholdersValuesLong);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesmissingNode != null)
-            {
-                placeholdersValues["missingNode"] = ExpressionConverter.ConvertO(placeholdersValuesmissingNode);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesnodeType != null)
-            {
-                placeholdersValues["nodeType"] = ExpressionConverter.ConvertO(placeholdersValuesnodeType);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesnull != null)
-            {
-                placeholdersValues["null"] = ExpressionConverter.ConvertO(placeholdersValuesnull);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesnumber != null)
-            {
-                placeholdersValues["number"] = ExpressionConverter.ConvertO(placeholdersValuesnumber);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesObject != null)
-            {
-                placeholdersValues["object"] = ExpressionConverter.ConvertO(placeholdersValuesObject);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuespojo != null)
-            {
-                placeholdersValues["pojo"] = ExpressionConverter.ConvertO(placeholdersValuespojo);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesShort != null)
-            {
-                placeholdersValues["short"] = ExpressionConverter.ConvertO(placeholdersValuesShort);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuestextual != null)
-            {
-                placeholdersValues["textual"] = ExpressionConverter.ConvertO(placeholdersValuestextual);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuesvalueNode != null)
-            {
-                placeholdersValues["valueNode"] = ExpressionConverter.ConvertO(placeholdersValuesvalueNode);
-                placeholdersValuespropCount++;
-            }
-
-            if (placeholdersValuespropCount > 0)
-            {
-                callPayload.Body = placeholdersValues;
-            }
-
-            return new ApiConnectionAction<ResponseEntity>(callPayload);
+            return new ApiConnectionAction<ResponseEntity>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo> UpdateThingFixedPosition(Expression<Func<string>> id, Expression<Func<string>> thingRoname, Expression<Func<string>> thingRositeaddress, Expression<Func<string>> thingRositecity, Expression<Func<string>> thingRositename, Expression<Func<string>> thingRositepostalCode, Expression<Func<CustomFieldRo[]>> thingRocustomFields = null, Expression<Func<string>> thingRodescription = null, Expression<Func<string>> thingRodisplayName = null, Expression<Func<bool>> thingRodynamicGps = null, Expression<Func<double>> thingRofixedLatitude = null, Expression<Func<double>> thingRofixedLongitude = null, Expression<Func<string>> thingRofixedName = null, Expression<Func<string>> thingRoid = null, Expression<Func<int>> thingRolastActivityDate = null, Expression<Func<double>> thingRolastLatitude = null, Expression<Func<double>> thingRolastLongitude = null, Expression<Func<bool>> thingRolastMeasurementsarray = null, Expression<Func<bool>> thingRolastMeasurementsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsbinary = null, Expression<Func<bool>> thingRolastMeasurementsboolean = null, Expression<Func<bool>> thingRolastMeasurementscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsdouble = null, Expression<Func<bool>> thingRolastMeasurementsfloat = null, Expression<Func<bool>> thingRolastMeasurementsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsint = null, Expression<Func<bool>> thingRolastMeasurementsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsLong = null, Expression<Func<bool>> thingRolastMeasurementsmissingNode = null, Expression<Func<thingRolastMeasurementsnodeTypeInput>> thingRolastMeasurementsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsnull = null, Expression<Func<bool>> thingRolastMeasurementsnumber = null, Expression<Func<bool>> thingRolastMeasurementsObject = null, Expression<Func<bool>> thingRolastMeasurementspojo = null, Expression<Func<bool>> thingRolastMeasurementsShort = null, Expression<Func<bool>> thingRolastMeasurementstextual = null, Expression<Func<bool>> thingRolastMeasurementsvalueNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsarray = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigDecimal = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbigInteger = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsbinary = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsboolean = null, Expression<Func<bool>> thingRolastMeasurementsTimestampscontainerNode = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsdouble = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloat = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsfloatingPointNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsint = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsintegralNumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsLong = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsmissingNode = null, Expression<Func<thingRolastMeasurementsTimestampsnodeTypeInput>> thingRolastMeasurementsTimestampsnodeType = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnull = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsnumber = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsObject = null, Expression<Func<bool>> thingRolastMeasurementsTimestampspojo = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsShort = null, Expression<Func<bool>> thingRolastMeasurementsTimestampstextual = null, Expression<Func<bool>> thingRolastMeasurementsTimestampsvalueNode = null, Expression<Func<int>> thingRolastMessageDate = null, Expression<Func<int>> thingRomessageActivityTimeoutPeriod = null, Expression<Func<int>> thingRonbAlerts = null, Expression<Func<string>> thingRositeid = null, Expression<Func<double>> thingRositelatitude = null, Expression<Func<double>> thingRositelongitude = null, Expression<Func<thingRostatusInput>> thingRostatus = null, Expression<Func<ThingTagRo[]>> thingRotags = null)
+        public IBodyWorkflowAction<SingleThingRo> UpdateThingFixedPosition([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> thingRoname, [WorkflowExpression] Func<string> thingRositeaddress, [WorkflowExpression] Func<string> thingRositecity, [WorkflowExpression] Func<string> thingRositename, [WorkflowExpression] Func<string> thingRositepostalCode, [WorkflowExpression] Func<CustomFieldRo[]> thingRocustomFields = null, [WorkflowExpression] Func<string> thingRodescription = null, [WorkflowExpression] Func<string> thingRodisplayName = null, [WorkflowExpression] Func<bool> thingRodynamicGps = null, [WorkflowExpression] Func<double> thingRofixedLatitude = null, [WorkflowExpression] Func<double> thingRofixedLongitude = null, [WorkflowExpression] Func<string> thingRofixedName = null, [WorkflowExpression] Func<string> thingRoid = null, [WorkflowExpression] Func<int> thingRolastActivityDate = null, [WorkflowExpression] Func<double> thingRolastLatitude = null, [WorkflowExpression] Func<double> thingRolastLongitude = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsDouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsFloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsInt = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsnodeTypeInput> thingRolastMeasurementsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsNull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsvalueNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsarray = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigDecimal = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbigInteger = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsbinary = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsboolean = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampscontainerNode = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsDouble = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsFloat = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsfloatingPointNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsInt = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsintegralNumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsLong = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsmissingNode = null, [WorkflowExpression] Func<thingRolastMeasurementsTimestampsnodeTypeInput> thingRolastMeasurementsTimestampsnodeType = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsNull = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsnumber = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsObject = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampspojo = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsShort = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampstextual = null, [WorkflowExpression] Func<bool> thingRolastMeasurementsTimestampsvalueNode = null, [WorkflowExpression] Func<int> thingRolastMessageDate = null, [WorkflowExpression] Func<int> thingRomessageActivityTimeoutPeriod = null, [WorkflowExpression] Func<int> thingRonbAlerts = null, [WorkflowExpression] Func<string> thingRositeid = null, [WorkflowExpression] Func<double> thingRositelatitude = null, [WorkflowExpression] Func<double> thingRositelongitude = null, [WorkflowExpression] Func<thingRostatusInput> thingRostatus = null, [WorkflowExpression] Func<ThingTagRo[]> thingRotags = null)
         {
-            var apiCallPath = String.Format("/api/things/{0}/positions", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var thingRo = new JObject();
-            var thingRopropCount = 0;
-            if (thingRocustomFields != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                thingRo["customFields"] = ExpressionConverter.ConvertO(thingRocustomFields);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/positions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var thingRo = new JObject();
+                var thingRopropCount = 0;
+                if (thingRocustomFields != null)
+                {
+                    thingRo["customFields"] = SourceExpressionConverter.ConvertToken(thingRocustomFields);
+                    thingRopropCount++;
+                }
+
+                if (thingRodescription != null)
+                {
+                    thingRo["description"] = SourceExpressionConverter.ConvertToken(thingRodescription);
+                    thingRopropCount++;
+                }
+
+                if (thingRodisplayName != null)
+                {
+                    thingRo["displayName"] = SourceExpressionConverter.ConvertToken(thingRodisplayName);
+                    thingRopropCount++;
+                }
+
+                if (thingRodynamicGps != null)
+                {
+                    thingRo["dynamicGps"] = SourceExpressionConverter.ConvertToken(thingRodynamicGps);
+                    thingRopropCount++;
+                }
+
+                if (thingRofixedLatitude != null)
+                {
+                    thingRo["fixedLatitude"] = SourceExpressionConverter.ConvertToken(thingRofixedLatitude);
+                    thingRopropCount++;
+                }
+
+                if (thingRofixedLongitude != null)
+                {
+                    thingRo["fixedLongitude"] = SourceExpressionConverter.ConvertToken(thingRofixedLongitude);
+                    thingRopropCount++;
+                }
+
+                if (thingRofixedName != null)
+                {
+                    thingRo["fixedName"] = SourceExpressionConverter.ConvertToken(thingRofixedName);
+                    thingRopropCount++;
+                }
+
+                if (thingRoid != null)
+                {
+                    thingRo["id"] = SourceExpressionConverter.ConvertToken(thingRoid);
+                    thingRopropCount++;
+                }
+
+                if (thingRolastActivityDate != null)
+                {
+                    thingRo["lastActivityDate"] = SourceExpressionConverter.ConvertToken(thingRolastActivityDate);
+                    thingRopropCount++;
+                }
+
+                if (thingRolastLatitude != null)
+                {
+                    thingRo["lastLatitude"] = SourceExpressionConverter.ConvertToken(thingRolastLatitude);
+                    thingRopropCount++;
+                }
+
+                if (thingRolastLongitude != null)
+                {
+                    thingRo["lastLongitude"] = SourceExpressionConverter.ConvertToken(thingRolastLongitude);
+                    thingRopropCount++;
+                }
+
+                var lastMeasurementsObject = new JObject();
+                var lastMeasurementsObjectpropCount = 0;
+                if (thingRolastMeasurementsarray != null)
+                {
+                    lastMeasurementsObject["array"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsarray);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbigDecimal != null)
+                {
+                    lastMeasurementsObject["bigDecimal"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbigDecimal);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbigInteger != null)
+                {
+                    lastMeasurementsObject["bigInteger"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbigInteger);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbinary != null)
+                {
+                    lastMeasurementsObject["binary"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbinary);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsboolean != null)
+                {
+                    lastMeasurementsObject["boolean"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsboolean);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementscontainerNode != null)
+                {
+                    lastMeasurementsObject["containerNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementscontainerNode);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsDouble != null)
+                {
+                    lastMeasurementsObject["double"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsDouble);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsFloat != null)
+                {
+                    lastMeasurementsObject["float"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsFloat);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsfloatingPointNumber != null)
+                {
+                    lastMeasurementsObject["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsfloatingPointNumber);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsInt != null)
+                {
+                    lastMeasurementsObject["int"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsInt);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsintegralNumber != null)
+                {
+                    lastMeasurementsObject["integralNumber"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsintegralNumber);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsLong != null)
+                {
+                    lastMeasurementsObject["long"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsLong);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsmissingNode != null)
+                {
+                    lastMeasurementsObject["missingNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsmissingNode);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsnodeType != null)
+                {
+                    lastMeasurementsObject["nodeType"] = SourceExpressionConverter.Convert(thingRolastMeasurementsnodeType);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsNull != null)
+                {
+                    lastMeasurementsObject["null"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsNull);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsnumber != null)
+                {
+                    lastMeasurementsObject["number"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsnumber);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsObject != null)
+                {
+                    lastMeasurementsObject["object"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsObject);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementspojo != null)
+                {
+                    lastMeasurementsObject["pojo"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementspojo);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsShort != null)
+                {
+                    lastMeasurementsObject["short"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsShort);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementstextual != null)
+                {
+                    lastMeasurementsObject["textual"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementstextual);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsvalueNode != null)
+                {
+                    lastMeasurementsObject["valueNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsvalueNode);
+                    lastMeasurementsObjectpropCount++;
+                }
+
+                if (lastMeasurementsObjectpropCount > 0)
+                {
+                    thingRo["lastMeasurements"] = lastMeasurementsObject;
+                    thingRopropCount++;
+                }
+
+                var lastMeasurementsTimestampsObject = new JObject();
+                var lastMeasurementsTimestampsObjectpropCount = 0;
+                if (thingRolastMeasurementsarray != null)
+                {
+                    lastMeasurementsTimestampsObject["array"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsarray);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbigDecimal != null)
+                {
+                    lastMeasurementsTimestampsObject["bigDecimal"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbigDecimal);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbigInteger != null)
+                {
+                    lastMeasurementsTimestampsObject["bigInteger"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbigInteger);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsbinary != null)
+                {
+                    lastMeasurementsTimestampsObject["binary"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsbinary);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsboolean != null)
+                {
+                    lastMeasurementsTimestampsObject["boolean"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsboolean);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementscontainerNode != null)
+                {
+                    lastMeasurementsTimestampsObject["containerNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementscontainerNode);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsDouble != null)
+                {
+                    lastMeasurementsTimestampsObject["double"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsDouble);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsFloat != null)
+                {
+                    lastMeasurementsTimestampsObject["float"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsFloat);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsfloatingPointNumber != null)
+                {
+                    lastMeasurementsTimestampsObject["floatingPointNumber"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsfloatingPointNumber);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsInt != null)
+                {
+                    lastMeasurementsTimestampsObject["int"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsInt);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsintegralNumber != null)
+                {
+                    lastMeasurementsTimestampsObject["integralNumber"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsintegralNumber);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsLong != null)
+                {
+                    lastMeasurementsTimestampsObject["long"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsLong);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsmissingNode != null)
+                {
+                    lastMeasurementsTimestampsObject["missingNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsmissingNode);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsnodeType != null)
+                {
+                    lastMeasurementsTimestampsObject["nodeType"] = SourceExpressionConverter.Convert(thingRolastMeasurementsnodeType);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsNull != null)
+                {
+                    lastMeasurementsTimestampsObject["null"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsNull);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsnumber != null)
+                {
+                    lastMeasurementsTimestampsObject["number"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsnumber);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsObject != null)
+                {
+                    lastMeasurementsTimestampsObject["object"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsObject);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementspojo != null)
+                {
+                    lastMeasurementsTimestampsObject["pojo"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementspojo);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsShort != null)
+                {
+                    lastMeasurementsTimestampsObject["short"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsShort);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementstextual != null)
+                {
+                    lastMeasurementsTimestampsObject["textual"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementstextual);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (thingRolastMeasurementsvalueNode != null)
+                {
+                    lastMeasurementsTimestampsObject["valueNode"] = SourceExpressionConverter.ConvertToken(thingRolastMeasurementsvalueNode);
+                    lastMeasurementsTimestampsObjectpropCount++;
+                }
+
+                if (lastMeasurementsTimestampsObjectpropCount > 0)
+                {
+                    thingRo["lastMeasurementsTimestamps"] = lastMeasurementsTimestampsObject;
+                    thingRopropCount++;
+                }
+
+                if (thingRolastMessageDate != null)
+                {
+                    thingRo["lastMessageDate"] = SourceExpressionConverter.ConvertToken(thingRolastMessageDate);
+                    thingRopropCount++;
+                }
+
+                if (thingRomessageActivityTimeoutPeriod != null)
+                {
+                    thingRo["messageActivityTimeoutPeriod"] = SourceExpressionConverter.ConvertToken(thingRomessageActivityTimeoutPeriod);
+                    thingRopropCount++;
+                }
+
                 thingRopropCount++;
-            }
+                thingRo["name"] = SourceExpressionConverter.ConvertToken(thingRoname);
+                if (thingRonbAlerts != null)
+                {
+                    thingRo["nbAlerts"] = SourceExpressionConverter.ConvertToken(thingRonbAlerts);
+                    thingRopropCount++;
+                }
 
-            if (thingRodescription != null)
-            {
-                thingRo["description"] = ExpressionConverter.ConvertO(thingRodescription);
-                thingRopropCount++;
-            }
-
-            if (thingRodisplayName != null)
-            {
-                thingRo["displayName"] = ExpressionConverter.ConvertO(thingRodisplayName);
-                thingRopropCount++;
-            }
-
-            if (thingRodynamicGps != null)
-            {
-                thingRo["dynamicGps"] = ExpressionConverter.ConvertO(thingRodynamicGps);
-                thingRopropCount++;
-            }
-
-            if (thingRofixedLatitude != null)
-            {
-                thingRo["fixedLatitude"] = ExpressionConverter.ConvertO(thingRofixedLatitude);
-                thingRopropCount++;
-            }
-
-            if (thingRofixedLongitude != null)
-            {
-                thingRo["fixedLongitude"] = ExpressionConverter.ConvertO(thingRofixedLongitude);
-                thingRopropCount++;
-            }
-
-            if (thingRofixedName != null)
-            {
-                thingRo["fixedName"] = ExpressionConverter.ConvertO(thingRofixedName);
-                thingRopropCount++;
-            }
-
-            if (thingRoid != null)
-            {
-                thingRo["id"] = ExpressionConverter.ConvertO(thingRoid);
-                thingRopropCount++;
-            }
-
-            if (thingRolastActivityDate != null)
-            {
-                thingRo["lastActivityDate"] = ExpressionConverter.ConvertO(thingRolastActivityDate);
-                thingRopropCount++;
-            }
-
-            if (thingRolastLatitude != null)
-            {
-                thingRo["lastLatitude"] = ExpressionConverter.ConvertO(thingRolastLatitude);
-                thingRopropCount++;
-            }
-
-            if (thingRolastLongitude != null)
-            {
-                thingRo["lastLongitude"] = ExpressionConverter.ConvertO(thingRolastLongitude);
-                thingRopropCount++;
-            }
-
-            var lastMeasurementsObject = new JObject();
-            var lastMeasurementsObjectpropCount = 0;
-            if (thingRolastMeasurementsarray != null)
-            {
-                lastMeasurementsObject["array"] = ExpressionConverter.ConvertO(thingRolastMeasurementsarray);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbigDecimal != null)
-            {
-                lastMeasurementsObject["bigDecimal"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigDecimal);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbigInteger != null)
-            {
-                lastMeasurementsObject["bigInteger"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigInteger);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbinary != null)
-            {
-                lastMeasurementsObject["binary"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbinary);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsboolean != null)
-            {
-                lastMeasurementsObject["boolean"] = ExpressionConverter.ConvertO(thingRolastMeasurementsboolean);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementscontainerNode != null)
-            {
-                lastMeasurementsObject["containerNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementscontainerNode);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsdouble != null)
-            {
-                lastMeasurementsObject["double"] = ExpressionConverter.ConvertO(thingRolastMeasurementsdouble);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsfloat != null)
-            {
-                lastMeasurementsObject["float"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloat);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsfloatingPointNumber != null)
-            {
-                lastMeasurementsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloatingPointNumber);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsint != null)
-            {
-                lastMeasurementsObject["int"] = ExpressionConverter.ConvertO(thingRolastMeasurementsint);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsintegralNumber != null)
-            {
-                lastMeasurementsObject["integralNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsintegralNumber);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsLong != null)
-            {
-                lastMeasurementsObject["long"] = ExpressionConverter.ConvertO(thingRolastMeasurementsLong);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsmissingNode != null)
-            {
-                lastMeasurementsObject["missingNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsmissingNode);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnodeType != null)
-            {
-                lastMeasurementsObject["nodeType"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnodeType);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnull != null)
-            {
-                lastMeasurementsObject["null"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnull);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnumber != null)
-            {
-                lastMeasurementsObject["number"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnumber);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsObject != null)
-            {
-                lastMeasurementsObject["object"] = ExpressionConverter.ConvertO(thingRolastMeasurementsObject);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementspojo != null)
-            {
-                lastMeasurementsObject["pojo"] = ExpressionConverter.ConvertO(thingRolastMeasurementspojo);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsShort != null)
-            {
-                lastMeasurementsObject["short"] = ExpressionConverter.ConvertO(thingRolastMeasurementsShort);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementstextual != null)
-            {
-                lastMeasurementsObject["textual"] = ExpressionConverter.ConvertO(thingRolastMeasurementstextual);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsvalueNode != null)
-            {
-                lastMeasurementsObject["valueNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsvalueNode);
-                lastMeasurementsObjectpropCount++;
-            }
-
-            if (lastMeasurementsObjectpropCount > 0)
-            {
-                thingRo["lastMeasurements"] = lastMeasurementsObject;
-                thingRopropCount++;
-            }
-
-            var lastMeasurementsTimestampsObject = new JObject();
-            var lastMeasurementsTimestampsObjectpropCount = 0;
-            if (thingRolastMeasurementsarray != null)
-            {
-                lastMeasurementsTimestampsObject["array"] = ExpressionConverter.ConvertO(thingRolastMeasurementsarray);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbigDecimal != null)
-            {
-                lastMeasurementsTimestampsObject["bigDecimal"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigDecimal);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbigInteger != null)
-            {
-                lastMeasurementsTimestampsObject["bigInteger"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbigInteger);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsbinary != null)
-            {
-                lastMeasurementsTimestampsObject["binary"] = ExpressionConverter.ConvertO(thingRolastMeasurementsbinary);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsboolean != null)
-            {
-                lastMeasurementsTimestampsObject["boolean"] = ExpressionConverter.ConvertO(thingRolastMeasurementsboolean);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementscontainerNode != null)
-            {
-                lastMeasurementsTimestampsObject["containerNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementscontainerNode);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsdouble != null)
-            {
-                lastMeasurementsTimestampsObject["double"] = ExpressionConverter.ConvertO(thingRolastMeasurementsdouble);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsfloat != null)
-            {
-                lastMeasurementsTimestampsObject["float"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloat);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsfloatingPointNumber != null)
-            {
-                lastMeasurementsTimestampsObject["floatingPointNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsfloatingPointNumber);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsint != null)
-            {
-                lastMeasurementsTimestampsObject["int"] = ExpressionConverter.ConvertO(thingRolastMeasurementsint);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsintegralNumber != null)
-            {
-                lastMeasurementsTimestampsObject["integralNumber"] = ExpressionConverter.ConvertO(thingRolastMeasurementsintegralNumber);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsLong != null)
-            {
-                lastMeasurementsTimestampsObject["long"] = ExpressionConverter.ConvertO(thingRolastMeasurementsLong);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsmissingNode != null)
-            {
-                lastMeasurementsTimestampsObject["missingNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsmissingNode);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnodeType != null)
-            {
-                lastMeasurementsTimestampsObject["nodeType"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnodeType);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnull != null)
-            {
-                lastMeasurementsTimestampsObject["null"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnull);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsnumber != null)
-            {
-                lastMeasurementsTimestampsObject["number"] = ExpressionConverter.ConvertO(thingRolastMeasurementsnumber);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsObject != null)
-            {
-                lastMeasurementsTimestampsObject["object"] = ExpressionConverter.ConvertO(thingRolastMeasurementsObject);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementspojo != null)
-            {
-                lastMeasurementsTimestampsObject["pojo"] = ExpressionConverter.ConvertO(thingRolastMeasurementspojo);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsShort != null)
-            {
-                lastMeasurementsTimestampsObject["short"] = ExpressionConverter.ConvertO(thingRolastMeasurementsShort);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementstextual != null)
-            {
-                lastMeasurementsTimestampsObject["textual"] = ExpressionConverter.ConvertO(thingRolastMeasurementstextual);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (thingRolastMeasurementsvalueNode != null)
-            {
-                lastMeasurementsTimestampsObject["valueNode"] = ExpressionConverter.ConvertO(thingRolastMeasurementsvalueNode);
-                lastMeasurementsTimestampsObjectpropCount++;
-            }
-
-            if (lastMeasurementsTimestampsObjectpropCount > 0)
-            {
-                thingRo["lastMeasurementsTimestamps"] = lastMeasurementsTimestampsObject;
-                thingRopropCount++;
-            }
-
-            if (thingRolastMessageDate != null)
-            {
-                thingRo["lastMessageDate"] = ExpressionConverter.ConvertO(thingRolastMessageDate);
-                thingRopropCount++;
-            }
-
-            if (thingRomessageActivityTimeoutPeriod != null)
-            {
-                thingRo["messageActivityTimeoutPeriod"] = ExpressionConverter.ConvertO(thingRomessageActivityTimeoutPeriod);
-                thingRopropCount++;
-            }
-
-            thingRopropCount++;
-            thingRo["name"] = ExpressionConverter.ConvertO(thingRoname);
-            if (thingRonbAlerts != null)
-            {
-                thingRo["nbAlerts"] = ExpressionConverter.ConvertO(thingRonbAlerts);
-                thingRopropCount++;
-            }
-
-            var siteObject = new JObject();
-            var siteObjectpropCount = 0;
-            siteObjectpropCount++;
-            siteObject["address"] = ExpressionConverter.ConvertO(thingRositeaddress);
-            siteObjectpropCount++;
-            siteObject["city"] = ExpressionConverter.ConvertO(thingRositecity);
-            if (thingRositeid != null)
-            {
-                siteObject["id"] = ExpressionConverter.ConvertO(thingRositeid);
+                var siteObject = new JObject();
+                var siteObjectpropCount = 0;
                 siteObjectpropCount++;
-            }
-
-            if (thingRositelatitude != null)
-            {
-                siteObject["latitude"] = ExpressionConverter.ConvertO(thingRositelatitude);
+                siteObject["address"] = SourceExpressionConverter.ConvertToken(thingRositeaddress);
                 siteObjectpropCount++;
-            }
+                siteObject["city"] = SourceExpressionConverter.ConvertToken(thingRositecity);
+                if (thingRositeid != null)
+                {
+                    siteObject["id"] = SourceExpressionConverter.ConvertToken(thingRositeid);
+                    siteObjectpropCount++;
+                }
 
-            if (thingRositelongitude != null)
-            {
-                siteObject["longitude"] = ExpressionConverter.ConvertO(thingRositelongitude);
+                if (thingRositelatitude != null)
+                {
+                    siteObject["latitude"] = SourceExpressionConverter.ConvertToken(thingRositelatitude);
+                    siteObjectpropCount++;
+                }
+
+                if (thingRositelongitude != null)
+                {
+                    siteObject["longitude"] = SourceExpressionConverter.ConvertToken(thingRositelongitude);
+                    siteObjectpropCount++;
+                }
+
                 siteObjectpropCount++;
+                siteObject["name"] = SourceExpressionConverter.ConvertToken(thingRositename);
+                siteObjectpropCount++;
+                siteObject["postalCode"] = SourceExpressionConverter.ConvertToken(thingRositepostalCode);
+                if (siteObjectpropCount > 0)
+                {
+                    thingRo["site"] = siteObject;
+                    thingRopropCount++;
+                }
+
+                if (thingRostatus != null)
+                {
+                    thingRo["status"] = SourceExpressionConverter.Convert(thingRostatus);
+                    thingRopropCount++;
+                }
+
+                if (thingRotags != null)
+                {
+                    thingRo["tags"] = SourceExpressionConverter.ConvertToken(thingRotags);
+                    thingRopropCount++;
+                }
+
+                if (thingRopropCount > 0)
+                {
+                    callPayload.Body = thingRo;
+                }
+                return callPayload;
             }
 
-            siteObjectpropCount++;
-            siteObject["name"] = ExpressionConverter.ConvertO(thingRositename);
-            siteObjectpropCount++;
-            siteObject["postalCode"] = ExpressionConverter.ConvertO(thingRositepostalCode);
-            if (siteObjectpropCount > 0)
-            {
-                thingRo["site"] = siteObject;
-                thingRopropCount++;
-            }
-
-            if (thingRostatus != null)
-            {
-                thingRo["status"] = ExpressionConverter.ConvertO(thingRostatus);
-                thingRopropCount++;
-            }
-
-            if (thingRotags != null)
-            {
-                thingRo["tags"] = ExpressionConverter.ConvertO(thingRotags);
-                thingRopropCount++;
-            }
-
-            if (thingRopropCount > 0)
-            {
-                callPayload.Body = thingRo;
-            }
-
-            return new ApiConnectionAction<SingleThingRo>(callPayload);
+            return new ApiConnectionAction<SingleThingRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<ProductRo> GetThingProduct(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ProductRo> GetThingProduct([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProductRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProductRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo> DissociateThingProduct(Expression<Func<string>> id)
+        public IBodyWorkflowAction<SingleThingRo> DissociateThingProduct([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SingleThingRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleThingRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<SingleThingRo> AssociateThingProduct(Expression<Func<string>> id, Expression<Func<string>> productcertification = null, Expression<Func<productconnectivityTypesInputItem[]>> productconnectivityTypes = null, Expression<Func<string>> productdecoderid = null, Expression<Func<string>> productdecoderlink = null, Expression<Func<bool>> productdecodervisible = null, Expression<Func<string>> productdescription = null, Expression<Func<string>> productencoderid = null, Expression<Func<string>> productencoderlink = null, Expression<Func<bool>> productgenerateLinks = null, Expression<Func<bool>> producthasImage = null, Expression<Func<string>> productid = null, Expression<Func<string>> productimageLink = null, Expression<Func<string>> productinfoLink = null, Expression<Func<string>> productlink = null, Expression<Func<bool>> productmanufacturergenerateLinks = null, Expression<Func<string>> productmanufacturerid = null, Expression<Func<string>> productmanufacturerlink = null, Expression<Func<string>> productmanufacturername = null, Expression<Func<string>> productmanufacturerCategory = null, Expression<Func<string>> productmodelcolor = null, Expression<Func<bool>> productmodelgenerateLinks = null, Expression<Func<string>> productmodelicon = null, Expression<Func<string>> productmodelid = null, Expression<Func<bool>> productmodelisCustomModel = null, Expression<Func<bool>> productmodellinkabsolute = null, Expression<Func<string>> productmodellinkauthority = null, Expression<Func<string>> productmodellinkfragment = null, Expression<Func<string>> productmodellinkhost = null, Expression<Func<bool>> productmodellinkopaque = null, Expression<Func<string>> productmodellinkpath = null, Expression<Func<int>> productmodellinkport = null, Expression<Func<string>> productmodellinkquery = null, Expression<Func<string>> productmodellinkrawAuthority = null, Expression<Func<string>> productmodellinkrawFragment = null, Expression<Func<string>> productmodellinkrawPath = null, Expression<Func<string>> productmodellinkrawQuery = null, Expression<Func<string>> productmodellinkrawSchemeSpecificPart = null, Expression<Func<string>> productmodellinkrawUserInfo = null, Expression<Func<string>> productmodellinkscheme = null, Expression<Func<string>> productmodellinkschemeSpecificPart = null, Expression<Func<string>> productmodellinkuserInfo = null, Expression<Func<string>> productmodelname = null, Expression<Func<bool>> productmodelManufacturergenerateLinks = null, Expression<Func<string>> productmodelManufacturerid = null, Expression<Func<string>> productmodelManufacturerlink = null, Expression<Func<string>> productmodelManufacturername = null, Expression<Func<string>> productname = null, Expression<Func<bool>> productreadOnly = null, Expression<Func<string>> productreference = null, Expression<Func<TagRo[]>> producttags = null, Expression<Func<ThingTinyRo[]>> productthings = null)
+        public IBodyWorkflowAction<SingleThingRo> AssociateThingProduct([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> productcertification = null, [WorkflowExpression] Func<productconnectivityTypesInputItem[]> productconnectivityTypes = null, [WorkflowExpression] Func<string> productdecoderid = null, [WorkflowExpression] Func<string> productdecoderlink = null, [WorkflowExpression] Func<bool> productdecodervisible = null, [WorkflowExpression] Func<string> productdescription = null, [WorkflowExpression] Func<string> productencoderid = null, [WorkflowExpression] Func<string> productencoderlink = null, [WorkflowExpression] Func<bool> productgenerateLinks = null, [WorkflowExpression] Func<bool> producthasImage = null, [WorkflowExpression] Func<string> productid = null, [WorkflowExpression] Func<string> productimageLink = null, [WorkflowExpression] Func<string> productinfoLink = null, [WorkflowExpression] Func<string> productlink = null, [WorkflowExpression] Func<bool> productmanufacturergenerateLinks = null, [WorkflowExpression] Func<string> productmanufacturerid = null, [WorkflowExpression] Func<string> productmanufacturerlink = null, [WorkflowExpression] Func<string> productmanufacturername = null, [WorkflowExpression] Func<string> productmanufacturerCategory = null, [WorkflowExpression] Func<string> productmodelcolor = null, [WorkflowExpression] Func<bool> productmodelgenerateLinks = null, [WorkflowExpression] Func<string> productmodelicon = null, [WorkflowExpression] Func<string> productmodelid = null, [WorkflowExpression] Func<bool> productmodelisCustomModel = null, [WorkflowExpression] Func<bool> productmodellinkabsolute = null, [WorkflowExpression] Func<string> productmodellinkauthority = null, [WorkflowExpression] Func<string> productmodellinkfragment = null, [WorkflowExpression] Func<string> productmodellinkhost = null, [WorkflowExpression] Func<bool> productmodellinkopaque = null, [WorkflowExpression] Func<string> productmodellinkpath = null, [WorkflowExpression] Func<int> productmodellinkport = null, [WorkflowExpression] Func<string> productmodellinkquery = null, [WorkflowExpression] Func<string> productmodellinkrawAuthority = null, [WorkflowExpression] Func<string> productmodellinkrawFragment = null, [WorkflowExpression] Func<string> productmodellinkrawPath = null, [WorkflowExpression] Func<string> productmodellinkrawQuery = null, [WorkflowExpression] Func<string> productmodellinkrawSchemeSpecificPart = null, [WorkflowExpression] Func<string> productmodellinkrawUserInfo = null, [WorkflowExpression] Func<string> productmodellinkscheme = null, [WorkflowExpression] Func<string> productmodellinkschemeSpecificPart = null, [WorkflowExpression] Func<string> productmodellinkuserInfo = null, [WorkflowExpression] Func<string> productmodelname = null, [WorkflowExpression] Func<bool> productmodelManufacturergenerateLinks = null, [WorkflowExpression] Func<string> productmodelManufacturerid = null, [WorkflowExpression] Func<string> productmodelManufacturerlink = null, [WorkflowExpression] Func<string> productmodelManufacturername = null, [WorkflowExpression] Func<string> productname = null, [WorkflowExpression] Func<bool> productreadOnly = null, [WorkflowExpression] Func<string> productreference = null, [WorkflowExpression] Func<TagRo[]> producttags = null, [WorkflowExpression] Func<ThingTinyRo[]> productthings = null)
         {
-            var apiCallPath = String.Format("/api/things/{0}/product", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var product = new JObject();
-            var productpropCount = 0;
-            if (productcertification != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                product["certification"] = ExpressionConverter.ConvertO(productcertification);
-                productpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/product", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var product = new JObject();
+                var productpropCount = 0;
+                if (productcertification != null)
+                {
+                    product["certification"] = SourceExpressionConverter.ConvertToken(productcertification);
+                    productpropCount++;
+                }
+
+                if (productconnectivityTypes != null)
+                {
+                    product["connectivityTypes"] = SourceExpressionConverter.ConvertToken(productconnectivityTypes);
+                    productpropCount++;
+                }
+
+                var decoderObject = new JObject();
+                var decoderObjectpropCount = 0;
+                if (productdecoderid != null)
+                {
+                    decoderObject["id"] = SourceExpressionConverter.ConvertToken(productdecoderid);
+                    decoderObjectpropCount++;
+                }
+
+                if (productdecoderlink != null)
+                {
+                    decoderObject["link"] = SourceExpressionConverter.ConvertToken(productdecoderlink);
+                    decoderObjectpropCount++;
+                }
+
+                if (productdecodervisible != null)
+                {
+                    decoderObject["visible"] = SourceExpressionConverter.ConvertToken(productdecodervisible);
+                    decoderObjectpropCount++;
+                }
+
+                if (decoderObjectpropCount > 0)
+                {
+                    product["decoder"] = decoderObject;
+                    productpropCount++;
+                }
+
+                if (productdescription != null)
+                {
+                    product["description"] = SourceExpressionConverter.ConvertToken(productdescription);
+                    productpropCount++;
+                }
+
+                var encoderObject = new JObject();
+                var encoderObjectpropCount = 0;
+                if (productencoderid != null)
+                {
+                    encoderObject["id"] = SourceExpressionConverter.ConvertToken(productencoderid);
+                    encoderObjectpropCount++;
+                }
+
+                if (productencoderlink != null)
+                {
+                    encoderObject["link"] = SourceExpressionConverter.ConvertToken(productencoderlink);
+                    encoderObjectpropCount++;
+                }
+
+                if (encoderObjectpropCount > 0)
+                {
+                    product["encoder"] = encoderObject;
+                    productpropCount++;
+                }
+
+                if (productgenerateLinks != null)
+                {
+                    product["generateLinks"] = SourceExpressionConverter.ConvertToken(productgenerateLinks);
+                    productpropCount++;
+                }
+
+                if (producthasImage != null)
+                {
+                    product["hasImage"] = SourceExpressionConverter.ConvertToken(producthasImage);
+                    productpropCount++;
+                }
+
+                if (productid != null)
+                {
+                    product["id"] = SourceExpressionConverter.ConvertToken(productid);
+                    productpropCount++;
+                }
+
+                if (productimageLink != null)
+                {
+                    product["imageLink"] = SourceExpressionConverter.ConvertToken(productimageLink);
+                    productpropCount++;
+                }
+
+                if (productinfoLink != null)
+                {
+                    product["infoLink"] = SourceExpressionConverter.ConvertToken(productinfoLink);
+                    productpropCount++;
+                }
+
+                if (productlink != null)
+                {
+                    product["link"] = SourceExpressionConverter.ConvertToken(productlink);
+                    productpropCount++;
+                }
+
+                var manufacturerObject = new JObject();
+                var manufacturerObjectpropCount = 0;
+                if (productmanufacturergenerateLinks != null)
+                {
+                    manufacturerObject["generateLinks"] = SourceExpressionConverter.ConvertToken(productmanufacturergenerateLinks);
+                    manufacturerObjectpropCount++;
+                }
+
+                if (productmanufacturerid != null)
+                {
+                    manufacturerObject["id"] = SourceExpressionConverter.ConvertToken(productmanufacturerid);
+                    manufacturerObjectpropCount++;
+                }
+
+                if (productmanufacturerlink != null)
+                {
+                    manufacturerObject["link"] = SourceExpressionConverter.ConvertToken(productmanufacturerlink);
+                    manufacturerObjectpropCount++;
+                }
+
+                if (productmanufacturername != null)
+                {
+                    manufacturerObject["name"] = SourceExpressionConverter.ConvertToken(productmanufacturername);
+                    manufacturerObjectpropCount++;
+                }
+
+                if (manufacturerObjectpropCount > 0)
+                {
+                    product["manufacturer"] = manufacturerObject;
+                    productpropCount++;
+                }
+
+                if (productmanufacturerCategory != null)
+                {
+                    product["manufacturerCategory"] = SourceExpressionConverter.ConvertToken(productmanufacturerCategory);
+                    productpropCount++;
+                }
+
+                var modelObject = new JObject();
+                var modelObjectpropCount = 0;
+                if (productmodelcolor != null)
+                {
+                    modelObject["color"] = SourceExpressionConverter.ConvertToken(productmodelcolor);
+                    modelObjectpropCount++;
+                }
+
+                if (productmodelgenerateLinks != null)
+                {
+                    modelObject["generateLinks"] = SourceExpressionConverter.ConvertToken(productmodelgenerateLinks);
+                    modelObjectpropCount++;
+                }
+
+                if (productmodelicon != null)
+                {
+                    modelObject["icon"] = SourceExpressionConverter.ConvertToken(productmodelicon);
+                    modelObjectpropCount++;
+                }
+
+                if (productmodelid != null)
+                {
+                    modelObject["id"] = SourceExpressionConverter.ConvertToken(productmodelid);
+                    modelObjectpropCount++;
+                }
+
+                if (productmodelisCustomModel != null)
+                {
+                    modelObject["isCustomModel"] = SourceExpressionConverter.ConvertToken(productmodelisCustomModel);
+                    modelObjectpropCount++;
+                }
+
+                var linkObject = new JObject();
+                var linkObjectpropCount = 0;
+                if (productmodellinkabsolute != null)
+                {
+                    linkObject["absolute"] = SourceExpressionConverter.ConvertToken(productmodellinkabsolute);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkauthority != null)
+                {
+                    linkObject["authority"] = SourceExpressionConverter.ConvertToken(productmodellinkauthority);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkfragment != null)
+                {
+                    linkObject["fragment"] = SourceExpressionConverter.ConvertToken(productmodellinkfragment);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkhost != null)
+                {
+                    linkObject["host"] = SourceExpressionConverter.ConvertToken(productmodellinkhost);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkopaque != null)
+                {
+                    linkObject["opaque"] = SourceExpressionConverter.ConvertToken(productmodellinkopaque);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkpath != null)
+                {
+                    linkObject["path"] = SourceExpressionConverter.ConvertToken(productmodellinkpath);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkport != null)
+                {
+                    linkObject["port"] = SourceExpressionConverter.ConvertToken(productmodellinkport);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkquery != null)
+                {
+                    linkObject["query"] = SourceExpressionConverter.ConvertToken(productmodellinkquery);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkrawAuthority != null)
+                {
+                    linkObject["rawAuthority"] = SourceExpressionConverter.ConvertToken(productmodellinkrawAuthority);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkrawFragment != null)
+                {
+                    linkObject["rawFragment"] = SourceExpressionConverter.ConvertToken(productmodellinkrawFragment);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkrawPath != null)
+                {
+                    linkObject["rawPath"] = SourceExpressionConverter.ConvertToken(productmodellinkrawPath);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkrawQuery != null)
+                {
+                    linkObject["rawQuery"] = SourceExpressionConverter.ConvertToken(productmodellinkrawQuery);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkrawSchemeSpecificPart != null)
+                {
+                    linkObject["rawSchemeSpecificPart"] = SourceExpressionConverter.ConvertToken(productmodellinkrawSchemeSpecificPart);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkrawUserInfo != null)
+                {
+                    linkObject["rawUserInfo"] = SourceExpressionConverter.ConvertToken(productmodellinkrawUserInfo);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkscheme != null)
+                {
+                    linkObject["scheme"] = SourceExpressionConverter.ConvertToken(productmodellinkscheme);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkschemeSpecificPart != null)
+                {
+                    linkObject["schemeSpecificPart"] = SourceExpressionConverter.ConvertToken(productmodellinkschemeSpecificPart);
+                    linkObjectpropCount++;
+                }
+
+                if (productmodellinkuserInfo != null)
+                {
+                    linkObject["userInfo"] = SourceExpressionConverter.ConvertToken(productmodellinkuserInfo);
+                    linkObjectpropCount++;
+                }
+
+                if (linkObjectpropCount > 0)
+                {
+                    modelObject["link"] = linkObject;
+                    modelObjectpropCount++;
+                }
+
+                if (productmodelname != null)
+                {
+                    modelObject["name"] = SourceExpressionConverter.ConvertToken(productmodelname);
+                    modelObjectpropCount++;
+                }
+
+                if (modelObjectpropCount > 0)
+                {
+                    product["model"] = modelObject;
+                    productpropCount++;
+                }
+
+                var modelManufacturerObject = new JObject();
+                var modelManufacturerObjectpropCount = 0;
+                if (productmanufacturergenerateLinks != null)
+                {
+                    modelManufacturerObject["generateLinks"] = SourceExpressionConverter.ConvertToken(productmanufacturergenerateLinks);
+                    modelManufacturerObjectpropCount++;
+                }
+
+                if (productmanufacturerid != null)
+                {
+                    modelManufacturerObject["id"] = SourceExpressionConverter.ConvertToken(productmanufacturerid);
+                    modelManufacturerObjectpropCount++;
+                }
+
+                if (productmanufacturerlink != null)
+                {
+                    modelManufacturerObject["link"] = SourceExpressionConverter.ConvertToken(productmanufacturerlink);
+                    modelManufacturerObjectpropCount++;
+                }
+
+                if (productmanufacturername != null)
+                {
+                    modelManufacturerObject["name"] = SourceExpressionConverter.ConvertToken(productmanufacturername);
+                    modelManufacturerObjectpropCount++;
+                }
+
+                if (modelManufacturerObjectpropCount > 0)
+                {
+                    product["modelManufacturer"] = modelManufacturerObject;
+                    productpropCount++;
+                }
+
+                if (productname != null)
+                {
+                    product["name"] = SourceExpressionConverter.ConvertToken(productname);
+                    productpropCount++;
+                }
+
+                if (productreadOnly != null)
+                {
+                    product["readOnly"] = SourceExpressionConverter.ConvertToken(productreadOnly);
+                    productpropCount++;
+                }
+
+                if (productreference != null)
+                {
+                    product["reference"] = SourceExpressionConverter.ConvertToken(productreference);
+                    productpropCount++;
+                }
+
+                if (producttags != null)
+                {
+                    product["tags"] = SourceExpressionConverter.ConvertToken(producttags);
+                    productpropCount++;
+                }
+
+                if (productthings != null)
+                {
+                    product["things"] = SourceExpressionConverter.ConvertToken(productthings);
+                    productpropCount++;
+                }
+
+                if (productpropCount > 0)
+                {
+                    callPayload.Body = product;
+                }
+                return callPayload;
             }
 
-            if (productconnectivityTypes != null)
-            {
-                product["connectivityTypes"] = ExpressionConverter.ConvertO(productconnectivityTypes);
-                productpropCount++;
-            }
-
-            var decoderObject = new JObject();
-            var decoderObjectpropCount = 0;
-            if (productdecoderid != null)
-            {
-                decoderObject["id"] = ExpressionConverter.ConvertO(productdecoderid);
-                decoderObjectpropCount++;
-            }
-
-            if (productdecoderlink != null)
-            {
-                decoderObject["link"] = ExpressionConverter.ConvertO(productdecoderlink);
-                decoderObjectpropCount++;
-            }
-
-            if (productdecodervisible != null)
-            {
-                decoderObject["visible"] = ExpressionConverter.ConvertO(productdecodervisible);
-                decoderObjectpropCount++;
-            }
-
-            if (decoderObjectpropCount > 0)
-            {
-                product["decoder"] = decoderObject;
-                productpropCount++;
-            }
-
-            if (productdescription != null)
-            {
-                product["description"] = ExpressionConverter.ConvertO(productdescription);
-                productpropCount++;
-            }
-
-            var encoderObject = new JObject();
-            var encoderObjectpropCount = 0;
-            if (productencoderid != null)
-            {
-                encoderObject["id"] = ExpressionConverter.ConvertO(productencoderid);
-                encoderObjectpropCount++;
-            }
-
-            if (productencoderlink != null)
-            {
-                encoderObject["link"] = ExpressionConverter.ConvertO(productencoderlink);
-                encoderObjectpropCount++;
-            }
-
-            if (encoderObjectpropCount > 0)
-            {
-                product["encoder"] = encoderObject;
-                productpropCount++;
-            }
-
-            if (productgenerateLinks != null)
-            {
-                product["generateLinks"] = ExpressionConverter.ConvertO(productgenerateLinks);
-                productpropCount++;
-            }
-
-            if (producthasImage != null)
-            {
-                product["hasImage"] = ExpressionConverter.ConvertO(producthasImage);
-                productpropCount++;
-            }
-
-            if (productid != null)
-            {
-                product["id"] = ExpressionConverter.ConvertO(productid);
-                productpropCount++;
-            }
-
-            if (productimageLink != null)
-            {
-                product["imageLink"] = ExpressionConverter.ConvertO(productimageLink);
-                productpropCount++;
-            }
-
-            if (productinfoLink != null)
-            {
-                product["infoLink"] = ExpressionConverter.ConvertO(productinfoLink);
-                productpropCount++;
-            }
-
-            if (productlink != null)
-            {
-                product["link"] = ExpressionConverter.ConvertO(productlink);
-                productpropCount++;
-            }
-
-            var manufacturerObject = new JObject();
-            var manufacturerObjectpropCount = 0;
-            if (productmanufacturergenerateLinks != null)
-            {
-                manufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(productmanufacturergenerateLinks);
-                manufacturerObjectpropCount++;
-            }
-
-            if (productmanufacturerid != null)
-            {
-                manufacturerObject["id"] = ExpressionConverter.ConvertO(productmanufacturerid);
-                manufacturerObjectpropCount++;
-            }
-
-            if (productmanufacturerlink != null)
-            {
-                manufacturerObject["link"] = ExpressionConverter.ConvertO(productmanufacturerlink);
-                manufacturerObjectpropCount++;
-            }
-
-            if (productmanufacturername != null)
-            {
-                manufacturerObject["name"] = ExpressionConverter.ConvertO(productmanufacturername);
-                manufacturerObjectpropCount++;
-            }
-
-            if (manufacturerObjectpropCount > 0)
-            {
-                product["manufacturer"] = manufacturerObject;
-                productpropCount++;
-            }
-
-            if (productmanufacturerCategory != null)
-            {
-                product["manufacturerCategory"] = ExpressionConverter.ConvertO(productmanufacturerCategory);
-                productpropCount++;
-            }
-
-            var modelObject = new JObject();
-            var modelObjectpropCount = 0;
-            if (productmodelcolor != null)
-            {
-                modelObject["color"] = ExpressionConverter.ConvertO(productmodelcolor);
-                modelObjectpropCount++;
-            }
-
-            if (productmodelgenerateLinks != null)
-            {
-                modelObject["generateLinks"] = ExpressionConverter.ConvertO(productmodelgenerateLinks);
-                modelObjectpropCount++;
-            }
-
-            if (productmodelicon != null)
-            {
-                modelObject["icon"] = ExpressionConverter.ConvertO(productmodelicon);
-                modelObjectpropCount++;
-            }
-
-            if (productmodelid != null)
-            {
-                modelObject["id"] = ExpressionConverter.ConvertO(productmodelid);
-                modelObjectpropCount++;
-            }
-
-            if (productmodelisCustomModel != null)
-            {
-                modelObject["isCustomModel"] = ExpressionConverter.ConvertO(productmodelisCustomModel);
-                modelObjectpropCount++;
-            }
-
-            var linkObject = new JObject();
-            var linkObjectpropCount = 0;
-            if (productmodellinkabsolute != null)
-            {
-                linkObject["absolute"] = ExpressionConverter.ConvertO(productmodellinkabsolute);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkauthority != null)
-            {
-                linkObject["authority"] = ExpressionConverter.ConvertO(productmodellinkauthority);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkfragment != null)
-            {
-                linkObject["fragment"] = ExpressionConverter.ConvertO(productmodellinkfragment);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkhost != null)
-            {
-                linkObject["host"] = ExpressionConverter.ConvertO(productmodellinkhost);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkopaque != null)
-            {
-                linkObject["opaque"] = ExpressionConverter.ConvertO(productmodellinkopaque);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkpath != null)
-            {
-                linkObject["path"] = ExpressionConverter.ConvertO(productmodellinkpath);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkport != null)
-            {
-                linkObject["port"] = ExpressionConverter.ConvertO(productmodellinkport);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkquery != null)
-            {
-                linkObject["query"] = ExpressionConverter.ConvertO(productmodellinkquery);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkrawAuthority != null)
-            {
-                linkObject["rawAuthority"] = ExpressionConverter.ConvertO(productmodellinkrawAuthority);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkrawFragment != null)
-            {
-                linkObject["rawFragment"] = ExpressionConverter.ConvertO(productmodellinkrawFragment);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkrawPath != null)
-            {
-                linkObject["rawPath"] = ExpressionConverter.ConvertO(productmodellinkrawPath);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkrawQuery != null)
-            {
-                linkObject["rawQuery"] = ExpressionConverter.ConvertO(productmodellinkrawQuery);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkrawSchemeSpecificPart != null)
-            {
-                linkObject["rawSchemeSpecificPart"] = ExpressionConverter.ConvertO(productmodellinkrawSchemeSpecificPart);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkrawUserInfo != null)
-            {
-                linkObject["rawUserInfo"] = ExpressionConverter.ConvertO(productmodellinkrawUserInfo);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkscheme != null)
-            {
-                linkObject["scheme"] = ExpressionConverter.ConvertO(productmodellinkscheme);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkschemeSpecificPart != null)
-            {
-                linkObject["schemeSpecificPart"] = ExpressionConverter.ConvertO(productmodellinkschemeSpecificPart);
-                linkObjectpropCount++;
-            }
-
-            if (productmodellinkuserInfo != null)
-            {
-                linkObject["userInfo"] = ExpressionConverter.ConvertO(productmodellinkuserInfo);
-                linkObjectpropCount++;
-            }
-
-            if (linkObjectpropCount > 0)
-            {
-                modelObject["link"] = linkObject;
-                modelObjectpropCount++;
-            }
-
-            if (productmodelname != null)
-            {
-                modelObject["name"] = ExpressionConverter.ConvertO(productmodelname);
-                modelObjectpropCount++;
-            }
-
-            if (modelObjectpropCount > 0)
-            {
-                product["model"] = modelObject;
-                productpropCount++;
-            }
-
-            var modelManufacturerObject = new JObject();
-            var modelManufacturerObjectpropCount = 0;
-            if (productmanufacturergenerateLinks != null)
-            {
-                modelManufacturerObject["generateLinks"] = ExpressionConverter.ConvertO(productmanufacturergenerateLinks);
-                modelManufacturerObjectpropCount++;
-            }
-
-            if (productmanufacturerid != null)
-            {
-                modelManufacturerObject["id"] = ExpressionConverter.ConvertO(productmanufacturerid);
-                modelManufacturerObjectpropCount++;
-            }
-
-            if (productmanufacturerlink != null)
-            {
-                modelManufacturerObject["link"] = ExpressionConverter.ConvertO(productmanufacturerlink);
-                modelManufacturerObjectpropCount++;
-            }
-
-            if (productmanufacturername != null)
-            {
-                modelManufacturerObject["name"] = ExpressionConverter.ConvertO(productmanufacturername);
-                modelManufacturerObjectpropCount++;
-            }
-
-            if (modelManufacturerObjectpropCount > 0)
-            {
-                product["modelManufacturer"] = modelManufacturerObject;
-                productpropCount++;
-            }
-
-            if (productname != null)
-            {
-                product["name"] = ExpressionConverter.ConvertO(productname);
-                productpropCount++;
-            }
-
-            if (productreadOnly != null)
-            {
-                product["readOnly"] = ExpressionConverter.ConvertO(productreadOnly);
-                productpropCount++;
-            }
-
-            if (productreference != null)
-            {
-                product["reference"] = ExpressionConverter.ConvertO(productreference);
-                productpropCount++;
-            }
-
-            if (producttags != null)
-            {
-                product["tags"] = ExpressionConverter.ConvertO(producttags);
-                productpropCount++;
-            }
-
-            if (productthings != null)
-            {
-                product["things"] = ExpressionConverter.ConvertO(productthings);
-                productpropCount++;
-            }
-
-            if (productpropCount > 0)
-            {
-                callPayload.Body = product;
-            }
-
-            return new ApiConnectionAction<SingleThingRo>(callPayload);
+            return new ApiConnectionAction<SingleThingRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageFlowRo> GetFlowsRelatedToThing(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PageFlowRo> GetFlowsRelatedToThing([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/things/{0}/related_flows", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PageFlowRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/related_flows", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageFlowRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageThingTagRo> GetThingTags(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PageThingTagRo> GetThingTags([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/things/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PageThingTagRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/things/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageThingTagRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsAvg(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsAvg([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            var apiCallPath = "/stats/avg";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats/avg";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageStatsMeasureRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<StatsCountRo> GetStatsCount(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<StatsCountRo> GetStatsCount([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            var apiCallPath = "/stats/count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<StatsCountRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats/count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatsCountRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsLast(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsLast([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            var apiCallPath = "/stats/last";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats/last";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageStatsMeasureRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetThingStatsLast(Expression<Func<string>> thingId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetThingStatsLast([WorkflowExpression] Func<string> thingId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null)
         {
-            var apiCallPath = String.Format("/stats/last/things/{0}", ExpressionConverter.ConvertWithUrlEncoding(thingId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stats/last/things/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(thingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageStatsMeasureRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMax(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMax([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            var apiCallPath = "/stats/max";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats/max";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageStatsMeasureRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<StatsGraphRo[]> GetStatsMeasurements(Expression<Func<int>> start, Expression<Func<int>> end, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> time = null, Expression<Func<string>> interval = null)
+        public IBodyWorkflowAction<StatsGraphRo[]> GetStatsMeasurements([WorkflowExpression] Func<int> start, [WorkflowExpression] Func<int> end, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> time = null, [WorkflowExpression] Func<string> interval = null)
         {
-            var apiCallPath = "/stats/measurements";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            if (time != null)
-                callPayload.Queries["time"] = ExpressionConverter.Convert(time);
-            if (interval != null)
-                callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
-            callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<StatsGraphRo[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats/measurements";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                if (time != null)
+                    callPayload.Queries["time"] = SourceExpressionConverter.ConvertO(time);
+                if (interval != null)
+                    callPayload.Queries["interval"] = SourceExpressionConverter.ConvertO(interval);
+                callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatsGraphRo[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMin(Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<PageStatsMeasureRo> GetStatsMin([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            var apiCallPath = "/stats/min";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<PageStatsMeasureRo>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats/min";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PageStatsMeasureRo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<StatsCountRo[]> GetStatsRepartition(Expression<Func<string>> attribute, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> start = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<StatsCountRo[]> GetStatsRepartition([WorkflowExpression] Func<string> attribute, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> start = null, [WorkflowExpression] Func<int> end = null)
         {
-            var apiCallPath = "/stats/repartition";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["attribute"] = ExpressionConverter.Convert(attribute);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<StatsCountRo[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats/repartition";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["attribute"] = SourceExpressionConverter.ConvertO(attribute);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatsCountRo[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pilotthings")]
-        public IBodyWorkflowAction<StatsGraphRo[]> GetStatsSum(Expression<Func<int>> start, Expression<Func<int>> end, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> sortValues = null, Expression<Func<string>> sort = null, Expression<Func<string>> filter = null, Expression<Func<dirInput>> dir = null, Expression<Func<string>> orFilter = null, Expression<Func<int>> time = null, Expression<Func<string>> interval = null)
+        public IBodyWorkflowAction<StatsGraphRo[]> GetStatsSum([WorkflowExpression] Func<int> start, [WorkflowExpression] Func<int> end, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> sortValues = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<dirInput> dir = null, [WorkflowExpression] Func<string> orFilter = null, [WorkflowExpression] Func<int> time = null, [WorkflowExpression] Func<string> interval = null)
         {
-            var apiCallPath = "/stats/sum";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (sortValues != null)
-                callPayload.Queries["sortValues"] = ExpressionConverter.Convert(sortValues);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (dir != null)
-                callPayload.Queries["dir"] = ExpressionConverter.Convert(dir);
-            if (orFilter != null)
-                callPayload.Queries["orFilter"] = ExpressionConverter.Convert(orFilter);
-            if (time != null)
-                callPayload.Queries["time"] = ExpressionConverter.Convert(time);
-            if (interval != null)
-                callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
-            callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<StatsGraphRo[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats/sum";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (sortValues != null)
+                    callPayload.Queries["sortValues"] = SourceExpressionConverter.ConvertO(sortValues);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (dir != null)
+                    callPayload.Queries["dir"] = SourceExpressionConverter.Convert(dir);
+                if (orFilter != null)
+                    callPayload.Queries["orFilter"] = SourceExpressionConverter.ConvertO(orFilter);
+                if (time != null)
+                    callPayload.Queries["time"] = SourceExpressionConverter.ConvertO(time);
+                if (interval != null)
+                    callPayload.Queries["interval"] = SourceExpressionConverter.ConvertO(interval);
+                callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatsGraphRo[]>(BuildSourceInput);
         }
     }
 
@@ -4711,150 +4960,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         VIRTUAL
     }
 
-    public class ResponseEntity
-    {
-        [JsonProperty("body")]
-        public JToken Body { get; set; }
-
-        [JsonProperty("statusCode")]
-        public ResponseEntityStatusCodeType StatusCode { get; set; }
-
-        [JsonProperty("statusCodeValue")]
-        public int StatusCodeValue { get; set; }
-    }
-
-    public enum ResponseEntityStatusCodeType
-    {
-        [EnumMember(Value = "100")]
-        _100,
-        [EnumMember(Value = "101")]
-        _101,
-        [EnumMember(Value = "102")]
-        _102,
-        [EnumMember(Value = "103")]
-        _103,
-        [EnumMember(Value = "200")]
-        _200,
-        [EnumMember(Value = "201")]
-        _201,
-        [EnumMember(Value = "202")]
-        _202,
-        [EnumMember(Value = "203")]
-        _203,
-        [EnumMember(Value = "204")]
-        _204,
-        [EnumMember(Value = "205")]
-        _205,
-        [EnumMember(Value = "206")]
-        _206,
-        [EnumMember(Value = "207")]
-        _207,
-        [EnumMember(Value = "208")]
-        _208,
-        [EnumMember(Value = "226")]
-        _226,
-        [EnumMember(Value = "300")]
-        _300,
-        [EnumMember(Value = "301")]
-        _301,
-        [EnumMember(Value = "302")]
-        _302,
-        [EnumMember(Value = "303")]
-        _303,
-        [EnumMember(Value = "304")]
-        _304,
-        [EnumMember(Value = "305")]
-        _305,
-        [EnumMember(Value = "307")]
-        _307,
-        [EnumMember(Value = "308")]
-        _308,
-        [EnumMember(Value = "400")]
-        _400,
-        [EnumMember(Value = "401")]
-        _401,
-        [EnumMember(Value = "402")]
-        _402,
-        [EnumMember(Value = "403")]
-        _403,
-        [EnumMember(Value = "404")]
-        _404,
-        [EnumMember(Value = "405")]
-        _405,
-        [EnumMember(Value = "406")]
-        _406,
-        [EnumMember(Value = "407")]
-        _407,
-        [EnumMember(Value = "408")]
-        _408,
-        [EnumMember(Value = "409")]
-        _409,
-        [EnumMember(Value = "410")]
-        _410,
-        [EnumMember(Value = "411")]
-        _411,
-        [EnumMember(Value = "412")]
-        _412,
-        [EnumMember(Value = "413")]
-        _413,
-        [EnumMember(Value = "414")]
-        _414,
-        [EnumMember(Value = "415")]
-        _415,
-        [EnumMember(Value = "416")]
-        _416,
-        [EnumMember(Value = "417")]
-        _417,
-        [EnumMember(Value = "418")]
-        _418,
-        [EnumMember(Value = "419")]
-        _419,
-        [EnumMember(Value = "420")]
-        _420,
-        [EnumMember(Value = "421")]
-        _421,
-        [EnumMember(Value = "422")]
-        _422,
-        [EnumMember(Value = "423")]
-        _423,
-        [EnumMember(Value = "424")]
-        _424,
-        [EnumMember(Value = "426")]
-        _426,
-        [EnumMember(Value = "428")]
-        _428,
-        [EnumMember(Value = "429")]
-        _429,
-        [EnumMember(Value = "431")]
-        _431,
-        [EnumMember(Value = "451")]
-        _451,
-        [EnumMember(Value = "500")]
-        _500,
-        [EnumMember(Value = "501")]
-        _501,
-        [EnumMember(Value = "502")]
-        _502,
-        [EnumMember(Value = "503")]
-        _503,
-        [EnumMember(Value = "504")]
-        _504,
-        [EnumMember(Value = "505")]
-        _505,
-        [EnumMember(Value = "506")]
-        _506,
-        [EnumMember(Value = "507")]
-        _507,
-        [EnumMember(Value = "508")]
-        _508,
-        [EnumMember(Value = "509")]
-        _509,
-        [EnumMember(Value = "510")]
-        _510,
-        [EnumMember(Value = "511")]
-        _511
-    }
-
     public enum jsonnodeTypeInput
     {
         ARRAY,
@@ -5167,6 +5272,150 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pilotthings
         TEXT,
         TEXTEREA,
         FILE
+    }
+
+    public class ResponseEntity
+    {
+        [JsonProperty("body")]
+        public JToken Body { get; set; }
+
+        [JsonProperty("statusCode")]
+        public ResponseEntityStatusCodeType StatusCode { get; set; }
+
+        [JsonProperty("statusCodeValue")]
+        public int StatusCodeValue { get; set; }
+    }
+
+    public enum ResponseEntityStatusCodeType
+    {
+        [EnumMember(Value = "100")]
+        _100,
+        [EnumMember(Value = "101")]
+        _101,
+        [EnumMember(Value = "102")]
+        _102,
+        [EnumMember(Value = "103")]
+        _103,
+        [EnumMember(Value = "200")]
+        _200,
+        [EnumMember(Value = "201")]
+        _201,
+        [EnumMember(Value = "202")]
+        _202,
+        [EnumMember(Value = "203")]
+        _203,
+        [EnumMember(Value = "204")]
+        _204,
+        [EnumMember(Value = "205")]
+        _205,
+        [EnumMember(Value = "206")]
+        _206,
+        [EnumMember(Value = "207")]
+        _207,
+        [EnumMember(Value = "208")]
+        _208,
+        [EnumMember(Value = "226")]
+        _226,
+        [EnumMember(Value = "300")]
+        _300,
+        [EnumMember(Value = "301")]
+        _301,
+        [EnumMember(Value = "302")]
+        _302,
+        [EnumMember(Value = "303")]
+        _303,
+        [EnumMember(Value = "304")]
+        _304,
+        [EnumMember(Value = "305")]
+        _305,
+        [EnumMember(Value = "307")]
+        _307,
+        [EnumMember(Value = "308")]
+        _308,
+        [EnumMember(Value = "400")]
+        _400,
+        [EnumMember(Value = "401")]
+        _401,
+        [EnumMember(Value = "402")]
+        _402,
+        [EnumMember(Value = "403")]
+        _403,
+        [EnumMember(Value = "404")]
+        _404,
+        [EnumMember(Value = "405")]
+        _405,
+        [EnumMember(Value = "406")]
+        _406,
+        [EnumMember(Value = "407")]
+        _407,
+        [EnumMember(Value = "408")]
+        _408,
+        [EnumMember(Value = "409")]
+        _409,
+        [EnumMember(Value = "410")]
+        _410,
+        [EnumMember(Value = "411")]
+        _411,
+        [EnumMember(Value = "412")]
+        _412,
+        [EnumMember(Value = "413")]
+        _413,
+        [EnumMember(Value = "414")]
+        _414,
+        [EnumMember(Value = "415")]
+        _415,
+        [EnumMember(Value = "416")]
+        _416,
+        [EnumMember(Value = "417")]
+        _417,
+        [EnumMember(Value = "418")]
+        _418,
+        [EnumMember(Value = "419")]
+        _419,
+        [EnumMember(Value = "420")]
+        _420,
+        [EnumMember(Value = "421")]
+        _421,
+        [EnumMember(Value = "422")]
+        _422,
+        [EnumMember(Value = "423")]
+        _423,
+        [EnumMember(Value = "424")]
+        _424,
+        [EnumMember(Value = "426")]
+        _426,
+        [EnumMember(Value = "428")]
+        _428,
+        [EnumMember(Value = "429")]
+        _429,
+        [EnumMember(Value = "431")]
+        _431,
+        [EnumMember(Value = "451")]
+        _451,
+        [EnumMember(Value = "500")]
+        _500,
+        [EnumMember(Value = "501")]
+        _501,
+        [EnumMember(Value = "502")]
+        _502,
+        [EnumMember(Value = "503")]
+        _503,
+        [EnumMember(Value = "504")]
+        _504,
+        [EnumMember(Value = "505")]
+        _505,
+        [EnumMember(Value = "506")]
+        _506,
+        [EnumMember(Value = "507")]
+        _507,
+        [EnumMember(Value = "508")]
+        _508,
+        [EnumMember(Value = "509")]
+        _509,
+        [EnumMember(Value = "510")]
+        _510,
+        [EnumMember(Value = "511")]
+        _511
     }
 
     public class MeasureTinyRo

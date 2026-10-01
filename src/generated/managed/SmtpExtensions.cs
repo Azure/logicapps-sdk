@@ -12,79 +12,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smtp
     public class SmtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smtp")]
-        public IWorkflowAction SendEmail(Expression<Func<string>> emailMessagefrom = null, Expression<Func<string>> emailMessageto = null, Expression<Func<string>> emailMessagecC = null, Expression<Func<string>> emailMessagesubject = null, Expression<Func<string>> emailMessagebody = null, Expression<Func<string>> emailMessagebcc = null, Expression<Func<emailMessageimportanceInput>> emailMessageimportance = null, Expression<Func<string>> emailMessagereadReceipt = null, Expression<Func<string>> emailMessagedeliveryReceipt = null, Expression<Func<AttachmentV2[]>> emailMessageattachments = null)
+        public IWorkflowAction SendEmail([WorkflowExpression] Func<string> emailMessagefrom = null, [WorkflowExpression] Func<string> emailMessageto = null, [WorkflowExpression] Func<string> emailMessagecC = null, [WorkflowExpression] Func<string> emailMessagesubject = null, [WorkflowExpression] Func<string> emailMessagebody = null, [WorkflowExpression] Func<string> emailMessagebcc = null, [WorkflowExpression] Func<emailMessageimportanceInput> emailMessageimportance = null, [WorkflowExpression] Func<string> emailMessagereadReceipt = null, [WorkflowExpression] Func<string> emailMessagedeliveryReceipt = null, [WorkflowExpression] Func<AttachmentV2[]> emailMessageattachments = null)
         {
-            var apiCallPath = "/SendEmailV3";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var emailMessage = new JObject();
-            var emailMessagepropCount = 0;
-            if (emailMessagefrom != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                emailMessage["From"] = ExpressionConverter.ConvertO(emailMessagefrom);
-                emailMessagepropCount++;
+                var apiCallPath = "/SendEmailV3";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var emailMessage = new JObject();
+                var emailMessagepropCount = 0;
+                if (emailMessagefrom != null)
+                {
+                    emailMessage["From"] = SourceExpressionConverter.ConvertToken(emailMessagefrom);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessageto != null)
+                {
+                    emailMessage["To"] = SourceExpressionConverter.ConvertToken(emailMessageto);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessagecC != null)
+                {
+                    emailMessage["CC"] = SourceExpressionConverter.ConvertToken(emailMessagecC);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessagesubject != null)
+                {
+                    emailMessage["Subject"] = SourceExpressionConverter.ConvertToken(emailMessagesubject);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessagebody != null)
+                {
+                    emailMessage["Body"] = SourceExpressionConverter.ConvertToken(emailMessagebody);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessagebcc != null)
+                {
+                    emailMessage["Bcc"] = SourceExpressionConverter.ConvertToken(emailMessagebcc);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessageimportance != null)
+                {
+                    emailMessage["Importance"] = SourceExpressionConverter.Convert(emailMessageimportance);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessagereadReceipt != null)
+                {
+                    emailMessage["ReadReceipt"] = SourceExpressionConverter.ConvertToken(emailMessagereadReceipt);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessagedeliveryReceipt != null)
+                {
+                    emailMessage["DeliveryReceipt"] = SourceExpressionConverter.ConvertToken(emailMessagedeliveryReceipt);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessageattachments != null)
+                {
+                    emailMessage["Attachments"] = SourceExpressionConverter.ConvertToken(emailMessageattachments);
+                    emailMessagepropCount++;
+                }
+
+                if (emailMessagepropCount > 0)
+                {
+                    callPayload.Body = emailMessage;
+                }
+                return callPayload;
             }
 
-            if (emailMessageto != null)
-            {
-                emailMessage["To"] = ExpressionConverter.ConvertO(emailMessageto);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagecC != null)
-            {
-                emailMessage["CC"] = ExpressionConverter.ConvertO(emailMessagecC);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagesubject != null)
-            {
-                emailMessage["Subject"] = ExpressionConverter.ConvertO(emailMessagesubject);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagebody != null)
-            {
-                emailMessage["Body"] = ExpressionConverter.ConvertO(emailMessagebody);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagebcc != null)
-            {
-                emailMessage["Bcc"] = ExpressionConverter.ConvertO(emailMessagebcc);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessageimportance != null)
-            {
-                emailMessage["Importance"] = ExpressionConverter.ConvertO(emailMessageimportance);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagereadReceipt != null)
-            {
-                emailMessage["ReadReceipt"] = ExpressionConverter.ConvertO(emailMessagereadReceipt);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagedeliveryReceipt != null)
-            {
-                emailMessage["DeliveryReceipt"] = ExpressionConverter.ConvertO(emailMessagedeliveryReceipt);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessageattachments != null)
-            {
-                emailMessage["Attachments"] = ExpressionConverter.ConvertO(emailMessageattachments);
-                emailMessagepropCount++;
-            }
-
-            if (emailMessagepropCount > 0)
-            {
-                callPayload.Body = emailMessage;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

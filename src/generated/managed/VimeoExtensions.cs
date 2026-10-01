@@ -17,24 +17,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
     {
         public IBodyWorkflowTrigger<Video[]> OnVideoUpload(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/me/videos";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
-            callPayload.Queries["sort"] = Convert.ToString("date");
-            return new ApiConnectionTrigger<Video[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/me/videos";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
+                callPayload.Queries["sort"] = Convert.ToString("date");
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<Video[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel(Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel([WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/channels/videos";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
-            callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
-            callPayload.Queries["sort"] = Convert.ToString("added");
-            callPayload.Queries["per_page"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<VideoWithChannelId[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/channels/videos";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["channelId"] = SourceExpressionConverter.ConvertO(channelId);
+                callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
+                callPayload.Queries["sort"] = Convert.ToString("added");
+                callPayload.Queries["per_page"] = Convert.ToString(50);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<VideoWithChannelId[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

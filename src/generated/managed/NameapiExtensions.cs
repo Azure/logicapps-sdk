@@ -12,55 +12,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
     public class NameapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<ParseNameResponse> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
+        public IBodyWorkflowAction<ParseNameResponse> ParseName([WorkflowExpression] Func<JToken[]> bodyinputPersonpersonNamepersonNames, [WorkflowExpression] Func<bodyinputPersongenderInput> bodyinputPersongender = null)
         {
-            var apiCallPath = "/v5.3/parser/personnameparser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputPersonObject = new JObject();
-            var inputPersonObjectpropCount = 0;
-            inputPersonObject["type"] = "NaturalInputPerson";
-            inputPersonObjectpropCount++;
-            var personNameObject = new JObject();
-            var personNameObjectpropCount = 0;
-            personNameObjectpropCount++;
-            personNameObject["nameFields"] = ExpressionConverter.ConvertO(bodyinputPersonpersonNamepersonNames);
-            if (personNameObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputPersonObject["personName"] = personNameObject;
+                var apiCallPath = "/v5.3/parser/personnameparser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputPersonObject = new JObject();
+                var inputPersonObjectpropCount = 0;
+                inputPersonObject["type"] = "NaturalInputPerson";
                 inputPersonObjectpropCount++;
+                var personNameObject = new JObject();
+                var personNameObjectpropCount = 0;
+                personNameObjectpropCount++;
+                personNameObject["nameFields"] = SourceExpressionConverter.ConvertToken(bodyinputPersonpersonNamepersonNames);
+                if (personNameObjectpropCount > 0)
+                {
+                    inputPersonObject["personName"] = personNameObject;
+                    inputPersonObjectpropCount++;
+                }
+
+                if (bodyinputPersongender != null)
+                {
+                    inputPersonObject["gender"] = SourceExpressionConverter.Convert(bodyinputPersongender);
+                    inputPersonObjectpropCount++;
+                }
+
+                if (inputPersonObjectpropCount > 0)
+                {
+                    body["inputPerson"] = inputPersonObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyinputPersongender != null)
-            {
-                inputPersonObject["gender"] = ExpressionConverter.ConvertO(bodyinputPersongender);
-                inputPersonObjectpropCount++;
-            }
-
-            if (inputPersonObjectpropCount > 0)
-            {
-                body["inputPerson"] = inputPersonObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ParseNameResponse>(callPayload);
+            return new ApiConnectionAction<ParseNameResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<DetectDeaResponse> DetectDea(Expression<Func<string>> emailAddress)
+        public IBodyWorkflowAction<DetectDeaResponse> DetectDea([WorkflowExpression] Func<string> emailAddress)
         {
-            var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["emailAddress"] = ExpressionConverter.Convert(emailAddress);
-            return new ApiConnectionAction<DetectDeaResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["emailAddress"] = SourceExpressionConverter.ConvertO(emailAddress);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DetectDeaResponse>(BuildSourceInput);
         }
     }
 

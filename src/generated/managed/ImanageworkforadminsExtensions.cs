@@ -12,464 +12,524 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanageworkforadmins
     public class ImanageworkforadminsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetLibraryRolesResponse> GetLibraryRoles(Expression<Func<string>> libraryId, Expression<Func<bool>> isExternal = null)
+        public IBodyWorkflowAction<GetLibraryRolesResponse> GetLibraryRoles([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<bool> isExternal = null)
         {
-            var apiCallPath = "/getLibraryRoles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-            if (isExternal != null)
-                callPayload.Queries["is_external"] = ExpressionConverter.Convert(isExternal);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            return new ApiConnectionAction<GetLibraryRolesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetLookupAliasesResponse> GetLookupAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null)
-        {
-            var apiCallPath = "/getLookupAliases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-            callPayload.Queries["lookupFieldId"] = ExpressionConverter.Convert(lookupFieldId);
-            if (parentAlias != null)
-                callPayload.Queries["parentAlias"] = ExpressionConverter.Convert(parentAlias);
-            callPayload.Queries["getParentAliases"] = Convert.ToString(false);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            return new ApiConnectionAction<GetLookupAliasesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<SearchCustomPropertyResponseBody> SearchCustomPropertyAliases(Expression<Func<string>> libraryId, Expression<Func<string>> lookupFieldId, Expression<Func<string>> parentAlias = null, Expression<Func<string>> alias = null, Expression<Func<string>> description = null, Expression<Func<bool>> hipaa = null, Expression<Func<enabledStateInput>> enabledState = null)
-        {
-            var apiCallPath = "/searchCustomPropertyAliases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["libraryId"] = ExpressionConverter.Convert(libraryId);
-            callPayload.Queries["lookupFieldId"] = ExpressionConverter.Convert(lookupFieldId);
-            if (parentAlias != null)
-                callPayload.Queries["parentAlias"] = ExpressionConverter.Convert(parentAlias);
-            if (alias != null)
-                callPayload.Queries["alias"] = ExpressionConverter.Convert(alias);
-            if (description != null)
-                callPayload.Queries["description"] = ExpressionConverter.Convert(description);
-            callPayload.Queries["hipaa"] = Convert.ToString(false);
-            if (hipaa != null)
-                callPayload.Queries["hipaa"] = ExpressionConverter.Convert(hipaa);
-            callPayload.Queries["enabled_state"] = Convert.ToString("Both Enabled and Disabled");
-            if (enabledState != null)
-                callPayload.Queries["enabled_state"] = ExpressionConverter.Convert(enabledState);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            return new ApiConnectionAction<SearchCustomPropertyResponseBody>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<JToken> CreateCustomOrPropertyLookup(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
-        {
-            var apiCallPath = "/createCustomOrPropertyLookup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
-            bodypropCount++;
-            body["lookupFieldId"] = ExpressionConverter.ConvertO(bodylookupFieldId);
-            bodypropCount++;
-            body["aliasInfo"] = ExpressionConverter.ConvertO(bodyaliasInfo);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/getLibraryRoles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["libraryId"] = SourceExpressionConverter.ConvertO(libraryId);
+                if (isExternal != null)
+                    callPayload.Queries["is_external"] = SourceExpressionConverter.ConvertO(isExternal);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<GetLibraryRolesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyfullName, Expression<Func<string>> bodyid, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyisExternal, Expression<Func<string>> bodypreferredLibrary, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyignoreIfUserAlreadyExists, Expression<Func<bodypasswordCreateMethodInput>> bodypasswordCreateMethod, Expression<Func<object>> bodycreatePassword)
+        public IBodyWorkflowAction<GetLookupAliasesResponse> GetLookupAliases([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> lookupFieldId, [WorkflowExpression] Func<string> parentAlias = null)
         {
-            var apiCallPath = "/createUser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["full_name"] = ExpressionConverter.ConvertO(bodyfullName);
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            bodypropCount++;
-            body["is_external"] = ExpressionConverter.ConvertO(bodyisExternal);
-            bodypropCount++;
-            body["preferred_library"] = ExpressionConverter.ConvertO(bodypreferredLibrary);
-            bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
-            bodypropCount++;
-            body["ignore_if_user_already_exists"] = ExpressionConverter.ConvertO(bodyignoreIfUserAlreadyExists);
-            bodypropCount++;
-            body["password_create_method"] = ExpressionConverter.ConvertO(bodypasswordCreateMethod);
-            bodypropCount++;
-            body["create_password"] = ExpressionConverter.ConvertO(bodycreatePassword);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/getLookupAliases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["libraryId"] = SourceExpressionConverter.ConvertO(libraryId);
+                callPayload.Queries["lookupFieldId"] = SourceExpressionConverter.ConvertO(lookupFieldId);
+                if (parentAlias != null)
+                    callPayload.Queries["parentAlias"] = SourceExpressionConverter.ConvertO(parentAlias);
+                callPayload.Queries["getParentAliases"] = Convert.ToString(false);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateUserResponse>(callPayload);
+            return new ApiConnectionAction<GetLookupAliasesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<AssignUserToLibraryResponse> AssignUserToLibrary(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyrole, Expression<Func<bool>> bodyisPreferredLibrary)
+        public IBodyWorkflowAction<SearchCustomPropertyResponseBody> SearchCustomPropertyAliases([WorkflowExpression] Func<string> libraryId, [WorkflowExpression] Func<string> lookupFieldId, [WorkflowExpression] Func<string> parentAlias = null, [WorkflowExpression] Func<string> alias = null, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<bool> hipaa = null, [WorkflowExpression] Func<enabledStateInput> enabledState = null)
         {
-            var apiCallPath = "/assignUserToLibrary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
-            bodypropCount++;
-            body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
-            bodypropCount++;
-            body["role"] = ExpressionConverter.ConvertO(bodyrole);
-            bodypropCount++;
-            body["is_preferred_library"] = ExpressionConverter.ConvertO(bodyisPreferredLibrary);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/searchCustomPropertyAliases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["libraryId"] = SourceExpressionConverter.ConvertO(libraryId);
+                callPayload.Queries["lookupFieldId"] = SourceExpressionConverter.ConvertO(lookupFieldId);
+                if (parentAlias != null)
+                    callPayload.Queries["parentAlias"] = SourceExpressionConverter.ConvertO(parentAlias);
+                if (alias != null)
+                    callPayload.Queries["alias"] = SourceExpressionConverter.ConvertO(alias);
+                if (description != null)
+                    callPayload.Queries["description"] = SourceExpressionConverter.ConvertO(description);
+                callPayload.Queries["hipaa"] = Convert.ToString(false);
+                if (hipaa != null)
+                    callPayload.Queries["hipaa"] = SourceExpressionConverter.ConvertO(hipaa);
+                callPayload.Queries["enabled_state"] = Convert.ToString("Both Enabled and Disabled");
+                if (enabledState != null)
+                    callPayload.Queries["enabled_state"] = SourceExpressionConverter.Convert(enabledState);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AssignUserToLibraryResponse>(callPayload);
+            return new ApiConnectionAction<SearchCustomPropertyResponseBody>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateFolderResponseBody> AddFolder(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodyparentTypeInput>> bodyparentType, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<bodyinheritProfileFromWorkspaceInput>> bodyinheritProfileFromWorkspace, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofileProperties = null)
+        public IBodyWorkflowAction<JToken> CreateCustomOrPropertyLookup([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodylookupFieldId, [WorkflowExpression] Func<object> bodyaliasInfo)
         {
-            var apiCallPath = "/addFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-            bodypropCount++;
-            body["parentType"] = ExpressionConverter.ConvertO(bodyparentType);
-            bodypropCount++;
-            body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/createCustomOrPropertyLookup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                body["libraryId"] = SourceExpressionConverter.ConvertToken(bodylibraryId);
                 bodypropCount++;
-            }
-
-            if (bodyowner != null)
-            {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                body["lookupFieldId"] = SourceExpressionConverter.ConvertToken(bodylookupFieldId);
                 bodypropCount++;
+                body["aliasInfo"] = SourceExpressionConverter.ConvertToken(bodyaliasInfo);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyClass != null)
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyfullName, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bool> bodyisExternal, [WorkflowExpression] Func<string> bodypreferredLibrary, [WorkflowExpression] Func<string> bodyrole, [WorkflowExpression] Func<bool> bodyignoreIfUserAlreadyExists, [WorkflowExpression] Func<bodypasswordCreateMethodInput> bodypasswordCreateMethod, [WorkflowExpression] Func<object> bodycreatePassword)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["class"] = ExpressionConverter.ConvertO(bodyClass);
+                var apiCallPath = "/createUser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysubclass != null)
-            {
-                body["subclass"] = ExpressionConverter.ConvertO(bodysubclass);
+                body["full_name"] = SourceExpressionConverter.ConvertToken(bodyfullName);
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                bodypropCount++;
+                body["is_external"] = SourceExpressionConverter.ConvertToken(bodyisExternal);
+                bodypropCount++;
+                body["preferred_library"] = SourceExpressionConverter.ConvertToken(bodypreferredLibrary);
+                bodypropCount++;
+                body["role"] = SourceExpressionConverter.ConvertToken(bodyrole);
+                bodypropCount++;
+                body["ignore_if_user_already_exists"] = SourceExpressionConverter.ConvertToken(bodyignoreIfUserAlreadyExists);
+                bodypropCount++;
+                body["password_create_method"] = SourceExpressionConverter.Convert(bodypasswordCreateMethod);
+                bodypropCount++;
+                body["create_password"] = SourceExpressionConverter.ConvertToken(bodycreatePassword);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyisExternalAsNormal != null)
+            return new ApiConnectionAction<CreateUserResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
+        public IBodyWorkflowAction<AssignUserToLibraryResponse> AssignUserToLibrary([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodyrole, [WorkflowExpression] Func<bool> bodyisPreferredLibrary)
+        {
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/assignUserToLibrary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["libraryId"] = SourceExpressionConverter.ConvertToken(bodylibraryId);
+                bodypropCount++;
+                body["user_id"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                bodypropCount++;
+                body["role"] = SourceExpressionConverter.ConvertToken(bodyrole);
+                bodypropCount++;
+                body["is_preferred_library"] = SourceExpressionConverter.ConvertToken(bodyisPreferredLibrary);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AssignUserToLibraryResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
+        public IBodyWorkflowAction<CreateFolderResponseBody> AddFolder([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<bodyparentTypeInput> bodyparentType, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity, [WorkflowExpression] Func<bodyinheritProfileFromWorkspaceInput> bodyinheritProfileFromWorkspace, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyClass = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<bool> bodyisExternalAsNormal = null, [WorkflowExpression] Func<object> bodyprofileProperties = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/addFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
+                bodypropCount++;
+                body["parentType"] = SourceExpressionConverter.Convert(bodyparentType);
+                bodypropCount++;
+                body["default_security"] = SourceExpressionConverter.Convert(bodydefaultSecurity);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyowner != null)
+                {
+                    body["owner"] = SourceExpressionConverter.ConvertToken(bodyowner);
+                    bodypropCount++;
+                }
+
+                if (bodyClass != null)
+                {
+                    body["class"] = SourceExpressionConverter.ConvertToken(bodyClass);
+                    bodypropCount++;
+                }
+
+                if (bodysubclass != null)
+                {
+                    body["subclass"] = SourceExpressionConverter.ConvertToken(bodysubclass);
+                    bodypropCount++;
+                }
+
                 if (bodyisExternalAsNormal != null)
                 {
-                    body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                    if (bodyisExternalAsNormal != null)
+                    {
+                        body["is_external_as_normal"] = SourceExpressionConverter.ConvertToken(bodyisExternalAsNormal);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["is_external_as_normal"] = false;
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["is_external_as_normal"] = false;
-                bodypropCount++;
+                body["inherit_profile_from_workspace"] = SourceExpressionConverter.Convert(bodyinheritProfileFromWorkspace);
+                if (bodyprofileProperties != null)
+                {
+                    body["profileProperties"] = SourceExpressionConverter.ConvertToken(bodyprofileProperties);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["inherit_profile_from_workspace"] = ExpressionConverter.ConvertO(bodyinheritProfileFromWorkspace);
-            if (bodyprofileProperties != null)
-            {
-                body["profileProperties"] = ExpressionConverter.ConvertO(bodyprofileProperties);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateFolderResponseBody>(callPayload);
+            return new ApiConnectionAction<CreateFolderResponseBody>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<CreateTabResponseBody> AddTab(Expression<Func<string>> bodyname, Expression<Func<string>> bodyparentId, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyowner = null)
+        public IBodyWorkflowAction<CreateTabResponseBody> AddTab([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyparentId, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyowner = null)
         {
-            var apiCallPath = "/addTab";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["parentId"] = ExpressionConverter.ConvertO(bodyparentId);
-            bodypropCount++;
-            body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/addTab";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyowner != null)
-            {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTabResponseBody>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetMyMattersCategoriesResponse> GetMyMattersCategories(Expression<Func<string>> userId)
-        {
-            var apiCallPath = "/getMyMattersCategories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["user_id"] = ExpressionConverter.Convert(userId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            return new ApiConnectionAction<GetMyMattersCategoriesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> AddShortcutsToMyMattersAdmin(Expression<Func<string>> bodyuserId, Expression<Func<string>> bodyworkspaceId, Expression<Func<string>> bodycategoryId = null)
-        {
-            var apiCallPath = "/addShortcutsToMyMattersAdmin";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["user_id"] = ExpressionConverter.ConvertO(bodyuserId);
-            bodypropCount++;
-            body["workspace_id"] = ExpressionConverter.ConvertO(bodyworkspaceId);
-            if (bodycategoryId != null)
-            {
-                body["category_id"] = ExpressionConverter.ConvertO(bodycategoryId);
+                body["parentId"] = SourceExpressionConverter.ConvertToken(bodyparentId);
                 bodypropCount++;
+                body["default_security"] = SourceExpressionConverter.Convert(bodydefaultSecurity);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyowner != null)
+                {
+                    body["owner"] = SourceExpressionConverter.ConvertToken(bodyowner);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddShortcutsToMyMattersAdminResponse>(callPayload);
+            return new ApiConnectionAction<CreateTabResponseBody>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<JToken> UpdateCustomField(Expression<Func<string>> bodylibraryId, Expression<Func<string>> bodylookupFieldId, Expression<Func<object>> bodyaliasInfo)
+        public IBodyWorkflowAction<GetMyMattersCategoriesResponse> GetMyMattersCategories([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = "/updateCustomField";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["libraryId"] = ExpressionConverter.ConvertO(bodylibraryId);
-            bodypropCount++;
-            body["lookupFieldId"] = ExpressionConverter.ConvertO(bodylookupFieldId);
-            bodypropCount++;
-            body["aliasInfo"] = ExpressionConverter.ConvertO(bodyaliasInfo);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/getMyMattersCategories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["user_id"] = SourceExpressionConverter.ConvertO(userId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<GetMyMattersCategoriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> GetRowsFromCSVDocument(Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodycolumnNames, Expression<Func<bool>> bodylatest = null)
+        public IBodyWorkflowAction<AddShortcutsToMyMattersAdminResponse> AddShortcutsToMyMattersAdmin([WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodycategoryId = null)
         {
-            var apiCallPath = "/getRowsFromCSVDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["column_names"] = ExpressionConverter.ConvertO(bodycolumnNames);
-            if (bodylatest != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/addShortcutsToMyMattersAdmin";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["user_id"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                bodypropCount++;
+                body["workspace_id"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                if (bodycategoryId != null)
+                {
+                    body["category_id"] = SourceExpressionConverter.ConvertToken(bodycategoryId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddShortcutsToMyMattersAdminResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
+        public IBodyWorkflowAction<JToken> UpdateCustomField([WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodylookupFieldId, [WorkflowExpression] Func<object> bodyaliasInfo)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/updateCustomField";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["libraryId"] = SourceExpressionConverter.ConvertToken(bodylibraryId);
+                bodypropCount++;
+                body["lookupFieldId"] = SourceExpressionConverter.ConvertToken(bodylookupFieldId);
+                bodypropCount++;
+                body["aliasInfo"] = SourceExpressionConverter.ConvertToken(bodyaliasInfo);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
+        public IBodyWorkflowAction<GetRowsFromCSVDocumentResponse> GetRowsFromCSVDocument([WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodycolumnNames, [WorkflowExpression] Func<bool> bodylatest = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getRowsFromCSVDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documentId"] = SourceExpressionConverter.ConvertToken(bodydocumentId);
+                bodypropCount++;
+                body["column_names"] = SourceExpressionConverter.ConvertToken(bodycolumnNames);
                 if (bodylatest != null)
                 {
-                    body["latest"] = ExpressionConverter.ConvertO(bodylatest);
+                    if (bodylatest != null)
+                    {
+                        body["latest"] = SourceExpressionConverter.ConvertToken(bodylatest);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["latest"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["latest"] = false;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetRowsFromCSVDocumentResponse>(callPayload);
+            return new ApiConnectionAction<GetRowsFromCSVDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<MoveFolderResponseBody> MoveFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodydestinationId)
+        public IBodyWorkflowAction<MoveFolderResponseBody> MoveFolder([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodydestinationId)
         {
-            var apiCallPath = "/moveFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["folder_id"] = ExpressionConverter.ConvertO(bodyfolderId);
-            bodypropCount++;
-            body["destination_id"] = ExpressionConverter.ConvertO(bodydestinationId);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/moveFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["folder_id"] = SourceExpressionConverter.ConvertToken(bodyfolderId);
+                bodypropCount++;
+                body["destination_id"] = SourceExpressionConverter.ConvertToken(bodydestinationId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<MoveFolderResponseBody>(callPayload);
+            return new ApiConnectionAction<MoveFolderResponseBody>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanageworkforadmins")]
-        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> UpdateFolder(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyname = null, Expression<Func<bodydefaultSecurityInput>> bodydefaultSecurity = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyowner = null, Expression<Func<string>> bodyClass = null, Expression<Func<string>> bodysubclass = null, Expression<Func<bool>> bodyisExternalAsNormal = null, Expression<Func<object>> bodyprofile = null)
+        public IBodyWorkflowAction<UpdateFolderPropertiesResponseBody> UpdateFolder([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodydefaultSecurityInput> bodydefaultSecurity = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyowner = null, [WorkflowExpression] Func<string> bodyClass = null, [WorkflowExpression] Func<string> bodysubclass = null, [WorkflowExpression] Func<bool> bodyisExternalAsNormal = null, [WorkflowExpression] Func<object> bodyprofile = null)
         {
-            var apiCallPath = "/updateFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/updateFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-im-connector-id"] = Convert.ToString("imanage-work-for-admins");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["folderId"] = SourceExpressionConverter.ConvertToken(bodyfolderId);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodydefaultSecurity != null)
-            {
                 if (bodydefaultSecurity != null)
                 {
-                    body["default_security"] = ExpressionConverter.ConvertO(bodydefaultSecurity);
+                    if (bodydefaultSecurity != null)
+                    {
+                        body["default_security"] = SourceExpressionConverter.Convert(bodydefaultSecurity);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["default_security"] = "no change";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["default_security"] = "no change";
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
 
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+                if (bodyowner != null)
+                {
+                    body["owner"] = SourceExpressionConverter.ConvertToken(bodyowner);
+                    bodypropCount++;
+                }
 
-            if (bodyowner != null)
-            {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
-                bodypropCount++;
-            }
+                if (bodyClass != null)
+                {
+                    body["class"] = SourceExpressionConverter.ConvertToken(bodyClass);
+                    bodypropCount++;
+                }
 
-            if (bodyClass != null)
-            {
-                body["class"] = ExpressionConverter.ConvertO(bodyClass);
-                bodypropCount++;
-            }
+                if (bodysubclass != null)
+                {
+                    body["subclass"] = SourceExpressionConverter.ConvertToken(bodysubclass);
+                    bodypropCount++;
+                }
 
-            if (bodysubclass != null)
-            {
-                body["subclass"] = ExpressionConverter.ConvertO(bodysubclass);
-                bodypropCount++;
-            }
-
-            if (bodyisExternalAsNormal != null)
-            {
                 if (bodyisExternalAsNormal != null)
                 {
-                    body["is_external_as_normal"] = ExpressionConverter.ConvertO(bodyisExternalAsNormal);
+                    if (bodyisExternalAsNormal != null)
+                    {
+                        body["is_external_as_normal"] = SourceExpressionConverter.ConvertToken(bodyisExternalAsNormal);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["is_external_as_normal"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["is_external_as_normal"] = false;
-                bodypropCount++;
+                if (bodyprofile != null)
+                {
+                    body["profile"] = SourceExpressionConverter.ConvertToken(bodyprofile);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyprofile != null)
-            {
-                body["profile"] = ExpressionConverter.ConvertO(bodyprofile);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateFolderPropertiesResponseBody>(callPayload);
+            return new ApiConnectionAction<UpdateFolderPropertiesResponseBody>(BuildSourceInput);
         }
     }
 

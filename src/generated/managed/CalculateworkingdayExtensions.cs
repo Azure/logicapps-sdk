@@ -12,108 +12,148 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calculateworkingday
     public class CalculateworkingdayActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<CombinedResponse> Combined(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<CombinedResponse> Combined([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays, [WorkflowExpression] Func<string> nonWorkingDays = null, [WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/combined/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
-            if (nonWorkingDays != null)
-                callPayload.Queries["non_working_days"] = ExpressionConverter.Convert(nonWorkingDays);
-            callPayload.Queries["x_working_days"] = ExpressionConverter.Convert(xWorkingDays);
-            callPayload.Queries["country"] = Convert.ToString("scotland");
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<CombinedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/combined/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                callPayload.Queries["working_days"] = SourceExpressionConverter.ConvertO(workingDays);
+                if (nonWorkingDays != null)
+                    callPayload.Queries["non_working_days"] = SourceExpressionConverter.ConvertO(nonWorkingDays);
+                callPayload.Queries["x_working_days"] = SourceExpressionConverter.ConvertO(xWorkingDays);
+                callPayload.Queries["country"] = Convert.ToString("scotland");
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CombinedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<BasicNextWorkingDayResponse> BasicNextWorkingDay(Expression<Func<string>> date)
+        public IBodyWorkflowAction<BasicNextWorkingDayResponse> BasicNextWorkingDay([WorkflowExpression] Func<string> date)
         {
-            var apiCallPath = "/basicNextWorkingDay/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<BasicNextWorkingDayResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/basicNextWorkingDay/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BasicNextWorkingDayResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<NextWorkingDayResponse> NextWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays, Expression<Func<string>> nonWorkingDays = null)
+        public IBodyWorkflowAction<NextWorkingDayResponse> NextWorkingDay([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays, [WorkflowExpression] Func<string> nonWorkingDays = null)
         {
-            var apiCallPath = "/nextWorkingDay/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
-            if (nonWorkingDays != null)
-                callPayload.Queries["non_working_days"] = ExpressionConverter.Convert(nonWorkingDays);
-            callPayload.Queries["x_working_days"] = ExpressionConverter.Convert(xWorkingDays);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<NextWorkingDayResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/nextWorkingDay/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                callPayload.Queries["working_days"] = SourceExpressionConverter.ConvertO(workingDays);
+                if (nonWorkingDays != null)
+                    callPayload.Queries["non_working_days"] = SourceExpressionConverter.ConvertO(nonWorkingDays);
+                callPayload.Queries["x_working_days"] = SourceExpressionConverter.ConvertO(xWorkingDays);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NextWorkingDayResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<DateDifferenceCalculatorResponse> DateDifferenceCalculator(Expression<Func<string>> workingDays, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> nonWorkingDays = null)
+        public IBodyWorkflowAction<DateDifferenceCalculatorResponse> DateDifferenceCalculator([WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> nonWorkingDays = null)
         {
-            var apiCallPath = "/dateDifferenceCalculator/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (nonWorkingDays != null)
-                callPayload.Queries["non_working_days"] = ExpressionConverter.Convert(nonWorkingDays);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
-            callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<DateDifferenceCalculatorResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dateDifferenceCalculator/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (nonWorkingDays != null)
+                    callPayload.Queries["non_working_days"] = SourceExpressionConverter.ConvertO(nonWorkingDays);
+                callPayload.Queries["working_days"] = SourceExpressionConverter.ConvertO(workingDays);
+                callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DateDifferenceCalculatorResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse> FirstAndLastWorkingDayOfMonth(Expression<Func<string>> date, Expression<Func<string>> workingDays)
+        public IBodyWorkflowAction<FirstAndLastWorkingDayOfMonthResponse> FirstAndLastWorkingDayOfMonth([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays)
         {
-            var apiCallPath = "/firstAndLastWorkingDayOfMonth/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<FirstAndLastWorkingDayOfMonthResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/firstAndLastWorkingDayOfMonth/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                callPayload.Queries["working_days"] = SourceExpressionConverter.ConvertO(workingDays);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirstAndLastWorkingDayOfMonthResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<IsTodayAWorkingDayResponse> IsTodayAWorkingDay(Expression<Func<string>> date, Expression<Func<string>> workingDays)
+        public IBodyWorkflowAction<IsTodayAWorkingDayResponse> IsTodayAWorkingDay([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays)
         {
-            var apiCallPath = "/isTodayAWorkingDay/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<IsTodayAWorkingDayResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/isTodayAWorkingDay/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                callPayload.Queries["working_days"] = SourceExpressionConverter.ConvertO(workingDays);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IsTodayAWorkingDayResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
-        public IBodyWorkflowAction<DateInXWorkingDaysResponse> DateInXWorkingDays(Expression<Func<string>> date, Expression<Func<string>> workingDays, Expression<Func<int>> xWorkingDays)
+        public IBodyWorkflowAction<DateInXWorkingDaysResponse> DateInXWorkingDays([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> workingDays, [WorkflowExpression] Func<int> xWorkingDays)
         {
-            var apiCallPath = "/dateInXWorkingDays/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["working_days"] = ExpressionConverter.Convert(workingDays);
-            callPayload.Queries["x_working_days"] = ExpressionConverter.Convert(xWorkingDays);
-            callPayload.Headers["cf"] = Convert.ToString("sk");
-            return new ApiConnectionAction<DateInXWorkingDaysResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dateInXWorkingDays/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                callPayload.Queries["working_days"] = SourceExpressionConverter.ConvertO(workingDays);
+                callPayload.Queries["x_working_days"] = SourceExpressionConverter.ConvertO(xWorkingDays);
+                callPayload.Headers["cf"] = Convert.ToString("sk");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DateInXWorkingDaysResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calculateworkingday")]
         public IBodyWorkflowAction<CountryResponse> Country()
         {
-            var apiCallPath = "/bank-holidays.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CountryResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bank-holidays.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CountryResponse>(BuildSourceInput);
         }
     }
 

@@ -12,275 +12,288 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fraudlabsproip
     public class FraudlabsproipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        public IBodyWorkflowAction<ScreenPostResponse> Screen(Expression<Func<string>> bodyip = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodybillAddr = null, Expression<Func<string>> bodybillCity = null, Expression<Func<string>> bodybillState = null, Expression<Func<string>> bodybillCountry = null, Expression<Func<string>> bodybillZipCode = null, Expression<Func<string>> bodyshipLastName = null, Expression<Func<string>> bodyshipFirstName = null, Expression<Func<string>> bodyshipAddr = null, Expression<Func<string>> bodyshipCity = null, Expression<Func<string>> bodyshipState = null, Expression<Func<string>> bodyshipCountry = null, Expression<Func<string>> bodyshipZipCode = null, Expression<Func<string>> bodyuserPhone = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyemailHash = null, Expression<Func<string>> bodyemailDomain = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodybinNo = null, Expression<Func<string>> bodycardHash = null, Expression<Func<string>> bodyavsResult = null, Expression<Func<string>> bodycvvResult = null, Expression<Func<string>> bodyuserOrderId = null, Expression<Func<string>> bodyuserOrderMemo = null, Expression<Func<double>> bodyamount = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodycurrency = null, Expression<Func<string>> bodydepartment = null, Expression<Func<string>> bodypaymentGateway = null, Expression<Func<bodypaymentModeInput>> bodypaymentMode = null, Expression<Func<string>> bodyflpChecksum = null)
+        public IBodyWorkflowAction<ScreenPostResponse> Screen([WorkflowExpression] Func<string> bodyip = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodybillAddr = null, [WorkflowExpression] Func<string> bodybillCity = null, [WorkflowExpression] Func<string> bodybillState = null, [WorkflowExpression] Func<string> bodybillCountry = null, [WorkflowExpression] Func<string> bodybillZipCode = null, [WorkflowExpression] Func<string> bodyshipLastName = null, [WorkflowExpression] Func<string> bodyshipFirstName = null, [WorkflowExpression] Func<string> bodyshipAddr = null, [WorkflowExpression] Func<string> bodyshipCity = null, [WorkflowExpression] Func<string> bodyshipState = null, [WorkflowExpression] Func<string> bodyshipCountry = null, [WorkflowExpression] Func<string> bodyshipZipCode = null, [WorkflowExpression] Func<string> bodyuserPhone = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyemailHash = null, [WorkflowExpression] Func<string> bodyemailDomain = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodybinNo = null, [WorkflowExpression] Func<string> bodycardHash = null, [WorkflowExpression] Func<string> bodyavsResult = null, [WorkflowExpression] Func<string> bodycvvResult = null, [WorkflowExpression] Func<string> bodyuserOrderId = null, [WorkflowExpression] Func<string> bodyuserOrderMemo = null, [WorkflowExpression] Func<double> bodyamount = null, [WorkflowExpression] Func<int> bodyquantity = null, [WorkflowExpression] Func<string> bodycurrency = null, [WorkflowExpression] Func<string> bodydepartment = null, [WorkflowExpression] Func<string> bodypaymentGateway = null, [WorkflowExpression] Func<bodypaymentModeInput> bodypaymentMode = null, [WorkflowExpression] Func<string> bodyflpChecksum = null)
         {
-            var apiCallPath = "/screen";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyip != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ip"] = ExpressionConverter.ConvertO(bodyip);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodybillAddr != null)
-            {
-                body["bill_addr"] = ExpressionConverter.ConvertO(bodybillAddr);
-                bodypropCount++;
-            }
-
-            if (bodybillCity != null)
-            {
-                body["bill_city"] = ExpressionConverter.ConvertO(bodybillCity);
-                bodypropCount++;
-            }
-
-            if (bodybillState != null)
-            {
-                body["bill_state"] = ExpressionConverter.ConvertO(bodybillState);
-                bodypropCount++;
-            }
-
-            if (bodybillCountry != null)
-            {
-                body["bill_country"] = ExpressionConverter.ConvertO(bodybillCountry);
-                bodypropCount++;
-            }
-
-            if (bodybillZipCode != null)
-            {
-                body["bill_zip_code"] = ExpressionConverter.ConvertO(bodybillZipCode);
-                bodypropCount++;
-            }
-
-            if (bodyshipLastName != null)
-            {
-                body["ship_last_name"] = ExpressionConverter.ConvertO(bodyshipLastName);
-                bodypropCount++;
-            }
-
-            if (bodyshipFirstName != null)
-            {
-                body["ship_first_name"] = ExpressionConverter.ConvertO(bodyshipFirstName);
-                bodypropCount++;
-            }
-
-            if (bodyshipAddr != null)
-            {
-                body["ship_addr"] = ExpressionConverter.ConvertO(bodyshipAddr);
-                bodypropCount++;
-            }
-
-            if (bodyshipCity != null)
-            {
-                body["ship_city"] = ExpressionConverter.ConvertO(bodyshipCity);
-                bodypropCount++;
-            }
-
-            if (bodyshipState != null)
-            {
-                body["ship_state"] = ExpressionConverter.ConvertO(bodyshipState);
-                bodypropCount++;
-            }
-
-            if (bodyshipCountry != null)
-            {
-                body["ship_country"] = ExpressionConverter.ConvertO(bodyshipCountry);
-                bodypropCount++;
-            }
-
-            if (bodyshipZipCode != null)
-            {
-                body["ship_zip_code"] = ExpressionConverter.ConvertO(bodyshipZipCode);
-                bodypropCount++;
-            }
-
-            if (bodyuserPhone != null)
-            {
-                body["user_phone"] = ExpressionConverter.ConvertO(bodyuserPhone);
-                bodypropCount++;
-            }
-
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodyemailHash != null)
-            {
-                body["email_hash"] = ExpressionConverter.ConvertO(bodyemailHash);
-                bodypropCount++;
-            }
-
-            if (bodyemailDomain != null)
-            {
-                body["email_domain"] = ExpressionConverter.ConvertO(bodyemailDomain);
-                bodypropCount++;
-            }
-
-            if (bodyusername != null)
-            {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
-                bodypropCount++;
-            }
-
-            if (bodybinNo != null)
-            {
-                body["bin_no"] = ExpressionConverter.ConvertO(bodybinNo);
-                bodypropCount++;
-            }
-
-            if (bodycardHash != null)
-            {
-                body["card_hash"] = ExpressionConverter.ConvertO(bodycardHash);
-                bodypropCount++;
-            }
-
-            if (bodyavsResult != null)
-            {
-                body["avs_result"] = ExpressionConverter.ConvertO(bodyavsResult);
-                bodypropCount++;
-            }
-
-            if (bodycvvResult != null)
-            {
-                body["cvv_result"] = ExpressionConverter.ConvertO(bodycvvResult);
-                bodypropCount++;
-            }
-
-            if (bodyuserOrderId != null)
-            {
-                body["user_order_id"] = ExpressionConverter.ConvertO(bodyuserOrderId);
-                bodypropCount++;
-            }
-
-            if (bodyuserOrderMemo != null)
-            {
-                body["user_order_memo"] = ExpressionConverter.ConvertO(bodyuserOrderMemo);
-                bodypropCount++;
-            }
-
-            if (bodyamount != null)
-            {
-                body["amount"] = ExpressionConverter.ConvertO(bodyamount);
-                bodypropCount++;
-            }
-
-            if (bodyquantity != null)
-            {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
-                bodypropCount++;
-            }
-
-            if (bodycurrency != null)
-            {
-                body["currency"] = ExpressionConverter.ConvertO(bodycurrency);
-                bodypropCount++;
-            }
-
-            if (bodydepartment != null)
-            {
-                body["department"] = ExpressionConverter.ConvertO(bodydepartment);
-                bodypropCount++;
-            }
-
-            if (bodypaymentGateway != null)
-            {
-                body["payment_gateway"] = ExpressionConverter.ConvertO(bodypaymentGateway);
-                bodypropCount++;
-            }
-
-            if (bodypaymentMode != null)
-            {
-                body["payment_mode"] = ExpressionConverter.ConvertO(bodypaymentMode);
-                bodypropCount++;
-            }
-
-            if (bodyflpChecksum != null)
-            {
-                body["flp_checksum"] = ExpressionConverter.ConvertO(bodyflpChecksum);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ScreenPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        public IBodyWorkflowAction<FeedbackPostResponse> Feedback(Expression<Func<string>> bodyid = null, Expression<Func<bodyactionInput>> bodyaction = null, Expression<Func<string>> bodynote = null)
-        {
-            var apiCallPath = "/feedback";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodyaction != null)
-            {
-                if (bodyaction != null)
+                var apiCallPath = "/screen";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyip != null)
                 {
-                    body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                    body["ip"] = SourceExpressionConverter.ConvertToken(bodyip);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["action"] = "APPROVE";
-                bodypropCount++;
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodybillAddr != null)
+                {
+                    body["bill_addr"] = SourceExpressionConverter.ConvertToken(bodybillAddr);
+                    bodypropCount++;
+                }
+
+                if (bodybillCity != null)
+                {
+                    body["bill_city"] = SourceExpressionConverter.ConvertToken(bodybillCity);
+                    bodypropCount++;
+                }
+
+                if (bodybillState != null)
+                {
+                    body["bill_state"] = SourceExpressionConverter.ConvertToken(bodybillState);
+                    bodypropCount++;
+                }
+
+                if (bodybillCountry != null)
+                {
+                    body["bill_country"] = SourceExpressionConverter.ConvertToken(bodybillCountry);
+                    bodypropCount++;
+                }
+
+                if (bodybillZipCode != null)
+                {
+                    body["bill_zip_code"] = SourceExpressionConverter.ConvertToken(bodybillZipCode);
+                    bodypropCount++;
+                }
+
+                if (bodyshipLastName != null)
+                {
+                    body["ship_last_name"] = SourceExpressionConverter.ConvertToken(bodyshipLastName);
+                    bodypropCount++;
+                }
+
+                if (bodyshipFirstName != null)
+                {
+                    body["ship_first_name"] = SourceExpressionConverter.ConvertToken(bodyshipFirstName);
+                    bodypropCount++;
+                }
+
+                if (bodyshipAddr != null)
+                {
+                    body["ship_addr"] = SourceExpressionConverter.ConvertToken(bodyshipAddr);
+                    bodypropCount++;
+                }
+
+                if (bodyshipCity != null)
+                {
+                    body["ship_city"] = SourceExpressionConverter.ConvertToken(bodyshipCity);
+                    bodypropCount++;
+                }
+
+                if (bodyshipState != null)
+                {
+                    body["ship_state"] = SourceExpressionConverter.ConvertToken(bodyshipState);
+                    bodypropCount++;
+                }
+
+                if (bodyshipCountry != null)
+                {
+                    body["ship_country"] = SourceExpressionConverter.ConvertToken(bodyshipCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyshipZipCode != null)
+                {
+                    body["ship_zip_code"] = SourceExpressionConverter.ConvertToken(bodyshipZipCode);
+                    bodypropCount++;
+                }
+
+                if (bodyuserPhone != null)
+                {
+                    body["user_phone"] = SourceExpressionConverter.ConvertToken(bodyuserPhone);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyemailHash != null)
+                {
+                    body["email_hash"] = SourceExpressionConverter.ConvertToken(bodyemailHash);
+                    bodypropCount++;
+                }
+
+                if (bodyemailDomain != null)
+                {
+                    body["email_domain"] = SourceExpressionConverter.ConvertToken(bodyemailDomain);
+                    bodypropCount++;
+                }
+
+                if (bodyusername != null)
+                {
+                    body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                    bodypropCount++;
+                }
+
+                if (bodybinNo != null)
+                {
+                    body["bin_no"] = SourceExpressionConverter.ConvertToken(bodybinNo);
+                    bodypropCount++;
+                }
+
+                if (bodycardHash != null)
+                {
+                    body["card_hash"] = SourceExpressionConverter.ConvertToken(bodycardHash);
+                    bodypropCount++;
+                }
+
+                if (bodyavsResult != null)
+                {
+                    body["avs_result"] = SourceExpressionConverter.ConvertToken(bodyavsResult);
+                    bodypropCount++;
+                }
+
+                if (bodycvvResult != null)
+                {
+                    body["cvv_result"] = SourceExpressionConverter.ConvertToken(bodycvvResult);
+                    bodypropCount++;
+                }
+
+                if (bodyuserOrderId != null)
+                {
+                    body["user_order_id"] = SourceExpressionConverter.ConvertToken(bodyuserOrderId);
+                    bodypropCount++;
+                }
+
+                if (bodyuserOrderMemo != null)
+                {
+                    body["user_order_memo"] = SourceExpressionConverter.ConvertToken(bodyuserOrderMemo);
+                    bodypropCount++;
+                }
+
+                if (bodyamount != null)
+                {
+                    body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                    bodypropCount++;
+                }
+
+                if (bodyquantity != null)
+                {
+                    body["quantity"] = SourceExpressionConverter.ConvertToken(bodyquantity);
+                    bodypropCount++;
+                }
+
+                if (bodycurrency != null)
+                {
+                    body["currency"] = SourceExpressionConverter.ConvertToken(bodycurrency);
+                    bodypropCount++;
+                }
+
+                if (bodydepartment != null)
+                {
+                    body["department"] = SourceExpressionConverter.ConvertToken(bodydepartment);
+                    bodypropCount++;
+                }
+
+                if (bodypaymentGateway != null)
+                {
+                    body["payment_gateway"] = SourceExpressionConverter.ConvertToken(bodypaymentGateway);
+                    bodypropCount++;
+                }
+
+                if (bodypaymentMode != null)
+                {
+                    body["payment_mode"] = SourceExpressionConverter.Convert(bodypaymentMode);
+                    bodypropCount++;
+                }
+
+                if (bodyflpChecksum != null)
+                {
+                    body["flp_checksum"] = SourceExpressionConverter.ConvertToken(bodyflpChecksum);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodynote != null)
-            {
-                body["note"] = ExpressionConverter.ConvertO(bodynote);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FeedbackPostResponse>(callPayload);
+            return new ApiConnectionAction<ScreenPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
-        public IBodyWorkflowAction<ResultGetResponse> ResultGet(Expression<Func<string>> id = null, Expression<Func<idTypeInput>> idType = null)
+        public IBodyWorkflowAction<FeedbackPostResponse> Feedback([WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<bodyactionInput> bodyaction = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            var apiCallPath = "/result";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["id_type"] = Convert.ToString("fraudlabspro_id");
-            if (idType != null)
-                callPayload.Queries["id_type"] = ExpressionConverter.Convert(idType);
-            return new ApiConnectionAction<ResultGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/feedback";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyaction != null)
+                {
+                    if (bodyaction != null)
+                    {
+                        body["action"] = SourceExpressionConverter.Convert(bodyaction);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["action"] = "APPROVE";
+                    bodypropCount++;
+                }
+
+                if (bodynote != null)
+                {
+                    body["note"] = SourceExpressionConverter.ConvertToken(bodynote);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedbackPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fraudlabsproip")]
+        public IBodyWorkflowAction<ResultGetResponse> ResultGet([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<idTypeInput> idType = null)
+        {
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/result";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["id_type"] = Convert.ToString("fraudlabspro_id");
+                if (idType != null)
+                    callPayload.Queries["id_type"] = SourceExpressionConverter.Convert(idType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResultGetResponse>(BuildSourceInput);
         }
     }
 

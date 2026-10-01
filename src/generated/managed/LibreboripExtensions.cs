@@ -12,17 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libreborip
     public class LibreboripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libreborip")]
-        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany(Expression<Func<string>> query, Expression<Func<string>> page = null, Expression<Func<string>> province = null)
+        public IBodyWorkflowAction<LibrebormeSearchCompanyResponse> LibrebormeSearchCompany([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> page = null, [WorkflowExpression] Func<string> province = null)
         {
-            var apiCallPath = "/company/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (province != null)
-                callPayload.Queries["province"] = ExpressionConverter.Convert(province);
-            return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/company/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (province != null)
+                    callPayload.Queries["province"] = SourceExpressionConverter.ConvertO(province);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LibrebormeSearchCompanyResponse>(BuildSourceInput);
         }
     }
 

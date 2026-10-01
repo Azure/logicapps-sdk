@@ -15,23 +15,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BttnoneTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook(Expression<Func<string>> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook([WorkflowExpression] Func<string> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["actionConfigId"] = ExpressionConverter.ConvertO(bodyactionConfigId);
-            body["hookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["actionConfigId"] = SourceExpressionConverter.ConvertToken(bodyactionConfigId);
+                body["hookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<BttnWebhookResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

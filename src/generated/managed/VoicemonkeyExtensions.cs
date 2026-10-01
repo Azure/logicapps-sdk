@@ -12,159 +12,171 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Voicemonkey
     public class VoicemonkeyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement(Expression<Func<string>> bodydeviceID, Expression<Func<string>> bodytext = null, Expression<Func<bodyvoiceInput>> bodyvoice = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodychimeInput>> bodychime = null, Expression<Func<string>> bodyaudio = null, Expression<Func<string>> bodybackgroundAudio = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodynoBackground = null, Expression<Func<string>> bodyimage = null, Expression<Func<int>> bodymediaWidth = null, Expression<Func<int>> bodymediaHeight = null, Expression<Func<bodymediaScalingInput>> bodymediaScaling = null, Expression<Func<bodymediaAlignmentInput>> bodymediaAlignment = null, Expression<Func<int>> bodymediaRadius = null, Expression<Func<string>> bodyvideo = null, Expression<Func<int>> bodyvideoRepeat = null, Expression<Func<string>> bodyechoDotWithClockDisplay = null)
+        public IBodyWorkflowAction<MakeAnnouncementResponse> MakeAnnouncement([WorkflowExpression] Func<string> bodydeviceId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyvoiceInput> bodyvoice = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodychimeInput> bodychime = null, [WorkflowExpression] Func<string> bodyaudio = null, [WorkflowExpression] Func<string> bodybackgroundAudio = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bool> bodynoBackground = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<int> bodymediaWidth = null, [WorkflowExpression] Func<int> bodymediaHeight = null, [WorkflowExpression] Func<bodymediaScalingInput> bodymediaScaling = null, [WorkflowExpression] Func<bodymediaAlignmentInput> bodymediaAlignment = null, [WorkflowExpression] Func<int> bodymediaRadius = null, [WorkflowExpression] Func<string> bodyvideo = null, [WorkflowExpression] Func<int> bodyvideoRepeat = null, [WorkflowExpression] Func<string> bodyechoDotWithClockDisplay = null)
         {
-            var apiCallPath = "/announcement";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceID);
-            if (bodytext != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                var apiCallPath = "/announcement";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["device"] = SourceExpressionConverter.ConvertToken(bodydeviceId);
+                if (bodytext != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                    bodypropCount++;
+                }
+
+                if (bodyvoice != null)
+                {
+                    body["voice"] = SourceExpressionConverter.Convert(bodyvoice);
+                    bodypropCount++;
+                }
+
+                if (bodylanguage != null)
+                {
+                    body["language"] = SourceExpressionConverter.Convert(bodylanguage);
+                    bodypropCount++;
+                }
+
+                if (bodychime != null)
+                {
+                    body["chime"] = SourceExpressionConverter.Convert(bodychime);
+                    bodypropCount++;
+                }
+
+                if (bodyaudio != null)
+                {
+                    body["audio"] = SourceExpressionConverter.ConvertToken(bodyaudio);
+                    bodypropCount++;
+                }
+
+                if (bodybackgroundAudio != null)
+                {
+                    body["background_audio"] = SourceExpressionConverter.ConvertToken(bodybackgroundAudio);
+                    bodypropCount++;
+                }
+
+                if (bodywebsite != null)
+                {
+                    body["website"] = SourceExpressionConverter.ConvertToken(bodywebsite);
+                    bodypropCount++;
+                }
+
+                if (bodynoBackground != null)
+                {
+                    body["no_bg"] = SourceExpressionConverter.ConvertToken(bodynoBackground);
+                    bodypropCount++;
+                }
+
+                if (bodyimage != null)
+                {
+                    body["image"] = SourceExpressionConverter.ConvertToken(bodyimage);
+                    bodypropCount++;
+                }
+
+                if (bodymediaWidth != null)
+                {
+                    body["media_width"] = SourceExpressionConverter.ConvertToken(bodymediaWidth);
+                    bodypropCount++;
+                }
+
+                if (bodymediaHeight != null)
+                {
+                    body["media_height"] = SourceExpressionConverter.ConvertToken(bodymediaHeight);
+                    bodypropCount++;
+                }
+
+                if (bodymediaScaling != null)
+                {
+                    body["media_scaling"] = SourceExpressionConverter.Convert(bodymediaScaling);
+                    bodypropCount++;
+                }
+
+                if (bodymediaAlignment != null)
+                {
+                    body["media_align"] = SourceExpressionConverter.Convert(bodymediaAlignment);
+                    bodypropCount++;
+                }
+
+                if (bodymediaRadius != null)
+                {
+                    body["media_radius"] = SourceExpressionConverter.ConvertToken(bodymediaRadius);
+                    bodypropCount++;
+                }
+
+                if (bodyvideo != null)
+                {
+                    body["video"] = SourceExpressionConverter.ConvertToken(bodyvideo);
+                    bodypropCount++;
+                }
+
+                if (bodyvideoRepeat != null)
+                {
+                    body["video_repeat"] = SourceExpressionConverter.ConvertToken(bodyvideoRepeat);
+                    bodypropCount++;
+                }
+
+                if (bodyechoDotWithClockDisplay != null)
+                {
+                    body["character_display"] = SourceExpressionConverter.ConvertToken(bodyechoDotWithClockDisplay);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyvoice != null)
-            {
-                body["voice"] = ExpressionConverter.ConvertO(bodyvoice);
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
-
-            if (bodychime != null)
-            {
-                body["chime"] = ExpressionConverter.ConvertO(bodychime);
-                bodypropCount++;
-            }
-
-            if (bodyaudio != null)
-            {
-                body["audio"] = ExpressionConverter.ConvertO(bodyaudio);
-                bodypropCount++;
-            }
-
-            if (bodybackgroundAudio != null)
-            {
-                body["background_audio"] = ExpressionConverter.ConvertO(bodybackgroundAudio);
-                bodypropCount++;
-            }
-
-            if (bodywebsite != null)
-            {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
-                bodypropCount++;
-            }
-
-            if (bodynoBackground != null)
-            {
-                body["no_bg"] = ExpressionConverter.ConvertO(bodynoBackground);
-                bodypropCount++;
-            }
-
-            if (bodyimage != null)
-            {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
-                bodypropCount++;
-            }
-
-            if (bodymediaWidth != null)
-            {
-                body["media_width"] = ExpressionConverter.ConvertO(bodymediaWidth);
-                bodypropCount++;
-            }
-
-            if (bodymediaHeight != null)
-            {
-                body["media_height"] = ExpressionConverter.ConvertO(bodymediaHeight);
-                bodypropCount++;
-            }
-
-            if (bodymediaScaling != null)
-            {
-                body["media_scaling"] = ExpressionConverter.ConvertO(bodymediaScaling);
-                bodypropCount++;
-            }
-
-            if (bodymediaAlignment != null)
-            {
-                body["media_align"] = ExpressionConverter.ConvertO(bodymediaAlignment);
-                bodypropCount++;
-            }
-
-            if (bodymediaRadius != null)
-            {
-                body["media_radius"] = ExpressionConverter.ConvertO(bodymediaRadius);
-                bodypropCount++;
-            }
-
-            if (bodyvideo != null)
-            {
-                body["video"] = ExpressionConverter.ConvertO(bodyvideo);
-                bodypropCount++;
-            }
-
-            if (bodyvideoRepeat != null)
-            {
-                body["video_repeat"] = ExpressionConverter.ConvertO(bodyvideoRepeat);
-                bodypropCount++;
-            }
-
-            if (bodyechoDotWithClockDisplay != null)
-            {
-                body["character_display"] = ExpressionConverter.ConvertO(bodyechoDotWithClockDisplay);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MakeAnnouncementResponse>(callPayload);
+            return new ApiConnectionAction<MakeAnnouncementResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine(Expression<Func<string>> bodydeviceID)
+        public IBodyWorkflowAction<TriggerRoutineResponse> TriggerRoutine([WorkflowExpression] Func<string> bodydeviceId)
         {
-            var apiCallPath = "/trigger";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["device"] = ExpressionConverter.ConvertO(bodydeviceID);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/trigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["device"] = SourceExpressionConverter.ConvertToken(bodydeviceId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TriggerRoutineResponse>(callPayload);
+            return new ApiConnectionAction<TriggerRoutineResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "voicemonkey")]
-        public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow(Expression<Func<int>> bodyflowID)
+        public IBodyWorkflowAction<TriggerFlowResponse> TriggerFlow([WorkflowExpression] Func<int> bodyflowId)
         {
-            var apiCallPath = "/flows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["flow"] = ExpressionConverter.ConvertO(bodyflowID);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/flows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["flow"] = SourceExpressionConverter.ConvertToken(bodyflowId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TriggerFlowResponse>(callPayload);
+            return new ApiConnectionAction<TriggerFlowResponse>(BuildSourceInput);
         }
     }
 

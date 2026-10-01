@@ -12,34 +12,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bulksms
     public class BulksmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bulksms")]
-        public IWorkflowAction SendSmsMessage(Expression<Func<bool>> autoUnicode, Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<int>> bodylongMessageMaxParts, Expression<Func<string>> bodyfrom = null)
+        public IWorkflowAction SendSmsMessage([WorkflowExpression] Func<bool> autoUnicode, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<int> bodylongMessageMaxParts, [WorkflowExpression] Func<string> bodyfrom = null)
         {
-            var apiCallPath = "/v1/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["auto-unicode"] = ExpressionConverter.Convert(autoUnicode);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfrom != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/v1/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["auto-unicode"] = SourceExpressionConverter.ConvertO(autoUnicode);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfrom != null)
+                {
+                    body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                bodypropCount++;
+                body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
+                body["userSuppliedId"] = "BLKTM.GWPF.01.00.00";
+                bodypropCount++;
+                bodypropCount++;
+                body["longMessageMaxParts"] = SourceExpressionConverter.ConvertToken(bodylongMessageMaxParts);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["body"] = ExpressionConverter.ConvertO(bodybody);
-            body["userSuppliedId"] = "BLKTM.GWPF.01.00.00";
-            bodypropCount++;
-            bodypropCount++;
-            body["longMessageMaxParts"] = ExpressionConverter.ConvertO(bodylongMessageMaxParts);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

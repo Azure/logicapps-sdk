@@ -12,73 +12,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fbimostwanted
     public class FbimostwantedActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ListWantedResponse> ListWanted(Expression<Func<posterClassificationInput>> posterClassification = null, Expression<Func<string>> title = null, Expression<Func<fieldOfficesInput>> fieldOffices = null, Expression<Func<personClassificationInput>> personClassification = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<ListWantedResponse> ListWanted([WorkflowExpression] Func<posterClassificationInput> posterClassification = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<fieldOfficesInput> fieldOffices = null, [WorkflowExpression] Func<personClassificationInput> personClassification = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortOnInput> sortOn = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
-            var apiCallPath = "/@wanted";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (posterClassification != null)
-                callPayload.Queries["poster_classification"] = ExpressionConverter.Convert(posterClassification);
-            if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
-            if (fieldOffices != null)
-                callPayload.Queries["field_offices"] = ExpressionConverter.Convert(fieldOffices);
-            if (personClassification != null)
-                callPayload.Queries["person_classification"] = ExpressionConverter.Convert(personClassification);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (sortOn != null)
-                callPayload.Queries["sort_on"] = ExpressionConverter.Convert(sortOn);
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            return new ApiConnectionAction<ListWantedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/@wanted";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (posterClassification != null)
+                    callPayload.Queries["poster_classification"] = SourceExpressionConverter.Convert(posterClassification);
+                if (title != null)
+                    callPayload.Queries["title"] = SourceExpressionConverter.ConvertO(title);
+                if (fieldOffices != null)
+                    callPayload.Queries["field_offices"] = SourceExpressionConverter.Convert(fieldOffices);
+                if (personClassification != null)
+                    callPayload.Queries["person_classification"] = SourceExpressionConverter.Convert(personClassification);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (sortOn != null)
+                    callPayload.Queries["sort_on"] = SourceExpressionConverter.Convert(sortOn);
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = SourceExpressionConverter.Convert(sortOrder);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListWantedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<WantedPerson> GetWantedPerson(Expression<Func<string>> id)
+        public IBodyWorkflowAction<WantedPerson> GetWantedPerson([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/@wanted-person/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<WantedPerson>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/@wanted-person/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WantedPerson>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ListArtCrimesResponse> ListArtCrimes(Expression<Func<string>> title = null, Expression<Func<string>> crimeCategory = null, Expression<Func<string>> maker = null, Expression<Func<string>> referenceNumber = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> page = null, Expression<Func<sortOnInput>> sortOn = null, Expression<Func<sortOrderInput>> sortOrder = null)
+        public IBodyWorkflowAction<ListArtCrimesResponse> ListArtCrimes([WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> crimeCategory = null, [WorkflowExpression] Func<string> maker = null, [WorkflowExpression] Func<string> referenceNumber = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<sortOnInput> sortOn = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null)
         {
-            var apiCallPath = "/@artcrimes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (title != null)
-                callPayload.Queries["title"] = ExpressionConverter.Convert(title);
-            if (crimeCategory != null)
-                callPayload.Queries["crimeCategory"] = ExpressionConverter.Convert(crimeCategory);
-            if (maker != null)
-                callPayload.Queries["maker"] = ExpressionConverter.Convert(maker);
-            if (referenceNumber != null)
-                callPayload.Queries["referenceNumber"] = ExpressionConverter.Convert(referenceNumber);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = ExpressionConverter.Convert(pageSize);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (sortOn != null)
-                callPayload.Queries["sort_on"] = ExpressionConverter.Convert(sortOn);
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            return new ApiConnectionAction<ListArtCrimesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/@artcrimes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (title != null)
+                    callPayload.Queries["title"] = SourceExpressionConverter.ConvertO(title);
+                if (crimeCategory != null)
+                    callPayload.Queries["crimeCategory"] = SourceExpressionConverter.ConvertO(crimeCategory);
+                if (maker != null)
+                    callPayload.Queries["maker"] = SourceExpressionConverter.ConvertO(maker);
+                if (referenceNumber != null)
+                    callPayload.Queries["referenceNumber"] = SourceExpressionConverter.ConvertO(referenceNumber);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (sortOn != null)
+                    callPayload.Queries["sort_on"] = SourceExpressionConverter.Convert(sortOn);
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = SourceExpressionConverter.Convert(sortOrder);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListArtCrimesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fbimostwanted")]
-        public IBodyWorkflowAction<ArtCrime> GetArtCrime(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ArtCrime> GetArtCrime([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/@artcrimes/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ArtCrime>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/@artcrimes/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ArtCrime>(BuildSourceInput);
         }
     }
 
