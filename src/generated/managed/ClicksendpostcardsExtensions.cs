@@ -4,52 +4,74 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ClicksendpostcardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMedia(Expression<Func<string>> bodycontent)
+        [WorkflowExpressionFactory(nameof(__BuildUploadMedia))]
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMedia([WorkflowExpression] Func<string> bodycontent)
         {
-            var apiCallPath = "/uploads";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["convert"] = Convert.ToString("postcard");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["content"] = ExpressionConverter.ConvertO(bodycontent);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadMediaResponse> __BuildUploadMedia(WorkflowValue<string> bodycontent)
+        {
+            WorkflowValue.Validate(bodycontent, nameof(bodycontent), required: true);
+            return new DeferredBodyAction<UploadMediaResponse>(() =>
+            {
+                var apiCallPath = "/uploads";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["convert"] = Convert.ToString("postcard");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<SendPostcardResponse> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
+        [WorkflowExpressionFactory(nameof(__BuildSendPostcard))]
+        public IBodyWorkflowAction<SendPostcardResponse> SendPostcard([WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string[]> bodyfileUrls)
         {
-            var apiCallPath = "/post/postcards/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
-            body["source"] = "MSPowerAutomate-pc";
-            bodypropCount++;
-            bodypropCount++;
-            body["file_urls"] = ExpressionConverter.ConvertO(bodyfileUrls);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<SendPostcardResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendPostcardResponse> __BuildSendPostcard(WorkflowValue<bodyrecipientsInputItem[]> bodyrecipients, WorkflowValue<string[]> bodyfileUrls)
+        {
+            WorkflowValue.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
+            WorkflowValue.Validate(bodyfileUrls, nameof(bodyfileUrls), required: true);
+            return new DeferredBodyAction<SendPostcardResponse>(() =>
+            {
+                var apiCallPath = "/post/postcards/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["source"] = "MSPowerAutomate-pc";
+                bodypropCount++;
+                bodypropCount++;
+                body["file_urls"] = ExpressionConverter.ConvertO(bodyfileUrls);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendPostcardResponse>(callPayload);
+            });
         }
     }
 

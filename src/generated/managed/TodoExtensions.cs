@@ -4,149 +4,212 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TodoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<TodoListV2> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateToDoList))]
+        public IBodyWorkflowAction<TodoListV2> UpdateToDoList([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodyname)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TodoListV2>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TodoListV2> __BuildUpdateToDoList(WorkflowValue<string> folderId, WorkflowValue<string> bodyname)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<TodoListV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TodoListV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IWorkflowAction DeleteToDoList(Expression<Func<string>> folderId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteToDoList))]
+        public IWorkflowAction DeleteToDoList([WorkflowExpression] Func<string> folderId)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteToDoList(WorkflowValue<string> folderId)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<ToDoV2> CreateToDo(Expression<Func<string>> folderId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateToDo))]
+        public IBodyWorkflowAction<ToDoV2> CreateToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydueDateTimedueDate = null, [WorkflowExpression] Func<string> bodyreminderDateTimereminderDateTime = null, [WorkflowExpression] Func<bodyimportanceInput> bodyimportance = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodybodycontent = null, [WorkflowExpression] Func<bool> bodyisReminderOn = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dueDateTimeObject = new JObject();
-            var dueDateTimeObjectpropCount = 0;
-            if (bodydueDateTimedueDate != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ToDoV2> __BuildCreateToDo(WorkflowValue<string> folderId, WorkflowValue<string> bodytitle, WorkflowValue<string> bodydueDateTimedueDate = null, WorkflowValue<string> bodyreminderDateTimereminderDateTime = null, WorkflowValue<bodyimportanceInput> bodyimportance = null, WorkflowValue<bodystatusInput> bodystatus = null, WorkflowValue<string> bodybodycontent = null, WorkflowValue<bool> bodyisReminderOn = null)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: true);
+            WorkflowValue.Validate(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
+            WorkflowValue.Validate(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
+            WorkflowValue.Validate(bodyimportance, nameof(bodyimportance), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodybodycontent, nameof(bodybodycontent), required: false);
+            WorkflowValue.Validate(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            return new DeferredBodyAction<ToDoV2>(() =>
             {
-                dueDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodydueDateTimedueDate);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dueDateTimeObject = new JObject();
+                var dueDateTimeObjectpropCount = 0;
+                if (bodydueDateTimedueDate != null)
+                {
+                    dueDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodydueDateTimedueDate);
+                    dueDateTimeObjectpropCount++;
+                }
+
+                dueDateTimeObject["timeZone"] = "UTC";
                 dueDateTimeObjectpropCount++;
-            }
+                if (dueDateTimeObjectpropCount > 0)
+                {
+                    body["dueDateTime"] = dueDateTimeObject;
+                    bodypropCount++;
+                }
 
-            dueDateTimeObject["timeZone"] = "UTC";
-            dueDateTimeObjectpropCount++;
-            if (dueDateTimeObjectpropCount > 0)
-            {
-                body["dueDateTime"] = dueDateTimeObject;
-                bodypropCount++;
-            }
+                var reminderDateTimeObject = new JObject();
+                var reminderDateTimeObjectpropCount = 0;
+                if (bodyreminderDateTimereminderDateTime != null)
+                {
+                    reminderDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodyreminderDateTimereminderDateTime);
+                    reminderDateTimeObjectpropCount++;
+                }
 
-            var reminderDateTimeObject = new JObject();
-            var reminderDateTimeObjectpropCount = 0;
-            if (bodyreminderDateTimereminderDateTime != null)
-            {
-                reminderDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodyreminderDateTimereminderDateTime);
+                reminderDateTimeObject["timeZone"] = "UTC";
                 reminderDateTimeObjectpropCount++;
-            }
+                if (reminderDateTimeObjectpropCount > 0)
+                {
+                    body["reminderDateTime"] = reminderDateTimeObject;
+                    bodypropCount++;
+                }
 
-            reminderDateTimeObject["timeZone"] = "UTC";
-            reminderDateTimeObjectpropCount++;
-            if (reminderDateTimeObjectpropCount > 0)
-            {
-                body["reminderDateTime"] = reminderDateTimeObject;
+                if (bodyimportance != null)
+                {
+                    body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodyimportance != null)
-            {
-                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodybodycontent != null)
-            {
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodycontent);
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
-            }
+                if (bodybodycontent != null)
+                {
+                    bodyObject["content"] = ExpressionConverter.ConvertO(bodybodycontent);
+                    bodyObjectpropCount++;
+                }
 
-            if (bodyObjectpropCount > 0)
-            {
-                body["body"] = bodyObject;
-                bodypropCount++;
-            }
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
 
-            if (bodyisReminderOn != null)
-            {
-                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
-                bodypropCount++;
-            }
+                if (bodyisReminderOn != null)
+                {
+                    body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ToDoV2>(callPayload);
+                return new ApiConnectionAction<ToDoV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<TodoListV2> CreateToDoList(Expression<Func<string>> bodyname)
+        [WorkflowExpressionFactory(nameof(__BuildCreateToDoList))]
+        public IBodyWorkflowAction<TodoListV2> CreateToDoList([WorkflowExpression] Func<string> bodyname)
         {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TodoListV2>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TodoListV2> __BuildCreateToDoList(WorkflowValue<string> bodyname)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<TodoListV2>(() =>
+            {
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TodoListV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IWorkflowAction DeleteToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteToDo))]
+        public IWorkflowAction DeleteToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteToDo(WorkflowValue<string> folderId, WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
@@ -159,139 +222,215 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<ToDoV2> GetToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetToDo))]
+        public IBodyWorkflowAction<ToDoV2> GetToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ToDoV2>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<TodoListV2> GetToDoList(Expression<Func<string>> folderId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ToDoV2> __BuildGetToDo(WorkflowValue<string> folderId, WorkflowValue<string> id)
         {
-            var apiCallPath = String.Format("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TodoListV2>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<ToDoV2[]> ListToDosByFolder(Expression<Func<string>> folderId, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = String.Format("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<ToDoV2[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
-        public IBodyWorkflowAction<ToDoV2> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
-        {
-            var apiCallPath = String.Format("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dueDateTimeObject = new JObject();
-            var dueDateTimeObjectpropCount = 0;
-            if (bodydueDateTimedueDate != null)
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ToDoV2>(() =>
             {
-                dueDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodydueDateTimedueDate);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ToDoV2>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetToDoList))]
+        public IBodyWorkflowAction<TodoListV2> GetToDoList([WorkflowExpression] Func<string> folderId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TodoListV2> __BuildGetToDoList(WorkflowValue<string> folderId)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            return new DeferredBodyAction<TodoListV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TodoListV2>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
+        [WorkflowExpressionFactory(nameof(__BuildListToDosByFolder))]
+        public IBodyWorkflowAction<ToDoV2[]> ListToDosByFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> top = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ToDoV2[]> __BuildListToDosByFolder(WorkflowValue<string> folderId, WorkflowValue<int> top = null)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<ToDoV2[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                return new ApiConnectionAction<ToDoV2[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todo")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateToDo))]
+        public IBodyWorkflowAction<ToDoV2> UpdateToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydueDateTimedueDate = null, [WorkflowExpression] Func<string> bodyreminderDateTimereminderDateTime = null, [WorkflowExpression] Func<bodyimportanceInput> bodyimportance = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodybodycontent = null, [WorkflowExpression] Func<bool> bodyisReminderOn = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ToDoV2> __BuildUpdateToDo(WorkflowValue<string> folderId, WorkflowValue<string> id, WorkflowValue<string> bodydueDateTimedueDate = null, WorkflowValue<string> bodyreminderDateTimereminderDateTime = null, WorkflowValue<bodyimportanceInput> bodyimportance = null, WorkflowValue<string> bodytitle = null, WorkflowValue<bodystatusInput> bodystatus = null, WorkflowValue<string> bodybodycontent = null, WorkflowValue<bool> bodyisReminderOn = null)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
+            WorkflowValue.Validate(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
+            WorkflowValue.Validate(bodyimportance, nameof(bodyimportance), required: false);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodybodycontent, nameof(bodybodycontent), required: false);
+            WorkflowValue.Validate(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            return new DeferredBodyAction<ToDoV2>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dueDateTimeObject = new JObject();
+                var dueDateTimeObjectpropCount = 0;
+                if (bodydueDateTimedueDate != null)
+                {
+                    dueDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodydueDateTimedueDate);
+                    dueDateTimeObjectpropCount++;
+                }
+
+                dueDateTimeObject["timeZone"] = "UTC";
                 dueDateTimeObjectpropCount++;
-            }
+                if (dueDateTimeObjectpropCount > 0)
+                {
+                    body["dueDateTime"] = dueDateTimeObject;
+                    bodypropCount++;
+                }
 
-            dueDateTimeObject["timeZone"] = "UTC";
-            dueDateTimeObjectpropCount++;
-            if (dueDateTimeObjectpropCount > 0)
-            {
-                body["dueDateTime"] = dueDateTimeObject;
-                bodypropCount++;
-            }
+                var reminderDateTimeObject = new JObject();
+                var reminderDateTimeObjectpropCount = 0;
+                if (bodyreminderDateTimereminderDateTime != null)
+                {
+                    reminderDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodyreminderDateTimereminderDateTime);
+                    reminderDateTimeObjectpropCount++;
+                }
 
-            var reminderDateTimeObject = new JObject();
-            var reminderDateTimeObjectpropCount = 0;
-            if (bodyreminderDateTimereminderDateTime != null)
-            {
-                reminderDateTimeObject["dateTime"] = ExpressionConverter.ConvertO(bodyreminderDateTimereminderDateTime);
+                reminderDateTimeObject["timeZone"] = "UTC";
                 reminderDateTimeObjectpropCount++;
-            }
+                if (reminderDateTimeObjectpropCount > 0)
+                {
+                    body["reminderDateTime"] = reminderDateTimeObject;
+                    bodypropCount++;
+                }
 
-            reminderDateTimeObject["timeZone"] = "UTC";
-            reminderDateTimeObjectpropCount++;
-            if (reminderDateTimeObjectpropCount > 0)
-            {
-                body["reminderDateTime"] = reminderDateTimeObject;
-                bodypropCount++;
-            }
+                if (bodyimportance != null)
+                {
+                    body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
+                    bodypropCount++;
+                }
 
-            if (bodyimportance != null)
-            {
-                body["importance"] = ExpressionConverter.ConvertO(bodyimportance);
-                bodypropCount++;
-            }
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodybodycontent != null)
-            {
-                bodyObject["content"] = ExpressionConverter.ConvertO(bodybodycontent);
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
-            }
+                if (bodybodycontent != null)
+                {
+                    bodyObject["content"] = ExpressionConverter.ConvertO(bodybodycontent);
+                    bodyObjectpropCount++;
+                }
 
-            if (bodyObjectpropCount > 0)
-            {
-                body["body"] = bodyObject;
-                bodypropCount++;
-            }
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
 
-            if (bodyisReminderOn != null)
-            {
-                body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
-                bodypropCount++;
-            }
+                if (bodyisReminderOn != null)
+                {
+                    body["isReminderOn"] = ExpressionConverter.ConvertO(bodyisReminderOn);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ToDoV2>(callPayload);
+                return new ApiConnectionAction<ToDoV2>(callPayload);
+            });
         }
     }
 
     public class TodoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ToDoV2[]> OnNewToDoInFolder(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewToDoInFolder))]
+        public IBodyWorkflowTrigger<ToDoV2[]> OnNewToDoInFolder([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/trigger/onNewToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ToDoV2[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<ToDoV2[]> OnUpdateToDoInFolder(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ToDoV2[]> __BuildOnNewToDoInFolder(WorkflowValue<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/trigger/onUpdateToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ToDoV2[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            return new DeferredBodyTrigger<ToDoV2[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/onNewToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ToDoV2[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnUpdateToDoInFolder))]
+        public IBodyWorkflowTrigger<ToDoV2[]> OnUpdateToDoInFolder([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ToDoV2[]> __BuildOnUpdateToDoInFolder(WorkflowValue<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            return new DeferredBodyTrigger<ToDoV2[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/trigger/onUpdateToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<ToDoV2[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

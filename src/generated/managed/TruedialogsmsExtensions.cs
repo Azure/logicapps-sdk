@@ -4,199 +4,274 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TruedialogsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<AccountResponse> AccountGetInfo(Expression<Func<string>> accountId)
+        [WorkflowExpressionFactory(nameof(__BuildAccountGetInfo))]
+        public IBodyWorkflowAction<AccountResponse> AccountGetInfo([WorkflowExpression] Func<string> accountId)
         {
-            var apiCallPath = String.Format("/account/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AccountResponse> __BuildAccountGetInfo(WorkflowValue<string> accountId)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            return new DeferredBodyAction<AccountResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AccountResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactSearchRequestItem[]> ContactSearch(Expression<Func<string>> accountId, Expression<Func<string>> phone)
+        [WorkflowExpressionFactory(nameof(__BuildContactSearch))]
+        public IBodyWorkflowAction<ContactSearchRequestItem[]> ContactSearch([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> phone)
         {
-            var apiCallPath = String.Format("/account/{0}/contact-search/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContactSearchRequestItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ContactSearchRequestItem[]> __BuildContactSearch(WorkflowValue<string> accountId, WorkflowValue<string> phone)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            WorkflowValue.Validate(phone, nameof(phone), required: true);
+            return new DeferredBodyAction<ContactSearchRequestItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/contact-search/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ContactSearchRequestItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactResponse> ContactCreate(Expression<Func<string>> accountId, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
+        [WorkflowExpressionFactory(nameof(__BuildContactCreate))]
+        public IBodyWorkflowAction<ContactResponse> ContactCreate([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            var apiCallPath = String.Format("/account/{0}/contact", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyphoneNumber != null)
-            {
-                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyemail != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ContactResponse> __BuildContactCreate(WorkflowValue<string> accountId, WorkflowValue<string> bodyphoneNumber = null, WorkflowValue<string> bodyemail = null, WorkflowValue<string> bodyfirstName = null, WorkflowValue<string> bodylastName = null)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            WorkflowValue.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            WorkflowValue.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowValue.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowValue.Validate(bodylastName, nameof(bodylastName), required: false);
+            return new DeferredBodyAction<ContactResponse>(() =>
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/contact", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyphoneNumber != null)
+                {
+                    body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                    bodypropCount++;
+                }
 
-            if (bodyfirstName != null)
-            {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
+                if (bodyemail != null)
+                {
+                    body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
+                if (bodyfirstName != null)
+                {
+                    body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodylastName != null)
+                {
+                    body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ContactResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<ContactResponse> ContactUpdate(Expression<Func<string>> accountId, Expression<Func<string>> contactid, Expression<Func<string>> bodyphoneNumber = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null)
+        [WorkflowExpressionFactory(nameof(__BuildContactUpdate))]
+        public IBodyWorkflowAction<ContactResponse> ContactUpdate([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> contactid, [WorkflowExpression] Func<string> bodyphoneNumber = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            var apiCallPath = String.Format("/account/{0}/contact/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyphoneNumber != null)
-            {
-                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyemail != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ContactResponse> __BuildContactUpdate(WorkflowValue<string> accountId, WorkflowValue<string> contactid, WorkflowValue<string> bodyphoneNumber = null, WorkflowValue<string> bodyemail = null, WorkflowValue<string> bodyfirstName = null, WorkflowValue<string> bodylastName = null)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            WorkflowValue.Validate(contactid, nameof(contactid), required: true);
+            WorkflowValue.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: false);
+            WorkflowValue.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowValue.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowValue.Validate(bodylastName, nameof(bodylastName), required: false);
+            return new DeferredBodyAction<ContactResponse>(() =>
             {
-                body["Email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/contact/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1), ExpressionConverter.ConvertWithUrlEncoding(contactid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyphoneNumber != null)
+                {
+                    body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                    bodypropCount++;
+                }
 
-            if (bodyfirstName != null)
-            {
-                body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
+                if (bodyemail != null)
+                {
+                    body["Email"] = ExpressionConverter.ConvertO(bodyemail);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
+                if (bodyfirstName != null)
+                {
+                    body["FirstName"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodylastName != null)
+                {
+                    body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ContactResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
-        public IBodyWorkflowAction<PushCampaignResponse> CampaignPush(Expression<Func<string>> accountId, Expression<Func<string[]>> bodychannels, Expression<Func<string[]>> bodytargets, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodyexecute, Expression<Func<string[]>> bodycontactListIds = null, Expression<Func<string[]>> bodyexcludeListIds = null, Expression<Func<int>> bodymediaId = null, Expression<Func<bool>> bodyignoreSingleUse = null, Expression<Func<bool>> bodyforceOptIn = null, Expression<Func<string[]>> bodyschedules = null, Expression<Func<bool>> bodyignoreInvalidTargets = null)
+        [WorkflowExpressionFactory(nameof(__BuildCampaignPush))]
+        public IBodyWorkflowAction<PushCampaignResponse> CampaignPush([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string[]> bodychannels, [WorkflowExpression] Func<string[]> bodytargets, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodyexecute, [WorkflowExpression] Func<string[]> bodycontactListIds = null, [WorkflowExpression] Func<string[]> bodyexcludeListIds = null, [WorkflowExpression] Func<int> bodymediaId = null, [WorkflowExpression] Func<bool> bodyignoreSingleUse = null, [WorkflowExpression] Func<bool> bodyforceOptIn = null, [WorkflowExpression] Func<string[]> bodyschedules = null, [WorkflowExpression] Func<bool> bodyignoreInvalidTargets = null)
         {
-            var apiCallPath = String.Format("/account/{0}/action-pushcampaign", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Channels"] = ExpressionConverter.ConvertO(bodychannels);
-            bodypropCount++;
-            body["Targets"] = ExpressionConverter.ConvertO(bodytargets);
-            if (bodycontactListIds != null)
-            {
-                body["ContactListIds"] = ExpressionConverter.ConvertO(bodycontactListIds);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyexcludeListIds != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PushCampaignResponse> __BuildCampaignPush(WorkflowValue<string> accountId, WorkflowValue<string[]> bodychannels, WorkflowValue<string[]> bodytargets, WorkflowValue<string> bodymessage, WorkflowValue<bool> bodyexecute, WorkflowValue<string[]> bodycontactListIds = null, WorkflowValue<string[]> bodyexcludeListIds = null, WorkflowValue<int> bodymediaId = null, WorkflowValue<bool> bodyignoreSingleUse = null, WorkflowValue<bool> bodyforceOptIn = null, WorkflowValue<string[]> bodyschedules = null, WorkflowValue<bool> bodyignoreInvalidTargets = null)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            WorkflowValue.Validate(bodychannels, nameof(bodychannels), required: true);
+            WorkflowValue.Validate(bodytargets, nameof(bodytargets), required: true);
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: true);
+            WorkflowValue.Validate(bodyexecute, nameof(bodyexecute), required: true);
+            WorkflowValue.Validate(bodycontactListIds, nameof(bodycontactListIds), required: false);
+            WorkflowValue.Validate(bodyexcludeListIds, nameof(bodyexcludeListIds), required: false);
+            WorkflowValue.Validate(bodymediaId, nameof(bodymediaId), required: false);
+            WorkflowValue.Validate(bodyignoreSingleUse, nameof(bodyignoreSingleUse), required: false);
+            WorkflowValue.Validate(bodyforceOptIn, nameof(bodyforceOptIn), required: false);
+            WorkflowValue.Validate(bodyschedules, nameof(bodyschedules), required: false);
+            WorkflowValue.Validate(bodyignoreInvalidTargets, nameof(bodyignoreInvalidTargets), required: false);
+            return new DeferredBodyAction<PushCampaignResponse>(() =>
             {
-                body["ExcludeListIds"] = ExpressionConverter.ConvertO(bodyexcludeListIds);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/action-pushcampaign", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            body["CampaignId"] = 0;
-            bodypropCount++;
-            if (bodymediaId != null)
-            {
-                body["MediaId"] = ExpressionConverter.ConvertO(bodymediaId);
+                body["Channels"] = ExpressionConverter.ConvertO(bodychannels);
                 bodypropCount++;
-            }
+                body["Targets"] = ExpressionConverter.ConvertO(bodytargets);
+                if (bodycontactListIds != null)
+                {
+                    body["ContactListIds"] = ExpressionConverter.ConvertO(bodycontactListIds);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodyignoreSingleUse != null)
-            {
-                body["IgnoreSingleUse"] = ExpressionConverter.ConvertO(bodyignoreSingleUse);
+                if (bodyexcludeListIds != null)
+                {
+                    body["ExcludeListIds"] = ExpressionConverter.ConvertO(bodyexcludeListIds);
+                    bodypropCount++;
+                }
+
+                body["CampaignId"] = 0;
                 bodypropCount++;
-            }
+                if (bodymediaId != null)
+                {
+                    body["MediaId"] = ExpressionConverter.ConvertO(bodymediaId);
+                    bodypropCount++;
+                }
 
-            if (bodyforceOptIn != null)
-            {
+                bodypropCount++;
+                body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+                if (bodyignoreSingleUse != null)
+                {
+                    body["IgnoreSingleUse"] = ExpressionConverter.ConvertO(bodyignoreSingleUse);
+                    bodypropCount++;
+                }
+
                 if (bodyforceOptIn != null)
                 {
-                    body["ForceOptIn"] = ExpressionConverter.ConvertO(bodyforceOptIn);
+                    if (bodyforceOptIn != null)
+                    {
+                        body["ForceOptIn"] = ExpressionConverter.ConvertO(bodyforceOptIn);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ForceOptIn"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodyschedules != null)
+                {
+                    body["Schedules"] = ExpressionConverter.ConvertO(bodyschedules);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["ForceOptIn"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyschedules != null)
-            {
-                body["Schedules"] = ExpressionConverter.ConvertO(bodyschedules);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["Execute"] = ExpressionConverter.ConvertO(bodyexecute);
-            if (bodyignoreInvalidTargets != null)
-            {
+                body["Execute"] = ExpressionConverter.ConvertO(bodyexecute);
                 if (bodyignoreInvalidTargets != null)
                 {
-                    body["IgnoreInvalidTargets"] = ExpressionConverter.ConvertO(bodyignoreInvalidTargets);
+                    if (bodyignoreInvalidTargets != null)
+                    {
+                        body["IgnoreInvalidTargets"] = ExpressionConverter.ConvertO(bodyignoreInvalidTargets);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["IgnoreInvalidTargets"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["IgnoreInvalidTargets"] = false;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PushCampaignResponse>(callPayload);
+                return new ApiConnectionAction<PushCampaignResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "truedialogsms")]
@@ -211,119 +286,174 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
 
     public class TruedialogsmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildIncomingSMSReceived))]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["CallbackType"] = 11;
-            bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["Active"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildIncomingSMSReceived(WorkflowValue<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback/-1", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["CallbackType"] = 1;
-            bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["Active"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["CallbackType"] = 11;
+                bodypropCount++;
+                body["URL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["Active"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildKeywordReceived))]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback/-6", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["CallbackType"] = 6;
-            bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["Active"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildKeywordReceived(WorkflowValue<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback/-12", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["CallbackType"] = 12;
-            bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["Active"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-1", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["CallbackType"] = 1;
+                bodypropCount++;
+                body["URL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["Active"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets(Expression<Func<string>> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildStopReceived))]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/account/{0}/callback/-13", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["CallbackType"] = 13;
-            bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["Active"] = true;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildStopReceived(WorkflowValue<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-6", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["CallbackType"] = 6;
+                bodypropCount++;
+                body["URL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["Active"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildDeliveryNoticeReceived))]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildDeliveryNoticeReceived(WorkflowValue<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-12", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["CallbackType"] = 12;
+                bodypropCount++;
+                body["URL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["Active"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildInvalidTargets))]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildInvalidTargets(WorkflowValue<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/account/{0}/callback/-13", ExpressionConverter.ConvertWithUrlEncoding(accountId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["CallbackType"] = 13;
+                bodypropCount++;
+                body["URL"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["Active"] = true;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

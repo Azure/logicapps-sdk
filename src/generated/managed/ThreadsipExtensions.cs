@@ -4,63 +4,86 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ThreadsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadPostResponse> Thread(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelID = null, Expression<Func<string[]>> bodyblocks = null)
+        [WorkflowExpressionFactory(nameof(__BuildThread))]
+        public IBodyWorkflowAction<ThreadPostResponse> Thread([WorkflowExpression] Func<string> bodychannel = null, [WorkflowExpression] Func<string> bodychannelID = null, [WorkflowExpression] Func<string[]> bodyblocks = null)
         {
-            var apiCallPath = "/postThread";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodychannel != null)
-            {
-                body["channel"] = ExpressionConverter.ConvertO(bodychannel);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodychannelID != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ThreadPostResponse> __BuildThread(WorkflowValue<string> bodychannel = null, WorkflowValue<string> bodychannelID = null, WorkflowValue<string[]> bodyblocks = null)
+        {
+            WorkflowValue.Validate(bodychannel, nameof(bodychannel), required: false);
+            WorkflowValue.Validate(bodychannelID, nameof(bodychannelID), required: false);
+            WorkflowValue.Validate(bodyblocks, nameof(bodyblocks), required: false);
+            return new DeferredBodyAction<ThreadPostResponse>(() =>
             {
-                body["channelID"] = ExpressionConverter.ConvertO(bodychannelID);
-                bodypropCount++;
-            }
+                var apiCallPath = "/postThread";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodychannel != null)
+                {
+                    body["channel"] = ExpressionConverter.ConvertO(bodychannel);
+                    bodypropCount++;
+                }
 
-            if (bodyblocks != null)
-            {
-                body["blocks"] = ExpressionConverter.ConvertO(bodyblocks);
-                bodypropCount++;
-            }
+                if (bodychannelID != null)
+                {
+                    body["channelID"] = ExpressionConverter.ConvertO(bodychannelID);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyblocks != null)
+                {
+                    body["blocks"] = ExpressionConverter.ConvertO(bodyblocks);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ThreadPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ThreadPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete(Expression<Func<string>> bodythreadID)
+        [WorkflowExpressionFactory(nameof(__BuildThreadDelete))]
+        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete([WorkflowExpression] Func<string> bodythreadID)
         {
-            var apiCallPath = "/deleteThread";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["threadID"] = ExpressionConverter.ConvertO(bodythreadID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<ThreadDeleteResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ThreadDeleteResponse> __BuildThreadDelete(WorkflowValue<string> bodythreadID)
+        {
+            WorkflowValue.Validate(bodythreadID, nameof(bodythreadID), required: true);
+            return new DeferredBodyAction<ThreadDeleteResponse>(() =>
+            {
+                var apiCallPath = "/deleteThread";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["threadID"] = ExpressionConverter.ConvertO(bodythreadID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ThreadDeleteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
@@ -73,68 +96,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatID = null, Expression<Func<string>> bodybody = null)
+        [WorkflowExpressionFactory(nameof(__BuildChat))]
+        public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodychat = null, [WorkflowExpression] Func<string> bodychatID = null, [WorkflowExpression] Func<string> bodybody = null)
         {
-            var apiCallPath = "/postChatMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodychat != null)
-            {
-                body["chat"] = ExpressionConverter.ConvertO(bodychat);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodychatID != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChatPostResponse> __BuildChat(WorkflowValue<string> bodychat = null, WorkflowValue<string> bodychatID = null, WorkflowValue<string> bodybody = null)
+        {
+            WorkflowValue.Validate(bodychat, nameof(bodychat), required: false);
+            WorkflowValue.Validate(bodychatID, nameof(bodychatID), required: false);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: false);
+            return new DeferredBodyAction<ChatPostResponse>(() =>
             {
-                body["chatID"] = ExpressionConverter.ConvertO(bodychatID);
-                bodypropCount++;
-            }
+                var apiCallPath = "/postChatMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodychat != null)
+                {
+                    body["chat"] = ExpressionConverter.ConvertO(bodychat);
+                    bodypropCount++;
+                }
 
-            if (bodybody != null)
-            {
-                body["body"] = ExpressionConverter.ConvertO(bodybody);
-                bodypropCount++;
-            }
+                if (bodychatID != null)
+                {
+                    body["chatID"] = ExpressionConverter.ConvertO(bodychatID);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodybody != null)
+                {
+                    body["body"] = ExpressionConverter.ConvertO(bodybody);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ChatPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ChatPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete(Expression<Func<string>> bodymessageID = null)
+        [WorkflowExpressionFactory(nameof(__BuildChatDelete))]
+        public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete([WorkflowExpression] Func<string> bodymessageID = null)
         {
-            var apiCallPath = "/deleteChatMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessageID != null)
-            {
-                body["messageID"] = ExpressionConverter.ConvertO(bodymessageID);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChatDeleteResponse> __BuildChatDelete(WorkflowValue<string> bodymessageID = null)
+        {
+            WorkflowValue.Validate(bodymessageID, nameof(bodymessageID), required: false);
+            return new DeferredBodyAction<ChatDeleteResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/deleteChatMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessageID != null)
+                {
+                    body["messageID"] = ExpressionConverter.ConvertO(bodymessageID);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ChatDeleteResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ChatDeleteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<object>> data = null)
+        [WorkflowExpressionFactory(nameof(__BuildFile))]
+        public IBodyWorkflowAction<FilePostResponse> File([WorkflowExpression] Func<object> data = null)
         {
-            var apiCallPath = "/uploadFile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilePostResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilePostResponse> __BuildFile(WorkflowValue<object> data = null)
+        {
+            WorkflowValue.Validate(data, nameof(data), required: false);
+            return new DeferredBodyAction<FilePostResponse>(() =>
+            {
+                var apiCallPath = "/uploadFile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilePostResponse>(callPayload);
+            });
         }
     }
 

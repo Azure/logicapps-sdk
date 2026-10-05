@@ -4,20 +4,30 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.K2workflow
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class K2workflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "k2workflow")]
-        public IBodyWorkflowAction<JToken> TasksPostReleaseAction(Expression<Func<string>> serialNumber)
+        [WorkflowExpressionFactory(nameof(__BuildTasksPostReleaseAction))]
+        public IBodyWorkflowAction<JToken> TasksPostReleaseAction([WorkflowExpression] Func<string> serialNumber)
         {
-            var apiCallPath = String.Format("/v1/tasks/{0}/actions/release", ExpressionConverter.ConvertWithUrlEncoding(serialNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildTasksPostReleaseAction(WorkflowValue<string> serialNumber)
+        {
+            WorkflowValue.Validate(serialNumber, nameof(serialNumber), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/tasks/{0}/actions/release", ExpressionConverter.ConvertWithUrlEncoding(serialNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

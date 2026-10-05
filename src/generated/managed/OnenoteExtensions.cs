@@ -4,105 +4,192 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OnenoteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<CreateSectionInNotebookResponse> CreateSectionInNotebook(Expression<Func<string>> notebookKey, Expression<Func<string>> bodynameOfTheNewSection = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateSectionInNotebook))]
+        public IBodyWorkflowAction<CreateSectionInNotebookResponse> CreateSectionInNotebook([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> bodynameOfTheNewSection = null)
         {
-            var apiCallPath = "/notebooks/Dynamic/sections";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodynameOfTheNewSection != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateSectionInNotebookResponse> __BuildCreateSectionInNotebook(WorkflowValue<string> notebookKey, WorkflowValue<string> bodynameOfTheNewSection = null)
+        {
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            WorkflowValue.Validate(bodynameOfTheNewSection, nameof(bodynameOfTheNewSection), required: false);
+            return new DeferredBodyAction<CreateSectionInNotebookResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodynameOfTheNewSection);
-                bodypropCount++;
-            }
+                var apiCallPath = "/notebooks/Dynamic/sections";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodynameOfTheNewSection != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodynameOfTheNewSection);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateSectionInNotebookResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
+        [WorkflowExpressionFactory(nameof(__BuildCreatePageInSection))]
+        public IBodyWorkflowAction<Page> CreatePageInSection([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> pageContent = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Page> __BuildCreatePageInSection(WorkflowValue<string> notebookKey, WorkflowValue<string> sectionId, WorkflowValue<string> pageContent = null)
+        {
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            WorkflowValue.Validate(sectionId, nameof(sectionId), required: true);
+            WorkflowValue.Validate(pageContent, nameof(pageContent), required: false);
+            return new DeferredBodyAction<Page>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateSectionInNotebookResponse>(callPayload);
+                var apiCallPath = "/sections/Dynamic/pages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(pageContent);
+                return new ApiConnectionAction<Page>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<Page> CreatePageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageContent = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPagesInSection))]
+        public IBodyWorkflowAction<GetPagesInSectionResponse> GetPagesInSection([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId)
         {
-            var apiCallPath = "/sections/Dynamic/pages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(pageContent);
-            return new ApiConnectionAction<Page>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPagesInSectionResponse> __BuildGetPagesInSection(WorkflowValue<string> notebookKey, WorkflowValue<string> sectionId)
+        {
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            WorkflowValue.Validate(sectionId, nameof(sectionId), required: true);
+            return new DeferredBodyAction<GetPagesInSectionResponse>(() =>
+            {
+                var apiCallPath = "/sections/Dynamic/pages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
+                return new ApiConnectionAction<GetPagesInSectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<GetPagesInSectionResponse> GetPagesInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId)
+        [WorkflowExpressionFactory(nameof(__BuildCreatePageInQuickNotes))]
+        public IBodyWorkflowAction<Page> CreatePageInQuickNotes([WorkflowExpression] Func<string> pageContent = null)
         {
-            var apiCallPath = "/sections/Dynamic/pages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            return new ApiConnectionAction<GetPagesInSectionResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Page> __BuildCreatePageInQuickNotes(WorkflowValue<string> pageContent = null)
+        {
+            WorkflowValue.Validate(pageContent, nameof(pageContent), required: false);
+            return new DeferredBodyAction<Page>(() =>
+            {
+                var apiCallPath = "/pages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(pageContent);
+                return new ApiConnectionAction<Page>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<Page> CreatePageInQuickNotes(Expression<Func<string>> pageContent = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeletePage))]
+        public IWorkflowAction DeletePage([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> pageId)
         {
-            var apiCallPath = "/pages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(pageContent);
-            return new ApiConnectionAction<Page>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeletePage(WorkflowValue<string> notebookKey, WorkflowValue<string> sectionId, WorkflowValue<string> pageId)
+        {
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            WorkflowValue.Validate(sectionId, nameof(sectionId), required: true);
+            WorkflowValue.Validate(pageId, nameof(pageId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/pages";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
+                callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IWorkflowAction DeletePage(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId)
+        [WorkflowExpressionFactory(nameof(__BuildGetPageContent))]
+        public IBodyWorkflowAction<string> GetPageContent([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> pageId)
         {
-            var apiCallPath = "/pages";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetPageContent(WorkflowValue<string> notebookKey, WorkflowValue<string> sectionId, WorkflowValue<string> pageId)
+        {
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            WorkflowValue.Validate(sectionId, nameof(sectionId), required: true);
+            WorkflowValue.Validate(pageId, nameof(pageId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/pages/Dynamic/content";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
+                callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
+                callPayload.Queries["preAuthenticated"] = Convert.ToString(true);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<string> GetPageContent(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId)
+        [WorkflowExpressionFactory(nameof(__BuildUpdatePageContent))]
+        public IBodyWorkflowAction<string> UpdatePageContent([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<updatesInputItem[]> updates = null)
         {
-            var apiCallPath = "/pages/Dynamic/content";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
-            callPayload.Queries["preAuthenticated"] = Convert.ToString(true);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<string> UpdatePageContent(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, Expression<Func<string>> pageId, Expression<Func<updatesInputItem[]>> updates = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildUpdatePageContent(WorkflowValue<string> notebookKey, WorkflowValue<string> sectionId, WorkflowValue<string> pageId, WorkflowValue<updatesInputItem[]> updates = null)
         {
-            var apiCallPath = "/pages/Dynamic/content";
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
-            callPayload.Body = ExpressionConverter.ConvertO(updates);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            WorkflowValue.Validate(sectionId, nameof(sectionId), required: true);
+            WorkflowValue.Validate(pageId, nameof(pageId), required: true);
+            WorkflowValue.Validate(updates, nameof(updates), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/pages/Dynamic/content";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
+                callPayload.Queries["pageId"] = ExpressionConverter.Convert(pageId);
+                callPayload.Body = ExpressionConverter.ConvertO(updates);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
@@ -115,44 +202,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenote")]
-        public IBodyWorkflowAction<GetSectionsInNotebookResponse> GetSectionsInNotebook(Expression<Func<string>> notebookKey)
+        [WorkflowExpressionFactory(nameof(__BuildGetSectionsInNotebook))]
+        public IBodyWorkflowAction<GetSectionsInNotebookResponse> GetSectionsInNotebook([WorkflowExpression] Func<string> notebookKey)
         {
-            var apiCallPath = "/notebooks/notebookKey/sections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            return new ApiConnectionAction<GetSectionsInNotebookResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSectionsInNotebookResponse> __BuildGetSectionsInNotebook(WorkflowValue<string> notebookKey)
+        {
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            return new DeferredBodyAction<GetSectionsInNotebookResponse>(() =>
+            {
+                var apiCallPath = "/notebooks/notebookKey/sections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                return new ApiConnectionAction<GetSectionsInNotebookResponse>(callPayload);
+            });
         }
     }
 
     public class OnenoteTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewSectionResponse> OnNewSectionInNotebook(Expression<Func<string>> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewSectionInNotebook))]
+        public IBodyWorkflowTrigger<NewSectionResponse> OnNewSectionInNotebook([WorkflowExpression] Func<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger1/notebooks/notebookKey/sections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            return new ApiConnectionTrigger<NewSectionResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<NewSectionGroupResponse> OnNewSectionGroupInNotebook(Expression<Func<string>> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<NewSectionResponse> __BuildOnNewSectionInNotebook(WorkflowValue<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger2/notebooks/notebookKey/sectiongroups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            return new ApiConnectionTrigger<NewSectionGroupResponse>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            return new DeferredBodyTrigger<NewSectionResponse>(() =>
+            {
+                var apiCallPath = "/trigger1/notebooks/notebookKey/sections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                return new ApiConnectionTrigger<NewSectionResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<NewPageResponse> OnNewPageInSection(Expression<Func<string>> notebookKey, Expression<Func<string>> sectionId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewSectionGroupInNotebook))]
+        public IBodyWorkflowTrigger<NewSectionGroupResponse> OnNewSectionGroupInNotebook([WorkflowExpression] Func<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger3/sections/Dynamic/pages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-            callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-            return new ApiConnectionTrigger<NewPageResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<NewSectionGroupResponse> __BuildOnNewSectionGroupInNotebook(WorkflowValue<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            return new DeferredBodyTrigger<NewSectionGroupResponse>(() =>
+            {
+                var apiCallPath = "/trigger2/notebooks/notebookKey/sectiongroups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                return new ApiConnectionTrigger<NewSectionGroupResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewPageInSection))]
+        public IBodyWorkflowTrigger<NewPageResponse> OnNewPageInSection([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<NewPageResponse> __BuildOnNewPageInSection(WorkflowValue<string> notebookKey, WorkflowValue<string> sectionId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(notebookKey, nameof(notebookKey), required: true);
+            WorkflowValue.Validate(sectionId, nameof(sectionId), required: true);
+            return new DeferredBodyTrigger<NewPageResponse>(() =>
+            {
+                var apiCallPath = "/trigger3/sections/Dynamic/pages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
+                callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
+                return new ApiConnectionTrigger<NewPageResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,39 +4,64 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PropublicanonprofiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q = null, Expression<Func<int>> page = null, Expression<Func<string>> stateId = null, Expression<Func<int>> nteeId = null, Expression<Func<int>> cCodeId = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> stateId = null, [WorkflowExpression] Func<int> nteeId = null, [WorkflowExpression] Func<int> cCodeId = null)
         {
-            var apiCallPath = "/search.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (stateId != null)
-                callPayload.Queries["state[id]"] = ExpressionConverter.Convert(stateId);
-            if (nteeId != null)
-                callPayload.Queries["ntee[id]"] = ExpressionConverter.Convert(nteeId);
-            if (cCodeId != null)
-                callPayload.Queries["c_code[id]"] = ExpressionConverter.Convert(cCodeId);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowValue<string> q = null, WorkflowValue<int> page = null, WorkflowValue<string> stateId = null, WorkflowValue<int> nteeId = null, WorkflowValue<int> cCodeId = null)
+        {
+            WorkflowValue.Validate(q, nameof(q), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            WorkflowValue.Validate(stateId, nameof(stateId), required: false);
+            WorkflowValue.Validate(nteeId, nameof(nteeId), required: false);
+            WorkflowValue.Validate(cCodeId, nameof(cCodeId), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/search.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (stateId != null)
+                    callPayload.Queries["state[id]"] = ExpressionConverter.Convert(stateId);
+                if (nteeId != null)
+                    callPayload.Queries["ntee[id]"] = ExpressionConverter.Convert(nteeId);
+                if (cCodeId != null)
+                    callPayload.Queries["c_code[id]"] = ExpressionConverter.Convert(cCodeId);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet(Expression<Func<string>> ein)
+        [WorkflowExpressionFactory(nameof(__BuildNonprofitGet))]
+        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet([WorkflowExpression] Func<string> ein)
         {
-            var apiCallPath = String.Format("/organizations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NonprofitGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NonprofitGetResponse> __BuildNonprofitGet(WorkflowValue<string> ein)
+        {
+            WorkflowValue.Validate(ein, nameof(ein), required: true);
+            return new DeferredBodyAction<NonprofitGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<NonprofitGetResponse>(callPayload);
+            });
         }
     }
 

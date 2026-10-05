@@ -4,22 +4,33 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Faanotam
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FaanotamActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "faanotam")]
-        public IBodyWorkflowAction<GetNotamResponse> GetNotam(Expression<Func<string>> clientId, Expression<Func<string>> clientSecret)
+        [WorkflowExpressionFactory(nameof(__BuildGetNotam))]
+        public IBodyWorkflowAction<GetNotamResponse> GetNotam([WorkflowExpression] Func<string> clientId, [WorkflowExpression] Func<string> clientSecret)
         {
-            var apiCallPath = "/notamapi/v1/notams";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["client_id"] = ExpressionConverter.Convert(clientId);
-            callPayload.Headers["client_secret"] = ExpressionConverter.Convert(clientSecret);
-            return new ApiConnectionAction<GetNotamResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetNotamResponse> __BuildGetNotam(WorkflowValue<string> clientId, WorkflowValue<string> clientSecret)
+        {
+            WorkflowValue.Validate(clientId, nameof(clientId), required: true);
+            WorkflowValue.Validate(clientSecret, nameof(clientSecret), required: true);
+            return new DeferredBodyAction<GetNotamResponse>(() =>
+            {
+                var apiCallPath = "/notamapi/v1/notams";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["client_id"] = ExpressionConverter.Convert(clientId);
+                callPayload.Headers["client_secret"] = ExpressionConverter.Convert(clientSecret);
+                return new ApiConnectionAction<GetNotamResponse>(callPayload);
+            });
         }
     }
 

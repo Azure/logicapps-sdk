@@ -4,40 +4,65 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RencoregovernanceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencoregovernance")]
-        public IBodyWorkflowAction<GetViolationsResponse> GetViolations(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId)
+        [WorkflowExpressionFactory(nameof(__BuildGetViolations))]
+        public IBodyWorkflowAction<GetViolationsResponse> GetViolations([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> checkId)
         {
-            var apiCallPath = String.Format("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetViolationsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetViolationsResponse> __BuildGetViolations(WorkflowValue<string> workspaceId, WorkflowValue<string> environmentId, WorkflowValue<string> checkId)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowValue.Validate(checkId, nameof(checkId), required: true);
+            return new DeferredBodyAction<GetViolationsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetViolationsResponse>(callPayload);
+            });
         }
     }
 
     public class RencoregovernanceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCheckNotificationTrigger))]
+        public IWorkflowTrigger CheckNotificationTrigger([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> checkId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCheckNotificationTrigger(WorkflowValue<string> workspaceId, WorkflowValue<string> environmentId, WorkflowValue<string> checkId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(environmentId, nameof(environmentId), required: true);
+            WorkflowValue.Validate(checkId, nameof(checkId), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentId, 1), ExpressionConverter.ConvertWithUrlEncoding(checkId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,95 +4,161 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Refugerestroomsip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RefugerestroomsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsByDateResponseItem[]> RestroomsByDate(Expression<Func<int>> day, Expression<Func<int>> month, Expression<Func<int>> year, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null, Expression<Func<bool>> updated = null)
+        [WorkflowExpressionFactory(nameof(__BuildRestroomsByDate))]
+        public IBodyWorkflowAction<RestroomsByDateResponseItem[]> RestroomsByDate([WorkflowExpression] Func<int> day, [WorkflowExpression] Func<int> month, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> ada = null, [WorkflowExpression] Func<bool> unisex = null, [WorkflowExpression] Func<bool> updated = null)
         {
-            var apiCallPath = "/v1/restrooms/by_date";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
-            if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            if (updated != null)
-                callPayload.Queries["updated"] = ExpressionConverter.Convert(updated);
-            callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-            callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            return new ApiConnectionAction<RestroomsByDateResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RestroomsByDateResponseItem[]> __BuildRestroomsByDate(WorkflowValue<int> day, WorkflowValue<int> month, WorkflowValue<int> year, WorkflowValue<int> page = null, WorkflowValue<int> perPage = null, WorkflowValue<int> offset = null, WorkflowValue<bool> ada = null, WorkflowValue<bool> unisex = null, WorkflowValue<bool> updated = null)
+        {
+            WorkflowValue.Validate(day, nameof(day), required: true);
+            WorkflowValue.Validate(month, nameof(month), required: true);
+            WorkflowValue.Validate(year, nameof(year), required: true);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            WorkflowValue.Validate(perPage, nameof(perPage), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(ada, nameof(ada), required: false);
+            WorkflowValue.Validate(unisex, nameof(unisex), required: false);
+            WorkflowValue.Validate(updated, nameof(updated), required: false);
+            return new DeferredBodyAction<RestroomsByDateResponseItem[]>(() =>
+            {
+                var apiCallPath = "/v1/restrooms/by_date";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (ada != null)
+                    callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
+                if (unisex != null)
+                    callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
+                if (updated != null)
+                    callPayload.Queries["updated"] = ExpressionConverter.Convert(updated);
+                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
+                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
+                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                return new ApiConnectionAction<RestroomsByDateResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsByLocationResponseItem[]> RestroomsByLocation(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        [WorkflowExpressionFactory(nameof(__BuildRestroomsByLocation))]
+        public IBodyWorkflowAction<RestroomsByLocationResponseItem[]> RestroomsByLocation([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> ada = null, [WorkflowExpression] Func<bool> unisex = null)
         {
-            var apiCallPath = "/v1/restrooms/by_location";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
-            if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
-            return new ApiConnectionAction<RestroomsByLocationResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RestroomsByLocationResponseItem[]> __BuildRestroomsByLocation(WorkflowValue<double> lat, WorkflowValue<double> lng, WorkflowValue<int> page = null, WorkflowValue<int> perPage = null, WorkflowValue<int> offset = null, WorkflowValue<bool> ada = null, WorkflowValue<bool> unisex = null)
+        {
+            WorkflowValue.Validate(lat, nameof(lat), required: true);
+            WorkflowValue.Validate(lng, nameof(lng), required: true);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            WorkflowValue.Validate(perPage, nameof(perPage), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(ada, nameof(ada), required: false);
+            WorkflowValue.Validate(unisex, nameof(unisex), required: false);
+            return new DeferredBodyAction<RestroomsByLocationResponseItem[]>(() =>
+            {
+                var apiCallPath = "/v1/restrooms/by_location";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (ada != null)
+                    callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
+                if (unisex != null)
+                    callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
+                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Queries["lng"] = ExpressionConverter.Convert(lng);
+                return new ApiConnectionAction<RestroomsByLocationResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsSearchResponseItem[]> RestroomsSearch(Expression<Func<string>> query, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        [WorkflowExpressionFactory(nameof(__BuildRestroomsSearch))]
+        public IBodyWorkflowAction<RestroomsSearchResponseItem[]> RestroomsSearch([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> ada = null, [WorkflowExpression] Func<bool> unisex = null)
         {
-            var apiCallPath = "/v1/restrooms/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
-            if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<RestroomsSearchResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RestroomsSearchResponseItem[]> __BuildRestroomsSearch(WorkflowValue<string> query, WorkflowValue<int> page = null, WorkflowValue<int> perPage = null, WorkflowValue<int> offset = null, WorkflowValue<bool> ada = null, WorkflowValue<bool> unisex = null)
+        {
+            WorkflowValue.Validate(query, nameof(query), required: true);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            WorkflowValue.Validate(perPage, nameof(perPage), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(ada, nameof(ada), required: false);
+            WorkflowValue.Validate(unisex, nameof(unisex), required: false);
+            return new DeferredBodyAction<RestroomsSearchResponseItem[]>(() =>
+            {
+                var apiCallPath = "/v1/restrooms/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (ada != null)
+                    callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
+                if (unisex != null)
+                    callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                return new ApiConnectionAction<RestroomsSearchResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "refugerestroomsip")]
-        public IBodyWorkflowAction<RestroomsResponseItem[]> Restrooms(Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<int>> offset = null, Expression<Func<bool>> ada = null, Expression<Func<bool>> unisex = null)
+        [WorkflowExpressionFactory(nameof(__BuildRestrooms))]
+        public IBodyWorkflowAction<RestroomsResponseItem[]> Restrooms([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<bool> ada = null, [WorkflowExpression] Func<bool> unisex = null)
         {
-            var apiCallPath = "/v1/restrooms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (ada != null)
-                callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
-            if (unisex != null)
-                callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
-            return new ApiConnectionAction<RestroomsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RestroomsResponseItem[]> __BuildRestrooms(WorkflowValue<int> page = null, WorkflowValue<int> perPage = null, WorkflowValue<int> offset = null, WorkflowValue<bool> ada = null, WorkflowValue<bool> unisex = null)
+        {
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            WorkflowValue.Validate(perPage, nameof(perPage), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(ada, nameof(ada), required: false);
+            WorkflowValue.Validate(unisex, nameof(unisex), required: false);
+            return new DeferredBodyAction<RestroomsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/v1/restrooms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = ExpressionConverter.Convert(perPage);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (ada != null)
+                    callPayload.Queries["ada"] = ExpressionConverter.Convert(ada);
+                if (unisex != null)
+                    callPayload.Queries["unisex"] = ExpressionConverter.Convert(unisex);
+                return new ApiConnectionAction<RestroomsResponseItem[]>(callPayload);
+            });
         }
     }
 

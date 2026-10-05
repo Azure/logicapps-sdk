@@ -4,80 +4,140 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class LibraryofcongressipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
-            var apiCallPath = "/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-            if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-            if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowValue<string> q, WorkflowValue<string> fa = null, WorkflowValue<int> c = null, WorkflowValue<int> sp = null, WorkflowValue<string> at = null, WorkflowValue<string> sb = null)
+        {
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(fa, nameof(fa), required: false);
+            WorkflowValue.Validate(c, nameof(c), required: false);
+            WorkflowValue.Validate(sp, nameof(sp), required: false);
+            WorkflowValue.Validate(at, nameof(at), required: false);
+            WorkflowValue.Validate(sb, nameof(sb), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
+                if (c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(c);
+                if (sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
+                if (at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(at);
+                if (sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<CollectionResponse> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        [WorkflowExpressionFactory(nameof(__BuildCollection))]
+        public IBodyWorkflowAction<CollectionResponse> Collection([WorkflowExpression] Func<string> collection, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
-            var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collection, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-            if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-            if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
-            return new ApiConnectionAction<CollectionResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CollectionResponse> __BuildCollection(WorkflowValue<string> collection, WorkflowValue<string> q, WorkflowValue<string> fa = null, WorkflowValue<int> c = null, WorkflowValue<int> sp = null, WorkflowValue<string> at = null, WorkflowValue<string> sb = null)
+        {
+            WorkflowValue.Validate(collection, nameof(collection), required: true);
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(fa, nameof(fa), required: false);
+            WorkflowValue.Validate(c, nameof(c), required: false);
+            WorkflowValue.Validate(sp, nameof(sp), required: false);
+            WorkflowValue.Validate(at, nameof(at), required: false);
+            WorkflowValue.Validate(sb, nameof(sb), required: false);
+            return new DeferredBodyAction<CollectionResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collection, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
+                if (c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(c);
+                if (sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
+                if (at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(at);
+                if (sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                return new ApiConnectionAction<CollectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<FormatResponse> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        [WorkflowExpressionFactory(nameof(__BuildFormat))]
+        public IBodyWorkflowAction<FormatResponse> Format([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
-            var apiCallPath = String.Format("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
-            if (c != null)
-                callPayload.Queries["c"] = ExpressionConverter.Convert(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
-            if (at != null)
-                callPayload.Queries["at"] = ExpressionConverter.Convert(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
-            return new ApiConnectionAction<FormatResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FormatResponse> __BuildFormat(WorkflowValue<formatInput> format, WorkflowValue<string> q, WorkflowValue<string> fa = null, WorkflowValue<int> c = null, WorkflowValue<int> sp = null, WorkflowValue<string> at = null, WorkflowValue<string> sb = null)
+        {
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(fa, nameof(fa), required: false);
+            WorkflowValue.Validate(c, nameof(c), required: false);
+            WorkflowValue.Validate(sp, nameof(sp), required: false);
+            WorkflowValue.Validate(at, nameof(at), required: false);
+            WorkflowValue.Validate(sb, nameof(sb), required: false);
+            return new DeferredBodyAction<FormatResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (fa != null)
+                    callPayload.Queries["fa"] = ExpressionConverter.Convert(fa);
+                if (c != null)
+                    callPayload.Queries["c"] = ExpressionConverter.Convert(c);
+                if (sp != null)
+                    callPayload.Queries["sp"] = ExpressionConverter.Convert(sp);
+                if (at != null)
+                    callPayload.Queries["at"] = ExpressionConverter.Convert(at);
+                if (sb != null)
+                    callPayload.Queries["sb"] = ExpressionConverter.Convert(sb);
+                return new ApiConnectionAction<FormatResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<ItemResponse> Item(Expression<Func<string>> identifier)
+        [WorkflowExpressionFactory(nameof(__BuildItem))]
+        public IBodyWorkflowAction<ItemResponse> Item([WorkflowExpression] Func<string> identifier)
         {
-            var apiCallPath = String.Format("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ItemResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemResponse> __BuildItem(WorkflowValue<string> identifier)
+        {
+            WorkflowValue.Validate(identifier, nameof(identifier), required: true);
+            return new DeferredBodyAction<ItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ItemResponse>(callPayload);
+            });
         }
     }
 

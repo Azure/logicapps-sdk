@@ -4,32 +4,48 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendarificip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CalendarificipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]
-        public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year, Expression<Func<string>> day = null, Expression<Func<string>> month = null, Expression<Func<string>> location = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> language = null)
+        [WorkflowExpressionFactory(nameof(__BuildListHolidays))]
+        public IBodyWorkflowAction<ListHolidaysResponse> ListHolidays([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> year, [WorkflowExpression] Func<string> day = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> language = null)
         {
-            var apiCallPath = "/api/v2/holidays";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (day != null)
-                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-            if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            if (location != null)
-                callPayload.Queries["location"] = ExpressionConverter.Convert(location);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            return new ApiConnectionAction<ListHolidaysResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListHolidaysResponse> __BuildListHolidays(WorkflowValue<string> country, WorkflowValue<string> year, WorkflowValue<string> day = null, WorkflowValue<string> month = null, WorkflowValue<string> location = null, WorkflowValue<typeInput> type = null, WorkflowValue<string> language = null)
+        {
+            WorkflowValue.Validate(country, nameof(country), required: true);
+            WorkflowValue.Validate(year, nameof(year), required: true);
+            WorkflowValue.Validate(day, nameof(day), required: false);
+            WorkflowValue.Validate(month, nameof(month), required: false);
+            WorkflowValue.Validate(location, nameof(location), required: false);
+            WorkflowValue.Validate(type, nameof(type), required: false);
+            WorkflowValue.Validate(language, nameof(language), required: false);
+            return new DeferredBodyAction<ListHolidaysResponse>(() =>
+            {
+                var apiCallPath = "/api/v2/holidays";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (day != null)
+                    callPayload.Queries["day"] = ExpressionConverter.Convert(day);
+                if (month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(month);
+                if (location != null)
+                    callPayload.Queries["location"] = ExpressionConverter.Convert(location);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                return new ApiConnectionAction<ListHolidaysResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendarificip")]

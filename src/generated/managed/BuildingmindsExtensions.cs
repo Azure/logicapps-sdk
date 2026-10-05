@@ -4,345 +4,712 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buildingminds
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BuildingmindsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<PortfolioTypeWithPagination> GetPortfolios(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPortfolios))]
+        public IBodyWorkflowAction<PortfolioTypeWithPagination> GetPortfolios([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/portfolios";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<PortfolioTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PortfolioTypeWithPagination> __BuildGetPortfolios(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<PortfolioTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/portfolios";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<PortfolioTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<SiteTypeWithPagination> GetSites(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSites))]
+        public IBodyWorkflowAction<SiteTypeWithPagination> GetSites([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/sites";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<SiteTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SiteTypeWithPagination> __BuildGetSites(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<SiteTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/sites";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<SiteTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<BuildingTypeWithPagination> GetBuildings(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetBuildings))]
+        public IBodyWorkflowAction<BuildingTypeWithPagination> GetBuildings([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/buildings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<BuildingTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BuildingTypeWithPagination> __BuildGetBuildings(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<BuildingTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/buildings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<BuildingTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<FloorTypeWithPagination> GetFloors(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFloors))]
+        public IBodyWorkflowAction<FloorTypeWithPagination> GetFloors([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/floors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<FloorTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FloorTypeWithPagination> __BuildGetFloors(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<FloorTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/floors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<FloorTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<RoofsTypeWithPagination> GetRoofs(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRoofs))]
+        public IBodyWorkflowAction<RoofsTypeWithPagination> GetRoofs([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/roofs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<RoofsTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RoofsTypeWithPagination> __BuildGetRoofs(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<RoofsTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/roofs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<RoofsTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<FacadesTypeWithPagination> GetFacades(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFacades))]
+        public IBodyWorkflowAction<FacadesTypeWithPagination> GetFacades([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/facades";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<FacadesTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FacadesTypeWithPagination> __BuildGetFacades(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<FacadesTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/facades";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<FacadesTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<OutsideareasTypeWithPagination> GetOutsideareas(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetOutsideareas))]
+        public IBodyWorkflowAction<OutsideareasTypeWithPagination> GetOutsideareas([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/outsideareas";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<OutsideareasTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OutsideareasTypeWithPagination> __BuildGetOutsideareas(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<OutsideareasTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/outsideareas";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<OutsideareasTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<SubareasTypeWithPagination> GetSubareas(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSubareas))]
+        public IBodyWorkflowAction<SubareasTypeWithPagination> GetSubareas([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/subareas";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<SubareasTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SubareasTypeWithPagination> __BuildGetSubareas(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<SubareasTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/subareas";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<SubareasTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<LandsTypeWithPagination> GetLands(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetLands))]
+        public IBodyWorkflowAction<LandsTypeWithPagination> GetLands([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/lands";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<LandsTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LandsTypeWithPagination> __BuildGetLands(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<LandsTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/lands";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<LandsTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<SpacesTypeWithPagination> GetSpaces(Expression<Func<string>> top = null, Expression<Func<string>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSpaces))]
+        public IBodyWorkflowAction<SpacesTypeWithPagination> GetSpaces([WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> skip = null)
         {
-            var apiCallPath = "/premises/spaces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            return new ApiConnectionAction<SpacesTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SpacesTypeWithPagination> __BuildGetSpaces(WorkflowValue<string> top = null, WorkflowValue<string> skip = null)
+        {
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<SpacesTypeWithPagination>(() =>
+            {
+                var apiCallPath = "/premises/spaces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                return new ApiConnectionAction<SpacesTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Portfolio> GetPortfolioById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetPortfolioById))]
+        public IBodyWorkflowAction<Portfolio> GetPortfolioById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/portfolios/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Portfolio>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Portfolio> __BuildGetPortfolioById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Portfolio>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/portfolios/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Portfolio>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Site> GetSiteById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetSiteById))]
+        public IBodyWorkflowAction<Site> GetSiteById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Site>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Site> __BuildGetSiteById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Site>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/sites/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Site>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Building> GetBuildingById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetBuildingById))]
+        public IBodyWorkflowAction<Building> GetBuildingById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/buildings/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Building>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Building> __BuildGetBuildingById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Building>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/buildings/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Building>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Floor> GetFloorById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetFloorById))]
+        public IBodyWorkflowAction<Floor> GetFloorById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/floors/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Floor>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Floor> __BuildGetFloorById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Floor>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/floors/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Floor>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Roof> GetRoofById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetRoofById))]
+        public IBodyWorkflowAction<Roof> GetRoofById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/roofs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Roof>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Roof> __BuildGetRoofById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Roof>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/roofs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Roof>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Facade> GetFacadeById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetFacadeById))]
+        public IBodyWorkflowAction<Facade> GetFacadeById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/facades/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Facade>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Facade> __BuildGetFacadeById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Facade>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/facades/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Facade>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Outsidearea> GetOutsideareaById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetOutsideareaById))]
+        public IBodyWorkflowAction<Outsidearea> GetOutsideareaById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/outsideareas/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Outsidearea>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Outsidearea> __BuildGetOutsideareaById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Outsidearea>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/outsideareas/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Outsidearea>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Subarea> GetSubareaById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetSubareaById))]
+        public IBodyWorkflowAction<Subarea> GetSubareaById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/subareas/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Subarea>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Subarea> __BuildGetSubareaById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Subarea>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/subareas/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Subarea>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Land> GetLandById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetLandById))]
+        public IBodyWorkflowAction<Land> GetLandById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/lands/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Land>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Land> __BuildGetLandById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Land>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/lands/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Land>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<Space> GetSpaceById(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetSpaceById))]
+        public IBodyWorkflowAction<Space> GetSpaceById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/spaces/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Space>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Space> __BuildGetSpaceById(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Space>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/spaces/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Space>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnPortfolio(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnPortfolio))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnPortfolio([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/portfolios/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnPortfolio(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/portfolios/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSite(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnSite))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSite([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/sites/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnSite(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/sites/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnBuilding(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnBuilding))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnBuilding([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/buildings/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnBuilding(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/buildings/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFloor(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnFloor))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFloor([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/floors/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnFloor(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/floors/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnRoof(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnRoof))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnRoof([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/roofs/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnRoof(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/roofs/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFacade(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnFacade))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnFacade([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/facades/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnFacade(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/facades/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnOutsidearea(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnOutsidearea))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnOutsidearea([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/outsideareas/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnOutsidearea(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/outsideareas/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSubarea(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnSubarea))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSubarea([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/subareas/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnSubarea(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/subareas/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnLand(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnLand))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnLand([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/lands/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnLand(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/lands/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSpace(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildCheckForChildrenOnSpace))]
+        public IBodyWorkflowAction<ChildrenCheckType> CheckForChildrenOnSpace([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/premises/spaces/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChildrenCheckType> __BuildCheckForChildrenOnSpace(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<ChildrenCheckType>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/spaces/{0}/children/exist", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChildrenCheckType>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination> GetAssociatedSpacesForSpace(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<string>> id, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> skip = null, Expression<Func<string>> top = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetAssociatedSpacesForSpace))]
+        public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination> GetAssociatedSpacesForSpace([WorkflowExpression] Func<spaceTypeInput> spaceType, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<associatedTypeInput> associatedType, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> top = null)
         {
-            var apiCallPath = String.Format("/premises/{0}/{1}/associated/{2}", ExpressionConverter.ConvertWithUrlEncoding(spaceType, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(associatedType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<AssociatedSpacesTypeWithPagination>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AssociatedSpacesTypeWithPagination> __BuildGetAssociatedSpacesForSpace(WorkflowValue<spaceTypeInput> spaceType, WorkflowValue<string> id, WorkflowValue<associatedTypeInput> associatedType, WorkflowValue<string> skip = null, WorkflowValue<string> top = null)
+        {
+            WorkflowValue.Validate(spaceType, nameof(spaceType), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(associatedType, nameof(associatedType), required: true);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<AssociatedSpacesTypeWithPagination>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/{0}/{1}/associated/{2}", ExpressionConverter.ConvertWithUrlEncoding(spaceType, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(associatedType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                return new ApiConnectionAction<AssociatedSpacesTypeWithPagination>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "buildingminds")]
-        public IWorkflowAction GetUnassociatedSpaces(Expression<Func<spaceTypeInput>> spaceType, Expression<Func<associatedTypeInput>> associatedType, Expression<Func<string>> spaceid = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetUnassociatedSpaces))]
+        public IWorkflowAction GetUnassociatedSpaces([WorkflowExpression] Func<spaceTypeInput> spaceType, [WorkflowExpression] Func<associatedTypeInput> associatedType, [WorkflowExpression] Func<string> spaceid = null)
         {
-            var apiCallPath = String.Format("/premises/{0}/notassociated/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceType, 1), ExpressionConverter.ConvertWithUrlEncoding(associatedType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (spaceid != null)
-                callPayload.Queries["spaceid"] = ExpressionConverter.Convert(spaceid);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetUnassociatedSpaces(WorkflowValue<spaceTypeInput> spaceType, WorkflowValue<associatedTypeInput> associatedType, WorkflowValue<string> spaceid = null)
+        {
+            WorkflowValue.Validate(spaceType, nameof(spaceType), required: true);
+            WorkflowValue.Validate(associatedType, nameof(associatedType), required: true);
+            WorkflowValue.Validate(spaceid, nameof(spaceid), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/premises/{0}/notassociated/{1}", ExpressionConverter.ConvertWithUrlEncoding(spaceType, 1), ExpressionConverter.ConvertWithUrlEncoding(associatedType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (spaceid != null)
+                    callPayload.Queries["spaceid"] = ExpressionConverter.Convert(spaceid);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

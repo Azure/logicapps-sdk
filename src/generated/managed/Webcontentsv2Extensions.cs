@@ -4,45 +4,57 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontentsv2
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Webcontentsv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontentsv2")]
-        public IBodyWorkflowAction<JToken> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
+        [WorkflowExpressionFactory(nameof(__BuildInvokeHttp))]
+        public IBodyWorkflowAction<JToken> InvokeHttp([WorkflowExpression] Func<requestmethodInput> requestmethod, [WorkflowExpression] Func<string> requesturlOfTheRequest, [WorkflowExpression] Func<string> requestbodyOfTheRequest = null)
         {
-            var apiCallPath = "/InvokeHttp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["method"] = ExpressionConverter.ConvertO(requestmethod);
-            requestpropCount++;
-            request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildInvokeHttp(WorkflowValue<requestmethodInput> requestmethod, WorkflowValue<string> requesturlOfTheRequest, WorkflowValue<string> requestbodyOfTheRequest = null)
+        {
+            WorkflowValue.Validate(requestmethod, nameof(requestmethod), required: true);
+            WorkflowValue.Validate(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
+            WorkflowValue.Validate(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                request["headers"] = headersObject;
+                var apiCallPath = "/InvokeHttp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestbodyOfTheRequest != null)
-            {
-                request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                request["method"] = ExpressionConverter.ConvertO(requestmethod);
                 requestpropCount++;
-            }
+                request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    request["headers"] = headersObject;
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestbodyOfTheRequest != null)
+                {
+                    request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

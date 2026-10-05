@@ -4,47 +4,61 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TilitervisionagentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
-        public IBodyWorkflowAction<AgentResponse> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<string>> payloadinputFileB64, Expression<Func<string>> payloadexpectedText = null, Expression<Func<string>> payloadobjectType = null, Expression<Func<string[]>> payloadexpectedObjects = null)
+        [WorkflowExpressionFactory(nameof(__BuildRunVisionAgent))]
+        public IBodyWorkflowAction<AgentResponse> RunVisionAgent([WorkflowExpression] Func<agentNameInput> agentName, [WorkflowExpression] Func<string> payloadinputFileB64, [WorkflowExpression] Func<string> payloadexpectedText = null, [WorkflowExpression] Func<string> payloadobjectType = null, [WorkflowExpression] Func<string[]> payloadexpectedObjects = null)
         {
-            var apiCallPath = String.Format("/api/v2/agents/{0}/v1/inference", ExpressionConverter.ConvertWithUrlEncoding(agentName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var payload = new JObject();
-            var payloadpropCount = 0;
-            payloadpropCount++;
-            payload["input_file_b64"] = ExpressionConverter.ConvertO(payloadinputFileB64);
-            if (payloadexpectedText != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AgentResponse> __BuildRunVisionAgent(WorkflowValue<agentNameInput> agentName, WorkflowValue<string> payloadinputFileB64, WorkflowValue<string> payloadexpectedText = null, WorkflowValue<string> payloadobjectType = null, WorkflowValue<string[]> payloadexpectedObjects = null)
+        {
+            WorkflowValue.Validate(agentName, nameof(agentName), required: true);
+            WorkflowValue.Validate(payloadinputFileB64, nameof(payloadinputFileB64), required: true);
+            WorkflowValue.Validate(payloadexpectedText, nameof(payloadexpectedText), required: false);
+            WorkflowValue.Validate(payloadobjectType, nameof(payloadobjectType), required: false);
+            WorkflowValue.Validate(payloadexpectedObjects, nameof(payloadexpectedObjects), required: false);
+            return new DeferredBodyAction<AgentResponse>(() =>
             {
-                payload["expected_text"] = ExpressionConverter.ConvertO(payloadexpectedText);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/agents/{0}/v1/inference", ExpressionConverter.ConvertWithUrlEncoding(agentName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var payload = new JObject();
+                var payloadpropCount = 0;
                 payloadpropCount++;
-            }
+                payload["input_file_b64"] = ExpressionConverter.ConvertO(payloadinputFileB64);
+                if (payloadexpectedText != null)
+                {
+                    payload["expected_text"] = ExpressionConverter.ConvertO(payloadexpectedText);
+                    payloadpropCount++;
+                }
 
-            if (payloadobjectType != null)
-            {
-                payload["object_type"] = ExpressionConverter.ConvertO(payloadobjectType);
-                payloadpropCount++;
-            }
+                if (payloadobjectType != null)
+                {
+                    payload["object_type"] = ExpressionConverter.ConvertO(payloadobjectType);
+                    payloadpropCount++;
+                }
 
-            if (payloadexpectedObjects != null)
-            {
-                payload["expected_objects"] = ExpressionConverter.ConvertO(payloadexpectedObjects);
-                payloadpropCount++;
-            }
+                if (payloadexpectedObjects != null)
+                {
+                    payload["expected_objects"] = ExpressionConverter.ConvertO(payloadexpectedObjects);
+                    payloadpropCount++;
+                }
 
-            if (payloadpropCount > 0)
-            {
-                callPayload.Body = payload;
-            }
+                if (payloadpropCount > 0)
+                {
+                    callPayload.Body = payload;
+                }
 
-            return new ApiConnectionAction<AgentResponse>(callPayload);
+                return new ApiConnectionAction<AgentResponse>(callPayload);
+            });
         }
     }
 

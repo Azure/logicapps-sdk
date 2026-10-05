@@ -4,323 +4,438 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FreshbooksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Expense[]> ListExpenses(Expression<Func<string>> accountid)
+        [WorkflowExpressionFactory(nameof(__BuildListExpenses))]
+        public IBodyWorkflowAction<Expense[]> ListExpenses([WorkflowExpression] Func<string> accountid)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            return new ApiConnectionAction<Expense[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Expense[]> __BuildListExpenses(WorkflowValue<string> accountid)
+        {
+            WorkflowValue.Validate(accountid, nameof(accountid), required: true);
+            return new DeferredBodyAction<Expense[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                return new ApiConnectionAction<Expense[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Expense> AddExpense(Expression<Func<string>> accountid, Expression<Func<string>> bodyexpenseamountamount, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddExpense))]
+        public IBodyWorkflowAction<Expense> AddExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> bodyexpenseamountamount, [WorkflowExpression] Func<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, [WorkflowExpression] Func<int> bodyexpensecategory = null, [WorkflowExpression] Func<int> bodyexpensestaff = null, [WorkflowExpression] Func<string> bodyexpensedate = null, [WorkflowExpression] Func<string> bodyexpensevendor = null, [WorkflowExpression] Func<string> bodyexpensenotes = null)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var expenseObject = new JObject();
-            var expenseObjectpropCount = 0;
-            var amountObject = new JObject();
-            var amountObjectpropCount = 0;
-            amountObjectpropCount++;
-            amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
-            if (bodyexpenseamountcurrency != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Expense> __BuildAddExpense(WorkflowValue<string> accountid, WorkflowValue<string> bodyexpenseamountamount, WorkflowValue<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, WorkflowValue<int> bodyexpensecategory = null, WorkflowValue<int> bodyexpensestaff = null, WorkflowValue<string> bodyexpensedate = null, WorkflowValue<string> bodyexpensevendor = null, WorkflowValue<string> bodyexpensenotes = null)
+        {
+            WorkflowValue.Validate(accountid, nameof(accountid), required: true);
+            WorkflowValue.Validate(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: true);
+            WorkflowValue.Validate(bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
+            WorkflowValue.Validate(bodyexpensecategory, nameof(bodyexpensecategory), required: false);
+            WorkflowValue.Validate(bodyexpensestaff, nameof(bodyexpensestaff), required: false);
+            WorkflowValue.Validate(bodyexpensedate, nameof(bodyexpensedate), required: false);
+            WorkflowValue.Validate(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
+            WorkflowValue.Validate(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
+            return new DeferredBodyAction<Expense>(() =>
             {
-                amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var expenseObject = new JObject();
+                var expenseObjectpropCount = 0;
+                var amountObject = new JObject();
+                var amountObjectpropCount = 0;
                 amountObjectpropCount++;
-            }
-
-            if (amountObjectpropCount > 0)
-            {
-                expenseObject["amount"] = amountObject;
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensecategory != null)
-            {
-                expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensestaff != null)
-            {
-                expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensedate != null)
-            {
-                expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensevendor != null)
-            {
-                expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
-                expenseObjectpropCount++;
-            }
-
-            if (bodyexpensenotes != null)
-            {
-                expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
-                expenseObjectpropCount++;
-            }
-
-            if (expenseObjectpropCount > 0)
-            {
-                body["expense"] = expenseObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Expense>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction UpdateExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid, Expression<Func<string>> bodyexpenseamountamount = null, Expression<Func<bodyexpenseamountcurrencyInput>> bodyexpenseamountcurrency = null, Expression<Func<int>> bodyexpensecategory = null, Expression<Func<int>> bodyexpensestaff = null, Expression<Func<string>> bodyexpensedate = null, Expression<Func<string>> bodyexpensevendor = null, Expression<Func<string>> bodyexpensenotes = null)
-        {
-            var apiCallPath = String.Format("/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var expenseObject = new JObject();
-            var expenseObjectpropCount = 0;
-            var amountObject = new JObject();
-            var amountObjectpropCount = 0;
-            if (bodyexpenseamountamount != null)
-            {
                 amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
-                amountObjectpropCount++;
-            }
+                if (bodyexpenseamountcurrency != null)
+                {
+                    amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
+                    amountObjectpropCount++;
+                }
 
-            if (bodyexpenseamountcurrency != null)
-            {
-                amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
-                amountObjectpropCount++;
-            }
+                if (amountObjectpropCount > 0)
+                {
+                    expenseObject["amount"] = amountObject;
+                    expenseObjectpropCount++;
+                }
 
-            if (amountObjectpropCount > 0)
-            {
-                expenseObject["amount"] = amountObject;
-                expenseObjectpropCount++;
-            }
+                if (bodyexpensecategory != null)
+                {
+                    expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
+                    expenseObjectpropCount++;
+                }
 
-            if (bodyexpensecategory != null)
-            {
-                expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
-                expenseObjectpropCount++;
-            }
+                if (bodyexpensestaff != null)
+                {
+                    expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
+                    expenseObjectpropCount++;
+                }
 
-            if (bodyexpensestaff != null)
-            {
-                expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
-                expenseObjectpropCount++;
-            }
+                if (bodyexpensedate != null)
+                {
+                    expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
+                    expenseObjectpropCount++;
+                }
 
-            if (bodyexpensedate != null)
-            {
-                expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
-                expenseObjectpropCount++;
-            }
+                if (bodyexpensevendor != null)
+                {
+                    expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
+                    expenseObjectpropCount++;
+                }
 
-            if (bodyexpensevendor != null)
-            {
-                expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
-                expenseObjectpropCount++;
-            }
+                if (bodyexpensenotes != null)
+                {
+                    expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
+                    expenseObjectpropCount++;
+                }
 
-            if (bodyexpensenotes != null)
-            {
-                expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
-                expenseObjectpropCount++;
-            }
+                if (expenseObjectpropCount > 0)
+                {
+                    body["expense"] = expenseObject;
+                    bodypropCount++;
+                }
 
-            if (expenseObjectpropCount > 0)
-            {
-                body["expense"] = expenseObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction<Expense>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IWorkflowAction DeleteExpense(Expression<Func<string>> accountid, Expression<Func<string>> expenseid)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateExpense))]
+        public IWorkflowAction UpdateExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> expenseid, [WorkflowExpression] Func<string> bodyexpenseamountamount = null, [WorkflowExpression] Func<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, [WorkflowExpression] Func<int> bodyexpensecategory = null, [WorkflowExpression] Func<int> bodyexpensestaff = null, [WorkflowExpression] Func<string> bodyexpensedate = null, [WorkflowExpression] Func<string> bodyexpensevendor = null, [WorkflowExpression] Func<string> bodyexpensenotes = null)
         {
-            var apiCallPath = String.Format("/placeholder/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var expenseObject = new JObject();
-            var expenseObjectpropCount = 0;
-            expenseObject["vis_state"] = 1;
-            expenseObjectpropCount++;
-            if (expenseObjectpropCount > 0)
-            {
-                body["expense"] = expenseObject;
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateExpense(WorkflowValue<string> accountid, WorkflowValue<string> expenseid, WorkflowValue<string> bodyexpenseamountamount = null, WorkflowValue<bodyexpenseamountcurrencyInput> bodyexpenseamountcurrency = null, WorkflowValue<int> bodyexpensecategory = null, WorkflowValue<int> bodyexpensestaff = null, WorkflowValue<string> bodyexpensedate = null, WorkflowValue<string> bodyexpensevendor = null, WorkflowValue<string> bodyexpensenotes = null)
+        {
+            WorkflowValue.Validate(accountid, nameof(accountid), required: true);
+            WorkflowValue.Validate(expenseid, nameof(expenseid), required: true);
+            WorkflowValue.Validate(bodyexpenseamountamount, nameof(bodyexpenseamountamount), required: false);
+            WorkflowValue.Validate(bodyexpenseamountcurrency, nameof(bodyexpenseamountcurrency), required: false);
+            WorkflowValue.Validate(bodyexpensecategory, nameof(bodyexpensecategory), required: false);
+            WorkflowValue.Validate(bodyexpensestaff, nameof(bodyexpensestaff), required: false);
+            WorkflowValue.Validate(bodyexpensedate, nameof(bodyexpensedate), required: false);
+            WorkflowValue.Validate(bodyexpensevendor, nameof(bodyexpensevendor), required: false);
+            WorkflowValue.Validate(bodyexpensenotes, nameof(bodyexpensenotes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var expenseObject = new JObject();
+                var expenseObjectpropCount = 0;
+                var amountObject = new JObject();
+                var amountObjectpropCount = 0;
+                if (bodyexpenseamountamount != null)
+                {
+                    amountObject["amount"] = ExpressionConverter.ConvertO(bodyexpenseamountamount);
+                    amountObjectpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodyexpenseamountcurrency != null)
+                {
+                    amountObject["code"] = ExpressionConverter.ConvertO(bodyexpenseamountcurrency);
+                    amountObjectpropCount++;
+                }
+
+                if (amountObjectpropCount > 0)
+                {
+                    expenseObject["amount"] = amountObject;
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensecategory != null)
+                {
+                    expenseObject["categoryid"] = ExpressionConverter.ConvertO(bodyexpensecategory);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensestaff != null)
+                {
+                    expenseObject["staffid"] = ExpressionConverter.ConvertO(bodyexpensestaff);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensedate != null)
+                {
+                    expenseObject["date"] = ExpressionConverter.ConvertO(bodyexpensedate);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensevendor != null)
+                {
+                    expenseObject["vendor"] = ExpressionConverter.ConvertO(bodyexpensevendor);
+                    expenseObjectpropCount++;
+                }
+
+                if (bodyexpensenotes != null)
+                {
+                    expenseObject["notes"] = ExpressionConverter.ConvertO(bodyexpensenotes);
+                    expenseObjectpropCount++;
+                }
+
+                if (expenseObjectpropCount > 0)
+                {
+                    body["expense"] = expenseObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
-        public IBodyWorkflowAction<Client> AddClient(Expression<Func<string>> accountid, Expression<Func<string>> bodyclientfirstName = null, Expression<Func<string>> bodyclientlastName = null, Expression<Func<string>> bodyclientorganization = null, Expression<Func<string>> bodyclientemailAddress = null, Expression<Func<string>> bodyclientphoneNumber = null, Expression<Func<bodyclientcurrencyInput>> bodyclientcurrency = null, Expression<Func<string>> bodyclientstreetAddress1 = null, Expression<Func<string>> bodyclientstreetAddress2 = null, Expression<Func<string>> bodyclientcity = null, Expression<Func<string>> bodyclientpostalCode = null, Expression<Func<string>> bodyclientcountry = null, Expression<Func<string>> bodyclientprovince = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteExpense))]
+        public IWorkflowAction DeleteExpense([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> expenseid)
         {
-            var apiCallPath = String.Format("/accounting/account/{0}/users/clients", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var clientObject = new JObject();
-            var clientObjectpropCount = 0;
-            if (bodyclientfirstName != null)
-            {
-                clientObject["fname"] = ExpressionConverter.ConvertO(bodyclientfirstName);
-                clientObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyclientlastName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteExpense(WorkflowValue<string> accountid, WorkflowValue<string> expenseid)
+        {
+            WorkflowValue.Validate(accountid, nameof(accountid), required: true);
+            WorkflowValue.Validate(expenseid, nameof(expenseid), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                clientObject["lname"] = ExpressionConverter.ConvertO(bodyclientlastName);
-                clientObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/placeholder/accounting/account/{0}/expenses/expenses/{1}", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1), ExpressionConverter.ConvertWithUrlEncoding(expenseid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var expenseObject = new JObject();
+                var expenseObjectpropCount = 0;
+                expenseObject["vis_state"] = 1;
+                expenseObjectpropCount++;
+                if (expenseObjectpropCount > 0)
+                {
+                    body["expense"] = expenseObject;
+                    bodypropCount++;
+                }
 
-            if (bodyclientorganization != null)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "freshbooks")]
+        [WorkflowExpressionFactory(nameof(__BuildAddClient))]
+        public IBodyWorkflowAction<Client> AddClient([WorkflowExpression] Func<string> accountid, [WorkflowExpression] Func<string> bodyclientfirstName = null, [WorkflowExpression] Func<string> bodyclientlastName = null, [WorkflowExpression] Func<string> bodyclientorganization = null, [WorkflowExpression] Func<string> bodyclientemailAddress = null, [WorkflowExpression] Func<string> bodyclientphoneNumber = null, [WorkflowExpression] Func<bodyclientcurrencyInput> bodyclientcurrency = null, [WorkflowExpression] Func<string> bodyclientstreetAddress1 = null, [WorkflowExpression] Func<string> bodyclientstreetAddress2 = null, [WorkflowExpression] Func<string> bodyclientcity = null, [WorkflowExpression] Func<string> bodyclientpostalCode = null, [WorkflowExpression] Func<string> bodyclientcountry = null, [WorkflowExpression] Func<string> bodyclientprovince = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Client> __BuildAddClient(WorkflowValue<string> accountid, WorkflowValue<string> bodyclientfirstName = null, WorkflowValue<string> bodyclientlastName = null, WorkflowValue<string> bodyclientorganization = null, WorkflowValue<string> bodyclientemailAddress = null, WorkflowValue<string> bodyclientphoneNumber = null, WorkflowValue<bodyclientcurrencyInput> bodyclientcurrency = null, WorkflowValue<string> bodyclientstreetAddress1 = null, WorkflowValue<string> bodyclientstreetAddress2 = null, WorkflowValue<string> bodyclientcity = null, WorkflowValue<string> bodyclientpostalCode = null, WorkflowValue<string> bodyclientcountry = null, WorkflowValue<string> bodyclientprovince = null)
+        {
+            WorkflowValue.Validate(accountid, nameof(accountid), required: true);
+            WorkflowValue.Validate(bodyclientfirstName, nameof(bodyclientfirstName), required: false);
+            WorkflowValue.Validate(bodyclientlastName, nameof(bodyclientlastName), required: false);
+            WorkflowValue.Validate(bodyclientorganization, nameof(bodyclientorganization), required: false);
+            WorkflowValue.Validate(bodyclientemailAddress, nameof(bodyclientemailAddress), required: false);
+            WorkflowValue.Validate(bodyclientphoneNumber, nameof(bodyclientphoneNumber), required: false);
+            WorkflowValue.Validate(bodyclientcurrency, nameof(bodyclientcurrency), required: false);
+            WorkflowValue.Validate(bodyclientstreetAddress1, nameof(bodyclientstreetAddress1), required: false);
+            WorkflowValue.Validate(bodyclientstreetAddress2, nameof(bodyclientstreetAddress2), required: false);
+            WorkflowValue.Validate(bodyclientcity, nameof(bodyclientcity), required: false);
+            WorkflowValue.Validate(bodyclientpostalCode, nameof(bodyclientpostalCode), required: false);
+            WorkflowValue.Validate(bodyclientcountry, nameof(bodyclientcountry), required: false);
+            WorkflowValue.Validate(bodyclientprovince, nameof(bodyclientprovince), required: false);
+            return new DeferredBodyAction<Client>(() =>
             {
-                clientObject["organization"] = ExpressionConverter.ConvertO(bodyclientorganization);
-                clientObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/accounting/account/{0}/users/clients", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var clientObject = new JObject();
+                var clientObjectpropCount = 0;
+                if (bodyclientfirstName != null)
+                {
+                    clientObject["fname"] = ExpressionConverter.ConvertO(bodyclientfirstName);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientemailAddress != null)
-            {
-                clientObject["email"] = ExpressionConverter.ConvertO(bodyclientemailAddress);
-                clientObjectpropCount++;
-            }
+                if (bodyclientlastName != null)
+                {
+                    clientObject["lname"] = ExpressionConverter.ConvertO(bodyclientlastName);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientphoneNumber != null)
-            {
-                clientObject["bus_phone"] = ExpressionConverter.ConvertO(bodyclientphoneNumber);
-                clientObjectpropCount++;
-            }
+                if (bodyclientorganization != null)
+                {
+                    clientObject["organization"] = ExpressionConverter.ConvertO(bodyclientorganization);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientcurrency != null)
-            {
-                clientObject["currency_code"] = ExpressionConverter.ConvertO(bodyclientcurrency);
-                clientObjectpropCount++;
-            }
+                if (bodyclientemailAddress != null)
+                {
+                    clientObject["email"] = ExpressionConverter.ConvertO(bodyclientemailAddress);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientstreetAddress1 != null)
-            {
-                clientObject["p_street"] = ExpressionConverter.ConvertO(bodyclientstreetAddress1);
-                clientObjectpropCount++;
-            }
+                if (bodyclientphoneNumber != null)
+                {
+                    clientObject["bus_phone"] = ExpressionConverter.ConvertO(bodyclientphoneNumber);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientstreetAddress2 != null)
-            {
-                clientObject["p_street2"] = ExpressionConverter.ConvertO(bodyclientstreetAddress2);
-                clientObjectpropCount++;
-            }
+                if (bodyclientcurrency != null)
+                {
+                    clientObject["currency_code"] = ExpressionConverter.ConvertO(bodyclientcurrency);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientcity != null)
-            {
-                clientObject["p_city"] = ExpressionConverter.ConvertO(bodyclientcity);
-                clientObjectpropCount++;
-            }
+                if (bodyclientstreetAddress1 != null)
+                {
+                    clientObject["p_street"] = ExpressionConverter.ConvertO(bodyclientstreetAddress1);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientpostalCode != null)
-            {
-                clientObject["p_code"] = ExpressionConverter.ConvertO(bodyclientpostalCode);
-                clientObjectpropCount++;
-            }
+                if (bodyclientstreetAddress2 != null)
+                {
+                    clientObject["p_street2"] = ExpressionConverter.ConvertO(bodyclientstreetAddress2);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientcountry != null)
-            {
-                clientObject["p_country"] = ExpressionConverter.ConvertO(bodyclientcountry);
-                clientObjectpropCount++;
-            }
+                if (bodyclientcity != null)
+                {
+                    clientObject["p_city"] = ExpressionConverter.ConvertO(bodyclientcity);
+                    clientObjectpropCount++;
+                }
 
-            if (bodyclientprovince != null)
-            {
-                clientObject["p_province"] = ExpressionConverter.ConvertO(bodyclientprovince);
-                clientObjectpropCount++;
-            }
+                if (bodyclientpostalCode != null)
+                {
+                    clientObject["p_code"] = ExpressionConverter.ConvertO(bodyclientpostalCode);
+                    clientObjectpropCount++;
+                }
 
-            if (clientObjectpropCount > 0)
-            {
-                body["client"] = clientObject;
-                bodypropCount++;
-            }
+                if (bodyclientcountry != null)
+                {
+                    clientObject["p_country"] = ExpressionConverter.ConvertO(bodyclientcountry);
+                    clientObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyclientprovince != null)
+                {
+                    clientObject["p_province"] = ExpressionConverter.ConvertO(bodyclientprovince);
+                    clientObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<Client>(callPayload);
+                if (clientObjectpropCount > 0)
+                {
+                    body["client"] = clientObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Client>(callPayload);
+            });
         }
     }
 
     public class FreshbooksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTrigUpdatedInvoice))]
+        public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/invoices/invoices", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["include[]"] = Convert.ToString("client");
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            return new ApiConnectionTrigger<Invoice[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<Invoice[]> __BuildTrigUpdatedInvoice(WorkflowValue<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            return new ApiConnectionTrigger<Expense[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(accountid, nameof(accountid), required: true);
+            return new DeferredBodyTrigger<Invoice[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/invoices/invoices", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["include[]"] = Convert.ToString("client");
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                return new ApiConnectionTrigger<Invoice[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment(Expression<Func<string>> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTrigUpdatedExpense))]
+        public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/accounting/account/{0}/payments/payments", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["include[]"] = Convert.ToString("client");
-            callPayload.Queries["per_page"] = Convert.ToString(100);
-            return new ApiConnectionTrigger<Payment[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<Expense[]> __BuildTrigUpdatedExpense(WorkflowValue<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(accountid, nameof(accountid), required: true);
+            return new DeferredBodyTrigger<Expense[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/expenses/expenses", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                return new ApiConnectionTrigger<Expense[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildTrigUpdatedPayment))]
+        public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<Payment[]> __BuildTrigUpdatedPayment(WorkflowValue<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(accountid, nameof(accountid), required: true);
+            return new DeferredBodyTrigger<Payment[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/accounting/account/{0}/payments/payments", ExpressionConverter.ConvertWithUrlEncoding(accountid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["include[]"] = Convert.ToString("client");
+                callPayload.Queries["per_page"] = Convert.ToString(100);
+                return new ApiConnectionTrigger<Payment[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

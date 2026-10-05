@@ -4,45 +4,58 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DoctopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
-        public IBodyWorkflowAction<DocToPDFResponse> DocToPDF(Expression<Func<string>> bodyfileName = null, Expression<Func<object>> bodyfileContent = null, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
+        [WorkflowExpressionFactory(nameof(__BuildDocToPDF))]
+        public IBodyWorkflowAction<DocToPDFResponse> DocToPDF([WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<object> bodyfileContent = null, [WorkflowExpression] Func<string> publickey = null, [WorkflowExpression] Func<string> apikey = null)
         {
-            var apiCallPath = "/api/doctopdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["publickey"] = Convert.ToString("");
-            if (publickey != null)
-                callPayload.Headers["publickey"] = ExpressionConverter.Convert(publickey);
-            callPayload.Headers["apikey"] = Convert.ToString("");
-            if (apikey != null)
-                callPayload.Headers["apikey"] = ExpressionConverter.Convert(apikey);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileName != null)
-            {
-                body["File Name"] = ExpressionConverter.ConvertO(bodyfileName);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfileContent != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocToPDFResponse> __BuildDocToPDF(WorkflowValue<string> bodyfileName = null, WorkflowValue<object> bodyfileContent = null, WorkflowValue<string> publickey = null, WorkflowValue<string> apikey = null)
+        {
+            WorkflowValue.Validate(bodyfileName, nameof(bodyfileName), required: false);
+            WorkflowValue.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
+            WorkflowValue.Validate(publickey, nameof(publickey), required: false);
+            WorkflowValue.Validate(apikey, nameof(apikey), required: false);
+            return new DeferredBodyAction<DocToPDFResponse>(() =>
             {
-                body["File Content"] = ExpressionConverter.ConvertO(bodyfileContent);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/doctopdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["publickey"] = Convert.ToString("");
+                if (publickey != null)
+                    callPayload.Headers["publickey"] = ExpressionConverter.Convert(publickey);
+                callPayload.Headers["apikey"] = Convert.ToString("");
+                if (apikey != null)
+                    callPayload.Headers["apikey"] = ExpressionConverter.Convert(apikey);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileName != null)
+                {
+                    body["File Name"] = ExpressionConverter.ConvertO(bodyfileName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyfileContent != null)
+                {
+                    body["File Content"] = ExpressionConverter.ConvertO(bodyfileContent);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<DocToPDFResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DocToPDFResponse>(callPayload);
+            });
         }
     }
 

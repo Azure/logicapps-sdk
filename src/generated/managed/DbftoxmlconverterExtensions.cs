@@ -4,33 +4,44 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dbftoxmlconverter
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DbftoxmlconverterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dbftoxmlconverter")]
-        public IWorkflowAction Dbf2XmlConvert(Expression<Func<string>> bodycontenType, Expression<Func<bodyencodingInput>> bodyencoding)
+        [WorkflowExpressionFactory(nameof(__BuildDbf2XmlConvert))]
+        public IWorkflowAction Dbf2XmlConvert([WorkflowExpression] Func<string> bodycontenType, [WorkflowExpression] Func<bodyencodingInput> bodyencoding)
         {
-            var apiCallPath = "/api/DBF2XML";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = Convert.ToString("ZeBVvhUSY/fpGA2uJTOKvIRTYkNXNQEl2TaHJO9Wq39wQB8ZXdYPWA==");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["conten_type"] = ExpressionConverter.ConvertO(bodycontenType);
-            bodypropCount++;
-            body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDbf2XmlConvert(WorkflowValue<string> bodycontenType, WorkflowValue<bodyencodingInput> bodyencoding)
+        {
+            WorkflowValue.Validate(bodycontenType, nameof(bodycontenType), required: true);
+            WorkflowValue.Validate(bodyencoding, nameof(bodyencoding), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/DBF2XML";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = Convert.ToString("ZeBVvhUSY/fpGA2uJTOKvIRTYkNXNQEl2TaHJO9Wq39wQB8ZXdYPWA==");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["conten_type"] = ExpressionConverter.ConvertO(bodycontenType);
+                bodypropCount++;
+                body["encoding"] = ExpressionConverter.ConvertO(bodyencoding);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

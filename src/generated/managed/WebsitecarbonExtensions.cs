@@ -4,32 +4,54 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Websitecarbon
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WebsitecarbonActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis(Expression<Func<string>> url)
+        [WorkflowExpressionFactory(nameof(__BuildSiteAnalysis))]
+        public IBodyWorkflowAction<SiteAnalysisResponse> SiteAnalysis([WorkflowExpression] Func<string> url)
         {
-            var apiCallPath = "/site";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            return new ApiConnectionAction<SiteAnalysisResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SiteAnalysisResponse> __BuildSiteAnalysis(WorkflowValue<string> url)
+        {
+            WorkflowValue.Validate(url, nameof(url), required: true);
+            return new DeferredBodyAction<SiteAnalysisResponse>(() =>
+            {
+                var apiCallPath = "/site";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                return new ApiConnectionAction<SiteAnalysisResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "websitecarbon")]
-        public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis(Expression<Func<int>> bytes, Expression<Func<greenInput>> green)
+        [WorkflowExpressionFactory(nameof(__BuildDataAnalysis))]
+        public IBodyWorkflowAction<DataAnalysisResponse> DataAnalysis([WorkflowExpression] Func<int> bytes, [WorkflowExpression] Func<greenInput> green)
         {
-            var apiCallPath = "/data";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bytes"] = ExpressionConverter.Convert(bytes);
-            callPayload.Queries["green"] = ExpressionConverter.Convert(green);
-            return new ApiConnectionAction<DataAnalysisResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DataAnalysisResponse> __BuildDataAnalysis(WorkflowValue<int> bytes, WorkflowValue<greenInput> green)
+        {
+            WorkflowValue.Validate(bytes, nameof(bytes), required: true);
+            WorkflowValue.Validate(green, nameof(green), required: true);
+            return new DeferredBodyAction<DataAnalysisResponse>(() =>
+            {
+                var apiCallPath = "/data";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bytes"] = ExpressionConverter.Convert(bytes);
+                callPayload.Queries["green"] = ExpressionConverter.Convert(green);
+                return new ApiConnectionAction<DataAnalysisResponse>(callPayload);
+            });
         }
     }
 

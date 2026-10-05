@@ -4,21 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flotiqheadlesscms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FlotiqheadlesscmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flotiqheadlesscms")]
-        public IWorkflowAction CreateContentObject(Expression<Func<string>> contentTypeId, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateContentObject))]
+        public IWorkflowAction CreateContentObject([WorkflowExpression] Func<string> contentTypeId, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = String.Format("/api/v1/content/{0}", ExpressionConverter.ConvertWithUrlEncoding(contentTypeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateContentObject(WorkflowValue<string> contentTypeId, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(contentTypeId, nameof(contentTypeId), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/content/{0}", ExpressionConverter.ConvertWithUrlEncoding(contentTypeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

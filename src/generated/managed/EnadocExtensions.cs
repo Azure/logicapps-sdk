@@ -4,20 +4,31 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enadoc
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EnadocActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enadoc")]
-        public IBodyWorkflowAction<SuccessResponse> SendToMyWorkspace(Expression<Func<string>> document, Expression<Func<string>> name)
+        [WorkflowExpressionFactory(nameof(__BuildSendToMyWorkspace))]
+        public IBodyWorkflowAction<SuccessResponse> SendToMyWorkspace([WorkflowExpression] Func<string> document, [WorkflowExpression] Func<string> name)
         {
-            var apiCallPath = "/api/v3/workspace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SuccessResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuccessResponse> __BuildSendToMyWorkspace(WorkflowValue<string> document, WorkflowValue<string> name)
+        {
+            WorkflowValue.Validate(document, nameof(document), required: true);
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            return new DeferredBodyAction<SuccessResponse>(() =>
+            {
+                var apiCallPath = "/api/v3/workspace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SuccessResponse>(callPayload);
+            });
         }
     }
 

@@ -4,342 +4,633 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MocksterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetAirlines))]
+        public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/airlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetAirlinesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAirlinesResponseItem[]> __BuildGetAirlines(WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetAirlinesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/airlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetAirlinesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetAnimals))]
+        public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/animals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetAnimalsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAnimalsResponseItem[]> __BuildGetAnimals(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetAnimalsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/animals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetAnimalsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetColors))]
+        public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/colors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetColorsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetColorsResponseItem[]> __BuildGetColors(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetColorsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/colors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetColorsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCompanies))]
+        public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/companies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetCompaniesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCompaniesResponseItem[]> __BuildGetCompanies(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetCompaniesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/companies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetCompaniesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDatabases))]
+        public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/databases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetDatabasesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDatabasesResponseItem[]> __BuildGetDatabases(WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetDatabasesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/databases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetDatabasesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDates))]
+        public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/dates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetDatesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDatesResponseItem[]> __BuildGetDates(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetDatesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/dates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetDatesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFinances))]
+        public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/finances";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetFinancesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFinancesResponseItem[]> __BuildGetFinances(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetFinancesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/finances";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetFinancesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetGits))]
+        public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/gits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetGitsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGitsResponseItem[]> __BuildGetGits(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetGitsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/gits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetGitsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetHackers))]
+        public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/hackers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetHackersResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetHackersResponseItem[]> __BuildGetHackers(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetHackersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/hackers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetHackersResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages(Expression<Func<int>> count = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<categoryInput>> category = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRandomImages))]
+        public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<categoryInput> category = null)
         {
-            var apiCallPath = "/images";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (width != null)
-                callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-            if (height != null)
-                callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            return new ApiConnectionAction<GetRandomImagesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRandomImagesResponseItem[]> __BuildGetRandomImages(WorkflowValue<int> count = null, WorkflowValue<int> width = null, WorkflowValue<int> height = null, WorkflowValue<categoryInput> category = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(width, nameof(width), required: false);
+            WorkflowValue.Validate(height, nameof(height), required: false);
+            WorkflowValue.Validate(category, nameof(category), required: false);
+            return new DeferredBodyAction<GetRandomImagesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/images";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (width != null)
+                    callPayload.Queries["width"] = ExpressionConverter.Convert(width);
+                if (height != null)
+                    callPayload.Queries["height"] = ExpressionConverter.Convert(height);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                return new ApiConnectionAction<GetRandomImagesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetInternet))]
+        public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/internets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetInternetResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInternetResponseItem[]> __BuildGetInternet(WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetInternetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/internets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetInternetResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetLocations))]
+        public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/locations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetLocationsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLocationsResponseItem[]> __BuildGetLocations(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetLocationsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/locations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetLocationsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetLorems))]
+        public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/lorems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetLoremsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLoremsResponseItem[]> __BuildGetLorems(WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetLoremsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/lorems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetLoremsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetMusics))]
+        public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/musics";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetMusicsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMusicsResponseItem[]> __BuildGetMusics(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetMusicsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/musics";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetMusicsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetNumbers))]
+        public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/numbers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetNumbersResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetNumbersResponseItem[]> __BuildGetNumbers(WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetNumbersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/numbers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetNumbersResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPeople))]
+        public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/persons";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetPeopleResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPeopleResponseItem[]> __BuildGetPeople(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetPeopleResponseItem[]>(() =>
+            {
+                var apiCallPath = "/persons";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetPeopleResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPhones))]
+        public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/phones";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetPhonesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPhonesResponseItem[]> __BuildGetPhones(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetPhonesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/phones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetPhonesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetProducts))]
+        public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/products";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetProductsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProductsResponseItem[]> __BuildGetProducts(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetProductsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/products";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetProductsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSciences))]
+        public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/sciences";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetSciencesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSciencesResponseItem[]> __BuildGetSciences(WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetSciencesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/sciences";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetSciencesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStrings))]
+        public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/strings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetStringsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStringsResponseItem[]> __BuildGetStrings(WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetStringsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/strings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetStringsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSystems))]
+        public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/systems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSystemsResponseItem[]> __BuildGetSystems(WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetSystemsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/systems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetSystemsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetVehicles))]
+        public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/vehicles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetVehiclesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetVehiclesResponseItem[]> __BuildGetVehicles(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetVehiclesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/vehicles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetVehiclesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetWords))]
+        public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
-            var apiCallPath = "/words";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (availableLocales != null)
-                callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (seed != null)
-                callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
-            return new ApiConnectionAction<GetWordsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetWordsResponseItem[]> __BuildGetWords(WorkflowValue<availableLocalesInput> availableLocales = null, WorkflowValue<int> count = null, WorkflowValue<int> seed = null)
+        {
+            WorkflowValue.Validate(availableLocales, nameof(availableLocales), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(seed, nameof(seed), required: false);
+            return new DeferredBodyAction<GetWordsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/words";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (availableLocales != null)
+                    callPayload.Queries["availableLocales"] = ExpressionConverter.Convert(availableLocales);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (seed != null)
+                    callPayload.Queries["seed"] = ExpressionConverter.Convert(seed);
+                return new ApiConnectionAction<GetWordsResponseItem[]>(callPayload);
+            });
         }
     }
 

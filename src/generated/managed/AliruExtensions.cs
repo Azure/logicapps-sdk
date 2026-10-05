@@ -4,85 +4,113 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aliru
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AliruActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
-        public IWorkflowAction SendNews(Expression<Func<string>> bodyheadline, Expression<Func<string>> bodytext, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodypictureURL = null, Expression<Func<string>> bodytags = null, Expression<Func<int>> bodytimeToLiveInDays = null, Expression<Func<string>> bodyuserId = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendNews))]
+        public IWorkflowAction SendNews([WorkflowExpression] Func<string> bodyheadline, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodypictureURL = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<int> bodytimeToLiveInDays = null, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            var apiCallPath = "/api/SendNews";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Headline"] = ExpressionConverter.ConvertO(bodyheadline);
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodyuRL != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendNews(WorkflowValue<string> bodyheadline, WorkflowValue<string> bodytext, WorkflowValue<string> bodyuRL = null, WorkflowValue<string> bodypictureURL = null, WorkflowValue<string> bodytags = null, WorkflowValue<int> bodytimeToLiveInDays = null, WorkflowValue<string> bodyuserId = null)
+        {
+            WorkflowValue.Validate(bodyheadline, nameof(bodyheadline), required: true);
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            WorkflowValue.Validate(bodyuRL, nameof(bodyuRL), required: false);
+            WorkflowValue.Validate(bodypictureURL, nameof(bodypictureURL), required: false);
+            WorkflowValue.Validate(bodytags, nameof(bodytags), required: false);
+            WorkflowValue.Validate(bodytimeToLiveInDays, nameof(bodytimeToLiveInDays), required: false);
+            WorkflowValue.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["URL"] = ExpressionConverter.ConvertO(bodyuRL);
+                var apiCallPath = "/api/SendNews";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypictureURL != null)
-            {
-                body["PictureURL"] = ExpressionConverter.ConvertO(bodypictureURL);
+                body["Headline"] = ExpressionConverter.ConvertO(bodyheadline);
                 bodypropCount++;
-            }
+                body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodyuRL != null)
+                {
+                    body["URL"] = ExpressionConverter.ConvertO(bodyuRL);
+                    bodypropCount++;
+                }
 
-            if (bodytags != null)
-            {
-                body["Tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
+                if (bodypictureURL != null)
+                {
+                    body["PictureURL"] = ExpressionConverter.ConvertO(bodypictureURL);
+                    bodypropCount++;
+                }
 
-            if (bodytimeToLiveInDays != null)
-            {
-                body["TimeToLiveInDays"] = ExpressionConverter.ConvertO(bodytimeToLiveInDays);
-                bodypropCount++;
-            }
+                if (bodytags != null)
+                {
+                    body["Tags"] = ExpressionConverter.ConvertO(bodytags);
+                    bodypropCount++;
+                }
 
-            if (bodyuserId != null)
-            {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
-                bodypropCount++;
-            }
+                if (bodytimeToLiveInDays != null)
+                {
+                    body["TimeToLiveInDays"] = ExpressionConverter.ConvertO(bodytimeToLiveInDays);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyuserId != null)
+                {
+                    body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aliru")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> bodytext, Expression<Func<string>> bodyuserId = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendNotification))]
+        public IWorkflowAction SendNotification([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyuserId = null)
         {
-            var apiCallPath = "/api/SendNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodyuserId != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendNotification(WorkflowValue<string> bodytext, WorkflowValue<string> bodyuserId = null)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            WorkflowValue.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                var apiCallPath = "/api/SendNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodyuserId != null)
+                {
+                    body["UserId"] = ExpressionConverter.ConvertO(bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

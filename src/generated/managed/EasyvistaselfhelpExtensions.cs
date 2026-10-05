@@ -4,97 +4,185 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaselfhelp
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EasyvistaselfhelpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IWorkflowAction Execute(Expression<Func<string>> sessionId, Expression<Func<string>> scenarioId)
+        [WorkflowExpressionFactory(nameof(__BuildExecute))]
+        public IWorkflowAction Execute([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> scenarioId)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/execute/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["scenarioId"] = ExpressionConverter.Convert(scenarioId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildExecute(WorkflowValue<string> sessionId, WorkflowValue<string> scenarioId)
+        {
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowValue.Validate(scenarioId, nameof(scenarioId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/execute/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["scenarioId"] = ExpressionConverter.Convert(scenarioId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IWorkflowAction GetPausedProcedureList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> versionId)
+        [WorkflowExpressionFactory(nameof(__BuildGetPausedProcedureList))]
+        public IWorkflowAction GetPausedProcedureList([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> locale, [WorkflowExpression] Func<string> versionId)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/paused/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IBodyWorkflowAction<GetProcedureListResponse> GetProcedureList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> versionId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetPausedProcedureList(WorkflowValue<string> sessionId, WorkflowValue<string> locale, WorkflowValue<string> versionId)
         {
-            var apiCallPath = "/AtanorPortalAPI/atanor/project/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-            return new ApiConnectionAction<GetProcedureListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IBodyWorkflowAction<GetProjectListResponse> GetProjectList(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> mode = null)
-        {
-            var apiCallPath = "/AtanorPortalAPI/atanor/projects/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            if (mode != null)
-                callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
-            return new ApiConnectionAction<GetProjectListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> sessionId, Expression<Func<string>> locale, Expression<Func<string>> pattern, Expression<Func<string>> versionId = null)
-        {
-            var apiCallPath = "/AtanorPortalAPI/atanor/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["pattern"] = ExpressionConverter.Convert(pattern);
-            if (versionId != null)
-                callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> sessionId)
-        {
-            var apiCallPath = "/AtanorPortalAPI/atanor/user/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            return new ApiConnectionAction<GetUserResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
-        public IWorkflowAction Login(Expression<Func<string>> login, Expression<Func<string>> password, Expression<Func<string>> locale = null)
-        {
-            var apiCallPath = "/livedesk/CHECK";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["locale"] = Convert.ToString("en_US");
-            if (locale != null)
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowValue.Validate(locale, nameof(locale), required: true);
+            WorkflowValue.Validate(versionId, nameof(versionId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/paused/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
                 callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
-            callPayload.Queries["login"] = ExpressionConverter.Convert(login);
-            callPayload.Queries["password"] = ExpressionConverter.Convert(password);
-            return new ApiConnectionAction(callPayload);
+                callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProcedureList))]
+        public IBodyWorkflowAction<GetProcedureListResponse> GetProcedureList([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> locale, [WorkflowExpression] Func<string> versionId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProcedureListResponse> __BuildGetProcedureList(WorkflowValue<string> sessionId, WorkflowValue<string> locale, WorkflowValue<string> versionId)
+        {
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowValue.Validate(locale, nameof(locale), required: true);
+            WorkflowValue.Validate(versionId, nameof(versionId), required: true);
+            return new DeferredBodyAction<GetProcedureListResponse>(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/project/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
+                return new ApiConnectionAction<GetProcedureListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProjectList))]
+        public IBodyWorkflowAction<GetProjectListResponse> GetProjectList([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> locale, [WorkflowExpression] Func<string> mode = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProjectListResponse> __BuildGetProjectList(WorkflowValue<string> sessionId, WorkflowValue<string> locale, WorkflowValue<string> mode = null)
+        {
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowValue.Validate(locale, nameof(locale), required: true);
+            WorkflowValue.Validate(mode, nameof(mode), required: false);
+            return new DeferredBodyAction<GetProjectListResponse>(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/projects/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                if (mode != null)
+                    callPayload.Queries["mode"] = ExpressionConverter.Convert(mode);
+                return new ApiConnectionAction<GetProjectListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> locale, [WorkflowExpression] Func<string> pattern, [WorkflowExpression] Func<string> versionId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowValue<string> sessionId, WorkflowValue<string> locale, WorkflowValue<string> pattern, WorkflowValue<string> versionId = null)
+        {
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowValue.Validate(locale, nameof(locale), required: true);
+            WorkflowValue.Validate(pattern, nameof(pattern), required: true);
+            WorkflowValue.Validate(versionId, nameof(versionId), required: false);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["pattern"] = ExpressionConverter.Convert(pattern);
+                if (versionId != null)
+                    callPayload.Queries["versionId"] = ExpressionConverter.Convert(versionId);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
+        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
+        public IBodyWorkflowAction<GetUserResponse> GetUser([WorkflowExpression] Func<string> sessionId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUserResponse> __BuildGetUser(WorkflowValue<string> sessionId)
+        {
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            return new DeferredBodyAction<GetUserResponse>(() =>
+            {
+                var apiCallPath = "/AtanorPortalAPI/atanor/user/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                return new ApiConnectionAction<GetUserResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaselfhelp")]
+        [WorkflowExpressionFactory(nameof(__BuildLogin))]
+        public IWorkflowAction Login([WorkflowExpression] Func<string> login, [WorkflowExpression] Func<string> password, [WorkflowExpression] Func<string> locale = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildLogin(WorkflowValue<string> login, WorkflowValue<string> password, WorkflowValue<string> locale = null)
+        {
+            WorkflowValue.Validate(login, nameof(login), required: true);
+            WorkflowValue.Validate(password, nameof(password), required: true);
+            WorkflowValue.Validate(locale, nameof(locale), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/livedesk/CHECK";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["locale"] = Convert.ToString("en_US");
+                if (locale != null)
+                    callPayload.Queries["locale"] = ExpressionConverter.Convert(locale);
+                callPayload.Queries["login"] = ExpressionConverter.Convert(login);
+                callPayload.Queries["password"] = ExpressionConverter.Convert(password);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

@@ -4,99 +4,146 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsonassistantip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class IbmwatsonassistantipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<CreateSessionResponse> CreateSession(Expression<Func<string>> version)
+        [WorkflowExpressionFactory(nameof(__BuildCreateSession))]
+        public IBodyWorkflowAction<CreateSessionResponse> CreateSession([WorkflowExpression] Func<string> version)
         {
-            var apiCallPath = "/sessions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            return new ApiConnectionAction<CreateSessionResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateSessionResponse> __BuildCreateSession(WorkflowValue<string> version)
+        {
+            WorkflowValue.Validate(version, nameof(version), required: true);
+            return new DeferredBodyAction<CreateSessionResponse>(() =>
+            {
+                var apiCallPath = "/sessions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                return new ApiConnectionAction<CreateSessionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IWorkflowAction DeleteSession(Expression<Func<string>> session, Expression<Func<string>> version = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteSession))]
+        public IWorkflowAction DeleteSession([WorkflowExpression] Func<string> session, [WorkflowExpression] Func<string> version = null)
         {
-            var apiCallPath = String.Format("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteSession(WorkflowValue<string> session, WorkflowValue<string> version = null)
+        {
+            WorkflowValue.Validate(session, nameof(session), required: true);
+            WorkflowValue.Validate(version, nameof(version), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2021-11-27");
+                if (version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage(Expression<Func<string>> session, Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
+        [WorkflowExpressionFactory(nameof(__BuildStatefulMessage))]
+        public IBodyWorkflowAction<StatefulMessageResponse> StatefulMessage([WorkflowExpression] Func<string> session, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
         {
-            var apiCallPath = String.Format("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputObject = new JObject();
-            var inputObjectpropCount = 0;
-            if (bodyinputtext != null)
-            {
-                inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
-                inputObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (inputObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StatefulMessageResponse> __BuildStatefulMessage(WorkflowValue<string> session, WorkflowValue<string> version = null, WorkflowValue<string> bodyinputtext = null)
+        {
+            WorkflowValue.Validate(session, nameof(session), required: true);
+            WorkflowValue.Validate(version, nameof(version), required: false);
+            WorkflowValue.Validate(bodyinputtext, nameof(bodyinputtext), required: false);
+            return new DeferredBodyAction<StatefulMessageResponse>(() =>
             {
-                body["input"] = inputObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sessions/{0}/message", ExpressionConverter.ConvertWithUrlEncoding(session, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2021-11-27");
+                if (version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputObject = new JObject();
+                var inputObjectpropCount = 0;
+                if (bodyinputtext != null)
+                {
+                    inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
+                    inputObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (inputObjectpropCount > 0)
+                {
+                    body["input"] = inputObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<StatefulMessageResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StatefulMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsonassistantip")]
-        public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage(Expression<Func<string>> version = null, Expression<Func<string>> bodyinputtext = null)
+        [WorkflowExpressionFactory(nameof(__BuildStatelessMessage))]
+        public IBodyWorkflowAction<StatelessMessageResponse> StatelessMessage([WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<string> bodyinputtext = null)
         {
-            var apiCallPath = "/message";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["version"] = Convert.ToString("2021-11-27");
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputObject = new JObject();
-            var inputObjectpropCount = 0;
-            if (bodyinputtext != null)
-            {
-                inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
-                inputObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (inputObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StatelessMessageResponse> __BuildStatelessMessage(WorkflowValue<string> version = null, WorkflowValue<string> bodyinputtext = null)
+        {
+            WorkflowValue.Validate(version, nameof(version), required: false);
+            WorkflowValue.Validate(bodyinputtext, nameof(bodyinputtext), required: false);
+            return new DeferredBodyAction<StatelessMessageResponse>(() =>
             {
-                body["input"] = inputObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/message";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["version"] = Convert.ToString("2021-11-27");
+                if (version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputObject = new JObject();
+                var inputObjectpropCount = 0;
+                if (bodyinputtext != null)
+                {
+                    inputObject["text"] = ExpressionConverter.ConvertO(bodyinputtext);
+                    inputObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (inputObjectpropCount > 0)
+                {
+                    body["input"] = inputObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<StatelessMessageResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StatelessMessageResponse>(callPayload);
+            });
         }
     }
 

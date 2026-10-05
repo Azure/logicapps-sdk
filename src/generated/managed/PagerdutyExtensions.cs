@@ -4,177 +4,297 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PagerdutyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<Incident> GetIncidentByKey(Expression<Func<string>> incidentKey)
+        [WorkflowExpressionFactory(nameof(__BuildGetIncidentByKey))]
+        public IBodyWorkflowAction<Incident> GetIncidentByKey([WorkflowExpression] Func<string> incidentKey)
         {
-            var apiCallPath = "/action8/incidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["incident_key"] = ExpressionConverter.Convert(incidentKey);
-            return new ApiConnectionAction<Incident>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Incident> __BuildGetIncidentByKey(WorkflowValue<string> incidentKey)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<User>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<AddNoteResponse> AddNoteToIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestaddedBy, Expression<Func<string>> requestnote)
-        {
-            var apiCallPath = String.Format("/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestaddedBy);
-            requestpropCount++;
-            request["note"] = ExpressionConverter.ConvertO(requestnote);
-            if (requestpropCount > 0)
+            WorkflowValue.Validate(incidentKey, nameof(incidentKey), required: true);
+            return new DeferredBodyAction<Incident>(() =>
             {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<AddNoteResponse>(callPayload);
+                var apiCallPath = "/action8/incidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["incident_key"] = ExpressionConverter.Convert(incidentKey);
+                return new ApiConnectionAction<Incident>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> AcknowledgeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestacknowledgedBy)
+        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
+        public IBodyWorkflowAction<User> GetUser([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = String.Format("/action1/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestacknowledgedBy);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<SingleIncident>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<User> __BuildGetUser(WorkflowValue<string> userId)
+        {
+            WorkflowValue.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<User>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<User>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> ResolveIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestresolvedBy)
+        [WorkflowExpressionFactory(nameof(__BuildAddNoteToIncident))]
+        public IBodyWorkflowAction<AddNoteResponse> AddNoteToIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestaddedBy, [WorkflowExpression] Func<string> requestnote)
         {
-            var apiCallPath = String.Format("/action2/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestresolvedBy);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<SingleIncident>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddNoteResponse> __BuildAddNoteToIncident(WorkflowValue<string> incidentId, WorkflowValue<string> requestaddedBy, WorkflowValue<string> requestnote)
+        {
+            WorkflowValue.Validate(incidentId, nameof(incidentId), required: true);
+            WorkflowValue.Validate(requestaddedBy, nameof(requestaddedBy), required: true);
+            WorkflowValue.Validate(requestnote, nameof(requestnote), required: true);
+            return new DeferredBodyAction<AddNoteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["userId"] = ExpressionConverter.ConvertO(requestaddedBy);
+                requestpropCount++;
+                request["note"] = ExpressionConverter.ConvertO(requestnote);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<AddNoteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> ReassignIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestfromUser, Expression<Func<string>> requesttoUser)
+        [WorkflowExpressionFactory(nameof(__BuildAcknowledgeIncident))]
+        public IBodyWorkflowAction<SingleIncident> AcknowledgeIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestacknowledgedBy)
         {
-            var apiCallPath = String.Format("/action3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestfromUser);
-            requestpropCount++;
-            request["reassignUserId"] = ExpressionConverter.ConvertO(requesttoUser);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<SingleIncident>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleIncident> __BuildAcknowledgeIncident(WorkflowValue<string> incidentId, WorkflowValue<string> requestacknowledgedBy)
+        {
+            WorkflowValue.Validate(incidentId, nameof(incidentId), required: true);
+            WorkflowValue.Validate(requestacknowledgedBy, nameof(requestacknowledgedBy), required: true);
+            return new DeferredBodyAction<SingleIncident>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action1/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["userId"] = ExpressionConverter.ConvertO(requestacknowledgedBy);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<SingleIncident>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> SnoozeIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestsnoozedBy, Expression<Func<int>> requestsnooze)
+        [WorkflowExpressionFactory(nameof(__BuildResolveIncident))]
+        public IBodyWorkflowAction<SingleIncident> ResolveIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestresolvedBy)
         {
-            var apiCallPath = String.Format("/action4/incidents/{0}/snooze", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestsnoozedBy);
-            requestpropCount++;
-            request["duration"] = ExpressionConverter.ConvertO(requestsnooze);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<SingleIncident>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleIncident> __BuildResolveIncident(WorkflowValue<string> incidentId, WorkflowValue<string> requestresolvedBy)
+        {
+            WorkflowValue.Validate(incidentId, nameof(incidentId), required: true);
+            WorkflowValue.Validate(requestresolvedBy, nameof(requestresolvedBy), required: true);
+            return new DeferredBodyAction<SingleIncident>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action2/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["userId"] = ExpressionConverter.ConvertO(requestresolvedBy);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<SingleIncident>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<SingleIncident> EscalateIncident(Expression<Func<string>> incidentId, Expression<Func<string>> requestescalatedBy, Expression<Func<string>> requestescalationPolicy)
+        [WorkflowExpressionFactory(nameof(__BuildReassignIncident))]
+        public IBodyWorkflowAction<SingleIncident> ReassignIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestfromUser, [WorkflowExpression] Func<string> requesttoUser)
         {
-            var apiCallPath = String.Format("/action5/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["userId"] = ExpressionConverter.ConvertO(requestescalatedBy);
-            requestpropCount++;
-            request["policyId"] = ExpressionConverter.ConvertO(requestescalationPolicy);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<SingleIncident>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleIncident> __BuildReassignIncident(WorkflowValue<string> incidentId, WorkflowValue<string> requestfromUser, WorkflowValue<string> requesttoUser)
+        {
+            WorkflowValue.Validate(incidentId, nameof(incidentId), required: true);
+            WorkflowValue.Validate(requestfromUser, nameof(requestfromUser), required: true);
+            WorkflowValue.Validate(requesttoUser, nameof(requesttoUser), required: true);
+            return new DeferredBodyAction<SingleIncident>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["userId"] = ExpressionConverter.ConvertO(requestfromUser);
+                requestpropCount++;
+                request["reassignUserId"] = ExpressionConverter.ConvertO(requesttoUser);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<SingleIncident>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
-        public IBodyWorkflowAction<NewIncident> CreateIncident(Expression<Func<string>> requestserviceKey, Expression<Func<string>> requestdescription)
+        [WorkflowExpressionFactory(nameof(__BuildSnoozeIncident))]
+        public IBodyWorkflowAction<SingleIncident> SnoozeIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestsnoozedBy, [WorkflowExpression] Func<int> requestsnooze)
         {
-            var apiCallPath = "/incidents/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["service_key"] = ExpressionConverter.ConvertO(requestserviceKey);
-            requestpropCount++;
-            request["description"] = ExpressionConverter.ConvertO(requestdescription);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<NewIncident>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleIncident> __BuildSnoozeIncident(WorkflowValue<string> incidentId, WorkflowValue<string> requestsnoozedBy, WorkflowValue<int> requestsnooze)
+        {
+            WorkflowValue.Validate(incidentId, nameof(incidentId), required: true);
+            WorkflowValue.Validate(requestsnoozedBy, nameof(requestsnoozedBy), required: true);
+            WorkflowValue.Validate(requestsnooze, nameof(requestsnooze), required: true);
+            return new DeferredBodyAction<SingleIncident>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action4/incidents/{0}/snooze", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["userId"] = ExpressionConverter.ConvertO(requestsnoozedBy);
+                requestpropCount++;
+                request["duration"] = ExpressionConverter.ConvertO(requestsnooze);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<SingleIncident>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
+        [WorkflowExpressionFactory(nameof(__BuildEscalateIncident))]
+        public IBodyWorkflowAction<SingleIncident> EscalateIncident([WorkflowExpression] Func<string> incidentId, [WorkflowExpression] Func<string> requestescalatedBy, [WorkflowExpression] Func<string> requestescalationPolicy)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleIncident> __BuildEscalateIncident(WorkflowValue<string> incidentId, WorkflowValue<string> requestescalatedBy, WorkflowValue<string> requestescalationPolicy)
+        {
+            WorkflowValue.Validate(incidentId, nameof(incidentId), required: true);
+            WorkflowValue.Validate(requestescalatedBy, nameof(requestescalatedBy), required: true);
+            WorkflowValue.Validate(requestescalationPolicy, nameof(requestescalationPolicy), required: true);
+            return new DeferredBodyAction<SingleIncident>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/action5/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["userId"] = ExpressionConverter.ConvertO(requestescalatedBy);
+                requestpropCount++;
+                request["policyId"] = ExpressionConverter.ConvertO(requestescalationPolicy);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<SingleIncident>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pagerduty")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateIncident))]
+        public IBodyWorkflowAction<NewIncident> CreateIncident([WorkflowExpression] Func<string> requestserviceKey, [WorkflowExpression] Func<string> requestdescription)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NewIncident> __BuildCreateIncident(WorkflowValue<string> requestserviceKey, WorkflowValue<string> requestdescription)
+        {
+            WorkflowValue.Validate(requestserviceKey, nameof(requestserviceKey), required: true);
+            WorkflowValue.Validate(requestdescription, nameof(requestdescription), required: true);
+            return new DeferredBodyAction<NewIncident>(() =>
+            {
+                var apiCallPath = "/incidents/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["service_key"] = ExpressionConverter.ConvertO(requestserviceKey);
+                requestpropCount++;
+                request["description"] = ExpressionConverter.ConvertO(requestdescription);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<NewIncident>(callPayload);
+            });
         }
     }
 
     public class PagerdutyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NotesResponse> OnNewIncidentNote(Expression<Func<string>> incidentId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewIncidentNote))]
+        public IBodyWorkflowTrigger<NotesResponse> OnNewIncidentNote([WorkflowExpression] Func<string> incidentId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger1/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NotesResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<NotesResponse> __BuildOnNewIncidentNote(WorkflowValue<string> incidentId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(incidentId, nameof(incidentId), required: true);
+            return new DeferredBodyTrigger<NotesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<NotesResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
         public IBodyWorkflowTrigger<IncidentsResponse> OnNewIncidentCreated(string triggerName = null, FlowRecurrence recurrence = null)
@@ -185,12 +305,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
             return new ApiConnectionTrigger<IncidentsResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAssigned(Expression<Func<string>> userId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnIncidentAssigned))]
+        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAssigned([WorkflowExpression] Func<string> userId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<IncidentsResponse> __BuildOnIncidentAssigned(WorkflowValue<string> userId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyTrigger<IncidentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
         public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAcknowledged(string triggerName = null, FlowRecurrence recurrence = null)

@@ -5,8 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
 {
     using System;
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
@@ -14,66 +13,87 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
     public class SmtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Smtp")]
-        public IOutputWorkflowAction<SendEmailOutput> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHTML = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailInputAttachmentTypeItem[]>> attachment = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendEmail))]
+        public IOutputWorkflowAction<SendEmailOutput> SendEmail([WorkflowExpression] Func<string> from, [WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<bool> isHTML = null, [WorkflowExpression] Func<string> bcc = null, [WorkflowExpression] Func<string> importance = null, [WorkflowExpression] Func<string> readReceipt = null, [WorkflowExpression] Func<string> deliveryReceipt = null, [WorkflowExpression] Func<SendEmailInputAttachmentTypeItem[]> attachment = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["from"] = ExpressionConverter.ConvertO(from);
-            serviceProviderParameters["to"] = ExpressionConverter.ConvertO(to);
-            if (cc != null)
-            {
-                serviceProviderParameters["cc"] = ExpressionConverter.ConvertO(cc);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (subject != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<SendEmailOutput> __BuildSendEmail(WorkflowValue<string> from, WorkflowValue<string> to, WorkflowValue<string> cc = null, WorkflowValue<string> subject = null, WorkflowValue<string> body = null, WorkflowValue<bool> isHTML = null, WorkflowValue<string> bcc = null, WorkflowValue<string> importance = null, WorkflowValue<string> readReceipt = null, WorkflowValue<string> deliveryReceipt = null, WorkflowValue<SendEmailInputAttachmentTypeItem[]> attachment = null)
+        {
+            WorkflowValue.Validate(from, nameof(from), required: true);
+            WorkflowValue.Validate(to, nameof(to), required: true);
+            WorkflowValue.Validate(cc, nameof(cc), required: false);
+            WorkflowValue.Validate(subject, nameof(subject), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(isHTML, nameof(isHTML), required: false);
+            WorkflowValue.Validate(bcc, nameof(bcc), required: false);
+            WorkflowValue.Validate(importance, nameof(importance), required: false);
+            WorkflowValue.Validate(readReceipt, nameof(readReceipt), required: false);
+            WorkflowValue.Validate(deliveryReceipt, nameof(deliveryReceipt), required: false);
+            WorkflowValue.Validate(attachment, nameof(attachment), required: false);
+            return new DeferredOutputAction<SendEmailOutput>(() =>
             {
-                serviceProviderParameters["subject"] = ExpressionConverter.ConvertO(subject);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["from"] = ExpressionConverter.ConvertO(from);
+                serviceProviderParameters["to"] = ExpressionConverter.ConvertO(to);
+                if (cc != null)
+                {
+                    serviceProviderParameters["cc"] = ExpressionConverter.ConvertO(cc);
+                }
 
-            if (body != null)
-            {
-                serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
-            }
+                if (subject != null)
+                {
+                    serviceProviderParameters["subject"] = ExpressionConverter.ConvertO(subject);
+                }
 
-            if (isHTML != null)
-            {
-                serviceProviderParameters["isHTML"] = ExpressionConverter.ConvertO(isHTML);
-            }
+                if (body != null)
+                {
+                    serviceProviderParameters["body"] = ExpressionConverter.ConvertO(body);
+                }
 
-            if (bcc != null)
-            {
-                serviceProviderParameters["bcc"] = ExpressionConverter.ConvertO(bcc);
-            }
+                if (isHTML != null)
+                {
+                    serviceProviderParameters["isHTML"] = ExpressionConverter.ConvertO(isHTML);
+                }
 
-            if (importance != null)
-            {
-                serviceProviderParameters["importance"] = ExpressionConverter.ConvertO(importance);
-            }
-            else
-            {
-                serviceProviderParameters["importance"] = "Normal";
-            }
+                if (bcc != null)
+                {
+                    serviceProviderParameters["bcc"] = ExpressionConverter.ConvertO(bcc);
+                }
 
-            if (readReceipt != null)
-            {
-                serviceProviderParameters["readReceipt"] = ExpressionConverter.ConvertO(readReceipt);
-            }
+                if (importance != null)
+                {
+                    serviceProviderParameters["importance"] = ExpressionConverter.ConvertO(importance);
+                }
+                else
+                {
+                    serviceProviderParameters["importance"] = "Normal";
+                }
 
-            if (deliveryReceipt != null)
-            {
-                serviceProviderParameters["deliveryReceipt"] = ExpressionConverter.ConvertO(deliveryReceipt);
-            }
+                if (readReceipt != null)
+                {
+                    serviceProviderParameters["readReceipt"] = ExpressionConverter.ConvertO(readReceipt);
+                }
 
-            if (attachment != null)
-            {
-                serviceProviderParameters["attachment"] = ExpressionConverter.ConvertO(attachment);
-            }
+                if (deliveryReceipt != null)
+                {
+                    serviceProviderParameters["deliveryReceipt"] = ExpressionConverter.ConvertO(deliveryReceipt);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Smtp", operationId: "sendEmail", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<SendEmailOutput>(serviceProviderInput);
+                if (attachment != null)
+                {
+                    serviceProviderParameters["attachment"] = ExpressionConverter.ConvertO(attachment);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Smtp", operationId: "sendEmail", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<SendEmailOutput>(serviceProviderInput);
+            });
         }
     }
 

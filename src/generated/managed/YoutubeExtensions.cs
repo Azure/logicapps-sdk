@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,13 +14,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
 
     public class YoutubeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VideoList> OnNewVideoInChannel(Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewVideoInChannel))]
+        public IBodyWorkflowTrigger<VideoList> OnNewVideoInChannel([WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/activities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
-            return new ApiConnectionTrigger<VideoList>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VideoList> __BuildOnNewVideoInChannel(WorkflowValue<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(channelId, nameof(channelId), required: true);
+            return new DeferredBodyTrigger<VideoList>(() =>
+            {
+                var apiCallPath = "/trigger/activities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["channelId"] = ExpressionConverter.Convert(channelId);
+                return new ApiConnectionTrigger<VideoList>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
         public IBodyWorkflowTrigger<VideoList> OnMyNewVideo(string triggerName = null, FlowRecurrence recurrence = null)
@@ -32,13 +42,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtube
             return new ApiConnectionTrigger<VideoList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<VideoList> OnNewVideoMatchingSearch(Expression<Func<string>> q, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewVideoMatchingSearch))]
+        public IBodyWorkflowTrigger<VideoList> OnNewVideoMatchingSearch([WorkflowExpression] Func<string> q, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionTrigger<VideoList>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VideoList> __BuildOnNewVideoMatchingSearch(WorkflowValue<string> q, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            return new DeferredBodyTrigger<VideoList>(() =>
+            {
+                var apiCallPath = "/trigger/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                return new ApiConnectionTrigger<VideoList>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

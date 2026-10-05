@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,353 +20,515 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelPostResponse> Pixel(Expression<Func<string>> bodyname, Expression<Func<string>> bodypixelId, Expression<Func<string>> bodypixelType)
+        [WorkflowExpressionFactory(nameof(__BuildPixel))]
+        public IBodyWorkflowAction<PixelPostResponse> Pixel([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodypixelId, [WorkflowExpression] Func<string> bodypixelType)
         {
-            var apiCallPath = "/api/v1/link/pixel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["pixel_id"] = ExpressionConverter.ConvertO(bodypixelId);
-            bodypropCount++;
-            body["pixel_type"] = ExpressionConverter.ConvertO(bodypixelType);
-            if (bodypropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PixelPostResponse> __BuildPixel(WorkflowValue<string> bodyname, WorkflowValue<string> bodypixelId, WorkflowValue<string> bodypixelType)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodypixelId, nameof(bodypixelId), required: true);
+            WorkflowValue.Validate(bodypixelType, nameof(bodypixelType), required: true);
+            return new DeferredBodyAction<PixelPostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PixelPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelGetResponse> PixelGet(Expression<Func<string>> pixelId)
-        {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PixelGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> PixelDelete(Expression<Func<string>> pixelId)
-        {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<PixelPutResponse> PixelPut(Expression<Func<string>> pixelId, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypixelId = null, Expression<Func<string>> bodypixelType = null)
-        {
-            var apiCallPath = String.Format("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
-            {
-                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                var apiCallPath = "/api/v1/link/pixel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
                 body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodypixelId != null)
-            {
                 body["pixel_id"] = ExpressionConverter.ConvertO(bodypixelId);
                 bodypropCount++;
-            }
-
-            if (bodypixelType != null)
-            {
                 body["pixel_type"] = ExpressionConverter.ConvertO(bodypixelType);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PixelPutResponse>(callPayload);
+                return new ApiConnectionAction<PixelPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkPostResponse> Link(Expression<Func<string>> bodylongUrl, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<string>> bodydescription = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<bodymetasmartUrlsInputItem[]>> bodymetasmartUrls = null)
+        [WorkflowExpressionFactory(nameof(__BuildPixelGet))]
+        public IBodyWorkflowAction<PixelGetResponse> PixelGet([WorkflowExpression] Func<string> pixelId)
         {
-            var apiCallPath = "/api/v1/link/shorten";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["long_url"] = ExpressionConverter.ConvertO(bodylongUrl);
-            if (bodydomain != null)
-            {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyexpireAtDatetime != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PixelGetResponse> __BuildPixelGet(WorkflowValue<string> pixelId)
+        {
+            WorkflowValue.Validate(pixelId, nameof(pixelId), required: true);
+            return new DeferredBodyAction<PixelGetResponse>(() =>
             {
-                body["expire_at_datetime"] = ExpressionConverter.ConvertO(bodyexpireAtDatetime);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypublicStats != null)
-            {
-                body["public_stats"] = ExpressionConverter.ConvertO(bodypublicStats);
-                bodypropCount++;
-            }
-
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            if (bodymetasmartUrls != null)
-            {
-                metaObject["smart_urls"] = ExpressionConverter.ConvertO(bodymetasmartUrls);
-                metaObjectpropCount++;
-            }
-
-            if (metaObjectpropCount > 0)
-            {
-                body["meta"] = metaObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LinkPostResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PixelGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkGetResponse> LinkGet(Expression<Func<string>> shortUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildPixelDelete))]
+        public IBodyWorkflowAction<string> PixelDelete([WorkflowExpression] Func<string> pixelId)
         {
-            var apiCallPath = "/api/v1/link";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (shortUrl != null)
-                callPayload.Queries["short_url"] = ExpressionConverter.Convert(shortUrl);
-            return new ApiConnectionAction<LinkGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildPixelDelete(WorkflowValue<string> pixelId)
+        {
+            WorkflowValue.Validate(pixelId, nameof(pixelId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> LinkDelete(Expression<Func<string>> bodyshortUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildPixelPut))]
+        public IBodyWorkflowAction<PixelPutResponse> PixelPut([WorkflowExpression] Func<string> pixelId, [WorkflowExpression] Func<int> bodyid = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypixelId = null, [WorkflowExpression] Func<string> bodypixelType = null)
         {
-            var apiCallPath = "/api/v1/link";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyshortUrl != null)
-            {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PixelPutResponse> __BuildPixelPut(WorkflowValue<string> pixelId, WorkflowValue<int> bodyid = null, WorkflowValue<string> bodyname = null, WorkflowValue<string> bodypixelId = null, WorkflowValue<string> bodypixelType = null)
+        {
+            WorkflowValue.Validate(pixelId, nameof(pixelId), required: true);
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: false);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowValue.Validate(bodypixelId, nameof(bodypixelId), required: false);
+            WorkflowValue.Validate(bodypixelType, nameof(bodypixelType), required: false);
+            return new DeferredBodyAction<PixelPutResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/pixel/{0}", ExpressionConverter.ConvertWithUrlEncoding(pixelId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = ExpressionConverter.ConvertO(bodyid);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypixelId != null)
+                {
+                    body["pixel_id"] = ExpressionConverter.ConvertO(bodypixelId);
+                    bodypropCount++;
+                }
+
+                if (bodypixelType != null)
+                {
+                    body["pixel_type"] = ExpressionConverter.ConvertO(bodypixelType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PixelPutResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkPutResponse> LinkPut(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodylongUrl = null, Expression<Func<string>> bodydomain = null, Expression<Func<string>> bodyshortId = null, Expression<Func<string>> bodyexpireAtViews = null, Expression<Func<string>> bodyexpireAtDatetime = null, Expression<Func<bool>> bodypublicStats = null, Expression<Func<string>> bodyqrCodeUrl = null, Expression<Func<string>> bodyqrCodeBase64 = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
+        [WorkflowExpressionFactory(nameof(__BuildLink))]
+        public IBodyWorkflowAction<LinkPostResponse> Link([WorkflowExpression] Func<string> bodylongUrl, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyexpireAtDatetime = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<bool> bodypublicStats = null, [WorkflowExpression] Func<bodymetasmartUrlsInputItem[]> bodymetasmartUrls = null)
         {
-            var apiCallPath = "/api/v1/link";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyshortUrl != null)
-            {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodylongUrl != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LinkPostResponse> __BuildLink(WorkflowValue<string> bodylongUrl, WorkflowValue<string> bodydomain = null, WorkflowValue<string> bodyexpireAtDatetime = null, WorkflowValue<string> bodydescription = null, WorkflowValue<bool> bodypublicStats = null, WorkflowValue<bodymetasmartUrlsInputItem[]> bodymetasmartUrls = null)
+        {
+            WorkflowValue.Validate(bodylongUrl, nameof(bodylongUrl), required: true);
+            WorkflowValue.Validate(bodydomain, nameof(bodydomain), required: false);
+            WorkflowValue.Validate(bodyexpireAtDatetime, nameof(bodyexpireAtDatetime), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypublicStats, nameof(bodypublicStats), required: false);
+            WorkflowValue.Validate(bodymetasmartUrls, nameof(bodymetasmartUrls), required: false);
+            return new DeferredBodyAction<LinkPostResponse>(() =>
             {
+                var apiCallPath = "/api/v1/link/shorten";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["long_url"] = ExpressionConverter.ConvertO(bodylongUrl);
-                bodypropCount++;
-            }
+                if (bodydomain != null)
+                {
+                    body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                    bodypropCount++;
+                }
 
-            if (bodydomain != null)
-            {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
-                bodypropCount++;
-            }
+                if (bodyexpireAtDatetime != null)
+                {
+                    body["expire_at_datetime"] = ExpressionConverter.ConvertO(bodyexpireAtDatetime);
+                    bodypropCount++;
+                }
 
-            if (bodyshortId != null)
-            {
-                body["short_id"] = ExpressionConverter.ConvertO(bodyshortId);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyexpireAtViews != null)
-            {
-                body["expire_at_views"] = ExpressionConverter.ConvertO(bodyexpireAtViews);
-                bodypropCount++;
-            }
+                if (bodypublicStats != null)
+                {
+                    body["public_stats"] = ExpressionConverter.ConvertO(bodypublicStats);
+                    bodypropCount++;
+                }
 
-            if (bodyexpireAtDatetime != null)
-            {
-                body["expire_at_datetime"] = ExpressionConverter.ConvertO(bodyexpireAtDatetime);
-                bodypropCount++;
-            }
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                if (bodymetasmartUrls != null)
+                {
+                    metaObject["smart_urls"] = ExpressionConverter.ConvertO(bodymetasmartUrls);
+                    metaObjectpropCount++;
+                }
 
-            if (bodypublicStats != null)
-            {
-                body["public_stats"] = ExpressionConverter.ConvertO(bodypublicStats);
-                bodypropCount++;
-            }
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
 
-            if (bodyqrCodeUrl != null)
-            {
-                body["qr_code_url"] = ExpressionConverter.ConvertO(bodyqrCodeUrl);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyqrCodeBase64 != null)
-            {
-                body["qr_code_base64"] = ExpressionConverter.ConvertO(bodyqrCodeBase64);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypixels != null)
-            {
-                body["pixels"] = ExpressionConverter.ConvertO(bodypixels);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LinkPutResponse>(callPayload);
+                return new ApiConnectionAction<LinkPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinkExpandPostResponse> LinkExpand(Expression<Func<string>> bodyshortUrl = null, Expression<Func<string>> bodypassword = null)
+        [WorkflowExpressionFactory(nameof(__BuildLinkGet))]
+        public IBodyWorkflowAction<LinkGetResponse> LinkGet([WorkflowExpression] Func<string> shortUrl = null)
         {
-            var apiCallPath = "/api/v1/link/expand";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyshortUrl != null)
-            {
-                body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypassword != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LinkGetResponse> __BuildLinkGet(WorkflowValue<string> shortUrl = null)
+        {
+            WorkflowValue.Validate(shortUrl, nameof(shortUrl), required: false);
+            return new DeferredBodyAction<LinkGetResponse>(() =>
             {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LinkExpandPostResponse>(callPayload);
+                var apiCallPath = "/api/v1/link";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (shortUrl != null)
+                    callPayload.Queries["short_url"] = ExpressionConverter.Convert(shortUrl);
+                return new ApiConnectionAction<LinkGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<LinksGetResponse> LinksGet(Expression<Func<string>> search = null, Expression<Func<string>> tagIds = null, Expression<Func<string>> pixelIds = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> domains = null)
+        [WorkflowExpressionFactory(nameof(__BuildLinkDelete))]
+        public IBodyWorkflowAction<string> LinkDelete([WorkflowExpression] Func<string> bodyshortUrl = null)
         {
-            var apiCallPath = "/api/v1/link/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (tagIds != null)
-                callPayload.Queries["tag_ids"] = ExpressionConverter.Convert(tagIds);
-            if (pixelIds != null)
-                callPayload.Queries["pixel_ids"] = ExpressionConverter.Convert(pixelIds);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            if (domains != null)
-                callPayload.Queries["domains"] = ExpressionConverter.Convert(domains);
-            return new ApiConnectionAction<LinksGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildLinkDelete(WorkflowValue<string> bodyshortUrl = null)
+        {
+            WorkflowValue.Validate(bodyshortUrl, nameof(bodyshortUrl), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/v1/link";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyshortUrl != null)
+                {
+                    body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> LinkBulk(Expression<Func<string>> bodydomain = null, Expression<Func<bodylinksInputItem[]>> bodylinks = null, Expression<Func<int[]>> bodytags = null, Expression<Func<int[]>> bodypixels = null)
+        [WorkflowExpressionFactory(nameof(__BuildLinkPut))]
+        public IBodyWorkflowAction<LinkPutResponse> LinkPut([WorkflowExpression] Func<string> bodyshortUrl = null, [WorkflowExpression] Func<string> bodylongUrl = null, [WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<string> bodyshortId = null, [WorkflowExpression] Func<string> bodyexpireAtViews = null, [WorkflowExpression] Func<string> bodyexpireAtDatetime = null, [WorkflowExpression] Func<bool> bodypublicStats = null, [WorkflowExpression] Func<string> bodyqrCodeUrl = null, [WorkflowExpression] Func<string> bodyqrCodeBase64 = null, [WorkflowExpression] Func<int[]> bodytags = null, [WorkflowExpression] Func<int[]> bodypixels = null)
         {
-            var apiCallPath = "/api/v1/link/bulk";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydomain != null)
-            {
-                body["domain"] = ExpressionConverter.ConvertO(bodydomain);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodylinks != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LinkPutResponse> __BuildLinkPut(WorkflowValue<string> bodyshortUrl = null, WorkflowValue<string> bodylongUrl = null, WorkflowValue<string> bodydomain = null, WorkflowValue<string> bodyshortId = null, WorkflowValue<string> bodyexpireAtViews = null, WorkflowValue<string> bodyexpireAtDatetime = null, WorkflowValue<bool> bodypublicStats = null, WorkflowValue<string> bodyqrCodeUrl = null, WorkflowValue<string> bodyqrCodeBase64 = null, WorkflowValue<int[]> bodytags = null, WorkflowValue<int[]> bodypixels = null)
+        {
+            WorkflowValue.Validate(bodyshortUrl, nameof(bodyshortUrl), required: false);
+            WorkflowValue.Validate(bodylongUrl, nameof(bodylongUrl), required: false);
+            WorkflowValue.Validate(bodydomain, nameof(bodydomain), required: false);
+            WorkflowValue.Validate(bodyshortId, nameof(bodyshortId), required: false);
+            WorkflowValue.Validate(bodyexpireAtViews, nameof(bodyexpireAtViews), required: false);
+            WorkflowValue.Validate(bodyexpireAtDatetime, nameof(bodyexpireAtDatetime), required: false);
+            WorkflowValue.Validate(bodypublicStats, nameof(bodypublicStats), required: false);
+            WorkflowValue.Validate(bodyqrCodeUrl, nameof(bodyqrCodeUrl), required: false);
+            WorkflowValue.Validate(bodyqrCodeBase64, nameof(bodyqrCodeBase64), required: false);
+            WorkflowValue.Validate(bodytags, nameof(bodytags), required: false);
+            WorkflowValue.Validate(bodypixels, nameof(bodypixels), required: false);
+            return new DeferredBodyAction<LinkPutResponse>(() =>
             {
-                body["links"] = ExpressionConverter.ConvertO(bodylinks);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/link";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyshortUrl != null)
+                {
+                    body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
+                    bodypropCount++;
+                }
 
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
+                if (bodylongUrl != null)
+                {
+                    body["long_url"] = ExpressionConverter.ConvertO(bodylongUrl);
+                    bodypropCount++;
+                }
 
-            if (bodypixels != null)
-            {
-                body["pixels"] = ExpressionConverter.ConvertO(bodypixels);
-                bodypropCount++;
-            }
+                if (bodydomain != null)
+                {
+                    body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyshortId != null)
+                {
+                    body["short_id"] = ExpressionConverter.ConvertO(bodyshortId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodyexpireAtViews != null)
+                {
+                    body["expire_at_views"] = ExpressionConverter.ConvertO(bodyexpireAtViews);
+                    bodypropCount++;
+                }
+
+                if (bodyexpireAtDatetime != null)
+                {
+                    body["expire_at_datetime"] = ExpressionConverter.ConvertO(bodyexpireAtDatetime);
+                    bodypropCount++;
+                }
+
+                if (bodypublicStats != null)
+                {
+                    body["public_stats"] = ExpressionConverter.ConvertO(bodypublicStats);
+                    bodypropCount++;
+                }
+
+                if (bodyqrCodeUrl != null)
+                {
+                    body["qr_code_url"] = ExpressionConverter.ConvertO(bodyqrCodeUrl);
+                    bodypropCount++;
+                }
+
+                if (bodyqrCodeBase64 != null)
+                {
+                    body["qr_code_base64"] = ExpressionConverter.ConvertO(bodyqrCodeBase64);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypixels != null)
+                {
+                    body["pixels"] = ExpressionConverter.ConvertO(bodypixels);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<LinkPutResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<StatGetResponse> StatGet(Expression<Func<string>> shortLink)
+        [WorkflowExpressionFactory(nameof(__BuildLinkExpand))]
+        public IBodyWorkflowAction<LinkExpandPostResponse> LinkExpand([WorkflowExpression] Func<string> bodyshortUrl = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
-            var apiCallPath = "/api/v1/link/stats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["short_link"] = ExpressionConverter.Convert(shortLink);
-            return new ApiConnectionAction<StatGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LinkExpandPostResponse> __BuildLinkExpand(WorkflowValue<string> bodyshortUrl = null, WorkflowValue<string> bodypassword = null)
+        {
+            WorkflowValue.Validate(bodyshortUrl, nameof(bodyshortUrl), required: false);
+            WorkflowValue.Validate(bodypassword, nameof(bodypassword), required: false);
+            return new DeferredBodyAction<LinkExpandPostResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/link/expand";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyshortUrl != null)
+                {
+                    body["short_url"] = ExpressionConverter.ConvertO(bodyshortUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<LinkExpandPostResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
+        [WorkflowExpressionFactory(nameof(__BuildLinksGet))]
+        public IBodyWorkflowAction<LinksGetResponse> LinksGet([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> tagIds = null, [WorkflowExpression] Func<string> pixelIds = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> domains = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LinksGetResponse> __BuildLinksGet(WorkflowValue<string> search = null, WorkflowValue<string> tagIds = null, WorkflowValue<string> pixelIds = null, WorkflowValue<string> startDate = null, WorkflowValue<string> endDate = null, WorkflowValue<string> domains = null)
+        {
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(tagIds, nameof(tagIds), required: false);
+            WorkflowValue.Validate(pixelIds, nameof(pixelIds), required: false);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: false);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: false);
+            WorkflowValue.Validate(domains, nameof(domains), required: false);
+            return new DeferredBodyAction<LinksGetResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/link/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (tagIds != null)
+                    callPayload.Queries["tag_ids"] = ExpressionConverter.Convert(tagIds);
+                if (pixelIds != null)
+                    callPayload.Queries["pixel_ids"] = ExpressionConverter.Convert(pixelIds);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                if (domains != null)
+                    callPayload.Queries["domains"] = ExpressionConverter.Convert(domains);
+                return new ApiConnectionAction<LinksGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
+        [WorkflowExpressionFactory(nameof(__BuildLinkBulk))]
+        public IBodyWorkflowAction<string> LinkBulk([WorkflowExpression] Func<string> bodydomain = null, [WorkflowExpression] Func<bodylinksInputItem[]> bodylinks = null, [WorkflowExpression] Func<int[]> bodytags = null, [WorkflowExpression] Func<int[]> bodypixels = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildLinkBulk(WorkflowValue<string> bodydomain = null, WorkflowValue<bodylinksInputItem[]> bodylinks = null, WorkflowValue<int[]> bodytags = null, WorkflowValue<int[]> bodypixels = null)
+        {
+            WorkflowValue.Validate(bodydomain, nameof(bodydomain), required: false);
+            WorkflowValue.Validate(bodylinks, nameof(bodylinks), required: false);
+            WorkflowValue.Validate(bodytags, nameof(bodytags), required: false);
+            WorkflowValue.Validate(bodypixels, nameof(bodypixels), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/v1/link/bulk";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydomain != null)
+                {
+                    body["domain"] = ExpressionConverter.ConvertO(bodydomain);
+                    bodypropCount++;
+                }
+
+                if (bodylinks != null)
+                {
+                    body["links"] = ExpressionConverter.ConvertO(bodylinks);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypixels != null)
+                {
+                    body["pixels"] = ExpressionConverter.ConvertO(bodypixels);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
+        [WorkflowExpressionFactory(nameof(__BuildStatGet))]
+        public IBodyWorkflowAction<StatGetResponse> StatGet([WorkflowExpression] Func<string> shortLink)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StatGetResponse> __BuildStatGet(WorkflowValue<string> shortLink)
+        {
+            WorkflowValue.Validate(shortLink, nameof(shortLink), required: true);
+            return new DeferredBodyAction<StatGetResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/link/stats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["short_link"] = ExpressionConverter.Convert(shortLink);
+                return new ApiConnectionAction<StatGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
@@ -380,57 +541,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tly
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPostResponse> Tag(Expression<Func<string>> bodytag)
+        [WorkflowExpressionFactory(nameof(__BuildTag))]
+        public IBodyWorkflowAction<TagPostResponse> Tag([WorkflowExpression] Func<string> bodytag)
         {
-            var apiCallPath = "/api/v1/link/tag";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
-            if (bodypropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagPostResponse> __BuildTag(WorkflowValue<string> bodytag)
+        {
+            WorkflowValue.Validate(bodytag, nameof(bodytag), required: true);
+            return new DeferredBodyAction<TagPostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/v1/link/tag";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["tag"] = ExpressionConverter.ConvertO(bodytag);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<TagPostResponse>(callPayload);
+                return new ApiConnectionAction<TagPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagGetResponse> TagGet(Expression<Func<string>> tagId)
+        [WorkflowExpressionFactory(nameof(__BuildTagGet))]
+        public IBodyWorkflowAction<TagGetResponse> TagGet([WorkflowExpression] Func<string> tagId)
         {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TagGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<string> TagDelete(Expression<Func<string>> tagId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagGetResponse> __BuildTagGet(WorkflowValue<string> tagId)
         {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
-        public IBodyWorkflowAction<TagPutResponse> TagPut(Expression<Func<string>> tagId, Expression<Func<string>> bodytag)
-        {
-            var apiCallPath = String.Format("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["tag"] = ExpressionConverter.ConvertO(bodytag);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(tagId, nameof(tagId), required: true);
+            return new DeferredBodyAction<TagGetResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TagGetResponse>(callPayload);
+            });
+        }
 
-            return new ApiConnectionAction<TagPutResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
+        [WorkflowExpressionFactory(nameof(__BuildTagDelete))]
+        public IBodyWorkflowAction<string> TagDelete([WorkflowExpression] Func<string> tagId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildTagDelete(WorkflowValue<string> tagId)
+        {
+            WorkflowValue.Validate(tagId, nameof(tagId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tly")]
+        [WorkflowExpressionFactory(nameof(__BuildTagPut))]
+        public IBodyWorkflowAction<TagPutResponse> TagPut([WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodytag)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagPutResponse> __BuildTagPut(WorkflowValue<string> tagId, WorkflowValue<string> bodytag)
+        {
+            WorkflowValue.Validate(tagId, nameof(tagId), required: true);
+            WorkflowValue.Validate(bodytag, nameof(bodytag), required: true);
+            return new DeferredBodyAction<TagPutResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/link/tag/{0}", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["tag"] = ExpressionConverter.ConvertO(bodytag);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TagPutResponse>(callPayload);
+            });
         }
     }
 

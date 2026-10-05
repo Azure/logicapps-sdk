@@ -4,702 +4,1260 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dpirdweatherip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DpirdweatheripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsResponse> GetStations(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStations))]
+        public IBodyWorkflowAction<GetStationsResponse> GetStations([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            var apiCallPath = "/stations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            return new ApiConnectionAction<GetStationsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationsResponse> __BuildGetStations(WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null, WorkflowValue<groupInput> group = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            return new DeferredBodyAction<GetStationsResponse>(() =>
+            {
+                var apiCallPath = "/stations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                return new ApiConnectionAction<GetStationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsAvailabilityResponse> GetStationsAvailability(Expression<Func<string>> stationCode = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsAvailability))]
+        public IBodyWorkflowAction<GetStationsAvailabilityResponse> GetStationsAvailability([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/availability";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (startDate != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationsAvailabilityResponse> __BuildGetStationsAvailability(WorkflowValue<string> stationCode = null, WorkflowValue<string> startDate = null, WorkflowValue<string> endDate = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: false);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetStationsAvailabilityResponse>(() =>
+            {
+                var apiCallPath = "/stations/availability";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetStationsAvailabilityResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetNearbyWeatherStations))]
+        public IWorkflowAction GetNearbyWeatherStations([WorkflowExpression] Func<double> latitude, [WorkflowExpression] Func<double> longitude, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetNearbyWeatherStations(WorkflowValue<double> latitude, WorkflowValue<double> longitude, WorkflowValue<int> radius = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null, WorkflowValue<groupInput> group = null)
+        {
+            WorkflowValue.Validate(latitude, nameof(latitude), required: true);
+            WorkflowValue.Validate(longitude, nameof(longitude), required: true);
+            WorkflowValue.Validate(radius, nameof(radius), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/stations/nearby";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
+                callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
+                if (radius != null)
+                    callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetStation))]
+        public IBodyWorkflowAction<GetStationResponse> GetStation([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationResponse> __BuildGetStation(WorkflowValue<string> stationCode, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetStationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetStationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetWeatherStationAvailability))]
+        public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse> GetWeatherStationAvailability([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse> __BuildGetWeatherStationAvailability(WorkflowValue<string> stationCode, WorkflowValue<string> startDate = null, WorkflowValue<string> endDate = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: false);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetWeatherStationAvailabilityResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/availability", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetWeatherStationAvailabilityResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsBulletins))]
+        public IBodyWorkflowAction<GetStationsBulletinsResponse> GetStationsBulletins([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationsBulletinsResponse> __BuildGetStationsBulletins(WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null, WorkflowValue<groupInput> group = null)
+        {
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            return new DeferredBodyAction<GetStationsBulletinsResponse>(() =>
+            {
+                var apiCallPath = "/stations/bulletins";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
                 callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetStationsAvailabilityResponse>(callPayload);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                return new ApiConnectionAction<GetStationsBulletinsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IWorkflowAction GetNearbyWeatherStations(Expression<Func<double>> latitude, Expression<Func<double>> longitude, Expression<Func<int>> radius = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetWeatherStationsRainfall))]
+        public IBodyWorkflowAction<GetWeatherStationsRainfallResponse> GetWeatherStationsRainfall([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            var apiCallPath = "/stations/nearby";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["latitude"] = ExpressionConverter.Convert(latitude);
-            callPayload.Queries["longitude"] = ExpressionConverter.Convert(longitude);
-            if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationResponse> GetStation(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetWeatherStationsRainfallResponse> __BuildGetWeatherStationsRainfall(WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null, WorkflowValue<groupInput> group = null)
         {
-            var apiCallPath = String.Format("/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetStationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetWeatherStationAvailabilityResponse> GetWeatherStationAvailability(Expression<Func<string>> stationCode, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = String.Format("/stations/{0}/availability", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            return new DeferredBodyAction<GetWeatherStationsRainfallResponse>(() =>
+            {
+                var apiCallPath = "/stations/rainfall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            if (endDate != null)
                 callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetWeatherStationAvailabilityResponse>(callPayload);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                return new ApiConnectionAction<GetWeatherStationsRainfallResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsBulletinsResponse> GetStationsBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetWeatherStationRainfall))]
+        public IBodyWorkflowAction<GetWeatherStationRainfallResponse> GetWeatherStationRainfall([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            var apiCallPath = "/stations/bulletins";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            return new ApiConnectionAction<GetStationsBulletinsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetWeatherStationRainfallResponse> __BuildGetWeatherStationRainfall(WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null, WorkflowValue<groupInput> group = null)
+        {
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            return new DeferredBodyAction<GetWeatherStationRainfallResponse>(() =>
+            {
+                var apiCallPath = "/stations1/rainfall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                return new ApiConnectionAction<GetWeatherStationRainfallResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetWeatherStationsRainfallResponse> GetWeatherStationsRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsExtremeConditions))]
+        public IBodyWorkflowAction<GetStationsExtremeConditionsResponse> GetStationsExtremeConditions([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null)
         {
-            var apiCallPath = "/stations/rainfall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            return new ApiConnectionAction<GetWeatherStationsRainfallResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationsExtremeConditionsResponse> __BuildGetStationsExtremeConditions(WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            return new DeferredBodyAction<GetStationsExtremeConditionsResponse>(() =>
+            {
+                var apiCallPath = "/stations/extreme-conditions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                return new ApiConnectionAction<GetStationsExtremeConditionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetWeatherStationRainfallResponse> GetWeatherStationRainfall(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsExtremeEvents))]
+        public IBodyWorkflowAction<GetStationsExtremeEventsResponse> GetStationsExtremeEvents([WorkflowExpression] Func<@operatorInput> @operator, [WorkflowExpression] Func<int> threshold, [WorkflowExpression] Func<propertyInput> property, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<intervalInput> interval = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations1/rainfall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            return new ApiConnectionAction<GetWeatherStationRainfallResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationsExtremeEventsResponse> __BuildGetStationsExtremeEvents(WorkflowValue<@operatorInput> @operator, WorkflowValue<int> threshold, WorkflowValue<propertyInput> property, WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<string> stationCode = null, WorkflowValue<intervalInput> interval = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(@operator, nameof(@operator), required: true);
+            WorkflowValue.Validate(threshold, nameof(threshold), required: true);
+            WorkflowValue.Validate(property, nameof(property), required: true);
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(interval, nameof(interval), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetStationsExtremeEventsResponse>(() =>
+            {
+                var apiCallPath = "/stations/events";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                callPayload.Queries["operator"] = ExpressionConverter.Convert(@operator);
+                callPayload.Queries["threshold"] = ExpressionConverter.Convert(threshold);
+                callPayload.Queries["property"] = ExpressionConverter.Convert(property);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (interval != null)
+                    callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetStationsExtremeEventsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsExtremeConditionsResponse> GetStationsExtremeConditions(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsLatestData))]
+        public IBodyWorkflowAction<GetStationsLatestDataResponse> GetStationsLatestData([WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<groupInput> group = null)
         {
-            var apiCallPath = "/stations/extreme-conditions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            return new ApiConnectionAction<GetStationsExtremeConditionsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationsLatestDataResponse> __BuildGetStationsLatestData(WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> select = null, WorkflowValue<groupInput> group = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            return new DeferredBodyAction<GetStationsLatestDataResponse>(() =>
+            {
+                var apiCallPath = "/stations/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                return new ApiConnectionAction<GetStationsLatestDataResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsExtremeEventsResponse> GetStationsExtremeEvents(Expression<Func<@operatorInput>> @operator, Expression<Func<int>> threshold, Expression<Func<propertyInput>> property, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<intervalInput>> interval = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationBulletins))]
+        public IBodyWorkflowAction<GetStationBulletinsResponse> GetStationBulletins([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/events";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            callPayload.Queries["operator"] = ExpressionConverter.Convert(@operator);
-            callPayload.Queries["threshold"] = ExpressionConverter.Convert(threshold);
-            callPayload.Queries["property"] = ExpressionConverter.Convert(property);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (interval != null)
-                callPayload.Queries["interval"] = ExpressionConverter.Convert(interval);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetStationsExtremeEventsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationBulletinsResponse> __BuildGetStationBulletins(WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<string> stationCode, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetStationBulletinsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/bulletin", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetStationBulletinsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationsLatestDataResponse> GetStationsLatestData(Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> select = null, Expression<Func<groupInput>> group = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationLatestData))]
+        public IBodyWorkflowAction<GetStationLatestDataResponse> GetStationLatestData([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            return new ApiConnectionAction<GetStationsLatestDataResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationLatestDataResponse> __BuildGetStationLatestData(WorkflowValue<string> stationCode, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetStationLatestDataResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetStationLatestDataResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationBulletinsResponse> GetStationBulletins(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationMinuteData))]
+        public IBodyWorkflowAction<GetStationMinuteDataResponse> GetStationMinuteData([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/bulletin", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetStationBulletinsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetStationMinuteDataResponse> __BuildGetStationMinuteData(WorkflowValue<string> stationCode, WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<GetStationMinuteDataResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<GetStationMinuteDataResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationLatestDataResponse> GetStationLatestData(Expression<Func<string>> stationCode, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStations15minSummary))]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations15minSummary([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/latest", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetStationLatestDataResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStations15minSummary(WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/15min";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<GetStationMinuteDataResponse> GetStationMinuteData(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStations30minSummary))]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations30minSummary([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/data", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<GetStationMinuteDataResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStations30minSummary(WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/30min";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations15minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsHourlySummary))]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsHourlySummary([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/15min";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStationsHourlySummary(WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/hourly";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStations30minSummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsDailySummary))]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsDailySummary([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/30min";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStationsDailySummary(WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/daily";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsHourlySummary(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsMonthlySummary))]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsMonthlySummary([WorkflowExpression] Func<string> startMonth, [WorkflowExpression] Func<string> endMonth, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/hourly";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStationsMonthlySummary(WorkflowValue<string> startMonth, WorkflowValue<string> endMonth, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startMonth, nameof(startMonth), required: true);
+            WorkflowValue.Validate(endMonth, nameof(endMonth), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/monthly";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
+                callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsDailySummary(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsYearlySummary))]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsYearlySummary([WorkflowExpression] Func<string> startYear, [WorkflowExpression] Func<string> endYear, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/daily";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MultiStationSummarySchemaModel> __BuildGetStationsYearlySummary(WorkflowValue<string> startYear, WorkflowValue<string> endYear, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startYear, nameof(startYear), required: true);
+            WorkflowValue.Validate(endYear, nameof(endYear), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<MultiStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/yearly";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startYear"] = ExpressionConverter.Convert(startYear);
+                callPayload.Queries["endYear"] = ExpressionConverter.Convert(endYear);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsMonthlySummary(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStations15minSummaryTimeSeries))]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations15minSummaryTimeSeries([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/monthly";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
-            callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStations15minSummaryTimeSeries(WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/15min/timeseries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<MultiStationSummarySchemaModel> GetStationsYearlySummary(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStations30minSummaryTimeSeries))]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations30minSummaryTimeSeries([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/yearly";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startYear"] = ExpressionConverter.Convert(startYear);
-            callPayload.Queries["endYear"] = ExpressionConverter.Convert(endYear);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<MultiStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStations30minSummaryTimeSeries(WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/30min/timeseries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations15minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsHourlySummaryTimeSeries))]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsHourlySummaryTimeSeries([WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/15min/timeseries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStationsHourlySummaryTimeSeries(WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/hourly/timeseries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStations30minSummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsDailySummaryTimeSeries))]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsDailySummaryTimeSeries([WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/30min/timeseries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStationsDailySummaryTimeSeries(WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/daily/timeseries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsHourlySummaryTimeSeries(Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsMonthlySummaryTimeSeries))]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsMonthlySummaryTimeSeries([WorkflowExpression] Func<string> startMonth, [WorkflowExpression] Func<string> endMonth, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/hourly/timeseries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStationsMonthlySummaryTimeSeries(WorkflowValue<string> startMonth, WorkflowValue<string> endMonth, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startMonth, nameof(startMonth), required: true);
+            WorkflowValue.Validate(endMonth, nameof(endMonth), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/monthly/timeseries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
+                callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsDailySummaryTimeSeries(Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationsYearlySummaryTimeSeries))]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsYearlySummaryTimeSeries([WorkflowExpression] Func<string> startYear, [WorkflowExpression] Func<string> endYear, [WorkflowExpression] Func<string> stationCode = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<groupInput> group = null, [WorkflowExpression] Func<bool> includeClosed = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/daily/timeseries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> __BuildGetStationsYearlySummaryTimeSeries(WorkflowValue<string> startYear, WorkflowValue<string> endYear, WorkflowValue<string> stationCode = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<groupInput> group = null, WorkflowValue<bool> includeClosed = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(startYear, nameof(startYear), required: true);
+            WorkflowValue.Validate(endYear, nameof(endYear), required: true);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(group, nameof(group), required: false);
+            WorkflowValue.Validate(includeClosed, nameof(includeClosed), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<StationTimeSeriesSchemaModel>(() =>
+            {
+                var apiCallPath = "/stations/summaries/yearly/timeseries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startYear"] = ExpressionConverter.Convert(startYear);
+                callPayload.Queries["endYear"] = ExpressionConverter.Convert(endYear);
+                if (stationCode != null)
+                    callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (group != null)
+                    callPayload.Queries["group"] = ExpressionConverter.Convert(group);
+                if (includeClosed != null)
+                    callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsMonthlySummaryTimeSeries(Expression<Func<string>> startMonth, Expression<Func<string>> endMonth, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStation15minSummary))]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation15minSummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/monthly/timeseries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startMonth"] = ExpressionConverter.Convert(startMonth);
-            callPayload.Queries["endMonth"] = ExpressionConverter.Convert(endMonth);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStation15minSummary(WorkflowValue<string> stationCode, WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/15min", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<StationTimeSeriesSchemaModel> GetStationsYearlySummaryTimeSeries(Expression<Func<string>> startYear, Expression<Func<string>> endYear, Expression<Func<string>> stationCode = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<groupInput>> group = null, Expression<Func<bool>> includeClosed = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStation30minSummary))]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation30minSummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = "/stations/summaries/yearly/timeseries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startYear"] = ExpressionConverter.Convert(startYear);
-            callPayload.Queries["endYear"] = ExpressionConverter.Convert(endYear);
-            if (stationCode != null)
-                callPayload.Queries["stationCode"] = ExpressionConverter.Convert(stationCode);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (group != null)
-                callPayload.Queries["group"] = ExpressionConverter.Convert(group);
-            if (includeClosed != null)
-                callPayload.Queries["includeClosed"] = ExpressionConverter.Convert(includeClosed);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<StationTimeSeriesSchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStation30minSummary(WorkflowValue<string> stationCode, WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/30min", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation15minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationHourlySummary))]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationHourlySummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDateTime, [WorkflowExpression] Func<string> endDateTime, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/15min", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStationHourlySummary(WorkflowValue<string> stationCode, WorkflowValue<string> startDateTime, WorkflowValue<string> endDateTime, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(startDateTime, nameof(startDateTime), required: true);
+            WorkflowValue.Validate(endDateTime, nameof(endDateTime), required: true);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/hourly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
+                callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStation30minSummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationDailySummary))]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationDailySummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/30min", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStationDailySummary(WorkflowValue<string> stationCode, WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/daily", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationHourlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDateTime, Expression<Func<string>> endDateTime, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationMonthlySummary))]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationMonthlySummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/hourly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDateTime"] = ExpressionConverter.Convert(startDateTime);
-            callPayload.Queries["endDateTime"] = ExpressionConverter.Convert(endDateTime);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStationMonthlySummary(WorkflowValue<string> stationCode, WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/monthly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationDailySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetStationYearlySummary))]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationYearlySummary([WorkflowExpression] Func<string> stationCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/daily", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationMonthlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleStationSummarySchemaModel> __BuildGetStationYearlySummary(WorkflowValue<string> stationCode, WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null, WorkflowValue<string> select = null)
         {
-            var apiCallPath = String.Format("/stations/{0}/summaries/monthly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dpirdweatherip")]
-        public IBodyWorkflowAction<SingleStationSummarySchemaModel> GetStationYearlySummary(Expression<Func<string>> stationCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = String.Format("/stations/{0}/summaries/yearly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (select != null)
-                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            WorkflowValue.Validate(stationCode, nameof(stationCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<SingleStationSummarySchemaModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/stations/{0}/summaries/yearly", ExpressionConverter.ConvertWithUrlEncoding(stationCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["startDate"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["endDate"] = ExpressionConverter.Convert(endDate);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (select != null)
+                    callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<SingleStationSummarySchemaModel>(callPayload);
+            });
         }
     }
 

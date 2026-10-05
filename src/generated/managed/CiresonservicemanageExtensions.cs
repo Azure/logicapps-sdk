@@ -4,858 +4,1116 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CiresonservicemanageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemGetResponse> GetWorkItem(Expression<Func<string>> workItemId)
+        [WorkflowExpressionFactory(nameof(__BuildGetWorkItem))]
+        public IBodyWorkflowAction<WorkItemGetResponse> GetWorkItem([WorkflowExpression] Func<string> workItemId)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/WorkItems/{0}", ExpressionConverter.ConvertWithUrlEncoding(workItemId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<WorkItemGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemGetResponse> __BuildGetWorkItem(WorkflowValue<string> workItemId)
+        {
+            WorkflowValue.Validate(workItemId, nameof(workItemId), required: true);
+            return new DeferredBodyAction<WorkItemGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}", ExpressionConverter.ConvertWithUrlEncoding(workItemId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<WorkItemGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<DeleteWorkItemResponse> DeleteWorkItem(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteWorkItem))]
+        public IBodyWorkflowAction<DeleteWorkItemResponse> DeleteWorkItem([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/WorkItems/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteWorkItemResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteWorkItemResponse> __BuildDeleteWorkItem(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<DeleteWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/WorkItems/{0}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeleteWorkItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateIncident(Expression<Func<string>> bodyclassification, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodyimpact, Expression<Func<string>> bodysource, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateIncident))]
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateIncident([WorkflowExpression] Func<string> bodyclassification, [WorkflowExpression] Func<string> bodyurgency, [WorkflowExpression] Func<string> bodyimpact, [WorkflowExpression] Func<string> bodysource, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodysupportGroup = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyaffectedUser = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/Incident";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
-            bodypropCount++;
-            body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-            bodypropCount++;
-            body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-            bodypropCount++;
-            body["Source"] = ExpressionConverter.ConvertO(bodysource);
-            if (bodysupportGroup != null)
-            {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyaffectedUser != null)
-            {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateIncident(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> __BuildCreateIncident(WorkflowValue<string> bodyclassification, WorkflowValue<string> bodyurgency, WorkflowValue<string> bodyimpact, WorkflowValue<string> bodysource, WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<int> bodypriority = null, WorkflowValue<string> bodysupportGroup = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyaffectedUser = null, WorkflowValue<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/Incident/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            WorkflowValue.Validate(bodyclassification, nameof(bodyclassification), required: true);
+            WorkflowValue.Validate(bodyurgency, nameof(bodyurgency), required: true);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: true);
+            WorkflowValue.Validate(bodysource, nameof(bodysource), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodysupportGroup, nameof(bodysupportGroup), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyaffectedUser, nameof(bodyaffectedUser), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/CloudConnector/Incident";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyclassification != null)
-            {
+                bodypropCount++;
                 body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
                 bodypropCount++;
-            }
-
-            if (bodyurgency != null)
-            {
                 body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
                 bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
                 body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
                 bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
                 body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
+                if (bodysupportGroup != null)
+                {
+                    body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                    bodypropCount++;
+                }
 
-            if (bodysupportGroup != null)
-            {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodyaffectedUser != null)
+                {
+                    body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
+                    bodypropCount++;
+                }
 
-            if (bodyaffectedUser != null)
-            {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
-                bodypropCount++;
-            }
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
 
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+                return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateServiceRequest(Expression<Func<string>> bodyarea, Expression<Func<string>> bodyurgency, Expression<Func<string>> bodysource, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateIncident))]
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateIncident([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodyclassification = null, [WorkflowExpression] Func<string> bodyurgency = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodysupportGroup = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyaffectedUser = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/ServiceRequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydescription != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> __BuildUpdateIncident(WorkflowValue<string> id, WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<int> bodypriority = null, WorkflowValue<string> bodyclassification = null, WorkflowValue<string> bodyurgency = null, WorkflowValue<string> bodyimpact = null, WorkflowValue<string> bodysource = null, WorkflowValue<string> bodysupportGroup = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyaffectedUser = null, WorkflowValue<string> bodyassignedUser = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyclassification, nameof(bodyclassification), required: false);
+            WorkflowValue.Validate(bodyurgency, nameof(bodyurgency), required: false);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: false);
+            WorkflowValue.Validate(bodysource, nameof(bodysource), required: false);
+            WorkflowValue.Validate(bodysupportGroup, nameof(bodysupportGroup), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyaffectedUser, nameof(bodyaffectedUser), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Incident/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["Area"] = ExpressionConverter.ConvertO(bodyarea);
-            bodypropCount++;
-            body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-            bodypropCount++;
-            body["Source"] = ExpressionConverter.ConvertO(bodysource);
-            if (bodysupportGroup != null)
-            {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
-                bodypropCount++;
-            }
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodyclassification != null)
+                {
+                    body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
+                    bodypropCount++;
+                }
 
-            if (bodyaffectedUser != null)
-            {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
-                bodypropCount++;
-            }
+                if (bodyurgency != null)
+                {
+                    body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+                    bodypropCount++;
+                }
 
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysource != null)
+                {
+                    body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+                if (bodysupportGroup != null)
+                {
+                    body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyaffectedUser != null)
+                {
+                    body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateServiceRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<int>> bodypriority = null, Expression<Func<string>> bodyclassification = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodysupportGroup = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyaffectedUser = null, Expression<Func<string>> bodyassignedUser = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateServiceRequest))]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateServiceRequest([WorkflowExpression] Func<string> bodyarea, [WorkflowExpression] Func<string> bodyurgency, [WorkflowExpression] Func<string> bodysource, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodysupportGroup = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyaffectedUser = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/ServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyclassification != null)
-            {
-                body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
-                bodypropCount++;
-            }
-
-            if (bodyurgency != null)
-            {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
-
-            if (bodysupportGroup != null)
-            {
-                body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyaffectedUser != null)
-            {
-                body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateChangeRequest(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildCreateServiceRequest(WorkflowValue<string> bodyarea, WorkflowValue<string> bodyurgency, WorkflowValue<string> bodysource, WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodysupportGroup = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyaffectedUser = null, WorkflowValue<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/ChangeRequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            WorkflowValue.Validate(bodyarea, nameof(bodyarea), required: true);
+            WorkflowValue.Validate(bodyurgency, nameof(bodyurgency), required: true);
+            WorkflowValue.Validate(bodysource, nameof(bodysource), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodysupportGroup, nameof(bodysupportGroup), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyaffectedUser, nameof(bodyaffectedUser), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/CloudConnector/ServiceRequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyarea != null)
-            {
+                bodypropCount++;
                 body["Area"] = ExpressionConverter.ConvertO(bodyarea);
                 bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyrisk != null)
-            {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateChangeRequest(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyarea = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
-        {
-            var apiCallPath = String.Format("/api/CloudConnector/ChangeRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyarea != null)
-            {
-                body["Area"] = ExpressionConverter.ConvertO(bodyarea);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyrisk != null)
-            {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateProblem(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
-        {
-            var apiCallPath = "/api/CloudConnector/Problem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
-                body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
-
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
-
-            if (bodyurgency != null)
-            {
                 body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
                 bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateProblem(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyurgency = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
-        {
-            var apiCallPath = String.Format("/api/CloudConnector/Problem/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
                 body["Source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
+                if (bodysupportGroup != null)
+                {
+                    body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                    bodypropCount++;
+                }
 
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
+                if (bodyaffectedUser != null)
+                {
+                    body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
+                    bodypropCount++;
+                }
 
-            if (bodyurgency != null)
-            {
-                body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
-                bodypropCount++;
-            }
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+                return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateReleaseRecord(Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateServiceRequest))]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateServiceRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<int> bodypriority = null, [WorkflowExpression] Func<string> bodyclassification = null, [WorkflowExpression] Func<string> bodyurgency = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodysupportGroup = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyaffectedUser = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = "/api/CloudConnector/ReleaseRecord";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydescription != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildUpdateServiceRequest(WorkflowValue<string> id, WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<int> bodypriority = null, WorkflowValue<string> bodyclassification = null, WorkflowValue<string> bodyurgency = null, WorkflowValue<string> bodyimpact = null, WorkflowValue<string> bodysource = null, WorkflowValue<string> bodysupportGroup = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyaffectedUser = null, WorkflowValue<string> bodyassignedUser = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyclassification, nameof(bodyclassification), required: false);
+            WorkflowValue.Validate(bodyurgency, nameof(bodyurgency), required: false);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: false);
+            WorkflowValue.Validate(bodysource, nameof(bodysource), required: false);
+            WorkflowValue.Validate(bodysupportGroup, nameof(bodysupportGroup), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyaffectedUser, nameof(bodyaffectedUser), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ServiceRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
+                if (bodyclassification != null)
+                {
+                    body["Classification"] = ExpressionConverter.ConvertO(bodyclassification);
+                    bodypropCount++;
+                }
 
-            if (bodyrisk != null)
-            {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
-                bodypropCount++;
-            }
+                if (bodyurgency != null)
+                {
+                    body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodysource != null)
+                {
+                    body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                    bodypropCount++;
+                }
 
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
+                if (bodysupportGroup != null)
+                {
+                    body["SupportGroup"] = ExpressionConverter.ConvertO(bodysupportGroup);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+                if (bodyaffectedUser != null)
+                {
+                    body["RequestedWorkItem"] = ExpressionConverter.ConvertO(bodyaffectedUser);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateReleaseRecord(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyimpact = null, Expression<Func<string>> bodyrisk = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyassignedUser = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateChangeRequest))]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateChangeRequest([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyarea = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyrisk = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/CloudConnector/ReleaseRecord/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["Title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydescription != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildCreateChangeRequest(WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodyarea = null, WorkflowValue<string> bodyimpact = null, WorkflowValue<string> bodyrisk = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyassignedUser = null)
+        {
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyarea, nameof(bodyarea), required: false);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: false);
+            WorkflowValue.Validate(bodyrisk, nameof(bodyrisk), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/CloudConnector/ChangeRequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodycategory != null)
-            {
-                body["Category"] = ExpressionConverter.ConvertO(bodycategory);
-                bodypropCount++;
-            }
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyimpact != null)
-            {
-                body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
-                bodypropCount++;
-            }
+                if (bodyarea != null)
+                {
+                    body["Area"] = ExpressionConverter.ConvertO(bodyarea);
+                    bodypropCount++;
+                }
 
-            if (bodyrisk != null)
-            {
-                body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
-                bodypropCount++;
-            }
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (bodyrisk != null)
+                {
+                    body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodyassignedUser != null)
-            {
-                body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
-                bodypropCount++;
-            }
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+                return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
-        public IBodyWorkflowAction<WorkItemActionLogResponse> AddCommentLog(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyenteredBy = null, Expression<Func<bool>> bodyisPrivate = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateChangeRequest))]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateChangeRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyarea = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyrisk = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
         {
-            var apiCallPath = String.Format("/api/cloudconnector/workItems/{0}/ActionLogComment", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyenteredBy != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildUpdateChangeRequest(WorkflowValue<string> id, WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodyarea = null, WorkflowValue<string> bodyimpact = null, WorkflowValue<string> bodyrisk = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyassignedUser = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyarea, nameof(bodyarea), required: false);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: false);
+            WorkflowValue.Validate(bodyrisk, nameof(bodyrisk), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
-                body["EnteredBy"] = ExpressionConverter.ConvertO(bodyenteredBy);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ChangeRequest/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodyisPrivate != null)
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyarea != null)
+                {
+                    body["Area"] = ExpressionConverter.ConvertO(bodyarea);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyrisk != null)
+                {
+                    body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateProblem))]
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> CreateProblem([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyurgency = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> __BuildCreateProblem(WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodysource = null, WorkflowValue<string> bodycategory = null, WorkflowValue<string> bodyimpact = null, WorkflowValue<string> bodyurgency = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyassignedUser = null)
+        {
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodysource, nameof(bodysource), required: false);
+            WorkflowValue.Validate(bodycategory, nameof(bodycategory), required: false);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: false);
+            WorkflowValue.Validate(bodyurgency, nameof(bodyurgency), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
-                body["IsPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/CloudConnector/Problem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodyactionType != null)
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodysource != null)
+                {
+                    body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyurgency != null)
+                {
+                    body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateProblem))]
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> UpdateProblem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyurgency = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedIRResponse> __BuildUpdateProblem(WorkflowValue<string> id, WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodysource = null, WorkflowValue<string> bodycategory = null, WorkflowValue<string> bodyimpact = null, WorkflowValue<string> bodyurgency = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyassignedUser = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodysource, nameof(bodysource), required: false);
+            WorkflowValue.Validate(bodycategory, nameof(bodycategory), required: false);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: false);
+            WorkflowValue.Validate(bodyurgency, nameof(bodyurgency), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedIRResponse>(() =>
             {
-                body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/Problem/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodysource != null)
+                {
+                    body["Source"] = ExpressionConverter.ConvertO(bodysource);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyurgency != null)
+                {
+                    body["Urgency"] = ExpressionConverter.ConvertO(bodyurgency);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<WorkItemCreatedIRResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateReleaseRecord))]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> CreateReleaseRecord([WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyrisk = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildCreateReleaseRecord(WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodytype = null, WorkflowValue<string> bodycategory = null, WorkflowValue<string> bodyimpact = null, WorkflowValue<string> bodyrisk = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyassignedUser = null)
+        {
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodycategory, nameof(bodycategory), required: false);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: false);
+            WorkflowValue.Validate(bodyrisk, nameof(bodyrisk), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/CloudConnector/ReleaseRecord";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<WorkItemActionLogResponse>(callPayload);
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["Type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyrisk != null)
+                {
+                    body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateReleaseRecord))]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> UpdateReleaseRecord([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyimpact = null, [WorkflowExpression] Func<string> bodyrisk = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyassignedUser = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemCreatedSRResponse> __BuildUpdateReleaseRecord(WorkflowValue<string> id, WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodytype = null, WorkflowValue<string> bodycategory = null, WorkflowValue<string> bodyimpact = null, WorkflowValue<string> bodyrisk = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyassignedUser = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodycategory, nameof(bodycategory), required: false);
+            WorkflowValue.Validate(bodyimpact, nameof(bodyimpact), required: false);
+            WorkflowValue.Validate(bodyrisk, nameof(bodyrisk), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyassignedUser, nameof(bodyassignedUser), required: false);
+            return new DeferredBodyAction<WorkItemCreatedSRResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/CloudConnector/ReleaseRecord/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["Title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["Type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["Category"] = ExpressionConverter.ConvertO(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyimpact != null)
+                {
+                    body["Impact"] = ExpressionConverter.ConvertO(bodyimpact);
+                    bodypropCount++;
+                }
+
+                if (bodyrisk != null)
+                {
+                    body["Risk"] = ExpressionConverter.ConvertO(bodyrisk);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedUser != null)
+                {
+                    body["AssignedWorkItem"] = ExpressionConverter.ConvertO(bodyassignedUser);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<WorkItemCreatedSRResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciresonservicemanage")]
+        [WorkflowExpressionFactory(nameof(__BuildAddCommentLog))]
+        public IBodyWorkflowAction<WorkItemActionLogResponse> AddCommentLog([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyenteredBy = null, [WorkflowExpression] Func<bool> bodyisPrivate = null, [WorkflowExpression] Func<bodyactionTypeInput> bodyactionType = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WorkItemActionLogResponse> __BuildAddCommentLog(WorkflowValue<string> id, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodyenteredBy = null, WorkflowValue<bool> bodyisPrivate = null, WorkflowValue<bodyactionTypeInput> bodyactionType = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodyenteredBy, nameof(bodyenteredBy), required: false);
+            WorkflowValue.Validate(bodyisPrivate, nameof(bodyisPrivate), required: false);
+            WorkflowValue.Validate(bodyactionType, nameof(bodyactionType), required: false);
+            return new DeferredBodyAction<WorkItemActionLogResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/cloudconnector/workItems/{0}/ActionLogComment", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyenteredBy != null)
+                {
+                    body["EnteredBy"] = ExpressionConverter.ConvertO(bodyenteredBy);
+                    bodypropCount++;
+                }
+
+                if (bodyisPrivate != null)
+                {
+                    body["IsPrivate"] = ExpressionConverter.ConvertO(bodyisPrivate);
+                    bodypropCount++;
+                }
+
+                if (bodyactionType != null)
+                {
+                    body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<WorkItemActionLogResponse>(callPayload);
+            });
         }
     }
 
     public class CiresonservicemanageTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSettings> CreateWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
+        public IBodyWorkflowTrigger<WebhookSettings> CreateWebhook([WorkflowExpression] Func<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/platform/api/CreateWebhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webhookSettingsObject = new JObject();
-            var webhookSettingsObjectpropCount = 0;
-            webhookSettingsObject["Url"] = "@listCallbackUrl()";
-            webhookSettingsObjectpropCount++;
-            if (bodywebhookSettingsworkItemClassType != null)
-            {
-                if (bodywebhookSettingsworkItemClassType != null)
-                {
-                    webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
-                    webhookSettingsObjectpropCount++;
-                }
-
-                webhookSettingsObjectpropCount++;
-            }
-            else
-            {
-                webhookSettingsObject["WorkItemClassType"] = "Incident";
-                webhookSettingsObjectpropCount++;
-            }
-
-            if (webhookSettingsObjectpropCount > 0)
-            {
-                body["webhookSettings"] = webhookSettingsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook(Expression<Func<bodywebhookSettingsworkItemClassTypeInput>> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebhookSettings> __BuildCreateWebhook(WorkflowValue<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/platform/api/CreateActionLogWebhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webhookSettingsObject = new JObject();
-            var webhookSettingsObjectpropCount = 0;
-            webhookSettingsObject["Url"] = "@listCallbackUrl()";
-            webhookSettingsObjectpropCount++;
-            if (bodywebhookSettingsworkItemClassType != null)
+            WorkflowValue.Validate(bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
+            return new DeferredBodyTrigger<WebhookSettings>(() =>
             {
+                var apiCallPath = "/platform/api/CreateWebhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webhookSettingsObject = new JObject();
+                var webhookSettingsObjectpropCount = 0;
+                webhookSettingsObject["Url"] = "#{listCallbackUrl()}";
+                webhookSettingsObjectpropCount++;
                 if (bodywebhookSettingsworkItemClassType != null)
                 {
-                    webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                    if (bodywebhookSettingsworkItemClassType != null)
+                    {
+                        webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                        webhookSettingsObjectpropCount++;
+                    }
+
+                    webhookSettingsObjectpropCount++;
+                }
+                else
+                {
+                    webhookSettingsObject["WorkItemClassType"] = "Incident";
                     webhookSettingsObjectpropCount++;
                 }
 
+                if (webhookSettingsObjectpropCount > 0)
+                {
+                    body["webhookSettings"] = webhookSettingsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateActionLogWebhook))]
+        public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook([WorkflowExpression] Func<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebhookSettings> __BuildCreateActionLogWebhook(WorkflowValue<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
+            return new DeferredBodyTrigger<WebhookSettings>(() =>
+            {
+                var apiCallPath = "/platform/api/CreateActionLogWebhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webhookSettingsObject = new JObject();
+                var webhookSettingsObjectpropCount = 0;
+                webhookSettingsObject["Url"] = "#{listCallbackUrl()}";
                 webhookSettingsObjectpropCount++;
-            }
-            else
-            {
-                webhookSettingsObject["WorkItemClassType"] = "Analyst Comment";
-                webhookSettingsObjectpropCount++;
-            }
+                if (bodywebhookSettingsworkItemClassType != null)
+                {
+                    if (bodywebhookSettingsworkItemClassType != null)
+                    {
+                        webhookSettingsObject["WorkItemClassType"] = ExpressionConverter.ConvertO(bodywebhookSettingsworkItemClassType);
+                        webhookSettingsObjectpropCount++;
+                    }
 
-            if (webhookSettingsObjectpropCount > 0)
-            {
-                body["webhookSettings"] = webhookSettingsObject;
-                bodypropCount++;
-            }
+                    webhookSettingsObjectpropCount++;
+                }
+                else
+                {
+                    webhookSettingsObject["WorkItemClassType"] = "Analyst Comment";
+                    webhookSettingsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (webhookSettingsObjectpropCount > 0)
+                {
+                    body["webhookSettings"] = webhookSettingsObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,95 +4,185 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmmainframe
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OpenlegacyibmmainframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        public IBodyWorkflowAction<JToken> MfCicsCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMfCicsCobol))]
+        public IBodyWorkflowAction<JToken> MfCicsCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-MfCicsCobol";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildMfCicsCobol(WorkflowValue<string> project, WorkflowValue<string> method, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/dummy-MfCicsCobol";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        public IBodyWorkflowAction<JToken> MfCtgCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMfCtgCobol))]
+        public IBodyWorkflowAction<JToken> MfCtgCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-MfCtgCobol";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildMfCtgCobol(WorkflowValue<string> project, WorkflowValue<string> method, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/dummy-MfCtgCobol";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        public IBodyWorkflowAction<JToken> MfImsCobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMfImsCobol))]
+        public IBodyWorkflowAction<JToken> MfImsCobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-MfImsCobol";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildMfImsCobol(WorkflowValue<string> project, WorkflowValue<string> method, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/dummy-MfImsCobol";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        public IBodyWorkflowAction<JToken> MfNatural(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMfNatural))]
+        public IBodyWorkflowAction<JToken> MfNatural([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-MfNatural";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildMfNatural(WorkflowValue<string> project, WorkflowValue<string> method, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/dummy-MfNatural";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        public IBodyWorkflowAction<JToken> MfVsamCics(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMfVsamCics))]
+        public IBodyWorkflowAction<JToken> MfVsamCics([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-MfVsamCics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildMfVsamCics(WorkflowValue<string> project, WorkflowValue<string> method, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/dummy-MfVsamCics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        public IBodyWorkflowAction<JToken> Mf3270Screens(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMf3270Screens))]
+        public IBodyWorkflowAction<JToken> Mf3270Screens([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-Mf3270Screens";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildMf3270Screens(WorkflowValue<string> project, WorkflowValue<string> method, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/dummy-Mf3270Screens";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmmainframe")]
-        public IBodyWorkflowAction<JToken> MfMq(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildMfMq))]
+        public IBodyWorkflowAction<JToken> MfMq([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-MfMq";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildMfMq(WorkflowValue<string> project, WorkflowValue<string> method, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/dummy-MfMq";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

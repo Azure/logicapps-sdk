@@ -4,20 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubdata
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GithubdataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubdata")]
-        public IBodyWorkflowAction<string> RetrieveData(Expression<Func<string>> githubname, Expression<Func<string>> reponame, Expression<Func<string>> filewithpath)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveData))]
+        public IBodyWorkflowAction<string> RetrieveData([WorkflowExpression] Func<string> githubname, [WorkflowExpression] Func<string> reponame, [WorkflowExpression] Func<string> filewithpath)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(githubname, 1), ExpressionConverter.ConvertWithUrlEncoding(reponame, 1), ExpressionConverter.ConvertWithUrlEncoding(filewithpath, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildRetrieveData(WorkflowValue<string> githubname, WorkflowValue<string> reponame, WorkflowValue<string> filewithpath)
+        {
+            WorkflowValue.Validate(githubname, nameof(githubname), required: true);
+            WorkflowValue.Validate(reponame, nameof(reponame), required: true);
+            WorkflowValue.Validate(filewithpath, nameof(filewithpath), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(githubname, 1), ExpressionConverter.ConvertWithUrlEncoding(reponame, 1), ExpressionConverter.ConvertWithUrlEncoding(filewithpath, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

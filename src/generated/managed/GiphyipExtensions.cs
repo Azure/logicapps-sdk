@@ -4,30 +4,45 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GiphyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giphyip")]
-        public IBodyWorkflowAction<GetGIFResponse> GetGIF(Expression<Func<string>> aPIKEY, Expression<Func<string>> q, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> rating = null, Expression<Func<string>> lang = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetGIF))]
+        public IBodyWorkflowAction<GetGIFResponse> GetGIF([WorkflowExpression] Func<string> aPIKEY, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> rating = null, [WorkflowExpression] Func<string> lang = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(aPIKEY);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (rating != null)
-                callPayload.Queries["rating"] = ExpressionConverter.Convert(rating);
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<GetGIFResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGIFResponse> __BuildGetGIF(WorkflowValue<string> aPIKEY, WorkflowValue<string> q, WorkflowValue<int> limit = null, WorkflowValue<int> offset = null, WorkflowValue<string> rating = null, WorkflowValue<string> lang = null)
+        {
+            WorkflowValue.Validate(aPIKEY, nameof(aPIKEY), required: true);
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(rating, nameof(rating), required: false);
+            WorkflowValue.Validate(lang, nameof(lang), required: false);
+            return new DeferredBodyAction<GetGIFResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["API_KEY"] = ExpressionConverter.Convert(aPIKEY);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (rating != null)
+                    callPayload.Queries["rating"] = ExpressionConverter.Convert(rating);
+                if (lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                return new ApiConnectionAction<GetGIFResponse>(callPayload);
+            });
         }
     }
 

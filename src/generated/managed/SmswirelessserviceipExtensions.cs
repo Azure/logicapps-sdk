@@ -4,60 +4,76 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SmswirelessserviceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smswirelessserviceip")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodybody, Expression<Func<string>> bodyrecipients = null, Expression<Func<string>> bodyconcatenation = null, Expression<Func<string>> bodyoriginator = null, Expression<Func<string>> bodytest = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendSMS))]
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyrecipients = null, [WorkflowExpression] Func<string> bodyconcatenation = null, [WorkflowExpression] Func<string> bodyoriginator = null, [WorkflowExpression] Func<string> bodytest = null)
         {
-            var apiCallPath = "/message.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["password"] = ExpressionConverter.ConvertO(bodypassword);
-            if (bodyrecipients != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendSMSResponse> __BuildSendSMS(WorkflowValue<string> bodyusername, WorkflowValue<string> bodypassword, WorkflowValue<string> bodybody, WorkflowValue<string> bodyrecipients = null, WorkflowValue<string> bodyconcatenation = null, WorkflowValue<string> bodyoriginator = null, WorkflowValue<string> bodytest = null)
+        {
+            WorkflowValue.Validate(bodyusername, nameof(bodyusername), required: true);
+            WorkflowValue.Validate(bodypassword, nameof(bodypassword), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
+            WorkflowValue.Validate(bodyconcatenation, nameof(bodyconcatenation), required: false);
+            WorkflowValue.Validate(bodyoriginator, nameof(bodyoriginator), required: false);
+            WorkflowValue.Validate(bodytest, nameof(bodytest), required: false);
+            return new DeferredBodyAction<SendSMSResponse>(() =>
             {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                var apiCallPath = "/message.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyconcatenation != null)
-            {
-                body["concatenation"] = ExpressionConverter.ConvertO(bodyconcatenation);
+                body["username"] = ExpressionConverter.ConvertO(bodyusername);
                 bodypropCount++;
-            }
+                body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                if (bodyrecipients != null)
+                {
+                    body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                    bodypropCount++;
+                }
 
-            body["info"] = "\"1\"";
-            bodypropCount++;
-            if (bodyoriginator != null)
-            {
-                body["originator"] = ExpressionConverter.ConvertO(bodyoriginator);
                 bodypropCount++;
-            }
+                body["body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyconcatenation != null)
+                {
+                    body["concatenation"] = ExpressionConverter.ConvertO(bodyconcatenation);
+                    bodypropCount++;
+                }
 
-            if (bodytest != null)
-            {
-                body["test"] = ExpressionConverter.ConvertO(bodytest);
+                body["info"] = "\"1\"";
                 bodypropCount++;
-            }
+                if (bodyoriginator != null)
+                {
+                    body["originator"] = ExpressionConverter.ConvertO(bodyoriginator);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytest != null)
+                {
+                    body["test"] = ExpressionConverter.ConvertO(bodytest);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+            });
         }
     }
 

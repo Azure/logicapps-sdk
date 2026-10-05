@@ -4,21 +4,31 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractcompanyenric
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AbstractcompanyenricActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractcompanyenric")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> domain)
+        [WorkflowExpressionFactory(nameof(__BuildValidate))]
+        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> domain)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateResponse> __BuildValidate(WorkflowValue<string> domain)
+        {
+            WorkflowValue.Validate(domain, nameof(domain), required: true);
+            return new DeferredBodyAction<ValidateResponse>(() =>
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                return new ApiConnectionAction<ValidateResponse>(callPayload);
+            });
         }
     }
 

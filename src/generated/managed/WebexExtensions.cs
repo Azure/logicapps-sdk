@@ -4,135 +4,202 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WebexActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceMemberResponse> CreateSpaceMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyroomId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateSpaceMember))]
+        public IBodyWorkflowAction<CreateSpaceMemberResponse> CreateSpaceMember([WorkflowExpression] Func<bool> bodyisModerator, [WorkflowExpression] Func<string> bodyroomId, [WorkflowExpression] Func<string> bodypersonEmail = null, [WorkflowExpression] Func<string> bodypersonId = null)
         {
-            var apiCallPath = "/v1/memberships";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["isModerator"] = ExpressionConverter.ConvertO(bodyisModerator);
-            if (bodypersonEmail != null)
-            {
-                body["personEmail"] = ExpressionConverter.ConvertO(bodypersonEmail);
-                bodypropCount++;
-            }
-
-            if (bodypersonId != null)
-            {
-                body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["roomId"] = ExpressionConverter.ConvertO(bodyroomId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateSpaceMemberResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetMessagesResponse> GetMessages(Expression<Func<string>> roomId, Expression<Func<string>> mentionedPeople = null, Expression<Func<string>> beforeMessage = null, Expression<Func<string>> before = null, Expression<Func<int>> max = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateSpaceMemberResponse> __BuildCreateSpaceMember(WorkflowValue<bool> bodyisModerator, WorkflowValue<string> bodyroomId, WorkflowValue<string> bodypersonEmail = null, WorkflowValue<string> bodypersonId = null)
         {
-            var apiCallPath = "/v1/messages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["roomId"] = ExpressionConverter.Convert(roomId);
-            if (mentionedPeople != null)
-                callPayload.Queries["mentionedPeople"] = ExpressionConverter.Convert(mentionedPeople);
-            if (beforeMessage != null)
-                callPayload.Queries["beforeMessage"] = ExpressionConverter.Convert(beforeMessage);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
-            return new ApiConnectionAction<GetMessagesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string[]>> bodyfiles = null, Expression<Func<string>> bodymarkdown = null, Expression<Func<string>> bodyroomId = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytoPersonEmail = null, Expression<Func<string>> bodytoPersonId = null)
-        {
-            var apiCallPath = "/v1/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfiles != null)
+            WorkflowValue.Validate(bodyisModerator, nameof(bodyisModerator), required: true);
+            WorkflowValue.Validate(bodyroomId, nameof(bodyroomId), required: true);
+            WorkflowValue.Validate(bodypersonEmail, nameof(bodypersonEmail), required: false);
+            WorkflowValue.Validate(bodypersonId, nameof(bodypersonId), required: false);
+            return new DeferredBodyAction<CreateSpaceMemberResponse>(() =>
             {
-                body["files"] = ExpressionConverter.ConvertO(bodyfiles);
+                var apiCallPath = "/v1/memberships";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["isModerator"] = ExpressionConverter.ConvertO(bodyisModerator);
+                if (bodypersonEmail != null)
+                {
+                    body["personEmail"] = ExpressionConverter.ConvertO(bodypersonEmail);
+                    bodypropCount++;
+                }
 
-            if (bodymarkdown != null)
-            {
-                body["markdown"] = ExpressionConverter.ConvertO(bodymarkdown);
+                if (bodypersonId != null)
+                {
+                    body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyroomId != null)
-            {
                 body["roomId"] = ExpressionConverter.ConvertO(bodyroomId);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
-
-            if (bodytoPersonEmail != null)
-            {
-                body["toPersonEmail"] = ExpressionConverter.ConvertO(bodytoPersonEmail);
-                bodypropCount++;
-            }
-
-            if (bodytoPersonId != null)
-            {
-                body["toPersonId"] = ExpressionConverter.ConvertO(bodytoPersonId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
+                return new ApiConnectionAction<CreateSpaceMemberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetMessageDetailsResponse> GetMessageDetails(Expression<Func<string>> messageId)
+        [WorkflowExpressionFactory(nameof(__BuildGetMessages))]
+        public IBodyWorkflowAction<GetMessagesResponse> GetMessages([WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> mentionedPeople = null, [WorkflowExpression] Func<string> beforeMessage = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<int> max = null)
         {
-            var apiCallPath = String.Format("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMessageDetailsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMessagesResponse> __BuildGetMessages(WorkflowValue<string> roomId, WorkflowValue<string> mentionedPeople = null, WorkflowValue<string> beforeMessage = null, WorkflowValue<string> before = null, WorkflowValue<int> max = null)
+        {
+            WorkflowValue.Validate(roomId, nameof(roomId), required: true);
+            WorkflowValue.Validate(mentionedPeople, nameof(mentionedPeople), required: false);
+            WorkflowValue.Validate(beforeMessage, nameof(beforeMessage), required: false);
+            WorkflowValue.Validate(before, nameof(before), required: false);
+            WorkflowValue.Validate(max, nameof(max), required: false);
+            return new DeferredBodyAction<GetMessagesResponse>(() =>
+            {
+                var apiCallPath = "/v1/messages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["roomId"] = ExpressionConverter.Convert(roomId);
+                if (mentionedPeople != null)
+                    callPayload.Queries["mentionedPeople"] = ExpressionConverter.Convert(mentionedPeople);
+                if (beforeMessage != null)
+                    callPayload.Queries["beforeMessage"] = ExpressionConverter.Convert(beforeMessage);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                if (max != null)
+                    callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                return new ApiConnectionAction<GetMessagesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetPeopleResponse> GetPeople(Expression<Func<string>> id = null, Expression<Func<string>> email = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string[]> bodyfiles = null, [WorkflowExpression] Func<string> bodymarkdown = null, [WorkflowExpression] Func<string> bodyroomId = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodytoPersonEmail = null, [WorkflowExpression] Func<string> bodytoPersonId = null)
         {
-            var apiCallPath = "/v1/people";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (email != null)
-                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            return new ApiConnectionAction<GetPeopleResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowValue<string[]> bodyfiles = null, WorkflowValue<string> bodymarkdown = null, WorkflowValue<string> bodyroomId = null, WorkflowValue<string> bodytext = null, WorkflowValue<string> bodytoPersonEmail = null, WorkflowValue<string> bodytoPersonId = null)
+        {
+            WorkflowValue.Validate(bodyfiles, nameof(bodyfiles), required: false);
+            WorkflowValue.Validate(bodymarkdown, nameof(bodymarkdown), required: false);
+            WorkflowValue.Validate(bodyroomId, nameof(bodyroomId), required: false);
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: false);
+            WorkflowValue.Validate(bodytoPersonEmail, nameof(bodytoPersonEmail), required: false);
+            WorkflowValue.Validate(bodytoPersonId, nameof(bodytoPersonId), required: false);
+            return new DeferredBodyAction<SendMessageResponse>(() =>
+            {
+                var apiCallPath = "/v1/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfiles != null)
+                {
+                    body["files"] = ExpressionConverter.ConvertO(bodyfiles);
+                    bodypropCount++;
+                }
+
+                if (bodymarkdown != null)
+                {
+                    body["markdown"] = ExpressionConverter.ConvertO(bodymarkdown);
+                    bodypropCount++;
+                }
+
+                if (bodyroomId != null)
+                {
+                    body["roomId"] = ExpressionConverter.ConvertO(bodyroomId);
+                    bodypropCount++;
+                }
+
+                if (bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
+
+                if (bodytoPersonEmail != null)
+                {
+                    body["toPersonEmail"] = ExpressionConverter.ConvertO(bodytoPersonEmail);
+                    bodypropCount++;
+                }
+
+                if (bodytoPersonId != null)
+                {
+                    body["toPersonId"] = ExpressionConverter.ConvertO(bodytoPersonId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMessageDetails))]
+        public IBodyWorkflowAction<GetMessageDetailsResponse> GetMessageDetails([WorkflowExpression] Func<string> messageId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMessageDetailsResponse> __BuildGetMessageDetails(WorkflowValue<string> messageId)
+        {
+            WorkflowValue.Validate(messageId, nameof(messageId), required: true);
+            return new DeferredBodyAction<GetMessageDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetMessageDetailsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
+        [WorkflowExpressionFactory(nameof(__BuildGetPeople))]
+        public IBodyWorkflowAction<GetPeopleResponse> GetPeople([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> email = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPeopleResponse> __BuildGetPeople(WorkflowValue<string> id = null, WorkflowValue<string> email = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: false);
+            WorkflowValue.Validate(email, nameof(email), required: false);
+            return new DeferredBodyAction<GetPeopleResponse>(() =>
+            {
+                var apiCallPath = "/v1/people";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (email != null)
+                    callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                return new ApiConnectionAction<GetPeopleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
@@ -145,84 +212,134 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<int>> max = null, Expression<Func<typeInput>> type = null, Expression<Func<sortByInput>> sortBy = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSpaces))]
+        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces([WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<sortByInput> sortBy = null)
         {
-            var apiCallPath = "/v1/rooms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (max != null)
-                callPayload.Queries["max"] = ExpressionConverter.Convert(max);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Queries["sortBy"] = Convert.ToString("lastactivity");
-            if (sortBy != null)
-                callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
-            return new ApiConnectionAction<GetSpacesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSpacesResponse> __BuildGetSpaces(WorkflowValue<int> max = null, WorkflowValue<typeInput> type = null, WorkflowValue<sortByInput> sortBy = null)
+        {
+            WorkflowValue.Validate(max, nameof(max), required: false);
+            WorkflowValue.Validate(type, nameof(type), required: false);
+            WorkflowValue.Validate(sortBy, nameof(sortBy), required: false);
+            return new DeferredBodyAction<GetSpacesResponse>(() =>
+            {
+                var apiCallPath = "/v1/rooms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (max != null)
+                    callPayload.Queries["max"] = ExpressionConverter.Convert(max);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["sortBy"] = Convert.ToString("lastactivity");
+                if (sortBy != null)
+                    callPayload.Queries["sortBy"] = ExpressionConverter.Convert(sortBy);
+                return new ApiConnectionAction<GetSpacesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyteamId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateSpace))]
+        public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyteamId = null)
         {
-            var apiCallPath = "/v1/rooms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyteamId != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateSpaceResponse> __BuildCreateSpace(WorkflowValue<string> bodytitle, WorkflowValue<string> bodyteamId = null)
+        {
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: true);
+            WorkflowValue.Validate(bodyteamId, nameof(bodyteamId), required: false);
+            return new DeferredBodyAction<CreateSpaceResponse>(() =>
             {
+                var apiCallPath = "/v1/rooms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyteamId != null)
+                {
+                    body["teamId"] = ExpressionConverter.ConvertO(bodyteamId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateSpaceResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
+        [WorkflowExpressionFactory(nameof(__BuildGetSpaceDetail))]
+        public IBodyWorkflowAction<GetSpaceDetailResponse> GetSpaceDetail([WorkflowExpression] Func<string> roomId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSpaceDetailResponse> __BuildGetSpaceDetail(WorkflowValue<string> roomId)
+        {
+            WorkflowValue.Validate(roomId, nameof(roomId), required: true);
+            return new DeferredBodyAction<GetSpaceDetailResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/rooms/{0}", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSpaceDetailResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateTeamMember))]
+        public IBodyWorkflowAction<CreateTeamMemberResponse> CreateTeamMember([WorkflowExpression] Func<bool> bodyisModerator, [WorkflowExpression] Func<string> bodyteamId, [WorkflowExpression] Func<string> bodypersonEmail = null, [WorkflowExpression] Func<string> bodypersonId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateTeamMemberResponse> __BuildCreateTeamMember(WorkflowValue<bool> bodyisModerator, WorkflowValue<string> bodyteamId, WorkflowValue<string> bodypersonEmail = null, WorkflowValue<string> bodypersonId = null)
+        {
+            WorkflowValue.Validate(bodyisModerator, nameof(bodyisModerator), required: true);
+            WorkflowValue.Validate(bodyteamId, nameof(bodyteamId), required: true);
+            WorkflowValue.Validate(bodypersonEmail, nameof(bodypersonEmail), required: false);
+            WorkflowValue.Validate(bodypersonId, nameof(bodypersonId), required: false);
+            return new DeferredBodyAction<CreateTeamMemberResponse>(() =>
+            {
+                var apiCallPath = "/v1/team/memberships";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["isModerator"] = ExpressionConverter.ConvertO(bodyisModerator);
+                if (bodypersonEmail != null)
+                {
+                    body["personEmail"] = ExpressionConverter.ConvertO(bodypersonEmail);
+                    bodypropCount++;
+                }
+
+                if (bodypersonId != null)
+                {
+                    body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
                 body["teamId"] = ExpressionConverter.ConvertO(bodyteamId);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateSpaceResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<GetSpaceDetailResponse> GetSpaceDetail(Expression<Func<string>> roomId)
-        {
-            var apiCallPath = String.Format("/v1/rooms/{0}", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSpaceDetailResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webex")]
-        public IBodyWorkflowAction<CreateTeamMemberResponse> CreateTeamMember(Expression<Func<bool>> bodyisModerator, Expression<Func<string>> bodyteamId, Expression<Func<string>> bodypersonEmail = null, Expression<Func<string>> bodypersonId = null)
-        {
-            var apiCallPath = "/v1/team/memberships";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["isModerator"] = ExpressionConverter.ConvertO(bodyisModerator);
-            if (bodypersonEmail != null)
-            {
-                body["personEmail"] = ExpressionConverter.ConvertO(bodypersonEmail);
-                bodypropCount++;
-            }
-
-            if (bodypersonId != null)
-            {
-                body["personId"] = ExpressionConverter.ConvertO(bodypersonId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["teamId"] = ExpressionConverter.ConvertO(bodyteamId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTeamMemberResponse>(callPayload);
+                return new ApiConnectionAction<CreateTeamMemberResponse>(callPayload);
+            });
         }
     }
 

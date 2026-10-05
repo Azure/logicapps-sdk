@@ -4,104 +4,194 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AdobecreativecloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<CreatedAssetDetails> CreateAsset(Expression<Func<string>> path, Expression<Func<string>> name, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateAsset))]
+        public IBodyWorkflowAction<CreatedAssetDetails> CreateAsset([WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/storage/cc/asset";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CreatedAssetDetails>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<string> GetContentById(Expression<Func<string>> assetId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreatedAssetDetails> __BuildCreateAsset(WorkflowValue<string> path, WorkflowValue<string> name, WorkflowValue<string> body = null)
         {
-            var apiCallPath = "/storage/cc/asset/id/content";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["asset_id"] = ExpressionConverter.Convert(assetId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<AssetMetadata> GetMetadataById(Expression<Func<string>> assetId)
-        {
-            var apiCallPath = "/storage/cc/asset/id/metadata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["asset_id"] = ExpressionConverter.Convert(assetId);
-            return new ApiConnectionAction<AssetMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IWorkflowAction DeleteAssetByPath(Expression<Func<string>> path)
-        {
-            var apiCallPath = "/storage/cc/asset/path";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            callPayload.Headers["If-Match"] = Convert.ToString("*");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<string> GetContentByPath(Expression<Func<string>> path)
-        {
-            var apiCallPath = "/storage/cc/asset/path/content";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<AssetMetadata> GetMetadataByPath(Expression<Func<string>> path)
-        {
-            var apiCallPath = "/storage/cc/asset/path/metadata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            return new ApiConnectionAction<AssetMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<DirectoryListing> ListFilesInDirectory(Expression<Func<string>> path)
-        {
-            var apiCallPath = "/storage/cc/directory/path/assets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            return new ApiConnectionAction<DirectoryListing>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
-        public IBodyWorkflowAction<CreatedAssetDetails> CopyAsset(Expression<Func<string>> bodysourceAssetPath, Expression<Func<string>> bodydestinationAssetPath)
-        {
-            var apiCallPath = "/storage/cc/op/copy";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodysourceAssetPath);
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodydestinationAssetPath);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(path, nameof(path), required: true);
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<CreatedAssetDetails>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/storage/cc/asset";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<CreatedAssetDetails>(callPayload);
+            });
+        }
 
-            return new ApiConnectionAction<CreatedAssetDetails>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
+        [WorkflowExpressionFactory(nameof(__BuildGetContentById))]
+        public IBodyWorkflowAction<string> GetContentById([WorkflowExpression] Func<string> assetId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetContentById(WorkflowValue<string> assetId)
+        {
+            WorkflowValue.Validate(assetId, nameof(assetId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/storage/cc/asset/id/content";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["asset_id"] = ExpressionConverter.Convert(assetId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMetadataById))]
+        public IBodyWorkflowAction<AssetMetadata> GetMetadataById([WorkflowExpression] Func<string> assetId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AssetMetadata> __BuildGetMetadataById(WorkflowValue<string> assetId)
+        {
+            WorkflowValue.Validate(assetId, nameof(assetId), required: true);
+            return new DeferredBodyAction<AssetMetadata>(() =>
+            {
+                var apiCallPath = "/storage/cc/asset/id/metadata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["asset_id"] = ExpressionConverter.Convert(assetId);
+                return new ApiConnectionAction<AssetMetadata>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteAssetByPath))]
+        public IWorkflowAction DeleteAssetByPath([WorkflowExpression] Func<string> path)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteAssetByPath(WorkflowValue<string> path)
+        {
+            WorkflowValue.Validate(path, nameof(path), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/storage/cc/asset/path";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                callPayload.Headers["If-Match"] = Convert.ToString("*");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
+        [WorkflowExpressionFactory(nameof(__BuildGetContentByPath))]
+        public IBodyWorkflowAction<string> GetContentByPath([WorkflowExpression] Func<string> path)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetContentByPath(WorkflowValue<string> path)
+        {
+            WorkflowValue.Validate(path, nameof(path), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/storage/cc/asset/path/content";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMetadataByPath))]
+        public IBodyWorkflowAction<AssetMetadata> GetMetadataByPath([WorkflowExpression] Func<string> path)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AssetMetadata> __BuildGetMetadataByPath(WorkflowValue<string> path)
+        {
+            WorkflowValue.Validate(path, nameof(path), required: true);
+            return new DeferredBodyAction<AssetMetadata>(() =>
+            {
+                var apiCallPath = "/storage/cc/asset/path/metadata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                return new ApiConnectionAction<AssetMetadata>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
+        [WorkflowExpressionFactory(nameof(__BuildListFilesInDirectory))]
+        public IBodyWorkflowAction<DirectoryListing> ListFilesInDirectory([WorkflowExpression] Func<string> path)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DirectoryListing> __BuildListFilesInDirectory(WorkflowValue<string> path)
+        {
+            WorkflowValue.Validate(path, nameof(path), required: true);
+            return new DeferredBodyAction<DirectoryListing>(() =>
+            {
+                var apiCallPath = "/storage/cc/directory/path/assets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                return new ApiConnectionAction<DirectoryListing>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adobecreativecloud")]
+        [WorkflowExpressionFactory(nameof(__BuildCopyAsset))]
+        public IBodyWorkflowAction<CreatedAssetDetails> CopyAsset([WorkflowExpression] Func<string> bodysourceAssetPath, [WorkflowExpression] Func<string> bodydestinationAssetPath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreatedAssetDetails> __BuildCopyAsset(WorkflowValue<string> bodysourceAssetPath, WorkflowValue<string> bodydestinationAssetPath)
+        {
+            WorkflowValue.Validate(bodysourceAssetPath, nameof(bodysourceAssetPath), required: true);
+            WorkflowValue.Validate(bodydestinationAssetPath, nameof(bodydestinationAssetPath), required: true);
+            return new DeferredBodyAction<CreatedAssetDetails>(() =>
+            {
+                var apiCallPath = "/storage/cc/op/copy";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["from"] = ExpressionConverter.ConvertO(bodysourceAssetPath);
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(bodydestinationAssetPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreatedAssetDetails>(callPayload);
+            });
         }
     }
 

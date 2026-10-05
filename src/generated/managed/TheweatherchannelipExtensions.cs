@@ -4,50 +4,91 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theweatherchannelip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TheweatherchannelipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetConditions(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        [WorkflowExpressionFactory(nameof(__BuildGetConditions))]
+        public IBodyWorkflowAction<SuccessSchema> GetConditions([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<unitsInput> units, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            var apiCallPath = "/wx/observations/current";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuccessSchema> __BuildGetConditions(WorkflowValue<string> geocode, WorkflowValue<unitsInput> units, WorkflowValue<string> language, WorkflowValue<formatInput> format)
+        {
+            WorkflowValue.Validate(geocode, nameof(geocode), required: true);
+            WorkflowValue.Validate(units, nameof(units), required: true);
+            WorkflowValue.Validate(language, nameof(language), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            return new DeferredBodyAction<SuccessSchema>(() =>
+            {
+                var apiCallPath = "/wx/observations/current";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(units);
+                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                return new ApiConnectionAction<SuccessSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetHeadlines(Expression<Func<string>> geocode, Expression<Func<string>> acceptHeader, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        [WorkflowExpressionFactory(nameof(__BuildGetHeadlines))]
+        public IBodyWorkflowAction<SuccessSchema> GetHeadlines([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<string> acceptHeader, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            var apiCallPath = "/alerts/headlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Headers["acceptHeader"] = ExpressionConverter.Convert(acceptHeader);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuccessSchema> __BuildGetHeadlines(WorkflowValue<string> geocode, WorkflowValue<string> acceptHeader, WorkflowValue<string> language, WorkflowValue<formatInput> format)
+        {
+            WorkflowValue.Validate(geocode, nameof(geocode), required: true);
+            WorkflowValue.Validate(acceptHeader, nameof(acceptHeader), required: true);
+            WorkflowValue.Validate(language, nameof(language), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            return new DeferredBodyAction<SuccessSchema>(() =>
+            {
+                var apiCallPath = "/alerts/headlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
+                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Headers["acceptHeader"] = ExpressionConverter.Convert(acceptHeader);
+                return new ApiConnectionAction<SuccessSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theweatherchannelip")]
-        public IBodyWorkflowAction<SuccessSchema> GetHistory(Expression<Func<string>> geocode, Expression<Func<unitsInput>> units, Expression<Func<string>> language, Expression<Func<formatInput>> format)
+        [WorkflowExpressionFactory(nameof(__BuildGetHistory))]
+        public IBodyWorkflowAction<SuccessSchema> GetHistory([WorkflowExpression] Func<string> geocode, [WorkflowExpression] Func<unitsInput> units, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format)
         {
-            var apiCallPath = "/wx/conditions/historical/dailysummary/30day";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
-            callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-            callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            return new ApiConnectionAction<SuccessSchema>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SuccessSchema> __BuildGetHistory(WorkflowValue<string> geocode, WorkflowValue<unitsInput> units, WorkflowValue<string> language, WorkflowValue<formatInput> format)
+        {
+            WorkflowValue.Validate(geocode, nameof(geocode), required: true);
+            WorkflowValue.Validate(units, nameof(units), required: true);
+            WorkflowValue.Validate(language, nameof(language), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            return new DeferredBodyAction<SuccessSchema>(() =>
+            {
+                var apiCallPath = "/wx/conditions/historical/dailysummary/30day";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["geocode"] = ExpressionConverter.Convert(geocode);
+                callPayload.Queries["units"] = ExpressionConverter.Convert(units);
+                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                return new ApiConnectionAction<SuccessSchema>(callPayload);
+            });
         }
     }
 

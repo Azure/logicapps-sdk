@@ -4,23 +4,34 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NetdocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo(Expression<Func<string>> id, Expression<Func<string>> cabGuid = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetUserInfo))]
+        public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> cabGuid = null)
         {
-            var apiCallPath = String.Format("/v1/User/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (cabGuid != null)
-                callPayload.Queries["cabGuid"] = ExpressionConverter.Convert(cabGuid);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUserInfoResponse> __BuildGetUserInfo(WorkflowValue<string> id, WorkflowValue<string> cabGuid = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(cabGuid, nameof(cabGuid), required: false);
+            return new DeferredBodyAction<GetUserInfoResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/User/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (cabGuid != null)
+                    callPayload.Queries["cabGuid"] = ExpressionConverter.Convert(cabGuid);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
@@ -34,845 +45,1620 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<NewVersionResponse> NewVersion(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<string>> versionDescription = null, Expression<Func<string>> verName = null, Expression<Func<bool>> official = null, Expression<Func<bool>> addToRecent = null, Expression<Func<string>> srcVer = null, Expression<Func<bool>> allocatesubversion = null, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildNewVersion))]
+        public IBodyWorkflowAction<NewVersionResponse> NewVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> extension = null, [WorkflowExpression] Func<string> versionDescription = null, [WorkflowExpression] Func<string> verName = null, [WorkflowExpression] Func<bool> official = null, [WorkflowExpression] Func<bool> addToRecent = null, [WorkflowExpression] Func<string> srcVer = null, [WorkflowExpression] Func<bool> allocatesubversion = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}/new", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extension != null)
-                callPayload.Queries["extension"] = ExpressionConverter.Convert(extension);
-            if (versionDescription != null)
-                callPayload.Queries["version_description"] = ExpressionConverter.Convert(versionDescription);
-            if (verName != null)
-                callPayload.Queries["verName"] = ExpressionConverter.Convert(verName);
-            callPayload.Queries["official"] = Convert.ToString(true);
-            if (official != null)
-                callPayload.Queries["official"] = ExpressionConverter.Convert(official);
-            if (addToRecent != null)
-                callPayload.Queries["addToRecent"] = ExpressionConverter.Convert(addToRecent);
-            if (srcVer != null)
-                callPayload.Queries["srcVer"] = ExpressionConverter.Convert(srcVer);
-            callPayload.Queries["allocatesubversion"] = Convert.ToString(false);
-            if (allocatesubversion != null)
-                callPayload.Queries["allocatesubversion"] = ExpressionConverter.Convert(allocatesubversion);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<NewVersionResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetDocInfo(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NewVersionResponse> __BuildNewVersion(WorkflowValue<string> id, WorkflowValue<string> extension = null, WorkflowValue<string> versionDescription = null, WorkflowValue<string> verName = null, WorkflowValue<bool> official = null, WorkflowValue<bool> addToRecent = null, WorkflowValue<string> srcVer = null, WorkflowValue<bool> allocatesubversion = null, WorkflowValue<string> body = null)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction RenameDocument(Expression<Func<string>> id, Expression<Func<string>> renameBodystandardAttributesnewName)
-        {
-            var apiCallPath = String.Format("/v1/Document/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var renameBody = new JObject();
-            var renameBodypropCount = 0;
-            var standardAttributesObject = new JObject();
-            var standardAttributesObjectpropCount = 0;
-            standardAttributesObjectpropCount++;
-            standardAttributesObject["name"] = ExpressionConverter.ConvertO(renameBodystandardAttributesnewName);
-            if (standardAttributesObjectpropCount > 0)
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(extension, nameof(extension), required: false);
+            WorkflowValue.Validate(versionDescription, nameof(versionDescription), required: false);
+            WorkflowValue.Validate(verName, nameof(verName), required: false);
+            WorkflowValue.Validate(official, nameof(official), required: false);
+            WorkflowValue.Validate(addToRecent, nameof(addToRecent), required: false);
+            WorkflowValue.Validate(srcVer, nameof(srcVer), required: false);
+            WorkflowValue.Validate(allocatesubversion, nameof(allocatesubversion), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<NewVersionResponse>(() =>
             {
-                renameBody["standardAttributes"] = standardAttributesObject;
-                renameBodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/new", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (extension != null)
+                    callPayload.Queries["extension"] = ExpressionConverter.Convert(extension);
+                if (versionDescription != null)
+                    callPayload.Queries["version_description"] = ExpressionConverter.Convert(versionDescription);
+                if (verName != null)
+                    callPayload.Queries["verName"] = ExpressionConverter.Convert(verName);
+                callPayload.Queries["official"] = Convert.ToString(true);
+                if (official != null)
+                    callPayload.Queries["official"] = ExpressionConverter.Convert(official);
+                if (addToRecent != null)
+                    callPayload.Queries["addToRecent"] = ExpressionConverter.Convert(addToRecent);
+                if (srcVer != null)
+                    callPayload.Queries["srcVer"] = ExpressionConverter.Convert(srcVer);
+                callPayload.Queries["allocatesubversion"] = Convert.ToString(false);
+                if (allocatesubversion != null)
+                    callPayload.Queries["allocatesubversion"] = ExpressionConverter.Convert(allocatesubversion);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<NewVersionResponse>(callPayload);
+            });
+        }
 
-            if (renameBodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocInfo))]
+        public IWorkflowAction GetDocInfo([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetDocInfo(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = renameBody;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetDocContent(Expression<Func<string>> id, Expression<Func<bool>> base64 = null)
+        [WorkflowExpressionFactory(nameof(__BuildRenameDocument))]
+        public IWorkflowAction RenameDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> renameBodystandardAttributesnewName)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["base64"] = Convert.ToString(false);
-            if (base64 != null)
-                callPayload.Queries["base64"] = ExpressionConverter.Convert(base64);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction DeleteDoc(Expression<Func<string>> id, Expression<Func<bool>> permanent = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRenameDocument(WorkflowValue<string> id, WorkflowValue<string> renameBodystandardAttributesnewName)
         {
-            var apiCallPath = String.Format("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["permanent"] = Convert.ToString(false);
-            if (permanent != null)
-                callPayload.Queries["permanent"] = ExpressionConverter.Convert(permanent);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<bool>> base64 = null, Expression<Func<string>> body = null)
-        {
-            var apiCallPath = String.Format("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extension != null)
-                callPayload.Queries["extension"] = ExpressionConverter.Convert(extension);
-            callPayload.Queries["base64"] = Convert.ToString(true);
-            if (base64 != null)
-                callPayload.Queries["base64"] = ExpressionConverter.Convert(base64);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateFolderResponse> CreateFolder(Expression<Func<string>> name, Expression<Func<string>> parent = null, Expression<Func<string>> cabinet = null)
-        {
-            var apiCallPath = "/v1/Folder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<CreateFolderResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetFldContent(Expression<Func<string>> id, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = String.Format("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction FileFolder(Expression<Func<string>> id, Expression<Func<string>> item, Expression<Func<actionInput>> action)
-        {
-            var apiCallPath = String.Format("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction DeleteFolder(Expression<Func<string>> id, Expression<Func<bool>> permanent = null, Expression<Func<bool>> deleteContents = null)
-        {
-            var apiCallPath = String.Format("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["permanent"] = Convert.ToString(false);
-            if (permanent != null)
-                callPayload.Queries["permanent"] = ExpressionConverter.Convert(permanent);
-            callPayload.Queries["deleteContents"] = Convert.ToString(false);
-            if (deleteContents != null)
-                callPayload.Queries["deleteContents"] = ExpressionConverter.Convert(deleteContents);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction RenameFolder(Expression<Func<string>> id, Expression<Func<string>> renameBodystandardAttributesnewName)
-        {
-            var apiCallPath = String.Format("/v1/Folder/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var renameBody = new JObject();
-            var renameBodypropCount = 0;
-            var standardAttributesObject = new JObject();
-            var standardAttributesObjectpropCount = 0;
-            standardAttributesObjectpropCount++;
-            standardAttributesObject["name"] = ExpressionConverter.ConvertO(renameBodystandardAttributesnewName);
-            if (standardAttributesObjectpropCount > 0)
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(renameBodystandardAttributesnewName, nameof(renameBodystandardAttributesnewName), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                renameBody["standardAttributes"] = standardAttributesObject;
-                renameBodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var renameBody = new JObject();
+                var renameBodypropCount = 0;
+                var standardAttributesObject = new JObject();
+                var standardAttributesObjectpropCount = 0;
+                standardAttributesObjectpropCount++;
+                standardAttributesObject["name"] = ExpressionConverter.ConvertO(renameBodystandardAttributesnewName);
+                if (standardAttributesObjectpropCount > 0)
+                {
+                    renameBody["standardAttributes"] = standardAttributesObject;
+                    renameBodypropCount++;
+                }
 
-            if (renameBodypropCount > 0)
+                if (renameBodypropCount > 0)
+                {
+                    callPayload.Body = renameBody;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocContent))]
+        public IWorkflowAction GetDocContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> base64 = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetDocContent(WorkflowValue<string> id, WorkflowValue<bool> base64 = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(base64, nameof(base64), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = renameBody;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["base64"] = Convert.ToString(false);
+                if (base64 != null)
+                    callPayload.Queries["base64"] = ExpressionConverter.Convert(base64);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction FollowFolder(Expression<Func<string>> id, Expression<Func<string>> recipients, Expression<Func<sendInput>> send = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteDoc))]
+        public IWorkflowAction DeleteDoc([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> permanent = null)
         {
-            var apiCallPath = String.Format("/v1/Folder/{0}/follow", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction FollowDocument(Expression<Func<string>> id, Expression<Func<string>> recipients, Expression<Func<sendInput>> send = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteDoc(WorkflowValue<string> id, WorkflowValue<bool> permanent = null)
         {
-            var apiCallPath = "/v1/Document/follow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<GetCurrentUserInfoResponse> GetCurrentUserInfo(Expression<Func<string>> cabGuid = null)
-        {
-            var apiCallPath = "/v1/User/info";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (cabGuid != null)
-                callPayload.Queries["cabGuid"] = ExpressionConverter.Convert(cabGuid);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetCurrentUserInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction CheckinDoc(Expression<Func<string>> id, Expression<Func<string>> extension = null, Expression<Func<object>> file = null, Expression<Func<bool>> addToRecent = null)
-        {
-            var apiCallPath = "/v1/Document/checkin";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction CheckOutDoc(Expression<Func<string>> id, Expression<Func<string>> comment = null, Expression<Func<bool>> download = null, Expression<Func<string>> version = null, Expression<Func<bool>> addToRecent = null)
-        {
-            var apiCallPath = "/v1/Document/checkout";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> destination, Expression<Func<object>> file, Expression<Func<bool>> addToRecent = null, Expression<Func<string>> profile = null)
-        {
-            var apiCallPath = "/v1/Document/upload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<CreateDocumentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction LockDocumentVersion(Expression<Func<string>> id, Expression<Func<int>> version, Expression<Func<string>> description = null)
-        {
-            var apiCallPath = "/v1/Document/lock";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetDocumentVersions(Expression<Func<string>> documentID)
-        {
-            var apiCallPath = String.Format("/v1/Document/{0}/versionList", ExpressionConverter.ConvertWithUrlEncoding(documentID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateSecuredLinkResponse> CreateSecuredLink(Expression<Func<string>> id, Expression<Func<string>> password = null, Expression<Func<string>> expirationdate = null, Expression<Func<string>> version = null, Expression<Func<bool>> download = null, Expression<Func<bool>> notifyme = null, Expression<Func<bool>> @lock = null)
-        {
-            var apiCallPath = "/v1/Document/createsecuredlink";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<CreateSecuredLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetDocHistory(Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/v1/Document/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateWorkspaceParentChildResponse> CreateWorkspaceParentChild(Expression<Func<string>> cabinetID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
-        {
-            var apiCallPath = String.Format("/v1/Workspace/{0}/{1}/{2}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<CreateWorkspaceParentChildResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateWorkspaceSingleResponse> CreateWorkspaceSingle(Expression<Func<string>> cabinetID, Expression<Func<string>> parentID)
-        {
-            var apiCallPath = String.Format("/v1/Workspace/{0}/{1}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<CreateWorkspaceSingleResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetWorkspaceInformation(Expression<Func<string>> workspaceID)
-        {
-            var apiCallPath = String.Format("/v1/Workspace/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateChildEntryResponse> CreateChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID, Expression<Func<bool>> lookupEntryBodyaccessfilteredPermissions, Expression<Func<bool>> lookupEntryBodyaccessforcePermssions, Expression<Func<string>> lookupEntryBodydescription = null, Expression<Func<string>> lookupEntryBodytype = null, Expression<Func<bool>> lookupEntryBodylitigationHold = null, Expression<Func<string>> lookupEntryBodyclosedDate = null, Expression<Func<lookupEntryBodyaccesspermissionsInputItem[]>> lookupEntryBodyaccesspermissions = null)
-        {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var lookupEntryBody = new JObject();
-            var lookupEntryBodypropCount = 0;
-            if (lookupEntryBodydescription != null)
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(permanent, nameof(permanent), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                lookupEntryBody["description"] = ExpressionConverter.ConvertO(lookupEntryBodydescription);
-                lookupEntryBodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["permanent"] = Convert.ToString(false);
+                if (permanent != null)
+                    callPayload.Queries["permanent"] = ExpressionConverter.Convert(permanent);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
 
-            if (lookupEntryBodytype != null)
-            {
-                lookupEntryBody["defaulting"] = ExpressionConverter.ConvertO(lookupEntryBodytype);
-                lookupEntryBodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateDocument))]
+        public IWorkflowAction UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> extension = null, [WorkflowExpression] Func<bool> base64 = null, [WorkflowExpression] Func<string> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (lookupEntryBodylitigationHold != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateDocument(WorkflowValue<string> id, WorkflowValue<string> extension = null, WorkflowValue<bool> base64 = null, WorkflowValue<string> body = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(extension, nameof(extension), required: false);
+            WorkflowValue.Validate(base64, nameof(base64), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                lookupEntryBody["hold"] = ExpressionConverter.ConvertO(lookupEntryBodylitigationHold);
-                lookupEntryBodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (extension != null)
+                    callPayload.Queries["extension"] = ExpressionConverter.Convert(extension);
+                callPayload.Queries["base64"] = Convert.ToString(true);
+                if (base64 != null)
+                    callPayload.Queries["base64"] = ExpressionConverter.Convert(base64);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
 
-            if (lookupEntryBodyclosedDate != null)
-            {
-                lookupEntryBody["closed"] = ExpressionConverter.ConvertO(lookupEntryBodyclosedDate);
-                lookupEntryBodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateFolder))]
+        public IBodyWorkflowAction<CreateFolderResponse> CreateFolder([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> parent = null, [WorkflowExpression] Func<string> cabinet = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var accessObject = new JObject();
-            var accessObjectpropCount = 0;
-            accessObjectpropCount++;
-            accessObject["filtered_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessfilteredPermissions);
-            accessObjectpropCount++;
-            accessObject["force_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessforcePermssions);
-            if (lookupEntryBodyaccesspermissions != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateFolderResponse> __BuildCreateFolder(WorkflowValue<string> name, WorkflowValue<string> parent = null, WorkflowValue<string> cabinet = null)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(parent, nameof(parent), required: false);
+            WorkflowValue.Validate(cabinet, nameof(cabinet), required: false);
+            return new DeferredBodyAction<CreateFolderResponse>(() =>
             {
-                accessObject["permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccesspermissions);
+                var apiCallPath = "/v1/Folder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<CreateFolderResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFldContent))]
+        public IWorkflowAction GetFldContent([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetFldContent(WorkflowValue<string> id, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildFileFolder))]
+        public IWorkflowAction FileFolder([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> item, [WorkflowExpression] Func<actionInput> action)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildFileFolder(WorkflowValue<string> id, WorkflowValue<string> item, WorkflowValue<actionInput> action)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(item, nameof(item), required: true);
+            WorkflowValue.Validate(action, nameof(action), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteFolder))]
+        public IWorkflowAction DeleteFolder([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> permanent = null, [WorkflowExpression] Func<bool> deleteContents = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteFolder(WorkflowValue<string> id, WorkflowValue<bool> permanent = null, WorkflowValue<bool> deleteContents = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(permanent, nameof(permanent), required: false);
+            WorkflowValue.Validate(deleteContents, nameof(deleteContents), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["permanent"] = Convert.ToString(false);
+                if (permanent != null)
+                    callPayload.Queries["permanent"] = ExpressionConverter.Convert(permanent);
+                callPayload.Queries["deleteContents"] = Convert.ToString(false);
+                if (deleteContents != null)
+                    callPayload.Queries["deleteContents"] = ExpressionConverter.Convert(deleteContents);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildRenameFolder))]
+        public IWorkflowAction RenameFolder([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> renameBodystandardAttributesnewName)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRenameFolder(WorkflowValue<string> id, WorkflowValue<string> renameBodystandardAttributesnewName)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(renameBodystandardAttributesnewName, nameof(renameBodystandardAttributesnewName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var renameBody = new JObject();
+                var renameBodypropCount = 0;
+                var standardAttributesObject = new JObject();
+                var standardAttributesObjectpropCount = 0;
+                standardAttributesObjectpropCount++;
+                standardAttributesObject["name"] = ExpressionConverter.ConvertO(renameBodystandardAttributesnewName);
+                if (standardAttributesObjectpropCount > 0)
+                {
+                    renameBody["standardAttributes"] = standardAttributesObject;
+                    renameBodypropCount++;
+                }
+
+                if (renameBodypropCount > 0)
+                {
+                    callPayload.Body = renameBody;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildFollowFolder))]
+        public IWorkflowAction FollowFolder([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> recipients, [WorkflowExpression] Func<sendInput> send = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildFollowFolder(WorkflowValue<string> id, WorkflowValue<string> recipients, WorkflowValue<sendInput> send = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(recipients, nameof(recipients), required: true);
+            WorkflowValue.Validate(send, nameof(send), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Folder/{0}/follow", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildFollowDocument))]
+        public IWorkflowAction FollowDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> recipients, [WorkflowExpression] Func<sendInput> send = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildFollowDocument(WorkflowValue<string> id, WorkflowValue<string> recipients, WorkflowValue<sendInput> send = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(recipients, nameof(recipients), required: true);
+            WorkflowValue.Validate(send, nameof(send), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v1/Document/follow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCurrentUserInfo))]
+        public IBodyWorkflowAction<GetCurrentUserInfoResponse> GetCurrentUserInfo([WorkflowExpression] Func<string> cabGuid = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCurrentUserInfoResponse> __BuildGetCurrentUserInfo(WorkflowValue<string> cabGuid = null)
+        {
+            WorkflowValue.Validate(cabGuid, nameof(cabGuid), required: false);
+            return new DeferredBodyAction<GetCurrentUserInfoResponse>(() =>
+            {
+                var apiCallPath = "/v1/User/info";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (cabGuid != null)
+                    callPayload.Queries["cabGuid"] = ExpressionConverter.Convert(cabGuid);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetCurrentUserInfoResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildCheckinDoc))]
+        public IWorkflowAction CheckinDoc([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> extension = null, [WorkflowExpression] Func<object> file = null, [WorkflowExpression] Func<bool> addToRecent = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCheckinDoc(WorkflowValue<string> id, WorkflowValue<string> extension = null, WorkflowValue<object> file = null, WorkflowValue<bool> addToRecent = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(extension, nameof(extension), required: false);
+            WorkflowValue.Validate(file, nameof(file), required: false);
+            WorkflowValue.Validate(addToRecent, nameof(addToRecent), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v1/Document/checkin";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildCheckOutDoc))]
+        public IWorkflowAction CheckOutDoc([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> comment = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<bool> addToRecent = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCheckOutDoc(WorkflowValue<string> id, WorkflowValue<string> comment = null, WorkflowValue<bool> download = null, WorkflowValue<string> version = null, WorkflowValue<bool> addToRecent = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(comment, nameof(comment), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(version, nameof(version), required: false);
+            WorkflowValue.Validate(addToRecent, nameof(addToRecent), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v1/Document/checkout";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateDocument))]
+        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument([WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<bool> addToRecent = null, [WorkflowExpression] Func<string> profile = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateDocumentResponse> __BuildCreateDocument(WorkflowValue<string> destination, WorkflowValue<object> file, WorkflowValue<bool> addToRecent = null, WorkflowValue<string> profile = null)
+        {
+            WorkflowValue.Validate(destination, nameof(destination), required: true);
+            WorkflowValue.Validate(file, nameof(file), required: true);
+            WorkflowValue.Validate(addToRecent, nameof(addToRecent), required: false);
+            WorkflowValue.Validate(profile, nameof(profile), required: false);
+            return new DeferredBodyAction<CreateDocumentResponse>(() =>
+            {
+                var apiCallPath = "/v1/Document/upload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<CreateDocumentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildLockDocumentVersion))]
+        public IWorkflowAction LockDocumentVersion([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> version, [WorkflowExpression] Func<string> description = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildLockDocumentVersion(WorkflowValue<string> id, WorkflowValue<int> version, WorkflowValue<string> description = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(version, nameof(version), required: true);
+            WorkflowValue.Validate(description, nameof(description), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v1/Document/lock";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocumentVersions))]
+        public IWorkflowAction GetDocumentVersions([WorkflowExpression] Func<string> documentID)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetDocumentVersions(WorkflowValue<string> documentID)
+        {
+            WorkflowValue.Validate(documentID, nameof(documentID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/versionList", ExpressionConverter.ConvertWithUrlEncoding(documentID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateSecuredLink))]
+        public IBodyWorkflowAction<CreateSecuredLinkResponse> CreateSecuredLink([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<string> expirationdate = null, [WorkflowExpression] Func<string> version = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<bool> notifyme = null, [WorkflowExpression] Func<bool> @lock = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateSecuredLinkResponse> __BuildCreateSecuredLink(WorkflowValue<string> id, WorkflowValue<string> password = null, WorkflowValue<string> expirationdate = null, WorkflowValue<string> version = null, WorkflowValue<bool> download = null, WorkflowValue<bool> notifyme = null, WorkflowValue<bool> @lock = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(password, nameof(password), required: false);
+            WorkflowValue.Validate(expirationdate, nameof(expirationdate), required: false);
+            WorkflowValue.Validate(version, nameof(version), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(notifyme, nameof(notifyme), required: false);
+            WorkflowValue.Validate(@lock, nameof(@lock), required: false);
+            return new DeferredBodyAction<CreateSecuredLinkResponse>(() =>
+            {
+                var apiCallPath = "/v1/Document/createsecuredlink";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<CreateSecuredLinkResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocHistory))]
+        public IWorkflowAction GetDocHistory([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetDocHistory(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Document/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceParentChild))]
+        public IBodyWorkflowAction<CreateWorkspaceParentChildResponse> CreateWorkspaceParentChild([WorkflowExpression] Func<string> cabinetID, [WorkflowExpression] Func<string> parentID, [WorkflowExpression] Func<string> childID)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateWorkspaceParentChildResponse> __BuildCreateWorkspaceParentChild(WorkflowValue<string> cabinetID, WorkflowValue<string> parentID, WorkflowValue<string> childID)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            WorkflowValue.Validate(parentID, nameof(parentID), required: true);
+            WorkflowValue.Validate(childID, nameof(childID), required: true);
+            return new DeferredBodyAction<CreateWorkspaceParentChildResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/{1}/{2}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<CreateWorkspaceParentChildResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceSingle))]
+        public IBodyWorkflowAction<CreateWorkspaceSingleResponse> CreateWorkspaceSingle([WorkflowExpression] Func<string> cabinetID, [WorkflowExpression] Func<string> parentID)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateWorkspaceSingleResponse> __BuildCreateWorkspaceSingle(WorkflowValue<string> cabinetID, WorkflowValue<string> parentID)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            WorkflowValue.Validate(parentID, nameof(parentID), required: true);
+            return new DeferredBodyAction<CreateWorkspaceSingleResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/{1}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<CreateWorkspaceSingleResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceInformation))]
+        public IWorkflowAction GetWorkspaceInformation([WorkflowExpression] Func<string> workspaceID)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetWorkspaceInformation(WorkflowValue<string> workspaceID)
+        {
+            WorkflowValue.Validate(workspaceID, nameof(workspaceID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateChildEntry))]
+        public IBodyWorkflowAction<CreateChildEntryResponse> CreateChildEntry([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> childAttributeID, [WorkflowExpression] Func<string> parentID, [WorkflowExpression] Func<string> childID, [WorkflowExpression] Func<bool> lookupEntryBodyaccessfilteredPermissions, [WorkflowExpression] Func<bool> lookupEntryBodyaccessforcePermssions, [WorkflowExpression] Func<string> lookupEntryBodydescription = null, [WorkflowExpression] Func<string> lookupEntryBodytype = null, [WorkflowExpression] Func<bool> lookupEntryBodylitigationHold = null, [WorkflowExpression] Func<string> lookupEntryBodyclosedDate = null, [WorkflowExpression] Func<lookupEntryBodyaccesspermissionsInputItem[]> lookupEntryBodyaccesspermissions = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateChildEntryResponse> __BuildCreateChildEntry(WorkflowValue<string> repositoryID, WorkflowValue<string> childAttributeID, WorkflowValue<string> parentID, WorkflowValue<string> childID, WorkflowValue<bool> lookupEntryBodyaccessfilteredPermissions, WorkflowValue<bool> lookupEntryBodyaccessforcePermssions, WorkflowValue<string> lookupEntryBodydescription = null, WorkflowValue<string> lookupEntryBodytype = null, WorkflowValue<bool> lookupEntryBodylitigationHold = null, WorkflowValue<string> lookupEntryBodyclosedDate = null, WorkflowValue<lookupEntryBodyaccesspermissionsInputItem[]> lookupEntryBodyaccesspermissions = null)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(childAttributeID, nameof(childAttributeID), required: true);
+            WorkflowValue.Validate(parentID, nameof(parentID), required: true);
+            WorkflowValue.Validate(childID, nameof(childID), required: true);
+            WorkflowValue.Validate(lookupEntryBodyaccessfilteredPermissions, nameof(lookupEntryBodyaccessfilteredPermissions), required: true);
+            WorkflowValue.Validate(lookupEntryBodyaccessforcePermssions, nameof(lookupEntryBodyaccessforcePermssions), required: true);
+            WorkflowValue.Validate(lookupEntryBodydescription, nameof(lookupEntryBodydescription), required: false);
+            WorkflowValue.Validate(lookupEntryBodytype, nameof(lookupEntryBodytype), required: false);
+            WorkflowValue.Validate(lookupEntryBodylitigationHold, nameof(lookupEntryBodylitigationHold), required: false);
+            WorkflowValue.Validate(lookupEntryBodyclosedDate, nameof(lookupEntryBodyclosedDate), required: false);
+            WorkflowValue.Validate(lookupEntryBodyaccesspermissions, nameof(lookupEntryBodyaccesspermissions), required: false);
+            return new DeferredBodyAction<CreateChildEntryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var lookupEntryBody = new JObject();
+                var lookupEntryBodypropCount = 0;
+                if (lookupEntryBodydescription != null)
+                {
+                    lookupEntryBody["description"] = ExpressionConverter.ConvertO(lookupEntryBodydescription);
+                    lookupEntryBodypropCount++;
+                }
+
+                if (lookupEntryBodytype != null)
+                {
+                    lookupEntryBody["defaulting"] = ExpressionConverter.ConvertO(lookupEntryBodytype);
+                    lookupEntryBodypropCount++;
+                }
+
+                if (lookupEntryBodylitigationHold != null)
+                {
+                    lookupEntryBody["hold"] = ExpressionConverter.ConvertO(lookupEntryBodylitigationHold);
+                    lookupEntryBodypropCount++;
+                }
+
+                if (lookupEntryBodyclosedDate != null)
+                {
+                    lookupEntryBody["closed"] = ExpressionConverter.ConvertO(lookupEntryBodyclosedDate);
+                    lookupEntryBodypropCount++;
+                }
+
+                var accessObject = new JObject();
+                var accessObjectpropCount = 0;
                 accessObjectpropCount++;
-            }
-
-            if (accessObjectpropCount > 0)
-            {
-                lookupEntryBody["access"] = accessObject;
-                lookupEntryBodypropCount++;
-            }
-
-            if (lookupEntryBodypropCount > 0)
-            {
-                callPayload.Body = lookupEntryBody;
-            }
-
-            return new ApiConnectionAction<CreateChildEntryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
-        {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<DeleteChildEntryResponse> DeleteChildEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> childAttributeID, Expression<Func<string>> parentID, Expression<Func<string>> childID)
-        {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<DeleteChildEntryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateEntryResponse> CreateEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID, Expression<Func<bool>> lookupEntryBodyaccessfilteredPermissions, Expression<Func<bool>> lookupEntryBodyaccessforcePermssions, Expression<Func<string>> lookupEntryBodydescription = null, Expression<Func<string>> lookupEntryBodytype = null, Expression<Func<bool>> lookupEntryBodylitigationHold = null, Expression<Func<string>> lookupEntryBodyclosedDate = null, Expression<Func<lookupEntryBodyaccesspermissionsInputItem[]>> lookupEntryBodyaccesspermissions = null)
-        {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var lookupEntryBody = new JObject();
-            var lookupEntryBodypropCount = 0;
-            if (lookupEntryBodydescription != null)
-            {
-                lookupEntryBody["description"] = ExpressionConverter.ConvertO(lookupEntryBodydescription);
-                lookupEntryBodypropCount++;
-            }
-
-            if (lookupEntryBodytype != null)
-            {
-                lookupEntryBody["defaulting"] = ExpressionConverter.ConvertO(lookupEntryBodytype);
-                lookupEntryBodypropCount++;
-            }
-
-            if (lookupEntryBodylitigationHold != null)
-            {
-                lookupEntryBody["hold"] = ExpressionConverter.ConvertO(lookupEntryBodylitigationHold);
-                lookupEntryBodypropCount++;
-            }
-
-            if (lookupEntryBodyclosedDate != null)
-            {
-                lookupEntryBody["closed"] = ExpressionConverter.ConvertO(lookupEntryBodyclosedDate);
-                lookupEntryBodypropCount++;
-            }
-
-            var accessObject = new JObject();
-            var accessObjectpropCount = 0;
-            accessObjectpropCount++;
-            accessObject["filtered_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessfilteredPermissions);
-            accessObjectpropCount++;
-            accessObject["force_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessforcePermssions);
-            if (lookupEntryBodyaccesspermissions != null)
-            {
-                accessObject["permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccesspermissions);
+                accessObject["filtered_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessfilteredPermissions);
                 accessObjectpropCount++;
-            }
+                accessObject["force_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessforcePermssions);
+                if (lookupEntryBodyaccesspermissions != null)
+                {
+                    accessObject["permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccesspermissions);
+                    accessObjectpropCount++;
+                }
 
-            if (accessObjectpropCount > 0)
+                if (accessObjectpropCount > 0)
+                {
+                    lookupEntryBody["access"] = accessObject;
+                    lookupEntryBodypropCount++;
+                }
+
+                if (lookupEntryBodypropCount > 0)
+                {
+                    callPayload.Body = lookupEntryBody;
+                }
+
+                return new ApiConnectionAction<CreateChildEntryResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildGetChildEntry))]
+        public IWorkflowAction GetChildEntry([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> childAttributeID, [WorkflowExpression] Func<string> parentID, [WorkflowExpression] Func<string> childID)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetChildEntry(WorkflowValue<string> repositoryID, WorkflowValue<string> childAttributeID, WorkflowValue<string> parentID, WorkflowValue<string> childID)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(childAttributeID, nameof(childAttributeID), required: true);
+            WorkflowValue.Validate(parentID, nameof(parentID), required: true);
+            WorkflowValue.Validate(childID, nameof(childID), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                lookupEntryBody["access"] = accessObject;
-                lookupEntryBodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
+        }
 
-            if (lookupEntryBodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteChildEntry))]
+        public IBodyWorkflowAction<DeleteChildEntryResponse> DeleteChildEntry([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> childAttributeID, [WorkflowExpression] Func<string> parentID, [WorkflowExpression] Func<string> childID)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteChildEntryResponse> __BuildDeleteChildEntry(WorkflowValue<string> repositoryID, WorkflowValue<string> childAttributeID, WorkflowValue<string> parentID, WorkflowValue<string> childID)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(childAttributeID, nameof(childAttributeID), required: true);
+            WorkflowValue.Validate(parentID, nameof(parentID), required: true);
+            WorkflowValue.Validate(childID, nameof(childID), required: true);
+            return new DeferredBodyAction<DeleteChildEntryResponse>(() =>
             {
-                callPayload.Body = lookupEntryBody;
-            }
-
-            return new ApiConnectionAction<CreateEntryResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(childAttributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1), ExpressionConverter.ConvertWithUrlEncoding(childID, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<DeleteChildEntryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetLookupEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<orderbyInput>> orderby = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateEntry))]
+        public IBodyWorkflowAction<CreateEntryResponse> CreateEntry([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> attributeID, [WorkflowExpression] Func<string> parentID, [WorkflowExpression] Func<bool> lookupEntryBodyaccessfilteredPermissions, [WorkflowExpression] Func<bool> lookupEntryBodyaccessforcePermssions, [WorkflowExpression] Func<string> lookupEntryBodydescription = null, [WorkflowExpression] Func<string> lookupEntryBodytype = null, [WorkflowExpression] Func<bool> lookupEntryBodylitigationHold = null, [WorkflowExpression] Func<string> lookupEntryBodyclosedDate = null, [WorkflowExpression] Func<lookupEntryBodyaccesspermissionsInputItem[]> lookupEntryBodyaccesspermissions = null)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            callPayload.Queries["$orderby"] = Convert.ToString("key");
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateEntryResponse> __BuildCreateEntry(WorkflowValue<string> repositoryID, WorkflowValue<string> attributeID, WorkflowValue<string> parentID, WorkflowValue<bool> lookupEntryBodyaccessfilteredPermissions, WorkflowValue<bool> lookupEntryBodyaccessforcePermssions, WorkflowValue<string> lookupEntryBodydescription = null, WorkflowValue<string> lookupEntryBodytype = null, WorkflowValue<bool> lookupEntryBodylitigationHold = null, WorkflowValue<string> lookupEntryBodyclosedDate = null, WorkflowValue<lookupEntryBodyaccesspermissionsInputItem[]> lookupEntryBodyaccesspermissions = null)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(attributeID, nameof(attributeID), required: true);
+            WorkflowValue.Validate(parentID, nameof(parentID), required: true);
+            WorkflowValue.Validate(lookupEntryBodyaccessfilteredPermissions, nameof(lookupEntryBodyaccessfilteredPermissions), required: true);
+            WorkflowValue.Validate(lookupEntryBodyaccessforcePermssions, nameof(lookupEntryBodyaccessforcePermssions), required: true);
+            WorkflowValue.Validate(lookupEntryBodydescription, nameof(lookupEntryBodydescription), required: false);
+            WorkflowValue.Validate(lookupEntryBodytype, nameof(lookupEntryBodytype), required: false);
+            WorkflowValue.Validate(lookupEntryBodylitigationHold, nameof(lookupEntryBodylitigationHold), required: false);
+            WorkflowValue.Validate(lookupEntryBodyclosedDate, nameof(lookupEntryBodyclosedDate), required: false);
+            WorkflowValue.Validate(lookupEntryBodyaccesspermissions, nameof(lookupEntryBodyaccesspermissions), required: false);
+            return new DeferredBodyAction<CreateEntryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var lookupEntryBody = new JObject();
+                var lookupEntryBodypropCount = 0;
+                if (lookupEntryBodydescription != null)
+                {
+                    lookupEntryBody["description"] = ExpressionConverter.ConvertO(lookupEntryBodydescription);
+                    lookupEntryBodypropCount++;
+                }
+
+                if (lookupEntryBodytype != null)
+                {
+                    lookupEntryBody["defaulting"] = ExpressionConverter.ConvertO(lookupEntryBodytype);
+                    lookupEntryBodypropCount++;
+                }
+
+                if (lookupEntryBodylitigationHold != null)
+                {
+                    lookupEntryBody["hold"] = ExpressionConverter.ConvertO(lookupEntryBodylitigationHold);
+                    lookupEntryBodypropCount++;
+                }
+
+                if (lookupEntryBodyclosedDate != null)
+                {
+                    lookupEntryBody["closed"] = ExpressionConverter.ConvertO(lookupEntryBodyclosedDate);
+                    lookupEntryBodypropCount++;
+                }
+
+                var accessObject = new JObject();
+                var accessObjectpropCount = 0;
+                accessObjectpropCount++;
+                accessObject["filtered_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessfilteredPermissions);
+                accessObjectpropCount++;
+                accessObject["force_permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccessforcePermssions);
+                if (lookupEntryBodyaccesspermissions != null)
+                {
+                    accessObject["permissions"] = ExpressionConverter.ConvertO(lookupEntryBodyaccesspermissions);
+                    accessObjectpropCount++;
+                }
+
+                if (accessObjectpropCount > 0)
+                {
+                    lookupEntryBody["access"] = accessObject;
+                    lookupEntryBodypropCount++;
+                }
+
+                if (lookupEntryBodypropCount > 0)
+                {
+                    callPayload.Body = lookupEntryBody;
+                }
+
+                return new ApiConnectionAction<CreateEntryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<DeleteLookupEntryResponse> DeleteLookupEntry(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> parentID)
+        [WorkflowExpressionFactory(nameof(__BuildGetLookupEntry))]
+        public IWorkflowAction GetLookupEntry([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> attributeID, [WorkflowExpression] Func<string> parentID, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<orderbyInput> orderby = null)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<DeleteLookupEntryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetLookupEntry(WorkflowValue<string> repositoryID, WorkflowValue<string> attributeID, WorkflowValue<string> parentID, WorkflowValue<string> filter = null, WorkflowValue<string> select = null, WorkflowValue<int> skip = null, WorkflowValue<int> top = null, WorkflowValue<orderbyInput> orderby = null)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(attributeID, nameof(attributeID), required: true);
+            WorkflowValue.Validate(parentID, nameof(parentID), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$orderby"] = Convert.ToString("key");
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<SearchLookupEntriesResponse> SearchLookupEntries(Expression<Func<string>> repositoryID, Expression<Func<string>> attributeID, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteLookupEntry))]
+        public IBodyWorkflowAction<DeleteLookupEntryResponse> DeleteLookupEntry([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> attributeID, [WorkflowExpression] Func<string> parentID)
         {
-            var apiCallPath = String.Format("/v1/attributes/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            callPayload.Queries["$orderby"] = Convert.ToString("key");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<SearchLookupEntriesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteLookupEntryResponse> __BuildDeleteLookupEntry(WorkflowValue<string> repositoryID, WorkflowValue<string> attributeID, WorkflowValue<string> parentID)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(attributeID, nameof(attributeID), required: true);
+            WorkflowValue.Validate(parentID, nameof(parentID), required: true);
+            return new DeferredBodyAction<DeleteLookupEntryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1), ExpressionConverter.ConvertWithUrlEncoding(parentID, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<DeleteLookupEntryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction SearchCabinets(Expression<Func<string>> cabinets, Expression<Func<string>> q, Expression<Func<string>> select, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> skiptoken = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchLookupEntries))]
+        public IBodyWorkflowAction<SearchLookupEntriesResponse> SearchLookupEntries([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> attributeID, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = "/v2/Search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cabinets"] = ExpressionConverter.Convert(cabinets);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
-            if (skiptoken != null)
-                callPayload.Queries["skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchLookupEntriesResponse> __BuildSearchLookupEntries(WorkflowValue<string> repositoryID, WorkflowValue<string> attributeID, WorkflowValue<string> filter = null, WorkflowValue<string> select = null, WorkflowValue<int> skip = null, WorkflowValue<int> top = null)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(attributeID, nameof(attributeID), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<SearchLookupEntriesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/attributes/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(attributeID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["$orderby"] = Convert.ToString("key");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<SearchLookupEntriesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction RefreshWorkspace(Expression<Func<string>> workspaceID)
+        [WorkflowExpressionFactory(nameof(__BuildSearchCabinets))]
+        public IWorkflowAction SearchCabinets([WorkflowExpression] Func<string> cabinets, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> select, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            var apiCallPath = String.Format("/v1/Workspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSearchCabinets(WorkflowValue<string> cabinets, WorkflowValue<string> q, WorkflowValue<string> select, WorkflowValue<string> orderby = null, WorkflowValue<int> top = null, WorkflowValue<int> skip = null, WorkflowValue<string> skiptoken = null)
+        {
+            WorkflowValue.Validate(cabinets, nameof(cabinets), required: true);
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(select, nameof(select), required: true);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(skiptoken, nameof(skiptoken), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/Search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["cabinets"] = ExpressionConverter.Convert(cabinets);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["skip"] = ExpressionConverter.Convert(skip);
+                if (skiptoken != null)
+                    callPayload.Queries["skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction LockDocument(Expression<Func<string>> id, Expression<Func<string>> comment = null)
+        [WorkflowExpressionFactory(nameof(__BuildRefreshWorkspace))]
+        public IWorkflowAction RefreshWorkspace([WorkflowExpression] Func<string> workspaceID)
         {
-            var apiCallPath = String.Format("/v2/document/{0}/lock", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (comment != null)
-                callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRefreshWorkspace(WorkflowValue<string> workspaceID)
+        {
+            WorkflowValue.Validate(workspaceID, nameof(workspaceID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Workspace/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction UnockDocument(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildLockDocument))]
+        public IWorkflowAction LockDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> comment = null)
         {
-            var apiCallPath = String.Format("/v2/document/{0}/unlock", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildLockDocument(WorkflowValue<string> id, WorkflowValue<string> comment = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(comment, nameof(comment), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/lock", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (comment != null)
+                    callPayload.Queries["comment"] = ExpressionConverter.Convert(comment);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetRepositoryLog(Expression<Func<string>> repositoryID, Expression<Func<logtypeInput>> logtype, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        [WorkflowExpressionFactory(nameof(__BuildUnockDocument))]
+        public IWorkflowAction UnockDocument([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/log", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            callPayload.Queries["Logtype"] = ExpressionConverter.Convert(logtype);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUnockDocument(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/document/{0}/unlock", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetRepositoryInformation(Expression<Func<string>> repositoryID)
+        [WorkflowExpressionFactory(nameof(__BuildGetRepositoryLog))]
+        public IWorkflowAction GetRepositoryLog([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<logtypeInput> logtype, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetRepositoryLog(WorkflowValue<string> repositoryID, WorkflowValue<logtypeInput> logtype, WorkflowValue<string> start = null, WorkflowValue<string> end = null)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(logtype, nameof(logtype), required: true);
+            WorkflowValue.Validate(start, nameof(start), required: false);
+            WorkflowValue.Validate(end, nameof(end), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/log", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                if (end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                callPayload.Queries["Logtype"] = ExpressionConverter.Convert(logtype);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<GetRepositoryUsersResponseItem[]> GetRepositoryUsers(Expression<Func<string>> repositoryID)
+        [WorkflowExpressionFactory(nameof(__BuildGetRepositoryInformation))]
+        public IWorkflowAction GetRepositoryInformation([WorkflowExpression] Func<string> repositoryID)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetRepositoryUsersResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetRepositoryInformation(WorkflowValue<string> repositoryID)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<string[]> GetRepositoryGroups(Expression<Func<string>> repositoryID, Expression<Func<string>> filter = null, Expression<Func<string>> top = null, Expression<Func<bool>> paging = null, Expression<Func<string>> skiptoken = null, Expression<Func<returnInfoInput>> returnInfo = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRepositoryUsers))]
+        public IBodyWorkflowAction<GetRepositoryUsersResponseItem[]> GetRepositoryUsers([WorkflowExpression] Func<string> repositoryID)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/groups", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            callPayload.Queries["paging"] = Convert.ToString(false);
-            if (paging != null)
-                callPayload.Queries["paging"] = ExpressionConverter.Convert(paging);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            callPayload.Queries["returnInfo"] = Convert.ToString("");
-            if (returnInfo != null)
-                callPayload.Queries["returnInfo"] = ExpressionConverter.Convert(returnInfo);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<string[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRepositoryUsersResponseItem[]> __BuildGetRepositoryUsers(WorkflowValue<string> repositoryID)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            return new DeferredBodyAction<GetRepositoryUsersResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/users", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetRepositoryUsersResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateRepositoryGroupResponse> CreateRepositoryGroup(Expression<Func<string>> repositoryID, Expression<Func<string>> name, Expression<Func<bool>> external, Expression<Func<bool>> hidden, Expression<Func<bool>> hideMembership)
+        [WorkflowExpressionFactory(nameof(__BuildGetRepositoryGroups))]
+        public IBodyWorkflowAction<string[]> GetRepositoryGroups([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<bool> paging = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<returnInfoInput> returnInfo = null)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/group", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction<CreateRepositoryGroupResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string[]> __BuildGetRepositoryGroups(WorkflowValue<string> repositoryID, WorkflowValue<string> filter = null, WorkflowValue<string> top = null, WorkflowValue<bool> paging = null, WorkflowValue<string> skiptoken = null, WorkflowValue<returnInfoInput> returnInfo = null)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(paging, nameof(paging), required: false);
+            WorkflowValue.Validate(skiptoken, nameof(skiptoken), required: false);
+            WorkflowValue.Validate(returnInfo, nameof(returnInfo), required: false);
+            return new DeferredBodyAction<string[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/groups", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                callPayload.Queries["paging"] = Convert.ToString(false);
+                if (paging != null)
+                    callPayload.Queries["paging"] = ExpressionConverter.Convert(paging);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                callPayload.Queries["returnInfo"] = Convert.ToString("");
+                if (returnInfo != null)
+                    callPayload.Queries["returnInfo"] = ExpressionConverter.Convert(returnInfo);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction DeleteRepositoryGroup(Expression<Func<string>> repositoryID, Expression<Func<string>> groupID)
+        [WorkflowExpressionFactory(nameof(__BuildCreateRepositoryGroup))]
+        public IBodyWorkflowAction<CreateRepositoryGroupResponse> CreateRepositoryGroup([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<bool> external, [WorkflowExpression] Func<bool> hidden, [WorkflowExpression] Func<bool> hideMembership)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/group/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateRepositoryGroupResponse> __BuildCreateRepositoryGroup(WorkflowValue<string> repositoryID, WorkflowValue<string> name, WorkflowValue<bool> external, WorkflowValue<bool> hidden, WorkflowValue<bool> hideMembership)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(external, nameof(external), required: true);
+            WorkflowValue.Validate(hidden, nameof(hidden), required: true);
+            WorkflowValue.Validate(hideMembership, nameof(hideMembership), required: true);
+            return new DeferredBodyAction<CreateRepositoryGroupResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/group", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction<CreateRepositoryGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> username, Expression<Func<string>> displayFirstName, Expression<Func<string>> displayLastName, Expression<Func<string>> email, Expression<Func<bool>> external, Expression<Func<bool>> sendWelcome, Expression<Func<string>> repository, Expression<Func<string>> displayMiddleName = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteRepositoryGroup))]
+        public IWorkflowAction DeleteRepositoryGroup([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<string> groupID)
         {
-            var apiCallPath = "/v1/User";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction<CreateUserResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteRepositoryGroup(WorkflowValue<string> repositoryID, WorkflowValue<string> groupID)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(groupID, nameof(groupID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/group/{1}", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1), ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction AddOrRemoveUserRepository(Expression<Func<string>> repositoryID, Expression<Func<actionInput>> action, Expression<Func<string>> member, Expression<Func<bool>> external, Expression<Func<bool>> deleteIfFederated = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateUser))]
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> displayFirstName, [WorkflowExpression] Func<string> displayLastName, [WorkflowExpression] Func<string> email, [WorkflowExpression] Func<bool> external, [WorkflowExpression] Func<bool> sendWelcome, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> displayMiddleName = null)
         {
-            var apiCallPath = String.Format("/v1/Repository/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowValue<string> username, WorkflowValue<string> displayFirstName, WorkflowValue<string> displayLastName, WorkflowValue<string> email, WorkflowValue<bool> external, WorkflowValue<bool> sendWelcome, WorkflowValue<string> repository, WorkflowValue<string> displayMiddleName = null)
+        {
+            WorkflowValue.Validate(username, nameof(username), required: true);
+            WorkflowValue.Validate(displayFirstName, nameof(displayFirstName), required: true);
+            WorkflowValue.Validate(displayLastName, nameof(displayLastName), required: true);
+            WorkflowValue.Validate(email, nameof(email), required: true);
+            WorkflowValue.Validate(external, nameof(external), required: true);
+            WorkflowValue.Validate(sendWelcome, nameof(sendWelcome), required: true);
+            WorkflowValue.Validate(repository, nameof(repository), required: true);
+            WorkflowValue.Validate(displayMiddleName, nameof(displayMiddleName), required: false);
+            return new DeferredBodyAction<CreateUserResponse>(() =>
+            {
+                var apiCallPath = "/v1/User";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction<CreateUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateCollabSpaceResponse> CreateCollabSpace(Expression<Func<string>> workspaceID, Expression<Func<string>> name, Expression<Func<string>> description = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddOrRemoveUserRepository))]
+        public IWorkflowAction AddOrRemoveUserRepository([WorkflowExpression] Func<string> repositoryID, [WorkflowExpression] Func<actionInput> action, [WorkflowExpression] Func<string> member, [WorkflowExpression] Func<bool> external, [WorkflowExpression] Func<bool> deleteIfFederated = null)
         {
-            var apiCallPath = String.Format("/v2/container/{0}/collabspace", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction<CreateCollabSpaceResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddOrRemoveUserRepository(WorkflowValue<string> repositoryID, WorkflowValue<actionInput> action, WorkflowValue<string> member, WorkflowValue<bool> external, WorkflowValue<bool> deleteIfFederated = null)
+        {
+            WorkflowValue.Validate(repositoryID, nameof(repositoryID), required: true);
+            WorkflowValue.Validate(action, nameof(action), required: true);
+            WorkflowValue.Validate(member, nameof(member), required: true);
+            WorkflowValue.Validate(external, nameof(external), required: true);
+            WorkflowValue.Validate(deleteIfFederated, nameof(deleteIfFederated), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Repository/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(repositoryID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetCabinetSettings(Expression<Func<string>> cabinetID)
+        [WorkflowExpressionFactory(nameof(__BuildCreateCollabSpace))]
+        public IBodyWorkflowAction<CreateCollabSpaceResponse> CreateCollabSpace([WorkflowExpression] Func<string> workspaceID, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> description = null)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/settings", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateCollabSpaceResponse> __BuildCreateCollabSpace(WorkflowValue<string> workspaceID, WorkflowValue<string> name, WorkflowValue<string> description = null)
+        {
+            WorkflowValue.Validate(workspaceID, nameof(workspaceID), required: true);
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(description, nameof(description), required: false);
+            return new DeferredBodyAction<CreateCollabSpaceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/container/{0}/collabspace", ExpressionConverter.ConvertWithUrlEncoding(workspaceID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction<CreateCollabSpaceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetCabinetInformation(Expression<Func<string>> cabinetID)
+        [WorkflowExpressionFactory(nameof(__BuildGetCabinetSettings))]
+        public IWorkflowAction GetCabinetSettings([WorkflowExpression] Func<string> cabinetID)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetCabinetSettings(WorkflowValue<string> cabinetID)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/settings", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<JToken[]> GetCabinetCustomAttributes(Expression<Func<string>> cabinetID)
+        [WorkflowExpressionFactory(nameof(__BuildGetCabinetInformation))]
+        public IWorkflowAction GetCabinetInformation([WorkflowExpression] Func<string> cabinetID)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/customAttributes", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetCabinetInformation(WorkflowValue<string> cabinetID)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<GetCabinetDefaultAccessResponseItem[]> GetCabinetDefaultAccess(Expression<Func<string>> cabinetID)
+        [WorkflowExpressionFactory(nameof(__BuildGetCabinetCustomAttributes))]
+        public IBodyWorkflowAction<JToken[]> GetCabinetCustomAttributes([WorkflowExpression] Func<string> cabinetID)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/membership", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetCabinetDefaultAccessResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken[]> __BuildGetCabinetCustomAttributes(WorkflowValue<string> cabinetID)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            return new DeferredBodyAction<JToken[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/customAttributes", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<JToken[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction AddToOrRemoveGroupFromCabinet(Expression<Func<string>> cabinetID, Expression<Func<actionInput>> action, Expression<Func<string>> id, Expression<Func<bool>> view, Expression<Func<bool>> edit, Expression<Func<bool>> share, Expression<Func<bool>> administer, Expression<Func<bool>> noAccess)
+        [WorkflowExpressionFactory(nameof(__BuildGetCabinetDefaultAccess))]
+        public IBodyWorkflowAction<GetCabinetDefaultAccessResponseItem[]> GetCabinetDefaultAccess([WorkflowExpression] Func<string> cabinetID)
         {
-            var apiCallPath = String.Format("/v1/cabinet/{0}/membership", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCabinetDefaultAccessResponseItem[]> __BuildGetCabinetDefaultAccess(WorkflowValue<string> cabinetID)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            return new DeferredBodyAction<GetCabinetDefaultAccessResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/membership", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetCabinetDefaultAccessResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<GetCabinetGroupsResponseItem[]> GetCabinetGroups(Expression<Func<string>> cabinetID)
+        [WorkflowExpressionFactory(nameof(__BuildAddToOrRemoveGroupFromCabinet))]
+        public IWorkflowAction AddToOrRemoveGroupFromCabinet([WorkflowExpression] Func<string> cabinetID, [WorkflowExpression] Func<actionInput> action, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> view, [WorkflowExpression] Func<bool> edit, [WorkflowExpression] Func<bool> share, [WorkflowExpression] Func<bool> administer, [WorkflowExpression] Func<bool> noAccess)
         {
-            var apiCallPath = String.Format("/v2/cabinet/{0}/groups", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetCabinetGroupsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddToOrRemoveGroupFromCabinet(WorkflowValue<string> cabinetID, WorkflowValue<actionInput> action, WorkflowValue<string> id, WorkflowValue<bool> view, WorkflowValue<bool> edit, WorkflowValue<bool> share, WorkflowValue<bool> administer, WorkflowValue<bool> noAccess)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            WorkflowValue.Validate(action, nameof(action), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(view, nameof(view), required: true);
+            WorkflowValue.Validate(edit, nameof(edit), required: true);
+            WorkflowValue.Validate(share, nameof(share), required: true);
+            WorkflowValue.Validate(administer, nameof(administer), required: true);
+            WorkflowValue.Validate(noAccess, nameof(noAccess), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/cabinet/{0}/membership", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<CreateCabinetExternalGroupResponse> CreateCabinetExternalGroup(Expression<Func<string>> cabinetID, Expression<Func<string>> name, Expression<Func<optionsInput>> options = null, Expression<Func<accessInput>> access = null, Expression<Func<string>> collaborationSpaceId = null, Expression<Func<collaborationspaceaccessInput>> collaborationspaceaccess = null, Expression<Func<string>> topwsattributegroupkey = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCabinetGroups))]
+        public IBodyWorkflowAction<GetCabinetGroupsResponseItem[]> GetCabinetGroups([WorkflowExpression] Func<string> cabinetID)
         {
-            var apiCallPath = String.Format("/v2/cabinet/{0}/group/external", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction<CreateCabinetExternalGroupResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCabinetGroupsResponseItem[]> __BuildGetCabinetGroups(WorkflowValue<string> cabinetID)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            return new DeferredBodyAction<GetCabinetGroupsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cabinet/{0}/groups", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetCabinetGroupsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction SearchCabinetModifyACLs(Expression<Func<string>> cabinetID, Expression<Func<string>> q, Expression<Func<modeInput>> mode, Expression<Func<string>> newAcl, Expression<Func<string>> email = null, Expression<Func<completionEmailInput>> completionEmail = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateCabinetExternalGroup))]
+        public IBodyWorkflowAction<CreateCabinetExternalGroupResponse> CreateCabinetExternalGroup([WorkflowExpression] Func<string> cabinetID, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<optionsInput> options = null, [WorkflowExpression] Func<accessInput> access = null, [WorkflowExpression] Func<string> collaborationSpaceId = null, [WorkflowExpression] Func<collaborationspaceaccessInput> collaborationspaceaccess = null, [WorkflowExpression] Func<string> topwsattributegroupkey = null)
         {
-            var apiCallPath = String.Format("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateCabinetExternalGroupResponse> __BuildCreateCabinetExternalGroup(WorkflowValue<string> cabinetID, WorkflowValue<string> name, WorkflowValue<optionsInput> options = null, WorkflowValue<accessInput> access = null, WorkflowValue<string> collaborationSpaceId = null, WorkflowValue<collaborationspaceaccessInput> collaborationspaceaccess = null, WorkflowValue<string> topwsattributegroupkey = null)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(options, nameof(options), required: false);
+            WorkflowValue.Validate(access, nameof(access), required: false);
+            WorkflowValue.Validate(collaborationSpaceId, nameof(collaborationSpaceId), required: false);
+            WorkflowValue.Validate(collaborationspaceaccess, nameof(collaborationspaceaccess), required: false);
+            WorkflowValue.Validate(topwsattributegroupkey, nameof(topwsattributegroupkey), required: false);
+            return new DeferredBodyAction<CreateCabinetExternalGroupResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/cabinet/{0}/group/external", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction<CreateCabinetExternalGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction GetContainerContents(Expression<Func<string>> containerID, Expression<Func<string>> select, Expression<Func<int>> top = null, Expression<Func<string>> skiptoken = null, Expression<Func<string>> orderby = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchCabinetModifyACLs))]
+        public IWorkflowAction SearchCabinetModifyACLs([WorkflowExpression] Func<string> cabinetID, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<modeInput> mode, [WorkflowExpression] Func<string> newAcl, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<completionEmailInput> completionEmail = null)
         {
-            var apiCallPath = String.Format("/v2/container/{0}", ExpressionConverter.ConvertWithUrlEncoding(containerID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["select"] = ExpressionConverter.Convert(select);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (skiptoken != null)
-                callPayload.Queries["skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSearchCabinetModifyACLs(WorkflowValue<string> cabinetID, WorkflowValue<string> q, WorkflowValue<modeInput> mode, WorkflowValue<string> newAcl, WorkflowValue<string> email = null, WorkflowValue<completionEmailInput> completionEmail = null)
+        {
+            WorkflowValue.Validate(cabinetID, nameof(cabinetID), required: true);
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(mode, nameof(mode), required: true);
+            WorkflowValue.Validate(newAcl, nameof(newAcl), required: true);
+            WorkflowValue.Validate(email, nameof(email), required: false);
+            WorkflowValue.Validate(completionEmail, nameof(completionEmail), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(cabinetID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<GetGroupInformationResponse> GetGroupInformation(Expression<Func<string>> groupID, Expression<Func<bool>> cabMembership = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetContainerContents))]
+        public IWorkflowAction GetContainerContents([WorkflowExpression] Func<string> containerID, [WorkflowExpression] Func<string> select, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            var apiCallPath = String.Format("/v1/Group/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cabMembership"] = Convert.ToString(false);
-            if (cabMembership != null)
-                callPayload.Queries["cabMembership"] = ExpressionConverter.Convert(cabMembership);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetGroupInformationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetContainerContents(WorkflowValue<string> containerID, WorkflowValue<string> select, WorkflowValue<int> top = null, WorkflowValue<string> skiptoken = null, WorkflowValue<string> orderby = null)
+        {
+            WorkflowValue.Validate(containerID, nameof(containerID), required: true);
+            WorkflowValue.Validate(select, nameof(select), required: true);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skiptoken, nameof(skiptoken), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/container/{0}", ExpressionConverter.ConvertWithUrlEncoding(containerID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["select"] = ExpressionConverter.Convert(select);
+                if (top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                if (skiptoken != null)
+                    callPayload.Queries["skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = ExpressionConverter.Convert(orderby);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IBodyWorkflowAction<GetGroupMembershipResponseItem[]> GetGroupMembership(Expression<Func<string>> groupID)
+        [WorkflowExpressionFactory(nameof(__BuildGetGroupInformation))]
+        public IBodyWorkflowAction<GetGroupInformationResponse> GetGroupInformation([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<bool> cabMembership = null)
         {
-            var apiCallPath = String.Format("/v1/Group/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetGroupMembershipResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGroupInformationResponse> __BuildGetGroupInformation(WorkflowValue<string> groupID, WorkflowValue<bool> cabMembership = null)
+        {
+            WorkflowValue.Validate(groupID, nameof(groupID), required: true);
+            WorkflowValue.Validate(cabMembership, nameof(cabMembership), required: false);
+            return new DeferredBodyAction<GetGroupInformationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/info", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["cabMembership"] = Convert.ToString(false);
+                if (cabMembership != null)
+                    callPayload.Queries["cabMembership"] = ExpressionConverter.Convert(cabMembership);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetGroupInformationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
-        public IWorkflowAction AddOrRemoveGroupMember(Expression<Func<string>> groupID, Expression<Func<actionInput>> action, Expression<Func<string>> member)
+        [WorkflowExpressionFactory(nameof(__BuildGetGroupMembership))]
+        public IBodyWorkflowAction<GetGroupMembershipResponseItem[]> GetGroupMembership([WorkflowExpression] Func<string> groupID)
         {
-            var apiCallPath = String.Format("/v1/Group/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGroupMembershipResponseItem[]> __BuildGetGroupMembership(WorkflowValue<string> groupID)
+        {
+            WorkflowValue.Validate(groupID, nameof(groupID), required: true);
+            return new DeferredBodyAction<GetGroupMembershipResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<GetGroupMembershipResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netdocuments")]
+        [WorkflowExpressionFactory(nameof(__BuildAddOrRemoveGroupMember))]
+        public IWorkflowAction AddOrRemoveGroupMember([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<actionInput> action, [WorkflowExpression] Func<string> member)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddOrRemoveGroupMember(WorkflowValue<string> groupID, WorkflowValue<actionInput> action, WorkflowValue<string> member)
+        {
+            WorkflowValue.Validate(groupID, nameof(groupID), required: true);
+            WorkflowValue.Validate(action, nameof(action), required: true);
+            WorkflowValue.Validate(member, nameof(member), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Group/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("multipart/form-data");
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class NetdocumentsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SearchCab(Expression<Func<string>> cabId, Expression<Func<string>> q, Expression<Func<orderbyInput>> orderby = null, Expression<Func<string>> top = null, Expression<Func<string>> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchCab))]
+        public IWorkflowTrigger SearchCab([WorkflowExpression] Func<string> cabId, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<orderbyInput> orderby = null, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(cabId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["$orderby"] = Convert.ToString("relevance desc");
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildSearchCab(WorkflowValue<string> cabId, WorkflowValue<string> q, WorkflowValue<orderbyInput> orderby = null, WorkflowValue<string> top = null, WorkflowValue<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(cabId, nameof(cabId), required: true);
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/Search/{0}", ExpressionConverter.ConvertWithUrlEncoding(cabId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["$orderby"] = Convert.ToString("relevance desc");
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,25 +20,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thegoodapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thegoodapiip")]
-        public IBodyWorkflowAction<PlantPostResponse> Plant(Expression<Func<int>> bodycount = null)
+        [WorkflowExpressionFactory(nameof(__BuildPlant))]
+        public IBodyWorkflowAction<PlantPostResponse> Plant([WorkflowExpression] Func<int> bodycount = null)
         {
-            var apiCallPath = "/plant/trees";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycount != null)
-            {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PlantPostResponse> __BuildPlant(WorkflowValue<int> bodycount = null)
+        {
+            WorkflowValue.Validate(bodycount, nameof(bodycount), required: false);
+            return new DeferredBodyAction<PlantPostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/plant/trees";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycount != null)
+                {
+                    body["count"] = ExpressionConverter.ConvertO(bodycount);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PlantPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PlantPostResponse>(callPayload);
+            });
         }
     }
 

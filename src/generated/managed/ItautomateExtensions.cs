@@ -4,22 +4,33 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itautomate
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ItautomateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itautomate")]
-        public IBodyWorkflowAction<JToken> RunCommand(Expression<Func<int>> id, Expression<Func<object>> commandInput = null)
+        [WorkflowExpressionFactory(nameof(__BuildRunCommand))]
+        public IBodyWorkflowAction<JToken> RunCommand([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<object> commandInput = null)
         {
-            var apiCallPath = "/RunCommand";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Body = ExpressionConverter.ConvertO(commandInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildRunCommand(WorkflowValue<int> id, WorkflowValue<object> commandInput = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(commandInput, nameof(commandInput), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/RunCommand";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Body = ExpressionConverter.ConvertO(commandInput);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

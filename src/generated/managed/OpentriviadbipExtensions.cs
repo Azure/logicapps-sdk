@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,29 +20,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentriviadbip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<GetQuestionResponse> GetQuestion(Expression<Func<int>> amount, Expression<Func<int>> category = null, Expression<Func<difficultyInput>> difficulty = null, Expression<Func<typeInput>> type = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetQuestion))]
+        public IBodyWorkflowAction<GetQuestionResponse> GetQuestion([WorkflowExpression] Func<int> amount, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<difficultyInput> difficulty = null, [WorkflowExpression] Func<typeInput> type = null)
         {
-            var apiCallPath = "/api.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["amount"] = ExpressionConverter.Convert(amount);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (difficulty != null)
-                callPayload.Queries["difficulty"] = ExpressionConverter.Convert(difficulty);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            return new ApiConnectionAction<GetQuestionResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetQuestionResponse> __BuildGetQuestion(WorkflowValue<int> amount, WorkflowValue<int> category = null, WorkflowValue<difficultyInput> difficulty = null, WorkflowValue<typeInput> type = null)
+        {
+            WorkflowValue.Validate(amount, nameof(amount), required: true);
+            WorkflowValue.Validate(category, nameof(category), required: false);
+            WorkflowValue.Validate(difficulty, nameof(difficulty), required: false);
+            WorkflowValue.Validate(type, nameof(type), required: false);
+            return new DeferredBodyAction<GetQuestionResponse>(() =>
+            {
+                var apiCallPath = "/api.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["amount"] = ExpressionConverter.Convert(amount);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (difficulty != null)
+                    callPayload.Queries["difficulty"] = ExpressionConverter.Convert(difficulty);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                return new ApiConnectionAction<GetQuestionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]
-        public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup(Expression<Func<int>> category)
+        [WorkflowExpressionFactory(nameof(__BuildQuestionCountLookup))]
+        public IBodyWorkflowAction<QuestionCountLookupResponse> QuestionCountLookup([WorkflowExpression] Func<int> category)
         {
-            var apiCallPath = "/api_count.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            return new ApiConnectionAction<QuestionCountLookupResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QuestionCountLookupResponse> __BuildQuestionCountLookup(WorkflowValue<int> category)
+        {
+            WorkflowValue.Validate(category, nameof(category), required: true);
+            return new DeferredBodyAction<QuestionCountLookupResponse>(() =>
+            {
+                var apiCallPath = "/api_count.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                return new ApiConnectionAction<QuestionCountLookupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opentriviadbip")]

@@ -4,30 +4,45 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mtarget
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MtargetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mtarget")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> msisdn, Expression<Func<string>> msg, Expression<Func<string>> sender = null, Expression<Func<int>> serviceid = null, Expression<Func<string>> timetosend = null, Expression<Func<string>> remoteid = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendSms))]
+        public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> msisdn, [WorkflowExpression] Func<string> msg, [WorkflowExpression] Func<string> sender = null, [WorkflowExpression] Func<int> serviceid = null, [WorkflowExpression] Func<string> timetosend = null, [WorkflowExpression] Func<string> remoteid = null)
         {
-            var apiCallPath = "/flow.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["msisdn"] = ExpressionConverter.Convert(msisdn);
-            callPayload.Queries["msg"] = ExpressionConverter.Convert(msg);
-            if (sender != null)
-                callPayload.Queries["sender"] = ExpressionConverter.Convert(sender);
-            if (serviceid != null)
-                callPayload.Queries["serviceid"] = ExpressionConverter.Convert(serviceid);
-            if (timetosend != null)
-                callPayload.Queries["timetosend"] = ExpressionConverter.Convert(timetosend);
-            if (remoteid != null)
-                callPayload.Queries["remoteid"] = ExpressionConverter.Convert(remoteid);
-            return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendSmsResponse> __BuildSendSms(WorkflowValue<string> msisdn, WorkflowValue<string> msg, WorkflowValue<string> sender = null, WorkflowValue<int> serviceid = null, WorkflowValue<string> timetosend = null, WorkflowValue<string> remoteid = null)
+        {
+            WorkflowValue.Validate(msisdn, nameof(msisdn), required: true);
+            WorkflowValue.Validate(msg, nameof(msg), required: true);
+            WorkflowValue.Validate(sender, nameof(sender), required: false);
+            WorkflowValue.Validate(serviceid, nameof(serviceid), required: false);
+            WorkflowValue.Validate(timetosend, nameof(timetosend), required: false);
+            WorkflowValue.Validate(remoteid, nameof(remoteid), required: false);
+            return new DeferredBodyAction<SendSmsResponse>(() =>
+            {
+                var apiCallPath = "/flow.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["msisdn"] = ExpressionConverter.Convert(msisdn);
+                callPayload.Queries["msg"] = ExpressionConverter.Convert(msg);
+                if (sender != null)
+                    callPayload.Queries["sender"] = ExpressionConverter.Convert(sender);
+                if (serviceid != null)
+                    callPayload.Queries["serviceid"] = ExpressionConverter.Convert(serviceid);
+                if (timetosend != null)
+                    callPayload.Queries["timetosend"] = ExpressionConverter.Convert(timetosend);
+                if (remoteid != null)
+                    callPayload.Queries["remoteid"] = ExpressionConverter.Convert(remoteid);
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            });
         }
     }
 

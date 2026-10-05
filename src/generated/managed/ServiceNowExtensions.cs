@@ -4,162 +4,309 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ServiceNowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction GetAttachmentMetdata(Expression<Func<string>> sysparmLimit = null, Expression<Func<string>> sysparmOffset = null, Expression<Func<string>> sysparmQuery = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetAttachmentMetdata))]
+        public IWorkflowAction GetAttachmentMetdata([WorkflowExpression] Func<string> sysparmLimit = null, [WorkflowExpression] Func<string> sysparmOffset = null, [WorkflowExpression] Func<string> sysparmQuery = null)
         {
-            var apiCallPath = "/api/now/v1/attachment";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_limit"] = Convert.ToString("1000");
-            if (sysparmLimit != null)
-                callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            callPayload.Queries["sysparm_offset"] = Convert.ToString("0");
-            if (sysparmOffset != null)
-                callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
-            if (sysparmQuery != null)
-                callPayload.Queries["sysparm_query"] = ExpressionConverter.Convert(sysparmQuery);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetAttachmentMetdata(WorkflowValue<string> sysparmLimit = null, WorkflowValue<string> sysparmOffset = null, WorkflowValue<string> sysparmQuery = null)
+        {
+            WorkflowValue.Validate(sysparmLimit, nameof(sysparmLimit), required: false);
+            WorkflowValue.Validate(sysparmOffset, nameof(sysparmOffset), required: false);
+            WorkflowValue.Validate(sysparmQuery, nameof(sysparmQuery), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/now/v1/attachment";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_limit"] = Convert.ToString("1000");
+                if (sysparmLimit != null)
+                    callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
+                callPayload.Queries["sysparm_offset"] = Convert.ToString("0");
+                if (sysparmOffset != null)
+                    callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
+                if (sysparmQuery != null)
+                    callPayload.Queries["sysparm_query"] = ExpressionConverter.Convert(sysparmQuery);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachmentFile(Expression<Func<string>> tableName, Expression<Func<string>> tableSysId, Expression<Func<string>> fileName, Expression<Func<string>> file = null)
+        [WorkflowExpressionFactory(nameof(__BuildUploadAttachmentFile))]
+        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachmentFile([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> tableSysId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> file = null)
         {
-            var apiCallPath = "/api/now/v1/attachment/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["table_name"] = ExpressionConverter.Convert(tableName);
-            callPayload.Queries["table_sys_id"] = ExpressionConverter.Convert(tableSysId);
-            callPayload.Queries["file_name"] = ExpressionConverter.Convert(fileName);
-            callPayload.Body = ExpressionConverter.ConvertO(file);
-            return new ApiConnectionAction<UploadAttachmentResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadAttachmentResponse> __BuildUploadAttachmentFile(WorkflowValue<string> tableName, WorkflowValue<string> tableSysId, WorkflowValue<string> fileName, WorkflowValue<string> file = null)
+        {
+            WorkflowValue.Validate(tableName, nameof(tableName), required: true);
+            WorkflowValue.Validate(tableSysId, nameof(tableSysId), required: true);
+            WorkflowValue.Validate(fileName, nameof(fileName), required: true);
+            WorkflowValue.Validate(file, nameof(file), required: false);
+            return new DeferredBodyAction<UploadAttachmentResponse>(() =>
+            {
+                var apiCallPath = "/api/now/v1/attachment/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["table_name"] = ExpressionConverter.Convert(tableName);
+                callPayload.Queries["table_sys_id"] = ExpressionConverter.Convert(tableSysId);
+                callPayload.Queries["file_name"] = ExpressionConverter.Convert(fileName);
+                callPayload.Body = ExpressionConverter.ConvertO(file);
+                return new ApiConnectionAction<UploadAttachmentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachment(Expression<Func<object>> attachmentContent, Expression<Func<string>> tableName, Expression<Func<string>> tableSysId)
+        [WorkflowExpressionFactory(nameof(__BuildUploadAttachment))]
+        public IBodyWorkflowAction<UploadAttachmentResponse> UploadAttachment([WorkflowExpression] Func<object> attachmentContent, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> tableSysId)
         {
-            var apiCallPath = "/api/now/v1/attachment/upload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UploadAttachmentResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UploadAttachmentResponse> __BuildUploadAttachment(WorkflowValue<object> attachmentContent, WorkflowValue<string> tableName, WorkflowValue<string> tableSysId)
+        {
+            WorkflowValue.Validate(attachmentContent, nameof(attachmentContent), required: true);
+            WorkflowValue.Validate(tableName, nameof(tableName), required: true);
+            WorkflowValue.Validate(tableSysId, nameof(tableSysId), required: true);
+            return new DeferredBodyAction<UploadAttachmentResponse>(() =>
+            {
+                var apiCallPath = "/api/now/v1/attachment/upload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UploadAttachmentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction RetrieveAttachmentMetadata(Expression<Func<string>> sysId)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveAttachmentMetadata))]
+        public IWorkflowAction RetrieveAttachmentMetadata([WorkflowExpression] Func<string> sysId)
         {
-            var apiCallPath = String.Format("/api/now/v1/attachment/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRetrieveAttachmentMetadata(WorkflowValue<string> sysId)
+        {
+            WorkflowValue.Validate(sysId, nameof(sysId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction DeleteAttachment(Expression<Func<string>> sysId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteAttachment))]
+        public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> sysId)
         {
-            var apiCallPath = String.Format("/api/now/v1/attachment/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteAttachment(WorkflowValue<string> sysId)
+        {
+            WorkflowValue.Validate(sysId, nameof(sysId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction RetrieveAttachmentContent(Expression<Func<string>> sysId)
+        [WorkflowExpressionFactory(nameof(__BuildRetrieveAttachmentContent))]
+        public IWorkflowAction RetrieveAttachmentContent([WorkflowExpression] Func<string> sysId)
         {
-            var apiCallPath = String.Format("/api/now/v1/attachment/{0}/file", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRetrieveAttachmentContent(WorkflowValue<string> sysId)
+        {
+            WorkflowValue.Validate(sysId, nameof(sysId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/now/v1/attachment/{0}/file", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetRecordsResponse> GetRecords(Expression<Func<string>> tableType, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmQuery = null, Expression<Func<int>> sysparmLimit = null, Expression<Func<int>> sysparmOffset = null, Expression<Func<string>> sysparmFields = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRecords))]
+        public IBodyWorkflowAction<GetRecordsResponse> GetRecords([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmQuery = null, [WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<int> sysparmOffset = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
-            if (sysparmDisplayValue != null)
-                callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
-            callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
-            if (sysparmExcludeReferenceLink != null)
-                callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
-            if (sysparmQuery != null)
-                callPayload.Queries["sysparm_query"] = ExpressionConverter.Convert(sysparmQuery);
-            if (sysparmLimit != null)
-                callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            if (sysparmOffset != null)
-                callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
-            if (sysparmFields != null)
-                callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
-            return new ApiConnectionAction<GetRecordsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRecordsResponse> __BuildGetRecords(WorkflowValue<string> tableType, WorkflowValue<bool> sysparmDisplayValue = null, WorkflowValue<bool> sysparmExcludeReferenceLink = null, WorkflowValue<string> sysparmQuery = null, WorkflowValue<int> sysparmLimit = null, WorkflowValue<int> sysparmOffset = null, WorkflowValue<string> sysparmFields = null)
+        {
+            WorkflowValue.Validate(tableType, nameof(tableType), required: true);
+            WorkflowValue.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
+            WorkflowValue.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
+            WorkflowValue.Validate(sysparmQuery, nameof(sysparmQuery), required: false);
+            WorkflowValue.Validate(sysparmLimit, nameof(sysparmLimit), required: false);
+            WorkflowValue.Validate(sysparmOffset, nameof(sysparmOffset), required: false);
+            WorkflowValue.Validate(sysparmFields, nameof(sysparmFields), required: false);
+            return new DeferredBodyAction<GetRecordsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
+                if (sysparmDisplayValue != null)
+                    callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
+                callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
+                if (sysparmExcludeReferenceLink != null)
+                    callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
+                if (sysparmQuery != null)
+                    callPayload.Queries["sysparm_query"] = ExpressionConverter.Convert(sysparmQuery);
+                if (sysparmLimit != null)
+                    callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
+                if (sysparmOffset != null)
+                    callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
+                if (sysparmFields != null)
+                    callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
+                return new ApiConnectionAction<GetRecordsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> CreateRecord(Expression<Func<string>> tableType, Expression<Func<object>> body = null, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateRecord))]
+        public IBodyWorkflowAction<SingleRecordResponse> CreateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
-            if (sysparmDisplayValue != null)
-                callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
-            callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
-            if (sysparmExcludeReferenceLink != null)
-                callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
-            if (sysparmFields != null)
-                callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleRecordResponse> __BuildCreateRecord(WorkflowValue<string> tableType, WorkflowValue<object> body = null, WorkflowValue<bool> sysparmDisplayValue = null, WorkflowValue<bool> sysparmExcludeReferenceLink = null, WorkflowValue<string> sysparmFields = null)
+        {
+            WorkflowValue.Validate(tableType, nameof(tableType), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
+            WorkflowValue.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
+            WorkflowValue.Validate(sysparmFields, nameof(sysparmFields), required: false);
+            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
+                if (sysparmDisplayValue != null)
+                    callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
+                callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
+                if (sysparmExcludeReferenceLink != null)
+                    callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
+                if (sysparmFields != null)
+                    callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> GetRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRecord))]
+        public IBodyWorkflowAction<SingleRecordResponse> GetRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
-            if (sysparmDisplayValue != null)
-                callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
-            callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
-            if (sysparmExcludeReferenceLink != null)
-                callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
-            if (sysparmFields != null)
-                callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleRecordResponse> __BuildGetRecord(WorkflowValue<string> tableType, WorkflowValue<string> sysid, WorkflowValue<bool> sysparmDisplayValue = null, WorkflowValue<bool> sysparmExcludeReferenceLink = null, WorkflowValue<string> sysparmFields = null)
+        {
+            WorkflowValue.Validate(tableType, nameof(tableType), required: true);
+            WorkflowValue.Validate(sysid, nameof(sysid), required: true);
+            WorkflowValue.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
+            WorkflowValue.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
+            WorkflowValue.Validate(sysparmFields, nameof(sysparmFields), required: false);
+            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
+                if (sysparmDisplayValue != null)
+                    callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
+                callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
+                if (sysparmExcludeReferenceLink != null)
+                    callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
+                if (sysparmFields != null)
+                    callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
+                return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<SingleRecordResponse> UpdateRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid, Expression<Func<object>> body = null, Expression<Func<bool>> sysparmDisplayValue = null, Expression<Func<bool>> sysparmExcludeReferenceLink = null, Expression<Func<string>> sysparmFields = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateRecord))]
+        public IBodyWorkflowAction<SingleRecordResponse> UpdateRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid, [WorkflowExpression] Func<object> body = null, [WorkflowExpression] Func<bool> sysparmDisplayValue = null, [WorkflowExpression] Func<bool> sysparmExcludeReferenceLink = null, [WorkflowExpression] Func<string> sysparmFields = null)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
-            if (sysparmDisplayValue != null)
-                callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
-            callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
-            if (sysparmExcludeReferenceLink != null)
-                callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
-            if (sysparmFields != null)
-                callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleRecordResponse> __BuildUpdateRecord(WorkflowValue<string> tableType, WorkflowValue<string> sysid, WorkflowValue<object> body = null, WorkflowValue<bool> sysparmDisplayValue = null, WorkflowValue<bool> sysparmExcludeReferenceLink = null, WorkflowValue<string> sysparmFields = null)
+        {
+            WorkflowValue.Validate(tableType, nameof(tableType), required: true);
+            WorkflowValue.Validate(sysid, nameof(sysid), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(sysparmDisplayValue, nameof(sysparmDisplayValue), required: false);
+            WorkflowValue.Validate(sysparmExcludeReferenceLink, nameof(sysparmExcludeReferenceLink), required: false);
+            WorkflowValue.Validate(sysparmFields, nameof(sysparmFields), required: false);
+            return new DeferredBodyAction<SingleRecordResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sysparm_display_value"] = Convert.ToString(false);
+                if (sysparmDisplayValue != null)
+                    callPayload.Queries["sysparm_display_value"] = ExpressionConverter.Convert(sysparmDisplayValue);
+                callPayload.Queries["sysparm_exclude_reference_link"] = Convert.ToString(true);
+                if (sysparmExcludeReferenceLink != null)
+                    callPayload.Queries["sysparm_exclude_reference_link"] = ExpressionConverter.Convert(sysparmExcludeReferenceLink);
+                if (sysparmFields != null)
+                    callPayload.Queries["sysparm_fields"] = ExpressionConverter.Convert(sysparmFields);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IWorkflowAction DeleteRecord(Expression<Func<string>> tableType, Expression<Func<string>> sysid)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteRecord))]
+        public IWorkflowAction DeleteRecord([WorkflowExpression] Func<string> tableType, [WorkflowExpression] Func<string> sysid)
         {
-            var apiCallPath = String.Format("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteRecord(WorkflowValue<string> tableType, WorkflowValue<string> sysid)
+        {
+            WorkflowValue.Validate(tableType, nameof(tableType), required: true);
+            WorkflowValue.Validate(sysid, nameof(sysid), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/now/v2/table/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(tableType, 1), ExpressionConverter.ConvertWithUrlEncoding(sysid, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
@@ -172,102 +319,181 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.ServiceNow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogsResponse> GetCatalogs(Expression<Func<int>> sysparmLimit = null, Expression<Func<string>> sysparmText = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCatalogs))]
+        public IBodyWorkflowAction<GetCatalogsResponse> GetCatalogs([WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<string> sysparmText = null)
         {
-            var apiCallPath = "/api/sn_sc/servicecatalog/catalogs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sysparmLimit != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCatalogsResponse> __BuildGetCatalogs(WorkflowValue<int> sysparmLimit = null, WorkflowValue<string> sysparmText = null)
+        {
+            WorkflowValue.Validate(sysparmLimit, nameof(sysparmLimit), required: false);
+            WorkflowValue.Validate(sysparmText, nameof(sysparmText), required: false);
+            return new DeferredBodyAction<GetCatalogsResponse>(() =>
+            {
+                var apiCallPath = "/api/sn_sc/servicecatalog/catalogs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sysparmLimit != null)
+                    callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
+                if (sysparmText != null)
+                    callPayload.Queries["sysparm_text"] = ExpressionConverter.Convert(sysparmText);
+                return new ApiConnectionAction<GetCatalogsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCatalogCategories))]
+        public IBodyWorkflowAction<GetCatalogCategoriesResponse> GetCatalogCategories([WorkflowExpression] Func<string> catalogId, [WorkflowExpression] Func<int> sysparmLimit = null, [WorkflowExpression] Func<int> sysparmOffset = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCatalogCategoriesResponse> __BuildGetCatalogCategories(WorkflowValue<string> catalogId, WorkflowValue<int> sysparmLimit = null, WorkflowValue<int> sysparmOffset = null)
+        {
+            WorkflowValue.Validate(catalogId, nameof(catalogId), required: true);
+            WorkflowValue.Validate(sysparmLimit, nameof(sysparmLimit), required: false);
+            WorkflowValue.Validate(sysparmOffset, nameof(sysparmOffset), required: false);
+            return new DeferredBodyAction<GetCatalogCategoriesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/catalogs/{0}/categories", ExpressionConverter.ConvertWithUrlEncoding(catalogId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sysparmLimit != null)
+                    callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
+                if (sysparmOffset != null)
+                    callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
+                return new ApiConnectionAction<GetCatalogCategoriesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCatalogItems))]
+        public IBodyWorkflowAction<GetCatalogItemsResponse> GetCatalogItems([WorkflowExpression] Func<int> sysparmLimit, [WorkflowExpression] Func<string> sysparmCategory = null, [WorkflowExpression] Func<string> sysparmText = null, [WorkflowExpression] Func<string> sysparmCatalog = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCatalogItemsResponse> __BuildGetCatalogItems(WorkflowValue<int> sysparmLimit, WorkflowValue<string> sysparmCategory = null, WorkflowValue<string> sysparmText = null, WorkflowValue<string> sysparmCatalog = null)
+        {
+            WorkflowValue.Validate(sysparmLimit, nameof(sysparmLimit), required: true);
+            WorkflowValue.Validate(sysparmCategory, nameof(sysparmCategory), required: false);
+            WorkflowValue.Validate(sysparmText, nameof(sysparmText), required: false);
+            WorkflowValue.Validate(sysparmCatalog, nameof(sysparmCatalog), required: false);
+            return new DeferredBodyAction<GetCatalogItemsResponse>(() =>
+            {
+                var apiCallPath = "/api/sn_sc/servicecatalog/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sysparmCategory != null)
+                    callPayload.Queries["sysparm_category"] = ExpressionConverter.Convert(sysparmCategory);
                 callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            if (sysparmText != null)
-                callPayload.Queries["sysparm_text"] = ExpressionConverter.Convert(sysparmText);
-            return new ApiConnectionAction<GetCatalogsResponse>(callPayload);
+                if (sysparmText != null)
+                    callPayload.Queries["sysparm_text"] = ExpressionConverter.Convert(sysparmText);
+                if (sysparmCatalog != null)
+                    callPayload.Queries["sysparm_catalog"] = ExpressionConverter.Convert(sysparmCatalog);
+                return new ApiConnectionAction<GetCatalogItemsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogCategoriesResponse> GetCatalogCategories(Expression<Func<string>> catalogId, Expression<Func<int>> sysparmLimit = null, Expression<Func<int>> sysparmOffset = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCatalogItem))]
+        public IBodyWorkflowAction<GetCatalogItemResponse> GetCatalogItem([WorkflowExpression] Func<string> sysId)
         {
-            var apiCallPath = String.Format("/api/sn_sc/servicecatalog/catalogs/{0}/categories", ExpressionConverter.ConvertWithUrlEncoding(catalogId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sysparmLimit != null)
-                callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            if (sysparmOffset != null)
-                callPayload.Queries["sysparm_offset"] = ExpressionConverter.Convert(sysparmOffset);
-            return new ApiConnectionAction<GetCatalogCategoriesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogItemsResponse> GetCatalogItems(Expression<Func<int>> sysparmLimit, Expression<Func<string>> sysparmCategory = null, Expression<Func<string>> sysparmText = null, Expression<Func<string>> sysparmCatalog = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCatalogItemResponse> __BuildGetCatalogItem(WorkflowValue<string> sysId)
         {
-            var apiCallPath = "/api/sn_sc/servicecatalog/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sysparmCategory != null)
-                callPayload.Queries["sysparm_category"] = ExpressionConverter.Convert(sysparmCategory);
-            callPayload.Queries["sysparm_limit"] = ExpressionConverter.Convert(sysparmLimit);
-            if (sysparmText != null)
-                callPayload.Queries["sysparm_text"] = ExpressionConverter.Convert(sysparmText);
-            if (sysparmCatalog != null)
-                callPayload.Queries["sysparm_catalog"] = ExpressionConverter.Convert(sysparmCatalog);
-            return new ApiConnectionAction<GetCatalogItemsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetCatalogItemResponse> GetCatalogItem(Expression<Func<string>> sysId)
-        {
-            var apiCallPath = String.Format("/api/sn_sc/servicecatalog/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCatalogItemResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<OrderItemResponse> OrderItem(Expression<Func<string>> sysId, Expression<Func<int>> bodysysparmQuantity, Expression<Func<string>> bodysysparmRequestedFor = null, Expression<Func<object>> bodyvariables = null)
-        {
-            var apiCallPath = String.Format("/api/sn_sc/servicecatalog/items/{0}/order_now", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sysparm_quantity"] = ExpressionConverter.ConvertO(bodysysparmQuantity);
-            if (bodysysparmRequestedFor != null)
+            WorkflowValue.Validate(sysId, nameof(sysId), required: true);
+            return new DeferredBodyAction<GetCatalogItemResponse>(() =>
             {
-                body["sysparm_requested_for"] = ExpressionConverter.ConvertO(bodysysparmRequestedFor);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCatalogItemResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
+        [WorkflowExpressionFactory(nameof(__BuildOrderItem))]
+        public IBodyWorkflowAction<OrderItemResponse> OrderItem([WorkflowExpression] Func<string> sysId, [WorkflowExpression] Func<int> bodysysparmQuantity, [WorkflowExpression] Func<string> bodysysparmRequestedFor = null, [WorkflowExpression] Func<object> bodyvariables = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OrderItemResponse> __BuildOrderItem(WorkflowValue<string> sysId, WorkflowValue<int> bodysysparmQuantity, WorkflowValue<string> bodysysparmRequestedFor = null, WorkflowValue<object> bodyvariables = null)
+        {
+            WorkflowValue.Validate(sysId, nameof(sysId), required: true);
+            WorkflowValue.Validate(bodysysparmQuantity, nameof(bodysysparmQuantity), required: true);
+            WorkflowValue.Validate(bodysysparmRequestedFor, nameof(bodysysparmRequestedFor), required: false);
+            WorkflowValue.Validate(bodyvariables, nameof(bodyvariables), required: false);
+            return new DeferredBodyAction<OrderItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/sn_sc/servicecatalog/items/{0}/order_now", ExpressionConverter.ConvertWithUrlEncoding(sysId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["sysparm_quantity"] = ExpressionConverter.ConvertO(bodysysparmQuantity);
+                if (bodysysparmRequestedFor != null)
+                {
+                    body["sysparm_requested_for"] = ExpressionConverter.ConvertO(bodysysparmRequestedFor);
+                    bodypropCount++;
+                }
 
-            if (bodyvariables != null)
-            {
-                body["variables"] = ExpressionConverter.ConvertO(bodyvariables);
-                bodypropCount++;
-            }
+                if (bodyvariables != null)
+                {
+                    body["variables"] = ExpressionConverter.ConvertO(bodyvariables);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<OrderItemResponse>(callPayload);
+                return new ApiConnectionAction<OrderItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "service-now")]
-        public IBodyWorkflowAction<GetArticlesResponse> GetKnowledgeArticles(Expression<Func<string>> query, Expression<Func<string>> fields = null, Expression<Func<int>> limit = null, Expression<Func<string>> filter = null, Expression<Func<string>> kb = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetKnowledgeArticles))]
+        public IBodyWorkflowAction<GetArticlesResponse> GetKnowledgeArticles([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> kb = null)
         {
-            var apiCallPath = "/api/sn_km_api/knowledge/articles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (kb != null)
-                callPayload.Queries["kb"] = ExpressionConverter.Convert(kb);
-            return new ApiConnectionAction<GetArticlesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetArticlesResponse> __BuildGetKnowledgeArticles(WorkflowValue<string> query, WorkflowValue<string> fields = null, WorkflowValue<int> limit = null, WorkflowValue<string> filter = null, WorkflowValue<string> kb = null)
+        {
+            WorkflowValue.Validate(query, nameof(query), required: true);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(kb, nameof(kb), required: false);
+            return new DeferredBodyAction<GetArticlesResponse>(() =>
+            {
+                var apiCallPath = "/api/sn_km_api/knowledge/articles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                if (filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (kb != null)
+                    callPayload.Queries["kb"] = ExpressionConverter.Convert(kb);
+                return new ApiConnectionAction<GetArticlesResponse>(callPayload);
+            });
         }
     }
 

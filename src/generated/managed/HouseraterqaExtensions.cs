@@ -4,95 +4,118 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Houseraterqa
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class HouseraterqaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "houseraterqa")]
-        public IBodyWorkflowAction<JToken> UpdateInspection(Expression<Func<string>> bodyinspectionTemplateId, Expression<Func<string>> bodybuilderId, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string[]>> bodyprograms = null, Expression<Func<string[]>> bodyraters = null, Expression<Func<string>> bodysharePointSubscriberId = null, Expression<Func<string>> bodyoutlookEventId = null, Expression<Func<string>> bodyaddress1 = null, Expression<Func<string>> bodyaddress2 = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyzip = null, Expression<Func<string>> bodytimeZone = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateInspection))]
+        public IBodyWorkflowAction<JToken> UpdateInspection([WorkflowExpression] Func<string> bodyinspectionTemplateId, [WorkflowExpression] Func<string> bodybuilderId, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string[]> bodyprograms = null, [WorkflowExpression] Func<string[]> bodyraters = null, [WorkflowExpression] Func<string> bodysharePointSubscriberId = null, [WorkflowExpression] Func<string> bodyoutlookEventId = null, [WorkflowExpression] Func<string> bodyaddress1 = null, [WorkflowExpression] Func<string> bodyaddress2 = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyzip = null, [WorkflowExpression] Func<string> bodytimeZone = null)
         {
-            var apiCallPath = "/updateInspection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["inspectionTemplateId"] = ExpressionConverter.ConvertO(bodyinspectionTemplateId);
-            bodypropCount++;
-            body["builderId"] = ExpressionConverter.ConvertO(bodybuilderId);
-            if (bodyprograms != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildUpdateInspection(WorkflowValue<string> bodyinspectionTemplateId, WorkflowValue<string> bodybuilderId, WorkflowValue<string> bodystartTime, WorkflowValue<string> bodyendTime, WorkflowValue<string[]> bodyprograms = null, WorkflowValue<string[]> bodyraters = null, WorkflowValue<string> bodysharePointSubscriberId = null, WorkflowValue<string> bodyoutlookEventId = null, WorkflowValue<string> bodyaddress1 = null, WorkflowValue<string> bodyaddress2 = null, WorkflowValue<string> bodycity = null, WorkflowValue<string> bodystate = null, WorkflowValue<string> bodyzip = null, WorkflowValue<string> bodytimeZone = null)
+        {
+            WorkflowValue.Validate(bodyinspectionTemplateId, nameof(bodyinspectionTemplateId), required: true);
+            WorkflowValue.Validate(bodybuilderId, nameof(bodybuilderId), required: true);
+            WorkflowValue.Validate(bodystartTime, nameof(bodystartTime), required: true);
+            WorkflowValue.Validate(bodyendTime, nameof(bodyendTime), required: true);
+            WorkflowValue.Validate(bodyprograms, nameof(bodyprograms), required: false);
+            WorkflowValue.Validate(bodyraters, nameof(bodyraters), required: false);
+            WorkflowValue.Validate(bodysharePointSubscriberId, nameof(bodysharePointSubscriberId), required: false);
+            WorkflowValue.Validate(bodyoutlookEventId, nameof(bodyoutlookEventId), required: false);
+            WorkflowValue.Validate(bodyaddress1, nameof(bodyaddress1), required: false);
+            WorkflowValue.Validate(bodyaddress2, nameof(bodyaddress2), required: false);
+            WorkflowValue.Validate(bodycity, nameof(bodycity), required: false);
+            WorkflowValue.Validate(bodystate, nameof(bodystate), required: false);
+            WorkflowValue.Validate(bodyzip, nameof(bodyzip), required: false);
+            WorkflowValue.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                body["programs"] = ExpressionConverter.ConvertO(bodyprograms);
+                var apiCallPath = "/updateInspection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyraters != null)
-            {
-                body["raters"] = ExpressionConverter.ConvertO(bodyraters);
+                body["inspectionTemplateId"] = ExpressionConverter.ConvertO(bodyinspectionTemplateId);
                 bodypropCount++;
-            }
+                body["builderId"] = ExpressionConverter.ConvertO(bodybuilderId);
+                if (bodyprograms != null)
+                {
+                    body["programs"] = ExpressionConverter.ConvertO(bodyprograms);
+                    bodypropCount++;
+                }
 
-            if (bodysharePointSubscriberId != null)
-            {
-                body["sharePointSubscriberId"] = ExpressionConverter.ConvertO(bodysharePointSubscriberId);
+                if (bodyraters != null)
+                {
+                    body["raters"] = ExpressionConverter.ConvertO(bodyraters);
+                    bodypropCount++;
+                }
+
+                if (bodysharePointSubscriberId != null)
+                {
+                    body["sharePointSubscriberId"] = ExpressionConverter.ConvertO(bodysharePointSubscriberId);
+                    bodypropCount++;
+                }
+
+                if (bodyoutlookEventId != null)
+                {
+                    body["outlookEventId"] = ExpressionConverter.ConvertO(bodyoutlookEventId);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress1 != null)
+                {
+                    body["address1"] = ExpressionConverter.ConvertO(bodyaddress1);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress2 != null)
+                {
+                    body["address2"] = ExpressionConverter.ConvertO(bodyaddress2);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["state"] = ExpressionConverter.ConvertO(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodyzip != null)
+                {
+                    body["zip"] = ExpressionConverter.ConvertO(bodyzip);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyoutlookEventId != null)
-            {
-                body["outlookEventId"] = ExpressionConverter.ConvertO(bodyoutlookEventId);
+                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
                 bodypropCount++;
-            }
+                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                if (bodytimeZone != null)
+                {
+                    body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
+                    bodypropCount++;
+                }
 
-            if (bodyaddress1 != null)
-            {
-                body["address1"] = ExpressionConverter.ConvertO(bodyaddress1);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyaddress2 != null)
-            {
-                body["address2"] = ExpressionConverter.ConvertO(bodyaddress2);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["state"] = ExpressionConverter.ConvertO(bodystate);
-                bodypropCount++;
-            }
-
-            if (bodyzip != null)
-            {
-                body["zip"] = ExpressionConverter.ConvertO(bodyzip);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            if (bodytimeZone != null)
-            {
-                body["timeZone"] = ExpressionConverter.ConvertO(bodytimeZone);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

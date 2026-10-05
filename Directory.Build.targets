@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup>
+    <WorkflowRepositoryConsumer Condition="$(MSBuildProjectName.StartsWith('Microsoft.Azure.Workflows.Sdk.Tests')) or '$(MSBuildProjectName)' == 'Microsoft.Azure.Workflows.Sdk.UnitTests' or '$(MSBuildProjectName)' == 'Microsoft.Azure.Workflows.Sdk.ExpressionTests'">true</WorkflowRepositoryConsumer>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)src\buildTransitive\Microsoft.Azure.Workflows.Sdk.props" Condition="'$(WorkflowRepositoryConsumer)' == 'true'" />
+  <Import Project="$(MSBuildThisFileDirectory)src\buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" Condition="'$(WorkflowRepositoryConsumer)' == 'true'" />
+  <Target Name="ResolveRepositoryWorkflowCompiler" BeforeTargets="CompileWorkflowExpressions" Condition="'$(WorkflowRepositoryConsumer)' == 'true'">
+    <MSBuild Projects="$(MSBuildThisFileDirectory)src\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+             Targets="GetTargetPath" Properties="Configuration=$(Configuration)" RemoveProperties="TargetFramework;RuntimeIdentifier;SelfContained">
+      <Output TaskParameter="TargetOutputs" ItemName="_RepositoryCompiler" />
+    </MSBuild>
+    <PropertyGroup>
+      <WorkflowBuildToolPath>@(_RepositoryCompiler)</WorkflowBuildToolPath>
+    </PropertyGroup>
+  </Target>
+</Project>

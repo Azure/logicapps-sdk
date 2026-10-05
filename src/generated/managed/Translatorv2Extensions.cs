@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -22,46 +21,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<string> Translate(Expression<Func<string>> to, Expression<Func<string>> bodytext, Expression<Func<string>> from = null, Expression<Func<string>> category = null, Expression<Func<textTypeInput>> textType = null)
+        [WorkflowExpressionFactory(nameof(__BuildTranslate))]
+        public IBodyWorkflowAction<string> Translate([WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<textTypeInput> textType = null)
         {
-            var apiCallPath = "/Translate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (textType != null)
-                callPayload.Queries["textType"] = ExpressionConverter.Convert(textType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<string>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildTranslate(WorkflowValue<string> to, WorkflowValue<string> bodytext, WorkflowValue<string> from = null, WorkflowValue<string> category = null, WorkflowValue<textTypeInput> textType = null)
+        {
+            WorkflowValue.Validate(to, nameof(to), required: true);
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            WorkflowValue.Validate(from, nameof(from), required: false);
+            WorkflowValue.Validate(category, nameof(category), required: false);
+            WorkflowValue.Validate(textType, nameof(textType), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/Translate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (textType != null)
+                    callPayload.Queries["textType"] = ExpressionConverter.Convert(textType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<Language> Detect(Expression<Func<string>> bodytext)
+        [WorkflowExpressionFactory(nameof(__BuildDetect))]
+        public IBodyWorkflowAction<Language> Detect([WorkflowExpression] Func<string> bodytext)
         {
-            var apiCallPath = "/Detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<Language>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Language> __BuildDetect(WorkflowValue<string> bodytext)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<Language>(() =>
+            {
+                var apiCallPath = "/Detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Language>(callPayload);
+            });
         }
     }
 

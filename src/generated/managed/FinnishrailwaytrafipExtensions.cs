@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,27 +20,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules(Expression<Func<string>> departureStation, Expression<Func<string>> arrivalStation, Expression<Func<string>> departureDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSchedules))]
+        public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules([WorkflowExpression] Func<string> departureStation, [WorkflowExpression] Func<string> arrivalStation, [WorkflowExpression] Func<string> departureDate = null)
         {
-            var apiCallPath = String.Format("/live-trains/station/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(departureStation, 1), ExpressionConverter.ConvertWithUrlEncoding(arrivalStation, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (departureDate != null)
-                callPayload.Queries["departure_date"] = ExpressionConverter.Convert(departureDate);
-            return new ApiConnectionAction<GetSchedulesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSchedulesResponseItem[]> __BuildGetSchedules(WorkflowValue<string> departureStation, WorkflowValue<string> arrivalStation, WorkflowValue<string> departureDate = null)
+        {
+            WorkflowValue.Validate(departureStation, nameof(departureStation), required: true);
+            WorkflowValue.Validate(arrivalStation, nameof(arrivalStation), required: true);
+            WorkflowValue.Validate(departureDate, nameof(departureDate), required: false);
+            return new DeferredBodyAction<GetSchedulesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(departureStation, 1), ExpressionConverter.ConvertWithUrlEncoding(arrivalStation, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (departureDate != null)
+                    callPayload.Queries["departure_date"] = ExpressionConverter.Convert(departureDate);
+                return new ApiConnectionAction<GetSchedulesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures(Expression<Func<string>> trainStation, Expression<Func<int>> arrivingTrains = null, Expression<Func<int>> departingTrains = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetArrivalsAndDepartures))]
+        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures([WorkflowExpression] Func<string> trainStation, [WorkflowExpression] Func<int> arrivingTrains = null, [WorkflowExpression] Func<int> departingTrains = null)
         {
-            var apiCallPath = String.Format("/live-trains/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(trainStation, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (arrivingTrains != null)
-                callPayload.Queries["arriving_trains"] = ExpressionConverter.Convert(arrivingTrains);
-            if (departingTrains != null)
-                callPayload.Queries["departing_trains"] = ExpressionConverter.Convert(departingTrains);
-            return new ApiConnectionAction<GetArrivalsAndDeparturesResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> __BuildGetArrivalsAndDepartures(WorkflowValue<string> trainStation, WorkflowValue<int> arrivingTrains = null, WorkflowValue<int> departingTrains = null)
+        {
+            WorkflowValue.Validate(trainStation, nameof(trainStation), required: true);
+            WorkflowValue.Validate(arrivingTrains, nameof(arrivingTrains), required: false);
+            WorkflowValue.Validate(departingTrains, nameof(departingTrains), required: false);
+            return new DeferredBodyAction<GetArrivalsAndDeparturesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}", ExpressionConverter.ConvertWithUrlEncoding(trainStation, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (arrivingTrains != null)
+                    callPayload.Queries["arriving_trains"] = ExpressionConverter.Convert(arrivingTrains);
+                if (departingTrains != null)
+                    callPayload.Queries["departing_trains"] = ExpressionConverter.Convert(departingTrains);
+                return new ApiConnectionAction<GetArrivalsAndDeparturesResponseItem[]>(callPayload);
+            });
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,12 +20,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints(Expression<Func<string>> author, Expression<Func<string>> slug)
+        [WorkflowExpressionFactory(nameof(__BuildListModelEndpoints))]
+        public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints([WorkflowExpression] Func<string> author, [WorkflowExpression] Func<string> slug)
         {
-            var apiCallPath = String.Format("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(author, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListModelEndpointsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListModelEndpointsResponse> __BuildListModelEndpoints(WorkflowValue<string> author, WorkflowValue<string> slug)
+        {
+            WorkflowValue.Validate(author, nameof(author), required: true);
+            WorkflowValue.Validate(slug, nameof(slug), required: true);
+            return new DeferredBodyAction<ListModelEndpointsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", ExpressionConverter.ConvertWithUrlEncoding(author, 1), ExpressionConverter.ConvertWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListModelEndpointsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
@@ -39,53 +50,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<GetGenerationResponse> GetGeneration(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetGeneration))]
+        public IBodyWorkflowAction<GetGenerationResponse> GetGeneration([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v1/generation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<GetGenerationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGenerationResponse> __BuildGetGeneration(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetGenerationResponse>(() =>
+            {
+                var apiCallPath = "/v1/generation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<GetGenerationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages)
+        [WorkflowExpressionFactory(nameof(__BuildChatCompletion))]
+        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages)
         {
-            var apiCallPath = "/v1/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChatCompletionResponse> __BuildChatCompletion(WorkflowValue<string> bodymodel, WorkflowValue<bodymessagesInputItem[]> bodymessages)
+        {
+            WorkflowValue.Validate(bodymodel, nameof(bodymodel), required: true);
+            WorkflowValue.Validate(bodymessages, nameof(bodymessages), required: true);
+            return new DeferredBodyAction<ChatCompletionResponse>(() =>
+            {
+                var apiCallPath = "/v1/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                bodypropCount++;
+                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<CompletionResponse> Completion(Expression<Func<string>> bodymodel, Expression<Func<string>> bodyprompt)
+        [WorkflowExpressionFactory(nameof(__BuildCompletion))]
+        public IBodyWorkflowAction<CompletionResponse> Completion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyprompt)
         {
-            var apiCallPath = "/v1/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = ExpressionConverter.ConvertO(bodymodel);
-            bodypropCount++;
-            body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<CompletionResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompletionResponse> __BuildCompletion(WorkflowValue<string> bodymodel, WorkflowValue<string> bodyprompt)
+        {
+            WorkflowValue.Validate(bodymodel, nameof(bodymodel), required: true);
+            WorkflowValue.Validate(bodyprompt, nameof(bodyprompt), required: true);
+            return new DeferredBodyAction<CompletionResponse>(() =>
+            {
+                var apiCallPath = "/v1/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                bodypropCount++;
+                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CompletionResponse>(callPayload);
+            });
         }
     }
 

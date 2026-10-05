@@ -4,51 +4,66 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CertopusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
-        public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateCredential))]
+        public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential([WorkflowExpression] Func<string> bodyorganisationId, [WorkflowExpression] Func<string> bodyeventId, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<bool> bodygenerate = null, [WorkflowExpression] Func<bool> bodypublish = null, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients = null)
         {
-            var apiCallPath = "/certificates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["organisationId"] = ExpressionConverter.ConvertO(bodyorganisationId);
-            bodypropCount++;
-            body["eventId"] = ExpressionConverter.ConvertO(bodyeventId);
-            bodypropCount++;
-            body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
-            if (bodygenerate != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateCredentialResponse> __BuildCreateCredential(WorkflowValue<string> bodyorganisationId, WorkflowValue<string> bodyeventId, WorkflowValue<string> bodycategoryId, WorkflowValue<bool> bodygenerate = null, WorkflowValue<bool> bodypublish = null, WorkflowValue<bodyrecipientsInputItem[]> bodyrecipients = null)
+        {
+            WorkflowValue.Validate(bodyorganisationId, nameof(bodyorganisationId), required: true);
+            WorkflowValue.Validate(bodyeventId, nameof(bodyeventId), required: true);
+            WorkflowValue.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
+            WorkflowValue.Validate(bodygenerate, nameof(bodygenerate), required: false);
+            WorkflowValue.Validate(bodypublish, nameof(bodypublish), required: false);
+            WorkflowValue.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
+            return new DeferredBodyAction<CreateCredentialResponse>(() =>
             {
-                body["generate"] = ExpressionConverter.ConvertO(bodygenerate);
+                var apiCallPath = "/certificates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypublish != null)
-            {
-                body["publish"] = ExpressionConverter.ConvertO(bodypublish);
+                body["organisationId"] = ExpressionConverter.ConvertO(bodyorganisationId);
                 bodypropCount++;
-            }
-
-            if (bodyrecipients != null)
-            {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                body["eventId"] = ExpressionConverter.ConvertO(bodyeventId);
                 bodypropCount++;
-            }
+                body["categoryId"] = ExpressionConverter.ConvertO(bodycategoryId);
+                if (bodygenerate != null)
+                {
+                    body["generate"] = ExpressionConverter.ConvertO(bodygenerate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypublish != null)
+                {
+                    body["publish"] = ExpressionConverter.ConvertO(bodypublish);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateCredentialResponse>(callPayload);
+                if (bodyrecipients != null)
+                {
+                    body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateCredentialResponse>(callPayload);
+            });
         }
     }
 

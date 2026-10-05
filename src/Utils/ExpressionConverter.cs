@@ -1,301 +1,131 @@
-﻿namespace Microsoft.Azure.Workflows.Sdk
+// -----------------------------------------------------------
+// Copyright (c) Microsoft Corporation. All rights reserved.
+// -----------------------------------------------------------
+
+namespace Microsoft.Azure.Workflows.Sdk
 {
-    using System.Linq.Expressions;
-    using Microsoft.Azure.Workflows.Sdk.Expressions;
     using Newtonsoft.Json.Linq;
 
-    /// <summary>
-    /// Converts LINQ expressions to their string representations.
-    /// </summary>
-    internal class ExpressionConverter
+    /// <summary>Renders descriptors at workflow input boundaries without running their programs.</summary>
+    internal static class ExpressionConverter
     {
-        /// <summary>
-        /// Converts a string expression to its rendered form.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        public static string Convert(Expression<Func<string>> e)
+        private const string Runtime = "global::Microsoft.Azure.Workflows.Sdk.WorkflowExpressionRuntime";
+
+        public static JToken ConvertO<T>(WorkflowValue<T> value)
         {
-            if (e == null) return string.Empty;
-            var converter = new LogicConverter();
-            var expr = e.Body.Visit(converter, null);
-            return expr.Render();
+            if (value == null) return null;
+            if (value.IsLiteral) return EscapeLiteral(value.LiteralToken);
+            return new JValue($"#{{{Runtime}.ToWire(1, ({value.RenderSource()}))}}");
         }
 
-        /// <summary>
-        /// Converts a URI expression to its rendered form.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        public static string Convert(Expression<Func<Uri>> e)
+        public static string Convert<T>(WorkflowValue<T> value)
         {
-            if (e == null) return string.Empty;
-            var converter = new LogicConverter();
-            var expr = e.Body.Visit(converter, null);
-            return expr.Render();
+            if (value == null) return null;
+            if (!value.IsLiteral) return $"#{{{Runtime}.ToText(1, ({value.RenderSource()}))}}";
+            var token = value.LiteralToken;
+            var text = token.Type == JTokenType.Null ? null : token.Type == JTokenType.String ? token.Value<string>() : token.ToString(Newtonsoft.Json.Formatting.None);
+            return text == null ? null : EscapeLiteral(new JValue(text)).Value<string>();
         }
 
-        /// <summary>
-        /// Converts an HTTP method expression to its rendered form.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        public static string Convert(Expression<Func<HttpMethod>> e)
+        public static JToken ConvertObject<T>(WorkflowValue<T> value) => ConvertO(value);
+
+        public static JToken ConvertCondition(WorkflowValue<bool> value) =>
+            value.IsLiteral ? new JValue(value.LiteralToken.Value<bool>() ? "#{true}" : "#{false}") : ConvertO(value);
+
+        public static string ConvertWithUrlEncoding<T>(WorkflowValue<T> value, int times)
         {
-            if (e == null) return string.Empty;
-            var converter = new LogicConverter();
-            var expr = e.Body.Visit(converter, null);
-            return expr.Render();
+            if (times < 0) throw new ArgumentOutOfRangeException(nameof(times));
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            var source = TextSource(value);
+            for (var count = 0; count < times; count++) source = $"encodeURIComponent({source})";
+            return $"#{{{source}}}";
         }
 
-        /// <summary>
-        /// Converts a string expression with URL encoding applied multiple times.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        /// <param name="times">The number of times to apply URL encoding.</param>
-        public static string ConvertWithUrlEncoding(Expression<Func<string>> e, int times)
-        {
-            if (e == null) return string.Empty;
-            var converter = new LogicConverter();
-            var expr = e.Body.Visit(converter, null);
+        public static string ConvertWithUrlEncodingWithInt(WorkflowValue<int> value, int times) => ConvertWithUrlEncoding(value, times);
 
-            while (times > 0)
+        public static string ConvertGeneratedPath(string format, params string[] arguments)
+        {
+            var sources = arguments.Select(argument =>
+                argument != null && argument.StartsWith("#{", StringComparison.Ordinal) && argument.EndsWith("}", StringComparison.Ordinal)
+                    ? argument.Substring(2, argument.Length - 3)
+                    : WorkflowValue.Quote(argument)).ToArray();
+            var segments = new List<string>();
+            var literal = new System.Text.StringBuilder();
+            for (var index = 0; index < format.Length; index++)
             {
-                expr = new FunctionCallNode
+                if (index + 1 < format.Length && (format[index] == '{' || format[index] == '}') && format[index + 1] == format[index])
                 {
-                    FunctionName = "encodeURIComponent",
-                    Arguments = [expr]
-                };
-
-                times--;
-            }
-
-            return expr.Render(true);
-        }
-
-        /// <summary>
-        /// Converts a string expression with URL encoding applied multiple times.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        /// <param name="times">The number of times to apply URL encoding.</param>
-        public static string ConvertWithUrlEncodingWithInt(Expression<Func<int>> e, int times)
-        {
-            if (e == null) return string.Empty;
-            var converter = new LogicConverter();
-            var expr = e.Body.Visit(converter, null);
-
-            while (times > 0)
-            {
-                expr = new FunctionCallNode
-                {
-                    FunctionName = "encodeURIComponent",
-                    Arguments = [expr]
-                };
-
-                times--;
-            }
-
-            return expr.Render(true);
-        }
-
-        /// <summary>
-        /// Converts an enum expression with URL encoding applied multiple times.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        /// <param name="times">The number of times to apply URL encoding.</param>
-        /// <typeparam name="T">The enum type.</typeparam>
-        public static string ConvertWithUrlEncoding<T>(Expression<Func<T>> e, int times) where T : Enum
-        {
-            var value = e.Compile().Invoke();
-            var converted = Utility.GetEnumMemberValue(value);
-            return ConvertWithUrlEncoding(() => converted, times);
-        }
-
-        /// <summary>
-        /// Converts an integer expression to its rendered form.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        public static string Convert(Expression<Func<int>> e)
-        {
-            var visitor = new Visitor();
-            visitor.Visit(e.Body);
-            return visitor.Result;
-        }
-
-        /// <summary>
-        /// Converts a string array expression to a JSON array.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        public static JArray Convert(Expression<Func<string[]>> e)
-        {
-            throw new NotImplementedException();
-        }
-
-        /// <summary>
-        /// Converts a double expression to its rendered form.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        public static string Convert(Expression<Func<double>> e)
-        {
-            var visitor = new Visitor();
-            visitor.Visit(e.Body);
-            return visitor.Result;
-        }
-
-        /// <summary>
-        /// Converts an enum expression to its member value representation.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        /// <typeparam name="T">The enum type.</typeparam>
-        public static string Convert<T>(Expression<Func<T>> e) where T : Enum
-        {
-            var value = e.Compile().Invoke();
-            var converted = Utility.GetEnumMemberValue(value);
-            return converted;
-        }
-
-        /// <summary>
-        /// Converts a boolean expression to its rendered form using the LogicConverter.
-        /// Supports complex expressions including member access, method calls, and comparisons.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        public static string Convert(Expression<Func<bool>> e)
-        {
-            if (e == null) return string.Empty;
-            var converter = new LogicConverter();
-            var expr = e.Body.Visit(converter, null);
-            return expr.Render();
-        }
-
-        /// <summary>
-        /// Converts a class expression to a JSON token representation.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        /// <typeparam name="T">The class type.</typeparam>
-        public static JToken ConvertO<T>(Expression<Func<T>> e)
-        {
-            var converter = new ComplexObjectConverter();
-            return e.Body.Visit(converter, null);
-        }
-
-        /// <summary>
-        /// Converts an expression to a JSON token wrapped in a base64() function call.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        /// <typeparam name="T">The expression result type.</typeparam>
-        public static string ConvertOWithBase64<T>(Expression<Func<T>> e)
-        {
-            var converter = new LogicConverter();
-            var node = e.Body.Visit(converter, null);
-            var expr = new FunctionCallNode
-            {
-                FunctionName = "base64",
-                Arguments = [node]
-            };
-            return expr.Render();
-        }
-
-        /// <summary>
-        /// Converts an expression to an object by processing member assignments and compiling the result.
-        /// </summary>
-        /// <param name="e">The expression to convert.</param>
-        /// <typeparam name="TResult">The result type.</typeparam>
-        public static TResult ConvertObject<TResult>(Expression<Func<TResult>> e)
-        {
-            var objConvert = new ObjectExpressionConverter();
-            var converted = objConvert.Visit(e.Body);
-
-            var newLambda = Expression.Lambda<Func<TResult>>(converted, e.Parameters);
-            var compiled = newLambda.Compile();
-            return compiled();
-        }
-
-        /// <summary>
-        /// Expression visitor for converting object member assignments.
-        /// </summary>
-        class ObjectExpressionConverter : ExpressionVisitor
-        {
-            /// <summary>
-            /// Visits a member assignment and converts string properties using logic converter.
-            /// </summary>
-            /// <param name="node">The member assignment to visit.</param>
-            protected override MemberAssignment VisitMemberAssignment(MemberAssignment node)
-            {
-                var shouldConvert =
-                    (node.Member is System.Reflection.PropertyInfo propertyInfo && propertyInfo.PropertyType == typeof(string)) ||
-                    (node.Member is System.Reflection.FieldInfo fieldInfo && fieldInfo.FieldType == typeof(string));
-
-                if (shouldConvert)
-                {
-                    var logicConverter = new LogicConverter();
-                    var newExpression = node.Expression.Visit(logicConverter, null);
-                    return Expression.Bind(
-                        node.Member,
-                        Expression.Constant(newExpression.Render(), typeof(string))
-                    );
+                    literal.Append(format[index++]);
                 }
-                return base.VisitMemberAssignment(node);
+                else if (format[index] == '{')
+                {
+                    var end = format.IndexOf('}', index + 1);
+                    if (end < 0 || !int.TryParse(format.Substring(index + 1, end - index - 1), out var argumentIndex) ||
+                        argumentIndex < 0 || argumentIndex >= sources.Length)
+                        throw new FormatException("Connector paths require numbered argument placeholders.");
+                    if (literal.Length > 0)
+                    {
+                        segments.Add(WorkflowValue.Quote(literal.ToString()));
+                        literal.Clear();
+                    }
+                    segments.Add("(" + sources[argumentIndex] + ")");
+                    index = end;
+                }
+                else if (format[index] == '}')
+                    throw new FormatException("Unexpected closing brace in connector path.");
+                else
+                    literal.Append(format[index]);
             }
+            if (literal.Length > 0) segments.Add(WorkflowValue.Quote(literal.ToString()));
+            return $"#{{{string.Join(" + ", segments)}}}";
         }
 
-        /// <summary>
-        /// Expression visitor for evaluating simple expressions and concatenating results.
-        /// </summary>
-        class Visitor : ExpressionVisitor
+        public static string ConvertOWithBase64<T>(WorkflowValue<T> value)
         {
-            /// <summary>
-            /// Gets the result of the expression visitation.
-            /// </summary>
-            public string Result { get; private set; }
-
-            /// <summary>
-            /// Visits a binary expression and concatenates left and right operands.
-            /// </summary>
-            /// <param name="node">The binary expression to visit.</param>
-            protected override Expression VisitBinary(BinaryExpression node)
+            if (value == null) return null;
+            if (value.IsLiteral)
             {
-                Visit(node.Left);
-                var left = Result;
-                Visit(node.Right);
-                var right = Result;
-
-                Result = left + right;
-                return node;
+                if (typeof(T) == typeof(byte[]) && value.LiteralToken is JObject binary)
+                    return binary.Value<string>("$content");
+                return $"#{{base64({WorkflowValue.Quote(value.LiteralToken.Type == JTokenType.String ? value.LiteralToken.Value<string>() : value.LiteralToken.ToString(Newtonsoft.Json.Formatting.None))})}}";
             }
+            return $"#{{{Runtime}.ToBase64(1, ({value.RenderSource()}))}}";
+        }
 
-            /// <summary>
-            /// Visits a constant expression and stores its value.
-            /// </summary>
-            /// <param name="node">The constant expression to visit.</param>
-            protected override Expression VisitConstant(ConstantExpression node)
+        public static JToken ConvertStatusCode(WorkflowValue<System.Net.HttpStatusCode> value)
+        {
+            if (value == null) return new JValue(200);
+            if (value.IsLiteral)
             {
-                Result = node.Value?.ToString();
-                return node;
+                var status = (System.Net.HttpStatusCode)Enum.Parse(typeof(System.Net.HttpStatusCode), value.LiteralToken.Value<string>());
+                if ((int)status == 0) throw new ArgumentOutOfRangeException(nameof(value), "Response status code cannot be zero.");
+                return new JValue((int)status);
             }
+            return new JValue($"#{{(int)({value.RenderSource()})}}");
+        }
 
-            /// <summary>
-            /// Visits a parameter expression.
-            /// </summary>
-            /// <param name="node">The parameter expression to visit.</param>
-            protected override Expression VisitParameter(ParameterExpression node)
-            {
-                throw new NotSupportedException("ParameterExpression not supported in this context.");
-            }
+        internal static string LiteralName(WorkflowValue<string> name)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            if (!name.IsLiteral) throw new NotSupportedException("A referenced variable name must be a literal or captured string.");
+            return name.LiteralToken.Value<string>();
+        }
 
-            /// <summary>
-            /// Visits a member expression.
-            /// </summary>
-            /// <param name="node">The member expression to visit.</param>
-            protected override Expression VisitMember(MemberExpression node)
-            {
-                throw new NotSupportedException("MemberExpression not supported in this context.");
-            }
+        private static string TextSource<T>(WorkflowValue<T> value) =>
+            value.IsLiteral
+                ? WorkflowValue.Quote(value.LiteralToken.Type == JTokenType.String ? value.LiteralToken.Value<string>() : value.LiteralToken.ToString(Newtonsoft.Json.Formatting.None))
+                : $"{Runtime}.ToText(1, ({value.RenderSource()}))";
 
-            /// <summary>
-            /// Visits any expression type.
-            /// </summary>
-            /// <param name="node">The expression to visit.</param>
-            public override Expression Visit(Expression node)
+        private static JToken EscapeLiteral(JToken token)
+        {
+            if (token.Type == JTokenType.String)
             {
-                return base.Visit(node);
+                var text = token.Value<string>();
+                if (text.StartsWith("#{", StringComparison.Ordinal) || text.Contains("@{"))
+                    return new JValue($"#{{{WorkflowValue.Quote(text)}}}");
+                if (text.StartsWith("@", StringComparison.Ordinal)) return new JValue("@" + text);
             }
+            return token;
         }
     }
 }

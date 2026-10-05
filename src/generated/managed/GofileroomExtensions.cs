@@ -4,2752 +4,3675 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gofileroom
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GofileroomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateGroup))]
+        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccessToApproveDocsOnly = null, [WorkflowExpression] Func<string> bodyallowAccessToReports = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyenableMfa = null, [WorkflowExpression] Func<string> bodyenforceMfaForUsers = null, [WorkflowExpression] Func<string> bodyfirmFlowRoutingNotification = null, [WorkflowExpression] Func<string> bodyfullAccessToDocTracking = null, [WorkflowExpression] Func<string> bodygroupName = null, [WorkflowExpression] Func<string> bodymfaRequired = null, [WorkflowExpression] Func<string> bodypermissonToApproveDocs = null, [WorkflowExpression] Func<bodyreportsInputItem[]> bodyreports = null, [WorkflowExpression] Func<string> bodyuploadLocation = null, [WorkflowExpression] Func<string[]> bodyusers = null)
         {
-            var apiCallPath = "/api/v1/administration/group/creategroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccessToApproveDocsOnly != null)
-            {
-                body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyaccessToApproveDocsOnly);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyallowAccessToReports != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateGroupResponse> __BuildCreateGroup(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodyaccessToApproveDocsOnly = null, WorkflowValue<string> bodyallowAccessToReports = null, WorkflowValue<string> bodycomments = null, WorkflowValue<string> bodyenableMfa = null, WorkflowValue<string> bodyenforceMfaForUsers = null, WorkflowValue<string> bodyfirmFlowRoutingNotification = null, WorkflowValue<string> bodyfullAccessToDocTracking = null, WorkflowValue<string> bodygroupName = null, WorkflowValue<string> bodymfaRequired = null, WorkflowValue<string> bodypermissonToApproveDocs = null, WorkflowValue<bodyreportsInputItem[]> bodyreports = null, WorkflowValue<string> bodyuploadLocation = null, WorkflowValue<string[]> bodyusers = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
+            WorkflowValue.Validate(bodyallowAccessToReports, nameof(bodyallowAccessToReports), required: false);
+            WorkflowValue.Validate(bodycomments, nameof(bodycomments), required: false);
+            WorkflowValue.Validate(bodyenableMfa, nameof(bodyenableMfa), required: false);
+            WorkflowValue.Validate(bodyenforceMfaForUsers, nameof(bodyenforceMfaForUsers), required: false);
+            WorkflowValue.Validate(bodyfirmFlowRoutingNotification, nameof(bodyfirmFlowRoutingNotification), required: false);
+            WorkflowValue.Validate(bodyfullAccessToDocTracking, nameof(bodyfullAccessToDocTracking), required: false);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: false);
+            WorkflowValue.Validate(bodymfaRequired, nameof(bodymfaRequired), required: false);
+            WorkflowValue.Validate(bodypermissonToApproveDocs, nameof(bodypermissonToApproveDocs), required: false);
+            WorkflowValue.Validate(bodyreports, nameof(bodyreports), required: false);
+            WorkflowValue.Validate(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
+            WorkflowValue.Validate(bodyusers, nameof(bodyusers), required: false);
+            return new DeferredBodyAction<CreateGroupResponse>(() =>
             {
-                body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyallowAccessToReports);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/administration/group/creategroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccessToApproveDocsOnly != null)
+                {
+                    body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyaccessToApproveDocsOnly);
+                    bodypropCount++;
+                }
 
-            if (bodycomments != null)
-            {
-                body["Comments"] = ExpressionConverter.ConvertO(bodycomments);
-                bodypropCount++;
-            }
+                if (bodyallowAccessToReports != null)
+                {
+                    body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyallowAccessToReports);
+                    bodypropCount++;
+                }
 
-            if (bodyenableMfa != null)
-            {
-                body["EnableMfa"] = ExpressionConverter.ConvertO(bodyenableMfa);
-                bodypropCount++;
-            }
+                if (bodycomments != null)
+                {
+                    body["Comments"] = ExpressionConverter.ConvertO(bodycomments);
+                    bodypropCount++;
+                }
 
-            if (bodyenforceMfaForUsers != null)
-            {
-                body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyenforceMfaForUsers);
-                bodypropCount++;
-            }
+                if (bodyenableMfa != null)
+                {
+                    body["EnableMfa"] = ExpressionConverter.ConvertO(bodyenableMfa);
+                    bodypropCount++;
+                }
 
-            if (bodyfirmFlowRoutingNotification != null)
-            {
-                body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyfirmFlowRoutingNotification);
-                bodypropCount++;
-            }
+                if (bodyenforceMfaForUsers != null)
+                {
+                    body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyenforceMfaForUsers);
+                    bodypropCount++;
+                }
 
-            if (bodyfullAccessToDocTracking != null)
-            {
-                body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyfullAccessToDocTracking);
-                bodypropCount++;
-            }
+                if (bodyfirmFlowRoutingNotification != null)
+                {
+                    body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyfirmFlowRoutingNotification);
+                    bodypropCount++;
+                }
 
-            if (bodygroupName != null)
-            {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-                bodypropCount++;
-            }
+                if (bodyfullAccessToDocTracking != null)
+                {
+                    body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyfullAccessToDocTracking);
+                    bodypropCount++;
+                }
 
-            if (bodymfaRequired != null)
-            {
-                body["MfaRequired"] = ExpressionConverter.ConvertO(bodymfaRequired);
-                bodypropCount++;
-            }
+                if (bodygroupName != null)
+                {
+                    body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                    bodypropCount++;
+                }
 
-            if (bodypermissonToApproveDocs != null)
-            {
-                body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodypermissonToApproveDocs);
-                bodypropCount++;
-            }
+                if (bodymfaRequired != null)
+                {
+                    body["MfaRequired"] = ExpressionConverter.ConvertO(bodymfaRequired);
+                    bodypropCount++;
+                }
 
-            if (bodyreports != null)
-            {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
-                bodypropCount++;
-            }
+                if (bodypermissonToApproveDocs != null)
+                {
+                    body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodypermissonToApproveDocs);
+                    bodypropCount++;
+                }
 
-            if (bodyuploadLocation != null)
-            {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
-                bodypropCount++;
-            }
+                if (bodyreports != null)
+                {
+                    body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
+                    bodypropCount++;
+                }
 
-            if (bodyusers != null)
-            {
-                body["Users"] = ExpressionConverter.ConvertO(bodyusers);
-                bodypropCount++;
-            }
+                if (bodyuploadLocation != null)
+                {
+                    body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyusers != null)
+                {
+                    body["Users"] = ExpressionConverter.ConvertO(bodyusers);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateGroupResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetGroupDocSecurityResponse> SetGroupDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodygroupName = null)
+        [WorkflowExpressionFactory(nameof(__BuildSetGroupDocSecurity))]
+        public IBodyWorkflowAction<SetGroupDocSecurityResponse> SetGroupDocSecurity([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinetName = null, [WorkflowExpression] Func<bodydocumentSecurityInputItem[]> bodydocumentSecurity = null, [WorkflowExpression] Func<string> bodydrawerName = null, [WorkflowExpression] Func<string> bodygroupName = null)
         {
-            var apiCallPath = "/api/v1/administration/group/documentsecurity";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycabinetName != null)
-            {
-                body["CabinetName"] = ExpressionConverter.ConvertO(bodycabinetName);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydocumentSecurity != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SetGroupDocSecurityResponse> __BuildSetGroupDocSecurity(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodycabinetName = null, WorkflowValue<bodydocumentSecurityInputItem[]> bodydocumentSecurity = null, WorkflowValue<string> bodydrawerName = null, WorkflowValue<string> bodygroupName = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodycabinetName, nameof(bodycabinetName), required: false);
+            WorkflowValue.Validate(bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
+            WorkflowValue.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: false);
+            return new DeferredBodyAction<SetGroupDocSecurityResponse>(() =>
             {
-                body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodydocumentSecurity);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/administration/group/documentsecurity";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycabinetName != null)
+                {
+                    body["CabinetName"] = ExpressionConverter.ConvertO(bodycabinetName);
+                    bodypropCount++;
+                }
 
-            if (bodydrawerName != null)
-            {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
-                bodypropCount++;
-            }
+                if (bodydocumentSecurity != null)
+                {
+                    body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodydocumentSecurity);
+                    bodypropCount++;
+                }
 
-            if (bodygroupName != null)
-            {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-                bodypropCount++;
-            }
+                if (bodydrawerName != null)
+                {
+                    body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodygroupName != null)
+                {
+                    body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SetGroupDocSecurityResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SetGroupDocSecurityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyGroupResponse> ModifyGroup(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccessToApproveDocsOnly = null, Expression<Func<string>> bodyallowAccessToReports = null, Expression<Func<string>> bodycomments = null, Expression<Func<string>> bodyenableMfa = null, Expression<Func<string>> bodyenforceMfaForUsers = null, Expression<Func<string>> bodyfirmFlowRoutingNotification = null, Expression<Func<string>> bodyfullAccessToDocTracking = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodymfaRequired = null, Expression<Func<string>> bodypermissonToApproveDocs = null, Expression<Func<string>> bodyrenameGroup = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null, Expression<Func<string[]>> bodyusers = null)
+        [WorkflowExpressionFactory(nameof(__BuildModifyGroup))]
+        public IBodyWorkflowAction<ModifyGroupResponse> ModifyGroup([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccessToApproveDocsOnly = null, [WorkflowExpression] Func<string> bodyallowAccessToReports = null, [WorkflowExpression] Func<string> bodycomments = null, [WorkflowExpression] Func<string> bodyenableMfa = null, [WorkflowExpression] Func<string> bodyenforceMfaForUsers = null, [WorkflowExpression] Func<string> bodyfirmFlowRoutingNotification = null, [WorkflowExpression] Func<string> bodyfullAccessToDocTracking = null, [WorkflowExpression] Func<string> bodygroupName = null, [WorkflowExpression] Func<string> bodymfaRequired = null, [WorkflowExpression] Func<string> bodypermissonToApproveDocs = null, [WorkflowExpression] Func<string> bodyrenameGroup = null, [WorkflowExpression] Func<bodyreportsInputItem[]> bodyreports = null, [WorkflowExpression] Func<string> bodyuploadLocation = null, [WorkflowExpression] Func<string[]> bodyusers = null)
         {
-            var apiCallPath = "/api/v1/administration/group/modifygroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccessToApproveDocsOnly != null)
-            {
-                body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyaccessToApproveDocsOnly);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyallowAccessToReports != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ModifyGroupResponse> __BuildModifyGroup(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodyaccessToApproveDocsOnly = null, WorkflowValue<string> bodyallowAccessToReports = null, WorkflowValue<string> bodycomments = null, WorkflowValue<string> bodyenableMfa = null, WorkflowValue<string> bodyenforceMfaForUsers = null, WorkflowValue<string> bodyfirmFlowRoutingNotification = null, WorkflowValue<string> bodyfullAccessToDocTracking = null, WorkflowValue<string> bodygroupName = null, WorkflowValue<string> bodymfaRequired = null, WorkflowValue<string> bodypermissonToApproveDocs = null, WorkflowValue<string> bodyrenameGroup = null, WorkflowValue<bodyreportsInputItem[]> bodyreports = null, WorkflowValue<string> bodyuploadLocation = null, WorkflowValue<string[]> bodyusers = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyaccessToApproveDocsOnly, nameof(bodyaccessToApproveDocsOnly), required: false);
+            WorkflowValue.Validate(bodyallowAccessToReports, nameof(bodyallowAccessToReports), required: false);
+            WorkflowValue.Validate(bodycomments, nameof(bodycomments), required: false);
+            WorkflowValue.Validate(bodyenableMfa, nameof(bodyenableMfa), required: false);
+            WorkflowValue.Validate(bodyenforceMfaForUsers, nameof(bodyenforceMfaForUsers), required: false);
+            WorkflowValue.Validate(bodyfirmFlowRoutingNotification, nameof(bodyfirmFlowRoutingNotification), required: false);
+            WorkflowValue.Validate(bodyfullAccessToDocTracking, nameof(bodyfullAccessToDocTracking), required: false);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: false);
+            WorkflowValue.Validate(bodymfaRequired, nameof(bodymfaRequired), required: false);
+            WorkflowValue.Validate(bodypermissonToApproveDocs, nameof(bodypermissonToApproveDocs), required: false);
+            WorkflowValue.Validate(bodyrenameGroup, nameof(bodyrenameGroup), required: false);
+            WorkflowValue.Validate(bodyreports, nameof(bodyreports), required: false);
+            WorkflowValue.Validate(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
+            WorkflowValue.Validate(bodyusers, nameof(bodyusers), required: false);
+            return new DeferredBodyAction<ModifyGroupResponse>(() =>
             {
-                body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyallowAccessToReports);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/administration/group/modifygroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccessToApproveDocsOnly != null)
+                {
+                    body["AccessToApproveDocsOnly"] = ExpressionConverter.ConvertO(bodyaccessToApproveDocsOnly);
+                    bodypropCount++;
+                }
 
-            if (bodycomments != null)
-            {
-                body["Comments"] = ExpressionConverter.ConvertO(bodycomments);
-                bodypropCount++;
-            }
+                if (bodyallowAccessToReports != null)
+                {
+                    body["AllowAccessToReports"] = ExpressionConverter.ConvertO(bodyallowAccessToReports);
+                    bodypropCount++;
+                }
 
-            if (bodyenableMfa != null)
-            {
-                body["EnableMfa"] = ExpressionConverter.ConvertO(bodyenableMfa);
-                bodypropCount++;
-            }
+                if (bodycomments != null)
+                {
+                    body["Comments"] = ExpressionConverter.ConvertO(bodycomments);
+                    bodypropCount++;
+                }
 
-            if (bodyenforceMfaForUsers != null)
-            {
-                body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyenforceMfaForUsers);
-                bodypropCount++;
-            }
+                if (bodyenableMfa != null)
+                {
+                    body["EnableMfa"] = ExpressionConverter.ConvertO(bodyenableMfa);
+                    bodypropCount++;
+                }
 
-            if (bodyfirmFlowRoutingNotification != null)
-            {
-                body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyfirmFlowRoutingNotification);
-                bodypropCount++;
-            }
+                if (bodyenforceMfaForUsers != null)
+                {
+                    body["EnforceMfaForUsers"] = ExpressionConverter.ConvertO(bodyenforceMfaForUsers);
+                    bodypropCount++;
+                }
 
-            if (bodyfullAccessToDocTracking != null)
-            {
-                body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyfullAccessToDocTracking);
-                bodypropCount++;
-            }
+                if (bodyfirmFlowRoutingNotification != null)
+                {
+                    body["FirmFlowRoutingNotification"] = ExpressionConverter.ConvertO(bodyfirmFlowRoutingNotification);
+                    bodypropCount++;
+                }
 
-            if (bodygroupName != null)
-            {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-                bodypropCount++;
-            }
+                if (bodyfullAccessToDocTracking != null)
+                {
+                    body["FullAccessToDocTracking"] = ExpressionConverter.ConvertO(bodyfullAccessToDocTracking);
+                    bodypropCount++;
+                }
 
-            if (bodymfaRequired != null)
-            {
-                body["MfaRequired"] = ExpressionConverter.ConvertO(bodymfaRequired);
-                bodypropCount++;
-            }
+                if (bodygroupName != null)
+                {
+                    body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                    bodypropCount++;
+                }
 
-            if (bodypermissonToApproveDocs != null)
-            {
-                body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodypermissonToApproveDocs);
-                bodypropCount++;
-            }
+                if (bodymfaRequired != null)
+                {
+                    body["MfaRequired"] = ExpressionConverter.ConvertO(bodymfaRequired);
+                    bodypropCount++;
+                }
 
-            if (bodyrenameGroup != null)
-            {
-                body["RenameGroup"] = ExpressionConverter.ConvertO(bodyrenameGroup);
-                bodypropCount++;
-            }
+                if (bodypermissonToApproveDocs != null)
+                {
+                    body["PermissonToApproveDocs"] = ExpressionConverter.ConvertO(bodypermissonToApproveDocs);
+                    bodypropCount++;
+                }
 
-            if (bodyreports != null)
-            {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
-                bodypropCount++;
-            }
+                if (bodyrenameGroup != null)
+                {
+                    body["RenameGroup"] = ExpressionConverter.ConvertO(bodyrenameGroup);
+                    bodypropCount++;
+                }
 
-            if (bodyuploadLocation != null)
-            {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
-                bodypropCount++;
-            }
+                if (bodyreports != null)
+                {
+                    body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
+                    bodypropCount++;
+                }
 
-            if (bodyusers != null)
-            {
-                body["Users"] = ExpressionConverter.ConvertO(bodyusers);
-                bodypropCount++;
-            }
+                if (bodyuploadLocation != null)
+                {
+                    body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyusers != null)
+                {
+                    body["Users"] = ExpressionConverter.ConvertO(bodyusers);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ModifyGroupResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ModifyGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetGroupPermissionsResponse> GetGroupPermissions(Expression<Func<string>> groupName = null, Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetGroupPermissions))]
+        public IBodyWorkflowAction<GetGroupPermissionsResponse> GetGroupPermissions([WorkflowExpression] Func<string> groupName = null, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            var apiCallPath = "/api/v1/administration/group/permissions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (groupName != null)
-                callPayload.Queries["groupName"] = ExpressionConverter.Convert(groupName);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetGroupPermissionsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGroupPermissionsResponse> __BuildGetGroupPermissions(WorkflowValue<string> groupName = null, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(groupName, nameof(groupName), required: false);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetGroupPermissionsResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/administration/group/permissions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (groupName != null)
+                    callPayload.Queries["groupName"] = ExpressionConverter.Convert(groupName);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetGroupPermissionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetGroupPermissionsResponse> SetGroupPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodygroupName = null)
+        [WorkflowExpressionFactory(nameof(__BuildSetGroupPermissions))]
+        public IBodyWorkflowAction<SetGroupPermissionsResponse> SetGroupPermissions([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinet = null, [WorkflowExpression] Func<string> bodycabinetPermissionadd = null, [WorkflowExpression] Func<string> bodycabinetPermissiondelete = null, [WorkflowExpression] Func<string> bodycabinetPermissiondeny = null, [WorkflowExpression] Func<string> bodycabinetPermissionedit = null, [WorkflowExpression] Func<string> bodycabinetPermissionlookUp = null, [WorkflowExpression] Func<string> bodycabinetPermissionread = null, [WorkflowExpression] Func<bodydrawerPermissionsInputItem[]> bodydrawerPermissions = null, [WorkflowExpression] Func<string> bodygroupName = null)
         {
-            var apiCallPath = "/api/v1/administration/group/permissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycabinet != null)
-            {
-                body["Cabinet"] = ExpressionConverter.ConvertO(bodycabinet);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var cabinetPermissionObject = new JObject();
-            var cabinetPermissionObjectpropCount = 0;
-            if (bodycabinetPermissionadd != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SetGroupPermissionsResponse> __BuildSetGroupPermissions(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodycabinet = null, WorkflowValue<string> bodycabinetPermissionadd = null, WorkflowValue<string> bodycabinetPermissiondelete = null, WorkflowValue<string> bodycabinetPermissiondeny = null, WorkflowValue<string> bodycabinetPermissionedit = null, WorkflowValue<string> bodycabinetPermissionlookUp = null, WorkflowValue<string> bodycabinetPermissionread = null, WorkflowValue<bodydrawerPermissionsInputItem[]> bodydrawerPermissions = null, WorkflowValue<string> bodygroupName = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodycabinet, nameof(bodycabinet), required: false);
+            WorkflowValue.Validate(bodycabinetPermissionadd, nameof(bodycabinetPermissionadd), required: false);
+            WorkflowValue.Validate(bodycabinetPermissiondelete, nameof(bodycabinetPermissiondelete), required: false);
+            WorkflowValue.Validate(bodycabinetPermissiondeny, nameof(bodycabinetPermissiondeny), required: false);
+            WorkflowValue.Validate(bodycabinetPermissionedit, nameof(bodycabinetPermissionedit), required: false);
+            WorkflowValue.Validate(bodycabinetPermissionlookUp, nameof(bodycabinetPermissionlookUp), required: false);
+            WorkflowValue.Validate(bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
+            WorkflowValue.Validate(bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: false);
+            return new DeferredBodyAction<SetGroupPermissionsResponse>(() =>
             {
-                cabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodycabinetPermissionadd);
-                cabinetPermissionObjectpropCount++;
-            }
+                var apiCallPath = "/api/v1/administration/group/permissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycabinet != null)
+                {
+                    body["Cabinet"] = ExpressionConverter.ConvertO(bodycabinet);
+                    bodypropCount++;
+                }
 
-            if (bodycabinetPermissiondelete != null)
-            {
-                cabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodycabinetPermissiondelete);
-                cabinetPermissionObjectpropCount++;
-            }
+                var cabinetPermissionObject = new JObject();
+                var cabinetPermissionObjectpropCount = 0;
+                if (bodycabinetPermissionadd != null)
+                {
+                    cabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodycabinetPermissionadd);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodycabinetPermissiondeny != null)
-            {
-                cabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodycabinetPermissiondeny);
-                cabinetPermissionObjectpropCount++;
-            }
+                if (bodycabinetPermissiondelete != null)
+                {
+                    cabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodycabinetPermissiondelete);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodycabinetPermissionedit != null)
-            {
-                cabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodycabinetPermissionedit);
-                cabinetPermissionObjectpropCount++;
-            }
+                if (bodycabinetPermissiondeny != null)
+                {
+                    cabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodycabinetPermissiondeny);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodycabinetPermissionlookUp != null)
-            {
-                cabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodycabinetPermissionlookUp);
-                cabinetPermissionObjectpropCount++;
-            }
+                if (bodycabinetPermissionedit != null)
+                {
+                    cabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodycabinetPermissionedit);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodycabinetPermissionread != null)
-            {
-                cabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodycabinetPermissionread);
-                cabinetPermissionObjectpropCount++;
-            }
+                if (bodycabinetPermissionlookUp != null)
+                {
+                    cabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodycabinetPermissionlookUp);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (cabinetPermissionObjectpropCount > 0)
-            {
-                body["CabinetPermission"] = cabinetPermissionObject;
-                bodypropCount++;
-            }
+                if (bodycabinetPermissionread != null)
+                {
+                    cabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodycabinetPermissionread);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodydrawerPermissions != null)
-            {
-                body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodydrawerPermissions);
-                bodypropCount++;
-            }
+                if (cabinetPermissionObjectpropCount > 0)
+                {
+                    body["CabinetPermission"] = cabinetPermissionObject;
+                    bodypropCount++;
+                }
 
-            if (bodygroupName != null)
-            {
-                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-                bodypropCount++;
-            }
+                if (bodydrawerPermissions != null)
+                {
+                    body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodydrawerPermissions);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodygroupName != null)
+                {
+                    body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SetGroupPermissionsResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SetGroupPermissionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetGroupDocumentSecurityResponse> GetGroupDocumentSecurity(Expression<Func<string>> groupName, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetGroupDocumentSecurity))]
+        public IBodyWorkflowAction<GetGroupDocumentSecurityResponse> GetGroupDocumentSecurity([WorkflowExpression] Func<string> groupName, [WorkflowExpression] Func<string> cabinetName, [WorkflowExpression] Func<string> drawerName, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            var apiCallPath = String.Format("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1), ExpressionConverter.ConvertWithUrlEncoding(cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(drawerName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetGroupDocumentSecurityResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGroupDocumentSecurityResponse> __BuildGetGroupDocumentSecurity(WorkflowValue<string> groupName, WorkflowValue<string> cabinetName, WorkflowValue<string> drawerName, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(groupName, nameof(groupName), required: true);
+            WorkflowValue.Validate(cabinetName, nameof(cabinetName), required: true);
+            WorkflowValue.Validate(drawerName, nameof(drawerName), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetGroupDocumentSecurityResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/group/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1), ExpressionConverter.ConvertWithUrlEncoding(cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(drawerName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetGroupDocumentSecurityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetGroupsResponseItem[]> GetGroups(Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetGroups))]
+        public IBodyWorkflowAction<GetGroupsResponseItem[]> GetGroups([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            var apiCallPath = "/api/v1/administration/groups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetGroupsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGroupsResponseItem[]> __BuildGetGroups(WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetGroupsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1/administration/groups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetGroupsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateUsersResponse> CreateUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateUsers))]
+        public IBodyWorkflowAction<CreateUsersResponse> CreateUsers([WorkflowExpression] Func<userTypeInput> userType = null, [WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccountExpiresDate = null, [WorkflowExpression] Func<string> bodydisabledComments = null, [WorkflowExpression] Func<string> bodyfullName = null, [WorkflowExpression] Func<string[]> bodygroups = null, [WorkflowExpression] Func<string> bodyisAccountExpires = null, [WorkflowExpression] Func<string> bodyisAdvanceFlow = null, [WorkflowExpression] Func<string> bodyisAllowAccessToReports = null, [WorkflowExpression] Func<string> bodyisAllowOffline = null, [WorkflowExpression] Func<string> bodyisDisabled = null, [WorkflowExpression] Func<string> bodyisFirmFlow = null, [WorkflowExpression] Func<string> bodyisFirmFlowNotificationGroup = null, [WorkflowExpression] Func<string> bodyisFirmFlowNotificationUser = null, [WorkflowExpression] Func<string> bodyisMfa = null, [WorkflowExpression] Func<string> bodyisUserAdministration = null, [WorkflowExpression] Func<string> bodyisWorkflowManagerUser = null, [WorkflowExpression] Func<string> bodylicenseType = null, [WorkflowExpression] Func<string> bodyloginName = null, [WorkflowExpression] Func<string> bodymanagerEmail = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bodyreportsInputItem[]> bodyreports = null, [WorkflowExpression] Func<string> bodyuploadLocation = null)
         {
-            var apiCallPath = "/api/v1/administration/user/createuser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userType"] = Convert.ToString("GFRUSERS");
-            if (userType != null)
-                callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountExpiresDate != null)
-            {
-                body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyaccountExpiresDate);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydisabledComments != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateUsersResponse> __BuildCreateUsers(WorkflowValue<userTypeInput> userType = null, WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodyaccountExpiresDate = null, WorkflowValue<string> bodydisabledComments = null, WorkflowValue<string> bodyfullName = null, WorkflowValue<string[]> bodygroups = null, WorkflowValue<string> bodyisAccountExpires = null, WorkflowValue<string> bodyisAdvanceFlow = null, WorkflowValue<string> bodyisAllowAccessToReports = null, WorkflowValue<string> bodyisAllowOffline = null, WorkflowValue<string> bodyisDisabled = null, WorkflowValue<string> bodyisFirmFlow = null, WorkflowValue<string> bodyisFirmFlowNotificationGroup = null, WorkflowValue<string> bodyisFirmFlowNotificationUser = null, WorkflowValue<string> bodyisMfa = null, WorkflowValue<string> bodyisUserAdministration = null, WorkflowValue<string> bodyisWorkflowManagerUser = null, WorkflowValue<string> bodylicenseType = null, WorkflowValue<string> bodyloginName = null, WorkflowValue<string> bodymanagerEmail = null, WorkflowValue<string> bodypassword = null, WorkflowValue<bodyreportsInputItem[]> bodyreports = null, WorkflowValue<string> bodyuploadLocation = null)
+        {
+            WorkflowValue.Validate(userType, nameof(userType), required: false);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyaccountExpiresDate, nameof(bodyaccountExpiresDate), required: false);
+            WorkflowValue.Validate(bodydisabledComments, nameof(bodydisabledComments), required: false);
+            WorkflowValue.Validate(bodyfullName, nameof(bodyfullName), required: false);
+            WorkflowValue.Validate(bodygroups, nameof(bodygroups), required: false);
+            WorkflowValue.Validate(bodyisAccountExpires, nameof(bodyisAccountExpires), required: false);
+            WorkflowValue.Validate(bodyisAdvanceFlow, nameof(bodyisAdvanceFlow), required: false);
+            WorkflowValue.Validate(bodyisAllowAccessToReports, nameof(bodyisAllowAccessToReports), required: false);
+            WorkflowValue.Validate(bodyisAllowOffline, nameof(bodyisAllowOffline), required: false);
+            WorkflowValue.Validate(bodyisDisabled, nameof(bodyisDisabled), required: false);
+            WorkflowValue.Validate(bodyisFirmFlow, nameof(bodyisFirmFlow), required: false);
+            WorkflowValue.Validate(bodyisFirmFlowNotificationGroup, nameof(bodyisFirmFlowNotificationGroup), required: false);
+            WorkflowValue.Validate(bodyisFirmFlowNotificationUser, nameof(bodyisFirmFlowNotificationUser), required: false);
+            WorkflowValue.Validate(bodyisMfa, nameof(bodyisMfa), required: false);
+            WorkflowValue.Validate(bodyisUserAdministration, nameof(bodyisUserAdministration), required: false);
+            WorkflowValue.Validate(bodyisWorkflowManagerUser, nameof(bodyisWorkflowManagerUser), required: false);
+            WorkflowValue.Validate(bodylicenseType, nameof(bodylicenseType), required: false);
+            WorkflowValue.Validate(bodyloginName, nameof(bodyloginName), required: false);
+            WorkflowValue.Validate(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
+            WorkflowValue.Validate(bodypassword, nameof(bodypassword), required: false);
+            WorkflowValue.Validate(bodyreports, nameof(bodyreports), required: false);
+            WorkflowValue.Validate(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
+            return new DeferredBodyAction<CreateUsersResponse>(() =>
             {
-                body["DisabledComments"] = ExpressionConverter.ConvertO(bodydisabledComments);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/administration/user/createuser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userType"] = Convert.ToString("GFRUSERS");
+                if (userType != null)
+                    callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountExpiresDate != null)
+                {
+                    body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyaccountExpiresDate);
+                    bodypropCount++;
+                }
 
-            if (bodyfullName != null)
-            {
-                body["FullName"] = ExpressionConverter.ConvertO(bodyfullName);
-                bodypropCount++;
-            }
+                if (bodydisabledComments != null)
+                {
+                    body["DisabledComments"] = ExpressionConverter.ConvertO(bodydisabledComments);
+                    bodypropCount++;
+                }
 
-            if (bodygroups != null)
-            {
-                body["Groups"] = ExpressionConverter.ConvertO(bodygroups);
-                bodypropCount++;
-            }
+                if (bodyfullName != null)
+                {
+                    body["FullName"] = ExpressionConverter.ConvertO(bodyfullName);
+                    bodypropCount++;
+                }
 
-            if (bodyisAccountExpires != null)
-            {
-                body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyisAccountExpires);
-                bodypropCount++;
-            }
+                if (bodygroups != null)
+                {
+                    body["Groups"] = ExpressionConverter.ConvertO(bodygroups);
+                    bodypropCount++;
+                }
 
-            if (bodyisAdvanceFlow != null)
-            {
-                body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyisAdvanceFlow);
-                bodypropCount++;
-            }
+                if (bodyisAccountExpires != null)
+                {
+                    body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyisAccountExpires);
+                    bodypropCount++;
+                }
 
-            if (bodyisAllowAccessToReports != null)
-            {
-                body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyisAllowAccessToReports);
-                bodypropCount++;
-            }
+                if (bodyisAdvanceFlow != null)
+                {
+                    body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyisAdvanceFlow);
+                    bodypropCount++;
+                }
 
-            if (bodyisAllowOffline != null)
-            {
-                body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyisAllowOffline);
-                bodypropCount++;
-            }
+                if (bodyisAllowAccessToReports != null)
+                {
+                    body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyisAllowAccessToReports);
+                    bodypropCount++;
+                }
 
-            if (bodyisDisabled != null)
-            {
-                body["IsDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
-                bodypropCount++;
-            }
+                if (bodyisAllowOffline != null)
+                {
+                    body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyisAllowOffline);
+                    bodypropCount++;
+                }
 
-            if (bodyisFirmFlow != null)
-            {
-                body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyisFirmFlow);
-                bodypropCount++;
-            }
+                if (bodyisDisabled != null)
+                {
+                    body["IsDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
+                    bodypropCount++;
+                }
 
-            if (bodyisFirmFlowNotificationGroup != null)
-            {
-                body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationGroup);
-                bodypropCount++;
-            }
+                if (bodyisFirmFlow != null)
+                {
+                    body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyisFirmFlow);
+                    bodypropCount++;
+                }
 
-            if (bodyisFirmFlowNotificationUser != null)
-            {
-                body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationUser);
-                bodypropCount++;
-            }
+                if (bodyisFirmFlowNotificationGroup != null)
+                {
+                    body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationGroup);
+                    bodypropCount++;
+                }
 
-            if (bodyisMfa != null)
-            {
-                body["IsMfa"] = ExpressionConverter.ConvertO(bodyisMfa);
-                bodypropCount++;
-            }
+                if (bodyisFirmFlowNotificationUser != null)
+                {
+                    body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationUser);
+                    bodypropCount++;
+                }
 
-            if (bodyisUserAdministration != null)
-            {
-                body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyisUserAdministration);
-                bodypropCount++;
-            }
+                if (bodyisMfa != null)
+                {
+                    body["IsMfa"] = ExpressionConverter.ConvertO(bodyisMfa);
+                    bodypropCount++;
+                }
 
-            if (bodyisWorkflowManagerUser != null)
-            {
-                body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyisWorkflowManagerUser);
-                bodypropCount++;
-            }
+                if (bodyisUserAdministration != null)
+                {
+                    body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyisUserAdministration);
+                    bodypropCount++;
+                }
 
-            if (bodylicenseType != null)
-            {
-                body["LicenseType"] = ExpressionConverter.ConvertO(bodylicenseType);
-                bodypropCount++;
-            }
+                if (bodyisWorkflowManagerUser != null)
+                {
+                    body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyisWorkflowManagerUser);
+                    bodypropCount++;
+                }
 
-            if (bodyloginName != null)
+                if (bodylicenseType != null)
+                {
+                    body["LicenseType"] = ExpressionConverter.ConvertO(bodylicenseType);
+                    bodypropCount++;
+                }
+
+                if (bodyloginName != null)
+                {
+                    body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
+                    bodypropCount++;
+                }
+
+                if (bodymanagerEmail != null)
+                {
+                    body["ManagerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodyreports != null)
+                {
+                    body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
+                    bodypropCount++;
+                }
+
+                if (bodyuploadLocation != null)
+                {
+                    body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateUsersResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteUser))]
+        public IBodyWorkflowAction<DeleteUserResponse> DeleteUser([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyloginId = null, [WorkflowExpression] Func<bodyuserTypeInput> bodyuserType = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteUserResponse> __BuildDeleteUser(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodyloginId = null, WorkflowValue<bodyuserTypeInput> bodyuserType = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyloginId, nameof(bodyloginId), required: false);
+            WorkflowValue.Validate(bodyuserType, nameof(bodyuserType), required: false);
+            return new DeferredBodyAction<DeleteUserResponse>(() =>
             {
+                var apiCallPath = "/api/v1/administration/user/delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyloginId != null)
+                {
+                    body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
+                    bodypropCount++;
+                }
+
+                if (bodyuserType != null)
+                {
+                    body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DeleteUserResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildSetUserDocSecurity))]
+        public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinetName = null, [WorkflowExpression] Func<bodydocumentSecurityInputItem2[]> bodydocumentSecurity = null, [WorkflowExpression] Func<string> bodydrawerName = null, [WorkflowExpression] Func<string> bodyloginId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SetUserDocSecurityResponse> __BuildSetUserDocSecurity(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodycabinetName = null, WorkflowValue<bodydocumentSecurityInputItem2[]> bodydocumentSecurity = null, WorkflowValue<string> bodydrawerName = null, WorkflowValue<string> bodyloginId = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodycabinetName, nameof(bodycabinetName), required: false);
+            WorkflowValue.Validate(bodydocumentSecurity, nameof(bodydocumentSecurity), required: false);
+            WorkflowValue.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
+            WorkflowValue.Validate(bodyloginId, nameof(bodyloginId), required: false);
+            return new DeferredBodyAction<SetUserDocSecurityResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/administration/user/documentsecurity";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycabinetName != null)
+                {
+                    body["CabinetName"] = ExpressionConverter.ConvertO(bodycabinetName);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentSecurity != null)
+                {
+                    body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodydocumentSecurity);
+                    bodypropCount++;
+                }
+
+                if (bodydrawerName != null)
+                {
+                    body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                    bodypropCount++;
+                }
+
+                if (bodyloginId != null)
+                {
+                    body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SetUserDocSecurityResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetUserInfo))]
+        public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo([WorkflowExpression] Func<string> bodyloginName, [WorkflowExpression] Func<string> bodyuserType, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUserInfoResponse> __BuildGetUserInfo(WorkflowValue<string> bodyloginName, WorkflowValue<string> bodyuserType, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(bodyloginName, nameof(bodyloginName), required: true);
+            WorkflowValue.Validate(bodyuserType, nameof(bodyuserType), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetUserInfoResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/administration/user/getuser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
                 bodypropCount++;
-            }
-
-            if (bodymanagerEmail != null)
-            {
-                body["ManagerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
-                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodyreports != null)
-            {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
-                bodypropCount++;
-            }
-
-            if (bodyuploadLocation != null)
-            {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateUsersResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteUserResponse> DeleteUser(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyloginId = null, Expression<Func<bodyuserTypeInput>> bodyuserType = null)
-        {
-            var apiCallPath = "/api/v1/administration/user/delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyloginId != null)
-            {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
-                bodypropCount++;
-            }
-
-            if (bodyuserType != null)
-            {
                 body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteUserResponse>(callPayload);
+                return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserDocSecurityResponse> SetUserDocSecurity(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinetName = null, Expression<Func<bodydocumentSecurityInputItem2[]>> bodydocumentSecurity = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string>> bodyloginId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetLicenses))]
+        public IBodyWorkflowAction<GetLicensesResponse> GetLicenses([WorkflowExpression] Func<licenseInput> license = null, [WorkflowExpression] Func<string> xAuthorization = null)
         {
-            var apiCallPath = "/api/v1/administration/user/documentsecurity";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycabinetName != null)
-            {
-                body["CabinetName"] = ExpressionConverter.ConvertO(bodycabinetName);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydocumentSecurity != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLicensesResponse> __BuildGetLicenses(WorkflowValue<licenseInput> license = null, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(license, nameof(license), required: false);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetLicensesResponse>(() =>
             {
-                body["DocumentSecurity"] = ExpressionConverter.ConvertO(bodydocumentSecurity);
-                bodypropCount++;
-            }
-
-            if (bodydrawerName != null)
-            {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
-                bodypropCount++;
-            }
-
-            if (bodyloginId != null)
-            {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetUserDocSecurityResponse>(callPayload);
+                var apiCallPath = "/api/v1/administration/user/licenses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (license != null)
+                    callPayload.Queries["license"] = ExpressionConverter.Convert(license);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetLicensesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserInfoResponse> GetUserInfo(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodyuserType, Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildModifyUser))]
+        public IBodyWorkflowAction<ModifyUserResponse> ModifyUser([WorkflowExpression] Func<userTypeInput> userType = null, [WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccountExpiresDate = null, [WorkflowExpression] Func<string> bodydisabledComments = null, [WorkflowExpression] Func<string> bodyfullName = null, [WorkflowExpression] Func<string[]> bodygroups = null, [WorkflowExpression] Func<string> bodyisAccountExpires = null, [WorkflowExpression] Func<string> bodyisAdvanceFlow = null, [WorkflowExpression] Func<string> bodyisAllowAccessToReports = null, [WorkflowExpression] Func<string> bodyisAllowOffline = null, [WorkflowExpression] Func<string> bodyisChangeNextLogin = null, [WorkflowExpression] Func<string> bodyisDisabled = null, [WorkflowExpression] Func<string> bodyisFirmFlow = null, [WorkflowExpression] Func<string> bodyisFirmFlowNotificationGroup = null, [WorkflowExpression] Func<string> bodyisFirmFlowNotificationUser = null, [WorkflowExpression] Func<string> bodyisMfa = null, [WorkflowExpression] Func<string> bodyisUserAdministration = null, [WorkflowExpression] Func<string> bodyisWorkflowManagerUser = null, [WorkflowExpression] Func<string> bodylicenseType = null, [WorkflowExpression] Func<string> bodyloginName = null, [WorkflowExpression] Func<string> bodymanagerEmail = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bodyreportsInputItem[]> bodyreports = null, [WorkflowExpression] Func<string> bodyuploadLocation = null)
         {
-            var apiCallPath = "/api/v1/administration/user/getuser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
-            bodypropCount++;
-            body["UserType"] = ExpressionConverter.ConvertO(bodyuserType);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<GetUserInfoResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ModifyUserResponse> __BuildModifyUser(WorkflowValue<userTypeInput> userType = null, WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodyaccountExpiresDate = null, WorkflowValue<string> bodydisabledComments = null, WorkflowValue<string> bodyfullName = null, WorkflowValue<string[]> bodygroups = null, WorkflowValue<string> bodyisAccountExpires = null, WorkflowValue<string> bodyisAdvanceFlow = null, WorkflowValue<string> bodyisAllowAccessToReports = null, WorkflowValue<string> bodyisAllowOffline = null, WorkflowValue<string> bodyisChangeNextLogin = null, WorkflowValue<string> bodyisDisabled = null, WorkflowValue<string> bodyisFirmFlow = null, WorkflowValue<string> bodyisFirmFlowNotificationGroup = null, WorkflowValue<string> bodyisFirmFlowNotificationUser = null, WorkflowValue<string> bodyisMfa = null, WorkflowValue<string> bodyisUserAdministration = null, WorkflowValue<string> bodyisWorkflowManagerUser = null, WorkflowValue<string> bodylicenseType = null, WorkflowValue<string> bodyloginName = null, WorkflowValue<string> bodymanagerEmail = null, WorkflowValue<string> bodypassword = null, WorkflowValue<bodyreportsInputItem[]> bodyreports = null, WorkflowValue<string> bodyuploadLocation = null)
+        {
+            WorkflowValue.Validate(userType, nameof(userType), required: false);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyaccountExpiresDate, nameof(bodyaccountExpiresDate), required: false);
+            WorkflowValue.Validate(bodydisabledComments, nameof(bodydisabledComments), required: false);
+            WorkflowValue.Validate(bodyfullName, nameof(bodyfullName), required: false);
+            WorkflowValue.Validate(bodygroups, nameof(bodygroups), required: false);
+            WorkflowValue.Validate(bodyisAccountExpires, nameof(bodyisAccountExpires), required: false);
+            WorkflowValue.Validate(bodyisAdvanceFlow, nameof(bodyisAdvanceFlow), required: false);
+            WorkflowValue.Validate(bodyisAllowAccessToReports, nameof(bodyisAllowAccessToReports), required: false);
+            WorkflowValue.Validate(bodyisAllowOffline, nameof(bodyisAllowOffline), required: false);
+            WorkflowValue.Validate(bodyisChangeNextLogin, nameof(bodyisChangeNextLogin), required: false);
+            WorkflowValue.Validate(bodyisDisabled, nameof(bodyisDisabled), required: false);
+            WorkflowValue.Validate(bodyisFirmFlow, nameof(bodyisFirmFlow), required: false);
+            WorkflowValue.Validate(bodyisFirmFlowNotificationGroup, nameof(bodyisFirmFlowNotificationGroup), required: false);
+            WorkflowValue.Validate(bodyisFirmFlowNotificationUser, nameof(bodyisFirmFlowNotificationUser), required: false);
+            WorkflowValue.Validate(bodyisMfa, nameof(bodyisMfa), required: false);
+            WorkflowValue.Validate(bodyisUserAdministration, nameof(bodyisUserAdministration), required: false);
+            WorkflowValue.Validate(bodyisWorkflowManagerUser, nameof(bodyisWorkflowManagerUser), required: false);
+            WorkflowValue.Validate(bodylicenseType, nameof(bodylicenseType), required: false);
+            WorkflowValue.Validate(bodyloginName, nameof(bodyloginName), required: false);
+            WorkflowValue.Validate(bodymanagerEmail, nameof(bodymanagerEmail), required: false);
+            WorkflowValue.Validate(bodypassword, nameof(bodypassword), required: false);
+            WorkflowValue.Validate(bodyreports, nameof(bodyreports), required: false);
+            WorkflowValue.Validate(bodyuploadLocation, nameof(bodyuploadLocation), required: false);
+            return new DeferredBodyAction<ModifyUserResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/administration/user/modifyuser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (userType != null)
+                    callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountExpiresDate != null)
+                {
+                    body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyaccountExpiresDate);
+                    bodypropCount++;
+                }
+
+                if (bodydisabledComments != null)
+                {
+                    body["DisabledComments"] = ExpressionConverter.ConvertO(bodydisabledComments);
+                    bodypropCount++;
+                }
+
+                if (bodyfullName != null)
+                {
+                    body["FullName"] = ExpressionConverter.ConvertO(bodyfullName);
+                    bodypropCount++;
+                }
+
+                if (bodygroups != null)
+                {
+                    body["Groups"] = ExpressionConverter.ConvertO(bodygroups);
+                    bodypropCount++;
+                }
+
+                if (bodyisAccountExpires != null)
+                {
+                    body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyisAccountExpires);
+                    bodypropCount++;
+                }
+
+                if (bodyisAdvanceFlow != null)
+                {
+                    body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyisAdvanceFlow);
+                    bodypropCount++;
+                }
+
+                if (bodyisAllowAccessToReports != null)
+                {
+                    body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyisAllowAccessToReports);
+                    bodypropCount++;
+                }
+
+                if (bodyisAllowOffline != null)
+                {
+                    body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyisAllowOffline);
+                    bodypropCount++;
+                }
+
+                if (bodyisChangeNextLogin != null)
+                {
+                    body["IsChangeNextLogin"] = ExpressionConverter.ConvertO(bodyisChangeNextLogin);
+                    bodypropCount++;
+                }
+
+                if (bodyisDisabled != null)
+                {
+                    body["IsDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
+                    bodypropCount++;
+                }
+
+                if (bodyisFirmFlow != null)
+                {
+                    body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyisFirmFlow);
+                    bodypropCount++;
+                }
+
+                if (bodyisFirmFlowNotificationGroup != null)
+                {
+                    body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationGroup);
+                    bodypropCount++;
+                }
+
+                if (bodyisFirmFlowNotificationUser != null)
+                {
+                    body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationUser);
+                    bodypropCount++;
+                }
+
+                if (bodyisMfa != null)
+                {
+                    body["IsMfa"] = ExpressionConverter.ConvertO(bodyisMfa);
+                    bodypropCount++;
+                }
+
+                if (bodyisUserAdministration != null)
+                {
+                    body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyisUserAdministration);
+                    bodypropCount++;
+                }
+
+                if (bodyisWorkflowManagerUser != null)
+                {
+                    body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyisWorkflowManagerUser);
+                    bodypropCount++;
+                }
+
+                if (bodylicenseType != null)
+                {
+                    body["LicenseType"] = ExpressionConverter.ConvertO(bodylicenseType);
+                    bodypropCount++;
+                }
+
+                if (bodyloginName != null)
+                {
+                    body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
+                    bodypropCount++;
+                }
+
+                if (bodymanagerEmail != null)
+                {
+                    body["ManagerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodyreports != null)
+                {
+                    body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
+                    bodypropCount++;
+                }
+
+                if (bodyuploadLocation != null)
+                {
+                    body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ModifyUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetLicensesResponse> GetLicenses(Expression<Func<licenseInput>> license = null, Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPasswordPolicy))]
+        public IBodyWorkflowAction<GetPasswordPolicyResponse> GetPasswordPolicy([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            var apiCallPath = "/api/v1/administration/user/licenses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (license != null)
-                callPayload.Queries["license"] = ExpressionConverter.Convert(license);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetLicensesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPasswordPolicyResponse> __BuildGetPasswordPolicy(WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetPasswordPolicyResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/administration/user/passwordpolicy";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetPasswordPolicyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ModifyUserResponse> ModifyUser(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountExpiresDate = null, Expression<Func<string>> bodydisabledComments = null, Expression<Func<string>> bodyfullName = null, Expression<Func<string[]>> bodygroups = null, Expression<Func<string>> bodyisAccountExpires = null, Expression<Func<string>> bodyisAdvanceFlow = null, Expression<Func<string>> bodyisAllowAccessToReports = null, Expression<Func<string>> bodyisAllowOffline = null, Expression<Func<string>> bodyisChangeNextLogin = null, Expression<Func<string>> bodyisDisabled = null, Expression<Func<string>> bodyisFirmFlow = null, Expression<Func<string>> bodyisFirmFlowNotificationGroup = null, Expression<Func<string>> bodyisFirmFlowNotificationUser = null, Expression<Func<string>> bodyisMfa = null, Expression<Func<string>> bodyisUserAdministration = null, Expression<Func<string>> bodyisWorkflowManagerUser = null, Expression<Func<string>> bodylicenseType = null, Expression<Func<string>> bodyloginName = null, Expression<Func<string>> bodymanagerEmail = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyreportsInputItem[]>> bodyreports = null, Expression<Func<string>> bodyuploadLocation = null)
+        [WorkflowExpressionFactory(nameof(__BuildSetUserPermissions))]
+        public IBodyWorkflowAction<SetUserPermissionsResponse> SetUserPermissions([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycabinet = null, [WorkflowExpression] Func<string> bodycabinetPermissionadd = null, [WorkflowExpression] Func<string> bodycabinetPermissiondelete = null, [WorkflowExpression] Func<string> bodycabinetPermissiondeny = null, [WorkflowExpression] Func<string> bodycabinetPermissionedit = null, [WorkflowExpression] Func<string> bodycabinetPermissionlookUp = null, [WorkflowExpression] Func<string> bodycabinetPermissionread = null, [WorkflowExpression] Func<bodydrawerPermissionsInputItem[]> bodydrawerPermissions = null, [WorkflowExpression] Func<string> bodyloginId = null)
         {
-            var apiCallPath = "/api/v1/administration/user/modifyuser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userType != null)
-                callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountExpiresDate != null)
-            {
-                body["AccountExpiresDate"] = ExpressionConverter.ConvertO(bodyaccountExpiresDate);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydisabledComments != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SetUserPermissionsResponse> __BuildSetUserPermissions(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodycabinet = null, WorkflowValue<string> bodycabinetPermissionadd = null, WorkflowValue<string> bodycabinetPermissiondelete = null, WorkflowValue<string> bodycabinetPermissiondeny = null, WorkflowValue<string> bodycabinetPermissionedit = null, WorkflowValue<string> bodycabinetPermissionlookUp = null, WorkflowValue<string> bodycabinetPermissionread = null, WorkflowValue<bodydrawerPermissionsInputItem[]> bodydrawerPermissions = null, WorkflowValue<string> bodyloginId = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodycabinet, nameof(bodycabinet), required: false);
+            WorkflowValue.Validate(bodycabinetPermissionadd, nameof(bodycabinetPermissionadd), required: false);
+            WorkflowValue.Validate(bodycabinetPermissiondelete, nameof(bodycabinetPermissiondelete), required: false);
+            WorkflowValue.Validate(bodycabinetPermissiondeny, nameof(bodycabinetPermissiondeny), required: false);
+            WorkflowValue.Validate(bodycabinetPermissionedit, nameof(bodycabinetPermissionedit), required: false);
+            WorkflowValue.Validate(bodycabinetPermissionlookUp, nameof(bodycabinetPermissionlookUp), required: false);
+            WorkflowValue.Validate(bodycabinetPermissionread, nameof(bodycabinetPermissionread), required: false);
+            WorkflowValue.Validate(bodydrawerPermissions, nameof(bodydrawerPermissions), required: false);
+            WorkflowValue.Validate(bodyloginId, nameof(bodyloginId), required: false);
+            return new DeferredBodyAction<SetUserPermissionsResponse>(() =>
             {
-                body["DisabledComments"] = ExpressionConverter.ConvertO(bodydisabledComments);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/administration/user/permissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycabinet != null)
+                {
+                    body["Cabinet"] = ExpressionConverter.ConvertO(bodycabinet);
+                    bodypropCount++;
+                }
 
-            if (bodyfullName != null)
-            {
-                body["FullName"] = ExpressionConverter.ConvertO(bodyfullName);
-                bodypropCount++;
-            }
+                var cabinetPermissionObject = new JObject();
+                var cabinetPermissionObjectpropCount = 0;
+                if (bodycabinetPermissionadd != null)
+                {
+                    cabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodycabinetPermissionadd);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodygroups != null)
-            {
-                body["Groups"] = ExpressionConverter.ConvertO(bodygroups);
-                bodypropCount++;
-            }
+                if (bodycabinetPermissiondelete != null)
+                {
+                    cabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodycabinetPermissiondelete);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodyisAccountExpires != null)
-            {
-                body["IsAccountExpires"] = ExpressionConverter.ConvertO(bodyisAccountExpires);
-                bodypropCount++;
-            }
+                if (bodycabinetPermissiondeny != null)
+                {
+                    cabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodycabinetPermissiondeny);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodyisAdvanceFlow != null)
-            {
-                body["IsAdvanceFlow"] = ExpressionConverter.ConvertO(bodyisAdvanceFlow);
-                bodypropCount++;
-            }
+                if (bodycabinetPermissionedit != null)
+                {
+                    cabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodycabinetPermissionedit);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodyisAllowAccessToReports != null)
-            {
-                body["IsAllowAccessToReports"] = ExpressionConverter.ConvertO(bodyisAllowAccessToReports);
-                bodypropCount++;
-            }
+                if (bodycabinetPermissionlookUp != null)
+                {
+                    cabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodycabinetPermissionlookUp);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodyisAllowOffline != null)
-            {
-                body["IsAllowOffline"] = ExpressionConverter.ConvertO(bodyisAllowOffline);
-                bodypropCount++;
-            }
+                if (bodycabinetPermissionread != null)
+                {
+                    cabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodycabinetPermissionread);
+                    cabinetPermissionObjectpropCount++;
+                }
 
-            if (bodyisChangeNextLogin != null)
-            {
-                body["IsChangeNextLogin"] = ExpressionConverter.ConvertO(bodyisChangeNextLogin);
-                bodypropCount++;
-            }
+                if (cabinetPermissionObjectpropCount > 0)
+                {
+                    body["CabinetPermission"] = cabinetPermissionObject;
+                    bodypropCount++;
+                }
 
-            if (bodyisDisabled != null)
-            {
-                body["IsDisabled"] = ExpressionConverter.ConvertO(bodyisDisabled);
-                bodypropCount++;
-            }
+                if (bodydrawerPermissions != null)
+                {
+                    body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodydrawerPermissions);
+                    bodypropCount++;
+                }
 
-            if (bodyisFirmFlow != null)
-            {
-                body["IsFirmFlow"] = ExpressionConverter.ConvertO(bodyisFirmFlow);
-                bodypropCount++;
-            }
+                if (bodyloginId != null)
+                {
+                    body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
+                    bodypropCount++;
+                }
 
-            if (bodyisFirmFlowNotificationGroup != null)
-            {
-                body["IsFirmFlowNotificationGroup"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationGroup);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyisFirmFlowNotificationUser != null)
-            {
-                body["IsFirmFlowNotificationUser"] = ExpressionConverter.ConvertO(bodyisFirmFlowNotificationUser);
-                bodypropCount++;
-            }
+                return new ApiConnectionAction<SetUserPermissionsResponse>(callPayload);
+            });
+        }
 
-            if (bodyisMfa != null)
-            {
-                body["IsMfa"] = ExpressionConverter.ConvertO(bodyisMfa);
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetListOfReports))]
+        public IBodyWorkflowAction<GetListOfReportsResponse> GetListOfReports([WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyisUserAdministration != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetListOfReportsResponse> __BuildGetListOfReports(WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetListOfReportsResponse>(() =>
             {
-                body["IsUserAdministration"] = ExpressionConverter.ConvertO(bodyisUserAdministration);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/administration/user/reports";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetListOfReportsResponse>(callPayload);
+            });
+        }
 
-            if (bodyisWorkflowManagerUser != null)
-            {
-                body["IsWorkflowManagerUser"] = ExpressionConverter.ConvertO(bodyisWorkflowManagerUser);
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetUploadLocation))]
+        public IBodyWorkflowAction<GetUploadLocationResponse> GetUploadLocation([WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodylicenseType != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUploadLocationResponse> __BuildGetUploadLocation(WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetUploadLocationResponse>(() =>
             {
-                body["LicenseType"] = ExpressionConverter.ConvertO(bodylicenseType);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/administration/user/uploadlocations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetUploadLocationResponse>(callPayload);
+            });
+        }
 
-            if (bodyloginName != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetUserDocumentSecurity))]
+        public IBodyWorkflowAction<GetUserDocumentSecurityResponse> GetUserDocumentSecurity([WorkflowExpression] Func<string> loginId, [WorkflowExpression] Func<string> cabinetName, [WorkflowExpression] Func<string> drawerName, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUserDocumentSecurityResponse> __BuildGetUserDocumentSecurity(WorkflowValue<string> loginId, WorkflowValue<string> cabinetName, WorkflowValue<string> drawerName, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(loginId, nameof(loginId), required: true);
+            WorkflowValue.Validate(cabinetName, nameof(cabinetName), required: true);
+            WorkflowValue.Validate(drawerName, nameof(drawerName), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetUserDocumentSecurityResponse>(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(loginId, 1), ExpressionConverter.ConvertWithUrlEncoding(cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(drawerName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetUserDocumentSecurityResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetUserPermission))]
+        public IBodyWorkflowAction<GetUserPermissionResponse> GetUserPermission([WorkflowExpression] Func<string> login, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUserPermissionResponse> __BuildGetUserPermission(WorkflowValue<string> login, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(login, nameof(login), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetUserPermissionResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/user/{0}/permissions", ExpressionConverter.ConvertWithUrlEncoding(login, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetUserPermissionResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetUsers))]
+        public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers([WorkflowExpression] Func<userTypeInput> userType = null, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUsersResponseItem[]> __BuildGetUsers(WorkflowValue<userTypeInput> userType = null, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(userType, nameof(userType), required: false);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetUsersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1/administration/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (userType != null)
+                    callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetLookupList))]
+        public IBodyWorkflowAction<GetLookupListResponseItem[]> GetLookupList([WorkflowExpression] Func<string> drawerId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLookupListResponseItem[]> __BuildGetLookupList(WorkflowValue<string> drawerId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(drawerId, nameof(drawerId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetLookupListResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/administration/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(drawerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetLookupListResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateDocument))]
+        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<bodyindexesInputItem[]> bodyindexes = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateDocumentResponse> __BuildCreateDocument(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodydrawerId = null, WorkflowValue<bodyindexesInputItem[]> bodyindexes = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
+            WorkflowValue.Validate(bodyindexes, nameof(bodyindexes), required: false);
+            return new DeferredBodyAction<CreateDocumentResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/documents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydrawerId != null)
+                {
+                    body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                    bodypropCount++;
+                }
+
+                if (bodyindexes != null)
+                {
+                    body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateDocumentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildCopyDocument))]
+        public IBodyWorkflowAction<CopyDocumentResponseItem[]> CopyDocument([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> bodydocumentIds = null, [WorkflowExpression] Func<bodyindexValuesInputItem[]> bodyindexValues = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CopyDocumentResponseItem[]> __BuildCopyDocument(WorkflowValue<string> xAuthorization = null, WorkflowValue<string[]> bodydocumentIds = null, WorkflowValue<bodyindexValuesInputItem[]> bodyindexValues = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydocumentIds, nameof(bodydocumentIds), required: false);
+            WorkflowValue.Validate(bodyindexValues, nameof(bodyindexValues), required: false);
+            return new DeferredBodyAction<CopyDocumentResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1/documents/copy";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydocumentIds != null)
+                {
+                    body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
+                    bodypropCount++;
+                }
+
+                if (bodyindexValues != null)
+                {
+                    body["IndexValues"] = ExpressionConverter.ConvertO(bodyindexValues);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CopyDocumentResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocumentStatus))]
+        public IBodyWorkflowAction<GetDocumentStatusResponseItem[]> GetDocumentStatus([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocumentStatusResponseItem[]> __BuildGetDocumentStatus(WorkflowValue<string> xAuthorization = null, WorkflowValue<string[]> body = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<GetDocumentStatusResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1/documents/getdocumentstatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<GetDocumentStatusResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildMergePDF))]
+        public IBodyWorkflowAction<string> MergePDF([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildMergePDF(WorkflowValue<string> xAuthorization = null, WorkflowValue<string[]> body = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/v1/documents/mergePDFs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildDocumentReindex))]
+        public IBodyWorkflowAction<DocumentReindexResponseItem[]> DocumentReindex([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> bodydocumentIds = null, [WorkflowExpression] Func<bodyindexValuesInputItem[]> bodyindexValues = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocumentReindexResponseItem[]> __BuildDocumentReindex(WorkflowValue<string> xAuthorization = null, WorkflowValue<string[]> bodydocumentIds = null, WorkflowValue<bodyindexValuesInputItem[]> bodyindexValues = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydocumentIds, nameof(bodydocumentIds), required: false);
+            WorkflowValue.Validate(bodyindexValues, nameof(bodyindexValues), required: false);
+            return new DeferredBodyAction<DocumentReindexResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1/documents/reindex";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydocumentIds != null)
+                {
+                    body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
+                    bodypropCount++;
+                }
+
+                if (bodyindexValues != null)
+                {
+                    body["IndexValues"] = ExpressionConverter.ConvertO(bodyindexValues);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DocumentReindexResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildDocumentSearch))]
+        public IBodyWorkflowAction<DocumentSearchResponse> DocumentSearch([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<bodyfilterindexValuesInputItem[]> bodyfilterindexValues = null, [WorkflowExpression] Func<int> bodynumberOfRows = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<string> bodysortField = null, [WorkflowExpression] Func<bodysortOrderInput> bodysortOrder = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocumentSearchResponse> __BuildDocumentSearch(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodydrawerId = null, WorkflowValue<bodyfilterindexValuesInputItem[]> bodyfilterindexValues = null, WorkflowValue<int> bodynumberOfRows = null, WorkflowValue<int> bodypageNumber = null, WorkflowValue<string> bodysortField = null, WorkflowValue<bodysortOrderInput> bodysortOrder = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
+            WorkflowValue.Validate(bodyfilterindexValues, nameof(bodyfilterindexValues), required: false);
+            WorkflowValue.Validate(bodynumberOfRows, nameof(bodynumberOfRows), required: false);
+            WorkflowValue.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
+            WorkflowValue.Validate(bodysortField, nameof(bodysortField), required: false);
+            WorkflowValue.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
+            return new DeferredBodyAction<DocumentSearchResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/documents/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydrawerId != null)
+                {
+                    body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                    bodypropCount++;
+                }
+
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                if (bodyfilterindexValues != null)
+                {
+                    filterObject["IndexValues"] = ExpressionConverter.ConvertO(bodyfilterindexValues);
+                    filterObjectpropCount++;
+                }
+
+                if (filterObjectpropCount > 0)
+                {
+                    body["Filter"] = filterObject;
+                    bodypropCount++;
+                }
+
+                if (bodynumberOfRows != null)
+                {
+                    body["NumberOfRows"] = ExpressionConverter.ConvertO(bodynumberOfRows);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodysortField != null)
+                {
+                    body["SortField"] = ExpressionConverter.ConvertO(bodysortField);
+                    bodypropCount++;
+                }
+
+                if (bodysortOrder != null)
+                {
+                    body["SortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DocumentSearchResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildTaxsortDocument))]
+        public IBodyWorkflowAction<TaxsortDocumentResponseItem[]> TaxsortDocument([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string[]> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaxsortDocumentResponseItem[]> __BuildTaxsortDocument(WorkflowValue<string> xAuthorization = null, WorkflowValue<string[]> body = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<TaxsortDocumentResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1/documents/taxsort";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<TaxsortDocumentResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildDocumentDelete))]
+        public IBodyWorkflowAction<DocumentDeleteResponseItem[]> DocumentDelete([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocumentDeleteResponseItem[]> __BuildDocumentDelete(WorkflowValue<string> documentId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<DocumentDeleteResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<DocumentDeleteResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocument))]
+        public IWorkflowAction GetDocument([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetDocument(WorkflowValue<string> documentId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/file", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocumentHistory))]
+        public IBodyWorkflowAction<GetDocumentHistoryResponse> GetDocumentHistory([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocumentHistoryResponse> __BuildGetDocumentHistory(WorkflowValue<string> documentId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetDocumentHistoryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetDocumentHistoryResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDocumentIndexes))]
+        public IBodyWorkflowAction<GetDocumentIndexesResponseItem[]> GetDocumentIndexes([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocumentIndexesResponseItem[]> __BuildGetDocumentIndexes(WorkflowValue<string> documentId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetDocumentIndexesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetDocumentIndexesResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildPublishDocumentStatus))]
+        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> PublishDocumentStatus([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyisPublished, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> __BuildPublishDocumentStatus(WorkflowValue<string> documentId, WorkflowValue<string> bodyisPublished, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(bodyisPublished, nameof(bodyisPublished), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<PublishDocumentStatusResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/documents/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["IsPublished"] = ExpressionConverter.ConvertO(bodyisPublished);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PublishDocumentStatusResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDrawers))]
+        public IBodyWorkflowAction<GetDrawersResponseItem[]> GetDrawers([WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDrawersResponseItem[]> __BuildGetDrawers(WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetDrawersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/api/v1/drawers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetDrawersResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDrawerIndexes))]
+        public IBodyWorkflowAction<GetDrawerIndexesResponseItem[]> GetDrawerIndexes([WorkflowExpression] Func<string> drawerId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDrawerIndexesResponseItem[]> __BuildGetDrawerIndexes(WorkflowValue<string> drawerId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(drawerId, nameof(drawerId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetDrawerIndexesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/drawers/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(drawerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetDrawerIndexesResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFirmFlowDeliverableReport))]
+        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> GetFirmFlowDeliverableReport([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyaccountable = null, [WorkflowExpression] Func<string> bodyassignedOn = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignmentHistory = null, [WorkflowExpression] Func<string> bodycompletedBy = null, [WorkflowExpression] Func<string> bodycompletedOn = null, [WorkflowExpression] Func<string> bodycurrentDueDate = null, [WorkflowExpression] Func<string> bodycurrentStep = null, [WorkflowExpression] Func<string> bodydateExtended = null, [WorkflowExpression] Func<string> bodydaysAtStep = null, [WorkflowExpression] Func<string> bodydaysBetweenRoutings = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<string> bodyengagementType = null, [WorkflowExpression] Func<string> bodyinProcessOnly = null, [WorkflowExpression] Func<string[]> bodyindexes = null, [WorkflowExpression] Func<string[]> bodyinformationFields = null, [WorkflowExpression] Func<string> bodyoriginalDueDate = null, [WorkflowExpression] Func<string> bodypIC = null, [WorkflowExpression] Func<string> bodypageNumber = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyreceivedFrom = null, [WorkflowExpression] Func<string> bodyreceivedOn = null, [WorkflowExpression] Func<string> bodyresponsible = null, [WorkflowExpression] Func<string> bodyroutingDetails = null, [WorkflowExpression] Func<string> bodysentOn = null, [WorkflowExpression] Func<string> bodysentTo = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytotalDaysAtStep = null, [WorkflowExpression] Func<string> bodytotalDaysInProcess = null, [WorkflowExpression] Func<string> bodyworkflow = null, [WorkflowExpression] Func<string> bodyworkflowDescription = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> __BuildGetFirmFlowDeliverableReport(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodyaccountable = null, WorkflowValue<string> bodyassignedOn = null, WorkflowValue<string> bodyassignedTo = null, WorkflowValue<string> bodyassignmentHistory = null, WorkflowValue<string> bodycompletedBy = null, WorkflowValue<string> bodycompletedOn = null, WorkflowValue<string> bodycurrentDueDate = null, WorkflowValue<string> bodycurrentStep = null, WorkflowValue<string> bodydateExtended = null, WorkflowValue<string> bodydaysAtStep = null, WorkflowValue<string> bodydaysBetweenRoutings = null, WorkflowValue<string> bodydrawerId = null, WorkflowValue<string> bodyengagementType = null, WorkflowValue<string> bodyinProcessOnly = null, WorkflowValue<string[]> bodyindexes = null, WorkflowValue<string[]> bodyinformationFields = null, WorkflowValue<string> bodyoriginalDueDate = null, WorkflowValue<string> bodypIC = null, WorkflowValue<string> bodypageNumber = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodyreceivedFrom = null, WorkflowValue<string> bodyreceivedOn = null, WorkflowValue<string> bodyresponsible = null, WorkflowValue<string> bodyroutingDetails = null, WorkflowValue<string> bodysentOn = null, WorkflowValue<string> bodysentTo = null, WorkflowValue<string> bodyserviceType = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodytotalDaysAtStep = null, WorkflowValue<string> bodytotalDaysInProcess = null, WorkflowValue<string> bodyworkflow = null, WorkflowValue<string> bodyworkflowDescription = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyaccountable, nameof(bodyaccountable), required: false);
+            WorkflowValue.Validate(bodyassignedOn, nameof(bodyassignedOn), required: false);
+            WorkflowValue.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            WorkflowValue.Validate(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
+            WorkflowValue.Validate(bodycompletedBy, nameof(bodycompletedBy), required: false);
+            WorkflowValue.Validate(bodycompletedOn, nameof(bodycompletedOn), required: false);
+            WorkflowValue.Validate(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
+            WorkflowValue.Validate(bodycurrentStep, nameof(bodycurrentStep), required: false);
+            WorkflowValue.Validate(bodydateExtended, nameof(bodydateExtended), required: false);
+            WorkflowValue.Validate(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
+            WorkflowValue.Validate(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
+            WorkflowValue.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
+            WorkflowValue.Validate(bodyengagementType, nameof(bodyengagementType), required: false);
+            WorkflowValue.Validate(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
+            WorkflowValue.Validate(bodyindexes, nameof(bodyindexes), required: false);
+            WorkflowValue.Validate(bodyinformationFields, nameof(bodyinformationFields), required: false);
+            WorkflowValue.Validate(bodyoriginalDueDate, nameof(bodyoriginalDueDate), required: false);
+            WorkflowValue.Validate(bodypIC, nameof(bodypIC), required: false);
+            WorkflowValue.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
+            WorkflowValue.Validate(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
+            WorkflowValue.Validate(bodyresponsible, nameof(bodyresponsible), required: false);
+            WorkflowValue.Validate(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
+            WorkflowValue.Validate(bodysentOn, nameof(bodysentOn), required: false);
+            WorkflowValue.Validate(bodysentTo, nameof(bodysentTo), required: false);
+            WorkflowValue.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
+            WorkflowValue.Validate(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
+            WorkflowValue.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
+            WorkflowValue.Validate(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
+            return new DeferredBodyAction<GetFirmFlowDeliverableReportResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/firmflowreports/TrackingReportByDeliverable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountable != null)
+                {
+                    body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedOn != null)
+                {
+                    body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedTo != null)
+                {
+                    body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                    bodypropCount++;
+                }
+
+                if (bodyassignmentHistory != null)
+                {
+                    body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedBy != null)
+                {
+                    body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedOn != null)
+                {
+                    body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
+                    bodypropCount++;
+                }
+
+                if (bodycurrentDueDate != null)
+                {
+                    body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
+                    bodypropCount++;
+                }
+
+                if (bodycurrentStep != null)
+                {
+                    body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                    bodypropCount++;
+                }
+
+                if (bodydateExtended != null)
+                {
+                    body["DateExtended"] = ExpressionConverter.ConvertO(bodydateExtended);
+                    bodypropCount++;
+                }
+
+                if (bodydaysAtStep != null)
+                {
+                    body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
+                    bodypropCount++;
+                }
+
+                if (bodydaysBetweenRoutings != null)
+                {
+                    body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
+                    bodypropCount++;
+                }
+
+                if (bodydrawerId != null)
+                {
+                    body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                    bodypropCount++;
+                }
+
+                if (bodyengagementType != null)
+                {
+                    body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
+                    bodypropCount++;
+                }
+
+                if (bodyinProcessOnly != null)
+                {
+                    body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
+                    bodypropCount++;
+                }
+
+                if (bodyindexes != null)
+                {
+                    body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                    bodypropCount++;
+                }
+
+                if (bodyinformationFields != null)
+                {
+                    body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
+                    bodypropCount++;
+                }
+
+                if (bodyoriginalDueDate != null)
+                {
+                    body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyoriginalDueDate);
+                    bodypropCount++;
+                }
+
+                if (bodypIC != null)
+                {
+                    body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyreceivedFrom != null)
+                {
+                    body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
+                    bodypropCount++;
+                }
+
+                if (bodyreceivedOn != null)
+                {
+                    body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
+                    bodypropCount++;
+                }
+
+                if (bodyresponsible != null)
+                {
+                    body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
+                    bodypropCount++;
+                }
+
+                if (bodyroutingDetails != null)
+                {
+                    body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
+                    bodypropCount++;
+                }
+
+                if (bodysentOn != null)
+                {
+                    body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
+                    bodypropCount++;
+                }
+
+                if (bodysentTo != null)
+                {
+                    body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceType != null)
+                {
+                    body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodytotalDaysAtStep != null)
+                {
+                    body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
+                    bodypropCount++;
+                }
+
+                if (bodytotalDaysInProcess != null)
+                {
+                    body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
+                    bodypropCount++;
+                }
+
+                if (bodyworkflow != null)
+                {
+                    body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                    bodypropCount++;
+                }
+
+                if (bodyworkflowDescription != null)
+                {
+                    body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetFirmFlowDeliverableReportResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildValidateIndexes))]
+        public IBodyWorkflowAction<ValidateIndexesResponse> ValidateIndexes([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<bodyindexesInputItem[]> bodyindexes = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateIndexesResponse> __BuildValidateIndexes(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodydrawerId = null, WorkflowValue<bodyindexesInputItem[]> bodyindexes = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
+            WorkflowValue.Validate(bodyindexes, nameof(bodyindexes), required: false);
+            return new DeferredBodyAction<ValidateIndexesResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/indexes/validate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydrawerId != null)
+                {
+                    body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                    bodypropCount++;
+                }
+
+                if (bodyindexes != null)
+                {
+                    body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ValidateIndexesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetDynamicRulesForIndex))]
+        public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[]> GetDynamicRulesForIndex([WorkflowExpression] Func<string> indexId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[]> __BuildGetDynamicRulesForIndex(WorkflowValue<string> indexId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(indexId, nameof(indexId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetDynamicRulesForIndexResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/dynamicrules", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetDynamicRulesForIndexResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildIndexLookupListFind))]
+        public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> IndexLookupListFind([WorkflowExpression] Func<string> indexId, [WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<bodyactionTypeInput> bodyactionType = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyindexValue = null, [WorkflowExpression] Func<bodysearchTypeInput> bodysearchType = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> __BuildIndexLookupListFind(WorkflowValue<string> indexId, WorkflowValue<string> xAuthorization = null, WorkflowValue<bodyactionTypeInput> bodyactionType = null, WorkflowValue<int> bodycount = null, WorkflowValue<string> bodyindexValue = null, WorkflowValue<bodysearchTypeInput> bodysearchType = null)
+        {
+            WorkflowValue.Validate(indexId, nameof(indexId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyactionType, nameof(bodyactionType), required: false);
+            WorkflowValue.Validate(bodycount, nameof(bodycount), required: false);
+            WorkflowValue.Validate(bodyindexValue, nameof(bodyindexValue), required: false);
+            WorkflowValue.Validate(bodysearchType, nameof(bodysearchType), required: false);
+            return new DeferredBodyAction<IndexLookupListFindResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/lookuplist", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyactionType != null)
+                {
+                    body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
+                    bodypropCount++;
+                }
+
+                if (bodycount != null)
+                {
+                    body["Count"] = ExpressionConverter.ConvertO(bodycount);
+                    bodypropCount++;
+                }
+
+                if (bodyindexValue != null)
+                {
+                    body["IndexValue"] = ExpressionConverter.ConvertO(bodyindexValue);
+                    bodypropCount++;
+                }
+
+                if (bodysearchType != null)
+                {
+                    body["SearchType"] = ExpressionConverter.ConvertO(bodysearchType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<IndexLookupListFindResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetListTypeIndexData))]
+        public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[]> GetListTypeIndexData([WorkflowExpression] Func<string> indexId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[]> __BuildGetListTypeIndexData(WorkflowValue<string> indexId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(indexId, nameof(indexId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetListTypeIndexDataResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetListTypeIndexDataResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildGetChildIndexes))]
+        public IBodyWorkflowAction<GetChildIndexesResponseItem[]> GetChildIndexes([WorkflowExpression] Func<string> indexId, [WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> xAuthorization = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetChildIndexesResponseItem[]> __BuildGetChildIndexes(WorkflowValue<string> indexId, WorkflowValue<string> listId, WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(indexId, nameof(indexId), required: true);
+            WorkflowValue.Validate(listId, nameof(listId), required: true);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<GetChildIndexesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/indexes/{0}/values/childindexlist/{1}", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1), ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<GetChildIndexesResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
+        [WorkflowExpressionFactory(nameof(__BuildLogin))]
+        public IBodyWorkflowAction<LoginResponse> Login([WorkflowExpression] Func<string> bodyloginName, [WorkflowExpression] Func<string> bodypassword)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LoginResponse> __BuildLogin(WorkflowValue<string> bodyloginName, WorkflowValue<string> bodypassword)
+        {
+            WorkflowValue.Validate(bodyloginName, nameof(bodyloginName), required: true);
+            WorkflowValue.Validate(bodypassword, nameof(bodypassword), required: true);
+            return new DeferredBodyAction<LoginResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/user/login";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
                 bodypropCount++;
-            }
-
-            if (bodymanagerEmail != null)
-            {
-                body["ManagerEmail"] = ExpressionConverter.ConvertO(bodymanagerEmail);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
                 body["Password"] = ExpressionConverter.ConvertO(bodypassword);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyreports != null)
-            {
-                body["Reports"] = ExpressionConverter.ConvertO(bodyreports);
-                bodypropCount++;
-            }
-
-            if (bodyuploadLocation != null)
-            {
-                body["UploadLocation"] = ExpressionConverter.ConvertO(bodyuploadLocation);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ModifyUserResponse>(callPayload);
+                return new ApiConnectionAction<LoginResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetPasswordPolicyResponse> GetPasswordPolicy(Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildLogout))]
+        public IBodyWorkflowAction<LogoutResponse> Logout([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            var apiCallPath = "/api/v1/administration/user/passwordpolicy";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetPasswordPolicyResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LogoutResponse> __BuildLogout(WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<LogoutResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/user/logout";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<LogoutResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<SetUserPermissionsResponse> SetUserPermissions(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycabinet = null, Expression<Func<string>> bodycabinetPermissionadd = null, Expression<Func<string>> bodycabinetPermissiondelete = null, Expression<Func<string>> bodycabinetPermissiondeny = null, Expression<Func<string>> bodycabinetPermissionedit = null, Expression<Func<string>> bodycabinetPermissionlookUp = null, Expression<Func<string>> bodycabinetPermissionread = null, Expression<Func<bodydrawerPermissionsInputItem[]>> bodydrawerPermissions = null, Expression<Func<string>> bodyloginId = null)
+        [WorkflowExpressionFactory(nameof(__BuildValidateToken))]
+        public IBodyWorkflowAction<bool> ValidateToken([WorkflowExpression] Func<string> xAuthorization = null)
         {
-            var apiCallPath = "/api/v1/administration/user/permissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycabinet != null)
-            {
-                body["Cabinet"] = ExpressionConverter.ConvertO(bodycabinet);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var cabinetPermissionObject = new JObject();
-            var cabinetPermissionObjectpropCount = 0;
-            if (bodycabinetPermissionadd != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<bool> __BuildValidateToken(WorkflowValue<string> xAuthorization = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            return new DeferredBodyAction<bool>(() =>
             {
-                cabinetPermissionObject["Add"] = ExpressionConverter.ConvertO(bodycabinetPermissionadd);
-                cabinetPermissionObjectpropCount++;
-            }
-
-            if (bodycabinetPermissiondelete != null)
-            {
-                cabinetPermissionObject["Delete"] = ExpressionConverter.ConvertO(bodycabinetPermissiondelete);
-                cabinetPermissionObjectpropCount++;
-            }
-
-            if (bodycabinetPermissiondeny != null)
-            {
-                cabinetPermissionObject["Deny"] = ExpressionConverter.ConvertO(bodycabinetPermissiondeny);
-                cabinetPermissionObjectpropCount++;
-            }
-
-            if (bodycabinetPermissionedit != null)
-            {
-                cabinetPermissionObject["Edit"] = ExpressionConverter.ConvertO(bodycabinetPermissionedit);
-                cabinetPermissionObjectpropCount++;
-            }
-
-            if (bodycabinetPermissionlookUp != null)
-            {
-                cabinetPermissionObject["LookUp"] = ExpressionConverter.ConvertO(bodycabinetPermissionlookUp);
-                cabinetPermissionObjectpropCount++;
-            }
-
-            if (bodycabinetPermissionread != null)
-            {
-                cabinetPermissionObject["Read"] = ExpressionConverter.ConvertO(bodycabinetPermissionread);
-                cabinetPermissionObjectpropCount++;
-            }
-
-            if (cabinetPermissionObjectpropCount > 0)
-            {
-                body["CabinetPermission"] = cabinetPermissionObject;
-                bodypropCount++;
-            }
-
-            if (bodydrawerPermissions != null)
-            {
-                body["DrawerPermissions"] = ExpressionConverter.ConvertO(bodydrawerPermissions);
-                bodypropCount++;
-            }
-
-            if (bodyloginId != null)
-            {
-                body["LoginId"] = ExpressionConverter.ConvertO(bodyloginId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetUserPermissionsResponse>(callPayload);
+                var apiCallPath = "/api/v1/user/validate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                return new ApiConnectionAction<bool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetListOfReportsResponse> GetListOfReports(Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkflow))]
+        public IBodyWorkflowAction<CreateWorkflowResponse> CreateWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawer = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodyfolderId = null, [WorkflowExpression] Func<string> bodyheadersclientName = null, [WorkflowExpression] Func<string> bodyheadersclientNumber = null, [WorkflowExpression] Func<string> bodyheadersengagementType = null, [WorkflowExpression] Func<string> bodyheaderspIC = null, [WorkflowExpression] Func<string> bodyheadersyear = null, [WorkflowExpression] Func<string> bodyheadersperiodEnd = null, [WorkflowExpression] Func<string> bodyfilingworkflowName = null, [WorkflowExpression] Func<string> bodyfilingdescription = null, [WorkflowExpression] Func<string> bodyfilingstatusName = null, [WorkflowExpression] Func<string> bodydeliverableaction = null, [WorkflowExpression] Func<string> bodydeliverablecurrentduedate = null, [WorkflowExpression] Func<string> bodydeliverableoriginalduedate = null, [WorkflowExpression] Func<string> bodydeliverableform = null, [WorkflowExpression] Func<string> bodydeliveryInstructionsdelivery = null, [WorkflowExpression] Func<string> bodydeliveryInstructionsdestination = null, [WorkflowExpression] Func<string> bodydeliveryInstructionssourceDocument = null, [WorkflowExpression] Func<string> bodynotesaction = null, [WorkflowExpression] Func<string> bodynotesnoteType = null, [WorkflowExpression] Func<string> bodynotesnote = null, [WorkflowExpression] Func<string> bodyinformationFieldsname = null, [WorkflowExpression] Func<string> bodyinformationFieldsvalue = null, [WorkflowExpression] Func<string> bodyroutingSummaryresponsibleField = null, [WorkflowExpression] Func<string> bodyroutingSummaryvalue = null)
         {
-            var apiCallPath = "/api/v1/administration/user/reports";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetListOfReportsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateWorkflowResponse> __BuildCreateWorkflow(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodydrawer = null, WorkflowValue<string> bodyserviceType = null, WorkflowValue<string> bodyfolderId = null, WorkflowValue<string> bodyheadersclientName = null, WorkflowValue<string> bodyheadersclientNumber = null, WorkflowValue<string> bodyheadersengagementType = null, WorkflowValue<string> bodyheaderspIC = null, WorkflowValue<string> bodyheadersyear = null, WorkflowValue<string> bodyheadersperiodEnd = null, WorkflowValue<string> bodyfilingworkflowName = null, WorkflowValue<string> bodyfilingdescription = null, WorkflowValue<string> bodyfilingstatusName = null, WorkflowValue<string> bodydeliverableaction = null, WorkflowValue<string> bodydeliverablecurrentduedate = null, WorkflowValue<string> bodydeliverableoriginalduedate = null, WorkflowValue<string> bodydeliverableform = null, WorkflowValue<string> bodydeliveryInstructionsdelivery = null, WorkflowValue<string> bodydeliveryInstructionsdestination = null, WorkflowValue<string> bodydeliveryInstructionssourceDocument = null, WorkflowValue<string> bodynotesaction = null, WorkflowValue<string> bodynotesnoteType = null, WorkflowValue<string> bodynotesnote = null, WorkflowValue<string> bodyinformationFieldsname = null, WorkflowValue<string> bodyinformationFieldsvalue = null, WorkflowValue<string> bodyroutingSummaryresponsibleField = null, WorkflowValue<string> bodyroutingSummaryvalue = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydrawer, nameof(bodydrawer), required: false);
+            WorkflowValue.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
+            WorkflowValue.Validate(bodyfolderId, nameof(bodyfolderId), required: false);
+            WorkflowValue.Validate(bodyheadersclientName, nameof(bodyheadersclientName), required: false);
+            WorkflowValue.Validate(bodyheadersclientNumber, nameof(bodyheadersclientNumber), required: false);
+            WorkflowValue.Validate(bodyheadersengagementType, nameof(bodyheadersengagementType), required: false);
+            WorkflowValue.Validate(bodyheaderspIC, nameof(bodyheaderspIC), required: false);
+            WorkflowValue.Validate(bodyheadersyear, nameof(bodyheadersyear), required: false);
+            WorkflowValue.Validate(bodyheadersperiodEnd, nameof(bodyheadersperiodEnd), required: false);
+            WorkflowValue.Validate(bodyfilingworkflowName, nameof(bodyfilingworkflowName), required: false);
+            WorkflowValue.Validate(bodyfilingdescription, nameof(bodyfilingdescription), required: false);
+            WorkflowValue.Validate(bodyfilingstatusName, nameof(bodyfilingstatusName), required: false);
+            WorkflowValue.Validate(bodydeliverableaction, nameof(bodydeliverableaction), required: false);
+            WorkflowValue.Validate(bodydeliverablecurrentduedate, nameof(bodydeliverablecurrentduedate), required: false);
+            WorkflowValue.Validate(bodydeliverableoriginalduedate, nameof(bodydeliverableoriginalduedate), required: false);
+            WorkflowValue.Validate(bodydeliverableform, nameof(bodydeliverableform), required: false);
+            WorkflowValue.Validate(bodydeliveryInstructionsdelivery, nameof(bodydeliveryInstructionsdelivery), required: false);
+            WorkflowValue.Validate(bodydeliveryInstructionsdestination, nameof(bodydeliveryInstructionsdestination), required: false);
+            WorkflowValue.Validate(bodydeliveryInstructionssourceDocument, nameof(bodydeliveryInstructionssourceDocument), required: false);
+            WorkflowValue.Validate(bodynotesaction, nameof(bodynotesaction), required: false);
+            WorkflowValue.Validate(bodynotesnoteType, nameof(bodynotesnoteType), required: false);
+            WorkflowValue.Validate(bodynotesnote, nameof(bodynotesnote), required: false);
+            WorkflowValue.Validate(bodyinformationFieldsname, nameof(bodyinformationFieldsname), required: false);
+            WorkflowValue.Validate(bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
+            WorkflowValue.Validate(bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
+            WorkflowValue.Validate(bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
+            return new DeferredBodyAction<CreateWorkflowResponse>(() =>
+            {
+                var apiCallPath = "/firmflow/api/V1/Workflow/CreateWorkflow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydrawer != null)
+                {
+                    body["Drawer"] = ExpressionConverter.ConvertO(bodydrawer);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceType != null)
+                {
+                    body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                    bodypropCount++;
+                }
+
+                if (bodyfolderId != null)
+                {
+                    body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
+                    bodypropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (bodyheadersclientName != null)
+                {
+                    headersObject["ClientName"] = ExpressionConverter.ConvertO(bodyheadersclientName);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersclientNumber != null)
+                {
+                    headersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyheadersclientNumber);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersengagementType != null)
+                {
+                    headersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyheadersengagementType);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheaderspIC != null)
+                {
+                    headersObject["PIC"] = ExpressionConverter.ConvertO(bodyheaderspIC);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersyear != null)
+                {
+                    headersObject["Year"] = ExpressionConverter.ConvertO(bodyheadersyear);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersperiodEnd != null)
+                {
+                    headersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyheadersperiodEnd);
+                    headersObjectpropCount++;
+                }
+
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
+
+                var filingObject = new JObject();
+                var filingObjectpropCount = 0;
+                if (bodyfilingworkflowName != null)
+                {
+                    filingObject["workflowName"] = ExpressionConverter.ConvertO(bodyfilingworkflowName);
+                    filingObjectpropCount++;
+                }
+
+                if (bodyfilingdescription != null)
+                {
+                    filingObject["description"] = ExpressionConverter.ConvertO(bodyfilingdescription);
+                    filingObjectpropCount++;
+                }
+
+                if (bodyfilingstatusName != null)
+                {
+                    filingObject["statusName"] = ExpressionConverter.ConvertO(bodyfilingstatusName);
+                    filingObjectpropCount++;
+                }
+
+                if (filingObjectpropCount > 0)
+                {
+                    body["filing"] = filingObject;
+                    bodypropCount++;
+                }
+
+                var deliverableObject = new JObject();
+                var deliverableObjectpropCount = 0;
+                if (bodydeliverableaction != null)
+                {
+                    deliverableObject["action"] = ExpressionConverter.ConvertO(bodydeliverableaction);
+                    deliverableObjectpropCount++;
+                }
+
+                if (bodydeliverablecurrentduedate != null)
+                {
+                    deliverableObject["currentduedate"] = ExpressionConverter.ConvertO(bodydeliverablecurrentduedate);
+                    deliverableObjectpropCount++;
+                }
+
+                if (bodydeliverableoriginalduedate != null)
+                {
+                    deliverableObject["originalduedate"] = ExpressionConverter.ConvertO(bodydeliverableoriginalduedate);
+                    deliverableObjectpropCount++;
+                }
+
+                if (bodydeliverableform != null)
+                {
+                    deliverableObject["form"] = ExpressionConverter.ConvertO(bodydeliverableform);
+                    deliverableObjectpropCount++;
+                }
+
+                if (deliverableObjectpropCount > 0)
+                {
+                    body["deliverable"] = deliverableObject;
+                    bodypropCount++;
+                }
+
+                var deliveryInstructionsObject = new JObject();
+                var deliveryInstructionsObjectpropCount = 0;
+                if (bodydeliveryInstructionsdelivery != null)
+                {
+                    deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdelivery);
+                    deliveryInstructionsObjectpropCount++;
+                }
+
+                if (bodydeliveryInstructionsdestination != null)
+                {
+                    deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdestination);
+                    deliveryInstructionsObjectpropCount++;
+                }
+
+                if (bodydeliveryInstructionssourceDocument != null)
+                {
+                    deliveryInstructionsObject["sourceDocument"] = ExpressionConverter.ConvertO(bodydeliveryInstructionssourceDocument);
+                    deliveryInstructionsObjectpropCount++;
+                }
+
+                if (deliveryInstructionsObjectpropCount > 0)
+                {
+                    body["DeliveryInstructions"] = deliveryInstructionsObject;
+                    bodypropCount++;
+                }
+
+                var notesObject = new JObject();
+                var notesObjectpropCount = 0;
+                if (bodynotesaction != null)
+                {
+                    notesObject["action"] = ExpressionConverter.ConvertO(bodynotesaction);
+                    notesObjectpropCount++;
+                }
+
+                if (bodynotesnoteType != null)
+                {
+                    notesObject["noteType"] = ExpressionConverter.ConvertO(bodynotesnoteType);
+                    notesObjectpropCount++;
+                }
+
+                if (bodynotesnote != null)
+                {
+                    notesObject["note"] = ExpressionConverter.ConvertO(bodynotesnote);
+                    notesObjectpropCount++;
+                }
+
+                if (notesObjectpropCount > 0)
+                {
+                    body["notes"] = notesObject;
+                    bodypropCount++;
+                }
+
+                var informationFieldsObject = new JObject();
+                var informationFieldsObjectpropCount = 0;
+                if (bodyinformationFieldsname != null)
+                {
+                    informationFieldsObject["name"] = ExpressionConverter.ConvertO(bodyinformationFieldsname);
+                    informationFieldsObjectpropCount++;
+                }
+
+                if (bodyinformationFieldsvalue != null)
+                {
+                    informationFieldsObject["value"] = ExpressionConverter.ConvertO(bodyinformationFieldsvalue);
+                    informationFieldsObjectpropCount++;
+                }
+
+                if (informationFieldsObjectpropCount > 0)
+                {
+                    body["informationFields"] = informationFieldsObject;
+                    bodypropCount++;
+                }
+
+                var routingSummaryObject = new JObject();
+                var routingSummaryObjectpropCount = 0;
+                if (bodyroutingSummaryresponsibleField != null)
+                {
+                    routingSummaryObject["ResponsibleField"] = ExpressionConverter.ConvertO(bodyroutingSummaryresponsibleField);
+                    routingSummaryObjectpropCount++;
+                }
+
+                if (bodyroutingSummaryvalue != null)
+                {
+                    routingSummaryObject["value"] = ExpressionConverter.ConvertO(bodyroutingSummaryvalue);
+                    routingSummaryObjectpropCount++;
+                }
+
+                if (routingSummaryObjectpropCount > 0)
+                {
+                    body["RoutingSummary"] = routingSummaryObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateWorkflowResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUploadLocationResponse> GetUploadLocation(Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteMasterDeliverable))]
+        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> DeleteMasterDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodydrawerName = null, [WorkflowExpression] Func<string[]> bodydeliverableNames = null)
         {
-            var apiCallPath = "/api/v1/administration/user/uploadlocations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetUploadLocationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> __BuildDeleteMasterDeliverable(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodyserviceType = null, WorkflowValue<string> bodydrawerName = null, WorkflowValue<string[]> bodydeliverableNames = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
+            WorkflowValue.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
+            WorkflowValue.Validate(bodydeliverableNames, nameof(bodydeliverableNames), required: false);
+            return new DeferredBodyAction<DeleteMasterDeliverableResponseItem[]>(() =>
+            {
+                var apiCallPath = "/firmflow/api/v1/Deliverable/DeleteDeliverableList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyserviceType != null)
+                {
+                    body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                    bodypropCount++;
+                }
+
+                if (bodydrawerName != null)
+                {
+                    body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                    bodypropCount++;
+                }
+
+                if (bodydeliverableNames != null)
+                {
+                    body["DeliverableNames"] = ExpressionConverter.ConvertO(bodydeliverableNames);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DeleteMasterDeliverableResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserDocumentSecurityResponse> GetUserDocumentSecurity(Expression<Func<string>> loginId, Expression<Func<string>> cabinetName, Expression<Func<string>> drawerName, Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteWorkflows))]
+        public IBodyWorkflowAction<DeleteWorkflowsResponse> DeleteWorkflows([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int[]> bodyfilingId = null)
         {
-            var apiCallPath = String.Format("/api/v1/administration/user/{0}/{1}/{2}/documentsecurity", ExpressionConverter.ConvertWithUrlEncoding(loginId, 1), ExpressionConverter.ConvertWithUrlEncoding(cabinetName, 1), ExpressionConverter.ConvertWithUrlEncoding(drawerName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetUserDocumentSecurityResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteWorkflowsResponse> __BuildDeleteWorkflows(WorkflowValue<string> xAuthorization = null, WorkflowValue<int[]> bodyfilingId = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyfilingId, nameof(bodyfilingId), required: false);
+            return new DeferredBodyAction<DeleteWorkflowsResponse>(() =>
+            {
+                var apiCallPath = "/firmflow/api/V1/Workflow/DeleteWorkflows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfilingId != null)
+                {
+                    body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DeleteWorkflowsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUserPermissionResponse> GetUserPermission(Expression<Func<string>> login, Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditMasterDeliverable))]
+        public IBodyWorkflowAction<EditMasterDeliverableResponse> EditMasterDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodycurrentdeliverableName = null, [WorkflowExpression] Func<string> bodyupdatedeliverableName = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyfirstExtension = null, [WorkflowExpression] Func<string> bodysecondExtension = null, [WorkflowExpression] Func<string> bodythirdExtension = null, [WorkflowExpression] Func<string> bodycalenderOrFiscal = null, [WorkflowExpression] Func<int> bodyextension = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodydrawerName = null)
         {
-            var apiCallPath = String.Format("/api/v1/administration/user/{0}/permissions", ExpressionConverter.ConvertWithUrlEncoding(login, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetUserPermissionResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EditMasterDeliverableResponse> __BuildEditMasterDeliverable(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodycurrentdeliverableName = null, WorkflowValue<string> bodyupdatedeliverableName = null, WorkflowValue<string> bodydueDate = null, WorkflowValue<string> bodyfirstExtension = null, WorkflowValue<string> bodysecondExtension = null, WorkflowValue<string> bodythirdExtension = null, WorkflowValue<string> bodycalenderOrFiscal = null, WorkflowValue<int> bodyextension = null, WorkflowValue<string> bodyserviceType = null, WorkflowValue<string> bodydrawerName = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodycurrentdeliverableName, nameof(bodycurrentdeliverableName), required: false);
+            WorkflowValue.Validate(bodyupdatedeliverableName, nameof(bodyupdatedeliverableName), required: false);
+            WorkflowValue.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            WorkflowValue.Validate(bodyfirstExtension, nameof(bodyfirstExtension), required: false);
+            WorkflowValue.Validate(bodysecondExtension, nameof(bodysecondExtension), required: false);
+            WorkflowValue.Validate(bodythirdExtension, nameof(bodythirdExtension), required: false);
+            WorkflowValue.Validate(bodycalenderOrFiscal, nameof(bodycalenderOrFiscal), required: false);
+            WorkflowValue.Validate(bodyextension, nameof(bodyextension), required: false);
+            WorkflowValue.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
+            WorkflowValue.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
+            return new DeferredBodyAction<EditMasterDeliverableResponse>(() =>
+            {
+                var apiCallPath = "/firmflow/api/v1/Deliverable/UpdateDeliverableList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycurrentdeliverableName != null)
+                {
+                    body["currentdeliverableName"] = ExpressionConverter.ConvertO(bodycurrentdeliverableName);
+                    bodypropCount++;
+                }
+
+                if (bodyupdatedeliverableName != null)
+                {
+                    body["updatedeliverableName"] = ExpressionConverter.ConvertO(bodyupdatedeliverableName);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstExtension != null)
+                {
+                    body["firstExtension"] = ExpressionConverter.ConvertO(bodyfirstExtension);
+                    bodypropCount++;
+                }
+
+                if (bodysecondExtension != null)
+                {
+                    body["secondExtension"] = ExpressionConverter.ConvertO(bodysecondExtension);
+                    bodypropCount++;
+                }
+
+                if (bodythirdExtension != null)
+                {
+                    body["thirdExtension"] = ExpressionConverter.ConvertO(bodythirdExtension);
+                    bodypropCount++;
+                }
+
+                if (bodycalenderOrFiscal != null)
+                {
+                    body["calenderOrFiscal"] = ExpressionConverter.ConvertO(bodycalenderOrFiscal);
+                    bodypropCount++;
+                }
+
+                if (bodyextension != null)
+                {
+                    body["extension"] = ExpressionConverter.ConvertO(bodyextension);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceType != null)
+                {
+                    body["serviceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                    bodypropCount++;
+                }
+
+                if (bodydrawerName != null)
+                {
+                    body["drawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<EditMasterDeliverableResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers(Expression<Func<userTypeInput>> userType = null, Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildEditWorkflow))]
+        public IBodyWorkflowAction<EditWorkflowResponse> EditWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int> bodyfilingId = null, [WorkflowExpression] Func<string> bodyheadersclientName = null, [WorkflowExpression] Func<string> bodyheadersclientNumber = null, [WorkflowExpression] Func<string> bodyheadersengagementType = null, [WorkflowExpression] Func<string> bodyheaderspIC = null, [WorkflowExpression] Func<string> bodyheadersyear = null, [WorkflowExpression] Func<string> bodyheadersperiodEnd = null, [WorkflowExpression] Func<string> bodydeliverableaction = null, [WorkflowExpression] Func<string> bodydeliverablecurrentduedate = null, [WorkflowExpression] Func<string> bodydeliverableoriginalduedate = null, [WorkflowExpression] Func<string> bodydeliverableform = null, [WorkflowExpression] Func<string> bodynotesaction = null, [WorkflowExpression] Func<string> bodynotesnoteType = null, [WorkflowExpression] Func<string[]> bodynotesnoteid = null, [WorkflowExpression] Func<string> bodynotesnote = null, [WorkflowExpression] Func<string> bodyinformationFieldsname = null, [WorkflowExpression] Func<string> bodyinformationFieldsvalue = null, [WorkflowExpression] Func<string> bodydeliveryInstructionsdelivery = null, [WorkflowExpression] Func<string> bodydeliveryInstructionsdestination = null, [WorkflowExpression] Func<string> bodydeliveryInstructionssourceDocument = null, [WorkflowExpression] Func<string> bodyroutingSummaryresponsibleField = null, [WorkflowExpression] Func<string> bodyroutingSummaryvalue = null, [WorkflowExpression] Func<bool> bodyreindexDocs = null)
         {
-            var apiCallPath = "/api/v1/administration/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userType != null)
-                callPayload.Queries["userType"] = ExpressionConverter.Convert(userType);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EditWorkflowResponse> __BuildEditWorkflow(WorkflowValue<string> xAuthorization = null, WorkflowValue<int> bodyfilingId = null, WorkflowValue<string> bodyheadersclientName = null, WorkflowValue<string> bodyheadersclientNumber = null, WorkflowValue<string> bodyheadersengagementType = null, WorkflowValue<string> bodyheaderspIC = null, WorkflowValue<string> bodyheadersyear = null, WorkflowValue<string> bodyheadersperiodEnd = null, WorkflowValue<string> bodydeliverableaction = null, WorkflowValue<string> bodydeliverablecurrentduedate = null, WorkflowValue<string> bodydeliverableoriginalduedate = null, WorkflowValue<string> bodydeliverableform = null, WorkflowValue<string> bodynotesaction = null, WorkflowValue<string> bodynotesnoteType = null, WorkflowValue<string[]> bodynotesnoteid = null, WorkflowValue<string> bodynotesnote = null, WorkflowValue<string> bodyinformationFieldsname = null, WorkflowValue<string> bodyinformationFieldsvalue = null, WorkflowValue<string> bodydeliveryInstructionsdelivery = null, WorkflowValue<string> bodydeliveryInstructionsdestination = null, WorkflowValue<string> bodydeliveryInstructionssourceDocument = null, WorkflowValue<string> bodyroutingSummaryresponsibleField = null, WorkflowValue<string> bodyroutingSummaryvalue = null, WorkflowValue<bool> bodyreindexDocs = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyfilingId, nameof(bodyfilingId), required: false);
+            WorkflowValue.Validate(bodyheadersclientName, nameof(bodyheadersclientName), required: false);
+            WorkflowValue.Validate(bodyheadersclientNumber, nameof(bodyheadersclientNumber), required: false);
+            WorkflowValue.Validate(bodyheadersengagementType, nameof(bodyheadersengagementType), required: false);
+            WorkflowValue.Validate(bodyheaderspIC, nameof(bodyheaderspIC), required: false);
+            WorkflowValue.Validate(bodyheadersyear, nameof(bodyheadersyear), required: false);
+            WorkflowValue.Validate(bodyheadersperiodEnd, nameof(bodyheadersperiodEnd), required: false);
+            WorkflowValue.Validate(bodydeliverableaction, nameof(bodydeliverableaction), required: false);
+            WorkflowValue.Validate(bodydeliverablecurrentduedate, nameof(bodydeliverablecurrentduedate), required: false);
+            WorkflowValue.Validate(bodydeliverableoriginalduedate, nameof(bodydeliverableoriginalduedate), required: false);
+            WorkflowValue.Validate(bodydeliverableform, nameof(bodydeliverableform), required: false);
+            WorkflowValue.Validate(bodynotesaction, nameof(bodynotesaction), required: false);
+            WorkflowValue.Validate(bodynotesnoteType, nameof(bodynotesnoteType), required: false);
+            WorkflowValue.Validate(bodynotesnoteid, nameof(bodynotesnoteid), required: false);
+            WorkflowValue.Validate(bodynotesnote, nameof(bodynotesnote), required: false);
+            WorkflowValue.Validate(bodyinformationFieldsname, nameof(bodyinformationFieldsname), required: false);
+            WorkflowValue.Validate(bodyinformationFieldsvalue, nameof(bodyinformationFieldsvalue), required: false);
+            WorkflowValue.Validate(bodydeliveryInstructionsdelivery, nameof(bodydeliveryInstructionsdelivery), required: false);
+            WorkflowValue.Validate(bodydeliveryInstructionsdestination, nameof(bodydeliveryInstructionsdestination), required: false);
+            WorkflowValue.Validate(bodydeliveryInstructionssourceDocument, nameof(bodydeliveryInstructionssourceDocument), required: false);
+            WorkflowValue.Validate(bodyroutingSummaryresponsibleField, nameof(bodyroutingSummaryresponsibleField), required: false);
+            WorkflowValue.Validate(bodyroutingSummaryvalue, nameof(bodyroutingSummaryvalue), required: false);
+            WorkflowValue.Validate(bodyreindexDocs, nameof(bodyreindexDocs), required: false);
+            return new DeferredBodyAction<EditWorkflowResponse>(() =>
+            {
+                var apiCallPath = "/firmflow/api/V1/Workflow/EditWorkflow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfilingId != null)
+                {
+                    body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
+                    bodypropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (bodyheadersclientName != null)
+                {
+                    headersObject["ClientName"] = ExpressionConverter.ConvertO(bodyheadersclientName);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersclientNumber != null)
+                {
+                    headersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyheadersclientNumber);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersengagementType != null)
+                {
+                    headersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyheadersengagementType);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheaderspIC != null)
+                {
+                    headersObject["PIC"] = ExpressionConverter.ConvertO(bodyheaderspIC);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersyear != null)
+                {
+                    headersObject["Year"] = ExpressionConverter.ConvertO(bodyheadersyear);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersperiodEnd != null)
+                {
+                    headersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyheadersperiodEnd);
+                    headersObjectpropCount++;
+                }
+
+                if (headersObjectpropCount > 0)
+                {
+                    body["Headers"] = headersObject;
+                    bodypropCount++;
+                }
+
+                var deliverableObject = new JObject();
+                var deliverableObjectpropCount = 0;
+                if (bodydeliverableaction != null)
+                {
+                    deliverableObject["action"] = ExpressionConverter.ConvertO(bodydeliverableaction);
+                    deliverableObjectpropCount++;
+                }
+
+                if (bodydeliverablecurrentduedate != null)
+                {
+                    deliverableObject["currentduedate"] = ExpressionConverter.ConvertO(bodydeliverablecurrentduedate);
+                    deliverableObjectpropCount++;
+                }
+
+                if (bodydeliverableoriginalduedate != null)
+                {
+                    deliverableObject["originalduedate"] = ExpressionConverter.ConvertO(bodydeliverableoriginalduedate);
+                    deliverableObjectpropCount++;
+                }
+
+                if (bodydeliverableform != null)
+                {
+                    deliverableObject["form"] = ExpressionConverter.ConvertO(bodydeliverableform);
+                    deliverableObjectpropCount++;
+                }
+
+                if (deliverableObjectpropCount > 0)
+                {
+                    body["deliverable"] = deliverableObject;
+                    bodypropCount++;
+                }
+
+                var notesObject = new JObject();
+                var notesObjectpropCount = 0;
+                if (bodynotesaction != null)
+                {
+                    notesObject["action"] = ExpressionConverter.ConvertO(bodynotesaction);
+                    notesObjectpropCount++;
+                }
+
+                if (bodynotesnoteType != null)
+                {
+                    notesObject["noteType"] = ExpressionConverter.ConvertO(bodynotesnoteType);
+                    notesObjectpropCount++;
+                }
+
+                if (bodynotesnoteid != null)
+                {
+                    notesObject["noteid"] = ExpressionConverter.ConvertO(bodynotesnoteid);
+                    notesObjectpropCount++;
+                }
+
+                if (bodynotesnote != null)
+                {
+                    notesObject["note"] = ExpressionConverter.ConvertO(bodynotesnote);
+                    notesObjectpropCount++;
+                }
+
+                if (notesObjectpropCount > 0)
+                {
+                    body["notes"] = notesObject;
+                    bodypropCount++;
+                }
+
+                var informationFieldsObject = new JObject();
+                var informationFieldsObjectpropCount = 0;
+                if (bodyinformationFieldsname != null)
+                {
+                    informationFieldsObject["name"] = ExpressionConverter.ConvertO(bodyinformationFieldsname);
+                    informationFieldsObjectpropCount++;
+                }
+
+                if (bodyinformationFieldsvalue != null)
+                {
+                    informationFieldsObject["value"] = ExpressionConverter.ConvertO(bodyinformationFieldsvalue);
+                    informationFieldsObjectpropCount++;
+                }
+
+                if (informationFieldsObjectpropCount > 0)
+                {
+                    body["informationFields"] = informationFieldsObject;
+                    bodypropCount++;
+                }
+
+                var deliveryInstructionsObject = new JObject();
+                var deliveryInstructionsObjectpropCount = 0;
+                if (bodydeliveryInstructionsdelivery != null)
+                {
+                    deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdelivery);
+                    deliveryInstructionsObjectpropCount++;
+                }
+
+                if (bodydeliveryInstructionsdestination != null)
+                {
+                    deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdestination);
+                    deliveryInstructionsObjectpropCount++;
+                }
+
+                if (bodydeliveryInstructionssourceDocument != null)
+                {
+                    deliveryInstructionsObject["sourceDocument"] = ExpressionConverter.ConvertO(bodydeliveryInstructionssourceDocument);
+                    deliveryInstructionsObjectpropCount++;
+                }
+
+                if (deliveryInstructionsObjectpropCount > 0)
+                {
+                    body["deliveryInstructions"] = deliveryInstructionsObject;
+                    bodypropCount++;
+                }
+
+                var routingSummaryObject = new JObject();
+                var routingSummaryObjectpropCount = 0;
+                if (bodyroutingSummaryresponsibleField != null)
+                {
+                    routingSummaryObject["responsibleField"] = ExpressionConverter.ConvertO(bodyroutingSummaryresponsibleField);
+                    routingSummaryObjectpropCount++;
+                }
+
+                if (bodyroutingSummaryvalue != null)
+                {
+                    routingSummaryObject["value"] = ExpressionConverter.ConvertO(bodyroutingSummaryvalue);
+                    routingSummaryObjectpropCount++;
+                }
+
+                if (routingSummaryObjectpropCount > 0)
+                {
+                    body["routingSummary"] = routingSummaryObject;
+                    bodypropCount++;
+                }
+
+                if (bodyreindexDocs != null)
+                {
+                    body["reindexDocs"] = ExpressionConverter.ConvertO(bodyreindexDocs);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<EditWorkflowResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetLookupListResponseItem[]> GetLookupList(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetMasterDeliverable))]
+        public IBodyWorkflowAction<GetMasterDeliverableResponse> GetMasterDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<int> bodypageSize = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodydrawerName = null)
         {
-            var apiCallPath = String.Format("/api/v1/administration/{0}/clients", ExpressionConverter.ConvertWithUrlEncoding(drawerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetLookupListResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMasterDeliverableResponse> __BuildGetMasterDeliverable(WorkflowValue<string> xAuthorization = null, WorkflowValue<int> bodypageNumber = null, WorkflowValue<int> bodypageSize = null, WorkflowValue<string> bodyserviceType = null, WorkflowValue<string> bodydrawerName = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
+            WorkflowValue.Validate(bodypageSize, nameof(bodypageSize), required: false);
+            WorkflowValue.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
+            WorkflowValue.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
+            return new DeferredBodyAction<GetMasterDeliverableResponse>(() =>
+            {
+                var apiCallPath = "/firmflow/api/v1/Deliverable/GetDeliverableList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypageNumber != null)
+                {
+                    body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypageSize != null)
+                {
+                    body["pageSize"] = ExpressionConverter.ConvertO(bodypageSize);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceType != null)
+                {
+                    body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                    bodypropCount++;
+                }
+
+                if (bodydrawerName != null)
+                {
+                    body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetMasterDeliverableResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateDocumentResponse> CreateDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
+        [WorkflowExpressionFactory(nameof(__BuildTrackingReportByWorkflow))]
+        public IBodyWorkflowAction<TrackingReportByWorkflowResponse> TrackingReportByWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodyengagementType = null, [WorkflowExpression] Func<string> bodyworkflow = null, [WorkflowExpression] Func<string> bodycurrentStep = null, [WorkflowExpression] Func<string> bodypIC = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignedOn = null, [WorkflowExpression] Func<string> bodyworkflowDescription = null, [WorkflowExpression] Func<string> bodyinProcessOnly = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyresponsible = null, [WorkflowExpression] Func<string> bodyassignmentHistory = null, [WorkflowExpression] Func<string> bodyreceivedFrom = null, [WorkflowExpression] Func<string> bodyreceivedOn = null, [WorkflowExpression] Func<string> bodysentTo = null, [WorkflowExpression] Func<string> bodysentOn = null, [WorkflowExpression] Func<string> bodycompletedBy = null, [WorkflowExpression] Func<string> bodycompletedOn = null, [WorkflowExpression] Func<string> bodycurrentDueDate = null, [WorkflowExpression] Func<string> bodydaysAtStep = null, [WorkflowExpression] Func<string> bodytotalDaysAtStep = null, [WorkflowExpression] Func<string> bodydaysBetweenRoutings = null, [WorkflowExpression] Func<string> bodytotalDaysInProcess = null, [WorkflowExpression] Func<string> bodyaccountable = null, [WorkflowExpression] Func<string> bodyroutingDetails = null, [WorkflowExpression] Func<string> bodylastUpdated = null, [WorkflowExpression] Func<string[]> bodyinformationFields = null, [WorkflowExpression] Func<string[]> bodyindexes = null, [WorkflowExpression] Func<string> bodypageNumber = null)
         {
-            var apiCallPath = "/api/v1/documents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydrawerId != null)
-            {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyindexes != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TrackingReportByWorkflowResponse> __BuildTrackingReportByWorkflow(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodydrawerId = null, WorkflowValue<string> bodyserviceType = null, WorkflowValue<string> bodyengagementType = null, WorkflowValue<string> bodyworkflow = null, WorkflowValue<string> bodycurrentStep = null, WorkflowValue<string> bodypIC = null, WorkflowValue<string> bodyassignedTo = null, WorkflowValue<string> bodyassignedOn = null, WorkflowValue<string> bodyworkflowDescription = null, WorkflowValue<string> bodyinProcessOnly = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodyresponsible = null, WorkflowValue<string> bodyassignmentHistory = null, WorkflowValue<string> bodyreceivedFrom = null, WorkflowValue<string> bodyreceivedOn = null, WorkflowValue<string> bodysentTo = null, WorkflowValue<string> bodysentOn = null, WorkflowValue<string> bodycompletedBy = null, WorkflowValue<string> bodycompletedOn = null, WorkflowValue<string> bodycurrentDueDate = null, WorkflowValue<string> bodydaysAtStep = null, WorkflowValue<string> bodytotalDaysAtStep = null, WorkflowValue<string> bodydaysBetweenRoutings = null, WorkflowValue<string> bodytotalDaysInProcess = null, WorkflowValue<string> bodyaccountable = null, WorkflowValue<string> bodyroutingDetails = null, WorkflowValue<string> bodylastUpdated = null, WorkflowValue<string[]> bodyinformationFields = null, WorkflowValue<string[]> bodyindexes = null, WorkflowValue<string> bodypageNumber = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
+            WorkflowValue.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
+            WorkflowValue.Validate(bodyengagementType, nameof(bodyengagementType), required: false);
+            WorkflowValue.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
+            WorkflowValue.Validate(bodycurrentStep, nameof(bodycurrentStep), required: false);
+            WorkflowValue.Validate(bodypIC, nameof(bodypIC), required: false);
+            WorkflowValue.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            WorkflowValue.Validate(bodyassignedOn, nameof(bodyassignedOn), required: false);
+            WorkflowValue.Validate(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
+            WorkflowValue.Validate(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyresponsible, nameof(bodyresponsible), required: false);
+            WorkflowValue.Validate(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
+            WorkflowValue.Validate(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
+            WorkflowValue.Validate(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
+            WorkflowValue.Validate(bodysentTo, nameof(bodysentTo), required: false);
+            WorkflowValue.Validate(bodysentOn, nameof(bodysentOn), required: false);
+            WorkflowValue.Validate(bodycompletedBy, nameof(bodycompletedBy), required: false);
+            WorkflowValue.Validate(bodycompletedOn, nameof(bodycompletedOn), required: false);
+            WorkflowValue.Validate(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
+            WorkflowValue.Validate(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
+            WorkflowValue.Validate(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
+            WorkflowValue.Validate(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
+            WorkflowValue.Validate(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
+            WorkflowValue.Validate(bodyaccountable, nameof(bodyaccountable), required: false);
+            WorkflowValue.Validate(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
+            WorkflowValue.Validate(bodylastUpdated, nameof(bodylastUpdated), required: false);
+            WorkflowValue.Validate(bodyinformationFields, nameof(bodyinformationFields), required: false);
+            WorkflowValue.Validate(bodyindexes, nameof(bodyindexes), required: false);
+            WorkflowValue.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
+            return new DeferredBodyAction<TrackingReportByWorkflowResponse>(() =>
             {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/v1/firmflowreports/TrackingReportByWorkflow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydrawerId != null)
+                {
+                    body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyserviceType != null)
+                {
+                    body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateDocumentResponse>(callPayload);
+                if (bodyengagementType != null)
+                {
+                    body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
+                    bodypropCount++;
+                }
+
+                if (bodyworkflow != null)
+                {
+                    body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                    bodypropCount++;
+                }
+
+                if (bodycurrentStep != null)
+                {
+                    body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                    bodypropCount++;
+                }
+
+                if (bodypIC != null)
+                {
+                    body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedTo != null)
+                {
+                    body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedOn != null)
+                {
+                    body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
+                    bodypropCount++;
+                }
+
+                if (bodyworkflowDescription != null)
+                {
+                    body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
+                    bodypropCount++;
+                }
+
+                if (bodyinProcessOnly != null)
+                {
+                    body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyresponsible != null)
+                {
+                    body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
+                    bodypropCount++;
+                }
+
+                if (bodyassignmentHistory != null)
+                {
+                    body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
+                    bodypropCount++;
+                }
+
+                if (bodyreceivedFrom != null)
+                {
+                    body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
+                    bodypropCount++;
+                }
+
+                if (bodyreceivedOn != null)
+                {
+                    body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
+                    bodypropCount++;
+                }
+
+                if (bodysentTo != null)
+                {
+                    body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
+                    bodypropCount++;
+                }
+
+                if (bodysentOn != null)
+                {
+                    body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedBy != null)
+                {
+                    body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedOn != null)
+                {
+                    body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
+                    bodypropCount++;
+                }
+
+                if (bodycurrentDueDate != null)
+                {
+                    body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
+                    bodypropCount++;
+                }
+
+                if (bodydaysAtStep != null)
+                {
+                    body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
+                    bodypropCount++;
+                }
+
+                if (bodytotalDaysAtStep != null)
+                {
+                    body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
+                    bodypropCount++;
+                }
+
+                if (bodydaysBetweenRoutings != null)
+                {
+                    body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
+                    bodypropCount++;
+                }
+
+                if (bodytotalDaysInProcess != null)
+                {
+                    body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountable != null)
+                {
+                    body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
+                    bodypropCount++;
+                }
+
+                if (bodyroutingDetails != null)
+                {
+                    body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
+                    bodypropCount++;
+                }
+
+                if (bodylastUpdated != null)
+                {
+                    body["LastUpdated"] = ExpressionConverter.ConvertO(bodylastUpdated);
+                    bodypropCount++;
+                }
+
+                if (bodyinformationFields != null)
+                {
+                    body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
+                    bodypropCount++;
+                }
+
+                if (bodyindexes != null)
+                {
+                    body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TrackingReportByWorkflowResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CopyDocumentResponseItem[]> CopyDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddMasterDeliverable))]
+        public IBodyWorkflowAction<AddMasterDeliverableResponse> AddMasterDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydeliverableName = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyfirstExtension = null, [WorkflowExpression] Func<string> bodysecondExtension = null, [WorkflowExpression] Func<string> bodythirdExtension = null, [WorkflowExpression] Func<string> bodycalenderOrFiscal = null, [WorkflowExpression] Func<int> bodyextension = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodydrawerName = null)
         {
-            var apiCallPath = "/api/v1/documents/copy";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocumentIds != null)
-            {
-                body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyindexValues != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddMasterDeliverableResponse> __BuildAddMasterDeliverable(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodydeliverableName = null, WorkflowValue<string> bodydueDate = null, WorkflowValue<string> bodyfirstExtension = null, WorkflowValue<string> bodysecondExtension = null, WorkflowValue<string> bodythirdExtension = null, WorkflowValue<string> bodycalenderOrFiscal = null, WorkflowValue<int> bodyextension = null, WorkflowValue<string> bodyserviceType = null, WorkflowValue<string> bodydrawerName = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydeliverableName, nameof(bodydeliverableName), required: false);
+            WorkflowValue.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            WorkflowValue.Validate(bodyfirstExtension, nameof(bodyfirstExtension), required: false);
+            WorkflowValue.Validate(bodysecondExtension, nameof(bodysecondExtension), required: false);
+            WorkflowValue.Validate(bodythirdExtension, nameof(bodythirdExtension), required: false);
+            WorkflowValue.Validate(bodycalenderOrFiscal, nameof(bodycalenderOrFiscal), required: false);
+            WorkflowValue.Validate(bodyextension, nameof(bodyextension), required: false);
+            WorkflowValue.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
+            WorkflowValue.Validate(bodydrawerName, nameof(bodydrawerName), required: false);
+            return new DeferredBodyAction<AddMasterDeliverableResponse>(() =>
             {
-                body["IndexValues"] = ExpressionConverter.ConvertO(bodyindexValues);
-                bodypropCount++;
-            }
+                var apiCallPath = "/firmflow/api/v1/Deliverable/SaveDeliverableList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydeliverableName != null)
+                {
+                    body["deliverableName"] = ExpressionConverter.ConvertO(bodydeliverableName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodydueDate != null)
+                {
+                    body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CopyDocumentResponseItem[]>(callPayload);
+                if (bodyfirstExtension != null)
+                {
+                    body["firstExtension"] = ExpressionConverter.ConvertO(bodyfirstExtension);
+                    bodypropCount++;
+                }
+
+                if (bodysecondExtension != null)
+                {
+                    body["secondExtension"] = ExpressionConverter.ConvertO(bodysecondExtension);
+                    bodypropCount++;
+                }
+
+                if (bodythirdExtension != null)
+                {
+                    body["thirdExtension"] = ExpressionConverter.ConvertO(bodythirdExtension);
+                    bodypropCount++;
+                }
+
+                if (bodycalenderOrFiscal != null)
+                {
+                    body["calenderOrFiscal"] = ExpressionConverter.ConvertO(bodycalenderOrFiscal);
+                    bodypropCount++;
+                }
+
+                if (bodyextension != null)
+                {
+                    body["extension"] = ExpressionConverter.ConvertO(bodyextension);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceType != null)
+                {
+                    body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                    bodypropCount++;
+                }
+
+                if (bodydrawerName != null)
+                {
+                    body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddMasterDeliverableResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDocumentStatusResponseItem[]> GetDocumentStatus(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildRouteWorkflow))]
+        public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflow([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<int[]> bodyfilingId = null, [WorkflowExpression] Func<string[]> bodycurrentStep = null, [WorkflowExpression] Func<bool> bodycomplete = null, [WorkflowExpression] Func<string> bodycompletedDate = null, [WorkflowExpression] Func<string> bodynextStep = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignedDate = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyroutingNote = null, [WorkflowExpression] Func<bool> bodyemailNotify = null)
         {
-            var apiCallPath = "/api/v1/documents/getdocumentstatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<GetDocumentStatusResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RouteWorkflowV2Response> __BuildRouteWorkflow(WorkflowValue<string> xAuthorization = null, WorkflowValue<int[]> bodyfilingId = null, WorkflowValue<string[]> bodycurrentStep = null, WorkflowValue<bool> bodycomplete = null, WorkflowValue<string> bodycompletedDate = null, WorkflowValue<string> bodynextStep = null, WorkflowValue<string> bodyassignedTo = null, WorkflowValue<string> bodyassignedDate = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodyroutingNote = null, WorkflowValue<bool> bodyemailNotify = null)
+        {
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodyfilingId, nameof(bodyfilingId), required: false);
+            WorkflowValue.Validate(bodycurrentStep, nameof(bodycurrentStep), required: false);
+            WorkflowValue.Validate(bodycomplete, nameof(bodycomplete), required: false);
+            WorkflowValue.Validate(bodycompletedDate, nameof(bodycompletedDate), required: false);
+            WorkflowValue.Validate(bodynextStep, nameof(bodynextStep), required: false);
+            WorkflowValue.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            WorkflowValue.Validate(bodyassignedDate, nameof(bodyassignedDate), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodyroutingNote, nameof(bodyroutingNote), required: false);
+            WorkflowValue.Validate(bodyemailNotify, nameof(bodyemailNotify), required: false);
+            return new DeferredBodyAction<RouteWorkflowV2Response>(() =>
+            {
+                var apiCallPath = "/firmflow/api/V2/Route";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfilingId != null)
+                {
+                    body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
+                    bodypropCount++;
+                }
+
+                if (bodycurrentStep != null)
+                {
+                    body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                    bodypropCount++;
+                }
+
+                if (bodycomplete != null)
+                {
+                    body["Complete"] = ExpressionConverter.ConvertO(bodycomplete);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedDate != null)
+                {
+                    body["CompletedDate"] = ExpressionConverter.ConvertO(bodycompletedDate);
+                    bodypropCount++;
+                }
+
+                if (bodynextStep != null)
+                {
+                    body["NextStep"] = ExpressionConverter.ConvertO(bodynextStep);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedTo != null)
+                {
+                    body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedDate != null)
+                {
+                    body["AssignedDate"] = ExpressionConverter.ConvertO(bodyassignedDate);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyroutingNote != null)
+                {
+                    body["RoutingNote"] = ExpressionConverter.ConvertO(bodyroutingNote);
+                    bodypropCount++;
+                }
+
+                if (bodyemailNotify != null)
+                {
+                    body["emailNotify"] = ExpressionConverter.ConvertO(bodyemailNotify);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RouteWorkflowV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<string> MergePDF(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildTrackingReportByDeliverable))]
+        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverable([WorkflowExpression] Func<string> xAuthorization = null, [WorkflowExpression] Func<string> bodydrawerId = null, [WorkflowExpression] Func<string> bodyserviceType = null, [WorkflowExpression] Func<string> bodyengagementType = null, [WorkflowExpression] Func<string> bodyworkflow = null, [WorkflowExpression] Func<string> bodycurrentStep = null, [WorkflowExpression] Func<string> bodypIC = null, [WorkflowExpression] Func<string> bodyassignedTo = null, [WorkflowExpression] Func<string> bodyassignedOn = null, [WorkflowExpression] Func<string> bodyworkflowDescription = null, [WorkflowExpression] Func<string> bodyinProcessOnly = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyreceivedOn = null, [WorkflowExpression] Func<string> bodycompletedOn = null, [WorkflowExpression] Func<string> bodysentOn = null, [WorkflowExpression] Func<string> bodyresponsible = null, [WorkflowExpression] Func<string> bodyassignmentHistory = null, [WorkflowExpression] Func<string> bodyreceivedFrom = null, [WorkflowExpression] Func<string> bodysentTo = null, [WorkflowExpression] Func<string> bodycompletedBy = null, [WorkflowExpression] Func<string> bodyaccountable = null, [WorkflowExpression] Func<string> bodycurrentDueDate = null, [WorkflowExpression] Func<string> bodyoriginalDueDate = null, [WorkflowExpression] Func<string> bodydateExtended = null, [WorkflowExpression] Func<string> bodydaysAtStep = null, [WorkflowExpression] Func<string> bodytotalDaysAtStep = null, [WorkflowExpression] Func<string> bodydaysBetweenRoutings = null, [WorkflowExpression] Func<string> bodytotalDaysInProcess = null, [WorkflowExpression] Func<string> bodyroutingDetails = null, [WorkflowExpression] Func<string> bodylastUpdated = null, [WorkflowExpression] Func<string[]> bodyinformationFields = null, [WorkflowExpression] Func<string[]> bodyindexes = null, [WorkflowExpression] Func<string> bodypageNumber = null)
         {
-            var apiCallPath = "/api/v1/documents/mergePDFs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentReindexResponseItem[]> DocumentReindex(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> bodydocumentIds = null, Expression<Func<bodyindexValuesInputItem[]>> bodyindexValues = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> __BuildTrackingReportByDeliverable(WorkflowValue<string> xAuthorization = null, WorkflowValue<string> bodydrawerId = null, WorkflowValue<string> bodyserviceType = null, WorkflowValue<string> bodyengagementType = null, WorkflowValue<string> bodyworkflow = null, WorkflowValue<string> bodycurrentStep = null, WorkflowValue<string> bodypIC = null, WorkflowValue<string> bodyassignedTo = null, WorkflowValue<string> bodyassignedOn = null, WorkflowValue<string> bodyworkflowDescription = null, WorkflowValue<string> bodyinProcessOnly = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodypriority = null, WorkflowValue<string> bodyreceivedOn = null, WorkflowValue<string> bodycompletedOn = null, WorkflowValue<string> bodysentOn = null, WorkflowValue<string> bodyresponsible = null, WorkflowValue<string> bodyassignmentHistory = null, WorkflowValue<string> bodyreceivedFrom = null, WorkflowValue<string> bodysentTo = null, WorkflowValue<string> bodycompletedBy = null, WorkflowValue<string> bodyaccountable = null, WorkflowValue<string> bodycurrentDueDate = null, WorkflowValue<string> bodyoriginalDueDate = null, WorkflowValue<string> bodydateExtended = null, WorkflowValue<string> bodydaysAtStep = null, WorkflowValue<string> bodytotalDaysAtStep = null, WorkflowValue<string> bodydaysBetweenRoutings = null, WorkflowValue<string> bodytotalDaysInProcess = null, WorkflowValue<string> bodyroutingDetails = null, WorkflowValue<string> bodylastUpdated = null, WorkflowValue<string[]> bodyinformationFields = null, WorkflowValue<string[]> bodyindexes = null, WorkflowValue<string> bodypageNumber = null)
         {
-            var apiCallPath = "/api/v1/documents/reindex";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocumentIds != null)
-            {
-                body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
-                bodypropCount++;
-            }
-
-            if (bodyindexValues != null)
-            {
-                body["IndexValues"] = ExpressionConverter.ConvertO(bodyindexValues);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentReindexResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentSearchResponse> DocumentSearch(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyfilterindexValuesInputItem[]>> bodyfilterindexValues = null, Expression<Func<int>> bodynumberOfRows = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<string>> bodysortField = null, Expression<Func<bodysortOrderInput>> bodysortOrder = null)
-        {
-            var apiCallPath = "/api/v1/documents/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydrawerId != null)
-            {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
-                bodypropCount++;
-            }
-
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            if (bodyfilterindexValues != null)
-            {
-                filterObject["IndexValues"] = ExpressionConverter.ConvertO(bodyfilterindexValues);
-                filterObjectpropCount++;
-            }
-
-            if (filterObjectpropCount > 0)
-            {
-                body["Filter"] = filterObject;
-                bodypropCount++;
-            }
-
-            if (bodynumberOfRows != null)
-            {
-                body["NumberOfRows"] = ExpressionConverter.ConvertO(bodynumberOfRows);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodysortField != null)
-            {
-                body["SortField"] = ExpressionConverter.ConvertO(bodysortField);
-                bodypropCount++;
-            }
-
-            if (bodysortOrder != null)
-            {
-                body["SortOrder"] = ExpressionConverter.ConvertO(bodysortOrder);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentSearchResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TaxsortDocumentResponseItem[]> TaxsortDocument(Expression<Func<string>> xAuthorization = null, Expression<Func<string[]>> body = null)
-        {
-            var apiCallPath = "/api/v1/documents/taxsort";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<TaxsortDocumentResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DocumentDeleteResponseItem[]> DocumentDelete(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<DocumentDeleteResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IWorkflowAction GetDocument(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/file", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDocumentHistoryResponse> GetDocumentHistory(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetDocumentHistoryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDocumentIndexesResponseItem[]> GetDocumentIndexes(Expression<Func<string>> documentId, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetDocumentIndexesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<PublishDocumentStatusResponseItem[]> PublishDocumentStatus(Expression<Func<string>> documentId, Expression<Func<string>> bodyisPublished, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/documents/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["IsPublished"] = ExpressionConverter.ConvertO(bodyisPublished);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PublishDocumentStatusResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDrawersResponseItem[]> GetDrawers(Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = "/api/v1/drawers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetDrawersResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDrawerIndexesResponseItem[]> GetDrawerIndexes(Expression<Func<string>> drawerId, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/drawers/{0}/indexes", ExpressionConverter.ConvertWithUrlEncoding(drawerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetDrawerIndexesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetFirmFlowDeliverableReportResponse> GetFirmFlowDeliverableReport(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodypageNumber = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodyworkflowDescription = null)
-        {
-            var apiCallPath = "/api/v1/firmflowreports/TrackingReportByDeliverable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountable != null)
-            {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
-                bodypropCount++;
-            }
-
-            if (bodyassignedOn != null)
-            {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
-                bodypropCount++;
-            }
-
-            if (bodyassignedTo != null)
-            {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
-                bodypropCount++;
-            }
-
-            if (bodyassignmentHistory != null)
-            {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
-                bodypropCount++;
-            }
-
-            if (bodycompletedBy != null)
-            {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
-                bodypropCount++;
-            }
-
-            if (bodycompletedOn != null)
-            {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
-                bodypropCount++;
-            }
-
-            if (bodycurrentDueDate != null)
-            {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
-                bodypropCount++;
-            }
-
-            if (bodycurrentStep != null)
-            {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
-                bodypropCount++;
-            }
-
-            if (bodydateExtended != null)
-            {
-                body["DateExtended"] = ExpressionConverter.ConvertO(bodydateExtended);
-                bodypropCount++;
-            }
-
-            if (bodydaysAtStep != null)
-            {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
-                bodypropCount++;
-            }
-
-            if (bodydaysBetweenRoutings != null)
-            {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
-                bodypropCount++;
-            }
-
-            if (bodydrawerId != null)
-            {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
-                bodypropCount++;
-            }
-
-            if (bodyengagementType != null)
-            {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
-                bodypropCount++;
-            }
-
-            if (bodyinProcessOnly != null)
-            {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
-                bodypropCount++;
-            }
-
-            if (bodyindexes != null)
-            {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
-                bodypropCount++;
-            }
-
-            if (bodyinformationFields != null)
-            {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
-                bodypropCount++;
-            }
-
-            if (bodyoriginalDueDate != null)
-            {
-                body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyoriginalDueDate);
-                bodypropCount++;
-            }
-
-            if (bodypIC != null)
-            {
-                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyreceivedFrom != null)
-            {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
-                bodypropCount++;
-            }
-
-            if (bodyreceivedOn != null)
-            {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
-                bodypropCount++;
-            }
-
-            if (bodyresponsible != null)
-            {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
-                bodypropCount++;
-            }
-
-            if (bodyroutingDetails != null)
-            {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
-                bodypropCount++;
-            }
-
-            if (bodysentOn != null)
-            {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
-                bodypropCount++;
-            }
-
-            if (bodysentTo != null)
-            {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
-                bodypropCount++;
-            }
-
-            if (bodyserviceType != null)
-            {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodytotalDaysAtStep != null)
-            {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
-                bodypropCount++;
-            }
-
-            if (bodytotalDaysInProcess != null)
-            {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
-                bodypropCount++;
-            }
-
-            if (bodyworkflow != null)
-            {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
-                bodypropCount++;
-            }
-
-            if (bodyworkflowDescription != null)
-            {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetFirmFlowDeliverableReportResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<ValidateIndexesResponse> ValidateIndexes(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<bodyindexesInputItem[]>> bodyindexes = null)
-        {
-            var apiCallPath = "/api/v1/indexes/validate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydrawerId != null)
-            {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
-                bodypropCount++;
-            }
-
-            if (bodyindexes != null)
-            {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ValidateIndexesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetDynamicRulesForIndexResponseItem[]> GetDynamicRulesForIndex(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/indexes/{0}/dynamicrules", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetDynamicRulesForIndexResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<IndexLookupListFindResponseItem[]> IndexLookupListFind(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null, Expression<Func<bodyactionTypeInput>> bodyactionType = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyindexValue = null, Expression<Func<bodysearchTypeInput>> bodysearchType = null)
-        {
-            var apiCallPath = String.Format("/api/v1/indexes/{0}/lookuplist", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyactionType != null)
-            {
-                body["ActionType"] = ExpressionConverter.ConvertO(bodyactionType);
-                bodypropCount++;
-            }
-
-            if (bodycount != null)
-            {
-                body["Count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
-
-            if (bodyindexValue != null)
-            {
-                body["IndexValue"] = ExpressionConverter.ConvertO(bodyindexValue);
-                bodypropCount++;
-            }
-
-            if (bodysearchType != null)
-            {
-                body["SearchType"] = ExpressionConverter.ConvertO(bodysearchType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IndexLookupListFindResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetListTypeIndexDataResponseItem[]> GetListTypeIndexData(Expression<Func<string>> indexId, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/indexes/{0}/values", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetListTypeIndexDataResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetChildIndexesResponseItem[]> GetChildIndexes(Expression<Func<string>> indexId, Expression<Func<string>> listId, Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = String.Format("/api/v1/indexes/{0}/values/childindexlist/{1}", ExpressionConverter.ConvertWithUrlEncoding(indexId, 1), ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<GetChildIndexesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<LoginResponse> Login(Expression<Func<string>> bodyloginName, Expression<Func<string>> bodypassword)
-        {
-            var apiCallPath = "/api/v1/user/login";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["LoginName"] = ExpressionConverter.ConvertO(bodyloginName);
-            bodypropCount++;
-            body["Password"] = ExpressionConverter.ConvertO(bodypassword);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LoginResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<LogoutResponse> Logout(Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = "/api/v1/user/logout";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<LogoutResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<bool> ValidateToken(Expression<Func<string>> xAuthorization = null)
-        {
-            var apiCallPath = "/api/v1/user/validate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            return new ApiConnectionAction<bool>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<CreateWorkflowResponse> CreateWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawer = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyfolderId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodyfilingworkflowName = null, Expression<Func<string>> bodyfilingdescription = null, Expression<Func<string>> bodyfilingstatusName = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null)
-        {
-            var apiCallPath = "/firmflow/api/V1/Workflow/CreateWorkflow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydrawer != null)
-            {
-                body["Drawer"] = ExpressionConverter.ConvertO(bodydrawer);
-                bodypropCount++;
-            }
-
-            if (bodyserviceType != null)
-            {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodyfolderId != null)
-            {
-                body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
-                bodypropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (bodyheadersclientName != null)
-            {
-                headersObject["ClientName"] = ExpressionConverter.ConvertO(bodyheadersclientName);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersclientNumber != null)
-            {
-                headersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyheadersclientNumber);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersengagementType != null)
-            {
-                headersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyheadersengagementType);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheaderspIC != null)
-            {
-                headersObject["PIC"] = ExpressionConverter.ConvertO(bodyheaderspIC);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersyear != null)
-            {
-                headersObject["Year"] = ExpressionConverter.ConvertO(bodyheadersyear);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersperiodEnd != null)
-            {
-                headersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyheadersperiodEnd);
-                headersObjectpropCount++;
-            }
-
-            if (headersObjectpropCount > 0)
-            {
-                body["headers"] = headersObject;
-                bodypropCount++;
-            }
-
-            var filingObject = new JObject();
-            var filingObjectpropCount = 0;
-            if (bodyfilingworkflowName != null)
-            {
-                filingObject["workflowName"] = ExpressionConverter.ConvertO(bodyfilingworkflowName);
-                filingObjectpropCount++;
-            }
-
-            if (bodyfilingdescription != null)
-            {
-                filingObject["description"] = ExpressionConverter.ConvertO(bodyfilingdescription);
-                filingObjectpropCount++;
-            }
-
-            if (bodyfilingstatusName != null)
-            {
-                filingObject["statusName"] = ExpressionConverter.ConvertO(bodyfilingstatusName);
-                filingObjectpropCount++;
-            }
-
-            if (filingObjectpropCount > 0)
-            {
-                body["filing"] = filingObject;
-                bodypropCount++;
-            }
-
-            var deliverableObject = new JObject();
-            var deliverableObjectpropCount = 0;
-            if (bodydeliverableaction != null)
-            {
-                deliverableObject["action"] = ExpressionConverter.ConvertO(bodydeliverableaction);
-                deliverableObjectpropCount++;
-            }
-
-            if (bodydeliverablecurrentduedate != null)
-            {
-                deliverableObject["currentduedate"] = ExpressionConverter.ConvertO(bodydeliverablecurrentduedate);
-                deliverableObjectpropCount++;
-            }
-
-            if (bodydeliverableoriginalduedate != null)
-            {
-                deliverableObject["originalduedate"] = ExpressionConverter.ConvertO(bodydeliverableoriginalduedate);
-                deliverableObjectpropCount++;
-            }
-
-            if (bodydeliverableform != null)
-            {
-                deliverableObject["form"] = ExpressionConverter.ConvertO(bodydeliverableform);
-                deliverableObjectpropCount++;
-            }
-
-            if (deliverableObjectpropCount > 0)
-            {
-                body["deliverable"] = deliverableObject;
-                bodypropCount++;
-            }
-
-            var deliveryInstructionsObject = new JObject();
-            var deliveryInstructionsObjectpropCount = 0;
-            if (bodydeliveryInstructionsdelivery != null)
-            {
-                deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdelivery);
-                deliveryInstructionsObjectpropCount++;
-            }
-
-            if (bodydeliveryInstructionsdestination != null)
-            {
-                deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdestination);
-                deliveryInstructionsObjectpropCount++;
-            }
-
-            if (bodydeliveryInstructionssourceDocument != null)
-            {
-                deliveryInstructionsObject["sourceDocument"] = ExpressionConverter.ConvertO(bodydeliveryInstructionssourceDocument);
-                deliveryInstructionsObjectpropCount++;
-            }
-
-            if (deliveryInstructionsObjectpropCount > 0)
-            {
-                body["DeliveryInstructions"] = deliveryInstructionsObject;
-                bodypropCount++;
-            }
-
-            var notesObject = new JObject();
-            var notesObjectpropCount = 0;
-            if (bodynotesaction != null)
-            {
-                notesObject["action"] = ExpressionConverter.ConvertO(bodynotesaction);
-                notesObjectpropCount++;
-            }
-
-            if (bodynotesnoteType != null)
-            {
-                notesObject["noteType"] = ExpressionConverter.ConvertO(bodynotesnoteType);
-                notesObjectpropCount++;
-            }
-
-            if (bodynotesnote != null)
-            {
-                notesObject["note"] = ExpressionConverter.ConvertO(bodynotesnote);
-                notesObjectpropCount++;
-            }
-
-            if (notesObjectpropCount > 0)
-            {
-                body["notes"] = notesObject;
-                bodypropCount++;
-            }
-
-            var informationFieldsObject = new JObject();
-            var informationFieldsObjectpropCount = 0;
-            if (bodyinformationFieldsname != null)
-            {
-                informationFieldsObject["name"] = ExpressionConverter.ConvertO(bodyinformationFieldsname);
-                informationFieldsObjectpropCount++;
-            }
-
-            if (bodyinformationFieldsvalue != null)
-            {
-                informationFieldsObject["value"] = ExpressionConverter.ConvertO(bodyinformationFieldsvalue);
-                informationFieldsObjectpropCount++;
-            }
-
-            if (informationFieldsObjectpropCount > 0)
-            {
-                body["informationFields"] = informationFieldsObject;
-                bodypropCount++;
-            }
-
-            var routingSummaryObject = new JObject();
-            var routingSummaryObjectpropCount = 0;
-            if (bodyroutingSummaryresponsibleField != null)
-            {
-                routingSummaryObject["ResponsibleField"] = ExpressionConverter.ConvertO(bodyroutingSummaryresponsibleField);
-                routingSummaryObjectpropCount++;
-            }
-
-            if (bodyroutingSummaryvalue != null)
-            {
-                routingSummaryObject["value"] = ExpressionConverter.ConvertO(bodyroutingSummaryvalue);
-                routingSummaryObjectpropCount++;
-            }
-
-            if (routingSummaryObjectpropCount > 0)
-            {
-                body["RoutingSummary"] = routingSummaryObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateWorkflowResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteMasterDeliverableResponseItem[]> DeleteMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null, Expression<Func<string[]>> bodydeliverableNames = null)
-        {
-            var apiCallPath = "/firmflow/api/v1/Deliverable/DeleteDeliverableList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyserviceType != null)
-            {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodydrawerName != null)
-            {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
-                bodypropCount++;
-            }
-
-            if (bodydeliverableNames != null)
-            {
-                body["DeliverableNames"] = ExpressionConverter.ConvertO(bodydeliverableNames);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteMasterDeliverableResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<DeleteWorkflowsResponse> DeleteWorkflows(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null)
-        {
-            var apiCallPath = "/firmflow/api/V1/Workflow/DeleteWorkflows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfilingId != null)
-            {
-                body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteWorkflowsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<EditMasterDeliverableResponse> EditMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodycurrentdeliverableName = null, Expression<Func<string>> bodyupdatedeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
-        {
-            var apiCallPath = "/firmflow/api/v1/Deliverable/UpdateDeliverableList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycurrentdeliverableName != null)
-            {
-                body["currentdeliverableName"] = ExpressionConverter.ConvertO(bodycurrentdeliverableName);
-                bodypropCount++;
-            }
-
-            if (bodyupdatedeliverableName != null)
-            {
-                body["updatedeliverableName"] = ExpressionConverter.ConvertO(bodyupdatedeliverableName);
-                bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodyfirstExtension != null)
-            {
-                body["firstExtension"] = ExpressionConverter.ConvertO(bodyfirstExtension);
-                bodypropCount++;
-            }
-
-            if (bodysecondExtension != null)
-            {
-                body["secondExtension"] = ExpressionConverter.ConvertO(bodysecondExtension);
-                bodypropCount++;
-            }
-
-            if (bodythirdExtension != null)
-            {
-                body["thirdExtension"] = ExpressionConverter.ConvertO(bodythirdExtension);
-                bodypropCount++;
-            }
-
-            if (bodycalenderOrFiscal != null)
-            {
-                body["calenderOrFiscal"] = ExpressionConverter.ConvertO(bodycalenderOrFiscal);
-                bodypropCount++;
-            }
-
-            if (bodyextension != null)
-            {
-                body["extension"] = ExpressionConverter.ConvertO(bodyextension);
-                bodypropCount++;
-            }
-
-            if (bodyserviceType != null)
-            {
-                body["serviceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodydrawerName != null)
-            {
-                body["drawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<EditMasterDeliverableResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<EditWorkflowResponse> EditWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodyfilingId = null, Expression<Func<string>> bodyheadersclientName = null, Expression<Func<string>> bodyheadersclientNumber = null, Expression<Func<string>> bodyheadersengagementType = null, Expression<Func<string>> bodyheaderspIC = null, Expression<Func<string>> bodyheadersyear = null, Expression<Func<string>> bodyheadersperiodEnd = null, Expression<Func<string>> bodydeliverableaction = null, Expression<Func<string>> bodydeliverablecurrentduedate = null, Expression<Func<string>> bodydeliverableoriginalduedate = null, Expression<Func<string>> bodydeliverableform = null, Expression<Func<string>> bodynotesaction = null, Expression<Func<string>> bodynotesnoteType = null, Expression<Func<string[]>> bodynotesnoteid = null, Expression<Func<string>> bodynotesnote = null, Expression<Func<string>> bodyinformationFieldsname = null, Expression<Func<string>> bodyinformationFieldsvalue = null, Expression<Func<string>> bodydeliveryInstructionsdelivery = null, Expression<Func<string>> bodydeliveryInstructionsdestination = null, Expression<Func<string>> bodydeliveryInstructionssourceDocument = null, Expression<Func<string>> bodyroutingSummaryresponsibleField = null, Expression<Func<string>> bodyroutingSummaryvalue = null, Expression<Func<bool>> bodyreindexDocs = null)
-        {
-            var apiCallPath = "/firmflow/api/V1/Workflow/EditWorkflow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfilingId != null)
-            {
-                body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
-                bodypropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (bodyheadersclientName != null)
-            {
-                headersObject["ClientName"] = ExpressionConverter.ConvertO(bodyheadersclientName);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersclientNumber != null)
-            {
-                headersObject["ClientNumber"] = ExpressionConverter.ConvertO(bodyheadersclientNumber);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersengagementType != null)
-            {
-                headersObject["EngagementType"] = ExpressionConverter.ConvertO(bodyheadersengagementType);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheaderspIC != null)
-            {
-                headersObject["PIC"] = ExpressionConverter.ConvertO(bodyheaderspIC);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersyear != null)
-            {
-                headersObject["Year"] = ExpressionConverter.ConvertO(bodyheadersyear);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersperiodEnd != null)
-            {
-                headersObject["PeriodEnd"] = ExpressionConverter.ConvertO(bodyheadersperiodEnd);
-                headersObjectpropCount++;
-            }
-
-            if (headersObjectpropCount > 0)
-            {
-                body["Headers"] = headersObject;
-                bodypropCount++;
-            }
-
-            var deliverableObject = new JObject();
-            var deliverableObjectpropCount = 0;
-            if (bodydeliverableaction != null)
-            {
-                deliverableObject["action"] = ExpressionConverter.ConvertO(bodydeliverableaction);
-                deliverableObjectpropCount++;
-            }
-
-            if (bodydeliverablecurrentduedate != null)
-            {
-                deliverableObject["currentduedate"] = ExpressionConverter.ConvertO(bodydeliverablecurrentduedate);
-                deliverableObjectpropCount++;
-            }
-
-            if (bodydeliverableoriginalduedate != null)
-            {
-                deliverableObject["originalduedate"] = ExpressionConverter.ConvertO(bodydeliverableoriginalduedate);
-                deliverableObjectpropCount++;
-            }
-
-            if (bodydeliverableform != null)
-            {
-                deliverableObject["form"] = ExpressionConverter.ConvertO(bodydeliverableform);
-                deliverableObjectpropCount++;
-            }
-
-            if (deliverableObjectpropCount > 0)
-            {
-                body["deliverable"] = deliverableObject;
-                bodypropCount++;
-            }
-
-            var notesObject = new JObject();
-            var notesObjectpropCount = 0;
-            if (bodynotesaction != null)
-            {
-                notesObject["action"] = ExpressionConverter.ConvertO(bodynotesaction);
-                notesObjectpropCount++;
-            }
-
-            if (bodynotesnoteType != null)
-            {
-                notesObject["noteType"] = ExpressionConverter.ConvertO(bodynotesnoteType);
-                notesObjectpropCount++;
-            }
-
-            if (bodynotesnoteid != null)
-            {
-                notesObject["noteid"] = ExpressionConverter.ConvertO(bodynotesnoteid);
-                notesObjectpropCount++;
-            }
-
-            if (bodynotesnote != null)
-            {
-                notesObject["note"] = ExpressionConverter.ConvertO(bodynotesnote);
-                notesObjectpropCount++;
-            }
-
-            if (notesObjectpropCount > 0)
-            {
-                body["notes"] = notesObject;
-                bodypropCount++;
-            }
-
-            var informationFieldsObject = new JObject();
-            var informationFieldsObjectpropCount = 0;
-            if (bodyinformationFieldsname != null)
-            {
-                informationFieldsObject["name"] = ExpressionConverter.ConvertO(bodyinformationFieldsname);
-                informationFieldsObjectpropCount++;
-            }
-
-            if (bodyinformationFieldsvalue != null)
-            {
-                informationFieldsObject["value"] = ExpressionConverter.ConvertO(bodyinformationFieldsvalue);
-                informationFieldsObjectpropCount++;
-            }
-
-            if (informationFieldsObjectpropCount > 0)
-            {
-                body["informationFields"] = informationFieldsObject;
-                bodypropCount++;
-            }
-
-            var deliveryInstructionsObject = new JObject();
-            var deliveryInstructionsObjectpropCount = 0;
-            if (bodydeliveryInstructionsdelivery != null)
-            {
-                deliveryInstructionsObject["Delivery"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdelivery);
-                deliveryInstructionsObjectpropCount++;
-            }
-
-            if (bodydeliveryInstructionsdestination != null)
-            {
-                deliveryInstructionsObject["Destination"] = ExpressionConverter.ConvertO(bodydeliveryInstructionsdestination);
-                deliveryInstructionsObjectpropCount++;
-            }
-
-            if (bodydeliveryInstructionssourceDocument != null)
-            {
-                deliveryInstructionsObject["sourceDocument"] = ExpressionConverter.ConvertO(bodydeliveryInstructionssourceDocument);
-                deliveryInstructionsObjectpropCount++;
-            }
-
-            if (deliveryInstructionsObjectpropCount > 0)
-            {
-                body["deliveryInstructions"] = deliveryInstructionsObject;
-                bodypropCount++;
-            }
-
-            var routingSummaryObject = new JObject();
-            var routingSummaryObjectpropCount = 0;
-            if (bodyroutingSummaryresponsibleField != null)
-            {
-                routingSummaryObject["responsibleField"] = ExpressionConverter.ConvertO(bodyroutingSummaryresponsibleField);
-                routingSummaryObjectpropCount++;
-            }
-
-            if (bodyroutingSummaryvalue != null)
-            {
-                routingSummaryObject["value"] = ExpressionConverter.ConvertO(bodyroutingSummaryvalue);
-                routingSummaryObjectpropCount++;
-            }
-
-            if (routingSummaryObjectpropCount > 0)
-            {
-                body["routingSummary"] = routingSummaryObject;
-                bodypropCount++;
-            }
-
-            if (bodyreindexDocs != null)
-            {
-                body["reindexDocs"] = ExpressionConverter.ConvertO(bodyreindexDocs);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<EditWorkflowResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<GetMasterDeliverableResponse> GetMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
-        {
-            var apiCallPath = "/firmflow/api/v1/Deliverable/GetDeliverableList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypageNumber != null)
-            {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodypageSize != null)
-            {
-                body["pageSize"] = ExpressionConverter.ConvertO(bodypageSize);
-                bodypropCount++;
-            }
-
-            if (bodyserviceType != null)
-            {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodydrawerName != null)
-            {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetMasterDeliverableResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByWorkflowResponse> TrackingReportByWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
-        {
-            var apiCallPath = "/api/v1/firmflowreports/TrackingReportByWorkflow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydrawerId != null)
-            {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
-                bodypropCount++;
-            }
-
-            if (bodyserviceType != null)
-            {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodyengagementType != null)
-            {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
-                bodypropCount++;
-            }
-
-            if (bodyworkflow != null)
-            {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
-                bodypropCount++;
-            }
-
-            if (bodycurrentStep != null)
-            {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
-                bodypropCount++;
-            }
-
-            if (bodypIC != null)
-            {
-                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
-                bodypropCount++;
-            }
-
-            if (bodyassignedTo != null)
-            {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
-                bodypropCount++;
-            }
-
-            if (bodyassignedOn != null)
-            {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
-                bodypropCount++;
-            }
-
-            if (bodyworkflowDescription != null)
-            {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
-                bodypropCount++;
-            }
-
-            if (bodyinProcessOnly != null)
-            {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyresponsible != null)
-            {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
-                bodypropCount++;
-            }
-
-            if (bodyassignmentHistory != null)
-            {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
-                bodypropCount++;
-            }
-
-            if (bodyreceivedFrom != null)
-            {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
-                bodypropCount++;
-            }
-
-            if (bodyreceivedOn != null)
-            {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
-                bodypropCount++;
-            }
-
-            if (bodysentTo != null)
-            {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
-                bodypropCount++;
-            }
-
-            if (bodysentOn != null)
-            {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
-                bodypropCount++;
-            }
-
-            if (bodycompletedBy != null)
-            {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
-                bodypropCount++;
-            }
-
-            if (bodycompletedOn != null)
-            {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
-                bodypropCount++;
-            }
-
-            if (bodycurrentDueDate != null)
-            {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
-                bodypropCount++;
-            }
-
-            if (bodydaysAtStep != null)
-            {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
-                bodypropCount++;
-            }
-
-            if (bodytotalDaysAtStep != null)
-            {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
-                bodypropCount++;
-            }
-
-            if (bodydaysBetweenRoutings != null)
-            {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
-                bodypropCount++;
-            }
-
-            if (bodytotalDaysInProcess != null)
-            {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
-                bodypropCount++;
-            }
-
-            if (bodyaccountable != null)
-            {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
-                bodypropCount++;
-            }
-
-            if (bodyroutingDetails != null)
-            {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
-                bodypropCount++;
-            }
-
-            if (bodylastUpdated != null)
-            {
-                body["LastUpdated"] = ExpressionConverter.ConvertO(bodylastUpdated);
-                bodypropCount++;
-            }
-
-            if (bodyinformationFields != null)
-            {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
-                bodypropCount++;
-            }
-
-            if (bodyindexes != null)
-            {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TrackingReportByWorkflowResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<AddMasterDeliverableResponse> AddMasterDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydeliverableName = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyfirstExtension = null, Expression<Func<string>> bodysecondExtension = null, Expression<Func<string>> bodythirdExtension = null, Expression<Func<string>> bodycalenderOrFiscal = null, Expression<Func<int>> bodyextension = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodydrawerName = null)
-        {
-            var apiCallPath = "/firmflow/api/v1/Deliverable/SaveDeliverableList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydeliverableName != null)
-            {
-                body["deliverableName"] = ExpressionConverter.ConvertO(bodydeliverableName);
-                bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["dueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodyfirstExtension != null)
-            {
-                body["firstExtension"] = ExpressionConverter.ConvertO(bodyfirstExtension);
-                bodypropCount++;
-            }
-
-            if (bodysecondExtension != null)
-            {
-                body["secondExtension"] = ExpressionConverter.ConvertO(bodysecondExtension);
-                bodypropCount++;
-            }
-
-            if (bodythirdExtension != null)
-            {
-                body["thirdExtension"] = ExpressionConverter.ConvertO(bodythirdExtension);
-                bodypropCount++;
-            }
-
-            if (bodycalenderOrFiscal != null)
-            {
-                body["calenderOrFiscal"] = ExpressionConverter.ConvertO(bodycalenderOrFiscal);
-                bodypropCount++;
-            }
-
-            if (bodyextension != null)
-            {
-                body["extension"] = ExpressionConverter.ConvertO(bodyextension);
-                bodypropCount++;
-            }
-
-            if (bodyserviceType != null)
-            {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodydrawerName != null)
-            {
-                body["DrawerName"] = ExpressionConverter.ConvertO(bodydrawerName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddMasterDeliverableResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<RouteWorkflowV2Response> RouteWorkflow(Expression<Func<string>> xAuthorization = null, Expression<Func<int[]>> bodyfilingId = null, Expression<Func<string[]>> bodycurrentStep = null, Expression<Func<bool>> bodycomplete = null, Expression<Func<string>> bodycompletedDate = null, Expression<Func<string>> bodynextStep = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedDate = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyroutingNote = null, Expression<Func<bool>> bodyemailNotify = null)
-        {
-            var apiCallPath = "/firmflow/api/V2/Route";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfilingId != null)
-            {
-                body["filingId"] = ExpressionConverter.ConvertO(bodyfilingId);
-                bodypropCount++;
-            }
-
-            if (bodycurrentStep != null)
-            {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
-                bodypropCount++;
-            }
-
-            if (bodycomplete != null)
-            {
-                body["Complete"] = ExpressionConverter.ConvertO(bodycomplete);
-                bodypropCount++;
-            }
-
-            if (bodycompletedDate != null)
-            {
-                body["CompletedDate"] = ExpressionConverter.ConvertO(bodycompletedDate);
-                bodypropCount++;
-            }
-
-            if (bodynextStep != null)
-            {
-                body["NextStep"] = ExpressionConverter.ConvertO(bodynextStep);
-                bodypropCount++;
-            }
-
-            if (bodyassignedTo != null)
-            {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
-                bodypropCount++;
-            }
-
-            if (bodyassignedDate != null)
-            {
-                body["AssignedDate"] = ExpressionConverter.ConvertO(bodyassignedDate);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyroutingNote != null)
-            {
-                body["RoutingNote"] = ExpressionConverter.ConvertO(bodyroutingNote);
-                bodypropCount++;
-            }
-
-            if (bodyemailNotify != null)
-            {
-                body["emailNotify"] = ExpressionConverter.ConvertO(bodyemailNotify);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RouteWorkflowV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gofileroom")]
-        public IBodyWorkflowAction<TrackingReportByDeliverableV2Response> TrackingReportByDeliverable(Expression<Func<string>> xAuthorization = null, Expression<Func<string>> bodydrawerId = null, Expression<Func<string>> bodyserviceType = null, Expression<Func<string>> bodyengagementType = null, Expression<Func<string>> bodyworkflow = null, Expression<Func<string>> bodycurrentStep = null, Expression<Func<string>> bodypIC = null, Expression<Func<string>> bodyassignedTo = null, Expression<Func<string>> bodyassignedOn = null, Expression<Func<string>> bodyworkflowDescription = null, Expression<Func<string>> bodyinProcessOnly = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyreceivedOn = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodysentOn = null, Expression<Func<string>> bodyresponsible = null, Expression<Func<string>> bodyassignmentHistory = null, Expression<Func<string>> bodyreceivedFrom = null, Expression<Func<string>> bodysentTo = null, Expression<Func<string>> bodycompletedBy = null, Expression<Func<string>> bodyaccountable = null, Expression<Func<string>> bodycurrentDueDate = null, Expression<Func<string>> bodyoriginalDueDate = null, Expression<Func<string>> bodydateExtended = null, Expression<Func<string>> bodydaysAtStep = null, Expression<Func<string>> bodytotalDaysAtStep = null, Expression<Func<string>> bodydaysBetweenRoutings = null, Expression<Func<string>> bodytotalDaysInProcess = null, Expression<Func<string>> bodyroutingDetails = null, Expression<Func<string>> bodylastUpdated = null, Expression<Func<string[]>> bodyinformationFields = null, Expression<Func<string[]>> bodyindexes = null, Expression<Func<string>> bodypageNumber = null)
-        {
-            var apiCallPath = "/api/v2/firmflowreports/TrackingReportByDeliverable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xAuthorization != null)
-                callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydrawerId != null)
-            {
-                body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
-                bodypropCount++;
-            }
-
-            if (bodyserviceType != null)
-            {
-                body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
-                bodypropCount++;
-            }
-
-            if (bodyengagementType != null)
-            {
-                body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
-                bodypropCount++;
-            }
-
-            if (bodyworkflow != null)
-            {
-                body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
-                bodypropCount++;
-            }
-
-            if (bodycurrentStep != null)
-            {
-                body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
-                bodypropCount++;
-            }
-
-            if (bodypIC != null)
-            {
-                body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
-                bodypropCount++;
-            }
-
-            if (bodyassignedTo != null)
-            {
-                body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
-                bodypropCount++;
-            }
-
-            if (bodyassignedOn != null)
-            {
-                body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
-                bodypropCount++;
-            }
-
-            if (bodyworkflowDescription != null)
-            {
-                body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
-                bodypropCount++;
-            }
-
-            if (bodyinProcessOnly != null)
-            {
-                body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyreceivedOn != null)
-            {
-                body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
-                bodypropCount++;
-            }
-
-            if (bodycompletedOn != null)
-            {
-                body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
-                bodypropCount++;
-            }
-
-            if (bodysentOn != null)
-            {
-                body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
-                bodypropCount++;
-            }
-
-            if (bodyresponsible != null)
-            {
-                body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
-                bodypropCount++;
-            }
-
-            if (bodyassignmentHistory != null)
-            {
-                body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
-                bodypropCount++;
-            }
-
-            if (bodyreceivedFrom != null)
-            {
-                body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
-                bodypropCount++;
-            }
-
-            if (bodysentTo != null)
-            {
-                body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
-                bodypropCount++;
-            }
-
-            if (bodycompletedBy != null)
-            {
-                body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
-                bodypropCount++;
-            }
-
-            if (bodyaccountable != null)
-            {
-                body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
-                bodypropCount++;
-            }
-
-            if (bodycurrentDueDate != null)
-            {
-                body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
-                bodypropCount++;
-            }
-
-            if (bodyoriginalDueDate != null)
-            {
-                body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyoriginalDueDate);
-                bodypropCount++;
-            }
-
-            if (bodydateExtended != null)
-            {
-                body["DateExtended"] = ExpressionConverter.ConvertO(bodydateExtended);
-                bodypropCount++;
-            }
-
-            if (bodydaysAtStep != null)
-            {
-                body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
-                bodypropCount++;
-            }
-
-            if (bodytotalDaysAtStep != null)
-            {
-                body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
-                bodypropCount++;
-            }
-
-            if (bodydaysBetweenRoutings != null)
-            {
-                body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
-                bodypropCount++;
-            }
-
-            if (bodytotalDaysInProcess != null)
-            {
-                body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
-                bodypropCount++;
-            }
-
-            if (bodyroutingDetails != null)
-            {
-                body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
-                bodypropCount++;
-            }
-
-            if (bodylastUpdated != null)
-            {
-                body["LastUpdated"] = ExpressionConverter.ConvertO(bodylastUpdated);
-                bodypropCount++;
-            }
-
-            if (bodyinformationFields != null)
-            {
-                body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
-                bodypropCount++;
-            }
-
-            if (bodyindexes != null)
-            {
-                body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
-                bodypropCount++;
-            }
-
-            if (bodypageNumber != null)
-            {
-                body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TrackingReportByDeliverableV2Response>(callPayload);
+            WorkflowValue.Validate(xAuthorization, nameof(xAuthorization), required: false);
+            WorkflowValue.Validate(bodydrawerId, nameof(bodydrawerId), required: false);
+            WorkflowValue.Validate(bodyserviceType, nameof(bodyserviceType), required: false);
+            WorkflowValue.Validate(bodyengagementType, nameof(bodyengagementType), required: false);
+            WorkflowValue.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
+            WorkflowValue.Validate(bodycurrentStep, nameof(bodycurrentStep), required: false);
+            WorkflowValue.Validate(bodypIC, nameof(bodypIC), required: false);
+            WorkflowValue.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            WorkflowValue.Validate(bodyassignedOn, nameof(bodyassignedOn), required: false);
+            WorkflowValue.Validate(bodyworkflowDescription, nameof(bodyworkflowDescription), required: false);
+            WorkflowValue.Validate(bodyinProcessOnly, nameof(bodyinProcessOnly), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyreceivedOn, nameof(bodyreceivedOn), required: false);
+            WorkflowValue.Validate(bodycompletedOn, nameof(bodycompletedOn), required: false);
+            WorkflowValue.Validate(bodysentOn, nameof(bodysentOn), required: false);
+            WorkflowValue.Validate(bodyresponsible, nameof(bodyresponsible), required: false);
+            WorkflowValue.Validate(bodyassignmentHistory, nameof(bodyassignmentHistory), required: false);
+            WorkflowValue.Validate(bodyreceivedFrom, nameof(bodyreceivedFrom), required: false);
+            WorkflowValue.Validate(bodysentTo, nameof(bodysentTo), required: false);
+            WorkflowValue.Validate(bodycompletedBy, nameof(bodycompletedBy), required: false);
+            WorkflowValue.Validate(bodyaccountable, nameof(bodyaccountable), required: false);
+            WorkflowValue.Validate(bodycurrentDueDate, nameof(bodycurrentDueDate), required: false);
+            WorkflowValue.Validate(bodyoriginalDueDate, nameof(bodyoriginalDueDate), required: false);
+            WorkflowValue.Validate(bodydateExtended, nameof(bodydateExtended), required: false);
+            WorkflowValue.Validate(bodydaysAtStep, nameof(bodydaysAtStep), required: false);
+            WorkflowValue.Validate(bodytotalDaysAtStep, nameof(bodytotalDaysAtStep), required: false);
+            WorkflowValue.Validate(bodydaysBetweenRoutings, nameof(bodydaysBetweenRoutings), required: false);
+            WorkflowValue.Validate(bodytotalDaysInProcess, nameof(bodytotalDaysInProcess), required: false);
+            WorkflowValue.Validate(bodyroutingDetails, nameof(bodyroutingDetails), required: false);
+            WorkflowValue.Validate(bodylastUpdated, nameof(bodylastUpdated), required: false);
+            WorkflowValue.Validate(bodyinformationFields, nameof(bodyinformationFields), required: false);
+            WorkflowValue.Validate(bodyindexes, nameof(bodyindexes), required: false);
+            WorkflowValue.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
+            return new DeferredBodyAction<TrackingReportByDeliverableV2Response>(() =>
+            {
+                var apiCallPath = "/api/v2/firmflowreports/TrackingReportByDeliverable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xAuthorization != null)
+                    callPayload.Headers["X-Authorization"] = ExpressionConverter.Convert(xAuthorization);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydrawerId != null)
+                {
+                    body["DrawerId"] = ExpressionConverter.ConvertO(bodydrawerId);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceType != null)
+                {
+                    body["ServiceType"] = ExpressionConverter.ConvertO(bodyserviceType);
+                    bodypropCount++;
+                }
+
+                if (bodyengagementType != null)
+                {
+                    body["EngagementType"] = ExpressionConverter.ConvertO(bodyengagementType);
+                    bodypropCount++;
+                }
+
+                if (bodyworkflow != null)
+                {
+                    body["Workflow"] = ExpressionConverter.ConvertO(bodyworkflow);
+                    bodypropCount++;
+                }
+
+                if (bodycurrentStep != null)
+                {
+                    body["CurrentStep"] = ExpressionConverter.ConvertO(bodycurrentStep);
+                    bodypropCount++;
+                }
+
+                if (bodypIC != null)
+                {
+                    body["PIC"] = ExpressionConverter.ConvertO(bodypIC);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedTo != null)
+                {
+                    body["AssignedTo"] = ExpressionConverter.ConvertO(bodyassignedTo);
+                    bodypropCount++;
+                }
+
+                if (bodyassignedOn != null)
+                {
+                    body["AssignedOn"] = ExpressionConverter.ConvertO(bodyassignedOn);
+                    bodypropCount++;
+                }
+
+                if (bodyworkflowDescription != null)
+                {
+                    body["WorkflowDescription"] = ExpressionConverter.ConvertO(bodyworkflowDescription);
+                    bodypropCount++;
+                }
+
+                if (bodyinProcessOnly != null)
+                {
+                    body["InProcessOnly"] = ExpressionConverter.ConvertO(bodyinProcessOnly);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodyreceivedOn != null)
+                {
+                    body["ReceivedOn"] = ExpressionConverter.ConvertO(bodyreceivedOn);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedOn != null)
+                {
+                    body["CompletedOn"] = ExpressionConverter.ConvertO(bodycompletedOn);
+                    bodypropCount++;
+                }
+
+                if (bodysentOn != null)
+                {
+                    body["SentOn"] = ExpressionConverter.ConvertO(bodysentOn);
+                    bodypropCount++;
+                }
+
+                if (bodyresponsible != null)
+                {
+                    body["Responsible"] = ExpressionConverter.ConvertO(bodyresponsible);
+                    bodypropCount++;
+                }
+
+                if (bodyassignmentHistory != null)
+                {
+                    body["AssignmentHistory"] = ExpressionConverter.ConvertO(bodyassignmentHistory);
+                    bodypropCount++;
+                }
+
+                if (bodyreceivedFrom != null)
+                {
+                    body["ReceivedFrom"] = ExpressionConverter.ConvertO(bodyreceivedFrom);
+                    bodypropCount++;
+                }
+
+                if (bodysentTo != null)
+                {
+                    body["SentTo"] = ExpressionConverter.ConvertO(bodysentTo);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedBy != null)
+                {
+                    body["CompletedBy"] = ExpressionConverter.ConvertO(bodycompletedBy);
+                    bodypropCount++;
+                }
+
+                if (bodyaccountable != null)
+                {
+                    body["Accountable"] = ExpressionConverter.ConvertO(bodyaccountable);
+                    bodypropCount++;
+                }
+
+                if (bodycurrentDueDate != null)
+                {
+                    body["CurrentDueDate"] = ExpressionConverter.ConvertO(bodycurrentDueDate);
+                    bodypropCount++;
+                }
+
+                if (bodyoriginalDueDate != null)
+                {
+                    body["OriginalDueDate"] = ExpressionConverter.ConvertO(bodyoriginalDueDate);
+                    bodypropCount++;
+                }
+
+                if (bodydateExtended != null)
+                {
+                    body["DateExtended"] = ExpressionConverter.ConvertO(bodydateExtended);
+                    bodypropCount++;
+                }
+
+                if (bodydaysAtStep != null)
+                {
+                    body["DaysAtStep"] = ExpressionConverter.ConvertO(bodydaysAtStep);
+                    bodypropCount++;
+                }
+
+                if (bodytotalDaysAtStep != null)
+                {
+                    body["TotalDaysAtStep"] = ExpressionConverter.ConvertO(bodytotalDaysAtStep);
+                    bodypropCount++;
+                }
+
+                if (bodydaysBetweenRoutings != null)
+                {
+                    body["DaysBetweenRoutings"] = ExpressionConverter.ConvertO(bodydaysBetweenRoutings);
+                    bodypropCount++;
+                }
+
+                if (bodytotalDaysInProcess != null)
+                {
+                    body["TotalDaysInProcess"] = ExpressionConverter.ConvertO(bodytotalDaysInProcess);
+                    bodypropCount++;
+                }
+
+                if (bodyroutingDetails != null)
+                {
+                    body["RoutingDetails"] = ExpressionConverter.ConvertO(bodyroutingDetails);
+                    bodypropCount++;
+                }
+
+                if (bodylastUpdated != null)
+                {
+                    body["LastUpdated"] = ExpressionConverter.ConvertO(bodylastUpdated);
+                    bodypropCount++;
+                }
+
+                if (bodyinformationFields != null)
+                {
+                    body["InformationFields"] = ExpressionConverter.ConvertO(bodyinformationFields);
+                    bodypropCount++;
+                }
+
+                if (bodyindexes != null)
+                {
+                    body["Indexes"] = ExpressionConverter.ConvertO(bodyindexes);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["PageNumber"] = ExpressionConverter.ConvertO(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TrackingReportByDeliverableV2Response>(callPayload);
+            });
         }
     }
 

@@ -4,511 +4,643 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class LifxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction MoveEffect(Expression<Func<string>> lights, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypowerOn = null)
+        [WorkflowExpressionFactory(nameof(__BuildMoveEffect))]
+        public IWorkflowAction MoveEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodydirectionInput> bodydirection = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/move", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydirection != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMoveEffect(WorkflowValue<string> lights, WorkflowValue<bodydirectionInput> bodydirection = null, WorkflowValue<double> bodyperiod = null, WorkflowValue<double> bodycycles = null, WorkflowValue<bool> bodypowerOn = null)
+        {
+            WorkflowValue.Validate(lights, nameof(lights), required: true);
+            WorkflowValue.Validate(bodydirection, nameof(bodydirection), required: false);
+            WorkflowValue.Validate(bodyperiod, nameof(bodyperiod), required: false);
+            WorkflowValue.Validate(bodycycles, nameof(bodycycles), required: false);
+            WorkflowValue.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
+            return new DeferredWorkflowAction(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/move", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodydirection != null)
                 {
-                    body["direction"] = ExpressionConverter.ConvertO(bodydirection);
+                    if (bodydirection != null)
+                    {
+                        body["direction"] = ExpressionConverter.ConvertO(bodydirection);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["direction"] = "forward";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["direction"] = "forward";
-                bodypropCount++;
-            }
-
-            if (bodyperiod != null)
-            {
                 if (bodyperiod != null)
                 {
-                    body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                    if (bodyperiod != null)
+                    {
+                        body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                        bodypropCount++;
+                    }
+
                     bodypropCount++;
                 }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["period"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodycycles != null)
-            {
-                body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
-                bodypropCount++;
-            }
-
-            if (bodypowerOn != null)
-            {
-                body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction PulseEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null)
-        {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/pulse", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
-            if (bodyfromColor != null)
-            {
-                body["from_color"] = ExpressionConverter.ConvertO(bodyfromColor);
-                bodypropCount++;
-            }
-
-            if (bodyperiod != null)
-            {
-                if (bodyperiod != null)
+                else
                 {
-                    body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                    body["period"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["period"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodycycles != null)
-            {
                 if (bodycycles != null)
                 {
                     body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["cycles"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodypersist != null)
-            {
-                body["persist"] = ExpressionConverter.ConvertO(bodypersist);
-                bodypropCount++;
-            }
-
-            if (bodypowerOn != null)
-            {
                 if (bodypowerOn != null)
                 {
                     body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["power_on"] = true;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction ActivateScene(Expression<Func<string>> scene, Expression<Func<int>> bodyduration = null)
+        [WorkflowExpressionFactory(nameof(__BuildPulseEffect))]
+        public IWorkflowAction PulseEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodycolorInput> bodycolor, [WorkflowExpression] Func<bodyfromColorInput> bodyfromColor = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypersist = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
         {
-            var apiCallPath = String.Format("/v1/scenes/{0}/activate", ExpressionConverter.ConvertWithUrlEncoding(scene, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyduration != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPulseEffect(WorkflowValue<string> lights, WorkflowValue<bodycolorInput> bodycolor, WorkflowValue<bodyfromColorInput> bodyfromColor = null, WorkflowValue<double> bodyperiod = null, WorkflowValue<double> bodycycles = null, WorkflowValue<bool> bodypersist = null, WorkflowValue<bool> bodypowerOn = null)
+        {
+            WorkflowValue.Validate(lights, nameof(lights), required: true);
+            WorkflowValue.Validate(bodycolor, nameof(bodycolor), required: true);
+            WorkflowValue.Validate(bodyfromColor, nameof(bodyfromColor), required: false);
+            WorkflowValue.Validate(bodyperiod, nameof(bodyperiod), required: false);
+            WorkflowValue.Validate(bodycycles, nameof(bodycycles), required: false);
+            WorkflowValue.Validate(bodypersist, nameof(bodypersist), required: false);
+            WorkflowValue.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                if (bodyduration != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/pulse", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                if (bodyfromColor != null)
                 {
-                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    body["from_color"] = ExpressionConverter.ConvertO(bodyfromColor);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["duration"] = 0;
-                bodypropCount++;
-            }
+                if (bodyperiod != null)
+                {
+                    if (bodyperiod != null)
+                    {
+                        body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["period"] = 1;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodycycles != null)
+                {
+                    if (bodycycles != null)
+                    {
+                        body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["cycles"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodypersist != null)
+                {
+                    body["persist"] = ExpressionConverter.ConvertO(bodypersist);
+                    bodypropCount++;
+                }
+
+                if (bodypowerOn != null)
+                {
+                    if (bodypowerOn != null)
+                    {
+                        body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["power_on"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IBodyWorkflowAction<SetStateResponse> SetState(Expression<Func<string>> lights, Expression<Func<bodypowerInput>> bodypower = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<double>> bodybrightness = null, Expression<Func<double>> bodyduration = null, Expression<Func<double>> bodyinfrared = null)
+        [WorkflowExpressionFactory(nameof(__BuildActivateScene))]
+        public IWorkflowAction ActivateScene([WorkflowExpression] Func<string> scene, [WorkflowExpression] Func<int> bodyduration = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/state", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypower != null)
-            {
-                body["power"] = ExpressionConverter.ConvertO(bodypower);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodycolor != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildActivateScene(WorkflowValue<string> scene, WorkflowValue<int> bodyduration = null)
+        {
+            WorkflowValue.Validate(scene, nameof(scene), required: true);
+            WorkflowValue.Validate(bodyduration, nameof(bodyduration), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["color"] = ExpressionConverter.ConvertO(bodycolor);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/scenes/{0}/activate", ExpressionConverter.ConvertWithUrlEncoding(scene, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyduration != null)
+                {
+                    if (bodyduration != null)
+                    {
+                        body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                        bodypropCount++;
+                    }
 
-            if (bodybrightness != null)
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["duration"] = 0;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
+        [WorkflowExpressionFactory(nameof(__BuildSetState))]
+        public IBodyWorkflowAction<SetStateResponse> SetState([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodypowerInput> bodypower = null, [WorkflowExpression] Func<bodycolorInput> bodycolor = null, [WorkflowExpression] Func<double> bodybrightness = null, [WorkflowExpression] Func<double> bodyduration = null, [WorkflowExpression] Func<double> bodyinfrared = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SetStateResponse> __BuildSetState(WorkflowValue<string> lights, WorkflowValue<bodypowerInput> bodypower = null, WorkflowValue<bodycolorInput> bodycolor = null, WorkflowValue<double> bodybrightness = null, WorkflowValue<double> bodyduration = null, WorkflowValue<double> bodyinfrared = null)
+        {
+            WorkflowValue.Validate(lights, nameof(lights), required: true);
+            WorkflowValue.Validate(bodypower, nameof(bodypower), required: false);
+            WorkflowValue.Validate(bodycolor, nameof(bodycolor), required: false);
+            WorkflowValue.Validate(bodybrightness, nameof(bodybrightness), required: false);
+            WorkflowValue.Validate(bodyduration, nameof(bodyduration), required: false);
+            WorkflowValue.Validate(bodyinfrared, nameof(bodyinfrared), required: false);
+            return new DeferredBodyAction<SetStateResponse>(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/state", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypower != null)
+                {
+                    body["power"] = ExpressionConverter.ConvertO(bodypower);
+                    bodypropCount++;
+                }
+
+                if (bodycolor != null)
+                {
+                    body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                    bodypropCount++;
+                }
+
                 if (bodybrightness != null)
                 {
-                    body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                    if (bodybrightness != null)
+                    {
+                        body["brightness"] = ExpressionConverter.ConvertO(bodybrightness);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["brightness"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["brightness"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodyduration != null)
-            {
                 if (bodyduration != null)
                 {
-                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    if (bodyduration != null)
+                    {
+                        body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["duration"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["duration"] = 0;
-                bodypropCount++;
-            }
+                if (bodyinfrared != null)
+                {
+                    body["infrared"] = ExpressionConverter.ConvertO(bodyinfrared);
+                    bodypropCount++;
+                }
 
-            if (bodyinfrared != null)
-            {
-                body["infrared"] = ExpressionConverter.ConvertO(bodyinfrared);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetStateResponse>(callPayload);
+                return new ApiConnectionAction<SetStateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction EffectsOff(Expression<Func<string>> lights, Expression<Func<bool>> bodypowerOff = null)
+        [WorkflowExpressionFactory(nameof(__BuildEffectsOff))]
+        public IWorkflowAction EffectsOff([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bool> bodypowerOff = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/off", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypowerOff != null)
-            {
-                body["power_off"] = ExpressionConverter.ConvertO(bodypowerOff);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildEffectsOff(WorkflowValue<string> lights, WorkflowValue<bool> bodypowerOff = null)
+        {
+            WorkflowValue.Validate(lights, nameof(lights), required: true);
+            WorkflowValue.Validate(bodypowerOff, nameof(bodypowerOff), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/off", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypowerOff != null)
+                {
+                    body["power_off"] = ExpressionConverter.ConvertO(bodypowerOff);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction SetStates(Expression<Func<bodystatesInputItem[]>> bodystates, Expression<Func<bodydefaultspowerInput>> bodydefaultspower = null, Expression<Func<bodydefaultscolorInput>> bodydefaultscolor = null, Expression<Func<double>> bodydefaultsbrightness = null, Expression<Func<double>> bodydefaultsduration = null, Expression<Func<double>> bodydefaultsinfrared = null)
+        [WorkflowExpressionFactory(nameof(__BuildSetStates))]
+        public IWorkflowAction SetStates([WorkflowExpression] Func<bodystatesInputItem[]> bodystates, [WorkflowExpression] Func<bodydefaultspowerInput> bodydefaultspower = null, [WorkflowExpression] Func<bodydefaultscolorInput> bodydefaultscolor = null, [WorkflowExpression] Func<double> bodydefaultsbrightness = null, [WorkflowExpression] Func<double> bodydefaultsduration = null, [WorkflowExpression] Func<double> bodydefaultsinfrared = null)
         {
-            var apiCallPath = "/v1/lights/states";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["states"] = ExpressionConverter.ConvertO(bodystates);
-            var defaultsObject = new JObject();
-            var defaultsObjectpropCount = 0;
-            if (bodydefaultspower != null)
-            {
-                defaultsObject["power"] = ExpressionConverter.ConvertO(bodydefaultspower);
-                defaultsObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydefaultscolor != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSetStates(WorkflowValue<bodystatesInputItem[]> bodystates, WorkflowValue<bodydefaultspowerInput> bodydefaultspower = null, WorkflowValue<bodydefaultscolorInput> bodydefaultscolor = null, WorkflowValue<double> bodydefaultsbrightness = null, WorkflowValue<double> bodydefaultsduration = null, WorkflowValue<double> bodydefaultsinfrared = null)
+        {
+            WorkflowValue.Validate(bodystates, nameof(bodystates), required: true);
+            WorkflowValue.Validate(bodydefaultspower, nameof(bodydefaultspower), required: false);
+            WorkflowValue.Validate(bodydefaultscolor, nameof(bodydefaultscolor), required: false);
+            WorkflowValue.Validate(bodydefaultsbrightness, nameof(bodydefaultsbrightness), required: false);
+            WorkflowValue.Validate(bodydefaultsduration, nameof(bodydefaultsduration), required: false);
+            WorkflowValue.Validate(bodydefaultsinfrared, nameof(bodydefaultsinfrared), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                defaultsObject["color"] = ExpressionConverter.ConvertO(bodydefaultscolor);
-                defaultsObjectpropCount++;
-            }
+                var apiCallPath = "/v1/lights/states";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["states"] = ExpressionConverter.ConvertO(bodystates);
+                var defaultsObject = new JObject();
+                var defaultsObjectpropCount = 0;
+                if (bodydefaultspower != null)
+                {
+                    defaultsObject["power"] = ExpressionConverter.ConvertO(bodydefaultspower);
+                    defaultsObjectpropCount++;
+                }
 
-            if (bodydefaultsbrightness != null)
-            {
+                if (bodydefaultscolor != null)
+                {
+                    defaultsObject["color"] = ExpressionConverter.ConvertO(bodydefaultscolor);
+                    defaultsObjectpropCount++;
+                }
+
                 if (bodydefaultsbrightness != null)
                 {
-                    defaultsObject["brightness"] = ExpressionConverter.ConvertO(bodydefaultsbrightness);
+                    if (bodydefaultsbrightness != null)
+                    {
+                        defaultsObject["brightness"] = ExpressionConverter.ConvertO(bodydefaultsbrightness);
+                        defaultsObjectpropCount++;
+                    }
+
+                    defaultsObjectpropCount++;
+                }
+                else
+                {
+                    defaultsObject["brightness"] = 1;
                     defaultsObjectpropCount++;
                 }
 
-                defaultsObjectpropCount++;
-            }
-            else
-            {
-                defaultsObject["brightness"] = 1;
-                defaultsObjectpropCount++;
-            }
-
-            if (bodydefaultsduration != null)
-            {
                 if (bodydefaultsduration != null)
                 {
-                    defaultsObject["duration"] = ExpressionConverter.ConvertO(bodydefaultsduration);
+                    if (bodydefaultsduration != null)
+                    {
+                        defaultsObject["duration"] = ExpressionConverter.ConvertO(bodydefaultsduration);
+                        defaultsObjectpropCount++;
+                    }
+
+                    defaultsObjectpropCount++;
+                }
+                else
+                {
+                    defaultsObject["duration"] = 0;
                     defaultsObjectpropCount++;
                 }
 
-                defaultsObjectpropCount++;
-            }
-            else
-            {
-                defaultsObject["duration"] = 0;
-                defaultsObjectpropCount++;
-            }
-
-            if (bodydefaultsinfrared != null)
-            {
-                defaultsObject["infrared"] = ExpressionConverter.ConvertO(bodydefaultsinfrared);
-                defaultsObjectpropCount++;
-            }
-
-            if (defaultsObjectpropCount > 0)
-            {
-                body["defaults"] = defaultsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction TogglePower(Expression<Func<string>> lights, Expression<Func<double>> bodyduration = null)
-        {
-            var apiCallPath = String.Format("/v1/lights/{0}/toggle", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyduration != null)
-            {
-                if (bodyduration != null)
+                if (bodydefaultsinfrared != null)
                 {
-                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    defaultsObject["infrared"] = ExpressionConverter.ConvertO(bodydefaultsinfrared);
+                    defaultsObjectpropCount++;
+                }
+
+                if (defaultsObjectpropCount > 0)
+                {
+                    body["defaults"] = defaultsObject;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["duration"] = 1;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction BreatheEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null, Expression<Func<double>> bodypeak = null)
+        [WorkflowExpressionFactory(nameof(__BuildTogglePower))]
+        public IWorkflowAction TogglePower([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<double> bodyduration = null)
         {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/breathe", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["color"] = ExpressionConverter.ConvertO(bodycolor);
-            if (bodyfromColor != null)
-            {
-                body["from_color"] = ExpressionConverter.ConvertO(bodyfromColor);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyperiod != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildTogglePower(WorkflowValue<string> lights, WorkflowValue<double> bodyduration = null)
+        {
+            WorkflowValue.Validate(lights, nameof(lights), required: true);
+            WorkflowValue.Validate(bodyduration, nameof(bodyduration), required: false);
+            return new DeferredWorkflowAction(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/toggle", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyduration != null)
+                {
+                    if (bodyduration != null)
+                    {
+                        body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["duration"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
+        [WorkflowExpressionFactory(nameof(__BuildBreatheEffect))]
+        public IWorkflowAction BreatheEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodycolorInput> bodycolor, [WorkflowExpression] Func<bodyfromColorInput> bodyfromColor = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypersist = null, [WorkflowExpression] Func<bool> bodypowerOn = null, [WorkflowExpression] Func<double> bodypeak = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildBreatheEffect(WorkflowValue<string> lights, WorkflowValue<bodycolorInput> bodycolor, WorkflowValue<bodyfromColorInput> bodyfromColor = null, WorkflowValue<double> bodyperiod = null, WorkflowValue<double> bodycycles = null, WorkflowValue<bool> bodypersist = null, WorkflowValue<bool> bodypowerOn = null, WorkflowValue<double> bodypeak = null)
+        {
+            WorkflowValue.Validate(lights, nameof(lights), required: true);
+            WorkflowValue.Validate(bodycolor, nameof(bodycolor), required: true);
+            WorkflowValue.Validate(bodyfromColor, nameof(bodyfromColor), required: false);
+            WorkflowValue.Validate(bodyperiod, nameof(bodyperiod), required: false);
+            WorkflowValue.Validate(bodycycles, nameof(bodycycles), required: false);
+            WorkflowValue.Validate(bodypersist, nameof(bodypersist), required: false);
+            WorkflowValue.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
+            WorkflowValue.Validate(bodypeak, nameof(bodypeak), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/breathe", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["color"] = ExpressionConverter.ConvertO(bodycolor);
+                if (bodyfromColor != null)
+                {
+                    body["from_color"] = ExpressionConverter.ConvertO(bodyfromColor);
+                    bodypropCount++;
+                }
+
+                if (bodyperiod != null)
+                {
+                    if (bodyperiod != null)
+                    {
+                        body["period"] = ExpressionConverter.ConvertO(bodyperiod);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["period"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodycycles != null)
+                {
+                    if (bodycycles != null)
+                    {
+                        body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["cycles"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodypersist != null)
+                {
+                    body["persist"] = ExpressionConverter.ConvertO(bodypersist);
+                    bodypropCount++;
+                }
+
+                if (bodypowerOn != null)
+                {
+                    if (bodypowerOn != null)
+                    {
+                        body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["power_on"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypeak != null)
+                {
+                    if (bodypeak != null)
+                    {
+                        body["peak"] = ExpressionConverter.ConvertO(bodypeak);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["peak"] = 0.5;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
+        [WorkflowExpressionFactory(nameof(__BuildMorphEffect))]
+        public IWorkflowAction MorphEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<int> bodyperiod = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<string[]> bodypalette = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMorphEffect(WorkflowValue<string> lights, WorkflowValue<int> bodyperiod = null, WorkflowValue<int> bodyduration = null, WorkflowValue<string[]> bodypalette = null, WorkflowValue<bool> bodypowerOn = null)
+        {
+            WorkflowValue.Validate(lights, nameof(lights), required: true);
+            WorkflowValue.Validate(bodyperiod, nameof(bodyperiod), required: false);
+            WorkflowValue.Validate(bodyduration, nameof(bodyduration), required: false);
+            WorkflowValue.Validate(bodypalette, nameof(bodypalette), required: false);
+            WorkflowValue.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/morph", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodyperiod != null)
                 {
                     body["period"] = ExpressionConverter.ConvertO(bodyperiod);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["period"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodycycles != null)
-            {
-                if (bodycycles != null)
+                if (bodyduration != null)
                 {
-                    body["cycles"] = ExpressionConverter.ConvertO(bodycycles);
+                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["cycles"] = 1;
-                bodypropCount++;
-            }
+                if (bodypalette != null)
+                {
+                    body["palette"] = ExpressionConverter.ConvertO(bodypalette);
+                    bodypropCount++;
+                }
 
-            if (bodypersist != null)
-            {
-                body["persist"] = ExpressionConverter.ConvertO(bodypersist);
-                bodypropCount++;
-            }
-
-            if (bodypowerOn != null)
-            {
                 if (bodypowerOn != null)
                 {
                     body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["power_on"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypeak != null)
-            {
-                if (bodypeak != null)
+                if (bodypropCount > 0)
                 {
-                    body["peak"] = ExpressionConverter.ConvertO(bodypeak);
-                    bodypropCount++;
+                    callPayload.Body = body;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["peak"] = 0.5;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction MorphEffect(Expression<Func<string>> lights, Expression<Func<int>> bodyperiod = null, Expression<Func<int>> bodyduration = null, Expression<Func<string[]>> bodypalette = null, Expression<Func<bool>> bodypowerOn = null)
-        {
-            var apiCallPath = String.Format("/v1/lights/{0}/effects/morph", ExpressionConverter.ConvertWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyperiod != null)
-            {
-                body["period"] = ExpressionConverter.ConvertO(bodyperiod);
-                bodypropCount++;
-            }
-
-            if (bodyduration != null)
-            {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
-                bodypropCount++;
-            }
-
-            if (bodypalette != null)
-            {
-                body["palette"] = ExpressionConverter.ConvertO(bodypalette);
-                bodypropCount++;
-            }
-
-            if (bodypowerOn != null)
-            {
-                body["power_on"] = ExpressionConverter.ConvertO(bodypowerOn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

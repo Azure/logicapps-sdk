@@ -4,31 +4,42 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SmslinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smslink")]
-        public IBodyWorkflowAction<SMSLinkSendSMSResponse> SMSLinkSendSMS(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage)
+        [WorkflowExpressionFactory(nameof(__BuildSMSLinkSendSMS))]
+        public IBodyWorkflowAction<SMSLinkSendSMSResponse> SMSLinkSendSMS([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage)
         {
-            var apiCallPath = "/sms/gateway/integration/powerautomate.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["to"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<SMSLinkSendSMSResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SMSLinkSendSMSResponse> __BuildSMSLinkSendSMS(WorkflowValue<string> bodyto, WorkflowValue<string> bodymessage)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: true);
+            return new DeferredBodyAction<SMSLinkSendSMSResponse>(() =>
+            {
+                var apiCallPath = "/sms/gateway/integration/powerautomate.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["to"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SMSLinkSendSMSResponse>(callPayload);
+            });
         }
     }
 

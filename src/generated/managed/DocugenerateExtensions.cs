@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,113 +20,194 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<GetTemplateResponse> GetTemplate(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetTemplate))]
+        public IBodyWorkflowAction<GetTemplateResponse> GetTemplate([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTemplateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IWorkflowAction DeleteTemplate(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTemplateResponse> __BuildGetTemplate(WorkflowValue<string> id)
         {
-            var apiCallPath = String.Format("/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<ListDocumentsResponseItem[]> ListDocuments(Expression<Func<string>> templateId)
-        {
-            var apiCallPath = "/document";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
-            return new ApiConnectionAction<ListDocumentsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodydata, Expression<Func<string>> bodyname = null, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null)
-        {
-            var apiCallPath = "/document";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-            bodypropCount++;
-            body["data"] = ExpressionConverter.ConvertO(bodydata);
-            if (bodyname != null)
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetTemplateResponse>(() =>
             {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTemplateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteTemplate))]
+        public IWorkflowAction DeleteTemplate([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteTemplate(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/template/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
+        [WorkflowExpressionFactory(nameof(__BuildListDocuments))]
+        public IBodyWorkflowAction<ListDocumentsResponseItem[]> ListDocuments([WorkflowExpression] Func<string> templateId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListDocumentsResponseItem[]> __BuildListDocuments(WorkflowValue<string> templateId)
+        {
+            WorkflowValue.Validate(templateId, nameof(templateId), required: true);
+            return new DeferredBodyAction<ListDocumentsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/document";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+                return new ApiConnectionAction<ListDocumentsResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
+        [WorkflowExpressionFactory(nameof(__BuildGenerateDocument))]
+        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GenerateDocumentResponse> __BuildGenerateDocument(WorkflowValue<string> bodytemplateId, WorkflowValue<string> bodydata, WorkflowValue<string> bodyname = null, WorkflowValue<bodyoutputFormatInput> bodyoutputFormat = null)
+        {
+            WorkflowValue.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
+            WorkflowValue.Validate(bodydata, nameof(bodydata), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowValue.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            return new DeferredBodyAction<GenerateDocumentResponse>(() =>
+            {
+                var apiCallPath = "/document";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyoutputFormat != null)
-            {
-                if (bodyoutputFormat != null)
+                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+                bodypropCount++;
+                body["data"] = ExpressionConverter.ConvertO(bodydata);
+                if (bodyname != null)
                 {
-                    body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["output_format"] = ".pdf";
-                bodypropCount++;
-            }
+                if (bodyoutputFormat != null)
+                {
+                    if (bodyoutputFormat != null)
+                    {
+                        body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["output_format"] = ".pdf";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetDocument))]
+        public IBodyWorkflowAction<GetDocumentResponse> GetDocument([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDocumentResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocumentResponse> __BuildGetDocument(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetDocumentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteDocument))]
+        public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteDocument(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> bodyname = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateDocument))]
+        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null)
         {
-            var apiCallPath = String.Format("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
-            {
-                body["name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateDocumentResponse> __BuildUpdateDocument(WorkflowValue<string> id, WorkflowValue<string> bodyname = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: false);
+            return new DeferredBodyAction<UpdateDocumentResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/document/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
+            });
         }
     }
 

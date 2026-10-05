@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,27 +14,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 
     public class TypeformTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, Expression<Func<bool>> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildNewResponseWebhook))]
+        public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> tag, [WorkflowExpression] Func<bool> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(tag, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyenabled != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildNewResponseWebhook(WorkflowValue<string> formId, WorkflowValue<string> tag, WorkflowValue<bool> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(formId, nameof(formId), required: true);
+            WorkflowValue.Validate(tag, nameof(tag), required: true);
+            WorkflowValue.Validate(bodyenabled, nameof(bodyenabled), required: false);
+            return new DeferredBodyTrigger<WebhookCreationResponse>(() =>
             {
-                body["enabled"] = ExpressionConverter.ConvertO(bodyenabled);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/forms/{0}/webhooks/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(tag, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodyenabled != null)
+                {
+                    body["enabled"] = ExpressionConverter.ConvertO(bodyenabled);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

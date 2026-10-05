@@ -4,128 +4,274 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companieshouseip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CompanieshouseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber(Expression<Func<string>> companyNumber)
+        [WorkflowExpressionFactory(nameof(__BuildCompanyByNumber))]
+        public IBodyWorkflowAction<CompanyByNumberResponse> CompanyByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyByNumberResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompanyByNumberResponse> __BuildCompanyByNumber(WorkflowValue<string> companyNumber)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<CompanyByNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CompanyByNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ListPscResponse> ListPsc(Expression<Func<string>> companyNumber)
+        [WorkflowExpressionFactory(nameof(__BuildListPsc))]
+        public IBodyWorkflowAction<ListPscResponse> ListPsc([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListPscResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListPscResponse> __BuildListPsc(WorkflowValue<string> companyNumber)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<ListPscResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control-statements", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListPscResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc(Expression<Func<string>> companyNumber)
+        [WorkflowExpressionFactory(nameof(__BuildListStatementsPsc))]
+        public IBodyWorkflowAction<ListStatementsPscResponse> ListStatementsPsc([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListStatementsPscResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListStatementsPscResponse> __BuildListStatementsPsc(WorkflowValue<string> companyNumber)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<ListStatementsPscResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListStatementsPscResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc(Expression<Func<string>> companyNumber, Expression<Func<string>> pCSId)
+        [WorkflowExpressionFactory(nameof(__BuildIndividualPsc))]
+        public IBodyWorkflowAction<IndividualPscResponse> IndividualPsc([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> pCSId)
         {
-            var apiCallPath = String.Format("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(pCSId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndividualPscResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IndividualPscResponse> __BuildIndividualPsc(WorkflowValue<string> companyNumber, WorkflowValue<string> pCSId)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            WorkflowValue.Validate(pCSId, nameof(pCSId), required: true);
+            return new DeferredBodyAction<IndividualPscResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/persons-with-significant-control/individual/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(pCSId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IndividualPscResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments(Expression<Func<string>> companyNumber)
+        [WorkflowExpressionFactory(nameof(__BuildUKEstablishments))]
+        public IBodyWorkflowAction<UKEstablishmentsResponse> UKEstablishments([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UKEstablishmentsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UKEstablishmentsResponse> __BuildUKEstablishments(WorkflowValue<string> companyNumber)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<UKEstablishmentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/uk-establishments", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UKEstablishmentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId(Expression<Func<string>> officerId)
+        [WorkflowExpressionFactory(nameof(__BuildOfficerAppointmentByOfficerId))]
+        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> OfficerAppointmentByOfficerId([WorkflowExpression] Func<string> officerId)
         {
-            var apiCallPath = String.Format("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(officerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OfficerAppointmentByOfficerIdResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OfficerAppointmentByOfficerIdResponse> __BuildOfficerAppointmentByOfficerId(WorkflowValue<string> officerId)
+        {
+            WorkflowValue.Validate(officerId, nameof(officerId), required: true);
+            return new DeferredBodyAction<OfficerAppointmentByOfficerIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/officers/{0}/appointments", ExpressionConverter.ConvertWithUrlEncoding(officerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OfficerAppointmentByOfficerIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId(Expression<Func<string>> companyNumber, Expression<Func<string>> transactionId)
+        [WorkflowExpressionFactory(nameof(__BuildFilingHistoryByNumberAndId))]
+        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> FilingHistoryByNumberAndId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = String.Format("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingHistoryByNumberAndIdResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilingHistoryByNumberAndIdResponse> __BuildFilingHistoryByNumberAndId(WorkflowValue<string> companyNumber, WorkflowValue<string> transactionId)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            WorkflowValue.Validate(transactionId, nameof(transactionId), required: true);
+            return new DeferredBodyAction<FilingHistoryByNumberAndIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilingHistoryByNumberAndIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber(Expression<Func<string>> companyNumber)
+        [WorkflowExpressionFactory(nameof(__BuildChargesByNumber))]
+        public IBodyWorkflowAction<ChargesByNumberResponse> ChargesByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChargesByNumberResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChargesByNumberResponse> __BuildChargesByNumber(WorkflowValue<string> companyNumber)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<ChargesByNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChargesByNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId(Expression<Func<string>> companyNumber, Expression<Func<string>> chargeId)
+        [WorkflowExpressionFactory(nameof(__BuildChargesByNumberAndChargeId))]
+        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> ChargesByNumberAndChargeId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> chargeId)
         {
-            var apiCallPath = String.Format("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(chargeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChargesByNumberAndChargeIdResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChargesByNumberAndChargeIdResponse> __BuildChargesByNumberAndChargeId(WorkflowValue<string> companyNumber, WorkflowValue<string> chargeId)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            WorkflowValue.Validate(chargeId, nameof(chargeId), required: true);
+            return new DeferredBodyAction<ChargesByNumberAndChargeIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/charges/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(chargeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ChargesByNumberAndChargeIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber(Expression<Func<string>> companyNumber)
+        [WorkflowExpressionFactory(nameof(__BuildAddressByNumber))]
+        public IBodyWorkflowAction<AddressByNumberResponse> AddressByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AddressByNumberResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddressByNumberResponse> __BuildAddressByNumber(WorkflowValue<string> companyNumber)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<AddressByNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/registered-office-address", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AddressByNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber(Expression<Func<string>> companyNumber)
+        [WorkflowExpressionFactory(nameof(__BuildCompanyOfficersByNumber))]
+        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> CompanyOfficersByNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyOfficersByNumberResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompanyOfficersByNumberResponse> __BuildCompanyOfficersByNumber(WorkflowValue<string> companyNumber)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<CompanyOfficersByNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/officers", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CompanyOfficersByNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId(Expression<Func<string>> companyNumber, Expression<Func<string>> appointmentId)
+        [WorkflowExpressionFactory(nameof(__BuildCompanyOfficersByNumberAndAppointmentId))]
+        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> CompanyOfficersByNumberAndAppointmentId([WorkflowExpression] Func<string> companyNumber, [WorkflowExpression] Func<string> appointmentId)
         {
-            var apiCallPath = String.Format("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(appointmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyOfficersByNumberAndAppointmentIdResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompanyOfficersByNumberAndAppointmentIdResponse> __BuildCompanyOfficersByNumberAndAppointmentId(WorkflowValue<string> companyNumber, WorkflowValue<string> appointmentId)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            WorkflowValue.Validate(appointmentId, nameof(appointmentId), required: true);
+            return new DeferredBodyAction<CompanyOfficersByNumberAndAppointmentIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/appointments/{1}", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1), ExpressionConverter.ConvertWithUrlEncoding(appointmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CompanyOfficersByNumberAndAppointmentIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "companieshouseip")]
-        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber(Expression<Func<string>> companyNumber)
+        [WorkflowExpressionFactory(nameof(__BuildFilingHistoryByCompNumber))]
+        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> FilingHistoryByCompNumber([WorkflowExpression] Func<string> companyNumber)
         {
-            var apiCallPath = String.Format("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilingHistoryByCompNumberResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilingHistoryByCompNumberResponse> __BuildFilingHistoryByCompNumber(WorkflowValue<string> companyNumber)
+        {
+            WorkflowValue.Validate(companyNumber, nameof(companyNumber), required: true);
+            return new DeferredBodyAction<FilingHistoryByCompNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/company/{0}/filing-history", ExpressionConverter.ConvertWithUrlEncoding(companyNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilingHistoryByCompNumberResponse>(callPayload);
+            });
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,619 +20,1047 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<Profile> GetProfile(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetProfile))]
+        public IBodyWorkflowAction<Profile> GetProfile([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Profile>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Profile> __BuildGetProfile(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Profile>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/profile/profiles/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Profile>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListTeamSettingsIteration> ListIterations(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team)
+        [WorkflowExpressionFactory(nameof(__BuildListIterations))]
+        public IBodyWorkflowAction<VstsListTeamSettingsIteration> ListIterations([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team)
         {
-            var apiCallPath = String.Format("/{0}/iterations", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["team"] = ExpressionConverter.Convert(team);
-            return new ApiConnectionAction<VstsListTeamSettingsIteration>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListTeamSettingsIteration> __BuildListIterations(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> team)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(team, nameof(team), required: true);
+            return new DeferredBodyAction<VstsListTeamSettingsIteration>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/iterations", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                return new ApiConnectionAction<VstsListTeamSettingsIteration>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<BuildResult> QueueNewBuild(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> buildDefId, Expression<Func<string>> buildDetailssourceBranch = null, Expression<Func<string>> buildDetailsparameters = null)
+        [WorkflowExpressionFactory(nameof(__BuildQueueNewBuild))]
+        public IBodyWorkflowAction<BuildResult> QueueNewBuild([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> buildDefId, [WorkflowExpression] Func<string> buildDetailssourceBranch = null, [WorkflowExpression] Func<string> buildDetailsparameters = null)
         {
-            var apiCallPath = String.Format("/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["buildDefId"] = ExpressionConverter.Convert(buildDefId);
-            var buildDetails = new JObject();
-            var buildDetailspropCount = 0;
-            if (buildDetailssourceBranch != null)
-            {
-                buildDetails["sourceBranch"] = ExpressionConverter.ConvertO(buildDetailssourceBranch);
-                buildDetailspropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (buildDetailsparameters != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BuildResult> __BuildQueueNewBuild(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> buildDefId, WorkflowValue<string> buildDetailssourceBranch = null, WorkflowValue<string> buildDetailsparameters = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(buildDefId, nameof(buildDefId), required: true);
+            WorkflowValue.Validate(buildDetailssourceBranch, nameof(buildDetailssourceBranch), required: false);
+            WorkflowValue.Validate(buildDetailsparameters, nameof(buildDetailsparameters), required: false);
+            return new DeferredBodyAction<BuildResult>(() =>
             {
-                buildDetails["parameters"] = ExpressionConverter.ConvertO(buildDetailsparameters);
-                buildDetailspropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["buildDefId"] = ExpressionConverter.Convert(buildDefId);
+                var buildDetails = new JObject();
+                var buildDetailspropCount = 0;
+                if (buildDetailssourceBranch != null)
+                {
+                    buildDetails["sourceBranch"] = ExpressionConverter.ConvertO(buildDetailssourceBranch);
+                    buildDetailspropCount++;
+                }
 
-            if (buildDetailspropCount > 0)
-            {
-                callPayload.Body = buildDetails;
-            }
+                if (buildDetailsparameters != null)
+                {
+                    buildDetails["parameters"] = ExpressionConverter.ConvertO(buildDetailsparameters);
+                    buildDetailspropCount++;
+                }
 
-            return new ApiConnectionAction<BuildResult>(callPayload);
+                if (buildDetailspropCount > 0)
+                {
+                    callPayload.Body = buildDetails;
+                }
+
+                return new ApiConnectionAction<BuildResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListGitRepository> ListGitRepositories(Expression<Func<string>> account, Expression<Func<string>> project)
+        [WorkflowExpressionFactory(nameof(__BuildListGitRepositories))]
+        public IBodyWorkflowAction<VstsListGitRepository> ListGitRepositories([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            var apiCallPath = String.Format("/{0}/_apis/git/repositories", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            return new ApiConnectionAction<VstsListGitRepository>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListGitRepository> __BuildListGitRepositories(WorkflowValue<string> account, WorkflowValue<string> project)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            return new DeferredBodyAction<VstsListGitRepository>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/git/repositories", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                return new ApiConnectionAction<VstsListGitRepository>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListProject> ListProjects(Expression<Func<string>> account)
+        [WorkflowExpressionFactory(nameof(__BuildListProjects))]
+        public IBodyWorkflowAction<VstsListProject> ListProjects([WorkflowExpression] Func<string> account)
         {
-            var apiCallPath = "/_apis/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            return new ApiConnectionAction<VstsListProject>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListProject> __BuildListProjects(WorkflowValue<string> account)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            return new DeferredBodyAction<VstsListProject>(() =>
+            {
+                var apiCallPath = "/_apis/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                return new ApiConnectionAction<VstsListProject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListReleaseDefinition> ListReleaseDefinitions(Expression<Func<string>> account, Expression<Func<string>> project)
+        [WorkflowExpressionFactory(nameof(__BuildListReleaseDefinitions))]
+        public IBodyWorkflowAction<VstsListReleaseDefinition> ListReleaseDefinitions([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            var apiCallPath = String.Format("/{0}/definitions", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            return new ApiConnectionAction<VstsListReleaseDefinition>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListReleaseDefinition> __BuildListReleaseDefinitions(WorkflowValue<string> account, WorkflowValue<string> project)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            return new DeferredBodyAction<VstsListReleaseDefinition>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/definitions", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                return new ApiConnectionAction<VstsListReleaseDefinition>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<Release> CreateRelease(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> releaseDefId, Expression<Func<string>> releaseStartMetadatadescription = null, Expression<Func<bool>> releaseStartMetadataisDraft = null, Expression<Func<releaseStartMetadatareasonInput>> releaseStartMetadatareason = null, Expression<Func<ConfigurationVariable[]>> releaseStartMetadatareleaseVariables = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateRelease))]
+        public IBodyWorkflowAction<Release> CreateRelease([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> releaseDefId, [WorkflowExpression] Func<string> releaseStartMetadatadescription = null, [WorkflowExpression] Func<bool> releaseStartMetadataisDraft = null, [WorkflowExpression] Func<releaseStartMetadatareasonInput> releaseStartMetadatareason = null, [WorkflowExpression] Func<ConfigurationVariable[]> releaseStartMetadatareleaseVariables = null)
         {
-            var apiCallPath = String.Format("/{0}/releases", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["releaseDefId"] = ExpressionConverter.Convert(releaseDefId);
-            var releaseStartMetadata = new JObject();
-            var releaseStartMetadatapropCount = 0;
-            if (releaseStartMetadatadescription != null)
-            {
-                releaseStartMetadata["Description"] = ExpressionConverter.ConvertO(releaseStartMetadatadescription);
-                releaseStartMetadatapropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (releaseStartMetadataisDraft != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Release> __BuildCreateRelease(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> releaseDefId, WorkflowValue<string> releaseStartMetadatadescription = null, WorkflowValue<bool> releaseStartMetadataisDraft = null, WorkflowValue<releaseStartMetadatareasonInput> releaseStartMetadatareason = null, WorkflowValue<ConfigurationVariable[]> releaseStartMetadatareleaseVariables = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(releaseDefId, nameof(releaseDefId), required: true);
+            WorkflowValue.Validate(releaseStartMetadatadescription, nameof(releaseStartMetadatadescription), required: false);
+            WorkflowValue.Validate(releaseStartMetadataisDraft, nameof(releaseStartMetadataisDraft), required: false);
+            WorkflowValue.Validate(releaseStartMetadatareason, nameof(releaseStartMetadatareason), required: false);
+            WorkflowValue.Validate(releaseStartMetadatareleaseVariables, nameof(releaseStartMetadatareleaseVariables), required: false);
+            return new DeferredBodyAction<Release>(() =>
             {
-                releaseStartMetadata["IsDraft"] = ExpressionConverter.ConvertO(releaseStartMetadataisDraft);
-                releaseStartMetadatapropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/releases", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["releaseDefId"] = ExpressionConverter.Convert(releaseDefId);
+                var releaseStartMetadata = new JObject();
+                var releaseStartMetadatapropCount = 0;
+                if (releaseStartMetadatadescription != null)
+                {
+                    releaseStartMetadata["Description"] = ExpressionConverter.ConvertO(releaseStartMetadatadescription);
+                    releaseStartMetadatapropCount++;
+                }
 
-            if (releaseStartMetadatareason != null)
-            {
-                releaseStartMetadata["Reason"] = ExpressionConverter.ConvertO(releaseStartMetadatareason);
-                releaseStartMetadatapropCount++;
-            }
+                if (releaseStartMetadataisDraft != null)
+                {
+                    releaseStartMetadata["IsDraft"] = ExpressionConverter.ConvertO(releaseStartMetadataisDraft);
+                    releaseStartMetadatapropCount++;
+                }
 
-            if (releaseStartMetadatareleaseVariables != null)
-            {
-                releaseStartMetadata["Variables"] = ExpressionConverter.ConvertO(releaseStartMetadatareleaseVariables);
-                releaseStartMetadatapropCount++;
-            }
+                if (releaseStartMetadatareason != null)
+                {
+                    releaseStartMetadata["Reason"] = ExpressionConverter.ConvertO(releaseStartMetadatareason);
+                    releaseStartMetadatapropCount++;
+                }
 
-            if (releaseStartMetadatapropCount > 0)
-            {
-                callPayload.Body = releaseStartMetadata;
-            }
+                if (releaseStartMetadatareleaseVariables != null)
+                {
+                    releaseStartMetadata["Variables"] = ExpressionConverter.ConvertO(releaseStartMetadatareleaseVariables);
+                    releaseStartMetadatapropCount++;
+                }
 
-            return new ApiConnectionAction<Release>(callPayload);
+                if (releaseStartMetadatapropCount > 0)
+                {
+                    callPayload.Body = releaseStartMetadata;
+                }
+
+                return new ApiConnectionAction<Release>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> account, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersrelativeURI, Expression<Func<string>> parametersbody = null, Expression<Func<bool>> parametersbodyIsBase64 = null)
+        [WorkflowExpressionFactory(nameof(__BuildHttpRequest))]
+        public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<parametersmethodInput> parametersmethod, [WorkflowExpression] Func<string> parametersrelativeURI, [WorkflowExpression] Func<string> parametersbody = null, [WorkflowExpression] Func<bool> parametersbodyIsBase64 = null)
         {
-            var apiCallPath = "/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["Method"] = ExpressionConverter.ConvertO(parametersmethod);
-            parameterspropCount++;
-            parameters["Uri"] = ExpressionConverter.ConvertO(parametersrelativeURI);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowValue<string> account, WorkflowValue<parametersmethodInput> parametersmethod, WorkflowValue<string> parametersrelativeURI, WorkflowValue<string> parametersbody = null, WorkflowValue<bool> parametersbodyIsBase64 = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(parametersmethod, nameof(parametersmethod), required: true);
+            WorkflowValue.Validate(parametersrelativeURI, nameof(parametersrelativeURI), required: true);
+            WorkflowValue.Validate(parametersbody, nameof(parametersbody), required: false);
+            WorkflowValue.Validate(parametersbodyIsBase64, nameof(parametersbodyIsBase64), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                parameters["Headers"] = headersObject;
+                var apiCallPath = "/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
                 parameterspropCount++;
-            }
-
-            if (parametersbody != null)
-            {
-                parameters["Body"] = ExpressionConverter.ConvertO(parametersbody);
+                parameters["Method"] = ExpressionConverter.ConvertO(parametersmethod);
                 parameterspropCount++;
-            }
+                parameters["Uri"] = ExpressionConverter.ConvertO(parametersrelativeURI);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    parameters["Headers"] = headersObject;
+                    parameterspropCount++;
+                }
 
-            if (parametersbodyIsBase64 != null)
+                if (parametersbody != null)
+                {
+                    parameters["Body"] = ExpressionConverter.ConvertO(parametersbody);
+                    parameterspropCount++;
+                }
+
+                if (parametersbodyIsBase64 != null)
+                {
+                    parameters["IsBase64"] = ExpressionConverter.ConvertO(parametersbodyIsBase64);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        [WorkflowExpressionFactory(nameof(__BuildListWorkItemTypes))]
+        public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListWorkItemType> __BuildListWorkItemTypes(WorkflowValue<string> account, WorkflowValue<string> project)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            return new DeferredBodyAction<VstsListWorkItemType>(() =>
             {
-                parameters["IsBase64"] = ExpressionConverter.ConvertO(parametersbodyIsBase64);
-                parameterspropCount++;
-            }
-
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListWorkItemType> ListWorkItemTypes(Expression<Func<string>> account, Expression<Func<string>> project)
-        {
-            var apiCallPath = "/_apis/wit/workitemtypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            return new ApiConnectionAction<VstsListWorkItemType>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<DynamicWorkItemResponse> GetWorkItemDetails(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> typeName, Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["typeName"] = ExpressionConverter.Convert(typeName);
-            return new ApiConnectionAction<DynamicWorkItemResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<PatchWorkItemResponse> UpdateWorkItem(Expression<Func<string>> account, Expression<Func<string>> id, Expression<Func<string>> project = null, Expression<Func<string>> type = null, Expression<Func<string>> workItemtitle = null, Expression<Func<string>> workItemdescription = null, Expression<Func<int>> workItempriority = null, Expression<Func<string>> workItemiterationPath = null, Expression<Func<string>> workItemareaPath = null, Expression<Func<string>> workItemlinkURL = null, Expression<Func<workItemlinkTypeInput>> workItemlinkType = null, Expression<Func<string>> workItemlinkComment = null, Expression<Func<object>> workItemdynamicFields = null)
-        {
-            var apiCallPath = String.Format("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (project != null)
+                var apiCallPath = "/_apis/wit/workitemtypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            var workItem = new JObject();
-            var workItempropCount = 0;
-            if (workItemtitle != null)
+                return new ApiConnectionAction<VstsListWorkItemType>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        [WorkflowExpressionFactory(nameof(__BuildGetWorkItemDetails))]
+        public IBodyWorkflowAction<DynamicWorkItemResponse> GetWorkItemDetails([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> typeName, [WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DynamicWorkItemResponse> __BuildGetWorkItemDetails(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> typeName, WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(typeName, nameof(typeName), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<DynamicWorkItemResponse>(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["typeName"] = ExpressionConverter.Convert(typeName);
+                return new ApiConnectionAction<DynamicWorkItemResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateWorkItem))]
+        public IBodyWorkflowAction<PatchWorkItemResponse> UpdateWorkItem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> workItemtitle = null, [WorkflowExpression] Func<string> workItemdescription = null, [WorkflowExpression] Func<int> workItempriority = null, [WorkflowExpression] Func<string> workItemiterationPath = null, [WorkflowExpression] Func<string> workItemareaPath = null, [WorkflowExpression] Func<string> workItemlinkURL = null, [WorkflowExpression] Func<workItemlinkTypeInput> workItemlinkType = null, [WorkflowExpression] Func<string> workItemlinkComment = null, [WorkflowExpression] Func<object> workItemdynamicFields = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PatchWorkItemResponse> __BuildUpdateWorkItem(WorkflowValue<string> account, WorkflowValue<string> id, WorkflowValue<string> project = null, WorkflowValue<string> type = null, WorkflowValue<string> workItemtitle = null, WorkflowValue<string> workItemdescription = null, WorkflowValue<int> workItempriority = null, WorkflowValue<string> workItemiterationPath = null, WorkflowValue<string> workItemareaPath = null, WorkflowValue<string> workItemlinkURL = null, WorkflowValue<workItemlinkTypeInput> workItemlinkType = null, WorkflowValue<string> workItemlinkComment = null, WorkflowValue<object> workItemdynamicFields = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: false);
+            WorkflowValue.Validate(type, nameof(type), required: false);
+            WorkflowValue.Validate(workItemtitle, nameof(workItemtitle), required: false);
+            WorkflowValue.Validate(workItemdescription, nameof(workItemdescription), required: false);
+            WorkflowValue.Validate(workItempriority, nameof(workItempriority), required: false);
+            WorkflowValue.Validate(workItemiterationPath, nameof(workItemiterationPath), required: false);
+            WorkflowValue.Validate(workItemareaPath, nameof(workItemareaPath), required: false);
+            WorkflowValue.Validate(workItemlinkURL, nameof(workItemlinkURL), required: false);
+            WorkflowValue.Validate(workItemlinkType, nameof(workItemlinkType), required: false);
+            WorkflowValue.Validate(workItemlinkComment, nameof(workItemlinkComment), required: false);
+            WorkflowValue.Validate(workItemdynamicFields, nameof(workItemdynamicFields), required: false);
+            return new DeferredBodyAction<PatchWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (project != null)
+                    callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                var workItem = new JObject();
+                var workItempropCount = 0;
+                if (workItemtitle != null)
+                {
+                    workItem["title"] = ExpressionConverter.ConvertO(workItemtitle);
+                    workItempropCount++;
+                }
+
+                if (workItemdescription != null)
+                {
+                    workItem["description"] = ExpressionConverter.ConvertO(workItemdescription);
+                    workItempropCount++;
+                }
+
+                if (workItempriority != null)
+                {
+                    workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
+                    workItempropCount++;
+                }
+
+                if (workItemiterationPath != null)
+                {
+                    workItem["iteration"] = ExpressionConverter.ConvertO(workItemiterationPath);
+                    workItempropCount++;
+                }
+
+                if (workItemareaPath != null)
+                {
+                    workItem["area"] = ExpressionConverter.ConvertO(workItemareaPath);
+                    workItempropCount++;
+                }
+
+                if (workItemlinkURL != null)
+                {
+                    workItem["linkUrl"] = ExpressionConverter.ConvertO(workItemlinkURL);
+                    workItempropCount++;
+                }
+
+                if (workItemlinkType != null)
+                {
+                    workItem["linkType"] = ExpressionConverter.ConvertO(workItemlinkType);
+                    workItempropCount++;
+                }
+
+                if (workItemlinkComment != null)
+                {
+                    workItem["linkComment"] = ExpressionConverter.ConvertO(workItemlinkComment);
+                    workItempropCount++;
+                }
+
+                if (workItemdynamicFields != null)
+                {
+                    workItem["dynamicFields"] = ExpressionConverter.ConvertO(workItemdynamicFields);
+                    workItempropCount++;
+                }
+
+                var userEnteredFieldsObject = new JObject();
+                var userEnteredFieldsObjectpropCount = 0;
+                if (userEnteredFieldsObjectpropCount > 0)
+                {
+                    workItem["userEnteredFields"] = userEnteredFieldsObject;
+                    workItempropCount++;
+                }
+
+                if (workItempropCount > 0)
+                {
+                    callPayload.Body = workItem;
+                }
+
+                return new ApiConnectionAction<PatchWorkItemResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        [WorkflowExpressionFactory(nameof(__BuildGetWorkItemChildren))]
+        public IBodyWorkflowAction<VstsListListWorkItemResponse> GetWorkItemChildren([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> workItemType = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListListWorkItemResponse> __BuildGetWorkItemChildren(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> id, WorkflowValue<string> workItemType = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(workItemType, nameof(workItemType), required: false);
+            return new DeferredBodyAction<VstsListListWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/_apis/wit/workitems/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                callPayload.Queries["workItemType"] = Convert.ToString("");
+                if (workItemType != null)
+                    callPayload.Queries["workItemType"] = ExpressionConverter.Convert(workItemType);
+                return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkItem))]
+        public IBodyWorkflowAction<PatchWorkItemResponse> CreateWorkItem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> workItemtitle, [WorkflowExpression] Func<bool> shouldReturnAllFields = null, [WorkflowExpression] Func<string> workItemdescription = null, [WorkflowExpression] Func<int> workItempriority = null, [WorkflowExpression] Func<string> workItemiterationPath = null, [WorkflowExpression] Func<string> workItemareaPath = null, [WorkflowExpression] Func<string> workItemlinkURL = null, [WorkflowExpression] Func<workItemlinkTypeInput> workItemlinkType = null, [WorkflowExpression] Func<string> workItemlinkComment = null, [WorkflowExpression] Func<object> workItemdynamicFields = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PatchWorkItemResponse> __BuildCreateWorkItem(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> type, WorkflowValue<string> workItemtitle, WorkflowValue<bool> shouldReturnAllFields = null, WorkflowValue<string> workItemdescription = null, WorkflowValue<int> workItempriority = null, WorkflowValue<string> workItemiterationPath = null, WorkflowValue<string> workItemareaPath = null, WorkflowValue<string> workItemlinkURL = null, WorkflowValue<workItemlinkTypeInput> workItemlinkType = null, WorkflowValue<string> workItemlinkComment = null, WorkflowValue<object> workItemdynamicFields = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(type, nameof(type), required: true);
+            WorkflowValue.Validate(workItemtitle, nameof(workItemtitle), required: true);
+            WorkflowValue.Validate(shouldReturnAllFields, nameof(shouldReturnAllFields), required: false);
+            WorkflowValue.Validate(workItemdescription, nameof(workItemdescription), required: false);
+            WorkflowValue.Validate(workItempriority, nameof(workItempriority), required: false);
+            WorkflowValue.Validate(workItemiterationPath, nameof(workItemiterationPath), required: false);
+            WorkflowValue.Validate(workItemareaPath, nameof(workItemareaPath), required: false);
+            WorkflowValue.Validate(workItemlinkURL, nameof(workItemlinkURL), required: false);
+            WorkflowValue.Validate(workItemlinkType, nameof(workItemlinkType), required: false);
+            WorkflowValue.Validate(workItemlinkComment, nameof(workItemlinkComment), required: false);
+            WorkflowValue.Validate(workItemdynamicFields, nameof(workItemdynamicFields), required: false);
+            return new DeferredBodyAction<PatchWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems/${1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(type, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (shouldReturnAllFields != null)
+                    callPayload.Queries["shouldReturnAllFields"] = ExpressionConverter.Convert(shouldReturnAllFields);
+                var workItem = new JObject();
+                var workItempropCount = 0;
+                workItempropCount++;
                 workItem["title"] = ExpressionConverter.ConvertO(workItemtitle);
-                workItempropCount++;
-            }
+                if (workItemdescription != null)
+                {
+                    workItem["description"] = ExpressionConverter.ConvertO(workItemdescription);
+                    workItempropCount++;
+                }
 
-            if (workItemdescription != null)
-            {
-                workItem["description"] = ExpressionConverter.ConvertO(workItemdescription);
-                workItempropCount++;
-            }
+                if (workItempriority != null)
+                {
+                    workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
+                    workItempropCount++;
+                }
 
-            if (workItempriority != null)
-            {
-                workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
-                workItempropCount++;
-            }
+                if (workItemiterationPath != null)
+                {
+                    workItem["iteration"] = ExpressionConverter.ConvertO(workItemiterationPath);
+                    workItempropCount++;
+                }
 
-            if (workItemiterationPath != null)
-            {
-                workItem["iteration"] = ExpressionConverter.ConvertO(workItemiterationPath);
-                workItempropCount++;
-            }
+                if (workItemareaPath != null)
+                {
+                    workItem["area"] = ExpressionConverter.ConvertO(workItemareaPath);
+                    workItempropCount++;
+                }
 
-            if (workItemareaPath != null)
-            {
-                workItem["area"] = ExpressionConverter.ConvertO(workItemareaPath);
-                workItempropCount++;
-            }
+                if (workItemlinkURL != null)
+                {
+                    workItem["linkUrl"] = ExpressionConverter.ConvertO(workItemlinkURL);
+                    workItempropCount++;
+                }
 
-            if (workItemlinkURL != null)
-            {
-                workItem["linkUrl"] = ExpressionConverter.ConvertO(workItemlinkURL);
-                workItempropCount++;
-            }
+                if (workItemlinkType != null)
+                {
+                    workItem["linkType"] = ExpressionConverter.ConvertO(workItemlinkType);
+                    workItempropCount++;
+                }
 
-            if (workItemlinkType != null)
-            {
-                workItem["linkType"] = ExpressionConverter.ConvertO(workItemlinkType);
-                workItempropCount++;
-            }
+                if (workItemlinkComment != null)
+                {
+                    workItem["linkComment"] = ExpressionConverter.ConvertO(workItemlinkComment);
+                    workItempropCount++;
+                }
 
-            if (workItemlinkComment != null)
-            {
-                workItem["linkComment"] = ExpressionConverter.ConvertO(workItemlinkComment);
-                workItempropCount++;
-            }
+                if (workItemdynamicFields != null)
+                {
+                    workItem["dynamicFields"] = ExpressionConverter.ConvertO(workItemdynamicFields);
+                    workItempropCount++;
+                }
 
-            if (workItemdynamicFields != null)
-            {
-                workItem["dynamicFields"] = ExpressionConverter.ConvertO(workItemdynamicFields);
-                workItempropCount++;
-            }
+                var userEnteredFieldsObject = new JObject();
+                var userEnteredFieldsObjectpropCount = 0;
+                if (userEnteredFieldsObjectpropCount > 0)
+                {
+                    workItem["userEnteredFields"] = userEnteredFieldsObject;
+                    workItempropCount++;
+                }
 
-            var userEnteredFieldsObject = new JObject();
-            var userEnteredFieldsObjectpropCount = 0;
-            if (userEnteredFieldsObjectpropCount > 0)
-            {
-                workItem["userEnteredFields"] = userEnteredFieldsObject;
-                workItempropCount++;
-            }
+                if (workItempropCount > 0)
+                {
+                    callPayload.Body = workItem;
+                }
 
-            if (workItempropCount > 0)
-            {
-                callPayload.Body = workItem;
-            }
-
-            return new ApiConnectionAction<PatchWorkItemResponse>(callPayload);
+                return new ApiConnectionAction<PatchWorkItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListListWorkItemResponse> GetWorkItemChildren(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> id, Expression<Func<string>> workItemType = null)
+        [WorkflowExpressionFactory(nameof(__BuildListRootQueryFolders))]
+        public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            var apiCallPath = String.Format("/_apis/wit/workitems/{0}/children", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            callPayload.Queries["workItemType"] = Convert.ToString("");
-            if (workItemType != null)
-                callPayload.Queries["workItemType"] = ExpressionConverter.Convert(workItemType);
-            return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListQueryHierarchyItem> __BuildListRootQueryFolders(WorkflowValue<string> account, WorkflowValue<string> project)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/queries", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<PatchWorkItemResponse> CreateWorkItem(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> type, Expression<Func<string>> workItemtitle, Expression<Func<bool>> shouldReturnAllFields = null, Expression<Func<string>> workItemdescription = null, Expression<Func<int>> workItempriority = null, Expression<Func<string>> workItemiterationPath = null, Expression<Func<string>> workItemareaPath = null, Expression<Func<string>> workItemlinkURL = null, Expression<Func<workItemlinkTypeInput>> workItemlinkType = null, Expression<Func<string>> workItemlinkComment = null, Expression<Func<object>> workItemdynamicFields = null)
+        [WorkflowExpressionFactory(nameof(__BuildListQueriesInFolder))]
+        public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> folderPath)
         {
-            var apiCallPath = String.Format("/{0}/_apis/wit/workitems/${1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(type, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (shouldReturnAllFields != null)
-                callPayload.Queries["shouldReturnAllFields"] = ExpressionConverter.Convert(shouldReturnAllFields);
-            var workItem = new JObject();
-            var workItempropCount = 0;
-            workItempropCount++;
-            workItem["title"] = ExpressionConverter.ConvertO(workItemtitle);
-            if (workItemdescription != null)
-            {
-                workItem["description"] = ExpressionConverter.ConvertO(workItemdescription);
-                workItempropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (workItempriority != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListQueryHierarchyItem> __BuildListQueriesInFolder(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> folderPath)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyAction<VstsListQueryHierarchyItem>(() =>
             {
-                workItem["priority"] = ExpressionConverter.ConvertO(workItempriority);
-                workItempropCount++;
-            }
-
-            if (workItemiterationPath != null)
-            {
-                workItem["iteration"] = ExpressionConverter.ConvertO(workItemiterationPath);
-                workItempropCount++;
-            }
-
-            if (workItemareaPath != null)
-            {
-                workItem["area"] = ExpressionConverter.ConvertO(workItemareaPath);
-                workItempropCount++;
-            }
-
-            if (workItemlinkURL != null)
-            {
-                workItem["linkUrl"] = ExpressionConverter.ConvertO(workItemlinkURL);
-                workItempropCount++;
-            }
-
-            if (workItemlinkType != null)
-            {
-                workItem["linkType"] = ExpressionConverter.ConvertO(workItemlinkType);
-                workItempropCount++;
-            }
-
-            if (workItemlinkComment != null)
-            {
-                workItem["linkComment"] = ExpressionConverter.ConvertO(workItemlinkComment);
-                workItempropCount++;
-            }
-
-            if (workItemdynamicFields != null)
-            {
-                workItem["dynamicFields"] = ExpressionConverter.ConvertO(workItemdynamicFields);
-                workItempropCount++;
-            }
-
-            var userEnteredFieldsObject = new JObject();
-            var userEnteredFieldsObjectpropCount = 0;
-            if (userEnteredFieldsObjectpropCount > 0)
-            {
-                workItem["userEnteredFields"] = userEnteredFieldsObject;
-                workItempropCount++;
-            }
-
-            if (workItempropCount > 0)
-            {
-                callPayload.Body = workItem;
-            }
-
-            return new ApiConnectionAction<PatchWorkItemResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/queriesInFolder", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListRootQueryFolders(Expression<Func<string>> account, Expression<Func<string>> project)
+        [WorkflowExpressionFactory(nameof(__BuildListWorkItems))]
+        public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> workItemIds, [WorkflowExpression] Func<string> workItemType = null)
         {
-            var apiCallPath = String.Format("/{0}/queries", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListListWorkItemResponse> __BuildListWorkItems(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> workItemIds, WorkflowValue<string> workItemType = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(workItemIds, nameof(workItemIds), required: true);
+            WorkflowValue.Validate(workItemType, nameof(workItemType), required: false);
+            return new DeferredBodyAction<VstsListListWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["workItemIds"] = ExpressionConverter.Convert(workItemIds);
+                callPayload.Queries["workItemType"] = Convert.ToString("");
+                if (workItemType != null)
+                    callPayload.Queries["workItemType"] = ExpressionConverter.Convert(workItemType);
+                return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListQueryHierarchyItem> ListQueriesInFolder(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> folderPath)
+        [WorkflowExpressionFactory(nameof(__BuildListPipelines))]
+        public IBodyWorkflowAction<Pipeline> ListPipelines([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project)
         {
-            var apiCallPath = String.Format("/{0}/queriesInFolder", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionAction<VstsListQueryHierarchyItem>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Pipeline> __BuildListPipelines(WorkflowValue<string> account, WorkflowValue<string> project)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            return new DeferredBodyAction<Pipeline>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                return new ApiConnectionAction<Pipeline>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListListWorkItemResponse> ListWorkItems(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> workItemIds, Expression<Func<string>> workItemType = null)
+        [WorkflowExpressionFactory(nameof(__BuildListPipelineRuns))]
+        public IBodyWorkflowAction<Run> ListPipelineRuns([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<int> pipelineId)
         {
-            var apiCallPath = String.Format("/{0}/_apis/wit/workitems", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["workItemIds"] = ExpressionConverter.Convert(workItemIds);
-            callPayload.Queries["workItemType"] = Convert.ToString("");
-            if (workItemType != null)
-                callPayload.Queries["workItemType"] = ExpressionConverter.Convert(workItemType);
-            return new ApiConnectionAction<VstsListListWorkItemResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Run> __BuildListPipelineRuns(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<int> pipelineId)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(pipelineId, nameof(pipelineId), required: true);
+            return new DeferredBodyAction<Run>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/{0}/_apis/pipelines/{1}/runs", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncodingWithInt(pipelineId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                return new ApiConnectionAction<Run>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<Pipeline> ListPipelines(Expression<Func<string>> account, Expression<Func<string>> project)
+        [WorkflowExpressionFactory(nameof(__BuildGetQueryResults))]
+        public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> GetQueryResults([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> queryId, [WorkflowExpression] Func<int> workItemsCount = null, [WorkflowExpression] Func<bool> throwIfQueryChanged = null)
         {
-            var apiCallPath = String.Format("/codeless/{0}/_apis/pipelines", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            return new ApiConnectionAction<Pipeline>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<Run> ListPipelineRuns(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<int>> pipelineId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> __BuildGetQueryResults(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> queryId, WorkflowValue<int> workItemsCount = null, WorkflowValue<bool> throwIfQueryChanged = null)
         {
-            var apiCallPath = String.Format("/codeless/{0}/_apis/pipelines/{1}/runs", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncodingWithInt(pipelineId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            return new ApiConnectionAction<Run>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "visualstudioteamservices")]
-        public IBodyWorkflowAction<VstsListQueryResultWorkItemResponse> GetQueryResults(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> queryId, Expression<Func<int>> workItemsCount = null, Expression<Func<bool>> throwIfQueryChanged = null)
-        {
-            var apiCallPath = String.Format("/v2/{0}/queryResults/{1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(queryId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["workItemsCount"] = Convert.ToString(200);
-            if (workItemsCount != null)
-                callPayload.Queries["workItemsCount"] = ExpressionConverter.Convert(workItemsCount);
-            if (throwIfQueryChanged != null)
-                callPayload.Queries["throwIfQueryChanged"] = ExpressionConverter.Convert(throwIfQueryChanged);
-            return new ApiConnectionAction<VstsListQueryResultWorkItemResponse>(callPayload);
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(queryId, nameof(queryId), required: true);
+            WorkflowValue.Validate(workItemsCount, nameof(workItemsCount), required: false);
+            WorkflowValue.Validate(throwIfQueryChanged, nameof(throwIfQueryChanged), required: false);
+            return new DeferredBodyAction<VstsListQueryResultWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/{0}/queryResults/{1}", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(queryId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["workItemsCount"] = Convert.ToString(200);
+                if (workItemsCount != null)
+                    callPayload.Queries["workItemsCount"] = ExpressionConverter.Convert(workItemsCount);
+                if (throwIfQueryChanged != null)
+                    callPayload.Queries["throwIfQueryChanged"] = ExpressionConverter.Convert(throwIfQueryChanged);
+                return new ApiConnectionAction<VstsListQueryResultWorkItemResponse>(callPayload);
+            });
         }
     }
 
     public class VisualstudioteamservicesTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<VstsListBuildResult> OnBuildCompleted(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<resultFilterInput>> resultFilter = null, Expression<Func<string>> definitions = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnBuildCompleted))]
+        public IBodyWorkflowTrigger<VstsListBuildResult> OnBuildCompleted([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<resultFilterInput> resultFilter = null, [WorkflowExpression] Func<string> definitions = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/buildcompleted_trigger/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (resultFilter != null)
-                callPayload.Queries["resultFilter"] = ExpressionConverter.Convert(resultFilter);
-            if (definitions != null)
-                callPayload.Queries["definitions"] = ExpressionConverter.Convert(definitions);
-            return new ApiConnectionTrigger<VstsListBuildResult>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> refName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListBuildResult> __BuildOnBuildCompleted(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<resultFilterInput> resultFilter = null, WorkflowValue<string> definitions = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (refName != null)
-                callPayload.Queries["refName"] = ExpressionConverter.Convert(refName);
-            return new ApiConnectionTrigger<VstsListGitPush>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(resultFilter, nameof(resultFilter), required: false);
+            WorkflowValue.Validate(definitions, nameof(definitions), required: false);
+            return new DeferredBodyTrigger<VstsListBuildResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/buildcompleted_trigger/{0}/_apis/build/builds", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (resultFilter != null)
+                    callPayload.Queries["resultFilter"] = ExpressionConverter.Convert(resultFilter);
+                if (definitions != null)
+                    callPayload.Queries["definitions"] = ExpressionConverter.Convert(definitions);
+                return new ApiConnectionTrigger<VstsListBuildResult>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnGitPush))]
+        public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> refName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (sourceRefName != null)
-                callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
-            if (targetRefName != null)
-                callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
-            return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> repository, Expression<Func<string>> sourceRefName = null, Expression<Func<string>> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListGitPush> __BuildOnGitPush(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> repository, WorkflowValue<string> refName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (sourceRefName != null)
-                callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
-            if (targetRefName != null)
-                callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
-            return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(repository, nameof(repository), required: true);
+            WorkflowValue.Validate(refName, nameof(refName), required: false);
+            return new DeferredBodyTrigger<VstsListGitPush>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpushed_trigger/{0}/_apis/git/repositories/{1}/pushes", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (refName != null)
+                    callPayload.Queries["refName"] = ExpressionConverter.Convert(refName);
+                return new ApiConnectionTrigger<VstsListGitPush>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<VstsListTfvcChangeset> OnTfvcCheckIn(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> author = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnGitPullCreated))]
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> sourceRefName = null, [WorkflowExpression] Func<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/tfvccheckin_trigger/_apis/tfvc/changesets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-            if (team != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> __BuildOnGitPullCreated(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> repository, WorkflowValue<string> sourceRefName = null, WorkflowValue<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(repository, nameof(repository), required: true);
+            WorkflowValue.Validate(sourceRefName, nameof(sourceRefName), required: false);
+            WorkflowValue.Validate(targetRefName, nameof(targetRefName), required: false);
+            return new DeferredBodyTrigger<VstsListGitPullRequest>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpullcreated_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (sourceRefName != null)
+                    callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
+                if (targetRefName != null)
+                    callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
+                return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnGitPullClosed))]
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> sourceRefName = null, [WorkflowExpression] Func<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> __BuildOnGitPullClosed(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> repository, WorkflowValue<string> sourceRefName = null, WorkflowValue<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(repository, nameof(repository), required: true);
+            WorkflowValue.Validate(sourceRefName, nameof(sourceRefName), required: false);
+            WorkflowValue.Validate(targetRefName, nameof(targetRefName), required: false);
+            return new DeferredBodyTrigger<VstsListGitPullRequest>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gitpullclosed_trigger/{0}/_apis/git/repositories/{1}/pullrequests", ExpressionConverter.ConvertWithUrlEncoding(project, 1), ExpressionConverter.ConvertWithUrlEncoding(repository, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (sourceRefName != null)
+                    callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
+                if (targetRefName != null)
+                    callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
+                return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnTfvcCheckIn))]
+        public IBodyWorkflowTrigger<VstsListTfvcChangeset> OnTfvcCheckIn([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> author = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListTfvcChangeset> __BuildOnTfvcCheckIn(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> team = null, WorkflowValue<string> author = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(team, nameof(team), required: false);
+            WorkflowValue.Validate(author, nameof(author), required: false);
+            return new DeferredBodyTrigger<VstsListTfvcChangeset>(() =>
+            {
+                var apiCallPath = "/tfvccheckin_trigger/_apis/tfvc/changesets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                callPayload.Queries["project"] = ExpressionConverter.Convert(project);
+                if (team != null)
+                    callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                if (author != null)
+                    callPayload.Queries["author"] = ExpressionConverter.Convert(author);
+                return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnWorkItemAssigned))]
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team, [WorkflowExpression] Func<string> wiqlSystemAssignedTo, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemAssigned(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> team, WorkflowValue<string> wiqlSystemAssignedTo, WorkflowValue<string> wiqlSystemWorkItemType = null, WorkflowValue<string> wiqlSystemAreaPath = null, WorkflowValue<areaPathComparisonInput> areaPathComparison = null, WorkflowValue<string> wiqlSystemIterationPath = null, WorkflowValue<iterationPathComparisonInput> iterationPathComparison = null, WorkflowValue<string> wiqlMicrosoftVSTSCommonPriority = null, WorkflowValue<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(team, nameof(team), required: true);
+            WorkflowValue.Validate(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: true);
+            WorkflowValue.Validate(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
+            WorkflowValue.Validate(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
+            WorkflowValue.Validate(areaPathComparison, nameof(areaPathComparison), required: false);
+            WorkflowValue.Validate(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
+            WorkflowValue.Validate(iterationPathComparison, nameof(iterationPathComparison), required: false);
+            WorkflowValue.Validate(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
+            WorkflowValue.Validate(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
+            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
                 callPayload.Queries["team"] = ExpressionConverter.Convert(team);
-            if (author != null)
-                callPayload.Queries["author"] = ExpressionConverter.Convert(author);
-            return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team, Expression<Func<string>> wiqlSystemAssignedTo, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/v2/workitemassigned_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            callPayload.Queries["team"] = ExpressionConverter.Convert(team);
-            callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
-            if (wiqlSystemWorkItemType != null)
-                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
-            if (wiqlSystemAreaPath != null)
-                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
-            callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
-            if (areaPathComparison != null)
-                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
-            if (wiqlSystemIterationPath != null)
-                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
-            callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
-            if (iterationPathComparison != null)
-                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
-            if (wiqlMicrosoftVSTSCommonPriority != null)
-                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
-            if (wiqlSystemCreatedBy != null)
-                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
-            return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> closedState = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = String.Format("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
-            if (wiqlSystemAssignedTo != null)
                 callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
-            callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
-            if (wiqlSystemWorkItemType != null)
-                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
-            callPayload.Queries["closedState"] = Convert.ToString("Done, Closed, Completed, Inactive");
-            if (closedState != null)
-                callPayload.Queries["closedState"] = ExpressionConverter.Convert(closedState);
-            if (wiqlSystemAreaPath != null)
-                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
-            callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
-            if (areaPathComparison != null)
-                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
-            if (wiqlSystemIterationPath != null)
-                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
-            callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
-            if (iterationPathComparison != null)
-                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
-            if (wiqlMicrosoftVSTSCommonPriority != null)
-                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
-            if (wiqlSystemCreatedBy != null)
-                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
-            return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+                if (wiqlSystemWorkItemType != null)
+                    callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+                if (wiqlSystemAreaPath != null)
+                    callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+                callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
+                if (areaPathComparison != null)
+                    callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+                if (wiqlSystemIterationPath != null)
+                    callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+                callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
+                if (iterationPathComparison != null)
+                    callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+                if (wiqlMicrosoftVSTSCommonPriority != null)
+                    callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+                if (wiqlSystemCreatedBy != null)
+                    callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnWorkItemClosed))]
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> closedState = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
-            if (wiqlSystemAssignedTo != null)
-                callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
-            callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
-            if (wiqlSystemWorkItemType != null)
-                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
-            if (wiqlSystemAreaPath != null)
-                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
-            callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
-            if (areaPathComparison != null)
-                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
-            if (wiqlSystemIterationPath != null)
-                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
-            callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
-            if (iterationPathComparison != null)
-                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
-            if (wiqlMicrosoftVSTSCommonPriority != null)
-                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
-            if (wiqlSystemCreatedBy != null)
-                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
-            return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated(Expression<Func<string>> account, Expression<Func<string>> project, Expression<Func<string>> team = null, Expression<Func<string>> wiqlSystemAssignedTo = null, Expression<Func<string>> wiqlSystemWorkItemType = null, Expression<Func<string>> wiqlSystemAreaPath = null, Expression<Func<areaPathComparisonInput>> areaPathComparison = null, Expression<Func<string>> wiqlSystemIterationPath = null, Expression<Func<iterationPathComparisonInput>> iterationPathComparison = null, Expression<Func<string>> wiqlMicrosoftVSTSCommonPriority = null, Expression<Func<string>> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemClosed(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> team = null, WorkflowValue<string> wiqlSystemAssignedTo = null, WorkflowValue<string> wiqlSystemWorkItemType = null, WorkflowValue<string> closedState = null, WorkflowValue<string> wiqlSystemAreaPath = null, WorkflowValue<areaPathComparisonInput> areaPathComparison = null, WorkflowValue<string> wiqlSystemIterationPath = null, WorkflowValue<iterationPathComparisonInput> iterationPathComparison = null, WorkflowValue<string> wiqlMicrosoftVSTSCommonPriority = null, WorkflowValue<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = ExpressionConverter.Convert(account);
-            if (team != null)
-                callPayload.Queries["team"] = ExpressionConverter.Convert(team);
-            if (wiqlSystemAssignedTo != null)
-                callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
-            if (wiqlSystemWorkItemType != null)
-                callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
-            if (wiqlSystemAreaPath != null)
-                callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
-            callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
-            if (areaPathComparison != null)
-                callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
-            if (wiqlSystemIterationPath != null)
-                callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
-            callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
-            if (iterationPathComparison != null)
-                callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
-            if (wiqlMicrosoftVSTSCommonPriority != null)
-                callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
-            if (wiqlSystemCreatedBy != null)
-                callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
-            return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(team, nameof(team), required: false);
+            WorkflowValue.Validate(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
+            WorkflowValue.Validate(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
+            WorkflowValue.Validate(closedState, nameof(closedState), required: false);
+            WorkflowValue.Validate(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
+            WorkflowValue.Validate(areaPathComparison, nameof(areaPathComparison), required: false);
+            WorkflowValue.Validate(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
+            WorkflowValue.Validate(iterationPathComparison, nameof(iterationPathComparison), required: false);
+            WorkflowValue.Validate(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
+            WorkflowValue.Validate(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
+            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemclosed_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (team != null)
+                    callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                if (wiqlSystemAssignedTo != null)
+                    callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+                callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
+                if (wiqlSystemWorkItemType != null)
+                    callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+                callPayload.Queries["closedState"] = Convert.ToString("Done, Closed, Completed, Inactive");
+                if (closedState != null)
+                    callPayload.Queries["closedState"] = ExpressionConverter.Convert(closedState);
+                if (wiqlSystemAreaPath != null)
+                    callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+                callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
+                if (areaPathComparison != null)
+                    callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+                if (wiqlSystemIterationPath != null)
+                    callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+                callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
+                if (iterationPathComparison != null)
+                    callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+                if (wiqlMicrosoftVSTSCommonPriority != null)
+                    callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+                if (wiqlSystemCreatedBy != null)
+                    callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnWorkItemCreated))]
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemCreated(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> team = null, WorkflowValue<string> wiqlSystemAssignedTo = null, WorkflowValue<string> wiqlSystemWorkItemType = null, WorkflowValue<string> wiqlSystemAreaPath = null, WorkflowValue<areaPathComparisonInput> areaPathComparison = null, WorkflowValue<string> wiqlSystemIterationPath = null, WorkflowValue<iterationPathComparisonInput> iterationPathComparison = null, WorkflowValue<string> wiqlMicrosoftVSTSCommonPriority = null, WorkflowValue<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(team, nameof(team), required: false);
+            WorkflowValue.Validate(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
+            WorkflowValue.Validate(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
+            WorkflowValue.Validate(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
+            WorkflowValue.Validate(areaPathComparison, nameof(areaPathComparison), required: false);
+            WorkflowValue.Validate(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
+            WorkflowValue.Validate(iterationPathComparison, nameof(iterationPathComparison), required: false);
+            WorkflowValue.Validate(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
+            WorkflowValue.Validate(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
+            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemcreated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (team != null)
+                    callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                if (wiqlSystemAssignedTo != null)
+                    callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+                callPayload.Queries["wiql__System_WorkItemType"] = Convert.ToString("Bug");
+                if (wiqlSystemWorkItemType != null)
+                    callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+                if (wiqlSystemAreaPath != null)
+                    callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+                callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
+                if (areaPathComparison != null)
+                    callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+                if (wiqlSystemIterationPath != null)
+                    callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+                callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
+                if (iterationPathComparison != null)
+                    callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+                if (wiqlMicrosoftVSTSCommonPriority != null)
+                    callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+                if (wiqlSystemCreatedBy != null)
+                    callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnWorkItemUpdated))]
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemUpdated(WorkflowValue<string> account, WorkflowValue<string> project, WorkflowValue<string> team = null, WorkflowValue<string> wiqlSystemAssignedTo = null, WorkflowValue<string> wiqlSystemWorkItemType = null, WorkflowValue<string> wiqlSystemAreaPath = null, WorkflowValue<areaPathComparisonInput> areaPathComparison = null, WorkflowValue<string> wiqlSystemIterationPath = null, WorkflowValue<iterationPathComparisonInput> iterationPathComparison = null, WorkflowValue<string> wiqlMicrosoftVSTSCommonPriority = null, WorkflowValue<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(account, nameof(account), required: true);
+            WorkflowValue.Validate(project, nameof(project), required: true);
+            WorkflowValue.Validate(team, nameof(team), required: false);
+            WorkflowValue.Validate(wiqlSystemAssignedTo, nameof(wiqlSystemAssignedTo), required: false);
+            WorkflowValue.Validate(wiqlSystemWorkItemType, nameof(wiqlSystemWorkItemType), required: false);
+            WorkflowValue.Validate(wiqlSystemAreaPath, nameof(wiqlSystemAreaPath), required: false);
+            WorkflowValue.Validate(areaPathComparison, nameof(areaPathComparison), required: false);
+            WorkflowValue.Validate(wiqlSystemIterationPath, nameof(wiqlSystemIterationPath), required: false);
+            WorkflowValue.Validate(iterationPathComparison, nameof(iterationPathComparison), required: false);
+            WorkflowValue.Validate(wiqlMicrosoftVSTSCommonPriority, nameof(wiqlMicrosoftVSTSCommonPriority), required: false);
+            WorkflowValue.Validate(wiqlSystemCreatedBy, nameof(wiqlSystemCreatedBy), required: false);
+            return new DeferredBodyTrigger<VstsListTriggerWorkItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/workitemupdated_trigger/{0}/_apis/wit/wiql", ExpressionConverter.ConvertWithUrlEncoding(project, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = ExpressionConverter.Convert(account);
+                if (team != null)
+                    callPayload.Queries["team"] = ExpressionConverter.Convert(team);
+                if (wiqlSystemAssignedTo != null)
+                    callPayload.Queries["wiql__System_AssignedTo"] = ExpressionConverter.Convert(wiqlSystemAssignedTo);
+                if (wiqlSystemWorkItemType != null)
+                    callPayload.Queries["wiql__System_WorkItemType"] = ExpressionConverter.Convert(wiqlSystemWorkItemType);
+                if (wiqlSystemAreaPath != null)
+                    callPayload.Queries["wiql__System_AreaPath"] = ExpressionConverter.Convert(wiqlSystemAreaPath);
+                callPayload.Queries["areaPathComparison"] = Convert.ToString("Equals");
+                if (areaPathComparison != null)
+                    callPayload.Queries["areaPathComparison"] = ExpressionConverter.Convert(areaPathComparison);
+                if (wiqlSystemIterationPath != null)
+                    callPayload.Queries["wiql__System_IterationPath"] = ExpressionConverter.Convert(wiqlSystemIterationPath);
+                callPayload.Queries["iterationPathComparison"] = Convert.ToString("Equals");
+                if (iterationPathComparison != null)
+                    callPayload.Queries["iterationPathComparison"] = ExpressionConverter.Convert(iterationPathComparison);
+                if (wiqlMicrosoftVSTSCommonPriority != null)
+                    callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
+                if (wiqlSystemCreatedBy != null)
+                    callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
+                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

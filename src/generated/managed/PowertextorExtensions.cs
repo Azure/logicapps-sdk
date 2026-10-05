@@ -4,1140 +4,1708 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PowertextorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse> SendTextMessageToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextMessageToMultipleContacts))]
+        public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse> SendTextMessageToMultipleContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextMessageToMultipleContactsResponse> __BuildSendTextMessageToMultipleContacts(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodybody, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextMessageToMultipleContactsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextMessageToMultipleContactsResponse>(callPayload);
+                return new ApiConnectionAction<SendTextMessageToMultipleContactsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse> ScheduleReviewTextMessageForContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleReviewTextMessageForContacts))]
+        public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse> ScheduleReviewTextMessageForContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/schedulereviewcontacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleReviewTextMessageForContactsResponse> __BuildScheduleReviewTextMessageForContacts(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodygooglePlaceId, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleReviewTextMessageForContactsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/schedulereviewcontacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleReviewTextMessageForContactsResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleReviewTextMessageForContactsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse> SendTextMessageToMultipleGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextMessageToMultipleGroups))]
+        public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse> SendTextMessageToMultipleGroups([WorkflowExpression] Func<string[]> bodygroupName, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendgroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextMessageToMultipleGroupsResponse> __BuildSendTextMessageToMultipleGroups(WorkflowValue<string[]> bodygroupName, WorkflowValue<string> bodybody, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextMessageToMultipleGroupsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendgroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextMessageToMultipleGroupsResponse>(callPayload);
+                return new ApiConnectionAction<SendTextMessageToMultipleGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextGroupsResponse> SendReviewTextGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendReviewTextGroups))]
+        public IBodyWorkflowAction<SendReviewTextGroupsResponse> SendReviewTextGroups([WorkflowExpression] Func<string[]> bodygroupName, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendreview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendReviewTextGroupsResponse> __BuildSendReviewTextGroups(WorkflowValue<string[]> bodygroupName, WorkflowValue<string> bodybody, WorkflowValue<string> bodyplaceId, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendReviewTextGroupsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendreview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendReviewTextGroupsResponse>(callPayload);
+                return new ApiConnectionAction<SendReviewTextGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleMessageForAContactResponse> ScheduleMessageForAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleMessageForAContact))]
+        public IBodyWorkflowAction<ScheduleMessageForAContactResponse> ScheduleMessageForAContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/scheduletext";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleMessageForAContactResponse> __BuildScheduleMessageForAContact(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleMessageForAContactResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/scheduletext";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleMessageForAContactResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleMessageForAContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleMessageForGroupsResponse> ScheduleMessageForGroups(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleMessageForGroups))]
+        public IBodyWorkflowAction<ScheduleMessageForGroupsResponse> ScheduleMessageForGroups([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/scheduletextbulk";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleMessageForGroupsResponse> __BuildScheduleMessageForGroups(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleMessageForGroupsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/scheduletextbulk";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleMessageForGroupsResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleMessageForGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse> ScheduleReviewMessageForAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleReviewMessageForAContact))]
+        public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse> ScheduleReviewMessageForAContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/schedulereviewtext";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleReviewMessageForAContactResponse> __BuildScheduleReviewMessageForAContact(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodygooglePlaceId, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleReviewMessageForAContactResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/schedulereviewtext";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleReviewMessageForAContactResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleReviewMessageForAContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewGroupsResponse> ScheduleReviewGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleReviewGroups))]
+        public IBodyWorkflowAction<ScheduleReviewGroupsResponse> ScheduleReviewGroups([WorkflowExpression] Func<string[]> bodygroupName, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/scheduledbulkreview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleReviewGroupsResponse> __BuildScheduleReviewGroups(WorkflowValue<string[]> bodygroupName, WorkflowValue<string> bodybody, WorkflowValue<string> bodyplaceId, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleReviewGroupsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/scheduledbulkreview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleReviewGroupsResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleReviewGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextToAContactResponse> SendTextToAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextToAContact))]
+        public IBodyWorkflowAction<SendTextToAContactResponse> SendTextToAContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendmessagesinglecontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextToAContactResponse> __BuildSendTextToAContact(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextToAContactResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendmessagesinglecontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextToAContactResponse>(callPayload);
+                return new ApiConnectionAction<SendTextToAContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse> ScheduleTextToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleTextToMultipleContacts))]
+        public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse> ScheduleTextToMultipleContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/scheduletextmulticontacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleTextToMultipleContactsResponse> __BuildScheduleTextToMultipleContacts(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleTextToMultipleContactsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/scheduletextmulticontacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleTextToMultipleContactsResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleTextToMultipleContactsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewSingleContactResponse> SendReviewSingleContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendReviewSingleContact))]
+        public IBodyWorkflowAction<SendReviewSingleContactResponse> SendReviewSingleContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendereviewsinglecontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendReviewSingleContactResponse> __BuildSendReviewSingleContact(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodygooglePlaceId, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendReviewSingleContactResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendereviewsinglecontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendReviewSingleContactResponse>(callPayload);
+                return new ApiConnectionAction<SendReviewSingleContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse> SendReviewTextMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygooglePlaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendReviewTextMultipleContacts))]
+        public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse> SendReviewTextMultipleContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendereviewmulticontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendReviewTextMultipleContactsResponse> __BuildSendReviewTextMultipleContacts(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodygooglePlaceId, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendReviewTextMultipleContactsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendereviewmulticontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendReviewTextMultipleContactsResponse>(callPayload);
+                return new ApiConnectionAction<SendReviewTextMultipleContactsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse> SendTextMessageEventReminderToAContact(Expression<Func<string>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextMessageEventReminderToAContact))]
+        public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse> SendTextMessageEventReminderToAContact([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendreminderssinglecontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
-            bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
-            bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
-            bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextMessageEventReminderToAContactResponse> __BuildSendTextMessageEventReminderToAContact(WorkflowValue<string> bodyto, WorkflowValue<string> bodyreminderText, WorkflowValue<string> bodyeventDate, WorkflowValue<int> bodyday, WorkflowValue<string> bodytime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
+            WorkflowValue.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
+            WorkflowValue.Validate(bodyday, nameof(bodyday), required: true);
+            WorkflowValue.Validate(bodytime, nameof(bodytime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextMessageEventReminderToAContactResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendreminderssinglecontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+                bodypropCount++;
+                body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+                bodypropCount++;
+                body["Day"] = ExpressionConverter.ConvertO(bodyday);
+                bodypropCount++;
+                body["Time"] = ExpressionConverter.ConvertO(bodytime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextMessageEventReminderToAContactResponse>(callPayload);
+                return new ApiConnectionAction<SendTextMessageEventReminderToAContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse> SendTextMessageEventReminderToMultipleContacts(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextMessageEventReminderToMultipleContacts))]
+        public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse> SendTextMessageEventReminderToMultipleContacts([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendremindersmulticontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
-            bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
-            bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
-            bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextMessageEventReminderToMultipleContactsResponse> __BuildSendTextMessageEventReminderToMultipleContacts(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodyreminderText, WorkflowValue<string> bodyeventDate, WorkflowValue<int> bodyday, WorkflowValue<string> bodytime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
+            WorkflowValue.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
+            WorkflowValue.Validate(bodyday, nameof(bodyday), required: true);
+            WorkflowValue.Validate(bodytime, nameof(bodytime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextMessageEventReminderToMultipleContactsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendremindersmulticontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+                bodypropCount++;
+                body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+                bodypropCount++;
+                body["Day"] = ExpressionConverter.ConvertO(bodyday);
+                bodypropCount++;
+                body["Time"] = ExpressionConverter.ConvertO(bodytime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextMessageEventReminderToMultipleContactsResponse>(callPayload);
+                return new ApiConnectionAction<SendTextMessageEventReminderToMultipleContactsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse> SendTextMessageEventReminderToGroups(Expression<Func<string[]>> bodygroupName, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextMessageEventReminderToGroups))]
+        public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse> SendTextMessageEventReminderToGroups([WorkflowExpression] Func<string[]> bodygroupName, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendremindertogroups";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
-            bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
-            bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
-            bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextMessageEventReminderToGroupsResponse> __BuildSendTextMessageEventReminderToGroups(WorkflowValue<string[]> bodygroupName, WorkflowValue<string> bodyreminderText, WorkflowValue<string> bodyeventDate, WorkflowValue<int> bodyday, WorkflowValue<string> bodytime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
+            WorkflowValue.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
+            WorkflowValue.Validate(bodyday, nameof(bodyday), required: true);
+            WorkflowValue.Validate(bodytime, nameof(bodytime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextMessageEventReminderToGroupsResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendremindertogroups";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                bodypropCount++;
+                body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+                bodypropCount++;
+                body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+                bodypropCount++;
+                body["Day"] = ExpressionConverter.ConvertO(bodyday);
+                bodypropCount++;
+                body["Time"] = ExpressionConverter.ConvertO(bodytime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextMessageEventReminderToGroupsResponse>(callPayload);
+                return new ApiConnectionAction<SendTextMessageEventReminderToGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToANumberResponse> SendTextMessageToANumber(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextMessageToANumber))]
+        public IBodyWorkflowAction<SendTextMessageToANumberResponse> SendTextMessageToANumber([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendsimple";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextMessageToANumberResponse> __BuildSendTextMessageToANumber(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextMessageToANumberResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendsimple";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextMessageToANumberResponse>(callPayload);
+                return new ApiConnectionAction<SendTextMessageToANumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse> ScheduleReviewTextMessageForAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleReviewTextMessageForAGroup))]
+        public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse> ScheduleReviewTextMessageForAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/scheduledsingleGroupreview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleReviewTextMessageForAGroupResponse> __BuildScheduleReviewTextMessageForAGroup(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodyplaceId, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleReviewTextMessageForAGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/scheduledsingleGroupreview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleReviewTextMessageForAGroupResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleReviewTextMessageForAGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse> ScheduleTextMessagesForAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleTextMessagesForAGroup))]
+        public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse> ScheduleTextMessagesForAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/scheduletextsingleGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleTextMessagesForAGroupResponse> __BuildScheduleTextMessagesForAGroup(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleTextMessagesForAGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/scheduletextsingleGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleTextMessagesForAGroupResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleTextMessagesForAGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse> SendTextEventReminderToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextEventReminderToAGroup))]
+        public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse> SendTextEventReminderToAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendremindertosinglegroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
-            bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
-            bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
-            bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextEventReminderToAGroupResponse> __BuildSendTextEventReminderToAGroup(WorkflowValue<string> bodyto, WorkflowValue<string> bodyreminderText, WorkflowValue<string> bodyeventDate, WorkflowValue<int> bodyday, WorkflowValue<string> bodytime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
+            WorkflowValue.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
+            WorkflowValue.Validate(bodyday, nameof(bodyday), required: true);
+            WorkflowValue.Validate(bodytime, nameof(bodytime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextEventReminderToAGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendremindertosinglegroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+                bodypropCount++;
+                body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+                bodypropCount++;
+                body["Day"] = ExpressionConverter.ConvertO(bodyday);
+                bodypropCount++;
+                body["Time"] = ExpressionConverter.ConvertO(bodytime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextEventReminderToAGroupResponse>(callPayload);
+                return new ApiConnectionAction<SendTextEventReminderToAGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse> SendReviewTextMessageToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendReviewTextMessageToAGroup))]
+        public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse> SendReviewTextMessageToAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendreviewtosinglegroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendReviewTextMessageToAGroupResponse> __BuildSendReviewTextMessageToAGroup(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodyplaceId, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendReviewTextMessageToAGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendreviewtosinglegroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendReviewTextMessageToAGroupResponse>(callPayload);
+                return new ApiConnectionAction<SendReviewTextMessageToAGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageToAGroupResponse> SendTextMessageToAGroup(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextMessageToAGroup))]
+        public IBodyWorkflowAction<SendTextMessageToAGroupResponse> SendTextMessageToAGroup([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendsinglegroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextMessageToAGroupResponse> __BuildSendTextMessageToAGroup(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextMessageToAGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendsinglegroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextMessageToAGroupResponse>(callPayload);
+                return new ApiConnectionAction<SendTextMessageToAGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextToANewGroupResponse> SendTextToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygroupName, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextToANewGroup))]
+        public IBodyWorkflowAction<SendTextToANewGroupResponse> SendTextToANewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/creategroupsend";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextToANewGroupResponse> __BuildSendTextToANewGroup(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodygroupName, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextToANewGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/creategroupsend";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextToANewGroupResponse>(callPayload);
+                return new ApiConnectionAction<SendTextToANewGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextForANewGroupResponse> ScheduleTextForANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodybody, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleTextForANewGroup))]
+        public IBodyWorkflowAction<ScheduleTextForANewGroupResponse> ScheduleTextForANewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/scheduledcreategroupsend";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleTextForANewGroupResponse> __BuildScheduleTextForANewGroup(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodybody, WorkflowValue<string> bodygroupName, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleTextForANewGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/scheduledcreategroupsend";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                bodypropCount++;
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleTextForANewGroupResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleTextForANewGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse> SendTextEventReminderToNewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendTextEventReminderToNewGroup))]
+        public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse> SendTextEventReminderToNewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/creategroupremindersend";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
-            bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
-            bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextEventReminderToNewGroupResponse> __BuildSendTextEventReminderToNewGroup(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodyreminderText, WorkflowValue<string> bodygroupName, WorkflowValue<string> bodyeventDate, WorkflowValue<int> bodyday, WorkflowValue<string> bodytime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
+            WorkflowValue.Validate(bodyday, nameof(bodyday), required: true);
+            WorkflowValue.Validate(bodytime, nameof(bodytime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextEventReminderToNewGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/creategroupremindersend";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
+                bodypropCount++;
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                bodypropCount++;
+                body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+                bodypropCount++;
+                body["Day"] = ExpressionConverter.ConvertO(bodyday);
+                bodypropCount++;
+                body["Time"] = ExpressionConverter.ConvertO(bodytime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendTextEventReminderToNewGroupResponse>(callPayload);
+                return new ApiConnectionAction<SendTextEventReminderToNewGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageToANewContactResponse> SendMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodymessage, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessageToANewContact))]
+        public IBodyWorkflowAction<SendMessageToANewContactResponse> SendMessageToANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendsimplewithName";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMessageToANewContactResponse> __BuildSendMessageToANewContact(WorkflowValue<string> bodycontactNumber, WorkflowValue<string> bodymessage, WorkflowValue<string> bodycontactName = null, WorkflowValue<string> bodycontactLastName = null, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: true);
+            WorkflowValue.Validate(bodycontactName, nameof(bodycontactName), required: false);
+            WorkflowValue.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendMessageToANewContactResponse>(() =>
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                var apiCallPath = "/api/messages/sendsimplewithName";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontactName != null)
+                {
+                    body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                    bodypropCount++;
+                }
+
+                if (bodycontactLastName != null)
+                {
+                    body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodycontactLastName != null)
-            {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
                 bodypropCount++;
-            }
+                body["Message"] = ExpressionConverter.ConvertO(bodymessage);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
-            bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
-            if (bodyreplySTOPToOptOut != null)
-            {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendMessageToANewContactResponse>(callPayload);
+                return new ApiConnectionAction<SendMessageToANewContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse> ScheduleReviewTextMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygooglePlaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleReviewTextMessageToANewContact))]
+        public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse> ScheduleReviewTextMessageToANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodyreviewText, [WorkflowExpression] Func<string> bodygooglePlaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/schedulereviewtextwithcontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleReviewTextMessageToANewContactResponse> __BuildScheduleReviewTextMessageToANewContact(WorkflowValue<string> bodycontactNumber, WorkflowValue<string> bodyreviewText, WorkflowValue<string> bodygooglePlaceId, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<string> bodycontactName = null, WorkflowValue<string> bodycontactLastName = null, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
+            WorkflowValue.Validate(bodyreviewText, nameof(bodyreviewText), required: true);
+            WorkflowValue.Validate(bodygooglePlaceId, nameof(bodygooglePlaceId), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodycontactName, nameof(bodycontactName), required: false);
+            WorkflowValue.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleReviewTextMessageToANewContactResponse>(() =>
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                var apiCallPath = "/api/messages/schedulereviewtextwithcontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontactName != null)
+                {
+                    body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                    bodypropCount++;
+                }
+
+                if (bodycontactLastName != null)
+                {
+                    body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodycontactLastName != null)
-            {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
-            bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
-            bodypropCount++;
-            body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodyreplySTOPToOptOut != null)
-            {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
                 bodypropCount++;
-            }
+                body["GooglePlaceId"] = ExpressionConverter.ConvertO(bodygooglePlaceId);
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleReviewTextMessageToANewContactResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleReviewTextMessageToANewContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse> SendReviewTextMessageToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendReviewTextMessageToANewContact))]
+        public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse> SendReviewTextMessageToANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodyreviewText, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/createcontactreviewsend";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendReviewTextMessageToANewContactResponse> __BuildSendReviewTextMessageToANewContact(WorkflowValue<string> bodycontactNumber, WorkflowValue<string> bodyreviewText, WorkflowValue<string> bodyplaceId, WorkflowValue<string> bodycontactName = null, WorkflowValue<string> bodycontactLastName = null, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
+            WorkflowValue.Validate(bodyreviewText, nameof(bodyreviewText), required: true);
+            WorkflowValue.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
+            WorkflowValue.Validate(bodycontactName, nameof(bodycontactName), required: false);
+            WorkflowValue.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendReviewTextMessageToANewContactResponse>(() =>
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                var apiCallPath = "/api/messages/createcontactreviewsend";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontactName != null)
+                {
+                    body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                    bodypropCount++;
+                }
+
+                if (bodycontactLastName != null)
+                {
+                    body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodycontactLastName != null)
-            {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
-            bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
-            bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
-            if (bodyreplySTOPToOptOut != null)
-            {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
                 bodypropCount++;
-            }
+                body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendReviewTextMessageToANewContactResponse>(callPayload);
+                return new ApiConnectionAction<SendReviewTextMessageToANewContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse> ScheduleReviewToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyplaceId, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleReviewToANewGroup))]
+        public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse> ScheduleReviewToANewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodyreviewText, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/creategroupschedulereview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleReviewToANewGroupResponse> __BuildScheduleReviewToANewGroup(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodyreviewText, WorkflowValue<string> bodygroupName, WorkflowValue<string> bodyplaceId, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodyreviewText, nameof(bodyreviewText), required: true);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleReviewToANewGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/creategroupschedulereview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
+                bodypropCount++;
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                bodypropCount++;
+                body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+                bodypropCount++;
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleReviewToANewGroupResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleReviewToANewGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendReviewToANewGroupResponse> SendReviewToANewGroup(Expression<Func<string[]>> bodyto, Expression<Func<string>> bodyreviewText, Expression<Func<string>> bodygroupName, Expression<Func<string>> bodyplaceId, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendReviewToANewGroup))]
+        public IBodyWorkflowAction<SendReviewToANewGroupResponse> SendReviewToANewGroup([WorkflowExpression] Func<string[]> bodyto, [WorkflowExpression] Func<string> bodyreviewText, [WorkflowExpression] Func<string> bodygroupName, [WorkflowExpression] Func<string> bodyplaceId, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/creategroupreviewsend";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
-            bodypropCount++;
-            body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
-            bodypropCount++;
-            body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendReviewToANewGroupResponse> __BuildSendReviewToANewGroup(WorkflowValue<string[]> bodyto, WorkflowValue<string> bodyreviewText, WorkflowValue<string> bodygroupName, WorkflowValue<string> bodyplaceId, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodyreviewText, nameof(bodyreviewText), required: true);
+            WorkflowValue.Validate(bodygroupName, nameof(bodygroupName), required: true);
+            WorkflowValue.Validate(bodyplaceId, nameof(bodyplaceId), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendReviewToANewGroupResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/creategroupreviewsend";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["ReviewText"] = ExpressionConverter.ConvertO(bodyreviewText);
+                bodypropCount++;
+                body["GroupName"] = ExpressionConverter.ConvertO(bodygroupName);
+                bodypropCount++;
+                body["PlaceId"] = ExpressionConverter.ConvertO(bodyplaceId);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendReviewToANewGroupResponse>(callPayload);
+                return new ApiConnectionAction<SendReviewToANewGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<ScheduleTextForANewContactResponse> ScheduleTextForANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodymessage, Expression<Func<string>> bodyscheduledDate, Expression<Func<string>> bodyscheduledTime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildScheduleTextForANewContact))]
+        public IBodyWorkflowAction<ScheduleTextForANewContactResponse> ScheduleTextForANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodyscheduledDate, [WorkflowExpression] Func<string> bodyscheduledTime, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/scheduletextwithname";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScheduleTextForANewContactResponse> __BuildScheduleTextForANewContact(WorkflowValue<string> bodycontactNumber, WorkflowValue<string> bodymessage, WorkflowValue<string> bodyscheduledDate, WorkflowValue<string> bodyscheduledTime, WorkflowValue<string> bodycontactName = null, WorkflowValue<string> bodycontactLastName = null, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: true);
+            WorkflowValue.Validate(bodyscheduledTime, nameof(bodyscheduledTime), required: true);
+            WorkflowValue.Validate(bodycontactName, nameof(bodycontactName), required: false);
+            WorkflowValue.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<ScheduleTextForANewContactResponse>(() =>
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                var apiCallPath = "/api/messages/scheduletextwithname";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontactName != null)
+                {
+                    body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                    bodypropCount++;
+                }
+
+                if (bodycontactLastName != null)
+                {
+                    body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodycontactLastName != null)
-            {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
-            bodypropCount++;
-            body["Message"] = ExpressionConverter.ConvertO(bodymessage);
-            bodypropCount++;
-            body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-            bodypropCount++;
-            body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
-            if (bodyreplySTOPToOptOut != null)
-            {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["Message"] = ExpressionConverter.ConvertO(bodymessage);
                 bodypropCount++;
-            }
+                body["ScheduledDate"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                bodypropCount++;
+                body["ScheduledTime"] = ExpressionConverter.ConvertO(bodyscheduledTime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ScheduleTextForANewContactResponse>(callPayload);
+                return new ApiConnectionAction<ScheduleTextForANewContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<CreateAContactResponse> CreateAContact(Expression<Func<string>> bodyphone, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodylastName = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateAContact))]
+        public IBodyWorkflowAction<CreateAContactResponse> CreateAContact([WorkflowExpression] Func<string> bodyphone, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodylastName = null)
         {
-            var apiCallPath = "/api/contacts/contactnew";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Phone"] = ExpressionConverter.ConvertO(bodyphone);
-            if (bodyname != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateAContactResponse> __BuildCreateAContact(WorkflowValue<string> bodyphone, WorkflowValue<string> bodyname = null, WorkflowValue<string> bodylastName = null)
+        {
+            WorkflowValue.Validate(bodyphone, nameof(bodyphone), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowValue.Validate(bodylastName, nameof(bodylastName), required: false);
+            return new DeferredBodyAction<CreateAContactResponse>(() =>
             {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                var apiCallPath = "/api/contacts/contactnew";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["Phone"] = ExpressionConverter.ConvertO(bodyphone);
+                if (bodyname != null)
+                {
+                    body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
+                if (bodylastName != null)
+                {
+                    body["LastName"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateAContactResponse>(callPayload);
+                return new ApiConnectionAction<CreateAContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse> SendMessageEventReminderToANewContact(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodyreminderText, Expression<Func<string>> bodyeventDate, Expression<Func<int>> bodyday, Expression<Func<string>> bodytime, Expression<Func<string>> bodycontactName = null, Expression<Func<string>> bodycontactLastName = null, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessageEventReminderToANewContact))]
+        public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse> SendMessageEventReminderToANewContact([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodyreminderText, [WorkflowExpression] Func<string> bodyeventDate, [WorkflowExpression] Func<int> bodyday, [WorkflowExpression] Func<string> bodytime, [WorkflowExpression] Func<string> bodycontactName = null, [WorkflowExpression] Func<string> bodycontactLastName = null, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendreminderwithcontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontactName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMessageEventReminderToANewContactResponse> __BuildSendMessageEventReminderToANewContact(WorkflowValue<string> bodycontactNumber, WorkflowValue<string> bodyreminderText, WorkflowValue<string> bodyeventDate, WorkflowValue<int> bodyday, WorkflowValue<string> bodytime, WorkflowValue<string> bodycontactName = null, WorkflowValue<string> bodycontactLastName = null, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
+            WorkflowValue.Validate(bodyreminderText, nameof(bodyreminderText), required: true);
+            WorkflowValue.Validate(bodyeventDate, nameof(bodyeventDate), required: true);
+            WorkflowValue.Validate(bodyday, nameof(bodyday), required: true);
+            WorkflowValue.Validate(bodytime, nameof(bodytime), required: true);
+            WorkflowValue.Validate(bodycontactName, nameof(bodycontactName), required: false);
+            WorkflowValue.Validate(bodycontactLastName, nameof(bodycontactLastName), required: false);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendMessageEventReminderToANewContactResponse>(() =>
             {
-                body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                var apiCallPath = "/api/messages/sendreminderwithcontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontactName != null)
+                {
+                    body["ContactName"] = ExpressionConverter.ConvertO(bodycontactName);
+                    bodypropCount++;
+                }
+
+                if (bodycontactLastName != null)
+                {
+                    body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodycontactLastName != null)
-            {
-                body["ContactLastName"] = ExpressionConverter.ConvertO(bodycontactLastName);
+                body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
-            bodypropCount++;
-            body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
-            bodypropCount++;
-            body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
-            bodypropCount++;
-            body["Day"] = ExpressionConverter.ConvertO(bodyday);
-            bodypropCount++;
-            body["Time"] = ExpressionConverter.ConvertO(bodytime);
-            if (bodyreplySTOPToOptOut != null)
-            {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ReminderText"] = ExpressionConverter.ConvertO(bodyreminderText);
                 bodypropCount++;
-            }
+                body["EventDate"] = ExpressionConverter.ConvertO(bodyeventDate);
+                bodypropCount++;
+                body["Day"] = ExpressionConverter.ConvertO(bodyday);
+                bodypropCount++;
+                body["Time"] = ExpressionConverter.ConvertO(bodytime);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendMessageEventReminderToANewContactResponse>(callPayload);
+                return new ApiConnectionAction<SendMessageEventReminderToANewContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<UpdateAPowerTextorContactResponse> UpdateAPowerTextorContact(Expression<Func<string>> bodycontact, Expression<Func<string>> bodyupdatedContactName = null, Expression<Func<string>> bodyupdatedContactLastName = null, Expression<Func<string>> bodyupdatedContactNumber = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateAPowerTextorContact))]
+        public IBodyWorkflowAction<UpdateAPowerTextorContactResponse> UpdateAPowerTextorContact([WorkflowExpression] Func<string> bodycontact, [WorkflowExpression] Func<string> bodyupdatedContactName = null, [WorkflowExpression] Func<string> bodyupdatedContactLastName = null, [WorkflowExpression] Func<string> bodyupdatedContactNumber = null)
         {
-            var apiCallPath = "/api/contacts/contactupdate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Contact"] = ExpressionConverter.ConvertO(bodycontact);
-            if (bodyupdatedContactName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateAPowerTextorContactResponse> __BuildUpdateAPowerTextorContact(WorkflowValue<string> bodycontact, WorkflowValue<string> bodyupdatedContactName = null, WorkflowValue<string> bodyupdatedContactLastName = null, WorkflowValue<string> bodyupdatedContactNumber = null)
+        {
+            WorkflowValue.Validate(bodycontact, nameof(bodycontact), required: true);
+            WorkflowValue.Validate(bodyupdatedContactName, nameof(bodyupdatedContactName), required: false);
+            WorkflowValue.Validate(bodyupdatedContactLastName, nameof(bodyupdatedContactLastName), required: false);
+            WorkflowValue.Validate(bodyupdatedContactNumber, nameof(bodyupdatedContactNumber), required: false);
+            return new DeferredBodyAction<UpdateAPowerTextorContactResponse>(() =>
             {
-                body["UpdatedContactName"] = ExpressionConverter.ConvertO(bodyupdatedContactName);
+                var apiCallPath = "/api/contacts/contactupdate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["Contact"] = ExpressionConverter.ConvertO(bodycontact);
+                if (bodyupdatedContactName != null)
+                {
+                    body["UpdatedContactName"] = ExpressionConverter.ConvertO(bodyupdatedContactName);
+                    bodypropCount++;
+                }
 
-            if (bodyupdatedContactLastName != null)
-            {
-                body["UpdatedContactLastName"] = ExpressionConverter.ConvertO(bodyupdatedContactLastName);
-                bodypropCount++;
-            }
+                if (bodyupdatedContactLastName != null)
+                {
+                    body["UpdatedContactLastName"] = ExpressionConverter.ConvertO(bodyupdatedContactLastName);
+                    bodypropCount++;
+                }
 
-            if (bodyupdatedContactNumber != null)
-            {
-                body["UpdatedContactNumber"] = ExpressionConverter.ConvertO(bodyupdatedContactNumber);
-                bodypropCount++;
-            }
+                if (bodyupdatedContactNumber != null)
+                {
+                    body["UpdatedContactNumber"] = ExpressionConverter.ConvertO(bodyupdatedContactNumber);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateAPowerTextorContactResponse>(callPayload);
+                return new ApiConnectionAction<UpdateAPowerTextorContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse> SendMessageToMultipleNumbers(Expression<Func<string>> bodycontactNumber, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessageToMultipleNumbers))]
+        public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse> SendMessageToMultipleNumbers([WorkflowExpression] Func<string> bodycontactNumber, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendtomulticontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMessageToMultipleNumbersResponse> __BuildSendMessageToMultipleNumbers(WorkflowValue<string> bodycontactNumber, WorkflowValue<string> bodybody, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodycontactNumber, nameof(bodycontactNumber), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendMessageToMultipleNumbersResponse>(() =>
             {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                var apiCallPath = "/api/messages/sendtomulticontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendMessageToMultipleNumbersResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendTextMessageResponse> SendTextMessage(Expression<Func<string>> bodyto, Expression<Func<string>> bodybody, Expression<Func<bool>> bodyreplySTOPToOptOut = null)
-        {
-            var apiCallPath = "/api/messages/sendsimpletext";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["To"] = ExpressionConverter.ConvertO(bodyto);
-            bodypropCount++;
-            body["Body"] = ExpressionConverter.ConvertO(bodybody);
-            if (bodyreplySTOPToOptOut != null)
-            {
-                body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                body["ContactNumber"] = ExpressionConverter.ConvertO(bodycontactNumber);
                 bodypropCount++;
-            }
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendMessageToMultipleNumbersResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
+        [WorkflowExpressionFactory(nameof(__BuildSendTextMessage))]
+        public IBodyWorkflowAction<SendTextMessageResponse> SendTextMessage([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<bool> bodyreplySTOPToOptOut = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendTextMessageResponse> __BuildSendTextMessage(WorkflowValue<string> bodyto, WorkflowValue<string> bodybody, WorkflowValue<bool> bodyreplySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: true);
+            WorkflowValue.Validate(bodybody, nameof(bodybody), required: true);
+            WorkflowValue.Validate(bodyreplySTOPToOptOut, nameof(bodyreplySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendTextMessageResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/messages/sendsimpletext";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["To"] = ExpressionConverter.ConvertO(bodyto);
+                bodypropCount++;
+                body["Body"] = ExpressionConverter.ConvertO(bodybody);
+                if (bodyreplySTOPToOptOut != null)
+                {
+                    body["ReplySTOPToOptOut"] = ExpressionConverter.ConvertO(bodyreplySTOPToOptOut);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendTextMessageResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendTextMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSGroupResponse> SendMMSGroup(Expression<Func<string>> groupName, Expression<Func<string>> message, Expression<Func<object>> attachment, Expression<Func<bool>> replySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMMSGroup))]
+        public IBodyWorkflowAction<SendMMSGroupResponse> SendMMSGroup([WorkflowExpression] Func<string> groupName, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<object> attachment, [WorkflowExpression] Func<bool> replySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendmmsgroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SendMMSGroupResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMMSGroupResponse> __BuildSendMMSGroup(WorkflowValue<string> groupName, WorkflowValue<string> message, WorkflowValue<object> attachment, WorkflowValue<bool> replySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(groupName, nameof(groupName), required: true);
+            WorkflowValue.Validate(message, nameof(message), required: true);
+            WorkflowValue.Validate(attachment, nameof(attachment), required: true);
+            WorkflowValue.Validate(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendMMSGroupResponse>(() =>
+            {
+                var apiCallPath = "/api/messages/sendmmsgroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SendMMSGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSNewContactResponse> SendMMSNewContact(Expression<Func<string>> contactNumber, Expression<Func<object>> attachment, Expression<Func<string>> message, Expression<Func<string>> contactName = null, Expression<Func<string>> contactLastName = null, Expression<Func<bool>> replySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMMSNewContact))]
+        public IBodyWorkflowAction<SendMMSNewContactResponse> SendMMSNewContact([WorkflowExpression] Func<string> contactNumber, [WorkflowExpression] Func<object> attachment, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<string> contactName = null, [WorkflowExpression] Func<string> contactLastName = null, [WorkflowExpression] Func<bool> replySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendmmsnewcontact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SendMMSNewContactResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMMSNewContactResponse> __BuildSendMMSNewContact(WorkflowValue<string> contactNumber, WorkflowValue<object> attachment, WorkflowValue<string> message, WorkflowValue<string> contactName = null, WorkflowValue<string> contactLastName = null, WorkflowValue<bool> replySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(contactNumber, nameof(contactNumber), required: true);
+            WorkflowValue.Validate(attachment, nameof(attachment), required: true);
+            WorkflowValue.Validate(message, nameof(message), required: true);
+            WorkflowValue.Validate(contactName, nameof(contactName), required: false);
+            WorkflowValue.Validate(contactLastName, nameof(contactLastName), required: false);
+            WorkflowValue.Validate(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendMMSNewContactResponse>(() =>
+            {
+                var apiCallPath = "/api/messages/sendmmsnewcontact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SendMMSNewContactResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powertextor")]
-        public IBodyWorkflowAction<SendMMSContactsResponse> SendMMSContacts(Expression<Func<string>> to, Expression<Func<string>> message, Expression<Func<object>> attachment, Expression<Func<bool>> replySTOPToOptOut = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMMSContacts))]
+        public IBodyWorkflowAction<SendMMSContactsResponse> SendMMSContacts([WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<object> attachment, [WorkflowExpression] Func<bool> replySTOPToOptOut = null)
         {
-            var apiCallPath = "/api/messages/sendmmscontacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SendMMSContactsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMMSContactsResponse> __BuildSendMMSContacts(WorkflowValue<string> to, WorkflowValue<string> message, WorkflowValue<object> attachment, WorkflowValue<bool> replySTOPToOptOut = null)
+        {
+            WorkflowValue.Validate(to, nameof(to), required: true);
+            WorkflowValue.Validate(message, nameof(message), required: true);
+            WorkflowValue.Validate(attachment, nameof(attachment), required: true);
+            WorkflowValue.Validate(replySTOPToOptOut, nameof(replySTOPToOptOut), required: false);
+            return new DeferredBodyAction<SendMMSContactsResponse>(() =>
+            {
+                var apiCallPath = "/api/messages/sendmmscontacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SendMMSContactsResponse>(callPayload);
+            });
         }
     }
 

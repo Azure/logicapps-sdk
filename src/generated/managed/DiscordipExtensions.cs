@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -39,40 +38,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        public IBodyWorkflowAction<Webhook> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
+        [WorkflowExpressionFactory(nameof(__BuildExecuteWebhook))]
+        public IBodyWorkflowAction<Webhook> ExecuteWebhook([WorkflowExpression] Func<string> webhookId, [WorkflowExpression] Func<string> webhookToken, [WorkflowExpression] Func<contentTypeInput> contentType = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodyavatarURL = null)
         {
-            var apiCallPath = String.Format("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(webhookToken, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["content-type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyusername != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Webhook> __BuildExecuteWebhook(WorkflowValue<string> webhookId, WorkflowValue<string> webhookToken, WorkflowValue<contentTypeInput> contentType = null, WorkflowValue<string> bodycontent = null, WorkflowValue<string> bodyusername = null, WorkflowValue<string> bodyavatarURL = null)
+        {
+            WorkflowValue.Validate(webhookId, nameof(webhookId), required: true);
+            WorkflowValue.Validate(webhookToken, nameof(webhookToken), required: true);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: false);
+            WorkflowValue.Validate(bodycontent, nameof(bodycontent), required: false);
+            WorkflowValue.Validate(bodyusername, nameof(bodyusername), required: false);
+            WorkflowValue.Validate(bodyavatarURL, nameof(bodyavatarURL), required: false);
+            return new DeferredBodyAction<Webhook>(() =>
             {
-                body["username"] = ExpressionConverter.ConvertO(bodyusername);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(webhookId, 1), ExpressionConverter.ConvertWithUrlEncoding(webhookToken, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["content-type"] = ExpressionConverter.Convert(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    bodypropCount++;
+                }
 
-            if (bodyavatarURL != null)
-            {
-                body["avatar-url"] = ExpressionConverter.ConvertO(bodyavatarURL);
-                bodypropCount++;
-            }
+                if (bodyusername != null)
+                {
+                    body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyavatarURL != null)
+                {
+                    body["avatar-url"] = ExpressionConverter.ConvertO(bodyavatarURL);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Webhook>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Webhook>(callPayload);
+            });
         }
     }
 

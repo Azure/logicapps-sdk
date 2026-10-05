@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,171 +20,203 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetLightResponse> GetLight(Expression<Func<string>> deviceId)
+        [WorkflowExpressionFactory(nameof(__BuildGetLight))]
+        public IBodyWorkflowAction<GetLightResponse> GetLight([WorkflowExpression] Func<string> deviceId)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetLightResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLightResponse> __BuildGetLight(WorkflowValue<string> deviceId)
+        {
+            WorkflowValue.Validate(deviceId, nameof(deviceId), required: true);
+            return new DeferredBodyAction<GetLightResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetLightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteLightResponse> ExecuteLight(Expression<Func<string>> deviceId, Expression<Func<string>> bodymetadataname = null, Expression<Func<bool>> bodyonon = null, Expression<Func<double>> bodydimmingbrightness = null, Expression<Func<int>> bodycolorTemperaturemirek = null, Expression<Func<double>> bodycolorxyx = null, Expression<Func<double>> bodycolorxyy = null, Expression<Func<double>> bodydynamicsspeed = null, Expression<Func<int>> bodydynamicsduration = null, Expression<Func<string>> bodyalertaction = null, Expression<Func<bodygradientpointsInputItem[]>> bodygradientpoints = null)
+        [WorkflowExpressionFactory(nameof(__BuildExecuteLight))]
+        public IBodyWorkflowAction<ExecuteLightResponse> ExecuteLight([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<string> bodymetadataname = null, [WorkflowExpression] Func<bool> bodyonon = null, [WorkflowExpression] Func<double> bodydimmingbrightness = null, [WorkflowExpression] Func<int> bodycolorTemperaturemirek = null, [WorkflowExpression] Func<double> bodycolorxyx = null, [WorkflowExpression] Func<double> bodycolorxyy = null, [WorkflowExpression] Func<double> bodydynamicsspeed = null, [WorkflowExpression] Func<int> bodydynamicsduration = null, [WorkflowExpression] Func<string> bodyalertaction = null, [WorkflowExpression] Func<bodygradientpointsInputItem[]> bodygradientpoints = null)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (bodymetadataname != null)
-            {
-                metadataObject["name"] = ExpressionConverter.ConvertO(bodymetadataname);
-                metadataObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (metadataObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExecuteLightResponse> __BuildExecuteLight(WorkflowValue<string> deviceId, WorkflowValue<string> bodymetadataname = null, WorkflowValue<bool> bodyonon = null, WorkflowValue<double> bodydimmingbrightness = null, WorkflowValue<int> bodycolorTemperaturemirek = null, WorkflowValue<double> bodycolorxyx = null, WorkflowValue<double> bodycolorxyy = null, WorkflowValue<double> bodydynamicsspeed = null, WorkflowValue<int> bodydynamicsduration = null, WorkflowValue<string> bodyalertaction = null, WorkflowValue<bodygradientpointsInputItem[]> bodygradientpoints = null)
+        {
+            WorkflowValue.Validate(deviceId, nameof(deviceId), required: true);
+            WorkflowValue.Validate(bodymetadataname, nameof(bodymetadataname), required: false);
+            WorkflowValue.Validate(bodyonon, nameof(bodyonon), required: false);
+            WorkflowValue.Validate(bodydimmingbrightness, nameof(bodydimmingbrightness), required: false);
+            WorkflowValue.Validate(bodycolorTemperaturemirek, nameof(bodycolorTemperaturemirek), required: false);
+            WorkflowValue.Validate(bodycolorxyx, nameof(bodycolorxyx), required: false);
+            WorkflowValue.Validate(bodycolorxyy, nameof(bodycolorxyy), required: false);
+            WorkflowValue.Validate(bodydynamicsspeed, nameof(bodydynamicsspeed), required: false);
+            WorkflowValue.Validate(bodydynamicsduration, nameof(bodydynamicsduration), required: false);
+            WorkflowValue.Validate(bodyalertaction, nameof(bodyalertaction), required: false);
+            WorkflowValue.Validate(bodygradientpoints, nameof(bodygradientpoints), required: false);
+            return new DeferredBodyAction<ExecuteLightResponse>(() =>
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/light/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (bodymetadataname != null)
+                {
+                    metadataObject["name"] = ExpressionConverter.ConvertO(bodymetadataname);
+                    metadataObjectpropCount++;
+                }
 
-            var onObject = new JObject();
-            var onObjectpropCount = 0;
-            if (bodyonon != null)
-            {
-                onObject["on"] = ExpressionConverter.ConvertO(bodyonon);
-                onObjectpropCount++;
-            }
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            if (onObjectpropCount > 0)
-            {
-                body["on"] = onObject;
-                bodypropCount++;
-            }
+                var onObject = new JObject();
+                var onObjectpropCount = 0;
+                if (bodyonon != null)
+                {
+                    onObject["on"] = ExpressionConverter.ConvertO(bodyonon);
+                    onObjectpropCount++;
+                }
 
-            var dimmingObject = new JObject();
-            var dimmingObjectpropCount = 0;
-            if (bodydimmingbrightness != null)
-            {
-                dimmingObject["brightness"] = ExpressionConverter.ConvertO(bodydimmingbrightness);
-                dimmingObjectpropCount++;
-            }
+                if (onObjectpropCount > 0)
+                {
+                    body["on"] = onObject;
+                    bodypropCount++;
+                }
 
-            if (dimmingObjectpropCount > 0)
-            {
-                body["dimming"] = dimmingObject;
-                bodypropCount++;
-            }
+                var dimmingObject = new JObject();
+                var dimmingObjectpropCount = 0;
+                if (bodydimmingbrightness != null)
+                {
+                    dimmingObject["brightness"] = ExpressionConverter.ConvertO(bodydimmingbrightness);
+                    dimmingObjectpropCount++;
+                }
 
-            var colorTemperatureObject = new JObject();
-            var colorTemperatureObjectpropCount = 0;
-            if (bodycolorTemperaturemirek != null)
-            {
-                colorTemperatureObject["mirek"] = ExpressionConverter.ConvertO(bodycolorTemperaturemirek);
-                colorTemperatureObjectpropCount++;
-            }
+                if (dimmingObjectpropCount > 0)
+                {
+                    body["dimming"] = dimmingObject;
+                    bodypropCount++;
+                }
 
-            if (colorTemperatureObjectpropCount > 0)
-            {
-                body["color_temperature"] = colorTemperatureObject;
-                bodypropCount++;
-            }
+                var colorTemperatureObject = new JObject();
+                var colorTemperatureObjectpropCount = 0;
+                if (bodycolorTemperaturemirek != null)
+                {
+                    colorTemperatureObject["mirek"] = ExpressionConverter.ConvertO(bodycolorTemperaturemirek);
+                    colorTemperatureObjectpropCount++;
+                }
 
-            var colorObject = new JObject();
-            var colorObjectpropCount = 0;
-            var xyObject = new JObject();
-            var xyObjectpropCount = 0;
-            if (bodycolorxyx != null)
-            {
-                xyObject["x"] = ExpressionConverter.ConvertO(bodycolorxyx);
-                xyObjectpropCount++;
-            }
+                if (colorTemperatureObjectpropCount > 0)
+                {
+                    body["color_temperature"] = colorTemperatureObject;
+                    bodypropCount++;
+                }
 
-            if (bodycolorxyy != null)
-            {
-                xyObject["y"] = ExpressionConverter.ConvertO(bodycolorxyy);
-                xyObjectpropCount++;
-            }
+                var colorObject = new JObject();
+                var colorObjectpropCount = 0;
+                var xyObject = new JObject();
+                var xyObjectpropCount = 0;
+                if (bodycolorxyx != null)
+                {
+                    xyObject["x"] = ExpressionConverter.ConvertO(bodycolorxyx);
+                    xyObjectpropCount++;
+                }
 
-            if (xyObjectpropCount > 0)
-            {
-                colorObject["xy"] = xyObject;
-                colorObjectpropCount++;
-            }
+                if (bodycolorxyy != null)
+                {
+                    xyObject["y"] = ExpressionConverter.ConvertO(bodycolorxyy);
+                    xyObjectpropCount++;
+                }
 
-            if (colorObjectpropCount > 0)
-            {
-                body["color"] = colorObject;
-                bodypropCount++;
-            }
+                if (xyObjectpropCount > 0)
+                {
+                    colorObject["xy"] = xyObject;
+                    colorObjectpropCount++;
+                }
 
-            var dynamicsObject = new JObject();
-            var dynamicsObjectpropCount = 0;
-            if (bodydynamicsspeed != null)
-            {
-                dynamicsObject["speed"] = ExpressionConverter.ConvertO(bodydynamicsspeed);
-                dynamicsObjectpropCount++;
-            }
+                if (colorObjectpropCount > 0)
+                {
+                    body["color"] = colorObject;
+                    bodypropCount++;
+                }
 
-            if (bodydynamicsduration != null)
-            {
-                dynamicsObject["duration"] = ExpressionConverter.ConvertO(bodydynamicsduration);
-                dynamicsObjectpropCount++;
-            }
+                var dynamicsObject = new JObject();
+                var dynamicsObjectpropCount = 0;
+                if (bodydynamicsspeed != null)
+                {
+                    dynamicsObject["speed"] = ExpressionConverter.ConvertO(bodydynamicsspeed);
+                    dynamicsObjectpropCount++;
+                }
 
-            if (dynamicsObjectpropCount > 0)
-            {
-                body["dynamics"] = dynamicsObject;
-                bodypropCount++;
-            }
+                if (bodydynamicsduration != null)
+                {
+                    dynamicsObject["duration"] = ExpressionConverter.ConvertO(bodydynamicsduration);
+                    dynamicsObjectpropCount++;
+                }
 
-            var alertObject = new JObject();
-            var alertObjectpropCount = 0;
-            if (bodyalertaction != null)
-            {
+                if (dynamicsObjectpropCount > 0)
+                {
+                    body["dynamics"] = dynamicsObject;
+                    bodypropCount++;
+                }
+
+                var alertObject = new JObject();
+                var alertObjectpropCount = 0;
                 if (bodyalertaction != null)
                 {
-                    alertObject["action"] = ExpressionConverter.ConvertO(bodyalertaction);
+                    if (bodyalertaction != null)
+                    {
+                        alertObject["action"] = ExpressionConverter.ConvertO(bodyalertaction);
+                        alertObjectpropCount++;
+                    }
+
+                    alertObjectpropCount++;
+                }
+                else
+                {
+                    alertObject["action"] = "breathe";
                     alertObjectpropCount++;
                 }
 
-                alertObjectpropCount++;
-            }
-            else
-            {
-                alertObject["action"] = "breathe";
-                alertObjectpropCount++;
-            }
+                if (alertObjectpropCount > 0)
+                {
+                    body["alert"] = alertObject;
+                    bodypropCount++;
+                }
 
-            if (alertObjectpropCount > 0)
-            {
-                body["alert"] = alertObject;
-                bodypropCount++;
-            }
+                var gradientObject = new JObject();
+                var gradientObjectpropCount = 0;
+                if (bodygradientpoints != null)
+                {
+                    gradientObject["points"] = ExpressionConverter.ConvertO(bodygradientpoints);
+                    gradientObjectpropCount++;
+                }
 
-            var gradientObject = new JObject();
-            var gradientObjectpropCount = 0;
-            if (bodygradientpoints != null)
-            {
-                gradientObject["points"] = ExpressionConverter.ConvertO(bodygradientpoints);
-                gradientObjectpropCount++;
-            }
+                if (gradientObjectpropCount > 0)
+                {
+                    body["gradient"] = gradientObject;
+                    bodypropCount++;
+                }
 
-            if (gradientObjectpropCount > 0)
-            {
-                body["gradient"] = gradientObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExecuteLightResponse>(callPayload);
+                return new ApiConnectionAction<ExecuteLightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
@@ -198,73 +229,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetDeviceResponse> GetDevice(Expression<Func<string>> deviceId)
+        [WorkflowExpressionFactory(nameof(__BuildGetDevice))]
+        public IBodyWorkflowAction<GetDeviceResponse> GetDevice([WorkflowExpression] Func<string> deviceId)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDeviceResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDeviceResponse> __BuildGetDevice(WorkflowValue<string> deviceId)
+        {
+            WorkflowValue.Validate(deviceId, nameof(deviceId), required: true);
+            return new DeferredBodyAction<GetDeviceResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDeviceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<ExecuteDeviceResponse> ExecuteDevice(Expression<Func<string>> deviceId, Expression<Func<bodymetadataarchetypeInput>> bodymetadataarchetype = null, Expression<Func<string>> bodymetadataname = null, Expression<Func<string>> bodyidentifyaction = null)
+        [WorkflowExpressionFactory(nameof(__BuildExecuteDevice))]
+        public IBodyWorkflowAction<ExecuteDeviceResponse> ExecuteDevice([WorkflowExpression] Func<string> deviceId, [WorkflowExpression] Func<bodymetadataarchetypeInput> bodymetadataarchetype = null, [WorkflowExpression] Func<string> bodymetadataname = null, [WorkflowExpression] Func<string> bodyidentifyaction = null)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (bodymetadataarchetype != null)
-            {
-                metadataObject["archetype"] = ExpressionConverter.ConvertO(bodymetadataarchetype);
-                metadataObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodymetadataname != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExecuteDeviceResponse> __BuildExecuteDevice(WorkflowValue<string> deviceId, WorkflowValue<bodymetadataarchetypeInput> bodymetadataarchetype = null, WorkflowValue<string> bodymetadataname = null, WorkflowValue<string> bodyidentifyaction = null)
+        {
+            WorkflowValue.Validate(deviceId, nameof(deviceId), required: true);
+            WorkflowValue.Validate(bodymetadataarchetype, nameof(bodymetadataarchetype), required: false);
+            WorkflowValue.Validate(bodymetadataname, nameof(bodymetadataname), required: false);
+            WorkflowValue.Validate(bodyidentifyaction, nameof(bodyidentifyaction), required: false);
+            return new DeferredBodyAction<ExecuteDeviceResponse>(() =>
             {
-                metadataObject["name"] = ExpressionConverter.ConvertO(bodymetadataname);
-                metadataObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/device/{0}", ExpressionConverter.ConvertWithUrlEncoding(deviceId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (bodymetadataarchetype != null)
+                {
+                    metadataObject["archetype"] = ExpressionConverter.ConvertO(bodymetadataarchetype);
+                    metadataObjectpropCount++;
+                }
 
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                if (bodymetadataname != null)
+                {
+                    metadataObject["name"] = ExpressionConverter.ConvertO(bodymetadataname);
+                    metadataObjectpropCount++;
+                }
 
-            var identifyObject = new JObject();
-            var identifyObjectpropCount = 0;
-            if (bodyidentifyaction != null)
-            {
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                var identifyObject = new JObject();
+                var identifyObjectpropCount = 0;
                 if (bodyidentifyaction != null)
                 {
-                    identifyObject["action"] = ExpressionConverter.ConvertO(bodyidentifyaction);
+                    if (bodyidentifyaction != null)
+                    {
+                        identifyObject["action"] = ExpressionConverter.ConvertO(bodyidentifyaction);
+                        identifyObjectpropCount++;
+                    }
+
+                    identifyObjectpropCount++;
+                }
+                else
+                {
+                    identifyObject["action"] = "identify";
                     identifyObjectpropCount++;
                 }
 
-                identifyObjectpropCount++;
-            }
-            else
-            {
-                identifyObject["action"] = "identify";
-                identifyObjectpropCount++;
-            }
+                if (identifyObjectpropCount > 0)
+                {
+                    body["identify"] = identifyObject;
+                    bodypropCount++;
+                }
 
-            if (identifyObjectpropCount > 0)
-            {
-                body["identify"] = identifyObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExecuteDeviceResponse>(callPayload);
+                return new ApiConnectionAction<ExecuteDeviceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
@@ -286,21 +342,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Philipshueip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<GetSceneResponse> GetScene(Expression<Func<string>> sceneId)
+        [WorkflowExpressionFactory(nameof(__BuildGetScene))]
+        public IBodyWorkflowAction<GetSceneResponse> GetScene([WorkflowExpression] Func<string> sceneId)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSceneResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSceneResponse> __BuildGetScene(WorkflowValue<string> sceneId)
+        {
+            WorkflowValue.Validate(sceneId, nameof(sceneId), required: true);
+            return new DeferredBodyAction<GetSceneResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSceneResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "philipshueip")]
-        public IBodyWorkflowAction<DeleteSceneResponse> DeleteScene(Expression<Func<string>> sceneId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteScene))]
+        public IBodyWorkflowAction<DeleteSceneResponse> DeleteScene([WorkflowExpression] Func<string> sceneId)
         {
-            var apiCallPath = String.Format("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteSceneResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteSceneResponse> __BuildDeleteScene(WorkflowValue<string> sceneId)
+        {
+            WorkflowValue.Validate(sceneId, nameof(sceneId), required: true);
+            return new DeferredBodyAction<DeleteSceneResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/clip/v2/resource/scene/{0}", ExpressionConverter.ConvertWithUrlEncoding(sceneId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeleteSceneResponse>(callPayload);
+            });
         }
     }
 

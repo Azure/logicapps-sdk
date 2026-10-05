@@ -4,51 +4,80 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Festivoip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FestivoipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
-        public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet(Expression<Func<string>> country, Expression<Func<int>> year, Expression<Func<int>> month = null, Expression<Func<int>> day = null, Expression<Func<string>> language = null, Expression<Func<bool>> before = null, Expression<Func<bool>> after = null, Expression<Func<bool>> @public = null, Expression<Func<string>> timezone = null)
+        [WorkflowExpressionFactory(nameof(__BuildHolidaysGet))]
+        public IBodyWorkflowAction<HolidaysGetResponse> HolidaysGet([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<int> month = null, [WorkflowExpression] Func<int> day = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> before = null, [WorkflowExpression] Func<bool> after = null, [WorkflowExpression] Func<bool> @public = null, [WorkflowExpression] Func<string> timezone = null)
         {
-            var apiCallPath = "/holidays";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            if (day != null)
-                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["before"] = Convert.ToString(false);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            callPayload.Queries["after"] = Convert.ToString(false);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            callPayload.Queries["public"] = Convert.ToString(false);
-            if (@public != null)
-                callPayload.Queries["public"] = ExpressionConverter.Convert(@public);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            if (timezone != null)
-                callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
-            return new ApiConnectionAction<HolidaysGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<HolidaysGetResponse> __BuildHolidaysGet(WorkflowValue<string> country, WorkflowValue<int> year, WorkflowValue<int> month = null, WorkflowValue<int> day = null, WorkflowValue<string> language = null, WorkflowValue<bool> before = null, WorkflowValue<bool> after = null, WorkflowValue<bool> @public = null, WorkflowValue<string> timezone = null)
+        {
+            WorkflowValue.Validate(country, nameof(country), required: true);
+            WorkflowValue.Validate(year, nameof(year), required: true);
+            WorkflowValue.Validate(month, nameof(month), required: false);
+            WorkflowValue.Validate(day, nameof(day), required: false);
+            WorkflowValue.Validate(language, nameof(language), required: false);
+            WorkflowValue.Validate(before, nameof(before), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(@public, nameof(@public), required: false);
+            WorkflowValue.Validate(timezone, nameof(timezone), required: false);
+            return new DeferredBodyAction<HolidaysGetResponse>(() =>
+            {
+                var apiCallPath = "/holidays";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(month);
+                if (day != null)
+                    callPayload.Queries["day"] = ExpressionConverter.Convert(day);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["before"] = Convert.ToString(false);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                callPayload.Queries["after"] = Convert.ToString(false);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                callPayload.Queries["public"] = Convert.ToString(false);
+                if (@public != null)
+                    callPayload.Queries["public"] = ExpressionConverter.Convert(@public);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                if (timezone != null)
+                    callPayload.Queries["timezone"] = ExpressionConverter.Convert(timezone);
+                return new ApiConnectionAction<HolidaysGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "festivoip")]
-        public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet(Expression<Func<string>> code = null)
+        [WorkflowExpressionFactory(nameof(__BuildCountriesGet))]
+        public IBodyWorkflowAction<CountriesGetResponseItem[]> CountriesGet([WorkflowExpression] Func<string> code = null)
         {
-            var apiCallPath = "/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (code != null)
-                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            return new ApiConnectionAction<CountriesGetResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CountriesGetResponseItem[]> __BuildCountriesGet(WorkflowValue<string> code = null)
+        {
+            WorkflowValue.Validate(code, nameof(code), required: false);
+            return new DeferredBodyAction<CountriesGetResponseItem[]>(() =>
+            {
+                var apiCallPath = "/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (code != null)
+                    callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                return new ApiConnectionAction<CountriesGetResponseItem[]>(callPayload);
+            });
         }
     }
 

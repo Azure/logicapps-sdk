@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </summary>
     public class ConditionAction : WorkflowActionBase
     {
-        private readonly string expression;
+        private readonly JToken expression;
         private readonly IWorkflowAction trueBranchRoot;
         private readonly IWorkflowAction falseBranchRoot;
 
@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="trueBranchRoot">The root node of the true branch action graph.</param>
         /// <param name="falseBranchRoot">The root node of the false branch action graph.</param>
         internal ConditionAction(
-            string expression,
+            JToken expression,
             IWorkflowAction trueBranchRoot,
             IWorkflowAction falseBranchRoot)
         {
@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new FlowTemplateAction
             {
                 Type = FlowTemplateOperationType.If,
-                Expression = new JValue(this.expression),
+                Expression = this.expression,
                 Actions = trueActions,
                 Else = new FlowTemplateActionBranch
                 {

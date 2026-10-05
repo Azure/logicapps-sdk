@@ -4,20 +4,30 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TractionguestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tractionguest")]
-        public IWorkflowAction DeleteWebhook(Expression<Func<string>> hookId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteWebhook))]
+        public IWorkflowAction DeleteWebhook([WorkflowExpression] Func<string> hookId)
         {
-            var apiCallPath = String.Format("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteWebhook(WorkflowValue<string> hookId)
+        {
+            WorkflowValue.Validate(hookId, nameof(hookId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(hookId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

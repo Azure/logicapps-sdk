@@ -4,85 +4,123 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DeepgramActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<TranscribePostResponse> Transcribe(Expression<Func<string>> bodyurl, Expression<Func<modelInput>> model = null, Expression<Func<tierInput>> tier = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> language = null, Expression<Func<bool>> detectLanguage = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<redactInput>> redact = null, Expression<Func<bool>> diarize = null, Expression<Func<string>> diarizeVersion = null, Expression<Func<bool>> smartFormat = null, Expression<Func<bool>> fillerWords = null, Expression<Func<bool>> multichannel = null, Expression<Func<int>> alternatives = null, Expression<Func<string>> search = null, Expression<Func<string>> replace = null, Expression<Func<string>> callback = null, Expression<Func<string>> keywords = null, Expression<Func<bool>> paragraphs = null, Expression<Func<string>> summarize = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> utterances = null, Expression<Func<double>> uttSplit = null, Expression<Func<string>> tag = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> measurements = null, Expression<Func<bool>> dictation = null)
+        [WorkflowExpressionFactory(nameof(__BuildTranscribe))]
+        public IBodyWorkflowAction<TranscribePostResponse> Transcribe([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<modelInput> model = null, [WorkflowExpression] Func<tierInput> tier = null, [WorkflowExpression] Func<versionInput> version = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> detectLanguage = null, [WorkflowExpression] Func<bool> punctuate = null, [WorkflowExpression] Func<bool> profanityFilter = null, [WorkflowExpression] Func<redactInput> redact = null, [WorkflowExpression] Func<bool> diarize = null, [WorkflowExpression] Func<string> diarizeVersion = null, [WorkflowExpression] Func<bool> smartFormat = null, [WorkflowExpression] Func<bool> fillerWords = null, [WorkflowExpression] Func<bool> multichannel = null, [WorkflowExpression] Func<int> alternatives = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> replace = null, [WorkflowExpression] Func<string> callback = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<bool> paragraphs = null, [WorkflowExpression] Func<string> summarize = null, [WorkflowExpression] Func<bool> detectTopics = null, [WorkflowExpression] Func<bool> utterances = null, [WorkflowExpression] Func<double> uttSplit = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<bool> numerals = null, [WorkflowExpression] Func<bool> ner = null, [WorkflowExpression] Func<bool> measurements = null, [WorkflowExpression] Func<bool> dictation = null)
         {
-            var apiCallPath = "/listen";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            if (tier != null)
-                callPayload.Queries["tier"] = ExpressionConverter.Convert(tier);
-            if (version != null)
-                callPayload.Queries["version"] = ExpressionConverter.Convert(version);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (detectLanguage != null)
-                callPayload.Queries["detect_language"] = ExpressionConverter.Convert(detectLanguage);
-            if (punctuate != null)
-                callPayload.Queries["punctuate"] = ExpressionConverter.Convert(punctuate);
-            if (profanityFilter != null)
-                callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(profanityFilter);
-            if (redact != null)
-                callPayload.Queries["redact"] = ExpressionConverter.Convert(redact);
-            if (diarize != null)
-                callPayload.Queries["diarize"] = ExpressionConverter.Convert(diarize);
-            if (diarizeVersion != null)
-                callPayload.Queries["diarize_version"] = ExpressionConverter.Convert(diarizeVersion);
-            if (smartFormat != null)
-                callPayload.Queries["smart_format"] = ExpressionConverter.Convert(smartFormat);
-            if (fillerWords != null)
-                callPayload.Queries["filler_words"] = ExpressionConverter.Convert(fillerWords);
-            if (multichannel != null)
-                callPayload.Queries["multichannel"] = ExpressionConverter.Convert(multichannel);
-            if (alternatives != null)
-                callPayload.Queries["alternatives"] = ExpressionConverter.Convert(alternatives);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (replace != null)
-                callPayload.Queries["replace"] = ExpressionConverter.Convert(replace);
-            if (callback != null)
-                callPayload.Queries["callback"] = ExpressionConverter.Convert(callback);
-            if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
-            if (paragraphs != null)
-                callPayload.Queries["paragraphs"] = ExpressionConverter.Convert(paragraphs);
-            if (summarize != null)
-                callPayload.Queries["summarize"] = ExpressionConverter.Convert(summarize);
-            if (detectTopics != null)
-                callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(detectTopics);
-            if (utterances != null)
-                callPayload.Queries["utterances"] = ExpressionConverter.Convert(utterances);
-            if (uttSplit != null)
-                callPayload.Queries["utt_split"] = ExpressionConverter.Convert(uttSplit);
-            if (tag != null)
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
-            if (numerals != null)
-                callPayload.Queries["numerals"] = ExpressionConverter.Convert(numerals);
-            if (ner != null)
-                callPayload.Queries["ner"] = ExpressionConverter.Convert(ner);
-            if (measurements != null)
-                callPayload.Queries["measurements"] = ExpressionConverter.Convert(measurements);
-            if (dictation != null)
-                callPayload.Queries["dictation"] = ExpressionConverter.Convert(dictation);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = ExpressionConverter.ConvertO(bodyurl);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TranscribePostResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TranscribePostResponse> __BuildTranscribe(WorkflowValue<string> bodyurl, WorkflowValue<modelInput> model = null, WorkflowValue<tierInput> tier = null, WorkflowValue<versionInput> version = null, WorkflowValue<string> language = null, WorkflowValue<bool> detectLanguage = null, WorkflowValue<bool> punctuate = null, WorkflowValue<bool> profanityFilter = null, WorkflowValue<redactInput> redact = null, WorkflowValue<bool> diarize = null, WorkflowValue<string> diarizeVersion = null, WorkflowValue<bool> smartFormat = null, WorkflowValue<bool> fillerWords = null, WorkflowValue<bool> multichannel = null, WorkflowValue<int> alternatives = null, WorkflowValue<string> search = null, WorkflowValue<string> replace = null, WorkflowValue<string> callback = null, WorkflowValue<string> keywords = null, WorkflowValue<bool> paragraphs = null, WorkflowValue<string> summarize = null, WorkflowValue<bool> detectTopics = null, WorkflowValue<bool> utterances = null, WorkflowValue<double> uttSplit = null, WorkflowValue<string> tag = null, WorkflowValue<bool> numerals = null, WorkflowValue<bool> ner = null, WorkflowValue<bool> measurements = null, WorkflowValue<bool> dictation = null)
+        {
+            WorkflowValue.Validate(bodyurl, nameof(bodyurl), required: true);
+            WorkflowValue.Validate(model, nameof(model), required: false);
+            WorkflowValue.Validate(tier, nameof(tier), required: false);
+            WorkflowValue.Validate(version, nameof(version), required: false);
+            WorkflowValue.Validate(language, nameof(language), required: false);
+            WorkflowValue.Validate(detectLanguage, nameof(detectLanguage), required: false);
+            WorkflowValue.Validate(punctuate, nameof(punctuate), required: false);
+            WorkflowValue.Validate(profanityFilter, nameof(profanityFilter), required: false);
+            WorkflowValue.Validate(redact, nameof(redact), required: false);
+            WorkflowValue.Validate(diarize, nameof(diarize), required: false);
+            WorkflowValue.Validate(diarizeVersion, nameof(diarizeVersion), required: false);
+            WorkflowValue.Validate(smartFormat, nameof(smartFormat), required: false);
+            WorkflowValue.Validate(fillerWords, nameof(fillerWords), required: false);
+            WorkflowValue.Validate(multichannel, nameof(multichannel), required: false);
+            WorkflowValue.Validate(alternatives, nameof(alternatives), required: false);
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(replace, nameof(replace), required: false);
+            WorkflowValue.Validate(callback, nameof(callback), required: false);
+            WorkflowValue.Validate(keywords, nameof(keywords), required: false);
+            WorkflowValue.Validate(paragraphs, nameof(paragraphs), required: false);
+            WorkflowValue.Validate(summarize, nameof(summarize), required: false);
+            WorkflowValue.Validate(detectTopics, nameof(detectTopics), required: false);
+            WorkflowValue.Validate(utterances, nameof(utterances), required: false);
+            WorkflowValue.Validate(uttSplit, nameof(uttSplit), required: false);
+            WorkflowValue.Validate(tag, nameof(tag), required: false);
+            WorkflowValue.Validate(numerals, nameof(numerals), required: false);
+            WorkflowValue.Validate(ner, nameof(ner), required: false);
+            WorkflowValue.Validate(measurements, nameof(measurements), required: false);
+            WorkflowValue.Validate(dictation, nameof(dictation), required: false);
+            return new DeferredBodyAction<TranscribePostResponse>(() =>
+            {
+                var apiCallPath = "/listen";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                if (tier != null)
+                    callPayload.Queries["tier"] = ExpressionConverter.Convert(tier);
+                if (version != null)
+                    callPayload.Queries["version"] = ExpressionConverter.Convert(version);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                if (detectLanguage != null)
+                    callPayload.Queries["detect_language"] = ExpressionConverter.Convert(detectLanguage);
+                if (punctuate != null)
+                    callPayload.Queries["punctuate"] = ExpressionConverter.Convert(punctuate);
+                if (profanityFilter != null)
+                    callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(profanityFilter);
+                if (redact != null)
+                    callPayload.Queries["redact"] = ExpressionConverter.Convert(redact);
+                if (diarize != null)
+                    callPayload.Queries["diarize"] = ExpressionConverter.Convert(diarize);
+                if (diarizeVersion != null)
+                    callPayload.Queries["diarize_version"] = ExpressionConverter.Convert(diarizeVersion);
+                if (smartFormat != null)
+                    callPayload.Queries["smart_format"] = ExpressionConverter.Convert(smartFormat);
+                if (fillerWords != null)
+                    callPayload.Queries["filler_words"] = ExpressionConverter.Convert(fillerWords);
+                if (multichannel != null)
+                    callPayload.Queries["multichannel"] = ExpressionConverter.Convert(multichannel);
+                if (alternatives != null)
+                    callPayload.Queries["alternatives"] = ExpressionConverter.Convert(alternatives);
+                if (search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (replace != null)
+                    callPayload.Queries["replace"] = ExpressionConverter.Convert(replace);
+                if (callback != null)
+                    callPayload.Queries["callback"] = ExpressionConverter.Convert(callback);
+                if (keywords != null)
+                    callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
+                if (paragraphs != null)
+                    callPayload.Queries["paragraphs"] = ExpressionConverter.Convert(paragraphs);
+                if (summarize != null)
+                    callPayload.Queries["summarize"] = ExpressionConverter.Convert(summarize);
+                if (detectTopics != null)
+                    callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(detectTopics);
+                if (utterances != null)
+                    callPayload.Queries["utterances"] = ExpressionConverter.Convert(utterances);
+                if (uttSplit != null)
+                    callPayload.Queries["utt_split"] = ExpressionConverter.Convert(uttSplit);
+                if (tag != null)
+                    callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+                if (numerals != null)
+                    callPayload.Queries["numerals"] = ExpressionConverter.Convert(numerals);
+                if (ner != null)
+                    callPayload.Queries["ner"] = ExpressionConverter.Convert(ner);
+                if (measurements != null)
+                    callPayload.Queries["measurements"] = ExpressionConverter.Convert(measurements);
+                if (dictation != null)
+                    callPayload.Queries["dictation"] = ExpressionConverter.Convert(dictation);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TranscribePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
@@ -95,129 +133,235 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> projectId)
+        [WorkflowExpressionFactory(nameof(__BuildProjectGet))]
+        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<JToken> ProjectDelete(Expression<Func<string>> projectId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProjectGetResponse> __BuildProjectGet(WorkflowValue<string> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<ProjectPatchResponse> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = String.Format("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<ProjectGetResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProjectPatchResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ProjectGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<RequestsGetResponse> RequestsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> limit = null, Expression<Func<statusInput>> status = null)
+        [WorkflowExpressionFactory(nameof(__BuildProjectDelete))]
+        public IBodyWorkflowAction<JToken> ProjectDelete([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (status != null)
-                callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-            return new ApiConnectionAction<RequestsGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildProjectDelete(WorkflowValue<string> projectId)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<RequestGetResponse> RequestGet(Expression<Func<string>> projectId, Expression<Func<string>> requestId)
+        [WorkflowExpressionFactory(nameof(__BuildProjectPatch))]
+        public IBodyWorkflowAction<ProjectPatchResponse> ProjectPatch([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyname)
         {
-            var apiCallPath = String.Format("/projects/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RequestGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProjectPatchResponse> __BuildProjectPatch(WorkflowValue<string> projectId, WorkflowValue<string> bodyname)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<ProjectPatchResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ProjectPatchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<UsageGetResponse> UsageGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> accessor = null, Expression<Func<string>> tag = null, Expression<Func<methodInput>> method = null, Expression<Func<string>> model = null, Expression<Func<bool>> multichannel = null, Expression<Func<bool>> interimResults = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> utterances = null, Expression<Func<bool>> replace = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<bool>> keywords = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> diarize = null, Expression<Func<bool>> search = null, Expression<Func<bool>> redact = null, Expression<Func<bool>> alternatives = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> smartFormat = null)
+        [WorkflowExpressionFactory(nameof(__BuildRequestsGet))]
+        public IBodyWorkflowAction<RequestsGetResponse> RequestsGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<statusInput> status = null)
         {
-            var apiCallPath = String.Format("/projects/{0}/usage", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            if (accessor != null)
-                callPayload.Queries["accessor"] = ExpressionConverter.Convert(accessor);
-            if (tag != null)
-                callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
-            if (method != null)
-                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            if (model != null)
-                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            if (multichannel != null)
-                callPayload.Queries["multichannel"] = ExpressionConverter.Convert(multichannel);
-            if (interimResults != null)
-                callPayload.Queries["interim_results"] = ExpressionConverter.Convert(interimResults);
-            if (punctuate != null)
-                callPayload.Queries["punctuate"] = ExpressionConverter.Convert(punctuate);
-            if (ner != null)
-                callPayload.Queries["ner"] = ExpressionConverter.Convert(ner);
-            if (utterances != null)
-                callPayload.Queries["utterances"] = ExpressionConverter.Convert(utterances);
-            if (replace != null)
-                callPayload.Queries["replace"] = ExpressionConverter.Convert(replace);
-            if (profanityFilter != null)
-                callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(profanityFilter);
-            if (keywords != null)
-                callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
-            if (detectTopics != null)
-                callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(detectTopics);
-            if (diarize != null)
-                callPayload.Queries["diarize"] = ExpressionConverter.Convert(diarize);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (redact != null)
-                callPayload.Queries["redact"] = ExpressionConverter.Convert(redact);
-            if (alternatives != null)
-                callPayload.Queries["alternatives"] = ExpressionConverter.Convert(alternatives);
-            if (numerals != null)
-                callPayload.Queries["numerals"] = ExpressionConverter.Convert(numerals);
-            if (smartFormat != null)
-                callPayload.Queries["smart_format"] = ExpressionConverter.Convert(smartFormat);
-            return new ApiConnectionAction<UsageGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RequestsGetResponse> __BuildRequestsGet(WorkflowValue<string> projectId, WorkflowValue<string> start = null, WorkflowValue<string> end = null, WorkflowValue<string> limit = null, WorkflowValue<statusInput> status = null)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            WorkflowValue.Validate(start, nameof(start), required: false);
+            WorkflowValue.Validate(end, nameof(end), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(status, nameof(status), required: false);
+            return new DeferredBodyAction<RequestsGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                if (end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (status != null)
+                    callPayload.Queries["status"] = ExpressionConverter.Convert(status);
+                return new ApiConnectionAction<RequestsGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<FieldsGetResponse> FieldsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        [WorkflowExpressionFactory(nameof(__BuildRequestGet))]
+        public IBodyWorkflowAction<RequestGetResponse> RequestGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/projects/{0}/usage/fields", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<FieldsGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RequestGetResponse> __BuildRequestGet(WorkflowValue<string> projectId, WorkflowValue<string> requestId)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            WorkflowValue.Validate(requestId, nameof(requestId), required: true);
+            return new DeferredBodyAction<RequestGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RequestGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
+        [WorkflowExpressionFactory(nameof(__BuildUsageGet))]
+        public IBodyWorkflowAction<UsageGetResponse> UsageGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> accessor = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<methodInput> method = null, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<bool> multichannel = null, [WorkflowExpression] Func<bool> interimResults = null, [WorkflowExpression] Func<bool> punctuate = null, [WorkflowExpression] Func<bool> ner = null, [WorkflowExpression] Func<bool> utterances = null, [WorkflowExpression] Func<bool> replace = null, [WorkflowExpression] Func<bool> profanityFilter = null, [WorkflowExpression] Func<bool> keywords = null, [WorkflowExpression] Func<bool> detectTopics = null, [WorkflowExpression] Func<bool> diarize = null, [WorkflowExpression] Func<bool> search = null, [WorkflowExpression] Func<bool> redact = null, [WorkflowExpression] Func<bool> alternatives = null, [WorkflowExpression] Func<bool> numerals = null, [WorkflowExpression] Func<bool> smartFormat = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UsageGetResponse> __BuildUsageGet(WorkflowValue<string> projectId, WorkflowValue<string> start = null, WorkflowValue<string> end = null, WorkflowValue<string> accessor = null, WorkflowValue<string> tag = null, WorkflowValue<methodInput> method = null, WorkflowValue<string> model = null, WorkflowValue<bool> multichannel = null, WorkflowValue<bool> interimResults = null, WorkflowValue<bool> punctuate = null, WorkflowValue<bool> ner = null, WorkflowValue<bool> utterances = null, WorkflowValue<bool> replace = null, WorkflowValue<bool> profanityFilter = null, WorkflowValue<bool> keywords = null, WorkflowValue<bool> detectTopics = null, WorkflowValue<bool> diarize = null, WorkflowValue<bool> search = null, WorkflowValue<bool> redact = null, WorkflowValue<bool> alternatives = null, WorkflowValue<bool> numerals = null, WorkflowValue<bool> smartFormat = null)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            WorkflowValue.Validate(start, nameof(start), required: false);
+            WorkflowValue.Validate(end, nameof(end), required: false);
+            WorkflowValue.Validate(accessor, nameof(accessor), required: false);
+            WorkflowValue.Validate(tag, nameof(tag), required: false);
+            WorkflowValue.Validate(method, nameof(method), required: false);
+            WorkflowValue.Validate(model, nameof(model), required: false);
+            WorkflowValue.Validate(multichannel, nameof(multichannel), required: false);
+            WorkflowValue.Validate(interimResults, nameof(interimResults), required: false);
+            WorkflowValue.Validate(punctuate, nameof(punctuate), required: false);
+            WorkflowValue.Validate(ner, nameof(ner), required: false);
+            WorkflowValue.Validate(utterances, nameof(utterances), required: false);
+            WorkflowValue.Validate(replace, nameof(replace), required: false);
+            WorkflowValue.Validate(profanityFilter, nameof(profanityFilter), required: false);
+            WorkflowValue.Validate(keywords, nameof(keywords), required: false);
+            WorkflowValue.Validate(detectTopics, nameof(detectTopics), required: false);
+            WorkflowValue.Validate(diarize, nameof(diarize), required: false);
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(redact, nameof(redact), required: false);
+            WorkflowValue.Validate(alternatives, nameof(alternatives), required: false);
+            WorkflowValue.Validate(numerals, nameof(numerals), required: false);
+            WorkflowValue.Validate(smartFormat, nameof(smartFormat), required: false);
+            return new DeferredBodyAction<UsageGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                if (end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                if (accessor != null)
+                    callPayload.Queries["accessor"] = ExpressionConverter.Convert(accessor);
+                if (tag != null)
+                    callPayload.Queries["tag"] = ExpressionConverter.Convert(tag);
+                if (method != null)
+                    callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                if (model != null)
+                    callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                if (multichannel != null)
+                    callPayload.Queries["multichannel"] = ExpressionConverter.Convert(multichannel);
+                if (interimResults != null)
+                    callPayload.Queries["interim_results"] = ExpressionConverter.Convert(interimResults);
+                if (punctuate != null)
+                    callPayload.Queries["punctuate"] = ExpressionConverter.Convert(punctuate);
+                if (ner != null)
+                    callPayload.Queries["ner"] = ExpressionConverter.Convert(ner);
+                if (utterances != null)
+                    callPayload.Queries["utterances"] = ExpressionConverter.Convert(utterances);
+                if (replace != null)
+                    callPayload.Queries["replace"] = ExpressionConverter.Convert(replace);
+                if (profanityFilter != null)
+                    callPayload.Queries["profanity_filter"] = ExpressionConverter.Convert(profanityFilter);
+                if (keywords != null)
+                    callPayload.Queries["keywords"] = ExpressionConverter.Convert(keywords);
+                if (detectTopics != null)
+                    callPayload.Queries["detect_topics"] = ExpressionConverter.Convert(detectTopics);
+                if (diarize != null)
+                    callPayload.Queries["diarize"] = ExpressionConverter.Convert(diarize);
+                if (search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (redact != null)
+                    callPayload.Queries["redact"] = ExpressionConverter.Convert(redact);
+                if (alternatives != null)
+                    callPayload.Queries["alternatives"] = ExpressionConverter.Convert(alternatives);
+                if (numerals != null)
+                    callPayload.Queries["numerals"] = ExpressionConverter.Convert(numerals);
+                if (smartFormat != null)
+                    callPayload.Queries["smart_format"] = ExpressionConverter.Convert(smartFormat);
+                return new ApiConnectionAction<UsageGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
+        [WorkflowExpressionFactory(nameof(__BuildFieldsGet))]
+        public IBodyWorkflowAction<FieldsGetResponse> FieldsGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FieldsGetResponse> __BuildFieldsGet(WorkflowValue<string> projectId, WorkflowValue<string> start = null, WorkflowValue<string> end = null)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            WorkflowValue.Validate(start, nameof(start), required: false);
+            WorkflowValue.Validate(end, nameof(end), required: false);
+            return new DeferredBodyAction<FieldsGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage/fields", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                if (end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                return new ApiConnectionAction<FieldsGetResponse>(callPayload);
+            });
         }
     }
 

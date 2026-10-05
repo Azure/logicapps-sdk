@@ -4,29 +4,40 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OpenqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FolderUpdatePostResponse> FolderUpdate(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
+        [WorkflowExpressionFactory(nameof(__BuildFolderUpdate))]
+        public IBodyWorkflowAction<FolderUpdatePostResponse> FolderUpdate([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodyname)
         {
-            var apiCallPath = String.Format("/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<FolderUpdatePostResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FolderUpdatePostResponse> __BuildFolderUpdate(WorkflowValue<string> folderId, WorkflowValue<string> bodyname)
+        {
+            WorkflowValue.Validate(folderId, nameof(folderId), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<FolderUpdatePostResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/folders/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FolderUpdatePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
@@ -39,21 +50,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FolderPostResponse> Folder(Expression<Func<string>> bodyname)
+        [WorkflowExpressionFactory(nameof(__BuildFolder))]
+        public IBodyWorkflowAction<FolderPostResponse> Folder([WorkflowExpression] Func<string> bodyname)
         {
-            var apiCallPath = "/folders";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<FolderPostResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FolderPostResponse> __BuildFolder(WorkflowValue<string> bodyname)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            return new DeferredBodyAction<FolderPostResponse>(() =>
+            {
+                var apiCallPath = "/folders";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FolderPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
@@ -66,98 +88,136 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRPostResponse> QR(Expression<Func<string>> bodyname, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydataurl = null)
+        [WorkflowExpressionFactory(nameof(__BuildQR))]
+        public IBodyWorkflowAction<QRPostResponse> QR([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydataurl = null)
         {
-            var apiCallPath = "/qr-codes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydataurl != null)
-            {
-                dataObject["url"] = ExpressionConverter.ConvertO(bodydataurl);
-                dataObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (dataObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QRPostResponse> __BuildQR(WorkflowValue<string> bodyname, WorkflowValue<bodytypeInput> bodytype, WorkflowValue<string> bodydataurl = null)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowValue.Validate(bodydataurl, nameof(bodydataurl), required: false);
+            return new DeferredBodyAction<QRPostResponse>(() =>
             {
-                body["data"] = dataObject;
+                var apiCallPath = "/qr-codes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QRPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRGetResponse> QRGet(Expression<Func<string>> qrCodeId)
-        {
-            var apiCallPath = String.Format("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(qrCodeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<QRGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<QRUpdatePostResponse> QRUpdate(Expression<Func<string>> qrCodeId, Expression<Func<string>> bodyname = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<string>> bodydataurl = null)
-        {
-            var apiCallPath = String.Format("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(qrCodeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
-            {
                 body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                if (bodytype != null)
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydataurl != null)
                 {
-                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    dataObject["url"] = ExpressionConverter.ConvertO(bodydataurl);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["type"] = "url";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydataurl != null)
-            {
-                dataObject["url"] = ExpressionConverter.ConvertO(bodydataurl);
-                dataObjectpropCount++;
-            }
+                return new ApiConnectionAction<QRPostResponse>(callPayload);
+            });
+        }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
+        [WorkflowExpressionFactory(nameof(__BuildQRGet))]
+        public IBodyWorkflowAction<QRGetResponse> QRGet([WorkflowExpression] Func<string> qrCodeId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QRGetResponse> __BuildQRGet(WorkflowValue<string> qrCodeId)
+        {
+            WorkflowValue.Validate(qrCodeId, nameof(qrCodeId), required: true);
+            return new DeferredBodyAction<QRGetResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(qrCodeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<QRGetResponse>(callPayload);
+            });
+        }
 
-            return new ApiConnectionAction<QRUpdatePostResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
+        [WorkflowExpressionFactory(nameof(__BuildQRUpdate))]
+        public IBodyWorkflowAction<QRUpdatePostResponse> QRUpdate([WorkflowExpression] Func<string> qrCodeId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<string> bodydataurl = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QRUpdatePostResponse> __BuildQRUpdate(WorkflowValue<string> qrCodeId, WorkflowValue<string> bodyname = null, WorkflowValue<bodytypeInput> bodytype = null, WorkflowValue<string> bodydataurl = null)
+        {
+            WorkflowValue.Validate(qrCodeId, nameof(qrCodeId), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodydataurl, nameof(bodydataurl), required: false);
+            return new DeferredBodyAction<QRUpdatePostResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/qr-codes/{0}", ExpressionConverter.ConvertWithUrlEncoding(qrCodeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    if (bodytype != null)
+                    {
+                        body["type"] = ExpressionConverter.ConvertO(bodytype);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["type"] = "url";
+                    bodypropCount++;
+                }
+
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydataurl != null)
+                {
+                    dataObject["url"] = ExpressionConverter.ConvertO(bodydataurl);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<QRUpdatePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
@@ -170,12 +230,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openqr
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openqr")]
-        public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<object>> file)
+        [WorkflowExpressionFactory(nameof(__BuildFile))]
+        public IBodyWorkflowAction<FilePostResponse> File([WorkflowExpression] Func<object> file)
         {
-            var apiCallPath = "/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilePostResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilePostResponse> __BuildFile(WorkflowValue<object> file)
+        {
+            WorkflowValue.Validate(file, nameof(file), required: true);
+            return new DeferredBodyAction<FilePostResponse>(() =>
+            {
+                var apiCallPath = "/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilePostResponse>(callPayload);
+            });
         }
     }
 

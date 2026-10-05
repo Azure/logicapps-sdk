@@ -4,50 +4,64 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Solosign
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SolosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "solosign")]
-        public IWorkflowAction CreateHMAC(Expression<Func<string>> bodyrequestString, Expression<Func<string>> bodysecretKey, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyencodeTypeInput>> bodyencodeType = null, Expression<Func<bodyhashAlgorithmInput>> bodyhashAlgorithm = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateHMAC))]
+        public IWorkflowAction CreateHMAC([WorkflowExpression] Func<string> bodyrequestString, [WorkflowExpression] Func<string> bodysecretKey, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyencodeTypeInput> bodyencodeType = null, [WorkflowExpression] Func<bodyhashAlgorithmInput> bodyhashAlgorithm = null)
         {
-            var apiCallPath = "/generate-hmac";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["request_string"] = ExpressionConverter.ConvertO(bodyrequestString);
-            bodypropCount++;
-            body["secret_key"] = ExpressionConverter.ConvertO(bodysecretKey);
-            if (bodyoutputFormat != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateHMAC(WorkflowValue<string> bodyrequestString, WorkflowValue<string> bodysecretKey, WorkflowValue<bodyoutputFormatInput> bodyoutputFormat = null, WorkflowValue<bodyencodeTypeInput> bodyencodeType = null, WorkflowValue<bodyhashAlgorithmInput> bodyhashAlgorithm = null)
+        {
+            WorkflowValue.Validate(bodyrequestString, nameof(bodyrequestString), required: true);
+            WorkflowValue.Validate(bodysecretKey, nameof(bodysecretKey), required: true);
+            WorkflowValue.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            WorkflowValue.Validate(bodyencodeType, nameof(bodyencodeType), required: false);
+            WorkflowValue.Validate(bodyhashAlgorithm, nameof(bodyhashAlgorithm), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                var apiCallPath = "/generate-hmac";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyencodeType != null)
-            {
-                body["encode_type"] = ExpressionConverter.ConvertO(bodyencodeType);
+                body["request_string"] = ExpressionConverter.ConvertO(bodyrequestString);
                 bodypropCount++;
-            }
+                body["secret_key"] = ExpressionConverter.ConvertO(bodysecretKey);
+                if (bodyoutputFormat != null)
+                {
+                    body["output_format"] = ExpressionConverter.ConvertO(bodyoutputFormat);
+                    bodypropCount++;
+                }
 
-            if (bodyhashAlgorithm != null)
-            {
-                body["hash_algorithm"] = ExpressionConverter.ConvertO(bodyhashAlgorithm);
-                bodypropCount++;
-            }
+                if (bodyencodeType != null)
+                {
+                    body["encode_type"] = ExpressionConverter.ConvertO(bodyencodeType);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyhashAlgorithm != null)
+                {
+                    body["hash_algorithm"] = ExpressionConverter.ConvertO(bodyhashAlgorithm);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

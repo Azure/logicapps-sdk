@@ -5,8 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
 {
     using System;
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
@@ -14,229 +13,387 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
     public class MqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseMessageInputGetMessageOptionsType>> getMessageOptions = null)
+        [WorkflowExpressionFactory(nameof(__BuildBrowseMessage))]
+        public IBodyWorkflowAction<BrowseMessageOutput> BrowseMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<BrowseMessageInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
-            {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BrowseMessageOutput> __BuildBrowseMessage(WorkflowValue<string> queueName, WorkflowValue<bool> includeInfo, WorkflowValue<BrowseMessageInputGetMessageOptionsType> getMessageOptions = null)
+        {
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(includeInfo, nameof(includeInfo), required: true);
+            WorkflowValue.Validate(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyAction<BrowseMessageOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<BrowseMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<BrowseBatchInputGetMessageOptionsType>> getMessageOptions = null)
+        [WorkflowExpressionFactory(nameof(__BuildBrowseBatch))]
+        public IBodyWorkflowAction<BrowseBatchOutput> BrowseBatch([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<BrowseBatchInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
-            {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BrowseBatchOutput> __BuildBrowseBatch(WorkflowValue<string> queueName, WorkflowValue<bool> includeInfo, WorkflowValue<BrowseBatchInputGetMessageOptionsType> getMessageOptions = null)
+        {
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(includeInfo, nameof(includeInfo), required: true);
+            WorkflowValue.Validate(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyAction<BrowseBatchOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "browseBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<BrowseBatchOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveMessageInputGetMessageOptionsType>> getMessageOptions = null)
+        [WorkflowExpressionFactory(nameof(__BuildReceiveMessage))]
+        public IBodyWorkflowAction<ReceiveMessageOutput> ReceiveMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<ReceiveMessageInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
-            {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReceiveMessageOutput> __BuildReceiveMessage(WorkflowValue<string> queueName, WorkflowValue<bool> includeInfo, WorkflowValue<ReceiveMessageInputGetMessageOptionsType> getMessageOptions = null)
+        {
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(includeInfo, nameof(includeInfo), required: true);
+            WorkflowValue.Validate(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyAction<ReceiveMessageOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ReceiveMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<ReceiveBatchInputGetMessageOptionsType>> getMessageOptions = null)
+        [WorkflowExpressionFactory(nameof(__BuildReceiveBatch))]
+        public IBodyWorkflowAction<ReceiveBatchOutput> ReceiveBatch([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<ReceiveBatchInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
-            {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReceiveBatchOutput> __BuildReceiveBatch(WorkflowValue<string> queueName, WorkflowValue<bool> includeInfo, WorkflowValue<ReceiveBatchInputGetMessageOptionsType> getMessageOptions = null)
+        {
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(includeInfo, nameof(includeInfo), required: true);
+            WorkflowValue.Validate(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyAction<ReceiveBatchOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "receiveBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<ReceiveBatchOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendMessageOutput> SendMessage(Expression<Func<string>> queueName, Expression<Func<string>> message, Expression<Func<SendMessageInputSendMessageOptionsType>> sendMessageOptions = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
+        public IBodyWorkflowAction<SendMessageOutput> SendMessage([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<SendMessageInputSendMessageOptionsType> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            if (sendMessageOptions != null)
-            {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMessageOutput> __BuildSendMessage(WorkflowValue<string> queueName, WorkflowValue<string> message, WorkflowValue<SendMessageInputSendMessageOptionsType> sendMessageOptions = null)
+        {
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(message, nameof(message), required: true);
+            WorkflowValue.Validate(sendMessageOptions, nameof(sendMessageOptions), required: false);
+            return new DeferredBodyAction<SendMessageOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+                if (sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<SendMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<SendBatchOutput> SendBatch(Expression<Func<string>> queueName, Expression<Func<SendBatchInputMessageListTypeItem[]>> messageList, Expression<Func<SendBatchInputSendMessageOptionsType>> sendMessageOptions = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendBatch))]
+        public IBodyWorkflowAction<SendBatchOutput> SendBatch([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<SendBatchInputMessageListTypeItem[]> messageList, [WorkflowExpression] Func<SendBatchInputSendMessageOptionsType> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["messageList"] = ExpressionConverter.ConvertO(messageList);
-            if (sendMessageOptions != null)
-            {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendBatchOutput> __BuildSendBatch(WorkflowValue<string> queueName, WorkflowValue<SendBatchInputMessageListTypeItem[]> messageList, WorkflowValue<SendBatchInputSendMessageOptionsType> sendMessageOptions = null)
+        {
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(messageList, nameof(messageList), required: true);
+            WorkflowValue.Validate(sendMessageOptions, nameof(sendMessageOptions), required: false);
+            return new DeferredBodyAction<SendBatchOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["messageList"] = ExpressionConverter.ConvertO(messageList);
+                if (sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "sendBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<SendBatchOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<string>> uniqueId, Expression<Func<string>> messageId, Expression<Func<CompleteMessageInputCompleteActionType>> completeAction)
+        [WorkflowExpressionFactory(nameof(__BuildCompleteMessage))]
+        public IBodyWorkflowAction<CompleteMessageOutput> CompleteMessage([WorkflowExpression] Func<string> operationConnectionId, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> uniqueId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<CompleteMessageInputCompleteActionType> completeAction)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["uniqueId"] = ExpressionConverter.ConvertO(uniqueId);
-            serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
-            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompleteMessageOutput> __BuildCompleteMessage(WorkflowValue<string> operationConnectionId, WorkflowValue<string> queueName, WorkflowValue<string> uniqueId, WorkflowValue<string> messageId, WorkflowValue<CompleteMessageInputCompleteActionType> completeAction)
+        {
+            WorkflowValue.Validate(operationConnectionId, nameof(operationConnectionId), required: true);
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(uniqueId, nameof(uniqueId), required: true);
+            WorkflowValue.Validate(messageId, nameof(messageId), required: true);
+            WorkflowValue.Validate(completeAction, nameof(completeAction), required: true);
+            return new DeferredBodyAction<CompleteMessageOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["uniqueId"] = ExpressionConverter.ConvertO(uniqueId);
+                serviceProviderParameters["messageId"] = ExpressionConverter.ConvertO(messageId);
+                serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeMessage", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CompleteMessageOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch(Expression<Func<string>> operationConnectionId, Expression<Func<string>> queueName, Expression<Func<CompleteBatchInputCompleteActionType>> completeAction)
+        [WorkflowExpressionFactory(nameof(__BuildCompleteBatch))]
+        public IBodyWorkflowAction<CompleteBatchOutput> CompleteBatch([WorkflowExpression] Func<string> operationConnectionId, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<CompleteBatchInputCompleteActionType> completeAction)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CompleteBatchOutput> __BuildCompleteBatch(WorkflowValue<string> operationConnectionId, WorkflowValue<string> queueName, WorkflowValue<CompleteBatchInputCompleteActionType> completeAction)
+        {
+            WorkflowValue.Validate(operationConnectionId, nameof(operationConnectionId), required: true);
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(completeAction, nameof(completeAction), required: true);
+            return new DeferredBodyAction<CompleteBatchOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["connectionId"] = ExpressionConverter.ConvertO(operationConnectionId);
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["completeAction"] = ExpressionConverter.ConvertO(completeAction);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "completeBatch", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<CompleteBatchOutput>(serviceProviderInput);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "mq")]
-        public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue(Expression<Func<object>> message, Expression<Func<int>> reasonCode, Expression<Func<string>> deadLetterQueueName = null, Expression<Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType>> sendMessageOptions = null)
+        [WorkflowExpressionFactory(nameof(__BuildMoveMessageToDeadLetterQueue))]
+        public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> MoveMessageToDeadLetterQueue([WorkflowExpression] Func<object> message, [WorkflowExpression] Func<int> reasonCode, [WorkflowExpression] Func<string> deadLetterQueueName = null, [WorkflowExpression] Func<MoveMessageToDeadLetterQueueInputSendMessageOptionsType> sendMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
-            serviceProviderParameters["reasonCode"] = ExpressionConverter.ConvertO(reasonCode);
-            if (deadLetterQueueName != null)
-            {
-                serviceProviderParameters["deadLetterQueueName"] = ExpressionConverter.ConvertO(deadLetterQueueName);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (sendMessageOptions != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MoveMessageToDeadLetterQueueOutput> __BuildMoveMessageToDeadLetterQueue(WorkflowValue<object> message, WorkflowValue<int> reasonCode, WorkflowValue<string> deadLetterQueueName = null, WorkflowValue<MoveMessageToDeadLetterQueueInputSendMessageOptionsType> sendMessageOptions = null)
+        {
+            WorkflowValue.Validate(message, nameof(message), required: true);
+            WorkflowValue.Validate(reasonCode, nameof(reasonCode), required: true);
+            WorkflowValue.Validate(deadLetterQueueName, nameof(deadLetterQueueName), required: false);
+            WorkflowValue.Validate(sendMessageOptions, nameof(sendMessageOptions), required: false);
+            return new DeferredBodyAction<MoveMessageToDeadLetterQueueOutput>(() =>
             {
-                serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["message"] = ExpressionConverter.ConvertO(message);
+                serviceProviderParameters["reasonCode"] = ExpressionConverter.ConvertO(reasonCode);
+                if (deadLetterQueueName != null)
+                {
+                    serviceProviderParameters["deadLetterQueueName"] = ExpressionConverter.ConvertO(deadLetterQueueName);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "moveMessageToDeadLetterQueue", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
+                if (sendMessageOptions != null)
+                {
+                    serviceProviderParameters["sendMessageOptions"] = ExpressionConverter.ConvertO(sendMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "moveMessageToDeadLetterQueue", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<MoveMessageToDeadLetterQueueOutput>(serviceProviderInput);
+            });
         }
     }
 
     public class MqTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable(Expression<Func<string>> queueName, Expression<Func<int>> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildPollAvailable))]
+        public IBodyWorkflowTrigger<PollAvailableOutput> PollAvailable([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            if (waitIntervalInSeconds != null)
-            {
-                serviceProviderParameters["waitIntervalInSeconds"] = ExpressionConverter.ConvertO(waitIntervalInSeconds);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollBrowseMessagesInputGetMessageOptionsType>> getMessageOptions = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollAvailableOutput> __BuildPollAvailable(WorkflowValue<string> queueName, WorkflowValue<int> waitIntervalInSeconds = null, FlowRecurrence recurrence = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(waitIntervalInSeconds, nameof(waitIntervalInSeconds), required: false);
+            return new DeferredBodyTrigger<PollAvailableOutput>(() =>
             {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                if (waitIntervalInSeconds != null)
+                {
+                    serviceProviderParameters["waitIntervalInSeconds"] = ExpressionConverter.ConvertO(waitIntervalInSeconds);
+                }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollAvailable", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            }, "ServiceProviderTrigger");
         }
 
-        public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages(Expression<Func<string>> queueName, Expression<Func<bool>> includeInfo, Expression<Func<PollMessagesInputGetMessageOptionsType>> getMessageOptions = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildPollBrowseMessages))]
+        public IBodyWorkflowTrigger<PollBrowseMessagesOutput> PollBrowseMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<PollBrowseMessagesInputGetMessageOptionsType> getMessageOptions = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
-            serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
-            if (getMessageOptions != null)
-            {
-                serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollBrowseMessagesOutput> __BuildPollBrowseMessages(WorkflowValue<string> queueName, WorkflowValue<bool> includeInfo, WorkflowValue<PollBrowseMessagesInputGetMessageOptionsType> getMessageOptions = null)
+        {
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(includeInfo, nameof(includeInfo), required: true);
+            WorkflowValue.Validate(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyTrigger<PollBrowseMessagesOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollBrowseMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
+            }, "ServiceProviderTrigger");
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPollMessages))]
+        public IBodyWorkflowTrigger<PollMessagesOutput> PollMessages([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<bool> includeInfo, [WorkflowExpression] Func<PollMessagesInputGetMessageOptionsType> getMessageOptions = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollMessagesOutput> __BuildPollMessages(WorkflowValue<string> queueName, WorkflowValue<bool> includeInfo, WorkflowValue<PollMessagesInputGetMessageOptionsType> getMessageOptions = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(queueName, nameof(queueName), required: true);
+            WorkflowValue.Validate(includeInfo, nameof(includeInfo), required: true);
+            WorkflowValue.Validate(getMessageOptions, nameof(getMessageOptions), required: false);
+            return new DeferredBodyTrigger<PollMessagesOutput>(() =>
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["queueName"] = ExpressionConverter.ConvertO(queueName);
+                serviceProviderParameters["includeInfo"] = ExpressionConverter.ConvertO(includeInfo);
+                if (getMessageOptions != null)
+                {
+                    serviceProviderParameters["getMessageOptions"] = ExpressionConverter.ConvertO(getMessageOptions);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/mq", operationId: "pollMessages", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
+            }, "ServiceProviderTrigger");
         }
     }
 

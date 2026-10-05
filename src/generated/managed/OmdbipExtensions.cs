@@ -4,32 +4,47 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Omdbip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OmdbipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "omdbip")]
-        public IBodyWorkflowAction<GetSearchResultsResponse> GetSearchResults(Expression<Func<string>> apikey, Expression<Func<string>> s = null, Expression<Func<string>> i = null, Expression<Func<int>> y = null, Expression<Func<typeInput>> type = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSearchResults))]
+        public IBodyWorkflowAction<GetSearchResultsResponse> GetSearchResults([WorkflowExpression] Func<string> apikey, [WorkflowExpression] Func<string> s = null, [WorkflowExpression] Func<string> i = null, [WorkflowExpression] Func<int> y = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["apikey"] = ExpressionConverter.Convert(apikey);
-            if (s != null)
-                callPayload.Queries["s"] = ExpressionConverter.Convert(s);
-            if (i != null)
-                callPayload.Queries["i"] = ExpressionConverter.Convert(i);
-            if (y != null)
-                callPayload.Queries["y"] = ExpressionConverter.Convert(y);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<GetSearchResultsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSearchResultsResponse> __BuildGetSearchResults(WorkflowValue<string> apikey, WorkflowValue<string> s = null, WorkflowValue<string> i = null, WorkflowValue<int> y = null, WorkflowValue<typeInput> type = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(apikey, nameof(apikey), required: true);
+            WorkflowValue.Validate(s, nameof(s), required: false);
+            WorkflowValue.Validate(i, nameof(i), required: false);
+            WorkflowValue.Validate(y, nameof(y), required: false);
+            WorkflowValue.Validate(type, nameof(type), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<GetSearchResultsResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["apikey"] = ExpressionConverter.Convert(apikey);
+                if (s != null)
+                    callPayload.Queries["s"] = ExpressionConverter.Convert(s);
+                if (i != null)
+                    callPayload.Queries["i"] = ExpressionConverter.Convert(i);
+                if (y != null)
+                    callPayload.Queries["y"] = ExpressionConverter.Convert(y);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<GetSearchResultsResponse>(callPayload);
+            });
         }
     }
 

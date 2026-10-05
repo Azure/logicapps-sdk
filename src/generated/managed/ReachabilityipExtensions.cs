@@ -4,23 +4,34 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reachabilityip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ReachabilityipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reachabilityip")]
-        public IBodyWorkflowAction<ReachResponse> Reach(Expression<Func<string>> url, Expression<Func<string>> country = null)
+        [WorkflowExpressionFactory(nameof(__BuildReach))]
+        public IBodyWorkflowAction<ReachResponse> Reach([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/reachability";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<ReachResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReachResponse> __BuildReach(WorkflowValue<string> url, WorkflowValue<string> country = null)
+        {
+            WorkflowValue.Validate(url, nameof(url), required: true);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            return new DeferredBodyAction<ReachResponse>(() =>
+            {
+                var apiCallPath = "/reachability";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                return new ApiConnectionAction<ReachResponse>(callPayload);
+            });
         }
     }
 

@@ -4,280 +4,391 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixsmartflows
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ExperlogixsmartflowsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction InvokeMCP(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildInvokeMCP))]
+        public IWorkflowAction InvokeMCP([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/runtime/webhooks/mcp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildInvokeMCP(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/runtime/webhooks/mcp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<GetDocumentsResponse[]> GetDocuments(Expression<Func<string>> reqexecutionId)
+        [WorkflowExpressionFactory(nameof(__BuildGetDocuments))]
+        public IBodyWorkflowAction<GetDocumentsResponse[]> GetDocuments([WorkflowExpression] Func<string> reqexecutionId)
         {
-            var apiCallPath = "/api/Documents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["executionId"] = ExpressionConverter.ConvertO(reqexecutionId);
-            if (reqpropCount > 0)
-            {
-                callPayload.Body = req;
-            }
-
-            return new ApiConnectionAction<GetDocumentsResponse[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<FlowExecutionResponse> GetExecutionStatus(Expression<Func<string>> reqexecutionId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocumentsResponse[]> __BuildGetDocuments(WorkflowValue<string> reqexecutionId)
         {
-            var apiCallPath = "/api/ExecutionStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["executionId"] = ExpressionConverter.ConvertO(reqexecutionId);
-            if (reqpropCount > 0)
+            WorkflowValue.Validate(reqexecutionId, nameof(reqexecutionId), required: true);
+            return new DeferredBodyAction<GetDocumentsResponse[]>(() =>
             {
-                callPayload.Body = req;
-            }
-
-            return new ApiConnectionAction<FlowExecutionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> reqdocumentId)
-        {
-            var apiCallPath = "/api/DownloadDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["documentId"] = ExpressionConverter.ConvertO(reqdocumentId);
-            if (reqpropCount > 0)
-            {
-                callPayload.Body = req;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<FlowExecutionResponse> ExecuteFlow(Expression<Func<string>> reqflowId, Expression<Func<object>> reqexecutionData, Expression<Func<int>> reqpriority = null, Expression<Func<bool>> reqenableAsynchronousRequestReplyPattern = null)
-        {
-            var apiCallPath = "/api/ExecuteFlow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["flowId"] = ExpressionConverter.ConvertO(reqflowId);
-            reqpropCount++;
-            req["executionData"] = ExpressionConverter.ConvertO(reqexecutionData);
-            if (reqpriority != null)
-            {
-                req["priority"] = ExpressionConverter.ConvertO(reqpriority);
+                var apiCallPath = "/api/Documents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
                 reqpropCount++;
-            }
+                req["executionId"] = ExpressionConverter.ConvertO(reqexecutionId);
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
 
-            if (reqenableAsynchronousRequestReplyPattern != null)
+                return new ApiConnectionAction<GetDocumentsResponse[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
+        [WorkflowExpressionFactory(nameof(__BuildGetExecutionStatus))]
+        public IBodyWorkflowAction<FlowExecutionResponse> GetExecutionStatus([WorkflowExpression] Func<string> reqexecutionId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FlowExecutionResponse> __BuildGetExecutionStatus(WorkflowValue<string> reqexecutionId)
+        {
+            WorkflowValue.Validate(reqexecutionId, nameof(reqexecutionId), required: true);
+            return new DeferredBodyAction<FlowExecutionResponse>(() =>
             {
+                var apiCallPath = "/api/ExecutionStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
+                reqpropCount++;
+                req["executionId"] = ExpressionConverter.ConvertO(reqexecutionId);
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
+
+                return new ApiConnectionAction<FlowExecutionResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
+        [WorkflowExpressionFactory(nameof(__BuildDownloadDocument))]
+        public IBodyWorkflowAction<string> DownloadDocument([WorkflowExpression] Func<string> reqdocumentId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDownloadDocument(WorkflowValue<string> reqdocumentId)
+        {
+            WorkflowValue.Validate(reqdocumentId, nameof(reqdocumentId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/DownloadDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
+                reqpropCount++;
+                req["documentId"] = ExpressionConverter.ConvertO(reqdocumentId);
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
+        [WorkflowExpressionFactory(nameof(__BuildExecuteFlow))]
+        public IBodyWorkflowAction<FlowExecutionResponse> ExecuteFlow([WorkflowExpression] Func<string> reqflowId, [WorkflowExpression] Func<object> reqexecutionData, [WorkflowExpression] Func<int> reqpriority = null, [WorkflowExpression] Func<bool> reqenableAsynchronousRequestReplyPattern = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FlowExecutionResponse> __BuildExecuteFlow(WorkflowValue<string> reqflowId, WorkflowValue<object> reqexecutionData, WorkflowValue<int> reqpriority = null, WorkflowValue<bool> reqenableAsynchronousRequestReplyPattern = null)
+        {
+            WorkflowValue.Validate(reqflowId, nameof(reqflowId), required: true);
+            WorkflowValue.Validate(reqexecutionData, nameof(reqexecutionData), required: true);
+            WorkflowValue.Validate(reqpriority, nameof(reqpriority), required: false);
+            WorkflowValue.Validate(reqenableAsynchronousRequestReplyPattern, nameof(reqenableAsynchronousRequestReplyPattern), required: false);
+            return new DeferredBodyAction<FlowExecutionResponse>(() =>
+            {
+                var apiCallPath = "/api/ExecuteFlow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
+                reqpropCount++;
+                req["flowId"] = ExpressionConverter.ConvertO(reqflowId);
+                reqpropCount++;
+                req["executionData"] = ExpressionConverter.ConvertO(reqexecutionData);
+                if (reqpriority != null)
+                {
+                    req["priority"] = ExpressionConverter.ConvertO(reqpriority);
+                    reqpropCount++;
+                }
+
                 if (reqenableAsynchronousRequestReplyPattern != null)
                 {
-                    req["enableAsynchronousRequestReplyPattern"] = ExpressionConverter.ConvertO(reqenableAsynchronousRequestReplyPattern);
+                    if (reqenableAsynchronousRequestReplyPattern != null)
+                    {
+                        req["enableAsynchronousRequestReplyPattern"] = ExpressionConverter.ConvertO(reqenableAsynchronousRequestReplyPattern);
+                        reqpropCount++;
+                    }
+
+                    reqpropCount++;
+                }
+                else
+                {
+                    req["enableAsynchronousRequestReplyPattern"] = true;
+                    reqpropCount++;
+                }
+
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
+
+                return new ApiConnectionAction<FlowExecutionResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
+        [WorkflowExpressionFactory(nameof(__BuildExportPackage))]
+        public IBodyWorkflowAction<string> ExportPackage([WorkflowExpression] Func<reqrecordTypeInput> reqrecordType, [WorkflowExpression] Func<reqexportModeInput> reqexportMode, [WorkflowExpression] Func<bool> reqincludeAllDependencies, [WorkflowExpression] Func<object> reqrecords = null, [WorkflowExpression] Func<bool> reqincludeTemplateHistory = null, [WorkflowExpression] Func<bool> reqincludeSamples = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildExportPackage(WorkflowValue<reqrecordTypeInput> reqrecordType, WorkflowValue<reqexportModeInput> reqexportMode, WorkflowValue<bool> reqincludeAllDependencies, WorkflowValue<object> reqrecords = null, WorkflowValue<bool> reqincludeTemplateHistory = null, WorkflowValue<bool> reqincludeSamples = null)
+        {
+            WorkflowValue.Validate(reqrecordType, nameof(reqrecordType), required: true);
+            WorkflowValue.Validate(reqexportMode, nameof(reqexportMode), required: true);
+            WorkflowValue.Validate(reqincludeAllDependencies, nameof(reqincludeAllDependencies), required: true);
+            WorkflowValue.Validate(reqrecords, nameof(reqrecords), required: false);
+            WorkflowValue.Validate(reqincludeTemplateHistory, nameof(reqincludeTemplateHistory), required: false);
+            WorkflowValue.Validate(reqincludeSamples, nameof(reqincludeSamples), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/api/Export";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
+                reqpropCount++;
+                req["recordType"] = ExpressionConverter.ConvertO(reqrecordType);
+                reqpropCount++;
+                req["exportMode"] = ExpressionConverter.ConvertO(reqexportMode);
+                if (reqrecords != null)
+                {
+                    req["records"] = ExpressionConverter.ConvertO(reqrecords);
                     reqpropCount++;
                 }
 
                 reqpropCount++;
-            }
-            else
-            {
-                req["enableAsynchronousRequestReplyPattern"] = true;
-                reqpropCount++;
-            }
-
-            if (reqpropCount > 0)
-            {
-                callPayload.Body = req;
-            }
-
-            return new ApiConnectionAction<FlowExecutionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string> ExportPackage(Expression<Func<reqrecordTypeInput>> reqrecordType, Expression<Func<reqexportModeInput>> reqexportMode, Expression<Func<bool>> reqincludeAllDependencies, Expression<Func<object>> reqrecords = null, Expression<Func<bool>> reqincludeTemplateHistory = null, Expression<Func<bool>> reqincludeSamples = null)
-        {
-            var apiCallPath = "/api/Export";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["recordType"] = ExpressionConverter.ConvertO(reqrecordType);
-            reqpropCount++;
-            req["exportMode"] = ExpressionConverter.ConvertO(reqexportMode);
-            if (reqrecords != null)
-            {
-                req["records"] = ExpressionConverter.ConvertO(reqrecords);
-                reqpropCount++;
-            }
-
-            reqpropCount++;
-            req["includeAllDependencies"] = ExpressionConverter.ConvertO(reqincludeAllDependencies);
-            if (reqincludeTemplateHistory != null)
-            {
+                req["includeAllDependencies"] = ExpressionConverter.ConvertO(reqincludeAllDependencies);
                 if (reqincludeTemplateHistory != null)
                 {
-                    req["includeTemplateHistory"] = ExpressionConverter.ConvertO(reqincludeTemplateHistory);
+                    if (reqincludeTemplateHistory != null)
+                    {
+                        req["includeTemplateHistory"] = ExpressionConverter.ConvertO(reqincludeTemplateHistory);
+                        reqpropCount++;
+                    }
+
+                    reqpropCount++;
+                }
+                else
+                {
+                    req["includeTemplateHistory"] = false;
                     reqpropCount++;
                 }
 
-                reqpropCount++;
-            }
-            else
-            {
-                req["includeTemplateHistory"] = false;
-                reqpropCount++;
-            }
-
-            if (reqincludeSamples != null)
-            {
                 if (reqincludeSamples != null)
                 {
-                    req["includeSamples"] = ExpressionConverter.ConvertO(reqincludeSamples);
+                    if (reqincludeSamples != null)
+                    {
+                        req["includeSamples"] = ExpressionConverter.ConvertO(reqincludeSamples);
+                        reqpropCount++;
+                    }
+
+                    reqpropCount++;
+                }
+                else
+                {
+                    req["includeSamples"] = false;
                     reqpropCount++;
                 }
 
-                reqpropCount++;
-            }
-            else
-            {
-                req["includeSamples"] = false;
-                reqpropCount++;
-            }
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
 
-            if (reqpropCount > 0)
-            {
-                callPayload.Body = req;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction ImportPackage(Expression<Func<object>> package, Expression<Func<bool>> overwriteExisting)
+        [WorkflowExpressionFactory(nameof(__BuildImportPackage))]
+        public IWorkflowAction ImportPackage([WorkflowExpression] Func<object> package, [WorkflowExpression] Func<bool> overwriteExisting)
         {
-            var apiCallPath = "/api/Import";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["overwriteExisting"] = ExpressionConverter.Convert(overwriteExisting);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildImportPackage(WorkflowValue<object> package, WorkflowValue<bool> overwriteExisting)
+        {
+            WorkflowValue.Validate(package, nameof(package), required: true);
+            WorkflowValue.Validate(overwriteExisting, nameof(overwriteExisting), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/Import";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["overwriteExisting"] = ExpressionConverter.Convert(overwriteExisting);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IBodyWorkflowAction<string> BackupPackage(Expression<Func<bool>> reqincludeHistory, Expression<Func<bool>> req00000000000000000000000000000000 = null)
+        [WorkflowExpressionFactory(nameof(__BuildBackupPackage))]
+        public IBodyWorkflowAction<string> BackupPackage([WorkflowExpression] Func<bool> reqincludeHistory, [WorkflowExpression] Func<bool> req00000000000000000000000000000000 = null)
         {
-            var apiCallPath = "/api/Backup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["includeHistory"] = ExpressionConverter.ConvertO(reqincludeHistory);
-            if (req00000000000000000000000000000000 != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildBackupPackage(WorkflowValue<bool> reqincludeHistory, WorkflowValue<bool> req00000000000000000000000000000000 = null)
+        {
+            WorkflowValue.Validate(reqincludeHistory, nameof(reqincludeHistory), required: true);
+            WorkflowValue.Validate(req00000000000000000000000000000000, nameof(req00000000000000000000000000000000), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
+                var apiCallPath = "/api/Backup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
+                reqpropCount++;
+                req["includeHistory"] = ExpressionConverter.ConvertO(reqincludeHistory);
                 if (req00000000000000000000000000000000 != null)
                 {
-                    req["00000000-0000-0000-0000-000000000000"] = ExpressionConverter.ConvertO(req00000000000000000000000000000000);
+                    if (req00000000000000000000000000000000 != null)
+                    {
+                        req["00000000-0000-0000-0000-000000000000"] = ExpressionConverter.ConvertO(req00000000000000000000000000000000);
+                        reqpropCount++;
+                    }
+
+                    reqpropCount++;
+                }
+                else
+                {
+                    req["00000000-0000-0000-0000-000000000000"] = false;
                     reqpropCount++;
                 }
 
-                reqpropCount++;
-            }
-            else
-            {
-                req["00000000-0000-0000-0000-000000000000"] = false;
-                reqpropCount++;
-            }
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
 
-            if (reqpropCount > 0)
-            {
-                callPayload.Body = req;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixsmartflows")]
-        public IWorkflowAction RestorePackage(Expression<Func<object>> package)
+        [WorkflowExpressionFactory(nameof(__BuildRestorePackage))]
+        public IWorkflowAction RestorePackage([WorkflowExpression] Func<object> package)
         {
-            var apiCallPath = "/api/Restore";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRestorePackage(WorkflowValue<object> package)
+        {
+            WorkflowValue.Validate(package, nameof(package), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/Restore";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

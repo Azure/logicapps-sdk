@@ -13,9 +13,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Build\**\*.cs" />
+    <ProjectReference Include="Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+                      ReferenceOutputAssembly="false" PrivateAssets="all"
+                      SkipGetTargetFrameworkProperties="true"
+                      GlobalPropertiesToRemove="TargetFramework;RuntimeIdentifier;SelfContained" />
+    <None Update="buildTransitive\*.props;buildTransitive\*.targets" Pack="true" PackagePath="buildTransitive\%(Filename)%(Extension)" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Rpc" Version="1.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
+
+  <Target Name="IncludeWorkflowCompiler" BeforeTargets="_GetPackageFiles">
+    <MSBuild Projects="$(MSBuildProjectDirectory)\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+             Targets="GetTargetPath" Properties="Configuration=$(Configuration)" RemoveProperties="TargetFramework;RuntimeIdentifier;SelfContained">
+      <Output TaskParameter="TargetOutputs" ItemName="_WorkflowBuildTool" />
+    </MSBuild>
+    <PropertyGroup>
+      <_WorkflowBuildDirectory>@(_WorkflowBuildTool->'%(RootDir)%(Directory)')</_WorkflowBuildDirectory>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(_WorkflowBuildDirectory)Microsoft.Azure.Workflows.Sdk.Build.runtimeconfig.json')"
+           Text="Build the workflow compiler before packing the SDK." />
+    <ItemGroup>
+      <None Include="$(_WorkflowBuildDirectory)**\*" Pack="true" PackagePath="tools\workflow-build\%(RecursiveDir)" />
+    </ItemGroup>
+  </Target>
 
   <ItemGroup>
       <ExcludeFromStyleCop Include="**\*.cs" />

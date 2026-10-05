@@ -4,43 +4,70 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class XooadbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
-        public IBodyWorkflowAction<string> Query(Expression<Func<string>> fcn, Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildQuery))]
+        public IBodyWorkflowAction<string> Query([WorkflowExpression] Func<string> fcn, [WorkflowExpression] Func<bool> async = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string[]> body = null)
         {
-            var apiCallPath = String.Format("/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(fcn, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["async"] = Convert.ToString(false);
-            if (async != null)
-                callPayload.Queries["async"] = ExpressionConverter.Convert(async);
-            callPayload.Queries["timeout"] = Convert.ToString(5000);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildQuery(WorkflowValue<string> fcn, WorkflowValue<bool> async = null, WorkflowValue<int> timeout = null, WorkflowValue<string[]> body = null)
+        {
+            WorkflowValue.Validate(fcn, nameof(fcn), required: true);
+            WorkflowValue.Validate(async, nameof(async), required: false);
+            WorkflowValue.Validate(timeout, nameof(timeout), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(fcn, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["async"] = Convert.ToString(false);
+                if (async != null)
+                    callPayload.Queries["async"] = ExpressionConverter.Convert(async);
+                callPayload.Queries["timeout"] = Convert.ToString(5000);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
-        public IBodyWorkflowAction<string> Invoke(Expression<Func<string>> fcn, Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildInvoke))]
+        public IBodyWorkflowAction<string> Invoke([WorkflowExpression] Func<string> fcn, [WorkflowExpression] Func<bool> async = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string[]> body = null)
         {
-            var apiCallPath = String.Format("/invoke/{0}", ExpressionConverter.ConvertWithUrlEncoding(fcn, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["async"] = Convert.ToString(false);
-            if (async != null)
-                callPayload.Queries["async"] = ExpressionConverter.Convert(async);
-            callPayload.Queries["timeout"] = Convert.ToString(3000);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildInvoke(WorkflowValue<string> fcn, WorkflowValue<bool> async = null, WorkflowValue<int> timeout = null, WorkflowValue<string[]> body = null)
+        {
+            WorkflowValue.Validate(fcn, nameof(fcn), required: true);
+            WorkflowValue.Validate(async, nameof(async), required: false);
+            WorkflowValue.Validate(timeout, nameof(timeout), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invoke/{0}", ExpressionConverter.ConvertWithUrlEncoding(fcn, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["async"] = Convert.ToString(false);
+                if (async != null)
+                    callPayload.Queries["async"] = ExpressionConverter.Convert(async);
+                callPayload.Queries["timeout"] = Convert.ToString(3000);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

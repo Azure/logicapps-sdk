@@ -4,121 +4,165 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NunifyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
-        public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydesignation = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyticketTypeId = null)
+        [WorkflowExpressionFactory(nameof(__BuildADDREGISTRANT))]
+        public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodydesignation = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyticketTypeId = null)
         {
-            var apiCallPath = String.Format("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["map_by_labels"] = Convert.ToString(true);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
-            {
-                body["email"] = ExpressionConverter.ConvertO(bodyemail);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfirstName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ADDREGISTRANTResponse> __BuildADDREGISTRANT(WorkflowValue<string> platformId, WorkflowValue<string> domainId, WorkflowValue<string> appId, WorkflowValue<string> bodyemail = null, WorkflowValue<string> bodyfirstName = null, WorkflowValue<string> bodylastName = null, WorkflowValue<string> bodydesignation = null, WorkflowValue<string> bodycompany = null, WorkflowValue<string> bodyticketTypeId = null)
+        {
+            WorkflowValue.Validate(platformId, nameof(platformId), required: true);
+            WorkflowValue.Validate(domainId, nameof(domainId), required: true);
+            WorkflowValue.Validate(appId, nameof(appId), required: true);
+            WorkflowValue.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowValue.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            WorkflowValue.Validate(bodylastName, nameof(bodylastName), required: false);
+            WorkflowValue.Validate(bodydesignation, nameof(bodydesignation), required: false);
+            WorkflowValue.Validate(bodycompany, nameof(bodycompany), required: false);
+            WorkflowValue.Validate(bodyticketTypeId, nameof(bodyticketTypeId), required: false);
+            return new DeferredBodyAction<ADDREGISTRANTResponse>(() =>
             {
-                body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodydesignation != null)
-            {
-                body["designation"] = ExpressionConverter.ConvertO(bodydesignation);
-                bodypropCount++;
-            }
-
-            if (bodycompany != null)
-            {
-                body["company"] = ExpressionConverter.ConvertO(bodycompany);
-                bodypropCount++;
-            }
-
-            if (bodyticketTypeId != null)
-            {
-                if (bodyticketTypeId != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["map_by_labels"] = Convert.ToString(true);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
                 {
-                    body["ticket_type_id"] = ExpressionConverter.ConvertO(bodyticketTypeId);
+                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ticket_type_id"] = "Default";
-                bodypropCount++;
-            }
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = ExpressionConverter.ConvertO(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodylastName != null)
+                {
+                    body["last_name"] = ExpressionConverter.ConvertO(bodylastName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ADDREGISTRANTResponse>(callPayload);
+                if (bodydesignation != null)
+                {
+                    body["designation"] = ExpressionConverter.ConvertO(bodydesignation);
+                    bodypropCount++;
+                }
+
+                if (bodycompany != null)
+                {
+                    body["company"] = ExpressionConverter.ConvertO(bodycompany);
+                    bodypropCount++;
+                }
+
+                if (bodyticketTypeId != null)
+                {
+                    if (bodyticketTypeId != null)
+                    {
+                        body["ticket_type_id"] = ExpressionConverter.ConvertO(bodyticketTypeId);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ticket_type_id"] = "Default";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ADDREGISTRANTResponse>(callPayload);
+            });
         }
     }
 
     public class NunifyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildNEWREGISTRATION))]
+        public IWorkflowTrigger NEWREGISTRATION([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["kind"] = "ticket_create";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildNEWREGISTRATION(WorkflowValue<string> platformId, WorkflowValue<string> domainId, WorkflowValue<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["kind"] = "checkin";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(platformId, nameof(platformId), required: true);
+            WorkflowValue.Validate(domainId, nameof(domainId), required: true);
+            WorkflowValue.Validate(appId, nameof(appId), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["kind"] = "ticket_create";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildNEWCHECKIN))]
+        public IWorkflowTrigger NEWCHECKIN([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildNEWCHECKIN(WorkflowValue<string> platformId, WorkflowValue<string> domainId, WorkflowValue<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(platformId, nameof(platformId), required: true);
+            WorkflowValue.Validate(domainId, nameof(domainId), required: true);
+            WorkflowValue.Validate(appId, nameof(appId), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", ExpressionConverter.ConvertWithUrlEncoding(platformId, 1), ExpressionConverter.ConvertWithUrlEncoding(domainId, 1), ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                body["kind"] = "checkin";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

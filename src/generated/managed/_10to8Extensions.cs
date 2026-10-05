@@ -4,102 +4,204 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._10to8
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class _10to8Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "10to8")]
-        public IBodyWorkflowAction<string> BookAppointment(Expression<Func<string>> organisationId, Expression<Func<string>> bodystartDateTime, Expression<Func<string>> bodyendDateTime, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription)
+        [WorkflowExpressionFactory(nameof(__BuildBookAppointment))]
+        public IBodyWorkflowAction<string> BookAppointment([WorkflowExpression] Func<string> organisationId, [WorkflowExpression] Func<string> bodystartDateTime, [WorkflowExpression] Func<string> bodyendDateTime, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/appointments/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["start"] = ExpressionConverter.ConvertO(bodystartDateTime);
-            bodypropCount++;
-            body["end"] = ExpressionConverter.ConvertO(bodyendDateTime);
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<string>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildBookAppointment(WorkflowValue<string> organisationId, WorkflowValue<string> bodystartDateTime, WorkflowValue<string> bodyendDateTime, WorkflowValue<string> bodyname, WorkflowValue<string> bodydescription)
+        {
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            WorkflowValue.Validate(bodystartDateTime, nameof(bodystartDateTime), required: true);
+            WorkflowValue.Validate(bodyendDateTime, nameof(bodyendDateTime), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/appointments/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["start"] = ExpressionConverter.ConvertO(bodystartDateTime);
+                bodypropCount++;
+                body["end"] = ExpressionConverter.ConvertO(bodyendDateTime);
+                bodypropCount++;
+                body["title"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class _10to8Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetAppointmentsResponseItem[]> GetAppointments(Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetAppointments))]
+        public IBodyWorkflowTrigger<GetAppointmentsResponseItem[]> GetAppointments([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/appointments/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<GetAppointmentsResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<GetCustomersResponseItem[]> GetCustomers(Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<GetAppointmentsResponseItem[]> __BuildGetAppointments(WorkflowValue<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/customers/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<GetCustomersResponseItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            return new DeferredBodyTrigger<GetAppointmentsResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/appointments/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<GetAppointmentsResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesAppeared(Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetCustomers))]
+        public IBodyWorkflowTrigger<GetCustomersResponseItem[]> GetCustomers([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncomingMessage[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesDisappeared(Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<GetCustomersResponseItem[]> __BuildGetCustomers(WorkflowValue<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncomingMessage[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            return new DeferredBodyTrigger<GetCustomersResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/customers/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<GetCustomersResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventProposal[]> GetInboxBookingRequestAppeared(Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetInboxIncomingMessagesAppeared))]
+        public IBodyWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesAppeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<EventProposal[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventProposal[]> GetInboxBookingRequestDisappeared(Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<IncomingMessage[]> __BuildGetInboxIncomingMessagesAppeared(WorkflowValue<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<EventProposal[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            return new DeferredBodyTrigger<IncomingMessage[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<IncomingMessage[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestAppeared(Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetInboxIncomingMessagesDisappeared))]
+        public IBodyWorkflowTrigger<IncomingMessage[]> GetInboxIncomingMessagesDisappeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<EventProposal[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestDisappeared(Expression<Func<string>> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<IncomingMessage[]> __BuildGetInboxIncomingMessagesDisappeared(WorkflowValue<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<EventProposal[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            return new DeferredBodyTrigger<IncomingMessage[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/incoming-messages/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<IncomingMessage[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildGetInboxBookingRequestAppeared))]
+        public IBodyWorkflowTrigger<EventProposal[]> GetInboxBookingRequestAppeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventProposal[]> __BuildGetInboxBookingRequestAppeared(WorkflowValue<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            return new DeferredBodyTrigger<EventProposal[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<EventProposal[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildGetInboxBookingRequestDisappeared))]
+        public IBodyWorkflowTrigger<EventProposal[]> GetInboxBookingRequestDisappeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventProposal[]> __BuildGetInboxBookingRequestDisappeared(WorkflowValue<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            return new DeferredBodyTrigger<EventProposal[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/booking-proposals/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<EventProposal[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildGetInboxChangeCancellationRequestAppeared))]
+        public IBodyWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestAppeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventProposal[]> __BuildGetInboxChangeCancellationRequestAppeared(WorkflowValue<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            return new DeferredBodyTrigger<EventProposal[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/appeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<EventProposal[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildGetInboxChangeCancellationRequestDisappeared))]
+        public IBodyWorkflowTrigger<EventProposal[]> GetInboxChangeCancellationRequestDisappeared([WorkflowExpression] Func<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventProposal[]> __BuildGetInboxChangeCancellationRequestDisappeared(WorkflowValue<string> organisationId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(organisationId, nameof(organisationId), required: true);
+            return new DeferredBodyTrigger<EventProposal[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/microsoft-flow/v1/{0}/inbox/rebook-cancellation-proposals/disappeared/", ExpressionConverter.ConvertWithUrlEncoding(organisationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<EventProposal[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

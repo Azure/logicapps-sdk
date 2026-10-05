@@ -4,159 +4,190 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TheeventscalendarActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "theeventscalendar")]
-        public IBodyWorkflowAction<CreateEventsResponse> CreateEvents(Expression<Func<int>> bodyauthor = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodyexcerpt = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyallDay = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodyendDate = null, Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodycost = null, Expression<Func<string>> bodywebsite = null, Expression<Func<bool>> bodyshowMap = null, Expression<Func<bool>> bodyshowMapLink = null, Expression<Func<bool>> bodyhideFromListings = null, Expression<Func<bool>> bodysticky = null, Expression<Func<bool>> bodyfeatured = null, Expression<Func<string>> bodycategories = null, Expression<Func<string>> bodytags = null, Expression<Func<string>> bodyvenue = null, Expression<Func<string>> bodyorganizer = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateEvents))]
+        public IBodyWorkflowAction<CreateEventsResponse> CreateEvents([WorkflowExpression] Func<int> bodyauthor = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodyexcerpt = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<bool> bodyallDay = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodyendDate = null, [WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodycost = null, [WorkflowExpression] Func<string> bodywebsite = null, [WorkflowExpression] Func<bool> bodyshowMap = null, [WorkflowExpression] Func<bool> bodyshowMapLink = null, [WorkflowExpression] Func<bool> bodyhideFromListings = null, [WorkflowExpression] Func<bool> bodysticky = null, [WorkflowExpression] Func<bool> bodyfeatured = null, [WorkflowExpression] Func<string> bodycategories = null, [WorkflowExpression] Func<string> bodytags = null, [WorkflowExpression] Func<string> bodyvenue = null, [WorkflowExpression] Func<string> bodyorganizer = null)
         {
-            var apiCallPath = "/wp-json/tribe/power-automate/v1/create-events/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyauthor != null)
-            {
-                body["author"] = ExpressionConverter.ConvertO(bodyauthor);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodytitle != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateEventsResponse> __BuildCreateEvents(WorkflowValue<int> bodyauthor = null, WorkflowValue<string> bodytitle = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodyslug = null, WorkflowValue<string> bodyexcerpt = null, WorkflowValue<string> bodystatus = null, WorkflowValue<string> bodytimezone = null, WorkflowValue<bool> bodyallDay = null, WorkflowValue<string> bodystartDate = null, WorkflowValue<string> bodyendDate = null, WorkflowValue<string> bodyimage = null, WorkflowValue<string> bodycost = null, WorkflowValue<string> bodywebsite = null, WorkflowValue<bool> bodyshowMap = null, WorkflowValue<bool> bodyshowMapLink = null, WorkflowValue<bool> bodyhideFromListings = null, WorkflowValue<bool> bodysticky = null, WorkflowValue<bool> bodyfeatured = null, WorkflowValue<string> bodycategories = null, WorkflowValue<string> bodytags = null, WorkflowValue<string> bodyvenue = null, WorkflowValue<string> bodyorganizer = null)
+        {
+            WorkflowValue.Validate(bodyauthor, nameof(bodyauthor), required: false);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodyslug, nameof(bodyslug), required: false);
+            WorkflowValue.Validate(bodyexcerpt, nameof(bodyexcerpt), required: false);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            WorkflowValue.Validate(bodytimezone, nameof(bodytimezone), required: false);
+            WorkflowValue.Validate(bodyallDay, nameof(bodyallDay), required: false);
+            WorkflowValue.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowValue.Validate(bodyendDate, nameof(bodyendDate), required: false);
+            WorkflowValue.Validate(bodyimage, nameof(bodyimage), required: false);
+            WorkflowValue.Validate(bodycost, nameof(bodycost), required: false);
+            WorkflowValue.Validate(bodywebsite, nameof(bodywebsite), required: false);
+            WorkflowValue.Validate(bodyshowMap, nameof(bodyshowMap), required: false);
+            WorkflowValue.Validate(bodyshowMapLink, nameof(bodyshowMapLink), required: false);
+            WorkflowValue.Validate(bodyhideFromListings, nameof(bodyhideFromListings), required: false);
+            WorkflowValue.Validate(bodysticky, nameof(bodysticky), required: false);
+            WorkflowValue.Validate(bodyfeatured, nameof(bodyfeatured), required: false);
+            WorkflowValue.Validate(bodycategories, nameof(bodycategories), required: false);
+            WorkflowValue.Validate(bodytags, nameof(bodytags), required: false);
+            WorkflowValue.Validate(bodyvenue, nameof(bodyvenue), required: false);
+            WorkflowValue.Validate(bodyorganizer, nameof(bodyorganizer), required: false);
+            return new DeferredBodyAction<CreateEventsResponse>(() =>
             {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                var apiCallPath = "/wp-json/tribe/power-automate/v1/create-events/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyauthor != null)
+                {
+                    body["author"] = ExpressionConverter.ConvertO(bodyauthor);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodyslug != null)
-            {
-                body["slug"] = ExpressionConverter.ConvertO(bodyslug);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodyexcerpt != null)
-            {
-                body["excerpt"] = ExpressionConverter.ConvertO(bodyexcerpt);
-                bodypropCount++;
-            }
+                if (bodyslug != null)
+                {
+                    body["slug"] = ExpressionConverter.ConvertO(bodyslug);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                if (bodyexcerpt != null)
+                {
+                    body["excerpt"] = ExpressionConverter.ConvertO(bodyexcerpt);
+                    bodypropCount++;
+                }
 
-            if (bodytimezone != null)
-            {
-                body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodyallDay != null)
-            {
-                body["all_day"] = ExpressionConverter.ConvertO(bodyallDay);
-                bodypropCount++;
-            }
+                if (bodytimezone != null)
+                {
+                    body["timezone"] = ExpressionConverter.ConvertO(bodytimezone);
+                    bodypropCount++;
+                }
 
-            if (bodystartDate != null)
-            {
-                body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
+                if (bodyallDay != null)
+                {
+                    body["all_day"] = ExpressionConverter.ConvertO(bodyallDay);
+                    bodypropCount++;
+                }
 
-            if (bodyendDate != null)
-            {
-                body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
-                bodypropCount++;
-            }
+                if (bodystartDate != null)
+                {
+                    body["start_date"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodyimage != null)
-            {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
-                bodypropCount++;
-            }
+                if (bodyendDate != null)
+                {
+                    body["end_date"] = ExpressionConverter.ConvertO(bodyendDate);
+                    bodypropCount++;
+                }
 
-            if (bodycost != null)
-            {
-                body["cost"] = ExpressionConverter.ConvertO(bodycost);
-                bodypropCount++;
-            }
+                if (bodyimage != null)
+                {
+                    body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                    bodypropCount++;
+                }
 
-            if (bodywebsite != null)
-            {
-                body["website"] = ExpressionConverter.ConvertO(bodywebsite);
-                bodypropCount++;
-            }
+                if (bodycost != null)
+                {
+                    body["cost"] = ExpressionConverter.ConvertO(bodycost);
+                    bodypropCount++;
+                }
 
-            if (bodyshowMap != null)
-            {
-                body["show_map"] = ExpressionConverter.ConvertO(bodyshowMap);
-                bodypropCount++;
-            }
+                if (bodywebsite != null)
+                {
+                    body["website"] = ExpressionConverter.ConvertO(bodywebsite);
+                    bodypropCount++;
+                }
 
-            if (bodyshowMapLink != null)
-            {
-                body["show_map_link"] = ExpressionConverter.ConvertO(bodyshowMapLink);
-                bodypropCount++;
-            }
+                if (bodyshowMap != null)
+                {
+                    body["show_map"] = ExpressionConverter.ConvertO(bodyshowMap);
+                    bodypropCount++;
+                }
 
-            if (bodyhideFromListings != null)
-            {
-                body["hide_from_listings"] = ExpressionConverter.ConvertO(bodyhideFromListings);
-                bodypropCount++;
-            }
+                if (bodyshowMapLink != null)
+                {
+                    body["show_map_link"] = ExpressionConverter.ConvertO(bodyshowMapLink);
+                    bodypropCount++;
+                }
 
-            if (bodysticky != null)
-            {
-                body["sticky"] = ExpressionConverter.ConvertO(bodysticky);
-                bodypropCount++;
-            }
+                if (bodyhideFromListings != null)
+                {
+                    body["hide_from_listings"] = ExpressionConverter.ConvertO(bodyhideFromListings);
+                    bodypropCount++;
+                }
 
-            if (bodyfeatured != null)
-            {
-                body["featured"] = ExpressionConverter.ConvertO(bodyfeatured);
-                bodypropCount++;
-            }
+                if (bodysticky != null)
+                {
+                    body["sticky"] = ExpressionConverter.ConvertO(bodysticky);
+                    bodypropCount++;
+                }
 
-            if (bodycategories != null)
-            {
-                body["categories"] = ExpressionConverter.ConvertO(bodycategories);
-                bodypropCount++;
-            }
+                if (bodyfeatured != null)
+                {
+                    body["featured"] = ExpressionConverter.ConvertO(bodyfeatured);
+                    bodypropCount++;
+                }
 
-            if (bodytags != null)
-            {
-                body["tags"] = ExpressionConverter.ConvertO(bodytags);
-                bodypropCount++;
-            }
+                if (bodycategories != null)
+                {
+                    body["categories"] = ExpressionConverter.ConvertO(bodycategories);
+                    bodypropCount++;
+                }
 
-            if (bodyvenue != null)
-            {
-                body["venue"] = ExpressionConverter.ConvertO(bodyvenue);
-                bodypropCount++;
-            }
+                if (bodytags != null)
+                {
+                    body["tags"] = ExpressionConverter.ConvertO(bodytags);
+                    bodypropCount++;
+                }
 
-            if (bodyorganizer != null)
-            {
-                body["organizer"] = ExpressionConverter.ConvertO(bodyorganizer);
-                bodypropCount++;
-            }
+                if (bodyvenue != null)
+                {
+                    body["venue"] = ExpressionConverter.ConvertO(bodyvenue);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyorganizer != null)
+                {
+                    body["organizer"] = ExpressionConverter.ConvertO(bodyorganizer);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateEventsResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateEventsResponse>(callPayload);
+            });
         }
     }
 

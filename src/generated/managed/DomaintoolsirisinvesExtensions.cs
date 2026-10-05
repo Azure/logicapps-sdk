@@ -4,251 +4,460 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisinves
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DomaintoolsirisinvesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReverseIP(Expression<Func<string>> ip, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildReverseIP))]
+        public IBodyWorkflowAction<InvestigateResponse> ReverseIP([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/reverse-ip/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip"] = ExpressionConverter.Convert(ip);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildReverseIP(WorkflowValue<string> ip, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(ip, nameof(ip), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/reverse-ip/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ip"] = ExpressionConverter.Convert(ip);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotNameserverIP(Expression<Func<string>> nameserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildPivotNameserverIP))]
+        public IBodyWorkflowAction<InvestigateResponse> PivotNameserverIP([WorkflowExpression] Func<string> nameserverIp, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/nameserver-ip";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["nameserver_ip"] = ExpressionConverter.Convert(nameserverIp);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildPivotNameserverIP(WorkflowValue<string> nameserverIp, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(nameserverIp, nameof(nameserverIp), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/nameserver-ip";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["nameserver_ip"] = ExpressionConverter.Convert(nameserverIp);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> InvestigateDomain(Expression<Func<string>> domain, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildInvestigateDomain))]
+        public IBodyWorkflowAction<InvestigateResponse> InvestigateDomain([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/investigate_domain";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildInvestigateDomain(WorkflowValue<string> domain, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(domain, nameof(domain), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/investigate_domain";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotMXIP(Expression<Func<string>> mailserverIp, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildPivotMXIP))]
+        public IBodyWorkflowAction<InvestigateResponse> PivotMXIP([WorkflowExpression] Func<string> mailserverIp, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/mx-ip";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mailserver_ip"] = ExpressionConverter.Convert(mailserverIp);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildPivotMXIP(WorkflowValue<string> mailserverIp, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(mailserverIp, nameof(mailserverIp), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/mx-ip";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["mailserver_ip"] = ExpressionConverter.Convert(mailserverIp);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReverseEmail(Expression<Func<string>> email, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildReverseEmail))]
+        public IBodyWorkflowAction<InvestigateResponse> ReverseEmail([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/reverse-email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildReverseEmail(WorkflowValue<string> email, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(email, nameof(email), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/reverse-email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> LoadSearchHash(Expression<Func<string>> searchHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildLoadSearchHash))]
+        public IBodyWorkflowAction<InvestigateResponse> LoadSearchHash([WorkflowExpression] Func<string> searchHash, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/search-hash";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["search_hash"] = ExpressionConverter.Convert(searchHash);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildLoadSearchHash(WorkflowValue<string> searchHash, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(searchHash, nameof(searchHash), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/search-hash";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["search_hash"] = ExpressionConverter.Convert(searchHash);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotSSLHash(Expression<Func<string>> sslHash, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildPivotSSLHash))]
+        public IBodyWorkflowAction<InvestigateResponse> PivotSSLHash([WorkflowExpression] Func<string> sslHash, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/ssl-hash";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ssl_hash"] = ExpressionConverter.Convert(sslHash);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildPivotSSLHash(WorkflowValue<string> sslHash, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(sslHash, nameof(sslHash), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/ssl-hash";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ssl_hash"] = ExpressionConverter.Convert(sslHash);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantOrg(Expression<Func<string>> registrantOrg, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildPivotRegistrantOrg))]
+        public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantOrg([WorkflowExpression] Func<string> registrantOrg, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/registrant-org";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["registrant_org"] = ExpressionConverter.Convert(registrantOrg);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildPivotRegistrantOrg(WorkflowValue<string> registrantOrg, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(registrantOrg, nameof(registrantOrg), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/registrant-org";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["registrant_org"] = ExpressionConverter.Convert(registrantOrg);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantName(Expression<Func<string>> registrant, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildPivotRegistrantName))]
+        public IBodyWorkflowAction<InvestigateResponse> PivotRegistrantName([WorkflowExpression] Func<string> registrant, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/registrant";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["registrant"] = ExpressionConverter.Convert(registrant);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildPivotRegistrantName(WorkflowValue<string> registrant, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(registrant, nameof(registrant), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/registrant";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["registrant"] = ExpressionConverter.Convert(registrant);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReverseEmailDomain(Expression<Func<string>> emailDomain, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildReverseEmailDomain))]
+        public IBodyWorkflowAction<InvestigateResponse> ReverseEmailDomain([WorkflowExpression] Func<string> emailDomain, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/email-domain";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email_domain"] = ExpressionConverter.Convert(emailDomain);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildReverseEmailDomain(WorkflowValue<string> emailDomain, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(emailDomain, nameof(emailDomain), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/email-domain";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email_domain"] = ExpressionConverter.Convert(emailDomain);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotSSLEmail(Expression<Func<string>> sslEmail, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildPivotSSLEmail))]
+        public IBodyWorkflowAction<InvestigateResponse> PivotSSLEmail([WorkflowExpression] Func<string> sslEmail, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/ssl-email/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ssl_email"] = ExpressionConverter.Convert(sslEmail);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildPivotSSLEmail(WorkflowValue<string> sslEmail, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(sslEmail, nameof(sslEmail), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/ssl-email/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ssl_email"] = ExpressionConverter.Convert(sslEmail);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotNameserverHost(Expression<Func<string>> nameserverHost, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildPivotNameserverHost))]
+        public IBodyWorkflowAction<InvestigateResponse> PivotNameserverHost([WorkflowExpression] Func<string> nameserverHost, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/nameserver-host/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["nameserver_host"] = ExpressionConverter.Convert(nameserverHost);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildPivotNameserverHost(WorkflowValue<string> nameserverHost, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(nameserverHost, nameof(nameserverHost), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/nameserver-host/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["nameserver_host"] = ExpressionConverter.Convert(nameserverHost);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> PivotMXHost(Expression<Func<string>> mailserverHost, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildPivotMXHost))]
+        public IBodyWorkflowAction<InvestigateResponse> PivotMXHost([WorkflowExpression] Func<string> mailserverHost, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/mailserver-host/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["mailserver_host"] = ExpressionConverter.Convert(mailserverHost);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildPivotMXHost(WorkflowValue<string> mailserverHost, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(mailserverHost, nameof(mailserverHost), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/mailserver-host/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["mailserver_host"] = ExpressionConverter.Convert(mailserverHost);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAny(Expression<Func<string>> taggedWithAny, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildReturnTaggedAny))]
+        public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAny([WorkflowExpression] Func<string> taggedWithAny, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/tagged-any/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tagged_with_any"] = ExpressionConverter.Convert(taggedWithAny);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildReturnTaggedAny(WorkflowValue<string> taggedWithAny, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(taggedWithAny, nameof(taggedWithAny), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/tagged-any/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tagged_with_any"] = ExpressionConverter.Convert(taggedWithAny);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]
-        public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAll(Expression<Func<string>> taggedWithAll, Expression<Func<bool>> active = null, Expression<Func<string>> createDate = null, Expression<Func<string>> expirationDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildReturnTaggedAll))]
+        public IBodyWorkflowAction<InvestigateResponse> ReturnTaggedAll([WorkflowExpression] Func<string> taggedWithAll, [WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<string> createDate = null, [WorkflowExpression] Func<string> expirationDate = null)
         {
-            var apiCallPath = "/iris-investigate/tagged-all/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tagged_with_all"] = ExpressionConverter.Convert(taggedWithAll);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            if (createDate != null)
-                callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
-            if (expirationDate != null)
-                callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
-            return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvestigateResponse> __BuildReturnTaggedAll(WorkflowValue<string> taggedWithAll, WorkflowValue<bool> active = null, WorkflowValue<string> createDate = null, WorkflowValue<string> expirationDate = null)
+        {
+            WorkflowValue.Validate(taggedWithAll, nameof(taggedWithAll), required: true);
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(createDate, nameof(createDate), required: false);
+            WorkflowValue.Validate(expirationDate, nameof(expirationDate), required: false);
+            return new DeferredBodyAction<InvestigateResponse>(() =>
+            {
+                var apiCallPath = "/iris-investigate/tagged-all/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tagged_with_all"] = ExpressionConverter.Convert(taggedWithAll);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                if (createDate != null)
+                    callPayload.Queries["create_date"] = ExpressionConverter.Convert(createDate);
+                if (expirationDate != null)
+                    callPayload.Queries["expiration_date"] = ExpressionConverter.Convert(expirationDate);
+                return new ApiConnectionAction<InvestigateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisinves")]

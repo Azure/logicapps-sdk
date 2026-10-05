@@ -4,951 +4,1429 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PowerassistActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArraySortResponse> ArraySort(Expression<Func<JToken[]>> bodyarray)
+        [WorkflowExpressionFactory(nameof(__BuildArraySort))]
+        public IBodyWorkflowAction<ArraySortResponse> ArraySort([WorkflowExpression] Func<JToken[]> bodyarray)
         {
-            var apiCallPath = "/array/sort";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArraySortResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayReverseResponse> ArrayReverse(Expression<Func<JToken[]>> bodyarray)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArraySortResponse> __BuildArraySort(WorkflowValue<JToken[]> bodyarray)
         {
-            var apiCallPath = "/array/reverse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            return new DeferredBodyAction<ArraySortResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArrayReverseResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArraySortByPropertyResponse> ArraySortByProperty(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bool>> bodydescending)
-        {
-            var apiCallPath = "/array/sortByProperty";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["descending"] = ExpressionConverter.ConvertO(bodydescending);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArraySortByPropertyResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayFilterResponse> ArrayFilter(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
-        {
-            var apiCallPath = "/array/filter";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
-            {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                var apiCallPath = "/array/sort";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                if (bodypropCount > 0)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
-                    bodypropCount++;
+                    callPayload.Body = body;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArrayFilterResponse>(callPayload);
+                return new ApiConnectionAction<ArraySortResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayPrependResponse> ArrayPrepend(Expression<Func<JToken[]>> bodyarray, Expression<Func<object>> bodyvalue, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        [WorkflowExpressionFactory(nameof(__BuildArrayReverse))]
+        public IBodyWorkflowAction<ArrayReverseResponse> ArrayReverse([WorkflowExpression] Func<JToken[]> bodyarray)
         {
-            var apiCallPath = "/array/prepend";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodyvalueType != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArrayReverseResponse> __BuildArrayReverse(WorkflowValue<JToken[]> bodyarray)
+        {
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            return new DeferredBodyAction<ArrayReverseResponse>(() =>
             {
-                if (bodyvalueType != null)
+                var apiCallPath = "/array/reverse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                if (bodypropCount > 0)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
-                    bodypropCount++;
+                    callPayload.Body = body;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArrayPrependResponse>(callPayload);
+                return new ApiConnectionAction<ArrayReverseResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayAnyResponse> ArrayAny(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        [WorkflowExpressionFactory(nameof(__BuildArraySortByProperty))]
+        public IBodyWorkflowAction<ArraySortByPropertyResponse> ArraySortByProperty([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bool> bodydescending)
         {
-            var apiCallPath = "/array/any";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
-            {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-                bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
-                {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArrayAnyResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayEveryResponse> ArrayEvery(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArraySortByPropertyResponse> __BuildArraySortByProperty(WorkflowValue<JToken[]> bodyarray, WorkflowValue<string> bodypropertyName, WorkflowValue<bool> bodydescending)
         {
-            var apiCallPath = "/array/every";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            WorkflowValue.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
+            WorkflowValue.Validate(bodydescending, nameof(bodydescending), required: true);
+            return new DeferredBodyAction<ArraySortByPropertyResponse>(() =>
             {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                var apiCallPath = "/array/sortByProperty";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
-                {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
-                    bodypropCount++;
-                }
-
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
                 bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArrayEveryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayRemoveFirstResponse> ArrayRemoveFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
-        {
-            var apiCallPath = "/array/removeFirst";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
-            {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-                bodypropCount++;
-            }
-
-            if (bodyvalueType != null)
-            {
-                if (bodyvalueType != null)
-                {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArrayRemoveFirstResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayGroupByResponse> ArrayGroupBy(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName = null)
-        {
-            var apiCallPath = "/array/groupBy";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            if (bodypropertyName != null)
-            {
                 body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
                 bodypropCount++;
-            }
+                body["descending"] = ExpressionConverter.ConvertO(bodydescending);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArrayGroupByResponse>(callPayload);
+                return new ApiConnectionAction<ArraySortByPropertyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayFindFirstResponse> ArrayFindFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        [WorkflowExpressionFactory(nameof(__BuildArrayFilter))]
+        public IBodyWorkflowAction<ArrayFilterResponse> ArrayFilter([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            var apiCallPath = "/array/findFirst";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["array"] = ExpressionConverter.ConvertO(bodyarray);
-            bodypropCount++;
-            body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
-            bodypropCount++;
-            body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
-            if (bodyvalue != null)
-            {
-                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyvalueType != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArrayFilterResponse> __BuildArrayFilter(WorkflowValue<JToken[]> bodyarray, WorkflowValue<string> bodypropertyName, WorkflowValue<bodycomparisonInput> bodycomparison, WorkflowValue<object> bodyvalue = null, WorkflowValue<bodyvalueTypeInput> bodyvalueType = null)
+        {
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            WorkflowValue.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
+            WorkflowValue.Validate(bodycomparison, nameof(bodycomparison), required: true);
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            WorkflowValue.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayFilterResponse>(() =>
             {
+                var apiCallPath = "/array/filter";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
+                if (bodyvalue != null)
+                {
+                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    bodypropCount++;
+                }
+
                 if (bodyvalueType != null)
                 {
-                    body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                    if (bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
                     bodypropCount++;
                 }
 
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayFilterResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildArrayPrepend))]
+        public IBodyWorkflowAction<ArrayPrependResponse> ArrayPrepend([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<object> bodyvalue, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArrayPrependResponse> __BuildArrayPrepend(WorkflowValue<JToken[]> bodyarray, WorkflowValue<object> bodyvalue, WorkflowValue<bodyvalueTypeInput> bodyvalueType = null)
+        {
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            WorkflowValue.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayPrependResponse>(() =>
+            {
+                var apiCallPath = "/array/prepend";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-            else
-            {
-                body["valueType"] = "String";
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
                 bodypropCount++;
-            }
+                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                if (bodyvalueType != null)
+                {
+                    if (bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                        bodypropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ArrayFindFirstResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayPrependResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<RoundResponse> Round(Expression<Func<double>> bodynumber)
+        [WorkflowExpressionFactory(nameof(__BuildArrayAny))]
+        public IBodyWorkflowAction<ArrayAnyResponse> ArrayAny([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            var apiCallPath = "/math/round";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RoundResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathCeilResponse> MathCeil(Expression<Func<double>> bodynumber)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArrayAnyResponse> __BuildArrayAny(WorkflowValue<JToken[]> bodyarray, WorkflowValue<string> bodypropertyName, WorkflowValue<bodycomparisonInput> bodycomparison, WorkflowValue<object> bodyvalue = null, WorkflowValue<bodyvalueTypeInput> bodyvalueType = null)
         {
-            var apiCallPath = "/math/ceil";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            WorkflowValue.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
+            WorkflowValue.Validate(bodycomparison, nameof(bodycomparison), required: true);
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            WorkflowValue.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayAnyResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MathCeilResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathFloorResponse> MathFloor(Expression<Func<double>> bodynumber)
-        {
-            var apiCallPath = "/math/floor";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["number"] = ExpressionConverter.ConvertO(bodynumber);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MathFloorResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathAverageResponse> MathAverage(Expression<Func<double[]>> bodynumbers)
-        {
-            var apiCallPath = "/math/average";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MathAverageResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathMedianResponse> MathMedian(Expression<Func<JToken[]>> bodynumbers)
-        {
-            var apiCallPath = "/math/median";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MathMedianResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathModeResponse> MathMode(Expression<Func<JToken[]>> bodynumbers)
-        {
-            var apiCallPath = "/math/mode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MathModeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathRandomResponse> MathRandom(Expression<Func<int>> bodymaximum)
-        {
-            var apiCallPath = "/math/random";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["maximum"] = ExpressionConverter.ConvertO(bodymaximum);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MathRandomResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringReplaceAllResponse> StringReplaceAll(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodysearchValue, Expression<Func<string>> bodyreplaceValue)
-        {
-            var apiCallPath = "/string/replaceAll";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sourceString"] = ExpressionConverter.ConvertO(bodysourceString);
-            bodypropCount++;
-            body["searchValue"] = ExpressionConverter.ConvertO(bodysearchValue);
-            bodypropCount++;
-            body["replaceValue"] = ExpressionConverter.ConvertO(bodyreplaceValue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringReplaceAllResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringRegexReplaceResponse> StringRegexReplace(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplaceValue)
-        {
-            var apiCallPath = "/string/regexReplace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sourceString"] = ExpressionConverter.ConvertO(bodysourceString);
-            bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
-            bodypropCount++;
-            body["replaceValue"] = ExpressionConverter.ConvertO(bodyreplaceValue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringRegexReplaceResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize(Expression<Func<string>> bodystring)
-        {
-            var apiCallPath = "/string/capitalize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringCapitalizeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimResponse> StringTrim(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
-        {
-            var apiCallPath = "/string/trim";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodycharacters != null)
-            {
-                body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                var apiCallPath = "/array/any";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringTrimResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
-        {
-            var apiCallPath = "/string/trimStart";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodycharacters != null)
-            {
-                body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringTrimStartResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
-        {
-            var apiCallPath = "/string/trimEnd";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodycharacters != null)
-            {
-                body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
                 bodypropCount++;
-            }
+                body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
+                if (bodyvalue != null)
+                {
+                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyvalueType != null)
+                {
+                    if (bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                        bodypropCount++;
+                    }
 
-            return new ApiConnectionAction<StringTrimEndResponse>(callPayload);
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayAnyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify(Expression<Func<string>> bodystring)
+        [WorkflowExpressionFactory(nameof(__BuildArrayEvery))]
+        public IBodyWorkflowAction<ArrayEveryResponse> ArrayEvery([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            var apiCallPath = "/string/slugify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringSlugifyResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordsResponse> StringWords(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArrayEveryResponse> __BuildArrayEvery(WorkflowValue<JToken[]> bodyarray, WorkflowValue<string> bodypropertyName, WorkflowValue<bodycomparisonInput> bodycomparison, WorkflowValue<object> bodyvalue = null, WorkflowValue<bodyvalueTypeInput> bodyvalueType = null)
         {
-            var apiCallPath = "/string/words";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodydelimiter != null)
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            WorkflowValue.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
+            WorkflowValue.Validate(bodycomparison, nameof(bodycomparison), required: true);
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            WorkflowValue.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayEveryResponse>(() =>
             {
-                body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+                var apiCallPath = "/array/every";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringWordsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordCountResponse> StringWordCount(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
-        {
-            var apiCallPath = "/string/wordCount";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodydelimiter != null)
-            {
-                body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
                 bodypropCount++;
-            }
+                body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
+                if (bodyvalue != null)
+                {
+                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyvalueType != null)
+                {
+                    if (bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                        bodypropCount++;
+                    }
 
-            return new ApiConnectionAction<StringWordCountResponse>(callPayload);
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayEveryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml(Expression<Func<string>> bodystring)
+        [WorkflowExpressionFactory(nameof(__BuildArrayRemoveFirst))]
+        public IBodyWorkflowAction<ArrayRemoveFirstResponse> ArrayRemoveFirst([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            var apiCallPath = "/string/stripHtml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<StringStripHtmlResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArrayRemoveFirstResponse> __BuildArrayRemoveFirst(WorkflowValue<JToken[]> bodyarray, WorkflowValue<string> bodypropertyName, WorkflowValue<bodycomparisonInput> bodycomparison, WorkflowValue<object> bodyvalue = null, WorkflowValue<bodyvalueTypeInput> bodyvalueType = null)
+        {
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            WorkflowValue.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
+            WorkflowValue.Validate(bodycomparison, nameof(bodycomparison), required: true);
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            WorkflowValue.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayRemoveFirstResponse>(() =>
+            {
+                var apiCallPath = "/array/removeFirst";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
+                if (bodyvalue != null)
+                {
+                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodyvalueType != null)
+                {
+                    if (bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayRemoveFirstResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanResponse> StringClean(Expression<Func<string>> bodystring)
+        [WorkflowExpressionFactory(nameof(__BuildArrayGroupBy))]
+        public IBodyWorkflowAction<ArrayGroupByResponse> ArrayGroupBy([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName = null)
         {
-            var apiCallPath = "/string/clean";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<StringCleanResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArrayGroupByResponse> __BuildArrayGroupBy(WorkflowValue<JToken[]> bodyarray, WorkflowValue<string> bodypropertyName = null)
+        {
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            WorkflowValue.Validate(bodypropertyName, nameof(bodypropertyName), required: false);
+            return new DeferredBodyAction<ArrayGroupByResponse>(() =>
+            {
+                var apiCallPath = "/array/groupBy";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                if (bodypropertyName != null)
+                {
+                    body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayGroupByResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics(Expression<Func<string>> bodystring)
+        [WorkflowExpressionFactory(nameof(__BuildArrayFindFirst))]
+        public IBodyWorkflowAction<ArrayFindFirstResponse> ArrayFindFirst([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
-            var apiCallPath = "/string/cleanDiacritics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<StringCleanDiacriticsResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArrayFindFirstResponse> __BuildArrayFindFirst(WorkflowValue<JToken[]> bodyarray, WorkflowValue<string> bodypropertyName, WorkflowValue<bodycomparisonInput> bodycomparison, WorkflowValue<object> bodyvalue = null, WorkflowValue<bodyvalueTypeInput> bodyvalueType = null)
+        {
+            WorkflowValue.Validate(bodyarray, nameof(bodyarray), required: true);
+            WorkflowValue.Validate(bodypropertyName, nameof(bodypropertyName), required: true);
+            WorkflowValue.Validate(bodycomparison, nameof(bodycomparison), required: true);
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            WorkflowValue.Validate(bodyvalueType, nameof(bodyvalueType), required: false);
+            return new DeferredBodyAction<ArrayFindFirstResponse>(() =>
+            {
+                var apiCallPath = "/array/findFirst";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["array"] = ExpressionConverter.ConvertO(bodyarray);
+                bodypropCount++;
+                body["propertyName"] = ExpressionConverter.ConvertO(bodypropertyName);
+                bodypropCount++;
+                body["comparison"] = ExpressionConverter.ConvertO(bodycomparison);
+                if (bodyvalue != null)
+                {
+                    body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodyvalueType != null)
+                {
+                    if (bodyvalueType != null)
+                    {
+                        body["valueType"] = ExpressionConverter.ConvertO(bodyvalueType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["valueType"] = "String";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArrayFindFirstResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml(Expression<Func<string>> bodystring)
+        [WorkflowExpressionFactory(nameof(__BuildRound))]
+        public IBodyWorkflowAction<RoundResponse> Round([WorkflowExpression] Func<double> bodynumber)
         {
-            var apiCallPath = "/string/escapeHtml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<StringEscapeHtmlResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RoundResponse> __BuildRound(WorkflowValue<double> bodynumber)
+        {
+            WorkflowValue.Validate(bodynumber, nameof(bodynumber), required: true);
+            return new DeferredBodyAction<RoundResponse>(() =>
+            {
+                var apiCallPath = "/math/round";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RoundResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml(Expression<Func<string>> bodystring)
+        [WorkflowExpressionFactory(nameof(__BuildMathCeil))]
+        public IBodyWorkflowAction<MathCeilResponse> MathCeil([WorkflowExpression] Func<double> bodynumber)
         {
-            var apiCallPath = "/string/unescapeHtml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<StringUnescapeHtmlResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MathCeilResponse> __BuildMathCeil(WorkflowValue<double> bodynumber)
+        {
+            WorkflowValue.Validate(bodynumber, nameof(bodynumber), required: true);
+            return new DeferredBodyAction<MathCeilResponse>(() =>
+            {
+                var apiCallPath = "/math/ceil";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MathCeilResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances(Expression<Func<string>> bodystring, Expression<Func<string>> bodysubstring, Expression<Func<bool>> bodyignoreCase = null)
+        [WorkflowExpressionFactory(nameof(__BuildMathFloor))]
+        public IBodyWorkflowAction<MathFloorResponse> MathFloor([WorkflowExpression] Func<double> bodynumber)
         {
-            var apiCallPath = "/string/countInstances";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            bodypropCount++;
-            body["substring"] = ExpressionConverter.ConvertO(bodysubstring);
-            if (bodyignoreCase != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MathFloorResponse> __BuildMathFloor(WorkflowValue<double> bodynumber)
+        {
+            WorkflowValue.Validate(bodynumber, nameof(bodynumber), required: true);
+            return new DeferredBodyAction<MathFloorResponse>(() =>
             {
+                var apiCallPath = "/math/floor";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["number"] = ExpressionConverter.ConvertO(bodynumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MathFloorResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildMathAverage))]
+        public IBodyWorkflowAction<MathAverageResponse> MathAverage([WorkflowExpression] Func<double[]> bodynumbers)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MathAverageResponse> __BuildMathAverage(WorkflowValue<double[]> bodynumbers)
+        {
+            WorkflowValue.Validate(bodynumbers, nameof(bodynumbers), required: true);
+            return new DeferredBodyAction<MathAverageResponse>(() =>
+            {
+                var apiCallPath = "/math/average";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MathAverageResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildMathMedian))]
+        public IBodyWorkflowAction<MathMedianResponse> MathMedian([WorkflowExpression] Func<JToken[]> bodynumbers)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MathMedianResponse> __BuildMathMedian(WorkflowValue<JToken[]> bodynumbers)
+        {
+            WorkflowValue.Validate(bodynumbers, nameof(bodynumbers), required: true);
+            return new DeferredBodyAction<MathMedianResponse>(() =>
+            {
+                var apiCallPath = "/math/median";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MathMedianResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildMathMode))]
+        public IBodyWorkflowAction<MathModeResponse> MathMode([WorkflowExpression] Func<JToken[]> bodynumbers)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MathModeResponse> __BuildMathMode(WorkflowValue<JToken[]> bodynumbers)
+        {
+            WorkflowValue.Validate(bodynumbers, nameof(bodynumbers), required: true);
+            return new DeferredBodyAction<MathModeResponse>(() =>
+            {
+                var apiCallPath = "/math/mode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["numbers"] = ExpressionConverter.ConvertO(bodynumbers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MathModeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildMathRandom))]
+        public IBodyWorkflowAction<MathRandomResponse> MathRandom([WorkflowExpression] Func<int> bodymaximum)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MathRandomResponse> __BuildMathRandom(WorkflowValue<int> bodymaximum)
+        {
+            WorkflowValue.Validate(bodymaximum, nameof(bodymaximum), required: true);
+            return new DeferredBodyAction<MathRandomResponse>(() =>
+            {
+                var apiCallPath = "/math/random";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["maximum"] = ExpressionConverter.ConvertO(bodymaximum);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MathRandomResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringReplaceAll))]
+        public IBodyWorkflowAction<StringReplaceAllResponse> StringReplaceAll([WorkflowExpression] Func<string> bodysourceString, [WorkflowExpression] Func<string> bodysearchValue, [WorkflowExpression] Func<string> bodyreplaceValue)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringReplaceAllResponse> __BuildStringReplaceAll(WorkflowValue<string> bodysourceString, WorkflowValue<string> bodysearchValue, WorkflowValue<string> bodyreplaceValue)
+        {
+            WorkflowValue.Validate(bodysourceString, nameof(bodysourceString), required: true);
+            WorkflowValue.Validate(bodysearchValue, nameof(bodysearchValue), required: true);
+            WorkflowValue.Validate(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
+            return new DeferredBodyAction<StringReplaceAllResponse>(() =>
+            {
+                var apiCallPath = "/string/replaceAll";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["sourceString"] = ExpressionConverter.ConvertO(bodysourceString);
+                bodypropCount++;
+                body["searchValue"] = ExpressionConverter.ConvertO(bodysearchValue);
+                bodypropCount++;
+                body["replaceValue"] = ExpressionConverter.ConvertO(bodyreplaceValue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringReplaceAllResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringRegexReplace))]
+        public IBodyWorkflowAction<StringRegexReplaceResponse> StringRegexReplace([WorkflowExpression] Func<string> bodysourceString, [WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodyreplaceValue)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringRegexReplaceResponse> __BuildStringRegexReplace(WorkflowValue<string> bodysourceString, WorkflowValue<string> bodypattern, WorkflowValue<string> bodyreplaceValue)
+        {
+            WorkflowValue.Validate(bodysourceString, nameof(bodysourceString), required: true);
+            WorkflowValue.Validate(bodypattern, nameof(bodypattern), required: true);
+            WorkflowValue.Validate(bodyreplaceValue, nameof(bodyreplaceValue), required: true);
+            return new DeferredBodyAction<StringRegexReplaceResponse>(() =>
+            {
+                var apiCallPath = "/string/regexReplace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["sourceString"] = ExpressionConverter.ConvertO(bodysourceString);
+                bodypropCount++;
+                body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+                bodypropCount++;
+                body["replaceValue"] = ExpressionConverter.ConvertO(bodyreplaceValue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringRegexReplaceResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringCapitalize))]
+        public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize([WorkflowExpression] Func<string> bodystring)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringCapitalizeResponse> __BuildStringCapitalize(WorkflowValue<string> bodystring)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringCapitalizeResponse>(() =>
+            {
+                var apiCallPath = "/string/capitalize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringCapitalizeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringTrim))]
+        public IBodyWorkflowAction<StringTrimResponse> StringTrim([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringTrimResponse> __BuildStringTrim(WorkflowValue<string> bodystring, WorkflowValue<string> bodycharacters = null)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            WorkflowValue.Validate(bodycharacters, nameof(bodycharacters), required: false);
+            return new DeferredBodyAction<StringTrimResponse>(() =>
+            {
+                var apiCallPath = "/string/trim";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodycharacters != null)
+                {
+                    body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringTrimResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringTrimStart))]
+        public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringTrimStartResponse> __BuildStringTrimStart(WorkflowValue<string> bodystring, WorkflowValue<string> bodycharacters = null)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            WorkflowValue.Validate(bodycharacters, nameof(bodycharacters), required: false);
+            return new DeferredBodyAction<StringTrimStartResponse>(() =>
+            {
+                var apiCallPath = "/string/trimStart";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodycharacters != null)
+                {
+                    body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringTrimStartResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringTrimEnd))]
+        public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringTrimEndResponse> __BuildStringTrimEnd(WorkflowValue<string> bodystring, WorkflowValue<string> bodycharacters = null)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            WorkflowValue.Validate(bodycharacters, nameof(bodycharacters), required: false);
+            return new DeferredBodyAction<StringTrimEndResponse>(() =>
+            {
+                var apiCallPath = "/string/trimEnd";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodycharacters != null)
+                {
+                    body["characters"] = ExpressionConverter.ConvertO(bodycharacters);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringTrimEndResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringSlugify))]
+        public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify([WorkflowExpression] Func<string> bodystring)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringSlugifyResponse> __BuildStringSlugify(WorkflowValue<string> bodystring)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringSlugifyResponse>(() =>
+            {
+                var apiCallPath = "/string/slugify";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringSlugifyResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringWords))]
+        public IBodyWorkflowAction<StringWordsResponse> StringWords([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodydelimiter = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringWordsResponse> __BuildStringWords(WorkflowValue<string> bodystring, WorkflowValue<string> bodydelimiter = null)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            WorkflowValue.Validate(bodydelimiter, nameof(bodydelimiter), required: false);
+            return new DeferredBodyAction<StringWordsResponse>(() =>
+            {
+                var apiCallPath = "/string/words";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodydelimiter != null)
+                {
+                    body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringWordsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringWordCount))]
+        public IBodyWorkflowAction<StringWordCountResponse> StringWordCount([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodydelimiter = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringWordCountResponse> __BuildStringWordCount(WorkflowValue<string> bodystring, WorkflowValue<string> bodydelimiter = null)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            WorkflowValue.Validate(bodydelimiter, nameof(bodydelimiter), required: false);
+            return new DeferredBodyAction<StringWordCountResponse>(() =>
+            {
+                var apiCallPath = "/string/wordCount";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodydelimiter != null)
+                {
+                    body["delimiter"] = ExpressionConverter.ConvertO(bodydelimiter);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringWordCountResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringStripHtml))]
+        public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml([WorkflowExpression] Func<string> bodystring)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringStripHtmlResponse> __BuildStringStripHtml(WorkflowValue<string> bodystring)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringStripHtmlResponse>(() =>
+            {
+                var apiCallPath = "/string/stripHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringStripHtmlResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringClean))]
+        public IBodyWorkflowAction<StringCleanResponse> StringClean([WorkflowExpression] Func<string> bodystring)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringCleanResponse> __BuildStringClean(WorkflowValue<string> bodystring)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringCleanResponse>(() =>
+            {
+                var apiCallPath = "/string/clean";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringCleanResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringCleanDiacritics))]
+        public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics([WorkflowExpression] Func<string> bodystring)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringCleanDiacriticsResponse> __BuildStringCleanDiacritics(WorkflowValue<string> bodystring)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringCleanDiacriticsResponse>(() =>
+            {
+                var apiCallPath = "/string/cleanDiacritics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringCleanDiacriticsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringEscapeHtml))]
+        public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml([WorkflowExpression] Func<string> bodystring)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringEscapeHtmlResponse> __BuildStringEscapeHtml(WorkflowValue<string> bodystring)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringEscapeHtmlResponse>(() =>
+            {
+                var apiCallPath = "/string/escapeHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringEscapeHtmlResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringUnescapeHtml))]
+        public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml([WorkflowExpression] Func<string> bodystring)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringUnescapeHtmlResponse> __BuildStringUnescapeHtml(WorkflowValue<string> bodystring)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            return new DeferredBodyAction<StringUnescapeHtmlResponse>(() =>
+            {
+                var apiCallPath = "/string/unescapeHtml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringUnescapeHtmlResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringCountInstances))]
+        public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodysubstring, [WorkflowExpression] Func<bool> bodyignoreCase = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringCountInstancesResponse> __BuildStringCountInstances(WorkflowValue<string> bodystring, WorkflowValue<string> bodysubstring, WorkflowValue<bool> bodyignoreCase = null)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            WorkflowValue.Validate(bodysubstring, nameof(bodysubstring), required: true);
+            WorkflowValue.Validate(bodyignoreCase, nameof(bodyignoreCase), required: false);
+            return new DeferredBodyAction<StringCountInstancesResponse>(() =>
+            {
+                var apiCallPath = "/string/countInstances";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                bodypropCount++;
+                body["substring"] = ExpressionConverter.ConvertO(bodysubstring);
                 if (bodyignoreCase != null)
                 {
-                    body["ignoreCase"] = ExpressionConverter.ConvertO(bodyignoreCase);
+                    if (bodyignoreCase != null)
+                    {
+                        body["ignoreCase"] = ExpressionConverter.ConvertO(bodyignoreCase);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ignoreCase"] = false;
                     bodypropCount++;
                 }
 
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StringCountInstancesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
+        [WorkflowExpressionFactory(nameof(__BuildStringChop))]
+        public IBodyWorkflowAction<StringChopResponse> StringChop([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<int> bodyinterval)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StringChopResponse> __BuildStringChop(WorkflowValue<string> bodystring, WorkflowValue<int> bodyinterval)
+        {
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            WorkflowValue.Validate(bodyinterval, nameof(bodyinterval), required: true);
+            return new DeferredBodyAction<StringChopResponse>(() =>
+            {
+                var apiCallPath = "/string/chop";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-            else
-            {
-                body["ignoreCase"] = false;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
                 bodypropCount++;
-            }
+                body["interval"] = ExpressionConverter.ConvertO(bodyinterval);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StringCountInstancesResponse>(callPayload);
+                return new ApiConnectionAction<StringChopResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringChopResponse> StringChop(Expression<Func<string>> bodystring, Expression<Func<int>> bodyinterval)
+        [WorkflowExpressionFactory(nameof(__BuildTypesIsString))]
+        public IBodyWorkflowAction<TypesIsStringResponse> TypesIsString([WorkflowExpression] Func<object> bodyvalue)
         {
-            var apiCallPath = "/string/chop";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            bodypropCount++;
-            body["interval"] = ExpressionConverter.ConvertO(bodyinterval);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<StringChopResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TypesIsStringResponse> __BuildTypesIsString(WorkflowValue<object> bodyvalue)
+        {
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredBodyAction<TypesIsStringResponse>(() =>
+            {
+                var apiCallPath = "/types/isString";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TypesIsStringResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsStringResponse> TypesIsString(Expression<Func<object>> bodyvalue)
+        [WorkflowExpressionFactory(nameof(__BuildTypesIsNumber))]
+        public IBodyWorkflowAction<TypesIsNumberResponse> TypesIsNumber([WorkflowExpression] Func<object> bodyvalue, [WorkflowExpression] Func<bool> bodyincludeNumbersInStrings)
         {
-            var apiCallPath = "/types/isString";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TypesIsStringResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TypesIsNumberResponse> __BuildTypesIsNumber(WorkflowValue<object> bodyvalue, WorkflowValue<bool> bodyincludeNumbersInStrings)
+        {
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            WorkflowValue.Validate(bodyincludeNumbersInStrings, nameof(bodyincludeNumbersInStrings), required: true);
+            return new DeferredBodyAction<TypesIsNumberResponse>(() =>
+            {
+                var apiCallPath = "/types/isNumber";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                bodypropCount++;
+                body["includeNumbersInStrings"] = ExpressionConverter.ConvertO(bodyincludeNumbersInStrings);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TypesIsNumberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsNumberResponse> TypesIsNumber(Expression<Func<object>> bodyvalue, Expression<Func<bool>> bodyincludeNumbersInStrings)
+        [WorkflowExpressionFactory(nameof(__BuildTypesIsNullOrEmpty))]
+        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> TypesIsNullOrEmpty([WorkflowExpression] Func<object> bodyvalue)
         {
-            var apiCallPath = "/types/isNumber";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            bodypropCount++;
-            body["includeNumbersInStrings"] = ExpressionConverter.ConvertO(bodyincludeNumbersInStrings);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TypesIsNumberResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> __BuildTypesIsNullOrEmpty(WorkflowValue<object> bodyvalue)
+        {
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredBodyAction<TypesIsNullOrEmptyResponse>(() =>
+            {
+                var apiCallPath = "/types/isNullOrEmpty";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TypesIsNullOrEmptyResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> TypesIsNullOrEmpty(Expression<Func<object>> bodyvalue)
+        [WorkflowExpressionFactory(nameof(__BuildTypesIsArray))]
+        public IBodyWorkflowAction<TypesIsArrayResponse> TypesIsArray([WorkflowExpression] Func<object> bodyvalue)
         {
-            var apiCallPath = "/types/isNullOrEmpty";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TypesIsNullOrEmptyResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TypesIsArrayResponse> __BuildTypesIsArray(WorkflowValue<object> bodyvalue)
+        {
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredBodyAction<TypesIsArrayResponse>(() =>
+            {
+                var apiCallPath = "/types/isArray";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TypesIsArrayResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsArrayResponse> TypesIsArray(Expression<Func<object>> bodyvalue)
+        [WorkflowExpressionFactory(nameof(__BuildTypesIsObject))]
+        public IBodyWorkflowAction<TypesIsObjectResponse> TypesIsObject([WorkflowExpression] Func<object> bodyvalue)
         {
-            var apiCallPath = "/types/isArray";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TypesIsArrayResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TypesIsObjectResponse> __BuildTypesIsObject(WorkflowValue<object> bodyvalue)
+        {
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            return new DeferredBodyAction<TypesIsObjectResponse>(() =>
+            {
+                var apiCallPath = "/types/isObject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TypesIsObjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsObjectResponse> TypesIsObject(Expression<Func<object>> bodyvalue)
+        [WorkflowExpressionFactory(nameof(__BuildValidateEmail))]
+        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail([WorkflowExpression] Func<string> bodyemail)
         {
-            var apiCallPath = "/types/isObject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TypesIsObjectResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateEmailResponse> __BuildValidateEmail(WorkflowValue<string> bodyemail)
+        {
+            WorkflowValue.Validate(bodyemail, nameof(bodyemail), required: true);
+            return new DeferredBodyAction<ValidateEmailResponse>(() =>
+            {
+                var apiCallPath = "/validate/email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ValidateEmailResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail(Expression<Func<string>> bodyemail)
+        [WorkflowExpressionFactory(nameof(__BuildValidateRegex))]
+        public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodypattern)
         {
-            var apiCallPath = "/validate/email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ValidateEmailResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex(Expression<Func<string>> bodystring, Expression<Func<string>> bodypattern)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateRegexResponse> __BuildValidateRegex(WorkflowValue<string> bodystring, WorkflowValue<string> bodypattern)
         {
-            var apiCallPath = "/validate/regex";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = ExpressionConverter.ConvertO(bodystring);
-            bodypropCount++;
-            body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(bodystring, nameof(bodystring), required: true);
+            WorkflowValue.Validate(bodypattern, nameof(bodypattern), required: true);
+            return new DeferredBodyAction<ValidateRegexResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/validate/regex";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = ExpressionConverter.ConvertO(bodystring);
+                bodypropCount++;
+                body["pattern"] = ExpressionConverter.ConvertO(bodypattern);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<ValidateRegexResponse>(callPayload);
+                return new ApiConnectionAction<ValidateRegexResponse>(callPayload);
+            });
         }
     }
 

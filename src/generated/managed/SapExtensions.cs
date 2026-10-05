@@ -4,166 +4,294 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> AddRfcToTransaction(Expression<Func<string>> rfcName, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddRfcToTransaction))]
+        public IBodyWorkflowAction<RfcTransactionDetails> AddRfcToTransaction([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = "/AddRfcToTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
-            if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
-            callPayload.Queries["autoCommit"] = Convert.ToString(false);
-            if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RfcTransactionDetails> __BuildAddRfcToTransaction(WorkflowValue<string> rfcName, WorkflowValue<string> rfcGroupFilter = null, WorkflowValue<bool> autoCommit = null, WorkflowValue<string> tId = null, WorkflowValue<string> queueName = null, WorkflowValue<string> body = null, WorkflowValue<string> contentType = null)
+        {
+            WorkflowValue.Validate(rfcName, nameof(rfcName), required: true);
+            WorkflowValue.Validate(rfcGroupFilter, nameof(rfcGroupFilter), required: false);
+            WorkflowValue.Validate(autoCommit, nameof(autoCommit), required: false);
+            WorkflowValue.Validate(tId, nameof(tId), required: false);
+            WorkflowValue.Validate(queueName, nameof(queueName), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: false);
+            return new DeferredBodyAction<RfcTransactionDetails>(() =>
+            {
+                var apiCallPath = "/AddRfcToTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
+                if (rfcGroupFilter != null)
+                    callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
+                callPayload.Queries["autoCommit"] = Convert.ToString(false);
+                if (autoCommit != null)
+                    callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
+                if (tId != null)
+                    callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CallBapiResponse> CallBapi(Expression<Func<string>> businessObject, Expression<Func<string>> method, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        [WorkflowExpressionFactory(nameof(__BuildCallBapi))]
+        public IBodyWorkflowAction<CallBapiResponse> CallBapi([WorkflowExpression] Func<string> businessObject, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = "/CallBapi";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["businessObject"] = ExpressionConverter.Convert(businessObject);
-            callPayload.Queries["method"] = ExpressionConverter.Convert(method);
-            callPayload.Queries["autoCommit"] = Convert.ToString(true);
-            if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
-            if (sessionId != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallBapiResponse> __BuildCallBapi(WorkflowValue<string> businessObject, WorkflowValue<string> method, WorkflowValue<bool> autoCommit = null, WorkflowValue<string> sessionId = null, WorkflowValue<string> body = null, WorkflowValue<string> contentType = null)
+        {
+            WorkflowValue.Validate(businessObject, nameof(businessObject), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(autoCommit, nameof(autoCommit), required: false);
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: false);
+            return new DeferredBodyAction<CallBapiResponse>(() =>
+            {
+                var apiCallPath = "/CallBapi";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["businessObject"] = ExpressionConverter.Convert(businessObject);
+                callPayload.Queries["method"] = ExpressionConverter.Convert(method);
+                callPayload.Queries["autoCommit"] = Convert.ToString(true);
+                if (autoCommit != null)
+                    callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<CallBapiResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        [WorkflowExpressionFactory(nameof(__BuildCallRfc))]
+        public IBodyWorkflowAction<CallRfcResponse> CallRfc([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallRfcResponse> __BuildCallRfc(WorkflowValue<string> rfcName, WorkflowValue<string> rfcGroupFilter = null, WorkflowValue<bool> autoCommit = null, WorkflowValue<string> sessionId = null, WorkflowValue<string> tId = null, WorkflowValue<string> queueName = null, WorkflowValue<string> body = null, WorkflowValue<string> contentType = null)
+        {
+            WorkflowValue.Validate(rfcName, nameof(rfcName), required: true);
+            WorkflowValue.Validate(rfcGroupFilter, nameof(rfcGroupFilter), required: false);
+            WorkflowValue.Validate(autoCommit, nameof(autoCommit), required: false);
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowValue.Validate(tId, nameof(tId), required: false);
+            WorkflowValue.Validate(queueName, nameof(queueName), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: false);
+            return new DeferredBodyAction<CallRfcResponse>(() =>
+            {
+                var apiCallPath = "/CallRfc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
+                if (rfcGroupFilter != null)
+                    callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
+                callPayload.Queries["autoCommit"] = Convert.ToString(false);
+                if (autoCommit != null)
+                    callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<CallRfcResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        [WorkflowExpressionFactory(nameof(__BuildCallRfc3))]
+        public IBodyWorkflowAction<JToken> CallRfc3([WorkflowExpression] Func<string> rfcName, [WorkflowExpression] Func<object> rfcInputs = null, [WorkflowExpression] Func<string> rfcGroupFilter = null, [WorkflowExpression] Func<bool> autoCommit = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null, [WorkflowExpression] Func<inputFormatInput> inputFormat = null, [WorkflowExpression] Func<returnFormatInput> returnFormat = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildCallRfc3(WorkflowValue<string> rfcName, WorkflowValue<object> rfcInputs = null, WorkflowValue<string> rfcGroupFilter = null, WorkflowValue<bool> autoCommit = null, WorkflowValue<string> sessionId = null, WorkflowValue<string> tId = null, WorkflowValue<string> queueName = null, WorkflowValue<inputFormatInput> inputFormat = null, WorkflowValue<returnFormatInput> returnFormat = null)
+        {
+            WorkflowValue.Validate(rfcName, nameof(rfcName), required: true);
+            WorkflowValue.Validate(rfcInputs, nameof(rfcInputs), required: false);
+            WorkflowValue.Validate(rfcGroupFilter, nameof(rfcGroupFilter), required: false);
+            WorkflowValue.Validate(autoCommit, nameof(autoCommit), required: false);
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowValue.Validate(tId, nameof(tId), required: false);
+            WorkflowValue.Validate(queueName, nameof(queueName), required: false);
+            WorkflowValue.Validate(inputFormat, nameof(inputFormat), required: false);
+            WorkflowValue.Validate(returnFormat, nameof(returnFormat), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/CallRfc3";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
+                if (rfcGroupFilter != null)
+                    callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
+                callPayload.Queries["autoCommit"] = Convert.ToString(false);
+                if (autoCommit != null)
+                    callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                callPayload.Queries["inputFormat"] = Convert.ToString("Json");
+                if (inputFormat != null)
+                    callPayload.Queries["inputFormat"] = ExpressionConverter.Convert(inputFormat);
+                callPayload.Queries["returnFormat"] = Convert.ToString("Json");
+                if (returnFormat != null)
+                    callPayload.Queries["returnFormat"] = ExpressionConverter.Convert(returnFormat);
+                callPayload.Body = ExpressionConverter.ConvertO(rfcInputs);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        [WorkflowExpressionFactory(nameof(__BuildCloseSession))]
+        public IBodyWorkflowAction<JToken> CloseSession([WorkflowExpression] Func<string> sessionId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildCloseSession(WorkflowValue<string> sessionId)
+        {
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/CloseSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CallBapiResponse>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<CallRfcResponse> CallRfc(Expression<Func<string>> rfcName, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        [WorkflowExpressionFactory(nameof(__BuildCommitBapiTransaction))]
+        public IBodyWorkflowAction<BapiRet2> CommitBapiTransaction([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> wait = null, [WorkflowExpression] Func<bool> closeSession = null)
         {
-            var apiCallPath = "/CallRfc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
-            if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
-            callPayload.Queries["autoCommit"] = Convert.ToString(false);
-            if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
-            if (sessionId != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BapiRet2> __BuildCommitBapiTransaction(WorkflowValue<string> sessionId, WorkflowValue<bool> wait = null, WorkflowValue<bool> closeSession = null)
+        {
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowValue.Validate(wait, nameof(wait), required: false);
+            WorkflowValue.Validate(closeSession, nameof(closeSession), required: false);
+            return new DeferredBodyAction<BapiRet2>(() =>
+            {
+                var apiCallPath = "/CommitBapiTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CallRfcResponse>(callPayload);
+                callPayload.Queries["wait"] = Convert.ToString(false);
+                if (wait != null)
+                    callPayload.Queries["wait"] = ExpressionConverter.Convert(wait);
+                callPayload.Queries["closeSession"] = Convert.ToString(true);
+                if (closeSession != null)
+                    callPayload.Queries["closeSession"] = ExpressionConverter.Convert(closeSession);
+                return new ApiConnectionAction<BapiRet2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CallRfc3(Expression<Func<string>> rfcName, Expression<Func<object>> rfcInputs = null, Expression<Func<string>> rfcGroupFilter = null, Expression<Func<bool>> autoCommit = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null, Expression<Func<inputFormatInput>> inputFormat = null, Expression<Func<returnFormatInput>> returnFormat = null)
+        [WorkflowExpressionFactory(nameof(__BuildCommitRfcTransaction))]
+        public IBodyWorkflowAction<JToken> CommitRfcTransaction([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
         {
-            var apiCallPath = "/CallRfc3";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["rfcName"] = ExpressionConverter.Convert(rfcName);
-            if (rfcGroupFilter != null)
-                callPayload.Queries["rfcGroupFilter"] = ExpressionConverter.Convert(rfcGroupFilter);
-            callPayload.Queries["autoCommit"] = Convert.ToString(false);
-            if (autoCommit != null)
-                callPayload.Queries["autoCommit"] = ExpressionConverter.Convert(autoCommit);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            callPayload.Queries["inputFormat"] = Convert.ToString("Json");
-            if (inputFormat != null)
-                callPayload.Queries["inputFormat"] = ExpressionConverter.Convert(inputFormat);
-            callPayload.Queries["returnFormat"] = Convert.ToString("Json");
-            if (returnFormat != null)
-                callPayload.Queries["returnFormat"] = ExpressionConverter.Convert(returnFormat);
-            callPayload.Body = ExpressionConverter.ConvertO(rfcInputs);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildCommitRfcTransaction(WorkflowValue<string> tId = null, WorkflowValue<string> queueName = null)
+        {
+            WorkflowValue.Validate(tId, nameof(tId), required: false);
+            WorkflowValue.Validate(queueName, nameof(queueName), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/CommitRfcTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CloseSession(Expression<Func<string>> sessionId)
+        [WorkflowExpressionFactory(nameof(__BuildConfirmTid))]
+        public IBodyWorkflowAction<JToken> ConfirmTid([WorkflowExpression] Func<string> tid)
         {
-            var apiCallPath = "/CloseSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildConfirmTid(WorkflowValue<string> tid)
+        {
+            WorkflowValue.Validate(tid, nameof(tid), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/ConfirmTid";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiRet2> CommitBapiTransaction(Expression<Func<string>> sessionId, Expression<Func<bool>> wait = null, Expression<Func<bool>> closeSession = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateRfcTransaction))]
+        public IBodyWorkflowAction<RfcTransactionDetails> CreateRfcTransaction([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
         {
-            var apiCallPath = "/CommitBapiTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["wait"] = Convert.ToString(false);
-            if (wait != null)
-                callPayload.Queries["wait"] = ExpressionConverter.Convert(wait);
-            callPayload.Queries["closeSession"] = Convert.ToString(true);
-            if (closeSession != null)
-                callPayload.Queries["closeSession"] = ExpressionConverter.Convert(closeSession);
-            return new ApiConnectionAction<BapiRet2>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> CommitRfcTransaction(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RfcTransactionDetails> __BuildCreateRfcTransaction(WorkflowValue<string> tId = null, WorkflowValue<string> queueName = null)
         {
-            var apiCallPath = "/CommitRfcTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> ConfirmTid(Expression<Func<string>> tid)
-        {
-            var apiCallPath = "/ConfirmTid";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> CreateRfcTransaction(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
-        {
-            var apiCallPath = "/CreateRfcTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
+            WorkflowValue.Validate(tId, nameof(tId), required: false);
+            WorkflowValue.Validate(queueName, nameof(queueName), required: false);
+            return new DeferredBodyAction<RfcTransactionDetails>(() =>
+            {
+                var apiCallPath = "/CreateRfcTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
@@ -176,274 +304,429 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse> GenerateSchemas(Expression<Func<string[]>> sapActionUris = null, Expression<Func<string>> fileNamePrefix = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateSchemas))]
+        public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse> GenerateSchemas([WorkflowExpression] Func<string[]> sapActionUris = null, [WorkflowExpression] Func<string> fileNamePrefix = null)
         {
-            var apiCallPath = "/GenerateSchemas";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileNamePrefix"] = Convert.ToString("");
-            if (fileNamePrefix != null)
-                callPayload.Queries["fileNamePrefix"] = ExpressionConverter.Convert(fileNamePrefix);
-            callPayload.Body = ExpressionConverter.ConvertO(sapActionUris);
-            return new ApiConnectionAction<SapConnectorGenerateSchemasResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SapConnectorGenerateSchemasResponse> __BuildGenerateSchemas(WorkflowValue<string[]> sapActionUris = null, WorkflowValue<string> fileNamePrefix = null)
+        {
+            WorkflowValue.Validate(sapActionUris, nameof(sapActionUris), required: false);
+            WorkflowValue.Validate(fileNamePrefix, nameof(fileNamePrefix), required: false);
+            return new DeferredBodyAction<SapConnectorGenerateSchemasResponse>(() =>
+            {
+                var apiCallPath = "/GenerateSchemas";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileNamePrefix"] = Convert.ToString("");
+                if (fileNamePrefix != null)
+                    callPayload.Queries["fileNamePrefix"] = ExpressionConverter.Convert(fileNamePrefix);
+                callPayload.Body = ExpressionConverter.ConvertO(sapActionUris);
+                return new ApiConnectionAction<SapConnectorGenerateSchemasResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<IdocStatusResponse> GetIdocStatus(Expression<Func<int>> idocNumber)
+        [WorkflowExpressionFactory(nameof(__BuildGetIdocStatus))]
+        public IBodyWorkflowAction<IdocStatusResponse> GetIdocStatus([WorkflowExpression] Func<int> idocNumber)
         {
-            var apiCallPath = "/GetIdocStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idocNumber"] = ExpressionConverter.Convert(idocNumber);
-            return new ApiConnectionAction<IdocStatusResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IdocStatusResponse> __BuildGetIdocStatus(WorkflowValue<int> idocNumber)
+        {
+            WorkflowValue.Validate(idocNumber, nameof(idocNumber), required: true);
+            return new DeferredBodyAction<IdocStatusResponse>(() =>
+            {
+                var apiCallPath = "/GetIdocStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["idocNumber"] = ExpressionConverter.Convert(idocNumber);
+                return new ApiConnectionAction<IdocStatusResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<RfcTransactionDetails> GetTransactionDetails(Expression<Func<string>> tId = null, Expression<Func<string>> queueName = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetTransactionDetails))]
+        public IBodyWorkflowAction<RfcTransactionDetails> GetTransactionDetails([WorkflowExpression] Func<string> tId = null, [WorkflowExpression] Func<string> queueName = null)
         {
-            var apiCallPath = "/GetTransactionDetails";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tId != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RfcTransactionDetails> __BuildGetTransactionDetails(WorkflowValue<string> tId = null, WorkflowValue<string> queueName = null)
+        {
+            WorkflowValue.Validate(tId, nameof(tId), required: false);
+            WorkflowValue.Validate(queueName, nameof(queueName), required: false);
+            return new DeferredBodyAction<RfcTransactionDetails>(() =>
+            {
+                var apiCallPath = "/GetTransactionDetails";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                if (queueName != null)
+                    callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
+                return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTransactionIdocs))]
+        public IBodyWorkflowAction<IdocNumbersList> GetTransactionIdocs([WorkflowExpression] Func<directionInput> direction, [WorkflowExpression] Func<string> tId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IdocNumbersList> __BuildGetTransactionIdocs(WorkflowValue<directionInput> direction, WorkflowValue<string> tId)
+        {
+            WorkflowValue.Validate(direction, nameof(direction), required: true);
+            WorkflowValue.Validate(tId, nameof(tId), required: true);
+            return new DeferredBodyAction<IdocNumbersList>(() =>
+            {
+                var apiCallPath = "/GetTransactionIdocs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["direction"] = ExpressionConverter.Convert(direction);
                 callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            if (queueName != null)
-                callPayload.Queries["queueName"] = ExpressionConverter.Convert(queueName);
-            return new ApiConnectionAction<RfcTransactionDetails>(callPayload);
+                return new ApiConnectionAction<IdocNumbersList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<IdocNumbersList> GetTransactionIdocs(Expression<Func<directionInput>> direction, Expression<Func<string>> tId)
+        [WorkflowExpressionFactory(nameof(__BuildReadTableVersion2))]
+        public IBodyWorkflowAction<ReadTableResponse> ReadTableVersion2([WorkflowExpression] Func<string> inputParameterstableName, [WorkflowExpression] Func<string[]> inputParametersfieldsToRead = null, [WorkflowExpression] Func<string[]> inputParameterswhereFilters = null, [WorkflowExpression] Func<int> inputParametersstartingRowIndex = null, [WorkflowExpression] Func<int> inputParameterscountOfRowsToRead = null, [WorkflowExpression] Func<string> inputParametersfieldDelimiter = null)
         {
-            var apiCallPath = "/GetTransactionIdocs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["direction"] = ExpressionConverter.Convert(direction);
-            callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            return new ApiConnectionAction<IdocNumbersList>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<ReadTableResponse> ReadTableVersion2(Expression<Func<string>> inputParameterstableName, Expression<Func<string[]>> inputParametersfieldsToRead = null, Expression<Func<string[]>> inputParameterswhereFilters = null, Expression<Func<int>> inputParametersstartingRowIndex = null, Expression<Func<int>> inputParameterscountOfRowsToRead = null, Expression<Func<string>> inputParametersfieldDelimiter = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReadTableResponse> __BuildReadTableVersion2(WorkflowValue<string> inputParameterstableName, WorkflowValue<string[]> inputParametersfieldsToRead = null, WorkflowValue<string[]> inputParameterswhereFilters = null, WorkflowValue<int> inputParametersstartingRowIndex = null, WorkflowValue<int> inputParameterscountOfRowsToRead = null, WorkflowValue<string> inputParametersfieldDelimiter = null)
         {
-            var apiCallPath = "/ReadTableVersion2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputParameters = new JObject();
-            var inputParameterspropCount = 0;
-            inputParameterspropCount++;
-            inputParameters["tableName"] = ExpressionConverter.ConvertO(inputParameterstableName);
-            if (inputParametersfieldsToRead != null)
+            WorkflowValue.Validate(inputParameterstableName, nameof(inputParameterstableName), required: true);
+            WorkflowValue.Validate(inputParametersfieldsToRead, nameof(inputParametersfieldsToRead), required: false);
+            WorkflowValue.Validate(inputParameterswhereFilters, nameof(inputParameterswhereFilters), required: false);
+            WorkflowValue.Validate(inputParametersstartingRowIndex, nameof(inputParametersstartingRowIndex), required: false);
+            WorkflowValue.Validate(inputParameterscountOfRowsToRead, nameof(inputParameterscountOfRowsToRead), required: false);
+            WorkflowValue.Validate(inputParametersfieldDelimiter, nameof(inputParametersfieldDelimiter), required: false);
+            return new DeferredBodyAction<ReadTableResponse>(() =>
             {
-                inputParameters["FieldNames"] = ExpressionConverter.ConvertO(inputParametersfieldsToRead);
+                var apiCallPath = "/ReadTableVersion2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputParameters = new JObject();
+                var inputParameterspropCount = 0;
                 inputParameterspropCount++;
-            }
+                inputParameters["tableName"] = ExpressionConverter.ConvertO(inputParameterstableName);
+                if (inputParametersfieldsToRead != null)
+                {
+                    inputParameters["FieldNames"] = ExpressionConverter.ConvertO(inputParametersfieldsToRead);
+                    inputParameterspropCount++;
+                }
 
-            if (inputParameterswhereFilters != null)
-            {
-                inputParameters["WhereFilters"] = ExpressionConverter.ConvertO(inputParameterswhereFilters);
-                inputParameterspropCount++;
-            }
+                if (inputParameterswhereFilters != null)
+                {
+                    inputParameters["WhereFilters"] = ExpressionConverter.ConvertO(inputParameterswhereFilters);
+                    inputParameterspropCount++;
+                }
 
-            if (inputParametersstartingRowIndex != null)
-            {
-                inputParameters["StartIndex"] = ExpressionConverter.ConvertO(inputParametersstartingRowIndex);
-                inputParameterspropCount++;
-            }
+                if (inputParametersstartingRowIndex != null)
+                {
+                    inputParameters["StartIndex"] = ExpressionConverter.ConvertO(inputParametersstartingRowIndex);
+                    inputParameterspropCount++;
+                }
 
-            if (inputParameterscountOfRowsToRead != null)
-            {
-                inputParameters["RowCount"] = ExpressionConverter.ConvertO(inputParameterscountOfRowsToRead);
-                inputParameterspropCount++;
-            }
+                if (inputParameterscountOfRowsToRead != null)
+                {
+                    inputParameters["RowCount"] = ExpressionConverter.ConvertO(inputParameterscountOfRowsToRead);
+                    inputParameterspropCount++;
+                }
 
-            if (inputParametersfieldDelimiter != null)
-            {
-                inputParameters["Delimiter"] = ExpressionConverter.ConvertO(inputParametersfieldDelimiter);
-                inputParameterspropCount++;
-            }
+                if (inputParametersfieldDelimiter != null)
+                {
+                    inputParameters["Delimiter"] = ExpressionConverter.ConvertO(inputParametersfieldDelimiter);
+                    inputParameterspropCount++;
+                }
 
-            if (inputParameterspropCount > 0)
-            {
-                callPayload.Body = inputParameters;
-            }
+                if (inputParameterspropCount > 0)
+                {
+                    callPayload.Body = inputParameters;
+                }
 
-            return new ApiConnectionAction<ReadTableResponse>(callPayload);
+                return new ApiConnectionAction<ReadTableResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<BapiRet2> RollbackBapiTransaction(Expression<Func<string>> sessionId, Expression<Func<bool>> closeSession = null)
+        [WorkflowExpressionFactory(nameof(__BuildRollbackBapiTransaction))]
+        public IBodyWorkflowAction<BapiRet2> RollbackBapiTransaction([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<bool> closeSession = null)
         {
-            var apiCallPath = "/RollbackBapiTransaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            callPayload.Queries["closeSession"] = Convert.ToString(true);
-            if (closeSession != null)
-                callPayload.Queries["closeSession"] = ExpressionConverter.Convert(closeSession);
-            return new ApiConnectionAction<BapiRet2>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<JToken> Send(Expression<Func<string>> sapAction, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BapiRet2> __BuildRollbackBapiTransaction(WorkflowValue<string> sessionId, WorkflowValue<bool> closeSession = null)
         {
-            var apiCallPath = "/Send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["sapAction"] = ExpressionConverter.Convert(sapAction);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIdocResponse> SendIDoc(Expression<Func<string>> idocType, Expression<Func<string>> releaseVersion = null, Expression<Func<recordTypesVersionInput>> recordTypesVersion = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
-        {
-            var apiCallPath = "/SendIDoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idocType"] = ExpressionConverter.Convert(idocType);
-            callPayload.Queries["releaseVersion"] = Convert.ToString("");
-            if (releaseVersion != null)
-                callPayload.Queries["releaseVersion"] = ExpressionConverter.Convert(releaseVersion);
-            callPayload.Queries["recordTypesVersion"] = Convert.ToString("3");
-            if (recordTypesVersion != null)
-                callPayload.Queries["recordTypesVersion"] = ExpressionConverter.Convert(recordTypesVersion);
-            callPayload.Queries["confirmTid"] = Convert.ToString(false);
-            if (confirmTid != null)
-                callPayload.Queries["confirmTid"] = ExpressionConverter.Convert(confirmTid);
-            if (tid != null)
-                callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<SendIdocResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SendIdocResponse> SendIDocVersion2(Expression<Func<object>> dynamicParameters = null, Expression<Func<idocFormatInput>> idocFormat = null, Expression<Func<bool>> confirmTid = null, Expression<Func<string>> tid = null)
-        {
-            var apiCallPath = "/SendIDoc/v2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["idocFormat"] = Convert.ToString("Xml");
-            if (idocFormat != null)
-                callPayload.Queries["idocFormat"] = ExpressionConverter.Convert(idocFormat);
-            callPayload.Queries["confirmTid"] = Convert.ToString(false);
-            if (confirmTid != null)
-                callPayload.Queries["confirmTid"] = ExpressionConverter.Convert(confirmTid);
-            if (tid != null)
-                callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicParameters);
-            return new ApiConnectionAction<SendIdocResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
-        public IBodyWorkflowAction<SubscribeResponse> StartLongRunningRfc(Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCName, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, Expression<Func<bool>> callRfcSubscriptionrfcCallParametersautoCommit = null, Expression<Func<string>> callRfcSubscriptionrfcCallParametersqueueName = null, Expression<Func<string>> sessionId = null, Expression<Func<string>> tId = null)
-        {
-            var apiCallPath = "/StartLongRunningRfc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sessionId != null)
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: true);
+            WorkflowValue.Validate(closeSession, nameof(closeSession), required: false);
+            return new DeferredBodyAction<BapiRet2>(() =>
+            {
+                var apiCallPath = "/RollbackBapiTransaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            if (tId != null)
-                callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
-            var callRfcSubscription = new JObject();
-            var callRfcSubscriptionpropCount = 0;
-            var rfcCallParametersObject = new JObject();
-            var rfcCallParametersObjectpropCount = 0;
-            rfcCallParametersObjectpropCount++;
-            rfcCallParametersObject["RfcName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCName);
-            if (callRfcSubscriptionrfcCallParametersinputRFCParametersInline != null)
-            {
-                rfcCallParametersObject["Payload"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersInline);
-                rfcCallParametersObjectpropCount++;
-            }
+                callPayload.Queries["closeSession"] = Convert.ToString(true);
+                if (closeSession != null)
+                    callPayload.Queries["closeSession"] = ExpressionConverter.Convert(closeSession);
+                return new ApiConnectionAction<BapiRet2>(callPayload);
+            });
+        }
 
-            if (callRfcSubscriptionrfcCallParametersinputRFCParametersReference != null)
-            {
-                rfcCallParametersObject["PayloadReference"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersReference);
-                rfcCallParametersObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        [WorkflowExpressionFactory(nameof(__BuildSend))]
+        public IBodyWorkflowAction<JToken> Send([WorkflowExpression] Func<string> sapAction, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (callRfcSubscriptionrfcCallParametersrFCGroupFilter != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildSend(WorkflowValue<string> sapAction, WorkflowValue<string> body = null, WorkflowValue<string> contentType = null)
+        {
+            WorkflowValue.Validate(sapAction, nameof(sapAction), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                rfcCallParametersObject["RfcGroupFilter"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCGroupFilter);
-                rfcCallParametersObjectpropCount++;
-            }
+                var apiCallPath = "/Send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["sapAction"] = ExpressionConverter.Convert(sapAction);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
 
-            if (callRfcSubscriptionrfcCallParametersautoCommit != null)
-            {
-                rfcCallParametersObject["AutoCommit"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersautoCommit);
-                rfcCallParametersObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        [WorkflowExpressionFactory(nameof(__BuildSendIDoc))]
+        public IBodyWorkflowAction<SendIdocResponse> SendIDoc([WorkflowExpression] Func<string> idocType, [WorkflowExpression] Func<string> releaseVersion = null, [WorkflowExpression] Func<recordTypesVersionInput> recordTypesVersion = null, [WorkflowExpression] Func<bool> confirmTid = null, [WorkflowExpression] Func<string> tid = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (callRfcSubscriptionrfcCallParametersqueueName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendIdocResponse> __BuildSendIDoc(WorkflowValue<string> idocType, WorkflowValue<string> releaseVersion = null, WorkflowValue<recordTypesVersionInput> recordTypesVersion = null, WorkflowValue<bool> confirmTid = null, WorkflowValue<string> tid = null, WorkflowValue<string> body = null, WorkflowValue<string> contentType = null)
+        {
+            WorkflowValue.Validate(idocType, nameof(idocType), required: true);
+            WorkflowValue.Validate(releaseVersion, nameof(releaseVersion), required: false);
+            WorkflowValue.Validate(recordTypesVersion, nameof(recordTypesVersion), required: false);
+            WorkflowValue.Validate(confirmTid, nameof(confirmTid), required: false);
+            WorkflowValue.Validate(tid, nameof(tid), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: false);
+            return new DeferredBodyAction<SendIdocResponse>(() =>
             {
-                rfcCallParametersObject["QueueName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersqueueName);
-                rfcCallParametersObjectpropCount++;
-            }
+                var apiCallPath = "/SendIDoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["idocType"] = ExpressionConverter.Convert(idocType);
+                callPayload.Queries["releaseVersion"] = Convert.ToString("");
+                if (releaseVersion != null)
+                    callPayload.Queries["releaseVersion"] = ExpressionConverter.Convert(releaseVersion);
+                callPayload.Queries["recordTypesVersion"] = Convert.ToString("3");
+                if (recordTypesVersion != null)
+                    callPayload.Queries["recordTypesVersion"] = ExpressionConverter.Convert(recordTypesVersion);
+                callPayload.Queries["confirmTid"] = Convert.ToString(false);
+                if (confirmTid != null)
+                    callPayload.Queries["confirmTid"] = ExpressionConverter.Convert(confirmTid);
+                if (tid != null)
+                    callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<SendIdocResponse>(callPayload);
+            });
+        }
 
-            if (rfcCallParametersObjectpropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        [WorkflowExpressionFactory(nameof(__BuildSendIDocVersion2))]
+        public IBodyWorkflowAction<SendIdocResponse> SendIDocVersion2([WorkflowExpression] Func<object> dynamicParameters = null, [WorkflowExpression] Func<idocFormatInput> idocFormat = null, [WorkflowExpression] Func<bool> confirmTid = null, [WorkflowExpression] Func<string> tid = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendIdocResponse> __BuildSendIDocVersion2(WorkflowValue<object> dynamicParameters = null, WorkflowValue<idocFormatInput> idocFormat = null, WorkflowValue<bool> confirmTid = null, WorkflowValue<string> tid = null)
+        {
+            WorkflowValue.Validate(dynamicParameters, nameof(dynamicParameters), required: false);
+            WorkflowValue.Validate(idocFormat, nameof(idocFormat), required: false);
+            WorkflowValue.Validate(confirmTid, nameof(confirmTid), required: false);
+            WorkflowValue.Validate(tid, nameof(tid), required: false);
+            return new DeferredBodyAction<SendIdocResponse>(() =>
             {
-                callRfcSubscription["RfcCallParameters"] = rfcCallParametersObject;
+                var apiCallPath = "/SendIDoc/v2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["idocFormat"] = Convert.ToString("Xml");
+                if (idocFormat != null)
+                    callPayload.Queries["idocFormat"] = ExpressionConverter.Convert(idocFormat);
+                callPayload.Queries["confirmTid"] = Convert.ToString(false);
+                if (confirmTid != null)
+                    callPayload.Queries["confirmTid"] = ExpressionConverter.Convert(confirmTid);
+                if (tid != null)
+                    callPayload.Queries["tid"] = ExpressionConverter.Convert(tid);
+                callPayload.Body = ExpressionConverter.ConvertO(dynamicParameters);
+                return new ApiConnectionAction<SendIdocResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sap")]
+        [WorkflowExpressionFactory(nameof(__BuildStartLongRunningRfc))]
+        public IBodyWorkflowAction<SubscribeResponse> StartLongRunningRfc([WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersrFCName, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, [WorkflowExpression] Func<bool> callRfcSubscriptionrfcCallParametersautoCommit = null, [WorkflowExpression] Func<string> callRfcSubscriptionrfcCallParametersqueueName = null, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> tId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SubscribeResponse> __BuildStartLongRunningRfc(WorkflowValue<string> callRfcSubscriptionrfcCallParametersrFCName, WorkflowValue<string> callRfcSubscriptionrfcCallParametersinputRFCParametersInline = null, WorkflowValue<string> callRfcSubscriptionrfcCallParametersinputRFCParametersReference = null, WorkflowValue<string> callRfcSubscriptionrfcCallParametersrFCGroupFilter = null, WorkflowValue<bool> callRfcSubscriptionrfcCallParametersautoCommit = null, WorkflowValue<string> callRfcSubscriptionrfcCallParametersqueueName = null, WorkflowValue<string> sessionId = null, WorkflowValue<string> tId = null)
+        {
+            WorkflowValue.Validate(callRfcSubscriptionrfcCallParametersrFCName, nameof(callRfcSubscriptionrfcCallParametersrFCName), required: true);
+            WorkflowValue.Validate(callRfcSubscriptionrfcCallParametersinputRFCParametersInline, nameof(callRfcSubscriptionrfcCallParametersinputRFCParametersInline), required: false);
+            WorkflowValue.Validate(callRfcSubscriptionrfcCallParametersinputRFCParametersReference, nameof(callRfcSubscriptionrfcCallParametersinputRFCParametersReference), required: false);
+            WorkflowValue.Validate(callRfcSubscriptionrfcCallParametersrFCGroupFilter, nameof(callRfcSubscriptionrfcCallParametersrFCGroupFilter), required: false);
+            WorkflowValue.Validate(callRfcSubscriptionrfcCallParametersautoCommit, nameof(callRfcSubscriptionrfcCallParametersautoCommit), required: false);
+            WorkflowValue.Validate(callRfcSubscriptionrfcCallParametersqueueName, nameof(callRfcSubscriptionrfcCallParametersqueueName), required: false);
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowValue.Validate(tId, nameof(tId), required: false);
+            return new DeferredBodyAction<SubscribeResponse>(() =>
+            {
+                var apiCallPath = "/StartLongRunningRfc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                if (tId != null)
+                    callPayload.Queries["tId"] = ExpressionConverter.Convert(tId);
+                var callRfcSubscription = new JObject();
+                var callRfcSubscriptionpropCount = 0;
+                var rfcCallParametersObject = new JObject();
+                var rfcCallParametersObjectpropCount = 0;
+                rfcCallParametersObjectpropCount++;
+                rfcCallParametersObject["RfcName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCName);
+                if (callRfcSubscriptionrfcCallParametersinputRFCParametersInline != null)
+                {
+                    rfcCallParametersObject["Payload"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersInline);
+                    rfcCallParametersObjectpropCount++;
+                }
+
+                if (callRfcSubscriptionrfcCallParametersinputRFCParametersReference != null)
+                {
+                    rfcCallParametersObject["PayloadReference"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersinputRFCParametersReference);
+                    rfcCallParametersObjectpropCount++;
+                }
+
+                if (callRfcSubscriptionrfcCallParametersrFCGroupFilter != null)
+                {
+                    rfcCallParametersObject["RfcGroupFilter"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersrFCGroupFilter);
+                    rfcCallParametersObjectpropCount++;
+                }
+
+                if (callRfcSubscriptionrfcCallParametersautoCommit != null)
+                {
+                    rfcCallParametersObject["AutoCommit"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersautoCommit);
+                    rfcCallParametersObjectpropCount++;
+                }
+
+                if (callRfcSubscriptionrfcCallParametersqueueName != null)
+                {
+                    rfcCallParametersObject["QueueName"] = ExpressionConverter.ConvertO(callRfcSubscriptionrfcCallParametersqueueName);
+                    rfcCallParametersObjectpropCount++;
+                }
+
+                if (rfcCallParametersObjectpropCount > 0)
+                {
+                    callRfcSubscription["RfcCallParameters"] = rfcCallParametersObject;
+                    callRfcSubscriptionpropCount++;
+                }
+
+                callRfcSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 callRfcSubscriptionpropCount++;
-            }
+                if (callRfcSubscriptionpropCount > 0)
+                {
+                    callPayload.Body = callRfcSubscription;
+                }
 
-            callRfcSubscription["NotificationUrl"] = "@listCallbackUrl()";
-            callRfcSubscriptionpropCount++;
-            if (callRfcSubscriptionpropCount > 0)
-            {
-                callPayload.Body = callRfcSubscription;
-            }
-
-            return new ApiConnectionAction<SubscribeResponse>(callPayload);
+                return new ApiConnectionAction<SubscribeResponse>(callPayload);
+            });
         }
     }
 
     public class SapTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe(Expression<Func<string>> gatewayHost, Expression<Func<string>> gatewayService, Expression<Func<string>> programId, Expression<Func<string[]>> subscriptionsapActions = null, Expression<Func<subscriptioniDOCFormatInput>> subscriptioniDOCFormat = null, Expression<Func<bool>> subscriptionreceiveIDOCsWithUnreleasedSegments = null, Expression<Func<string>> sncPartnerNames = null, Expression<Func<int>> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildSubscribe))]
+        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe([WorkflowExpression] Func<string> gatewayHost, [WorkflowExpression] Func<string> gatewayService, [WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string[]> subscriptionsapActions = null, [WorkflowExpression] Func<subscriptioniDOCFormatInput> subscriptioniDOCFormat = null, [WorkflowExpression] Func<bool> subscriptionreceiveIDOCsWithUnreleasedSegments = null, [WorkflowExpression] Func<string> sncPartnerNames = null, [WorkflowExpression] Func<int> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhooktrigger/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["gatewayHost"] = ExpressionConverter.Convert(gatewayHost);
-            callPayload.Queries["gatewayService"] = ExpressionConverter.Convert(gatewayService);
-            callPayload.Queries["programId"] = ExpressionConverter.Convert(programId);
-            if (sncPartnerNames != null)
-                callPayload.Queries["sncPartnerNames"] = ExpressionConverter.Convert(sncPartnerNames);
-            callPayload.Queries["degreeOfParallelism"] = Convert.ToString(-1);
-            if (degreeOfParallelism != null)
-                callPayload.Queries["degreeOfParallelism"] = ExpressionConverter.Convert(degreeOfParallelism);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionsapActions != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<SubscribeResponse> __BuildSubscribe(WorkflowValue<string> gatewayHost, WorkflowValue<string> gatewayService, WorkflowValue<string> programId, WorkflowValue<string[]> subscriptionsapActions = null, WorkflowValue<subscriptioniDOCFormatInput> subscriptioniDOCFormat = null, WorkflowValue<bool> subscriptionreceiveIDOCsWithUnreleasedSegments = null, WorkflowValue<string> sncPartnerNames = null, WorkflowValue<int> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(gatewayHost, nameof(gatewayHost), required: true);
+            WorkflowValue.Validate(gatewayService, nameof(gatewayService), required: true);
+            WorkflowValue.Validate(programId, nameof(programId), required: true);
+            WorkflowValue.Validate(subscriptionsapActions, nameof(subscriptionsapActions), required: false);
+            WorkflowValue.Validate(subscriptioniDOCFormat, nameof(subscriptioniDOCFormat), required: false);
+            WorkflowValue.Validate(subscriptionreceiveIDOCsWithUnreleasedSegments, nameof(subscriptionreceiveIDOCsWithUnreleasedSegments), required: false);
+            WorkflowValue.Validate(sncPartnerNames, nameof(sncPartnerNames), required: false);
+            WorkflowValue.Validate(degreeOfParallelism, nameof(degreeOfParallelism), required: false);
+            return new DeferredBodyTrigger<SubscribeResponse>(() =>
             {
-                subscription["SapActions"] = ExpressionConverter.ConvertO(subscriptionsapActions);
+                var apiCallPath = "/api/webhooktrigger/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["gatewayHost"] = ExpressionConverter.Convert(gatewayHost);
+                callPayload.Queries["gatewayService"] = ExpressionConverter.Convert(gatewayService);
+                callPayload.Queries["programId"] = ExpressionConverter.Convert(programId);
+                if (sncPartnerNames != null)
+                    callPayload.Queries["sncPartnerNames"] = ExpressionConverter.Convert(sncPartnerNames);
+                callPayload.Queries["degreeOfParallelism"] = Convert.ToString(-1);
+                if (degreeOfParallelism != null)
+                    callPayload.Queries["degreeOfParallelism"] = ExpressionConverter.Convert(degreeOfParallelism);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionsapActions != null)
+                {
+                    subscription["SapActions"] = ExpressionConverter.ConvertO(subscriptionsapActions);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptioniDOCFormat != null)
+                {
+                    subscription["IdocFormat"] = ExpressionConverter.ConvertO(subscriptioniDOCFormat);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionreceiveIDOCsWithUnreleasedSegments != null)
+                {
+                    subscription["ReceiveIdocsWithUnreleasedSegments"] = ExpressionConverter.ConvertO(subscriptionreceiveIDOCsWithUnreleasedSegments);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
-            }
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
 
-            if (subscriptioniDOCFormat != null)
-            {
-                subscription["IdocFormat"] = ExpressionConverter.ConvertO(subscriptioniDOCFormat);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionreceiveIDOCsWithUnreleasedSegments != null)
-            {
-                subscription["ReceiveIdocsWithUnreleasedSegments"] = ExpressionConverter.ConvertO(subscriptionreceiveIDOCsWithUnreleasedSegments);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<SubscribeResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<SubscribeResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

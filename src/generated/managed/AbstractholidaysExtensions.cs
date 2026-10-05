@@ -4,27 +4,40 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractholidays
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AbstractholidaysActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractholidays")]
-        public IBodyWorkflowAction<ListHolidaysResponseItem[]> ListHolidays(Expression<Func<string>> country, Expression<Func<string>> year = null, Expression<Func<string>> month = null, Expression<Func<string>> day = null)
+        [WorkflowExpressionFactory(nameof(__BuildListHolidays))]
+        public IBodyWorkflowAction<ListHolidaysResponseItem[]> ListHolidays([WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> year = null, [WorkflowExpression] Func<string> month = null, [WorkflowExpression] Func<string> day = null)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (month != null)
-                callPayload.Queries["month"] = ExpressionConverter.Convert(month);
-            if (day != null)
-                callPayload.Queries["day"] = ExpressionConverter.Convert(day);
-            return new ApiConnectionAction<ListHolidaysResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListHolidaysResponseItem[]> __BuildListHolidays(WorkflowValue<string> country, WorkflowValue<string> year = null, WorkflowValue<string> month = null, WorkflowValue<string> day = null)
+        {
+            WorkflowValue.Validate(country, nameof(country), required: true);
+            WorkflowValue.Validate(year, nameof(year), required: false);
+            WorkflowValue.Validate(month, nameof(month), required: false);
+            WorkflowValue.Validate(day, nameof(day), required: false);
+            return new DeferredBodyAction<ListHolidaysResponseItem[]>(() =>
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (month != null)
+                    callPayload.Queries["month"] = ExpressionConverter.Convert(month);
+                if (day != null)
+                    callPayload.Queries["day"] = ExpressionConverter.Convert(day);
+                return new ApiConnectionAction<ListHolidaysResponseItem[]>(callPayload);
+            });
         }
     }
 

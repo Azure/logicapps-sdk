@@ -4,40 +4,59 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NewsdataioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newsdataio")]
-        public IBodyWorkflowAction<LatestGetResponse> LatestGet(Expression<Func<string>> q = null, Expression<Func<string>> qInTitle = null, Expression<Func<string>> country = null, Expression<Func<string>> category = null, Expression<Func<string>> language = null, Expression<Func<string>> domain = null, Expression<Func<fullContentInput>> fullContent = null, Expression<Func<imageInput>> image = null, Expression<Func<videoInput>> video = null, Expression<Func<string>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildLatestGet))]
+        public IBodyWorkflowAction<LatestGetResponse> LatestGet([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> qInTitle = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<fullContentInput> fullContent = null, [WorkflowExpression] Func<imageInput> image = null, [WorkflowExpression] Func<videoInput> video = null, [WorkflowExpression] Func<string> page = null)
         {
-            var apiCallPath = "/news";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (qInTitle != null)
-                callPayload.Queries["qInTitle"] = ExpressionConverter.Convert(qInTitle);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            if (domain != null)
-                callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
-            if (fullContent != null)
-                callPayload.Queries["full_content"] = ExpressionConverter.Convert(fullContent);
-            if (image != null)
-                callPayload.Queries["image"] = ExpressionConverter.Convert(image);
-            if (video != null)
-                callPayload.Queries["video"] = ExpressionConverter.Convert(video);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<LatestGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LatestGetResponse> __BuildLatestGet(WorkflowValue<string> q = null, WorkflowValue<string> qInTitle = null, WorkflowValue<string> country = null, WorkflowValue<string> category = null, WorkflowValue<string> language = null, WorkflowValue<string> domain = null, WorkflowValue<fullContentInput> fullContent = null, WorkflowValue<imageInput> image = null, WorkflowValue<videoInput> video = null, WorkflowValue<string> page = null)
+        {
+            WorkflowValue.Validate(q, nameof(q), required: false);
+            WorkflowValue.Validate(qInTitle, nameof(qInTitle), required: false);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            WorkflowValue.Validate(category, nameof(category), required: false);
+            WorkflowValue.Validate(language, nameof(language), required: false);
+            WorkflowValue.Validate(domain, nameof(domain), required: false);
+            WorkflowValue.Validate(fullContent, nameof(fullContent), required: false);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            WorkflowValue.Validate(video, nameof(video), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<LatestGetResponse>(() =>
+            {
+                var apiCallPath = "/news";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (qInTitle != null)
+                    callPayload.Queries["qInTitle"] = ExpressionConverter.Convert(qInTitle);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                if (domain != null)
+                    callPayload.Queries["domain"] = ExpressionConverter.Convert(domain);
+                if (fullContent != null)
+                    callPayload.Queries["full_content"] = ExpressionConverter.Convert(fullContent);
+                if (image != null)
+                    callPayload.Queries["image"] = ExpressionConverter.Convert(image);
+                if (video != null)
+                    callPayload.Queries["video"] = ExpressionConverter.Convert(video);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<LatestGetResponse>(callPayload);
+            });
         }
     }
 

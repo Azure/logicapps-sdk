@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,16 +20,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<int>> vatNumber = null, Expression<Func<string>> countryCode = null)
+        [WorkflowExpressionFactory(nameof(__BuildValidate))]
+        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<int> vatNumber = null, [WorkflowExpression] Func<string> countryCode = null)
         {
-            var apiCallPath = "/v2/check";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (vatNumber != null)
-                callPayload.Queries["vat_number"] = ExpressionConverter.Convert(vatNumber);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateResponse> __BuildValidate(WorkflowValue<int> vatNumber = null, WorkflowValue<string> countryCode = null)
+        {
+            WorkflowValue.Validate(vatNumber, nameof(vatNumber), required: false);
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: false);
+            return new DeferredBodyAction<ValidateResponse>(() =>
+            {
+                var apiCallPath = "/v2/check";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (vatNumber != null)
+                    callPayload.Queries["vat_number"] = ExpressionConverter.Convert(vatNumber);
+                if (countryCode != null)
+                    callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                return new ApiConnectionAction<ValidateResponse>(callPayload);
+            });
         }
     }
 

@@ -4,115 +4,153 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Byword
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BywordActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlePostResponse> Article(Expression<Func<bodymodeInput>> bodymode, Expression<Func<string>> bodyinput, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodysubheadings = null, Expression<Func<bool>> bodyundetectable = null, Expression<Func<string>> bodytone = null, Expression<Func<int>> bodylength = null)
+        [WorkflowExpressionFactory(nameof(__BuildArticle))]
+        public IBodyWorkflowAction<ArticlePostResponse> Article([WorkflowExpression] Func<bodymodeInput> bodymode, [WorkflowExpression] Func<string> bodyinput, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodysubheadings = null, [WorkflowExpression] Func<bool> bodyundetectable = null, [WorkflowExpression] Func<string> bodytone = null, [WorkflowExpression] Func<int> bodylength = null)
         {
-            var apiCallPath = "/create_article";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["mode"] = ExpressionConverter.ConvertO(bodymode);
-            bodypropCount++;
-            body["input"] = ExpressionConverter.ConvertO(bodyinput);
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
-
-            if (bodysubheadings != null)
-            {
-                body["subheadings"] = ExpressionConverter.ConvertO(bodysubheadings);
-                bodypropCount++;
-            }
-
-            if (bodyundetectable != null)
-            {
-                body["undetectable"] = ExpressionConverter.ConvertO(bodyundetectable);
-                bodypropCount++;
-            }
-
-            if (bodytone != null)
-            {
-                body["tone"] = ExpressionConverter.ConvertO(bodytone);
-                bodypropCount++;
-            }
-
-            if (bodylength != null)
-            {
-                body["length"] = ExpressionConverter.ConvertO(bodylength);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArticlePostResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet(Expression<Func<string>> bodyarticleID = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArticlePostResponse> __BuildArticle(WorkflowValue<bodymodeInput> bodymode, WorkflowValue<string> bodyinput, WorkflowValue<string> bodylanguage = null, WorkflowValue<string> bodysubheadings = null, WorkflowValue<bool> bodyundetectable = null, WorkflowValue<string> bodytone = null, WorkflowValue<int> bodylength = null)
         {
-            var apiCallPath = "/get_article";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyarticleID != null)
+            WorkflowValue.Validate(bodymode, nameof(bodymode), required: true);
+            WorkflowValue.Validate(bodyinput, nameof(bodyinput), required: true);
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            WorkflowValue.Validate(bodysubheadings, nameof(bodysubheadings), required: false);
+            WorkflowValue.Validate(bodyundetectable, nameof(bodyundetectable), required: false);
+            WorkflowValue.Validate(bodytone, nameof(bodytone), required: false);
+            WorkflowValue.Validate(bodylength, nameof(bodylength), required: false);
+            return new DeferredBodyAction<ArticlePostResponse>(() =>
             {
-                body["articleID"] = ExpressionConverter.ConvertO(bodyarticleID);
+                var apiCallPath = "/create_article";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ArticleGetPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
-        public IBodyWorkflowAction<ArticlesPostResponseItem[]> Articles(Expression<Func<int>> bodycursor = null)
-        {
-            var apiCallPath = "/list_articles";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycursor != null)
-            {
-                if (bodycursor != null)
+                body["mode"] = ExpressionConverter.ConvertO(bodymode);
+                bodypropCount++;
+                body["input"] = ExpressionConverter.ConvertO(bodyinput);
+                if (bodylanguage != null)
                 {
-                    body["cursor"] = ExpressionConverter.ConvertO(bodycursor);
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["cursor"] = 0;
-                bodypropCount++;
-            }
+                if (bodysubheadings != null)
+                {
+                    body["subheadings"] = ExpressionConverter.ConvertO(bodysubheadings);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyundetectable != null)
+                {
+                    body["undetectable"] = ExpressionConverter.ConvertO(bodyundetectable);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ArticlesPostResponseItem[]>(callPayload);
+                if (bodytone != null)
+                {
+                    body["tone"] = ExpressionConverter.ConvertO(bodytone);
+                    bodypropCount++;
+                }
+
+                if (bodylength != null)
+                {
+                    body["length"] = ExpressionConverter.ConvertO(bodylength);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArticlePostResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
+        [WorkflowExpressionFactory(nameof(__BuildArticleGet))]
+        public IBodyWorkflowAction<ArticleGetPostResponse> ArticleGet([WorkflowExpression] Func<string> bodyarticleID = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArticleGetPostResponse> __BuildArticleGet(WorkflowValue<string> bodyarticleID = null)
+        {
+            WorkflowValue.Validate(bodyarticleID, nameof(bodyarticleID), required: false);
+            return new DeferredBodyAction<ArticleGetPostResponse>(() =>
+            {
+                var apiCallPath = "/get_article";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyarticleID != null)
+                {
+                    body["articleID"] = ExpressionConverter.ConvertO(bodyarticleID);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArticleGetPostResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "byword")]
+        [WorkflowExpressionFactory(nameof(__BuildArticles))]
+        public IBodyWorkflowAction<ArticlesPostResponseItem[]> Articles([WorkflowExpression] Func<int> bodycursor = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArticlesPostResponseItem[]> __BuildArticles(WorkflowValue<int> bodycursor = null)
+        {
+            WorkflowValue.Validate(bodycursor, nameof(bodycursor), required: false);
+            return new DeferredBodyAction<ArticlesPostResponseItem[]>(() =>
+            {
+                var apiCallPath = "/list_articles";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycursor != null)
+                {
+                    if (bodycursor != null)
+                    {
+                        body["cursor"] = ExpressionConverter.ConvertO(bodycursor);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["cursor"] = 0;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ArticlesPostResponseItem[]>(callPayload);
+            });
         }
     }
 

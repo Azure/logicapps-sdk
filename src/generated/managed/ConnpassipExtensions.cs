@@ -4,44 +4,64 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connpassip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ConnpassipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connpassip")]
-        public IBodyWorkflowAction<SearchEventResponse> SearchEvent(Expression<Func<string>> keyword = null, Expression<Func<string>> eventId = null, Expression<Func<string>> keywordOr = null, Expression<Func<string>> ym = null, Expression<Func<string>> ymd = null, Expression<Func<string>> nickname = null, Expression<Func<string>> ownerNickname = null, Expression<Func<string>> seriesId = null, Expression<Func<string>> start = null, Expression<Func<string>> order = null, Expression<Func<string>> count = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchEvent))]
+        public IBodyWorkflowAction<SearchEventResponse> SearchEvent([WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> eventId = null, [WorkflowExpression] Func<string> keywordOr = null, [WorkflowExpression] Func<string> ym = null, [WorkflowExpression] Func<string> ymd = null, [WorkflowExpression] Func<string> nickname = null, [WorkflowExpression] Func<string> ownerNickname = null, [WorkflowExpression] Func<string> seriesId = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> count = null)
         {
-            var apiCallPath = "/api/v1/event/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (keyword != null)
-                callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
-            if (eventId != null)
-                callPayload.Queries["event_id"] = ExpressionConverter.Convert(eventId);
-            if (keywordOr != null)
-                callPayload.Queries["keyword_or"] = ExpressionConverter.Convert(keywordOr);
-            if (ym != null)
-                callPayload.Queries["ym"] = ExpressionConverter.Convert(ym);
-            if (ymd != null)
-                callPayload.Queries["ymd"] = ExpressionConverter.Convert(ymd);
-            if (nickname != null)
-                callPayload.Queries["nickname"] = ExpressionConverter.Convert(nickname);
-            if (ownerNickname != null)
-                callPayload.Queries["owner_nickname"] = ExpressionConverter.Convert(ownerNickname);
-            if (seriesId != null)
-                callPayload.Queries["series_id"] = ExpressionConverter.Convert(seriesId);
-            if (start != null)
-                callPayload.Queries["start"] = ExpressionConverter.Convert(start);
-            if (order != null)
-                callPayload.Queries["order"] = ExpressionConverter.Convert(order);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<SearchEventResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchEventResponse> __BuildSearchEvent(WorkflowValue<string> keyword = null, WorkflowValue<string> eventId = null, WorkflowValue<string> keywordOr = null, WorkflowValue<string> ym = null, WorkflowValue<string> ymd = null, WorkflowValue<string> nickname = null, WorkflowValue<string> ownerNickname = null, WorkflowValue<string> seriesId = null, WorkflowValue<string> start = null, WorkflowValue<string> order = null, WorkflowValue<string> count = null)
+        {
+            WorkflowValue.Validate(keyword, nameof(keyword), required: false);
+            WorkflowValue.Validate(eventId, nameof(eventId), required: false);
+            WorkflowValue.Validate(keywordOr, nameof(keywordOr), required: false);
+            WorkflowValue.Validate(ym, nameof(ym), required: false);
+            WorkflowValue.Validate(ymd, nameof(ymd), required: false);
+            WorkflowValue.Validate(nickname, nameof(nickname), required: false);
+            WorkflowValue.Validate(ownerNickname, nameof(ownerNickname), required: false);
+            WorkflowValue.Validate(seriesId, nameof(seriesId), required: false);
+            WorkflowValue.Validate(start, nameof(start), required: false);
+            WorkflowValue.Validate(order, nameof(order), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            return new DeferredBodyAction<SearchEventResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/event/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (keyword != null)
+                    callPayload.Queries["keyword"] = ExpressionConverter.Convert(keyword);
+                if (eventId != null)
+                    callPayload.Queries["event_id"] = ExpressionConverter.Convert(eventId);
+                if (keywordOr != null)
+                    callPayload.Queries["keyword_or"] = ExpressionConverter.Convert(keywordOr);
+                if (ym != null)
+                    callPayload.Queries["ym"] = ExpressionConverter.Convert(ym);
+                if (ymd != null)
+                    callPayload.Queries["ymd"] = ExpressionConverter.Convert(ymd);
+                if (nickname != null)
+                    callPayload.Queries["nickname"] = ExpressionConverter.Convert(nickname);
+                if (ownerNickname != null)
+                    callPayload.Queries["owner_nickname"] = ExpressionConverter.Convert(ownerNickname);
+                if (seriesId != null)
+                    callPayload.Queries["series_id"] = ExpressionConverter.Convert(seriesId);
+                if (start != null)
+                    callPayload.Queries["start"] = ExpressionConverter.Convert(start);
+                if (order != null)
+                    callPayload.Queries["order"] = ExpressionConverter.Convert(order);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<SearchEventResponse>(callPayload);
+            });
         }
     }
 

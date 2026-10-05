@@ -4,44 +4,76 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MailboxvalidatoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle(Expression<Func<string>> email)
+        [WorkflowExpressionFactory(nameof(__BuildValidateSingle))]
+        public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/validation/single";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<ValidateSingleResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateSingleResponse> __BuildValidateSingle(WorkflowValue<string> email)
+        {
+            WorkflowValue.Validate(email, nameof(email), required: true);
+            return new DeferredBodyAction<ValidateSingleResponse>(() =>
+            {
+                var apiCallPath = "/validation/single";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return new ApiConnectionAction<ValidateSingleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable(Expression<Func<string>> email)
+        [WorkflowExpressionFactory(nameof(__BuildValidateDisposable))]
+        public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/email/disposable";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<ValidateDisposableResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateDisposableResponse> __BuildValidateDisposable(WorkflowValue<string> email)
+        {
+            WorkflowValue.Validate(email, nameof(email), required: true);
+            return new DeferredBodyAction<ValidateDisposableResponse>(() =>
+            {
+                var apiCallPath = "/email/disposable";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return new ApiConnectionAction<ValidateDisposableResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree(Expression<Func<string>> email)
+        [WorkflowExpressionFactory(nameof(__BuildValidateFree))]
+        public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/email/free";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<ValidateFreeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValidateFreeResponse> __BuildValidateFree(WorkflowValue<string> email)
+        {
+            WorkflowValue.Validate(email, nameof(email), required: true);
+            return new DeferredBodyAction<ValidateFreeResponse>(() =>
+            {
+                var apiCallPath = "/email/free";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return new ApiConnectionAction<ValidateFreeResponse>(callPayload);
+            });
         }
     }
 

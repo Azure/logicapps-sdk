@@ -4,50 +4,88 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class HellosignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
-        public IBodyWorkflowAction<RequestResponse> CreateRequest(Expression<Func<string>> templateId, Expression<Func<testModeInput>> testMode = null, Expression<Func<string>> subject = null, Expression<Func<string>> message = null, Expression<Func<string>> signingRedirectUrl = null, Expression<Func<bool>> allowDecline = null, Expression<Func<object>> signers = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateRequest))]
+        public IBodyWorkflowAction<RequestResponse> CreateRequest([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<testModeInput> testMode = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> signingRedirectUrl = null, [WorkflowExpression] Func<bool> allowDecline = null, [WorkflowExpression] Func<object> signers = null)
         {
-            var apiCallPath = "/v3/signature_request/send_with_template";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (testMode != null)
-                callPayload.Queries["test_mode"] = ExpressionConverter.Convert(testMode);
-            callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
-            if (subject != null)
-                callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
-            if (message != null)
-                callPayload.Queries["message"] = ExpressionConverter.Convert(message);
-            if (signingRedirectUrl != null)
-                callPayload.Queries["signing_redirect_url"] = ExpressionConverter.Convert(signingRedirectUrl);
-            if (allowDecline != null)
-                callPayload.Queries["allow_decline"] = ExpressionConverter.Convert(allowDecline);
-            callPayload.Body = ExpressionConverter.ConvertO(signers);
-            return new ApiConnectionAction<RequestResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RequestResponse> __BuildCreateRequest(WorkflowValue<string> templateId, WorkflowValue<testModeInput> testMode = null, WorkflowValue<string> subject = null, WorkflowValue<string> message = null, WorkflowValue<string> signingRedirectUrl = null, WorkflowValue<bool> allowDecline = null, WorkflowValue<object> signers = null)
+        {
+            WorkflowValue.Validate(templateId, nameof(templateId), required: true);
+            WorkflowValue.Validate(testMode, nameof(testMode), required: false);
+            WorkflowValue.Validate(subject, nameof(subject), required: false);
+            WorkflowValue.Validate(message, nameof(message), required: false);
+            WorkflowValue.Validate(signingRedirectUrl, nameof(signingRedirectUrl), required: false);
+            WorkflowValue.Validate(allowDecline, nameof(allowDecline), required: false);
+            WorkflowValue.Validate(signers, nameof(signers), required: false);
+            return new DeferredBodyAction<RequestResponse>(() =>
+            {
+                var apiCallPath = "/v3/signature_request/send_with_template";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (testMode != null)
+                    callPayload.Queries["test_mode"] = ExpressionConverter.Convert(testMode);
+                callPayload.Queries["template_id"] = ExpressionConverter.Convert(templateId);
+                if (subject != null)
+                    callPayload.Queries["subject"] = ExpressionConverter.Convert(subject);
+                if (message != null)
+                    callPayload.Queries["message"] = ExpressionConverter.Convert(message);
+                if (signingRedirectUrl != null)
+                    callPayload.Queries["signing_redirect_url"] = ExpressionConverter.Convert(signingRedirectUrl);
+                if (allowDecline != null)
+                    callPayload.Queries["allow_decline"] = ExpressionConverter.Convert(allowDecline);
+                callPayload.Body = ExpressionConverter.ConvertO(signers);
+                return new ApiConnectionAction<RequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
-        public IBodyWorkflowAction<RequestResponse> GetRequest(Expression<Func<string>> requestId)
+        [WorkflowExpressionFactory(nameof(__BuildGetRequest))]
+        public IBodyWorkflowAction<RequestResponse> GetRequest([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/v3/signature_request/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RequestResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RequestResponse> __BuildGetRequest(WorkflowValue<string> requestId)
+        {
+            WorkflowValue.Validate(requestId, nameof(requestId), required: true);
+            return new DeferredBodyAction<RequestResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/signature_request/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hellosign")]
-        public IWorkflowAction CancelRequest(Expression<Func<string>> requestId)
+        [WorkflowExpressionFactory(nameof(__BuildCancelRequest))]
+        public IWorkflowAction CancelRequest([WorkflowExpression] Func<string> requestId)
         {
-            var apiCallPath = String.Format("/v3/signature_request/cancel/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCancelRequest(WorkflowValue<string> requestId)
+        {
+            WorkflowValue.Validate(requestId, nameof(requestId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/signature_request/cancel/{0}", ExpressionConverter.ConvertWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

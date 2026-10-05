@@ -4,89 +4,127 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jupyrest
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class JupyrestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution(Expression<Func<string>> executionId, Expression<Func<bool>> output, Expression<Func<bool>> html, Expression<Func<bool>> report = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetNotebookExecution))]
+        public IBodyWorkflowAction<NotebookResponse> GetNotebookExecution([WorkflowExpression] Func<string> executionId, [WorkflowExpression] Func<bool> output, [WorkflowExpression] Func<bool> html, [WorkflowExpression] Func<bool> report = null)
         {
-            var apiCallPath = "/NotebookExecutions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["executionId"] = ExpressionConverter.Convert(executionId);
-            callPayload.Queries["disableRedirect"] = Convert.ToString(true);
-            callPayload.Queries["output"] = ExpressionConverter.Convert(output);
-            callPayload.Queries["html"] = ExpressionConverter.Convert(html);
-            callPayload.Queries["report"] = Convert.ToString(false);
-            if (report != null)
-                callPayload.Queries["report"] = ExpressionConverter.Convert(report);
-            return new ApiConnectionAction<NotebookResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NotebookResponse> __BuildGetNotebookExecution(WorkflowValue<string> executionId, WorkflowValue<bool> output, WorkflowValue<bool> html, WorkflowValue<bool> report = null)
+        {
+            WorkflowValue.Validate(executionId, nameof(executionId), required: true);
+            WorkflowValue.Validate(output, nameof(output), required: true);
+            WorkflowValue.Validate(html, nameof(html), required: true);
+            WorkflowValue.Validate(report, nameof(report), required: false);
+            return new DeferredBodyAction<NotebookResponse>(() =>
+            {
+                var apiCallPath = "/NotebookExecutions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["executionId"] = ExpressionConverter.Convert(executionId);
+                callPayload.Queries["disableRedirect"] = Convert.ToString(true);
+                callPayload.Queries["output"] = ExpressionConverter.Convert(output);
+                callPayload.Queries["html"] = ExpressionConverter.Convert(html);
+                callPayload.Queries["report"] = Convert.ToString(false);
+                if (report != null)
+                    callPayload.Queries["report"] = ExpressionConverter.Convert(report);
+                return new ApiConnectionAction<NotebookResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<NotebookResponse> NotebookExecution(Expression<Func<bool>> report = null, Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
+        [WorkflowExpressionFactory(nameof(__BuildNotebookExecution))]
+        public IBodyWorkflowAction<NotebookResponse> NotebookExecution([WorkflowExpression] Func<bool> report = null, [WorkflowExpression] Func<string> parametersnotebook = null, [WorkflowExpression] Func<object> parametersparameters = null)
         {
-            var apiCallPath = "/NotebookExecutions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["disableRedirect"] = Convert.ToString(true);
-            callPayload.Queries["output"] = Convert.ToString(true);
-            callPayload.Queries["html"] = Convert.ToString(true);
-            callPayload.Queries["report"] = Convert.ToString(false);
-            if (report != null)
-                callPayload.Queries["report"] = ExpressionConverter.Convert(report);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            if (parametersnotebook != null)
-            {
-                parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
-                parameterspropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (parametersparameters != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NotebookResponse> __BuildNotebookExecution(WorkflowValue<bool> report = null, WorkflowValue<string> parametersnotebook = null, WorkflowValue<object> parametersparameters = null)
+        {
+            WorkflowValue.Validate(report, nameof(report), required: false);
+            WorkflowValue.Validate(parametersnotebook, nameof(parametersnotebook), required: false);
+            WorkflowValue.Validate(parametersparameters, nameof(parametersparameters), required: false);
+            return new DeferredBodyAction<NotebookResponse>(() =>
             {
-                parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
-                parameterspropCount++;
-            }
+                var apiCallPath = "/NotebookExecutions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["disableRedirect"] = Convert.ToString(true);
+                callPayload.Queries["output"] = Convert.ToString(true);
+                callPayload.Queries["html"] = Convert.ToString(true);
+                callPayload.Queries["report"] = Convert.ToString(false);
+                if (report != null)
+                    callPayload.Queries["report"] = ExpressionConverter.Convert(report);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                if (parametersnotebook != null)
+                {
+                    parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
+                    parameterspropCount++;
+                }
 
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
+                if (parametersparameters != null)
+                {
+                    parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
+                    parameterspropCount++;
+                }
 
-            return new ApiConnectionAction<NotebookResponse>(callPayload);
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+
+                return new ApiConnectionAction<NotebookResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jupyrest")]
-        public IBodyWorkflowAction<SynapseResponse> UploadToSynapse(Expression<Func<string>> parametersnotebook = null, Expression<Func<object>> parametersparameters = null)
+        [WorkflowExpressionFactory(nameof(__BuildUploadToSynapse))]
+        public IBodyWorkflowAction<SynapseResponse> UploadToSynapse([WorkflowExpression] Func<string> parametersnotebook = null, [WorkflowExpression] Func<object> parametersparameters = null)
         {
-            var apiCallPath = "/Synapse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            if (parametersnotebook != null)
-            {
-                parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
-                parameterspropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (parametersparameters != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SynapseResponse> __BuildUploadToSynapse(WorkflowValue<string> parametersnotebook = null, WorkflowValue<object> parametersparameters = null)
+        {
+            WorkflowValue.Validate(parametersnotebook, nameof(parametersnotebook), required: false);
+            WorkflowValue.Validate(parametersparameters, nameof(parametersparameters), required: false);
+            return new DeferredBodyAction<SynapseResponse>(() =>
             {
-                parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
-                parameterspropCount++;
-            }
+                var apiCallPath = "/Synapse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                if (parametersnotebook != null)
+                {
+                    parameters["notebook"] = ExpressionConverter.ConvertO(parametersnotebook);
+                    parameterspropCount++;
+                }
 
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
+                if (parametersparameters != null)
+                {
+                    parameters["parameters"] = ExpressionConverter.ConvertO(parametersparameters);
+                    parameterspropCount++;
+                }
 
-            return new ApiConnectionAction<SynapseResponse>(callPayload);
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+
+                return new ApiConnectionAction<SynapseResponse>(callPayload);
+            });
         }
     }
 

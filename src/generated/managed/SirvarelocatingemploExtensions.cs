@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,44 +20,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sirvarelocatingemplo
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage(Expression<Func<string>> relocationId)
+        [WorkflowExpressionFactory(nameof(__BuildGetRelocationPackage))]
+        public IBodyWorkflowAction<GetRelocationPackageResponse> GetRelocationPackage([WorkflowExpression] Func<string> relocationId)
         {
-            var apiCallPath = String.Format("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRelocationPackageResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation(Expression<Func<bool>> includePicture, Expression<Func<string>> relocationId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRelocationPackageResponse> __BuildGetRelocationPackage(WorkflowValue<string> relocationId)
         {
-            var apiCallPath = String.Format("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(includePicture);
-            return new ApiConnectionAction<GetCounselorContactInformationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
-        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic(Expression<Func<string>> bodyrelocationId, Expression<Func<string>> bodyquery, Expression<Func<bodytopicInput>> bodytopic)
-        {
-            var apiCallPath = "/chat/topic";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["RelocationId"] = ExpressionConverter.ConvertO(bodyrelocationId);
-            bodypropCount++;
-            body["Query"] = ExpressionConverter.ConvertO(bodyquery);
-            bodypropCount++;
-            body["Topic"] = ExpressionConverter.ConvertO(bodytopic);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(relocationId, nameof(relocationId), required: true);
+            return new DeferredBodyAction<GetRelocationPackageResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/package/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRelocationPackageResponse>(callPayload);
+            });
+        }
 
-            return new ApiConnectionAction<AskSirvaBotAboutTopicResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCounselorContactInformation))]
+        public IBodyWorkflowAction<GetCounselorContactInformationResponse> GetCounselorContactInformation([WorkflowExpression] Func<bool> includePicture, [WorkflowExpression] Func<string> relocationId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCounselorContactInformationResponse> __BuildGetCounselorContactInformation(WorkflowValue<bool> includePicture, WorkflowValue<string> relocationId)
+        {
+            WorkflowValue.Validate(includePicture, nameof(includePicture), required: true);
+            WorkflowValue.Validate(relocationId, nameof(relocationId), required: true);
+            return new DeferredBodyAction<GetCounselorContactInformationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/relocation/counselor/{0}", ExpressionConverter.ConvertWithUrlEncoding(relocationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["IncludePicture"] = ExpressionConverter.Convert(includePicture);
+                return new ApiConnectionAction<GetCounselorContactInformationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sirvarelocatingemplo")]
+        [WorkflowExpressionFactory(nameof(__BuildAskSirvaBotAboutTopic))]
+        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> AskSirvaBotAboutTopic([WorkflowExpression] Func<string> bodyrelocationId, [WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<bodytopicInput> bodytopic)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AskSirvaBotAboutTopicResponse> __BuildAskSirvaBotAboutTopic(WorkflowValue<string> bodyrelocationId, WorkflowValue<string> bodyquery, WorkflowValue<bodytopicInput> bodytopic)
+        {
+            WorkflowValue.Validate(bodyrelocationId, nameof(bodyrelocationId), required: true);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: true);
+            WorkflowValue.Validate(bodytopic, nameof(bodytopic), required: true);
+            return new DeferredBodyAction<AskSirvaBotAboutTopicResponse>(() =>
+            {
+                var apiCallPath = "/chat/topic";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["RelocationId"] = ExpressionConverter.ConvertO(bodyrelocationId);
+                bodypropCount++;
+                body["Query"] = ExpressionConverter.ConvertO(bodyquery);
+                bodypropCount++;
+                body["Topic"] = ExpressionConverter.ConvertO(bodytopic);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AskSirvaBotAboutTopicResponse>(callPayload);
+            });
         }
     }
 

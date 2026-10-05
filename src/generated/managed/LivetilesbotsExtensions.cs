@@ -4,244 +4,355 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class LivetilesbotsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptString(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        [WorkflowExpressionFactory(nameof(__BuildPromptString))]
+        public IWorkflowAction PromptString([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            var apiCallPath = "/flowCallback/String";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPromptString(WorkflowValue<string> resumptionToken, WorkflowValue<string> bodyprompt = null)
+        {
+            WorkflowValue.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            WorkflowValue.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                var apiCallPath = "/flowCallback/String";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptNumber(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        [WorkflowExpressionFactory(nameof(__BuildPromptNumber))]
+        public IWorkflowAction PromptNumber([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            var apiCallPath = "/flowCallback/Number";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPromptNumber(WorkflowValue<string> resumptionToken, WorkflowValue<string> bodyprompt = null)
+        {
+            WorkflowValue.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            WorkflowValue.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                var apiCallPath = "/flowCallback/Number";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptForm(Expression<Func<string>> resumptionToken, Expression<Func<bodyformFieldsInputItem[]>> bodyformFields, Expression<Func<string>> bodyprompt = null, Expression<Func<string>> bodytitle = null)
+        [WorkflowExpressionFactory(nameof(__BuildPromptForm))]
+        public IWorkflowAction PromptForm([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<bodyformFieldsInputItem[]> bodyformFields, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            var apiCallPath = "/flowCallback/Form";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPromptForm(WorkflowValue<string> resumptionToken, WorkflowValue<bodyformFieldsInputItem[]> bodyformFields, WorkflowValue<string> bodyprompt = null, WorkflowValue<string> bodytitle = null)
+        {
+            WorkflowValue.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            WorkflowValue.Validate(bodyformFields, nameof(bodyformFields), required: true);
+            WorkflowValue.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                var apiCallPath = "/flowCallback/Form";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
                 bodypropCount++;
-            }
+                body["formFields"] = ExpressionConverter.ConvertO(bodyformFields);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["formFields"] = ExpressionConverter.ConvertO(bodyformFields);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptBoolean(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        [WorkflowExpressionFactory(nameof(__BuildPromptBoolean))]
+        public IWorkflowAction PromptBoolean([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            var apiCallPath = "/flowCallback/Bool";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPromptBoolean(WorkflowValue<string> resumptionToken, WorkflowValue<string> bodyprompt = null)
+        {
+            WorkflowValue.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            WorkflowValue.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                var apiCallPath = "/flowCallback/Bool";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptChoice(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null, Expression<Func<bodyoptionsInputItem[]>> bodyoptions = null)
+        [WorkflowExpressionFactory(nameof(__BuildPromptChoice))]
+        public IWorkflowAction PromptChoice([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<bodyoptionsInputItem[]> bodyoptions = null)
         {
-            var apiCallPath = "/flowCallback/Choice";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPromptChoice(WorkflowValue<string> resumptionToken, WorkflowValue<string> bodyprompt = null, WorkflowValue<bodyoptionsInputItem[]> bodyoptions = null)
+        {
+            WorkflowValue.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            WorkflowValue.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            WorkflowValue.Validate(bodyoptions, nameof(bodyoptions), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                var apiCallPath = "/flowCallback/Choice";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    bodypropCount++;
+                }
+
+                if (bodyoptions != null)
+                {
+                    body["options"] = ExpressionConverter.ConvertO(bodyoptions);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyoptions != null)
-            {
-                body["options"] = ExpressionConverter.ConvertO(bodyoptions);
-                bodypropCount++;
-            }
-
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptFile(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null, Expression<Func<string[]>> bodycontentTypes = null)
+        [WorkflowExpressionFactory(nameof(__BuildPromptFile))]
+        public IWorkflowAction PromptFile([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string[]> bodycontentTypes = null)
         {
-            var apiCallPath = "/flowCallback/File";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPromptFile(WorkflowValue<string> resumptionToken, WorkflowValue<string> bodyprompt = null, WorkflowValue<string[]> bodycontentTypes = null)
+        {
+            WorkflowValue.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            WorkflowValue.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            WorkflowValue.Validate(bodycontentTypes, nameof(bodycontentTypes), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                var apiCallPath = "/flowCallback/File";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = ExpressionConverter.ConvertO(bodyprompt);
+                    bodypropCount++;
+                }
+
+                if (bodycontentTypes != null)
+                {
+                    body["contentTypes"] = ExpressionConverter.ConvertO(bodycontentTypes);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodycontentTypes != null)
-            {
-                body["contentTypes"] = ExpressionConverter.ConvertO(bodycontentTypes);
-                bodypropCount++;
-            }
-
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PostMessage(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodymessage = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostMessage))]
+        public IWorkflowAction PostMessage([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
-            var apiCallPath = "/flowCallback/Message";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
-            {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyattachments != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostMessage(WorkflowValue<string> resumptionToken, WorkflowValue<string> bodymessage = null, WorkflowValue<bodyattachmentsInputItem[]> bodyattachments = null)
+        {
+            WorkflowValue.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: false);
+            WorkflowValue.Validate(bodyattachments, nameof(bodyattachments), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["attachments"] = ExpressionConverter.ConvertO(bodyattachments);
-                bodypropCount++;
-            }
+                var apiCallPath = "/flowCallback/Message";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessage != null)
+                {
+                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyattachments != null)
+                {
+                    body["attachments"] = ExpressionConverter.ConvertO(bodyattachments);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction FlowComplete(Expression<Func<string>> resumptionToken)
+        [WorkflowExpressionFactory(nameof(__BuildFlowComplete))]
+        public IWorkflowAction FlowComplete([WorkflowExpression] Func<string> resumptionToken)
         {
-            var apiCallPath = "/flowCallback/Done";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildFlowComplete(WorkflowValue<string> resumptionToken)
+        {
+            WorkflowValue.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/flowCallback/Done";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = ExpressionConverter.Convert(resumptionToken);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class LivetilesbotsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IntentRecognized(Expression<Func<string>> subscriptionbot, Expression<Func<string>> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildIntentRecognized))]
+        public IWorkflowTrigger IntentRecognized([WorkflowExpression] Func<string> subscriptionbot, [WorkflowExpression] Func<string> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/flows/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscriptionpropCount++;
-            subscription["bot"] = ExpressionConverter.ConvertO(subscriptionbot);
-            subscriptionpropCount++;
-            subscription["key"] = ExpressionConverter.ConvertO(subscriptionflow);
-            subscription["callbackUri"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildIntentRecognized(WorkflowValue<string> subscriptionbot, WorkflowValue<string> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(subscriptionbot, nameof(subscriptionbot), required: true);
+            WorkflowValue.Validate(subscriptionflow, nameof(subscriptionflow), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/flows/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscriptionpropCount++;
+                subscription["bot"] = ExpressionConverter.ConvertO(subscriptionbot);
+                subscriptionpropCount++;
+                subscription["key"] = ExpressionConverter.ConvertO(subscriptionflow);
+                subscription["callbackUri"] = "#{listCallbackUrl()}";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

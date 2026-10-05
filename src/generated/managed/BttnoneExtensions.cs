@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,23 +14,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
 
     public class BttnoneTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook(Expression<Func<string>> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildBttnWebhook))]
+        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook([WorkflowExpression] Func<string> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["actionConfigId"] = ExpressionConverter.ConvertO(bodyactionConfigId);
-            body["hookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<BttnWebhookResponse> __BuildBttnWebhook(WorkflowValue<string> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodyactionConfigId, nameof(bodyactionConfigId), required: true);
+            return new DeferredBodyTrigger<BttnWebhookResponse>(() =>
+            {
+                var apiCallPath = "/api/action/1/powerAutomate/addWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["actionConfigId"] = ExpressionConverter.ConvertO(bodyactionConfigId);
+                body["hookUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -23,167 +22,277 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateRoomsResponse> CreateRooms(Expression<Func<string>> bodyname, Expression<Func<string>> bodydomainName, Expression<Func<int>> bodymaximumBoards = null, Expression<Func<int>> bodymaximumUsers = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyadministrator = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateRooms))]
+        public IBodyWorkflowAction<CreateRoomsResponse> CreateRooms([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydomainName, [WorkflowExpression] Func<int> bodymaximumBoards = null, [WorkflowExpression] Func<int> bodymaximumUsers = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyadministrator = null)
         {
-            var apiCallPath = "/rooms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["domainName"] = ExpressionConverter.ConvertO(bodydomainName);
-            if (bodymaximumBoards != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateRoomsResponse> __BuildCreateRooms(WorkflowValue<string> bodyname, WorkflowValue<string> bodydomainName, WorkflowValue<int> bodymaximumBoards = null, WorkflowValue<int> bodymaximumUsers = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodycategory = null, WorkflowValue<string> bodyadministrator = null)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodydomainName, nameof(bodydomainName), required: true);
+            WorkflowValue.Validate(bodymaximumBoards, nameof(bodymaximumBoards), required: false);
+            WorkflowValue.Validate(bodymaximumUsers, nameof(bodymaximumUsers), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodycategory, nameof(bodycategory), required: false);
+            WorkflowValue.Validate(bodyadministrator, nameof(bodyadministrator), required: false);
+            return new DeferredBodyAction<CreateRoomsResponse>(() =>
             {
-                body["maximumBoards"] = ExpressionConverter.ConvertO(bodymaximumBoards);
+                var apiCallPath = "/rooms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodymaximumUsers != null)
-            {
-                body["maximumUsers"] = ExpressionConverter.ConvertO(bodymaximumUsers);
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
+                body["domainName"] = ExpressionConverter.ConvertO(bodydomainName);
+                if (bodymaximumBoards != null)
+                {
+                    body["maximumBoards"] = ExpressionConverter.ConvertO(bodymaximumBoards);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
+                if (bodymaximumUsers != null)
+                {
+                    body["maximumUsers"] = ExpressionConverter.ConvertO(bodymaximumUsers);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyadministrator != null)
+                {
+                    body["administrator"] = ExpressionConverter.ConvertO(bodyadministrator);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateRoomsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        [WorkflowExpressionFactory(nameof(__BuildListBoards))]
+        public IBodyWorkflowAction<ListBoardsResponse> ListBoards([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListBoardsResponse> __BuildListBoards(WorkflowValue<string> search = null, WorkflowValue<sortDirectionInput> sortDirection = null)
+        {
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(sortDirection, nameof(sortDirection), required: false);
+            return new DeferredBodyAction<ListBoardsResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/boards";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                callPayload.Queries["sortDirection"] = Convert.ToString("asc");
+                if (sortDirection != null)
+                    callPayload.Queries["sortDirection"] = ExpressionConverter.Convert(sortDirection);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                callPayload.Queries["size"] = Convert.ToString(200);
+                return new ApiConnectionAction<ListBoardsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateCard))]
+        public IBodyWorkflowAction<CreateCardResponse> CreateCard([WorkflowExpression] Func<typeCardInput> typeCard, [WorkflowExpression] Func<object> dynamicSchema = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateCardResponse> __BuildCreateCard(WorkflowValue<typeCardInput> typeCard, WorkflowValue<object> dynamicSchema = null)
+        {
+            WorkflowValue.Validate(typeCard, nameof(typeCard), required: true);
+            WorkflowValue.Validate(dynamicSchema, nameof(dynamicSchema), required: false);
+            return new DeferredBodyAction<CreateCardResponse>(() =>
+            {
+                var apiCallPath = "/cards";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Type Card"] = ExpressionConverter.Convert(typeCard);
+                callPayload.Body = ExpressionConverter.ConvertO(dynamicSchema);
+                return new ApiConnectionAction<CreateCardResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateQCDIndicatorsValue))]
+        public IBodyWorkflowAction<JToken> UpdateQCDIndicatorsValue([WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<JToken[]> bodyletters)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildUpdateQCDIndicatorsValue(WorkflowValue<string> bodyboardId, WorkflowValue<JToken[]> bodyletters)
+        {
+            WorkflowValue.Validate(bodyboardId, nameof(bodyboardId), required: true);
+            WorkflowValue.Validate(bodyletters, nameof(bodyletters), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/qcd/indicators-values";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["category"] = ExpressionConverter.ConvertO(bodycategory);
+                body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
                 bodypropCount++;
-            }
+                body["letters"] = ExpressionConverter.ConvertO(bodyletters);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyadministrator != null)
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        [WorkflowExpressionFactory(nameof(__BuildComputeQCDIndicator))]
+        public IBodyWorkflowAction<JToken> ComputeQCDIndicator([WorkflowExpression] Func<string> letterName, [WorkflowExpression] Func<string> indicatorName, [WorkflowExpression] Func<double> wedgeValue, [WorkflowExpression] Func<int> wedgeNumber, [WorkflowExpression] Func<wedgeRingInput> wedgeRing, [WorkflowExpression] Func<string> period = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildComputeQCDIndicator(WorkflowValue<string> letterName, WorkflowValue<string> indicatorName, WorkflowValue<double> wedgeValue, WorkflowValue<int> wedgeNumber, WorkflowValue<wedgeRingInput> wedgeRing, WorkflowValue<string> period = null)
+        {
+            WorkflowValue.Validate(letterName, nameof(letterName), required: true);
+            WorkflowValue.Validate(indicatorName, nameof(indicatorName), required: true);
+            WorkflowValue.Validate(wedgeValue, nameof(wedgeValue), required: true);
+            WorkflowValue.Validate(wedgeNumber, nameof(wedgeNumber), required: true);
+            WorkflowValue.Validate(wedgeRing, nameof(wedgeRing), required: true);
+            WorkflowValue.Validate(period, nameof(period), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                body["administrator"] = ExpressionConverter.ConvertO(bodyadministrator);
+                var apiCallPath = "/qcd/compute-indicator";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["letterName"] = ExpressionConverter.Convert(letterName);
+                callPayload.Queries["indicatorName"] = ExpressionConverter.Convert(indicatorName);
+                callPayload.Queries["wedgeValue"] = ExpressionConverter.Convert(wedgeValue);
+                callPayload.Queries["wedgeNumber"] = ExpressionConverter.Convert(wedgeNumber);
+                callPayload.Queries["wedgeRing"] = ExpressionConverter.Convert(wedgeRing);
+                if (period != null)
+                    callPayload.Queries["period"] = ExpressionConverter.Convert(period);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        [WorkflowExpressionFactory(nameof(__BuildListCardsActivity))]
+        public IBodyWorkflowAction<ListCardsActivityResponse> ListCardsActivity([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<int> page, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<int> size = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListCardsActivityResponse> __BuildListCardsActivity(WorkflowValue<string> boardId, WorkflowValue<int> page, WorkflowValue<string> from = null, WorkflowValue<string> to = null, WorkflowValue<int> size = null)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(page, nameof(page), required: true);
+            WorkflowValue.Validate(from, nameof(from), required: false);
+            WorkflowValue.Validate(to, nameof(to), required: false);
+            WorkflowValue.Validate(size, nameof(size), required: false);
+            return new DeferredBodyAction<ListCardsActivityResponse>(() =>
+            {
+                var apiCallPath = "/cards/activity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boardId"] = ExpressionConverter.Convert(boardId);
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (to != null)
+                    callPayload.Queries["to"] = ExpressionConverter.Convert(to);
+                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["size"] = Convert.ToString(200);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                return new ApiConnectionAction<ListCardsActivityResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateAssetBoardImage))]
+        public IBodyWorkflowAction<JToken> UpdateAssetBoardImage([WorkflowExpression] Func<string> boardImageId, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<fileContentTypeInput> fileContentType)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildUpdateAssetBoardImage(WorkflowValue<string> boardImageId, WorkflowValue<object> file, WorkflowValue<fileContentTypeInput> fileContentType)
+        {
+            WorkflowValue.Validate(boardImageId, nameof(boardImageId), required: true);
+            WorkflowValue.Validate(file, nameof(file), required: true);
+            WorkflowValue.Validate(fileContentType, nameof(fileContentType), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/board-images/{0}/asset", ExpressionConverter.ConvertWithUrlEncoding(boardImageId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateGauge))]
+        public IBodyWorkflowAction<JToken> UpdateGauge([WorkflowExpression] Func<string> gaugeId, [WorkflowExpression] Func<double> bodyvalue, [WorkflowExpression] Func<string> bodytitle = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildUpdateGauge(WorkflowValue<string> gaugeId, WorkflowValue<double> bodyvalue, WorkflowValue<string> bodytitle = null)
+        {
+            WorkflowValue.Validate(gaugeId, nameof(gaugeId), required: true);
+            WorkflowValue.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gauges/{0}", ExpressionConverter.ConvertWithUrlEncoding(gaugeId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["value"] = ExpressionConverter.ConvertO(bodyvalue);
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateRoomsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<ListBoardsResponse> ListBoards(Expression<Func<string>> search = null, Expression<Func<sortDirectionInput>> sortDirection = null)
-        {
-            var apiCallPath = "/boards";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            callPayload.Queries["sortDirection"] = Convert.ToString("asc");
-            if (sortDirection != null)
-                callPayload.Queries["sortDirection"] = ExpressionConverter.Convert(sortDirection);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            callPayload.Queries["size"] = Convert.ToString(200);
-            return new ApiConnectionAction<ListBoardsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateCardResponse> CreateCard(Expression<Func<typeCardInput>> typeCard, Expression<Func<object>> dynamicSchema = null)
-        {
-            var apiCallPath = "/cards";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Type Card"] = ExpressionConverter.Convert(typeCard);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicSchema);
-            return new ApiConnectionAction<CreateCardResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateQCDIndicatorsValue(Expression<Func<string>> bodyboardId, Expression<Func<JToken[]>> bodyletters)
-        {
-            var apiCallPath = "/qcd/indicators-values";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            bodypropCount++;
-            body["letters"] = ExpressionConverter.ConvertO(bodyletters);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> ComputeQCDIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<wedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
-        {
-            var apiCallPath = "/qcd/compute-indicator";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["letterName"] = ExpressionConverter.Convert(letterName);
-            callPayload.Queries["indicatorName"] = ExpressionConverter.Convert(indicatorName);
-            callPayload.Queries["wedgeValue"] = ExpressionConverter.Convert(wedgeValue);
-            callPayload.Queries["wedgeNumber"] = ExpressionConverter.Convert(wedgeNumber);
-            callPayload.Queries["wedgeRing"] = ExpressionConverter.Convert(wedgeRing);
-            if (period != null)
-                callPayload.Queries["period"] = ExpressionConverter.Convert(period);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<ListCardsActivityResponse> ListCardsActivity(Expression<Func<string>> boardId, Expression<Func<int>> page, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/cards/activity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boardId"] = ExpressionConverter.Convert(boardId);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (to != null)
-                callPayload.Queries["to"] = ExpressionConverter.Convert(to);
-            callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["size"] = Convert.ToString(200);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            return new ApiConnectionAction<ListCardsActivityResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateAssetBoardImage(Expression<Func<string>> boardImageId, Expression<Func<object>> file, Expression<Func<fileContentTypeInput>> fileContentType)
-        {
-            var apiCallPath = String.Format("/board-images/{0}/asset", ExpressionConverter.ConvertWithUrlEncoding(boardImageId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodytitle = null)
-        {
-            var apiCallPath = String.Format("/gauges/{0}", ExpressionConverter.ConvertWithUrlEncoding(gaugeId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = ExpressionConverter.ConvertO(bodyvalue);
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

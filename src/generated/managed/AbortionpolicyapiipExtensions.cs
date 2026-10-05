@@ -4,83 +4,170 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AbortionpolicyapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> GetGestationalLimitsbyState(Expression<Func<stateInput>> state)
+        [WorkflowExpressionFactory(nameof(__BuildGetGestationalLimitsbyState))]
+        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> GetGestationalLimitsbyState([WorkflowExpression] Func<stateInput> state)
         {
-            var apiCallPath = String.Format("/v1/gestational_limits/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGestationalLimitsbyStateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> __BuildGetGestationalLimitsbyState(WorkflowValue<stateInput> state)
+        {
+            WorkflowValue.Validate(state, nameof(state), required: true);
+            return new DeferredBodyAction<GetGestationalLimitsbyStateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetGestationalLimitsbyStateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> GetGestationalLimitsbyStatebyZip(Expression<Func<string>> zipCode)
+        [WorkflowExpressionFactory(nameof(__BuildGetGestationalLimitsbyStatebyZip))]
+        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> GetGestationalLimitsbyStatebyZip([WorkflowExpression] Func<string> zipCode)
         {
-            var apiCallPath = String.Format("/v1/gestational_limits/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGestationalLimitsbyStatebyZipResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> __BuildGetGestationalLimitsbyStatebyZip(WorkflowValue<string> zipCode)
+        {
+            WorkflowValue.Validate(zipCode, nameof(zipCode), required: true);
+            return new DeferredBodyAction<GetGestationalLimitsbyStatebyZipResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetGestationalLimitsbyStatebyZipResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> GetInsuranceCoveragebyState(Expression<Func<stateInput>> state)
+        [WorkflowExpressionFactory(nameof(__BuildGetInsuranceCoveragebyState))]
+        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> GetInsuranceCoveragebyState([WorkflowExpression] Func<stateInput> state)
         {
-            var apiCallPath = String.Format("/v1/insurance_coverage/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetInsuranceCoveragebyStateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> __BuildGetInsuranceCoveragebyState(WorkflowValue<stateInput> state)
+        {
+            WorkflowValue.Validate(state, nameof(state), required: true);
+            return new DeferredBodyAction<GetInsuranceCoveragebyStateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetInsuranceCoveragebyStateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> GetInsuranceCoveragebyZip(Expression<Func<string>> zipCode)
+        [WorkflowExpressionFactory(nameof(__BuildGetInsuranceCoveragebyZip))]
+        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> GetInsuranceCoveragebyZip([WorkflowExpression] Func<string> zipCode)
         {
-            var apiCallPath = String.Format("/v1/insurance_coverage/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetInsuranceCoveragebyZipResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> __BuildGetInsuranceCoveragebyZip(WorkflowValue<string> zipCode)
+        {
+            WorkflowValue.Validate(zipCode, nameof(zipCode), required: true);
+            return new DeferredBodyAction<GetInsuranceCoveragebyZipResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetInsuranceCoveragebyZipResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> GetMinorsInfobyState(Expression<Func<stateInput>> state)
+        [WorkflowExpressionFactory(nameof(__BuildGetMinorsInfobyState))]
+        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> GetMinorsInfobyState([WorkflowExpression] Func<stateInput> state)
         {
-            var apiCallPath = String.Format("/v1/minors/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMinorsInfobyStateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> __BuildGetMinorsInfobyState(WorkflowValue<stateInput> state)
+        {
+            WorkflowValue.Validate(state, nameof(state), required: true);
+            return new DeferredBodyAction<GetMinorsInfobyStateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/minors/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetMinorsInfobyStateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> GetMinorsInfobyZip(Expression<Func<string>> zipCode)
+        [WorkflowExpressionFactory(nameof(__BuildGetMinorsInfobyZip))]
+        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> GetMinorsInfobyZip([WorkflowExpression] Func<string> zipCode)
         {
-            var apiCallPath = String.Format("/v1/minors/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMinorsInfobyZipResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> __BuildGetMinorsInfobyZip(WorkflowValue<string> zipCode)
+        {
+            WorkflowValue.Validate(zipCode, nameof(zipCode), required: true);
+            return new DeferredBodyAction<GetMinorsInfobyZipResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/minors/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetMinorsInfobyZipResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> GetWaitingPeriodsInfobyState(Expression<Func<stateInput>> state)
+        [WorkflowExpressionFactory(nameof(__BuildGetWaitingPeriodsInfobyState))]
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> GetWaitingPeriodsInfobyState([WorkflowExpression] Func<stateInput> state)
         {
-            var apiCallPath = String.Format("/v1/waiting_periods/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWaitingPeriodsInfobyStateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> __BuildGetWaitingPeriodsInfobyState(WorkflowValue<stateInput> state)
+        {
+            WorkflowValue.Validate(state, nameof(state), required: true);
+            return new DeferredBodyAction<GetWaitingPeriodsInfobyStateResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/states/{0}", ExpressionConverter.ConvertWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetWaitingPeriodsInfobyStateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> GetWaitingPeriodsInfobyZip(Expression<Func<string>> zipCode)
+        [WorkflowExpressionFactory(nameof(__BuildGetWaitingPeriodsInfobyZip))]
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> GetWaitingPeriodsInfobyZip([WorkflowExpression] Func<string> zipCode)
         {
-            var apiCallPath = String.Format("/v1/waiting_periods/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWaitingPeriodsInfobyZipResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> __BuildGetWaitingPeriodsInfobyZip(WorkflowValue<string> zipCode)
+        {
+            WorkflowValue.Validate(zipCode, nameof(zipCode), required: true);
+            return new DeferredBodyAction<GetWaitingPeriodsInfobyZipResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/zips/{0}", ExpressionConverter.ConvertWithUrlEncoding(zipCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetWaitingPeriodsInfobyZipResponse>(callPayload);
+            });
         }
     }
 

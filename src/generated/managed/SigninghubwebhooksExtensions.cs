@@ -4,42 +4,63 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SigninghubwebhooksActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signinghubwebhooks")]
-        public IWorkflowAction UnsubscribeWebhook(Expression<Func<string>> subscriptionId)
+        [WorkflowExpressionFactory(nameof(__BuildUnsubscribeWebhook))]
+        public IWorkflowAction UnsubscribeWebhook([WorkflowExpression] Func<string> subscriptionId)
         {
-            var apiCallPath = String.Format("/powerautomate/webhook/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUnsubscribeWebhook(WorkflowValue<string> subscriptionId)
+        {
+            WorkflowValue.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/powerautomate/webhook/unsubscribe/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 
     public class SigninghubwebhooksTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookSubscribeTrigger(Expression<Func<bodyeventTypeInput>> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildWebhookSubscribeTrigger))]
+        public IWorkflowTrigger WebhookSubscribeTrigger([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/powerautomate/webhook/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWebhookSubscribeTrigger(WorkflowValue<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodyeventType, nameof(bodyeventType), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/powerautomate/webhook/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

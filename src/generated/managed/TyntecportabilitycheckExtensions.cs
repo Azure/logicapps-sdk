@@ -4,20 +4,30 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecportabilitycheck
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TyntecportabilitycheckActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tyntecportabilitycheck")]
-        public IBodyWorkflowAction<VerifyPhoneNumberResponse> VerifyPhoneNumber(Expression<Func<string>> phonenumber)
+        [WorkflowExpressionFactory(nameof(__BuildVerifyPhoneNumber))]
+        public IBodyWorkflowAction<VerifyPhoneNumberResponse> VerifyPhoneNumber([WorkflowExpression] Func<string> phonenumber)
         {
-            var apiCallPath = String.Format("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(phonenumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VerifyPhoneNumberResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VerifyPhoneNumberResponse> __BuildVerifyPhoneNumber(WorkflowValue<string> phonenumber)
+        {
+            WorkflowValue.Validate(phonenumber, nameof(phonenumber), required: true);
+            return new DeferredBodyAction<VerifyPhoneNumberResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verification/v1/phone/{0}", ExpressionConverter.ConvertWithUrlEncoding(phonenumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VerifyPhoneNumberResponse>(callPayload);
+            });
         }
     }
 

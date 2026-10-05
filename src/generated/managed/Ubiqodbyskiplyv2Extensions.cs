@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,35 +14,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
 
     public class Ubiqodbyskiplyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers(Expression<Func<string>> bodyhookName = null, Expression<Func<string>> bodydispatchId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildReceiveDataFromTrackers))]
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers([WorkflowExpression] Func<string> bodyhookName = null, [WorkflowExpression] Func<string> bodydispatchId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/zapier/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["hookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["dispatchType"] = "POWERAUTOMATE";
-            bodypropCount++;
-            if (bodyhookName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> __BuildReceiveDataFromTrackers(WorkflowValue<string> bodyhookName = null, WorkflowValue<string> bodydispatchId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodyhookName, nameof(bodyhookName), required: false);
+            WorkflowValue.Validate(bodydispatchId, nameof(bodydispatchId), required: false);
+            return new DeferredBodyTrigger<ReceiveDataFromTrackersResponseItem[]>(() =>
             {
-                body["hookName"] = ExpressionConverter.ConvertO(bodyhookName);
+                var apiCallPath = "/hooks/zapier/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["hookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
-
-            if (bodydispatchId != null)
-            {
-                body["dispatchId"] = ExpressionConverter.ConvertO(bodydispatchId);
+                body["dispatchType"] = "POWERAUTOMATE";
                 bodypropCount++;
-            }
+                if (bodyhookName != null)
+                {
+                    body["hookName"] = ExpressionConverter.ConvertO(bodyhookName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodydispatchId != null)
+                {
+                    body["dispatchId"] = ExpressionConverter.ConvertO(bodydispatchId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger<ReceiveDataFromTrackersResponseItem[]>(callPayload, triggerName, recurrence);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<ReceiveDataFromTrackersResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,94 +20,190 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IWorkflowAction GetOrder(Expression<Func<string>> contactId, Expression<Func<string>> since)
+        [WorkflowExpressionFactory(nameof(__BuildGetOrder))]
+        public IWorkflowAction GetOrder([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> since)
         {
-            var apiCallPath = String.Format("/cdp/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["since"] = ExpressionConverter.Convert(since);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IWorkflowAction GetContactIDFromSuppressionList(Expression<Func<string>> contactId, Expression<Func<string>> listName)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetOrder(WorkflowValue<string> contactId, WorkflowValue<string> since)
         {
-            var apiCallPath = "/cdp/suppression/check";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IWorkflowAction PutContactIDToSuppresionList(Expression<Func<string>> contactId, Expression<Func<string>> listName, Expression<Func<string>> timeSpan)
-        {
-            var apiCallPath = "/cdp/suppression/add";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            callPayload.Queries["timeSpan"] = ExpressionConverter.Convert(timeSpan);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IWorkflowAction SendMail(Expression<Func<string>> cdpContactId = null, Expression<Func<string>> languageId = null, Expression<Func<string>> emailTemplate = null)
-        {
-            var apiCallPath = "/cdp/mail/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (cdpContactId != null)
-                callPayload.Queries["cdpContactId"] = ExpressionConverter.Convert(cdpContactId);
-            if (languageId != null)
-                callPayload.Queries["languageId"] = ExpressionConverter.Convert(languageId);
-            if (emailTemplate != null)
-                callPayload.Queries["emailTemplate"] = ExpressionConverter.Convert(emailTemplate);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IBodyWorkflowAction<CheckEventResponse> CheckEvent(Expression<Func<eventNameInput>> eventName = null, Expression<Func<string>> contactId = null, Expression<Func<string>> since = null)
-        {
-            var apiCallPath = "/cdp/events/checkevent";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (eventName != null)
-                callPayload.Queries["eventName"] = ExpressionConverter.Convert(eventName);
-            if (contactId != null)
-                callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
-            if (since != null)
+            WorkflowValue.Validate(contactId, nameof(contactId), required: true);
+            WorkflowValue.Validate(since, nameof(since), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdp/orders/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["since"] = ExpressionConverter.Convert(since);
-            return new ApiConnectionAction<CheckEventResponse>(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
-        public IBodyWorkflowAction<GetWishListResponse> GetWishList(Expression<Func<string>> since)
+        [WorkflowExpressionFactory(nameof(__BuildGetContactIDFromSuppressionList))]
+        public IWorkflowAction GetContactIDFromSuppressionList([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> listName)
         {
-            var apiCallPath = String.Format("/cdp/wishlist/{0}", ExpressionConverter.ConvertWithUrlEncoding(since, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWishListResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetContactIDFromSuppressionList(WorkflowValue<string> contactId, WorkflowValue<string> listName)
+        {
+            WorkflowValue.Validate(contactId, nameof(contactId), required: true);
+            WorkflowValue.Validate(listName, nameof(listName), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/cdp/suppression/check";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
+                callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
+        [WorkflowExpressionFactory(nameof(__BuildPutContactIDToSuppresionList))]
+        public IWorkflowAction PutContactIDToSuppresionList([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> listName, [WorkflowExpression] Func<string> timeSpan)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPutContactIDToSuppresionList(WorkflowValue<string> contactId, WorkflowValue<string> listName, WorkflowValue<string> timeSpan)
+        {
+            WorkflowValue.Validate(contactId, nameof(contactId), required: true);
+            WorkflowValue.Validate(listName, nameof(listName), required: true);
+            WorkflowValue.Validate(timeSpan, nameof(timeSpan), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/cdp/suppression/add";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
+                callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+                callPayload.Queries["timeSpan"] = ExpressionConverter.Convert(timeSpan);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
+        [WorkflowExpressionFactory(nameof(__BuildSendMail))]
+        public IWorkflowAction SendMail([WorkflowExpression] Func<string> cdpContactId = null, [WorkflowExpression] Func<string> languageId = null, [WorkflowExpression] Func<string> emailTemplate = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendMail(WorkflowValue<string> cdpContactId = null, WorkflowValue<string> languageId = null, WorkflowValue<string> emailTemplate = null)
+        {
+            WorkflowValue.Validate(cdpContactId, nameof(cdpContactId), required: false);
+            WorkflowValue.Validate(languageId, nameof(languageId), required: false);
+            WorkflowValue.Validate(emailTemplate, nameof(emailTemplate), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/cdp/mail/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (cdpContactId != null)
+                    callPayload.Queries["cdpContactId"] = ExpressionConverter.Convert(cdpContactId);
+                if (languageId != null)
+                    callPayload.Queries["languageId"] = ExpressionConverter.Convert(languageId);
+                if (emailTemplate != null)
+                    callPayload.Queries["emailTemplate"] = ExpressionConverter.Convert(emailTemplate);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
+        [WorkflowExpressionFactory(nameof(__BuildCheckEvent))]
+        public IBodyWorkflowAction<CheckEventResponse> CheckEvent([WorkflowExpression] Func<eventNameInput> eventName = null, [WorkflowExpression] Func<string> contactId = null, [WorkflowExpression] Func<string> since = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckEventResponse> __BuildCheckEvent(WorkflowValue<eventNameInput> eventName = null, WorkflowValue<string> contactId = null, WorkflowValue<string> since = null)
+        {
+            WorkflowValue.Validate(eventName, nameof(eventName), required: false);
+            WorkflowValue.Validate(contactId, nameof(contactId), required: false);
+            WorkflowValue.Validate(since, nameof(since), required: false);
+            return new DeferredBodyAction<CheckEventResponse>(() =>
+            {
+                var apiCallPath = "/cdp/events/checkevent";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (eventName != null)
+                    callPayload.Queries["eventName"] = ExpressionConverter.Convert(eventName);
+                if (contactId != null)
+                    callPayload.Queries["contactId"] = ExpressionConverter.Convert(contactId);
+                if (since != null)
+                    callPayload.Queries["since"] = ExpressionConverter.Convert(since);
+                return new ApiConnectionAction<CheckEventResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "netvolution")]
+        [WorkflowExpressionFactory(nameof(__BuildGetWishList))]
+        public IBodyWorkflowAction<GetWishListResponse> GetWishList([WorkflowExpression] Func<string> since)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetWishListResponse> __BuildGetWishList(WorkflowValue<string> since)
+        {
+            WorkflowValue.Validate(since, nameof(since), required: true);
+            return new DeferredBodyAction<GetWishListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/cdp/wishlist/{0}", ExpressionConverter.ConvertWithUrlEncoding(since, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetWishListResponse>(callPayload);
+            });
         }
     }
 
     public class NetvolutionTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent(Expression<Func<eventNameInput>> eventName, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewEvent))]
+        public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent([WorkflowExpression] Func<eventNameInput> eventName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(eventName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnNewEventResponse> __BuildOnNewEvent(WorkflowValue<eventNameInput> eventName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(eventName, nameof(eventName), required: true);
+            return new DeferredBodyTrigger<OnNewEventResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(eventName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewUserInSegment))]
+        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment([WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> __BuildOnNewUserInSegment(WorkflowValue<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyTrigger<OnNewUserInSegmentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

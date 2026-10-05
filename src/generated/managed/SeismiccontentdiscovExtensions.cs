@@ -4,33 +4,56 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SeismiccontentdiscovActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[]> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
+        [WorkflowExpressionFactory(nameof(__BuildGetPredictiveContentResultSet))]
+        public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[]> GetPredictiveContentResultSet([WorkflowExpression] Func<string> predictiveContentId, [WorkflowExpression] Func<string> contextId)
         {
-            var apiCallPath = String.Format("/integration/v2/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(contextId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicPredictiveContentPredictiveContentResponse[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SeismicPredictiveContentPredictiveContentResponse[]> __BuildGetPredictiveContentResultSet(WorkflowValue<string> predictiveContentId, WorkflowValue<string> contextId)
+        {
+            WorkflowValue.Validate(predictiveContentId, nameof(predictiveContentId), required: true);
+            WorkflowValue.Validate(contextId, nameof(contextId), required: true);
+            return new DeferredBodyAction<SeismicPredictiveContentPredictiveContentResponse[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/integration/v2/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(contextId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SeismicPredictiveContentPredictiveContentResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicPredictiveContentEmbeddedAppTab[]> GetPredictiveSettings(Expression<Func<string>> systemType = null, Expression<Func<string>> contextType = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPredictiveSettings))]
+        public IBodyWorkflowAction<SeismicPredictiveContentEmbeddedAppTab[]> GetPredictiveSettings([WorkflowExpression] Func<string> systemType = null, [WorkflowExpression] Func<string> contextType = null)
         {
-            var apiCallPath = "/integration/v2/predictiveContent";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (systemType != null)
-                callPayload.Queries["systemType"] = ExpressionConverter.Convert(systemType);
-            if (contextType != null)
-                callPayload.Queries["contextType"] = ExpressionConverter.Convert(contextType);
-            return new ApiConnectionAction<SeismicPredictiveContentEmbeddedAppTab[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SeismicPredictiveContentEmbeddedAppTab[]> __BuildGetPredictiveSettings(WorkflowValue<string> systemType = null, WorkflowValue<string> contextType = null)
+        {
+            WorkflowValue.Validate(systemType, nameof(systemType), required: false);
+            WorkflowValue.Validate(contextType, nameof(contextType), required: false);
+            return new DeferredBodyAction<SeismicPredictiveContentEmbeddedAppTab[]>(() =>
+            {
+                var apiCallPath = "/integration/v2/predictiveContent";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (systemType != null)
+                    callPayload.Queries["systemType"] = ExpressionConverter.Convert(systemType);
+                if (contextType != null)
+                    callPayload.Queries["contextType"] = ExpressionConverter.Convert(contextType);
+                return new ApiConnectionAction<SeismicPredictiveContentEmbeddedAppTab[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
@@ -52,85 +75,104 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismiccontentdiscov
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismiccontentdiscov")]
-        public IBodyWorkflowAction<SeismicSearchSearchResponse> QueryContent(Expression<Func<string>> continuationToken = null, Expression<Func<string>> searchRequestBodyterm = null, Expression<Func<int>> searchRequestBodyoptionspageSize = null, Expression<Func<searchRequestBodyoptionssearchFieldsInputItem[]>> searchRequestBodyoptionssearchFields = null, Expression<Func<searchRequestBodyoptionsreturnFieldsInputItem[]>> searchRequestBodyoptionsreturnFields = null, Expression<Func<SeismicSearchSortConstraint[]>> searchRequestBodysort = null, Expression<Func<SeismicSearchConditionExpressionInfo[]>> searchRequestBodyfiltercondition = null, Expression<Func<SeismicSearchFilterExpressionInfo[]>> searchRequestBodyfilterfilter = null, Expression<Func<string>> searchRequestBodyfilterOperator = null)
+        [WorkflowExpressionFactory(nameof(__BuildQueryContent))]
+        public IBodyWorkflowAction<SeismicSearchSearchResponse> QueryContent([WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> searchRequestBodyterm = null, [WorkflowExpression] Func<int> searchRequestBodyoptionspageSize = null, [WorkflowExpression] Func<searchRequestBodyoptionssearchFieldsInputItem[]> searchRequestBodyoptionssearchFields = null, [WorkflowExpression] Func<searchRequestBodyoptionsreturnFieldsInputItem[]> searchRequestBodyoptionsreturnFields = null, [WorkflowExpression] Func<SeismicSearchSortConstraint[]> searchRequestBodysort = null, [WorkflowExpression] Func<SeismicSearchConditionExpressionInfo[]> searchRequestBodyfiltercondition = null, [WorkflowExpression] Func<SeismicSearchFilterExpressionInfo[]> searchRequestBodyfilterfilter = null, [WorkflowExpression] Func<string> searchRequestBodyfilterOperator = null)
         {
-            var apiCallPath = "/search/v1/content/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (continuationToken != null)
-                callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
-            var searchRequestBody = new JObject();
-            var searchRequestBodypropCount = 0;
-            if (searchRequestBodyterm != null)
-            {
-                searchRequestBody["term"] = ExpressionConverter.ConvertO(searchRequestBodyterm);
-                searchRequestBodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (searchRequestBodyoptionspageSize != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SeismicSearchSearchResponse> __BuildQueryContent(WorkflowValue<string> continuationToken = null, WorkflowValue<string> searchRequestBodyterm = null, WorkflowValue<int> searchRequestBodyoptionspageSize = null, WorkflowValue<searchRequestBodyoptionssearchFieldsInputItem[]> searchRequestBodyoptionssearchFields = null, WorkflowValue<searchRequestBodyoptionsreturnFieldsInputItem[]> searchRequestBodyoptionsreturnFields = null, WorkflowValue<SeismicSearchSortConstraint[]> searchRequestBodysort = null, WorkflowValue<SeismicSearchConditionExpressionInfo[]> searchRequestBodyfiltercondition = null, WorkflowValue<SeismicSearchFilterExpressionInfo[]> searchRequestBodyfilterfilter = null, WorkflowValue<string> searchRequestBodyfilterOperator = null)
+        {
+            WorkflowValue.Validate(continuationToken, nameof(continuationToken), required: false);
+            WorkflowValue.Validate(searchRequestBodyterm, nameof(searchRequestBodyterm), required: false);
+            WorkflowValue.Validate(searchRequestBodyoptionspageSize, nameof(searchRequestBodyoptionspageSize), required: false);
+            WorkflowValue.Validate(searchRequestBodyoptionssearchFields, nameof(searchRequestBodyoptionssearchFields), required: false);
+            WorkflowValue.Validate(searchRequestBodyoptionsreturnFields, nameof(searchRequestBodyoptionsreturnFields), required: false);
+            WorkflowValue.Validate(searchRequestBodysort, nameof(searchRequestBodysort), required: false);
+            WorkflowValue.Validate(searchRequestBodyfiltercondition, nameof(searchRequestBodyfiltercondition), required: false);
+            WorkflowValue.Validate(searchRequestBodyfilterfilter, nameof(searchRequestBodyfilterfilter), required: false);
+            WorkflowValue.Validate(searchRequestBodyfilterOperator, nameof(searchRequestBodyfilterOperator), required: false);
+            return new DeferredBodyAction<SeismicSearchSearchResponse>(() =>
             {
-                optionsObject["pageSize"] = ExpressionConverter.ConvertO(searchRequestBodyoptionspageSize);
-                optionsObjectpropCount++;
-            }
+                var apiCallPath = "/search/v1/content/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = ExpressionConverter.Convert(continuationToken);
+                var searchRequestBody = new JObject();
+                var searchRequestBodypropCount = 0;
+                if (searchRequestBodyterm != null)
+                {
+                    searchRequestBody["term"] = ExpressionConverter.ConvertO(searchRequestBodyterm);
+                    searchRequestBodypropCount++;
+                }
 
-            if (searchRequestBodyoptionssearchFields != null)
-            {
-                optionsObject["searchFields"] = ExpressionConverter.ConvertO(searchRequestBodyoptionssearchFields);
-                optionsObjectpropCount++;
-            }
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (searchRequestBodyoptionspageSize != null)
+                {
+                    optionsObject["pageSize"] = ExpressionConverter.ConvertO(searchRequestBodyoptionspageSize);
+                    optionsObjectpropCount++;
+                }
 
-            if (searchRequestBodyoptionsreturnFields != null)
-            {
-                optionsObject["returnFields"] = ExpressionConverter.ConvertO(searchRequestBodyoptionsreturnFields);
-                optionsObjectpropCount++;
-            }
+                if (searchRequestBodyoptionssearchFields != null)
+                {
+                    optionsObject["searchFields"] = ExpressionConverter.ConvertO(searchRequestBodyoptionssearchFields);
+                    optionsObjectpropCount++;
+                }
 
-            if (optionsObjectpropCount > 0)
-            {
-                searchRequestBody["options"] = optionsObject;
-                searchRequestBodypropCount++;
-            }
+                if (searchRequestBodyoptionsreturnFields != null)
+                {
+                    optionsObject["returnFields"] = ExpressionConverter.ConvertO(searchRequestBodyoptionsreturnFields);
+                    optionsObjectpropCount++;
+                }
 
-            if (searchRequestBodysort != null)
-            {
-                searchRequestBody["sort"] = ExpressionConverter.ConvertO(searchRequestBodysort);
-                searchRequestBodypropCount++;
-            }
+                if (optionsObjectpropCount > 0)
+                {
+                    searchRequestBody["options"] = optionsObject;
+                    searchRequestBodypropCount++;
+                }
 
-            var filterObject = new JObject();
-            var filterObjectpropCount = 0;
-            if (searchRequestBodyfiltercondition != null)
-            {
-                filterObject["conditions"] = ExpressionConverter.ConvertO(searchRequestBodyfiltercondition);
-                filterObjectpropCount++;
-            }
+                if (searchRequestBodysort != null)
+                {
+                    searchRequestBody["sort"] = ExpressionConverter.ConvertO(searchRequestBodysort);
+                    searchRequestBodypropCount++;
+                }
 
-            if (searchRequestBodyfilterfilter != null)
-            {
-                filterObject["filters"] = ExpressionConverter.ConvertO(searchRequestBodyfilterfilter);
-                filterObjectpropCount++;
-            }
+                var filterObject = new JObject();
+                var filterObjectpropCount = 0;
+                if (searchRequestBodyfiltercondition != null)
+                {
+                    filterObject["conditions"] = ExpressionConverter.ConvertO(searchRequestBodyfiltercondition);
+                    filterObjectpropCount++;
+                }
 
-            if (searchRequestBodyfilterOperator != null)
-            {
-                filterObject["operator"] = ExpressionConverter.ConvertO(searchRequestBodyfilterOperator);
-                filterObjectpropCount++;
-            }
+                if (searchRequestBodyfilterfilter != null)
+                {
+                    filterObject["filters"] = ExpressionConverter.ConvertO(searchRequestBodyfilterfilter);
+                    filterObjectpropCount++;
+                }
 
-            if (filterObjectpropCount > 0)
-            {
-                searchRequestBody["filter"] = filterObject;
-                searchRequestBodypropCount++;
-            }
+                if (searchRequestBodyfilterOperator != null)
+                {
+                    filterObject["operator"] = ExpressionConverter.ConvertO(searchRequestBodyfilterOperator);
+                    filterObjectpropCount++;
+                }
 
-            if (searchRequestBodypropCount > 0)
-            {
-                callPayload.Body = searchRequestBody;
-            }
+                if (filterObjectpropCount > 0)
+                {
+                    searchRequestBody["filter"] = filterObject;
+                    searchRequestBodypropCount++;
+                }
 
-            return new ApiConnectionAction<SeismicSearchSearchResponse>(callPayload);
+                if (searchRequestBodypropCount > 0)
+                {
+                    callPayload.Body = searchRequestBody;
+                }
+
+                return new ApiConnectionAction<SeismicSearchSearchResponse>(callPayload);
+            });
         }
     }
 

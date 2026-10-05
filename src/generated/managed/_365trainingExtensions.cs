@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,98 +20,191 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<CourseSummaryResponse> ListCourses(Expression<Func<string>> publishedFrom = null, Expression<Func<string>> publishedTo = null, Expression<Func<double>> priceFrom = null, Expression<Func<double>> priceTo = null, Expression<Func<bool>> isNew = null, Expression<Func<string>> moreToken = null)
+        [WorkflowExpressionFactory(nameof(__BuildListCourses))]
+        public IBodyWorkflowAction<CourseSummaryResponse> ListCourses([WorkflowExpression] Func<string> publishedFrom = null, [WorkflowExpression] Func<string> publishedTo = null, [WorkflowExpression] Func<double> priceFrom = null, [WorkflowExpression] Func<double> priceTo = null, [WorkflowExpression] Func<bool> isNew = null, [WorkflowExpression] Func<string> moreToken = null)
         {
-            var apiCallPath = "/ListCourses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (publishedFrom != null)
-                callPayload.Queries["PublishedFrom"] = ExpressionConverter.Convert(publishedFrom);
-            if (publishedTo != null)
-                callPayload.Queries["PublishedTo"] = ExpressionConverter.Convert(publishedTo);
-            if (priceFrom != null)
-                callPayload.Queries["PriceFrom"] = ExpressionConverter.Convert(priceFrom);
-            if (priceTo != null)
-                callPayload.Queries["PriceTo"] = ExpressionConverter.Convert(priceTo);
-            if (isNew != null)
-                callPayload.Queries["IsNew"] = ExpressionConverter.Convert(isNew);
-            if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
-            return new ApiConnectionAction<CourseSummaryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CourseSummaryResponse> __BuildListCourses(WorkflowValue<string> publishedFrom = null, WorkflowValue<string> publishedTo = null, WorkflowValue<double> priceFrom = null, WorkflowValue<double> priceTo = null, WorkflowValue<bool> isNew = null, WorkflowValue<string> moreToken = null)
+        {
+            WorkflowValue.Validate(publishedFrom, nameof(publishedFrom), required: false);
+            WorkflowValue.Validate(publishedTo, nameof(publishedTo), required: false);
+            WorkflowValue.Validate(priceFrom, nameof(priceFrom), required: false);
+            WorkflowValue.Validate(priceTo, nameof(priceTo), required: false);
+            WorkflowValue.Validate(isNew, nameof(isNew), required: false);
+            WorkflowValue.Validate(moreToken, nameof(moreToken), required: false);
+            return new DeferredBodyAction<CourseSummaryResponse>(() =>
+            {
+                var apiCallPath = "/ListCourses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (publishedFrom != null)
+                    callPayload.Queries["PublishedFrom"] = ExpressionConverter.Convert(publishedFrom);
+                if (publishedTo != null)
+                    callPayload.Queries["PublishedTo"] = ExpressionConverter.Convert(publishedTo);
+                if (priceFrom != null)
+                    callPayload.Queries["PriceFrom"] = ExpressionConverter.Convert(priceFrom);
+                if (priceTo != null)
+                    callPayload.Queries["PriceTo"] = ExpressionConverter.Convert(priceTo);
+                if (isNew != null)
+                    callPayload.Queries["IsNew"] = ExpressionConverter.Convert(isNew);
+                if (moreToken != null)
+                    callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
+                return new ApiConnectionAction<CourseSummaryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<InstructorSummaryResponse> ListInstructors(Expression<Func<string>> moreToken = null)
+        [WorkflowExpressionFactory(nameof(__BuildListInstructors))]
+        public IBodyWorkflowAction<InstructorSummaryResponse> ListInstructors([WorkflowExpression] Func<string> moreToken = null)
         {
-            var apiCallPath = "/ListInstructors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
-            return new ApiConnectionAction<InstructorSummaryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InstructorSummaryResponse> __BuildListInstructors(WorkflowValue<string> moreToken = null)
+        {
+            WorkflowValue.Validate(moreToken, nameof(moreToken), required: false);
+            return new DeferredBodyAction<InstructorSummaryResponse>(() =>
+            {
+                var apiCallPath = "/ListInstructors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (moreToken != null)
+                    callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
+                return new ApiConnectionAction<InstructorSummaryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<MyCoursesResponse> ListMyCourses(Expression<Func<string>> moreToken = null)
+        [WorkflowExpressionFactory(nameof(__BuildListMyCourses))]
+        public IBodyWorkflowAction<MyCoursesResponse> ListMyCourses([WorkflowExpression] Func<string> moreToken = null)
         {
-            var apiCallPath = "/ListMyCourses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
-            return new ApiConnectionAction<MyCoursesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MyCoursesResponse> __BuildListMyCourses(WorkflowValue<string> moreToken = null)
+        {
+            WorkflowValue.Validate(moreToken, nameof(moreToken), required: false);
+            return new DeferredBodyAction<MyCoursesResponse>(() =>
+            {
+                var apiCallPath = "/ListMyCourses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (moreToken != null)
+                    callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
+                return new ApiConnectionAction<MyCoursesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<IdeaSummaryResponse> ListIdeas(Expression<Func<string>> moreToken = null)
+        [WorkflowExpressionFactory(nameof(__BuildListIdeas))]
+        public IBodyWorkflowAction<IdeaSummaryResponse> ListIdeas([WorkflowExpression] Func<string> moreToken = null)
         {
-            var apiCallPath = "/ListIdeas";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (moreToken != null)
-                callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
-            return new ApiConnectionAction<IdeaSummaryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IdeaSummaryResponse> __BuildListIdeas(WorkflowValue<string> moreToken = null)
+        {
+            WorkflowValue.Validate(moreToken, nameof(moreToken), required: false);
+            return new DeferredBodyAction<IdeaSummaryResponse>(() =>
+            {
+                var apiCallPath = "/ListIdeas";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (moreToken != null)
+                    callPayload.Queries["moreToken"] = ExpressionConverter.Convert(moreToken);
+                return new ApiConnectionAction<IdeaSummaryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<CourseDetail> GetCourse(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetCourse))]
+        public IBodyWorkflowAction<CourseDetail> GetCourse([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/GetCourse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<CourseDetail>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IWorkflowAction AddIdeaVote(Expression<Func<string>> ideaID)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CourseDetail> __BuildGetCourse(WorkflowValue<string> id)
         {
-            var apiCallPath = "/AddIdeaVote";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(ideaID);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<InstructorDetail> GetInstructor(Expression<Func<string>> id = null)
-        {
-            var apiCallPath = "/GetInstructor";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<CourseDetail>(() =>
+            {
+                var apiCallPath = "/GetCourse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<InstructorDetail>(callPayload);
+                return new ApiConnectionAction<CourseDetail>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> query)
+        [WorkflowExpressionFactory(nameof(__BuildAddIdeaVote))]
+        public IWorkflowAction AddIdeaVote([WorkflowExpression] Func<string> ideaID)
         {
-            var apiCallPath = "/Search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = ExpressionConverter.Convert(query);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddIdeaVote(WorkflowValue<string> ideaID)
+        {
+            WorkflowValue.Validate(ideaID, nameof(ideaID), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/AddIdeaVote";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["IdeaID"] = ExpressionConverter.Convert(ideaID);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
+        [WorkflowExpressionFactory(nameof(__BuildGetInstructor))]
+        public IBodyWorkflowAction<InstructorDetail> GetInstructor([WorkflowExpression] Func<string> id = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InstructorDetail> __BuildGetInstructor(WorkflowValue<string> id = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: false);
+            return new DeferredBodyAction<InstructorDetail>(() =>
+            {
+                var apiCallPath = "/GetInstructor";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<InstructorDetail>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "365training")]
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> query)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchResponse> __BuildSearch(WorkflowValue<string> query)
+        {
+            WorkflowValue.Validate(query, nameof(query), required: true);
+            return new DeferredBodyAction<SearchResponse>(() =>
+            {
+                var apiCallPath = "/Search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = ExpressionConverter.Convert(query);
+                return new ApiConnectionAction<SearchResponse>(callPayload);
+            });
         }
     }
 

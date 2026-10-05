@@ -4,33 +4,58 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DataflowsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflows")]
-        public IBodyWorkflowAction<DataflowModel> RefreshDataflow(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForRefreshDataflow, Expression<Func<string>> dataflowIdForRefreshDataflow)
+        [WorkflowExpressionFactory(nameof(__BuildRefreshDataflow))]
+        public IBodyWorkflowAction<DataflowModel> RefreshDataflow([WorkflowExpression] Func<workspaceTypeInput> workspaceType, [WorkflowExpression] Func<string> groupIdForRefreshDataflow, [WorkflowExpression] Func<string> dataflowIdForRefreshDataflow)
         {
-            var apiCallPath = String.Format("/api/groups/{0}/dataflows/{1}/refreshdataflow", ExpressionConverter.ConvertWithUrlEncoding(groupIdForRefreshDataflow, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForRefreshDataflow, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-            return new ApiConnectionAction<DataflowModel>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DataflowModel> __BuildRefreshDataflow(WorkflowValue<workspaceTypeInput> workspaceType, WorkflowValue<string> groupIdForRefreshDataflow, WorkflowValue<string> dataflowIdForRefreshDataflow)
+        {
+            WorkflowValue.Validate(workspaceType, nameof(workspaceType), required: true);
+            WorkflowValue.Validate(groupIdForRefreshDataflow, nameof(groupIdForRefreshDataflow), required: true);
+            WorkflowValue.Validate(dataflowIdForRefreshDataflow, nameof(dataflowIdForRefreshDataflow), required: true);
+            return new DeferredBodyAction<DataflowModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/refreshdataflow", ExpressionConverter.ConvertWithUrlEncoding(groupIdForRefreshDataflow, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForRefreshDataflow, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
+                return new ApiConnectionAction<DataflowModel>(callPayload);
+            });
         }
     }
 
     public class DataflowsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete(Expression<Func<workspaceTypeInput>> workspaceType, Expression<Func<string>> groupIdForOnRefreshComplete, Expression<Func<string>> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnRefreshComplete))]
+        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete([WorkflowExpression] Func<workspaceTypeInput> workspaceType, [WorkflowExpression] Func<string> groupIdForOnRefreshComplete, [WorkflowExpression] Func<string> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", ExpressionConverter.ConvertWithUrlEncoding(groupIdForOnRefreshComplete, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForOnRefreshComplete, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-            return new ApiConnectionTrigger<RefreshModel>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<RefreshModel> __BuildOnRefreshComplete(WorkflowValue<workspaceTypeInput> workspaceType, WorkflowValue<string> groupIdForOnRefreshComplete, WorkflowValue<string> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(workspaceType, nameof(workspaceType), required: true);
+            WorkflowValue.Validate(groupIdForOnRefreshComplete, nameof(groupIdForOnRefreshComplete), required: true);
+            WorkflowValue.Validate(dataflowIdForOnRefreshComplete, nameof(dataflowIdForOnRefreshComplete), required: true);
+            return new DeferredBodyTrigger<RefreshModel>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/groups/{0}/dataflows/{1}/onrefreshcomplete", ExpressionConverter.ConvertWithUrlEncoding(groupIdForOnRefreshComplete, 1), ExpressionConverter.ConvertWithUrlEncoding(dataflowIdForOnRefreshComplete, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
+                return new ApiConnectionTrigger<RefreshModel>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,611 +4,883 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectiveesignatures
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ConnectiveesignaturesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreateInstantPackageResponse> CreateInstantPackage(Expression<Func<string>> bodydocument = null, Expression<Func<bodydocumentLanguageInput>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyinitiator = null, Expression<Func<Stakeholder[]>> bodystakeholders = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null, Expression<Func<string>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodysigningTemplateCode = null, Expression<Func<string>> bodytargetType = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateInstantPackage))]
+        public IBodyWorkflowAction<CreateInstantPackageResponse> CreateInstantPackage([WorkflowExpression] Func<string> bodydocument = null, [WorkflowExpression] Func<bodydocumentLanguageInput> bodydocumentLanguage = null, [WorkflowExpression] Func<string> bodydocumentName = null, [WorkflowExpression] Func<string> bodyexternalPackageData = null, [WorkflowExpression] Func<string> bodyinitiator = null, [WorkflowExpression] Func<Stakeholder[]> bodystakeholders = null, [WorkflowExpression] Func<string> bodycallBackUrl = null, [WorkflowExpression] Func<string> bodycorrelationId = null, [WorkflowExpression] Func<string> bodydocumentGroupCode = null, [WorkflowExpression] Func<string> bodythemeCode = null, [WorkflowExpression] Func<bool> bodydownloadUnsignedFiles = null, [WorkflowExpression] Func<bool> bodyreassignEnabled = null, [WorkflowExpression] Func<int> bodyactionUrlExpirationPeriodInDays = null, [WorkflowExpression] Func<string> bodyexpiryTimestamp = null, [WorkflowExpression] Func<string> bodyexternalDocumentReference = null, [WorkflowExpression] Func<string> bodyexternalPackageReference = null, [WorkflowExpression] Func<string> bodyf2FRedirectUrl = null, [WorkflowExpression] Func<string> bodynotificationCallBackUrl = null, [WorkflowExpression] Func<string> bodypdfErrorHandling = null, [WorkflowExpression] Func<string> bodyrepresentation = null, [WorkflowExpression] Func<string> bodyrepresentationType = null, [WorkflowExpression] Func<string> bodysigningTemplateCode = null, [WorkflowExpression] Func<string> bodytargetType = null)
         {
-            var apiCallPath = "/packages/instant";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocument != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateInstantPackageResponse> __BuildCreateInstantPackage(WorkflowValue<string> bodydocument = null, WorkflowValue<bodydocumentLanguageInput> bodydocumentLanguage = null, WorkflowValue<string> bodydocumentName = null, WorkflowValue<string> bodyexternalPackageData = null, WorkflowValue<string> bodyinitiator = null, WorkflowValue<Stakeholder[]> bodystakeholders = null, WorkflowValue<string> bodycallBackUrl = null, WorkflowValue<string> bodycorrelationId = null, WorkflowValue<string> bodydocumentGroupCode = null, WorkflowValue<string> bodythemeCode = null, WorkflowValue<bool> bodydownloadUnsignedFiles = null, WorkflowValue<bool> bodyreassignEnabled = null, WorkflowValue<int> bodyactionUrlExpirationPeriodInDays = null, WorkflowValue<string> bodyexpiryTimestamp = null, WorkflowValue<string> bodyexternalDocumentReference = null, WorkflowValue<string> bodyexternalPackageReference = null, WorkflowValue<string> bodyf2FRedirectUrl = null, WorkflowValue<string> bodynotificationCallBackUrl = null, WorkflowValue<string> bodypdfErrorHandling = null, WorkflowValue<string> bodyrepresentation = null, WorkflowValue<string> bodyrepresentationType = null, WorkflowValue<string> bodysigningTemplateCode = null, WorkflowValue<string> bodytargetType = null)
+        {
+            WorkflowValue.Validate(bodydocument, nameof(bodydocument), required: false);
+            WorkflowValue.Validate(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
+            WorkflowValue.Validate(bodydocumentName, nameof(bodydocumentName), required: false);
+            WorkflowValue.Validate(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
+            WorkflowValue.Validate(bodyinitiator, nameof(bodyinitiator), required: false);
+            WorkflowValue.Validate(bodystakeholders, nameof(bodystakeholders), required: false);
+            WorkflowValue.Validate(bodycallBackUrl, nameof(bodycallBackUrl), required: false);
+            WorkflowValue.Validate(bodycorrelationId, nameof(bodycorrelationId), required: false);
+            WorkflowValue.Validate(bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
+            WorkflowValue.Validate(bodythemeCode, nameof(bodythemeCode), required: false);
+            WorkflowValue.Validate(bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
+            WorkflowValue.Validate(bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
+            WorkflowValue.Validate(bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
+            WorkflowValue.Validate(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
+            WorkflowValue.Validate(bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
+            WorkflowValue.Validate(bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
+            WorkflowValue.Validate(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
+            WorkflowValue.Validate(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
+            WorkflowValue.Validate(bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
+            WorkflowValue.Validate(bodyrepresentation, nameof(bodyrepresentation), required: false);
+            WorkflowValue.Validate(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
+            WorkflowValue.Validate(bodysigningTemplateCode, nameof(bodysigningTemplateCode), required: false);
+            WorkflowValue.Validate(bodytargetType, nameof(bodytargetType), required: false);
+            return new DeferredBodyAction<CreateInstantPackageResponse>(() =>
             {
+                var apiCallPath = "/packages/instant";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodydocument != null)
                 {
-                    body["Document"] = ExpressionConverter.ConvertO(bodydocument);
+                    if (bodydocument != null)
+                    {
+                        body["Document"] = ExpressionConverter.ConvertO(bodydocument);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Document"] = "";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Document"] = "";
-                bodypropCount++;
-            }
+                if (bodydocumentLanguage != null)
+                {
+                    body["DocumentLanguage"] = ExpressionConverter.ConvertO(bodydocumentLanguage);
+                    bodypropCount++;
+                }
 
-            if (bodydocumentLanguage != null)
-            {
-                body["DocumentLanguage"] = ExpressionConverter.ConvertO(bodydocumentLanguage);
-                bodypropCount++;
-            }
+                if (bodydocumentName != null)
+                {
+                    body["DocumentName"] = ExpressionConverter.ConvertO(bodydocumentName);
+                    bodypropCount++;
+                }
 
-            if (bodydocumentName != null)
-            {
-                body["DocumentName"] = ExpressionConverter.ConvertO(bodydocumentName);
-                bodypropCount++;
-            }
+                if (bodyexternalPackageData != null)
+                {
+                    body["ExternalPackageData"] = ExpressionConverter.ConvertO(bodyexternalPackageData);
+                    bodypropCount++;
+                }
 
-            if (bodyexternalPackageData != null)
-            {
-                body["ExternalPackageData"] = ExpressionConverter.ConvertO(bodyexternalPackageData);
-                bodypropCount++;
-            }
+                if (bodyinitiator != null)
+                {
+                    body["Initiator"] = ExpressionConverter.ConvertO(bodyinitiator);
+                    bodypropCount++;
+                }
 
-            if (bodyinitiator != null)
-            {
-                body["Initiator"] = ExpressionConverter.ConvertO(bodyinitiator);
-                bodypropCount++;
-            }
+                if (bodystakeholders != null)
+                {
+                    body["Stakeholders"] = ExpressionConverter.ConvertO(bodystakeholders);
+                    bodypropCount++;
+                }
 
-            if (bodystakeholders != null)
-            {
-                body["Stakeholders"] = ExpressionConverter.ConvertO(bodystakeholders);
-                bodypropCount++;
-            }
+                if (bodycallBackUrl != null)
+                {
+                    body["CallBackUrl"] = ExpressionConverter.ConvertO(bodycallBackUrl);
+                    bodypropCount++;
+                }
 
-            if (bodycallBackUrl != null)
-            {
-                body["CallBackUrl"] = ExpressionConverter.ConvertO(bodycallBackUrl);
-                bodypropCount++;
-            }
+                if (bodycorrelationId != null)
+                {
+                    body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+                    bodypropCount++;
+                }
 
-            if (bodycorrelationId != null)
-            {
-                body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
-                bodypropCount++;
-            }
+                if (bodydocumentGroupCode != null)
+                {
+                    if (bodydocumentGroupCode != null)
+                    {
+                        body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodydocumentGroupCode);
+                        bodypropCount++;
+                    }
 
-            if (bodydocumentGroupCode != null)
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["DocumentGroupCode"] = "\"00001\"";
+                    bodypropCount++;
+                }
+
+                if (bodythemeCode != null)
+                {
+                    body["ThemeCode"] = ExpressionConverter.ConvertO(bodythemeCode);
+                    bodypropCount++;
+                }
+
+                if (bodydownloadUnsignedFiles != null)
+                {
+                    body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(bodydownloadUnsignedFiles);
+                    bodypropCount++;
+                }
+
+                if (bodyreassignEnabled != null)
+                {
+                    body["ReassignEnabled"] = ExpressionConverter.ConvertO(bodyreassignEnabled);
+                    bodypropCount++;
+                }
+
+                if (bodyactionUrlExpirationPeriodInDays != null)
+                {
+                    body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(bodyactionUrlExpirationPeriodInDays);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiryTimestamp != null)
+                {
+                    body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalDocumentReference != null)
+                {
+                    body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(bodyexternalDocumentReference);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalPackageReference != null)
+                {
+                    body["ExternalPackageReference"] = ExpressionConverter.ConvertO(bodyexternalPackageReference);
+                    bodypropCount++;
+                }
+
+                if (bodyf2FRedirectUrl != null)
+                {
+                    body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(bodyf2FRedirectUrl);
+                    bodypropCount++;
+                }
+
+                if (bodynotificationCallBackUrl != null)
+                {
+                    body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(bodynotificationCallBackUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypdfErrorHandling != null)
+                {
+                    body["PdfErrorHandling"] = ExpressionConverter.ConvertO(bodypdfErrorHandling);
+                    bodypropCount++;
+                }
+
+                if (bodyrepresentation != null)
+                {
+                    body["Representation"] = ExpressionConverter.ConvertO(bodyrepresentation);
+                    bodypropCount++;
+                }
+
+                if (bodyrepresentationType != null)
+                {
+                    body["RepresentationType"] = ExpressionConverter.ConvertO(bodyrepresentationType);
+                    bodypropCount++;
+                }
+
+                if (bodysigningTemplateCode != null)
+                {
+                    body["SigningTemplateCode"] = ExpressionConverter.ConvertO(bodysigningTemplateCode);
+                    bodypropCount++;
+                }
+
+                if (bodytargetType != null)
+                {
+                    body["TargetType"] = ExpressionConverter.ConvertO(bodytargetType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateInstantPackageResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
+        [WorkflowExpressionFactory(nameof(__BuildPackageList))]
+        public IBodyWorkflowAction<PackageListResponse> PackageList([WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<int> maxQuantity = null, [WorkflowExpression] Func<string> sortField = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<string> createdBeforeDate = null, [WorkflowExpression] Func<string> status = null, [WorkflowExpression] Func<string> createdAfterDate = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PackageListResponse> __BuildPackageList(WorkflowValue<string> continuationToken = null, WorkflowValue<int> maxQuantity = null, WorkflowValue<string> sortField = null, WorkflowValue<string> sortOrder = null, WorkflowValue<string> createdBeforeDate = null, WorkflowValue<string> status = null, WorkflowValue<string> createdAfterDate = null)
+        {
+            WorkflowValue.Validate(continuationToken, nameof(continuationToken), required: false);
+            WorkflowValue.Validate(maxQuantity, nameof(maxQuantity), required: false);
+            WorkflowValue.Validate(sortField, nameof(sortField), required: false);
+            WorkflowValue.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowValue.Validate(createdBeforeDate, nameof(createdBeforeDate), required: false);
+            WorkflowValue.Validate(status, nameof(status), required: false);
+            WorkflowValue.Validate(createdAfterDate, nameof(createdAfterDate), required: false);
+            return new DeferredBodyAction<PackageListResponse>(() =>
             {
+                var apiCallPath = "/packages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (continuationToken != null)
+                    callPayload.Queries["ContinuationToken"] = ExpressionConverter.Convert(continuationToken);
+                if (maxQuantity != null)
+                    callPayload.Queries["MaxQuantity"] = ExpressionConverter.Convert(maxQuantity);
+                if (sortField != null)
+                    callPayload.Queries["SortField"] = ExpressionConverter.Convert(sortField);
+                callPayload.Queries["SortOrder"] = Convert.ToString("\"ASC\"");
+                if (sortOrder != null)
+                    callPayload.Queries["SortOrder"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["CreatedBeforeDate"] = Convert.ToString("{{$timestamp}}");
+                if (createdBeforeDate != null)
+                    callPayload.Queries["CreatedBeforeDate"] = ExpressionConverter.Convert(createdBeforeDate);
+                if (status != null)
+                    callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
+                callPayload.Queries["createdAfterDate"] = Convert.ToString("{{eSigner - FutureDate}}");
+                if (createdAfterDate != null)
+                    callPayload.Queries["createdAfterDate"] = ExpressionConverter.Convert(createdAfterDate);
+                return new ApiConnectionAction<PackageListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
+        [WorkflowExpressionFactory(nameof(__BuildCreatePackage))]
+        public IBodyWorkflowAction<CreatePackageResponse> CreatePackage([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyinitiator = null, [WorkflowExpression] Func<string> bodypackageName = null, [WorkflowExpression] Func<string> bodycallBackUrl = null, [WorkflowExpression] Func<string> bodycorrelationId = null, [WorkflowExpression] Func<string> bodydocumentGroupCode = null, [WorkflowExpression] Func<string> bodythemeCode = null, [WorkflowExpression] Func<bool> bodydownloadUnsignedFiles = null, [WorkflowExpression] Func<bool> bodyreassignEnabled = null, [WorkflowExpression] Func<int> bodyactionUrlExpirationPeriodInDays = null, [WorkflowExpression] Func<string> bodyexpiryTimestamp = null, [WorkflowExpression] Func<string> bodyexternalPackageReference = null, [WorkflowExpression] Func<string> bodyexternalPackageData = null, [WorkflowExpression] Func<string> bodyf2FRedirectUrl = null, [WorkflowExpression] Func<string> bodynotificationCallBackUrl = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreatePackageResponse> __BuildCreatePackage(WorkflowValue<string> contentType, WorkflowValue<string> bodyinitiator = null, WorkflowValue<string> bodypackageName = null, WorkflowValue<string> bodycallBackUrl = null, WorkflowValue<string> bodycorrelationId = null, WorkflowValue<string> bodydocumentGroupCode = null, WorkflowValue<string> bodythemeCode = null, WorkflowValue<bool> bodydownloadUnsignedFiles = null, WorkflowValue<bool> bodyreassignEnabled = null, WorkflowValue<int> bodyactionUrlExpirationPeriodInDays = null, WorkflowValue<string> bodyexpiryTimestamp = null, WorkflowValue<string> bodyexternalPackageReference = null, WorkflowValue<string> bodyexternalPackageData = null, WorkflowValue<string> bodyf2FRedirectUrl = null, WorkflowValue<string> bodynotificationCallBackUrl = null)
+        {
+            WorkflowValue.Validate(contentType, nameof(contentType), required: true);
+            WorkflowValue.Validate(bodyinitiator, nameof(bodyinitiator), required: false);
+            WorkflowValue.Validate(bodypackageName, nameof(bodypackageName), required: false);
+            WorkflowValue.Validate(bodycallBackUrl, nameof(bodycallBackUrl), required: false);
+            WorkflowValue.Validate(bodycorrelationId, nameof(bodycorrelationId), required: false);
+            WorkflowValue.Validate(bodydocumentGroupCode, nameof(bodydocumentGroupCode), required: false);
+            WorkflowValue.Validate(bodythemeCode, nameof(bodythemeCode), required: false);
+            WorkflowValue.Validate(bodydownloadUnsignedFiles, nameof(bodydownloadUnsignedFiles), required: false);
+            WorkflowValue.Validate(bodyreassignEnabled, nameof(bodyreassignEnabled), required: false);
+            WorkflowValue.Validate(bodyactionUrlExpirationPeriodInDays, nameof(bodyactionUrlExpirationPeriodInDays), required: false);
+            WorkflowValue.Validate(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
+            WorkflowValue.Validate(bodyexternalPackageReference, nameof(bodyexternalPackageReference), required: false);
+            WorkflowValue.Validate(bodyexternalPackageData, nameof(bodyexternalPackageData), required: false);
+            WorkflowValue.Validate(bodyf2FRedirectUrl, nameof(bodyf2FRedirectUrl), required: false);
+            WorkflowValue.Validate(bodynotificationCallBackUrl, nameof(bodynotificationCallBackUrl), required: false);
+            return new DeferredBodyAction<CreatePackageResponse>(() =>
+            {
+                var apiCallPath = "/packages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinitiator != null)
+                {
+                    body["Initiator"] = ExpressionConverter.ConvertO(bodyinitiator);
+                    bodypropCount++;
+                }
+
+                if (bodypackageName != null)
+                {
+                    body["PackageName"] = ExpressionConverter.ConvertO(bodypackageName);
+                    bodypropCount++;
+                }
+
+                if (bodycallBackUrl != null)
+                {
+                    body["CallBackUrl"] = ExpressionConverter.ConvertO(bodycallBackUrl);
+                    bodypropCount++;
+                }
+
+                if (bodycorrelationId != null)
+                {
+                    body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+                    bodypropCount++;
+                }
+
                 if (bodydocumentGroupCode != null)
                 {
                     body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodydocumentGroupCode);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["DocumentGroupCode"] = "\"00001\"";
-                bodypropCount++;
-            }
+                if (bodythemeCode != null)
+                {
+                    body["ThemeCode"] = ExpressionConverter.ConvertO(bodythemeCode);
+                    bodypropCount++;
+                }
 
-            if (bodythemeCode != null)
-            {
-                body["ThemeCode"] = ExpressionConverter.ConvertO(bodythemeCode);
-                bodypropCount++;
-            }
+                if (bodydownloadUnsignedFiles != null)
+                {
+                    body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(bodydownloadUnsignedFiles);
+                    bodypropCount++;
+                }
 
-            if (bodydownloadUnsignedFiles != null)
-            {
-                body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(bodydownloadUnsignedFiles);
-                bodypropCount++;
-            }
+                if (bodyreassignEnabled != null)
+                {
+                    body["ReassignEnabled"] = ExpressionConverter.ConvertO(bodyreassignEnabled);
+                    bodypropCount++;
+                }
 
-            if (bodyreassignEnabled != null)
-            {
-                body["ReassignEnabled"] = ExpressionConverter.ConvertO(bodyreassignEnabled);
-                bodypropCount++;
-            }
+                if (bodyactionUrlExpirationPeriodInDays != null)
+                {
+                    body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(bodyactionUrlExpirationPeriodInDays);
+                    bodypropCount++;
+                }
 
-            if (bodyactionUrlExpirationPeriodInDays != null)
-            {
-                body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(bodyactionUrlExpirationPeriodInDays);
-                bodypropCount++;
-            }
+                if (bodyexpiryTimestamp != null)
+                {
+                    body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
+                    bodypropCount++;
+                }
 
-            if (bodyexpiryTimestamp != null)
-            {
-                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
-                bodypropCount++;
-            }
+                if (bodyexternalPackageReference != null)
+                {
+                    body["ExternalPackageReference"] = ExpressionConverter.ConvertO(bodyexternalPackageReference);
+                    bodypropCount++;
+                }
 
-            if (bodyexternalDocumentReference != null)
-            {
-                body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(bodyexternalDocumentReference);
-                bodypropCount++;
-            }
+                if (bodyexternalPackageData != null)
+                {
+                    body["ExternalPackageData"] = ExpressionConverter.ConvertO(bodyexternalPackageData);
+                    bodypropCount++;
+                }
 
-            if (bodyexternalPackageReference != null)
-            {
-                body["ExternalPackageReference"] = ExpressionConverter.ConvertO(bodyexternalPackageReference);
-                bodypropCount++;
-            }
+                if (bodyf2FRedirectUrl != null)
+                {
+                    body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(bodyf2FRedirectUrl);
+                    bodypropCount++;
+                }
 
-            if (bodyf2FRedirectUrl != null)
-            {
-                body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(bodyf2FRedirectUrl);
-                bodypropCount++;
-            }
+                if (bodynotificationCallBackUrl != null)
+                {
+                    body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(bodynotificationCallBackUrl);
+                    bodypropCount++;
+                }
 
-            if (bodynotificationCallBackUrl != null)
-            {
-                body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(bodynotificationCallBackUrl);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypdfErrorHandling != null)
-            {
-                body["PdfErrorHandling"] = ExpressionConverter.ConvertO(bodypdfErrorHandling);
-                bodypropCount++;
-            }
-
-            if (bodyrepresentation != null)
-            {
-                body["Representation"] = ExpressionConverter.ConvertO(bodyrepresentation);
-                bodypropCount++;
-            }
-
-            if (bodyrepresentationType != null)
-            {
-                body["RepresentationType"] = ExpressionConverter.ConvertO(bodyrepresentationType);
-                bodypropCount++;
-            }
-
-            if (bodysigningTemplateCode != null)
-            {
-                body["SigningTemplateCode"] = ExpressionConverter.ConvertO(bodysigningTemplateCode);
-                bodypropCount++;
-            }
-
-            if (bodytargetType != null)
-            {
-                body["TargetType"] = ExpressionConverter.ConvertO(bodytargetType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateInstantPackageResponse>(callPayload);
+                return new ApiConnectionAction<CreatePackageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageListResponse> PackageList(Expression<Func<string>> continuationToken = null, Expression<Func<int>> maxQuantity = null, Expression<Func<string>> sortField = null, Expression<Func<string>> sortOrder = null, Expression<Func<string>> createdBeforeDate = null, Expression<Func<string>> status = null, Expression<Func<string>> createdAfterDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddDocumentToPackage))]
+        public IBodyWorkflowAction<AddDocumentToPackageResponse> AddDocumentToPackage([WorkflowExpression] Func<string> packageId, [WorkflowExpression] Func<string> bodydocument = null, [WorkflowExpression] Func<string> bodydocumentLanguage = null, [WorkflowExpression] Func<string> bodydocumentName = null, [WorkflowExpression] Func<SigningField[]> bodysigningFields = null, [WorkflowExpression] Func<string> bodycorrelationId = null, [WorkflowExpression] Func<string> bodydocumentType = null, [WorkflowExpression] Func<string> bodyexternalDocumentReference = null, [WorkflowExpression] Func<ErrorHandlingResponse[]> bodypdfErrorHandling = null, [WorkflowExpression] Func<string> bodyrepresentation = null, [WorkflowExpression] Func<string> bodyrepresentationType = null, [WorkflowExpression] Func<string> bodytargetType = null)
         {
-            var apiCallPath = "/packages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (continuationToken != null)
-                callPayload.Queries["ContinuationToken"] = ExpressionConverter.Convert(continuationToken);
-            if (maxQuantity != null)
-                callPayload.Queries["MaxQuantity"] = ExpressionConverter.Convert(maxQuantity);
-            if (sortField != null)
-                callPayload.Queries["SortField"] = ExpressionConverter.Convert(sortField);
-            callPayload.Queries["SortOrder"] = Convert.ToString("\"ASC\"");
-            if (sortOrder != null)
-                callPayload.Queries["SortOrder"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["CreatedBeforeDate"] = Convert.ToString("{{$timestamp}}");
-            if (createdBeforeDate != null)
-                callPayload.Queries["CreatedBeforeDate"] = ExpressionConverter.Convert(createdBeforeDate);
-            if (status != null)
-                callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-            callPayload.Queries["createdAfterDate"] = Convert.ToString("{{eSigner - FutureDate}}");
-            if (createdAfterDate != null)
-                callPayload.Queries["createdAfterDate"] = ExpressionConverter.Convert(createdAfterDate);
-            return new ApiConnectionAction<PackageListResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddDocumentToPackageResponse> __BuildAddDocumentToPackage(WorkflowValue<string> packageId, WorkflowValue<string> bodydocument = null, WorkflowValue<string> bodydocumentLanguage = null, WorkflowValue<string> bodydocumentName = null, WorkflowValue<SigningField[]> bodysigningFields = null, WorkflowValue<string> bodycorrelationId = null, WorkflowValue<string> bodydocumentType = null, WorkflowValue<string> bodyexternalDocumentReference = null, WorkflowValue<ErrorHandlingResponse[]> bodypdfErrorHandling = null, WorkflowValue<string> bodyrepresentation = null, WorkflowValue<string> bodyrepresentationType = null, WorkflowValue<string> bodytargetType = null)
+        {
+            WorkflowValue.Validate(packageId, nameof(packageId), required: true);
+            WorkflowValue.Validate(bodydocument, nameof(bodydocument), required: false);
+            WorkflowValue.Validate(bodydocumentLanguage, nameof(bodydocumentLanguage), required: false);
+            WorkflowValue.Validate(bodydocumentName, nameof(bodydocumentName), required: false);
+            WorkflowValue.Validate(bodysigningFields, nameof(bodysigningFields), required: false);
+            WorkflowValue.Validate(bodycorrelationId, nameof(bodycorrelationId), required: false);
+            WorkflowValue.Validate(bodydocumentType, nameof(bodydocumentType), required: false);
+            WorkflowValue.Validate(bodyexternalDocumentReference, nameof(bodyexternalDocumentReference), required: false);
+            WorkflowValue.Validate(bodypdfErrorHandling, nameof(bodypdfErrorHandling), required: false);
+            WorkflowValue.Validate(bodyrepresentation, nameof(bodyrepresentation), required: false);
+            WorkflowValue.Validate(bodyrepresentationType, nameof(bodyrepresentationType), required: false);
+            WorkflowValue.Validate(bodytargetType, nameof(bodytargetType), required: false);
+            return new DeferredBodyAction<AddDocumentToPackageResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydocument != null)
+                {
+                    body["Document"] = ExpressionConverter.ConvertO(bodydocument);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentLanguage != null)
+                {
+                    body["DocumentLanguage"] = ExpressionConverter.ConvertO(bodydocumentLanguage);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentName != null)
+                {
+                    body["DocumentName"] = ExpressionConverter.ConvertO(bodydocumentName);
+                    bodypropCount++;
+                }
+
+                if (bodysigningFields != null)
+                {
+                    body["SigningFields"] = ExpressionConverter.ConvertO(bodysigningFields);
+                    bodypropCount++;
+                }
+
+                if (bodycorrelationId != null)
+                {
+                    body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentType != null)
+                {
+                    body["DocumentType"] = ExpressionConverter.ConvertO(bodydocumentType);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalDocumentReference != null)
+                {
+                    body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(bodyexternalDocumentReference);
+                    bodypropCount++;
+                }
+
+                if (bodypdfErrorHandling != null)
+                {
+                    body["PdfErrorHandling"] = ExpressionConverter.ConvertO(bodypdfErrorHandling);
+                    bodypropCount++;
+                }
+
+                if (bodyrepresentation != null)
+                {
+                    body["Representation"] = ExpressionConverter.ConvertO(bodyrepresentation);
+                    bodypropCount++;
+                }
+
+                if (bodyrepresentationType != null)
+                {
+                    body["RepresentationType"] = ExpressionConverter.ConvertO(bodyrepresentationType);
+                    bodypropCount++;
+                }
+
+                if (bodytargetType != null)
+                {
+                    body["TargetType"] = ExpressionConverter.ConvertO(bodytargetType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddDocumentToPackageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<CreatePackageResponse> CreatePackage(Expression<Func<string>> contentType, Expression<Func<string>> bodyinitiator = null, Expression<Func<string>> bodypackageName = null, Expression<Func<string>> bodycallBackUrl = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentGroupCode = null, Expression<Func<string>> bodythemeCode = null, Expression<Func<bool>> bodydownloadUnsignedFiles = null, Expression<Func<bool>> bodyreassignEnabled = null, Expression<Func<int>> bodyactionUrlExpirationPeriodInDays = null, Expression<Func<string>> bodyexpiryTimestamp = null, Expression<Func<string>> bodyexternalPackageReference = null, Expression<Func<string>> bodyexternalPackageData = null, Expression<Func<string>> bodyf2FRedirectUrl = null, Expression<Func<string>> bodynotificationCallBackUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSigningLocations))]
+        public IBodyWorkflowAction<GetSigningLocationsResponse> GetSigningLocations([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/packages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinitiator != null)
-            {
-                body["Initiator"] = ExpressionConverter.ConvertO(bodyinitiator);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypackageName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSigningLocationsResponse> __BuildGetSigningLocations(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetSigningLocationsResponse>(() =>
             {
-                body["PackageName"] = ExpressionConverter.ConvertO(bodypackageName);
-                bodypropCount++;
-            }
-
-            if (bodycallBackUrl != null)
-            {
-                body["CallBackUrl"] = ExpressionConverter.ConvertO(bodycallBackUrl);
-                bodypropCount++;
-            }
-
-            if (bodycorrelationId != null)
-            {
-                body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
-                bodypropCount++;
-            }
-
-            if (bodydocumentGroupCode != null)
-            {
-                body["DocumentGroupCode"] = ExpressionConverter.ConvertO(bodydocumentGroupCode);
-                bodypropCount++;
-            }
-
-            if (bodythemeCode != null)
-            {
-                body["ThemeCode"] = ExpressionConverter.ConvertO(bodythemeCode);
-                bodypropCount++;
-            }
-
-            if (bodydownloadUnsignedFiles != null)
-            {
-                body["DownloadUnsignedFiles"] = ExpressionConverter.ConvertO(bodydownloadUnsignedFiles);
-                bodypropCount++;
-            }
-
-            if (bodyreassignEnabled != null)
-            {
-                body["ReassignEnabled"] = ExpressionConverter.ConvertO(bodyreassignEnabled);
-                bodypropCount++;
-            }
-
-            if (bodyactionUrlExpirationPeriodInDays != null)
-            {
-                body["ActionUrlExpirationPeriodInDays"] = ExpressionConverter.ConvertO(bodyactionUrlExpirationPeriodInDays);
-                bodypropCount++;
-            }
-
-            if (bodyexpiryTimestamp != null)
-            {
-                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
-                bodypropCount++;
-            }
-
-            if (bodyexternalPackageReference != null)
-            {
-                body["ExternalPackageReference"] = ExpressionConverter.ConvertO(bodyexternalPackageReference);
-                bodypropCount++;
-            }
-
-            if (bodyexternalPackageData != null)
-            {
-                body["ExternalPackageData"] = ExpressionConverter.ConvertO(bodyexternalPackageData);
-                bodypropCount++;
-            }
-
-            if (bodyf2FRedirectUrl != null)
-            {
-                body["F2FRedirectUrl"] = ExpressionConverter.ConvertO(bodyf2FRedirectUrl);
-                bodypropCount++;
-            }
-
-            if (bodynotificationCallBackUrl != null)
-            {
-                body["NotificationCallBackUrl"] = ExpressionConverter.ConvertO(bodynotificationCallBackUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreatePackageResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/locations", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSigningLocationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<AddDocumentToPackageResponse> AddDocumentToPackage(Expression<Func<string>> packageId, Expression<Func<string>> bodydocument = null, Expression<Func<string>> bodydocumentLanguage = null, Expression<Func<string>> bodydocumentName = null, Expression<Func<SigningField[]>> bodysigningFields = null, Expression<Func<string>> bodycorrelationId = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodyexternalDocumentReference = null, Expression<Func<ErrorHandlingResponse[]>> bodypdfErrorHandling = null, Expression<Func<string>> bodyrepresentation = null, Expression<Func<string>> bodyrepresentationType = null, Expression<Func<string>> bodytargetType = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetPackageStatus))]
+        public IBodyWorkflowAction<PackageStatusInfo> GetPackageStatus([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/packages/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydocument != null)
-            {
-                body["Document"] = ExpressionConverter.ConvertO(bodydocument);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydocumentLanguage != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PackageStatusInfo> __BuildGetPackageStatus(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<PackageStatusInfo>(() =>
             {
-                body["DocumentLanguage"] = ExpressionConverter.ConvertO(bodydocumentLanguage);
-                bodypropCount++;
-            }
-
-            if (bodydocumentName != null)
-            {
-                body["DocumentName"] = ExpressionConverter.ConvertO(bodydocumentName);
-                bodypropCount++;
-            }
-
-            if (bodysigningFields != null)
-            {
-                body["SigningFields"] = ExpressionConverter.ConvertO(bodysigningFields);
-                bodypropCount++;
-            }
-
-            if (bodycorrelationId != null)
-            {
-                body["CorrelationId"] = ExpressionConverter.ConvertO(bodycorrelationId);
-                bodypropCount++;
-            }
-
-            if (bodydocumentType != null)
-            {
-                body["DocumentType"] = ExpressionConverter.ConvertO(bodydocumentType);
-                bodypropCount++;
-            }
-
-            if (bodyexternalDocumentReference != null)
-            {
-                body["ExternalDocumentReference"] = ExpressionConverter.ConvertO(bodyexternalDocumentReference);
-                bodypropCount++;
-            }
-
-            if (bodypdfErrorHandling != null)
-            {
-                body["PdfErrorHandling"] = ExpressionConverter.ConvertO(bodypdfErrorHandling);
-                bodypropCount++;
-            }
-
-            if (bodyrepresentation != null)
-            {
-                body["Representation"] = ExpressionConverter.ConvertO(bodyrepresentation);
-                bodypropCount++;
-            }
-
-            if (bodyrepresentationType != null)
-            {
-                body["RepresentationType"] = ExpressionConverter.ConvertO(bodyrepresentationType);
-                bodypropCount++;
-            }
-
-            if (bodytargetType != null)
-            {
-                body["TargetType"] = ExpressionConverter.ConvertO(bodytargetType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddDocumentToPackageResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PackageStatusInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<GetSigningLocationsResponse> GetSigningLocations(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildSetPackageStatus))]
+        public IBodyWorkflowAction<PackageStatusInfo> SetPackageStatus([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodystatus = null)
         {
-            var apiCallPath = String.Format("/packages/{0}/locations", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSigningLocationsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageStatusInfo> GetPackageStatus(Expression<Func<string>> id)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PackageStatusInfo> __BuildSetPackageStatus(WorkflowValue<string> id, WorkflowValue<string> bodystatus = null)
         {
-            var apiCallPath = String.Format("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PackageStatusInfo>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<PackageStatusInfo> SetPackageStatus(Expression<Func<string>> id, Expression<Func<string>> bodystatus = null)
-        {
-            var apiCallPath = String.Format("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystatus != null)
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: false);
+            return new DeferredBodyAction<PackageStatusInfo>(() =>
             {
-                body["Status"] = ExpressionConverter.ConvertO(bodystatus);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystatus != null)
+                {
+                    body["Status"] = ExpressionConverter.ConvertO(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PackageStatusInfo>(callPayload);
+                return new ApiConnectionAction<PackageStatusInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction SkipSigners(Expression<Func<string>> packageId)
+        [WorkflowExpressionFactory(nameof(__BuildSkipSigners))]
+        public IWorkflowAction SkipSigners([WorkflowExpression] Func<string> packageId)
         {
-            var apiCallPath = String.Format("/packages/{0}/skipsigners", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSkipSigners(WorkflowValue<string> packageId)
+        {
+            WorkflowValue.Validate(packageId, nameof(packageId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/skipsigners", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<string> DownloadPackage(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildDownloadPackage))]
+        public IBodyWorkflowAction<string> DownloadPackage([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/packages/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDownloadPackage(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<string> DownloadDocumentFromPackage(Expression<Func<string>> id, Expression<Func<string>> documentId)
+        [WorkflowExpressionFactory(nameof(__BuildDownloadDocumentFromPackage))]
+        public IBodyWorkflowAction<string> DownloadDocumentFromPackage([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> documentId)
         {
-            var apiCallPath = String.Format("/packages/{0}/download/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDownloadDocumentFromPackage(WorkflowValue<string> id, WorkflowValue<string> documentId)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/download/{1}", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction ExpiryTimeStamp(Expression<Func<string>> id, Expression<Func<string>> bodyexpiryTimestamp = null)
+        [WorkflowExpressionFactory(nameof(__BuildExpiryTimeStamp))]
+        public IWorkflowAction ExpiryTimeStamp([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyexpiryTimestamp = null)
         {
-            var apiCallPath = String.Format("/packages/{0}/expirytimestamp", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyexpiryTimestamp != null)
-            {
-                body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildExpiryTimeStamp(WorkflowValue<string> id, WorkflowValue<string> bodyexpiryTimestamp = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodyexpiryTimestamp, nameof(bodyexpiryTimestamp), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/expirytimestamp", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyexpiryTimestamp != null)
+                {
+                    body["ExpiryTimestamp"] = ExpressionConverter.ConvertO(bodyexpiryTimestamp);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction SendPackageReminders(Expression<Func<string>> packageId)
+        [WorkflowExpressionFactory(nameof(__BuildSendPackageReminders))]
+        public IWorkflowAction SendPackageReminders([WorkflowExpression] Func<string> packageId)
         {
-            var apiCallPath = String.Format("/packages/{0}/reminders", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendPackageReminders(WorkflowValue<string> packageId)
+        {
+            WorkflowValue.Validate(packageId, nameof(packageId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/reminders", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction DeletePackage(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildDeletePackage))]
+        public IWorkflowAction DeletePackage([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/packages/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeletePackage(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction SetProcessInformation(Expression<Func<string>> id, Expression<Func<bodystakeholdersInputItem[]>> bodystakeholders = null)
+        [WorkflowExpressionFactory(nameof(__BuildSetProcessInformation))]
+        public IWorkflowAction SetProcessInformation([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodystakeholdersInputItem[]> bodystakeholders = null)
         {
-            var apiCallPath = String.Format("/packages/{0}/process", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystakeholders != null)
-            {
-                body["Stakeholders"] = ExpressionConverter.ConvertO(bodystakeholders);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSetProcessInformation(WorkflowValue<string> id, WorkflowValue<bodystakeholdersInputItem[]> bodystakeholders = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodystakeholders, nameof(bodystakeholders), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/process", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystakeholders != null)
+                {
+                    body["Stakeholders"] = ExpressionConverter.ConvertO(bodystakeholders);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<Content> PackageAuditProof(Expression<Func<string>> packageId)
+        [WorkflowExpressionFactory(nameof(__BuildPackageAuditProof))]
+        public IBodyWorkflowAction<Content> PackageAuditProof([WorkflowExpression] Func<string> packageId)
         {
-            var apiCallPath = String.Format("/packages/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Content>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Content> __BuildPackageAuditProof(WorkflowValue<string> packageId)
+        {
+            WorkflowValue.Validate(packageId, nameof(packageId), required: true);
+            return new DeferredBodyAction<Content>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Content>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<Content> PackageAuditProofDoc(Expression<Func<string>> packageId, Expression<Func<string>> documentId)
+        [WorkflowExpressionFactory(nameof(__BuildPackageAuditProofDoc))]
+        public IBodyWorkflowAction<Content> PackageAuditProofDoc([WorkflowExpression] Func<string> packageId, [WorkflowExpression] Func<string> documentId)
         {
-            var apiCallPath = String.Format("/packages/{0}/auditproof/download/{1}", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Content>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Content> __BuildPackageAuditProofDoc(WorkflowValue<string> packageId, WorkflowValue<string> documentId)
+        {
+            WorkflowValue.Validate(packageId, nameof(packageId), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            return new DeferredBodyAction<Content>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/download/{1}", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Content>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<Content> PackageCorrelationAuditProof(Expression<Func<string>> correlationId)
+        [WorkflowExpressionFactory(nameof(__BuildPackageCorrelationAuditProof))]
+        public IBodyWorkflowAction<Content> PackageCorrelationAuditProof([WorkflowExpression] Func<string> correlationId)
         {
-            var apiCallPath = String.Format("/packagecorrelations/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(correlationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Content>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Content> __BuildPackageCorrelationAuditProof(WorkflowValue<string> correlationId)
+        {
+            WorkflowValue.Validate(correlationId, nameof(correlationId), required: true);
+            return new DeferredBodyAction<Content>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packagecorrelations/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(correlationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Content>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IBodyWorkflowAction<Content> DocumentCorrelationAuditProof(Expression<Func<string>> correlationId)
+        [WorkflowExpressionFactory(nameof(__BuildDocumentCorrelationAuditProof))]
+        public IBodyWorkflowAction<Content> DocumentCorrelationAuditProof([WorkflowExpression] Func<string> correlationId)
         {
-            var apiCallPath = String.Format("/documentcorrelations/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(correlationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Content>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Content> __BuildDocumentCorrelationAuditProof(WorkflowValue<string> correlationId)
+        {
+            WorkflowValue.Validate(correlationId, nameof(correlationId), required: true);
+            return new DeferredBodyAction<Content>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/documentcorrelations/{0}/auditproof/download", ExpressionConverter.ConvertWithUrlEncoding(correlationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Content>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectiveesignatures")]
-        public IWorkflowAction ProofExternalSource(Expression<Func<string>> packageId, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodylocationId = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyipAddress = null)
+        [WorkflowExpressionFactory(nameof(__BuildProofExternalSource))]
+        public IWorkflowAction ProofExternalSource([WorkflowExpression] Func<string> packageId, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyipAddress = null)
         {
-            var apiCallPath = String.Format("/packages/{0}/auditproof/proofs", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
-            {
-                body["Content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodylocationId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildProofExternalSource(WorkflowValue<string> packageId, WorkflowValue<string> bodycontent = null, WorkflowValue<string> bodylocationId = null, WorkflowValue<string> bodyname = null, WorkflowValue<string> bodytype = null, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodyipAddress = null)
+        {
+            WorkflowValue.Validate(packageId, nameof(packageId), required: true);
+            WorkflowValue.Validate(bodycontent, nameof(bodycontent), required: false);
+            WorkflowValue.Validate(bodylocationId, nameof(bodylocationId), required: false);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: false);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodyipAddress, nameof(bodyipAddress), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/packages/{0}/auditproof/proofs", ExpressionConverter.ConvertWithUrlEncoding(packageId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontent != null)
+                {
+                    body["Content"] = ExpressionConverter.ConvertO(bodycontent);
+                    bodypropCount++;
+                }
 
-            if (bodyname != null)
-            {
-                body["Name"] = ExpressionConverter.ConvertO(bodyname);
-                bodypropCount++;
-            }
+                if (bodylocationId != null)
+                {
+                    body["LocationId"] = ExpressionConverter.ConvertO(bodylocationId);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["Type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodyname != null)
+                {
+                    body["Name"] = ExpressionConverter.ConvertO(bodyname);
+                    bodypropCount++;
+                }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                if (bodytype != null)
+                {
+                    body["Type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            if (bodyipAddress != null)
-            {
-                body["IpAddress"] = ExpressionConverter.ConvertO(bodyipAddress);
-                bodypropCount++;
-            }
+                if (bodydescription != null)
+                {
+                    body["Description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyipAddress != null)
+                {
+                    body["IpAddress"] = ExpressionConverter.ConvertO(bodyipAddress);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

@@ -4,123 +4,152 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TrustualActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput> CertifyFile(Expression<Func<string>> bodyfileContent = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
+        [WorkflowExpressionFactory(nameof(__BuildCertifyFile))]
+        public IBodyWorkflowAction<CertificationOutput> CertifyFile([WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<bodycertificateLanguageInput> bodycertificateLanguage = null, [WorkflowExpression] Func<double> bodytimeZoneOffset = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodysandboxMode = null)
         {
-            var apiCallPath = "/certify_file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileContent != null)
-            {
-                body["file_base_64"] = ExpressionConverter.ConvertO(bodyfileContent);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodycertificateLanguage != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CertificationOutput> __BuildCertifyFile(WorkflowValue<string> bodyfileContent = null, WorkflowValue<bodycertificateLanguageInput> bodycertificateLanguage = null, WorkflowValue<double> bodytimeZoneOffset = null, WorkflowValue<string> bodyreference = null, WorkflowValue<bool> bodysandboxMode = null)
+        {
+            WorkflowValue.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
+            WorkflowValue.Validate(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
+            WorkflowValue.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            WorkflowValue.Validate(bodyreference, nameof(bodyreference), required: false);
+            WorkflowValue.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
+            return new DeferredBodyAction<CertificationOutput>(() =>
             {
-                if (bodycertificateLanguage != null)
+                var apiCallPath = "/certify_file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileContent != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                    body["file_base_64"] = ExpressionConverter.ConvertO(bodyfileContent);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
+                if (bodycertificateLanguage != null)
+                {
+                    if (bodycertificateLanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                        bodypropCount++;
+                    }
 
-            if (bodytimeZoneOffset != null)
-            {
-                body["offset"] = ExpressionConverter.ConvertO(bodytimeZoneOffset);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
+                    bodypropCount++;
+                }
 
-            if (bodyreference != null)
-            {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
-                bodypropCount++;
-            }
+                if (bodytimeZoneOffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(bodytimeZoneOffset);
+                    bodypropCount++;
+                }
 
-            if (bodysandboxMode != null)
-            {
-                body["sandbox"] = ExpressionConverter.ConvertO(bodysandboxMode);
-                bodypropCount++;
-            }
+                if (bodyreference != null)
+                {
+                    body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysandboxMode != null)
+                {
+                    body["sandbox"] = ExpressionConverter.ConvertO(bodysandboxMode);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CertificationOutput>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CertificationOutput>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput> CertifyHash(Expression<Func<string>> bodyhash = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
+        [WorkflowExpressionFactory(nameof(__BuildCertifyHash))]
+        public IBodyWorkflowAction<CertificationOutput> CertifyHash([WorkflowExpression] Func<string> bodyhash = null, [WorkflowExpression] Func<bodycertificateLanguageInput> bodycertificateLanguage = null, [WorkflowExpression] Func<double> bodytimeZoneOffset = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodysandboxMode = null)
         {
-            var apiCallPath = "/certify_hash";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyhash != null)
-            {
-                body["hash"] = ExpressionConverter.ConvertO(bodyhash);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodycertificateLanguage != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CertificationOutput> __BuildCertifyHash(WorkflowValue<string> bodyhash = null, WorkflowValue<bodycertificateLanguageInput> bodycertificateLanguage = null, WorkflowValue<double> bodytimeZoneOffset = null, WorkflowValue<string> bodyreference = null, WorkflowValue<bool> bodysandboxMode = null)
+        {
+            WorkflowValue.Validate(bodyhash, nameof(bodyhash), required: false);
+            WorkflowValue.Validate(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
+            WorkflowValue.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            WorkflowValue.Validate(bodyreference, nameof(bodyreference), required: false);
+            WorkflowValue.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
+            return new DeferredBodyAction<CertificationOutput>(() =>
             {
-                if (bodycertificateLanguage != null)
+                var apiCallPath = "/certify_hash";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyhash != null)
                 {
-                    body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                    body["hash"] = ExpressionConverter.ConvertO(bodyhash);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
-            }
+                if (bodycertificateLanguage != null)
+                {
+                    if (bodycertificateLanguage != null)
+                    {
+                        body["language"] = ExpressionConverter.ConvertO(bodycertificateLanguage);
+                        bodypropCount++;
+                    }
 
-            if (bodytimeZoneOffset != null)
-            {
-                body["offset"] = ExpressionConverter.ConvertO(bodytimeZoneOffset);
-                bodypropCount++;
-            }
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
+                    bodypropCount++;
+                }
 
-            if (bodyreference != null)
-            {
-                body["reference"] = ExpressionConverter.ConvertO(bodyreference);
-                bodypropCount++;
-            }
+                if (bodytimeZoneOffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(bodytimeZoneOffset);
+                    bodypropCount++;
+                }
 
-            if (bodysandboxMode != null)
-            {
-                body["sandbox"] = ExpressionConverter.ConvertO(bodysandboxMode);
-                bodypropCount++;
-            }
+                if (bodyreference != null)
+                {
+                    body["reference"] = ExpressionConverter.ConvertO(bodyreference);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysandboxMode != null)
+                {
+                    body["sandbox"] = ExpressionConverter.ConvertO(bodysandboxMode);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CertificationOutput>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CertificationOutput>(callPayload);
+            });
         }
     }
 

@@ -4,1164 +4,1566 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class InfoshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonResponse> Logon(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodytenantname = null)
+        [WorkflowExpressionFactory(nameof(__BuildLogon))]
+        public IBodyWorkflowAction<LogonResponse> Logon([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodytenantname = null)
         {
-            var apiCallPath = "/api/Logon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["Username"] = ExpressionConverter.ConvertO(bodyusername);
-            bodypropCount++;
-            body["Password"] = ExpressionConverter.ConvertO(bodypassword);
-            if (bodytenantname != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LogonResponse> __BuildLogon(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyusername, WorkflowValue<string> bodypassword, WorkflowValue<string> bodytenantname = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyusername, nameof(bodyusername), required: true);
+            WorkflowValue.Validate(bodypassword, nameof(bodypassword), required: true);
+            WorkflowValue.Validate(bodytenantname, nameof(bodytenantname), required: false);
+            return new DeferredBodyAction<LogonResponse>(() =>
             {
-                body["Tenantname"] = ExpressionConverter.ConvertO(bodytenantname);
+                var apiCallPath = "/api/Logon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["Username"] = ExpressionConverter.ConvertO(bodyusername);
+                bodypropCount++;
+                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+                if (bodytenantname != null)
+                {
+                    body["Tenantname"] = ExpressionConverter.ConvertO(bodytenantname);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<LogonResponse>(callPayload);
+                return new ApiConnectionAction<LogonResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyassignUserLoginNames, Expression<Func<string>> bodytaskId = null, Expression<Func<string>> bodycomment = null)
+        [WorkflowExpressionFactory(nameof(__BuildCloseTaskAndAssignToUsers))]
+        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyassignUserLoginNames, [WorkflowExpression] Func<string> bodytaskId = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            var apiCallPath = "/api/CloseTaskAndAssignToUsers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodytaskId != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> __BuildCloseTaskAndAssignToUsers(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyprocessId, WorkflowValue<string> bodyassignUserLoginNames, WorkflowValue<string> bodytaskId = null, WorkflowValue<string> bodycomment = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            WorkflowValue.Validate(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: true);
+            WorkflowValue.Validate(bodytaskId, nameof(bodytaskId), required: false);
+            WorkflowValue.Validate(bodycomment, nameof(bodycomment), required: false);
+            return new DeferredBodyAction<CloseTaskAndAssignToUsersResponse>(() =>
             {
-                body["TaskId"] = ExpressionConverter.ConvertO(bodytaskId);
+                var apiCallPath = "/api/CloseTaskAndAssignToUsers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
                 bodypropCount++;
-            }
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
+                if (bodytaskId != null)
+                {
+                    body["TaskId"] = ExpressionConverter.ConvertO(bodytaskId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["AssignUserLoginNames"] = ExpressionConverter.ConvertO(bodyassignUserLoginNames);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodycomment != null)
+                {
+                    body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CloseTaskAndAssignToUsersResponse>(callPayload);
+                bodypropCount++;
+                body["AssignUserLoginNames"] = ExpressionConverter.ConvertO(bodyassignUserLoginNames);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CloseTaskAndAssignToUsersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogoffResponse> Logoff(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId)
+        [WorkflowExpressionFactory(nameof(__BuildLogoff))]
+        public IBodyWorkflowAction<LogoffResponse> Logoff([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId)
         {
-            var apiCallPath = "/api/Logoff";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<LogoffResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LogoffResponse> __BuildLogoff(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            return new DeferredBodyAction<LogoffResponse>(() =>
+            {
+                var apiCallPath = "/api/Logoff";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<LogoffResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyculture = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDocumentProperties))]
+        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            var apiCallPath = "/api/GetDocumentProperties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodyculture != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> __BuildGetDocumentProperties(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodydocumentId, WorkflowValue<string> bodyculture = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowValue.Validate(bodyculture, nameof(bodyculture), required: false);
+            return new DeferredBodyAction<GetDocumentPropertiesResponseItem[]>(() =>
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                var apiCallPath = "/api/GetDocumentProperties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodyculture != null)
+                {
+                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetDocumentPropertiesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetDocumentPropertiesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyculture = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetProcessProperties))]
+        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            var apiCallPath = "/api/GetProcessProperties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodyculture != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> __BuildGetProcessProperties(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyprocessId, WorkflowValue<string> bodyculture = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            WorkflowValue.Validate(bodyculture, nameof(bodyculture), required: false);
+            return new DeferredBodyAction<GetProcessPropertiesResponseItem[]>(() =>
             {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                var apiCallPath = "/api/GetProcessProperties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
+                if (bodyculture != null)
+                {
+                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetProcessPropertiesResponseItem[]>(callPayload);
+                return new ApiConnectionAction<GetProcessPropertiesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyignoreHashValidation = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFileContent))]
+        public IBodyWorkflowAction<JToken> GetFileContent([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyversionId = null, [WorkflowExpression] Func<string> bodydocumentDataId = null, [WorkflowExpression] Func<string> bodyrenditionId = null, [WorkflowExpression] Func<bool> bodyignoreHashValidation = null)
         {
-            var apiCallPath = "/api/GetFileContent";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodyversionId != null)
-            {
-                body["VersionId"] = ExpressionConverter.ConvertO(bodyversionId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydocumentDataId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetFileContent(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodydocumentId, WorkflowValue<string> bodyversionId = null, WorkflowValue<string> bodydocumentDataId = null, WorkflowValue<string> bodyrenditionId = null, WorkflowValue<bool> bodyignoreHashValidation = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowValue.Validate(bodyversionId, nameof(bodyversionId), required: false);
+            WorkflowValue.Validate(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
+            WorkflowValue.Validate(bodyrenditionId, nameof(bodyrenditionId), required: false);
+            WorkflowValue.Validate(bodyignoreHashValidation, nameof(bodyignoreHashValidation), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                body["DocumentDataId"] = ExpressionConverter.ConvertO(bodydocumentDataId);
+                var apiCallPath = "/api/GetFileContent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyrenditionId != null)
-            {
-                body["RenditionId"] = ExpressionConverter.ConvertO(bodyrenditionId);
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
                 bodypropCount++;
-            }
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodyversionId != null)
+                {
+                    body["VersionId"] = ExpressionConverter.ConvertO(bodyversionId);
+                    bodypropCount++;
+                }
 
-            if (bodyignoreHashValidation != null)
-            {
+                if (bodydocumentDataId != null)
+                {
+                    body["DocumentDataId"] = ExpressionConverter.ConvertO(bodydocumentDataId);
+                    bodypropCount++;
+                }
+
+                if (bodyrenditionId != null)
+                {
+                    body["RenditionId"] = ExpressionConverter.ConvertO(bodyrenditionId);
+                    bodypropCount++;
+                }
+
                 if (bodyignoreHashValidation != null)
                 {
-                    body["IgnoreHashValidation"] = ExpressionConverter.ConvertO(bodyignoreHashValidation);
+                    if (bodyignoreHashValidation != null)
+                    {
+                        body["IgnoreHashValidation"] = ExpressionConverter.ConvertO(bodyignoreHashValidation);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["IgnoreHashValidation"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildCloseProcess))]
+        public IBodyWorkflowAction<CloseProcessResponse> CloseProcess([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodycomment = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CloseProcessResponse> __BuildCloseProcess(WorkflowValue<string> archiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyprocessId, WorkflowValue<string> bodycomment = null)
+        {
+            WorkflowValue.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            WorkflowValue.Validate(bodycomment, nameof(bodycomment), required: false);
+            return new DeferredBodyAction<CloseProcessResponse>(() =>
+            {
+                var apiCallPath = "/Process/CloseProcess";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["connectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["processId"] = ExpressionConverter.ConvertO(bodyprocessId);
+                if (bodycomment != null)
+                {
+                    body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CloseProcessResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildLogonWithHashedPassword))]
+        public IBodyWorkflowAction<LogonWithHashedPasswordResponse> LogonWithHashedPassword([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyuserName, [WorkflowExpression] Func<string> bodypasswordHashed, [WorkflowExpression] Func<string> bodytenantName = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LogonWithHashedPasswordResponse> __BuildLogonWithHashedPassword(WorkflowValue<string> archiveUrl, WorkflowValue<string> bodyuserName, WorkflowValue<string> bodypasswordHashed, WorkflowValue<string> bodytenantName = null)
+        {
+            WorkflowValue.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            WorkflowValue.Validate(bodyuserName, nameof(bodyuserName), required: true);
+            WorkflowValue.Validate(bodypasswordHashed, nameof(bodypasswordHashed), required: true);
+            WorkflowValue.Validate(bodytenantName, nameof(bodytenantName), required: false);
+            return new DeferredBodyAction<LogonWithHashedPasswordResponse>(() =>
+            {
+                var apiCallPath = "/Authentication/Logon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
+                bodypropCount++;
+                body["passwordHashed"] = ExpressionConverter.ConvertO(bodypasswordHashed);
+                if (bodytenantName != null)
+                {
+                    body["tenantName"] = ExpressionConverter.ConvertO(bodytenantName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<LogonWithHashedPasswordResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildCloseTask))]
+        public IBodyWorkflowAction<CloseTaskResponse> CloseTask([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<bool> bodyassignUsers, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodytaskId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CloseTaskResponse> __BuildCloseTask(WorkflowValue<string> archiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyprocessId, WorkflowValue<bool> bodyassignUsers, WorkflowValue<string> bodycomment = null, WorkflowValue<string> bodytaskId = null)
+        {
+            WorkflowValue.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            WorkflowValue.Validate(bodyassignUsers, nameof(bodyassignUsers), required: true);
+            WorkflowValue.Validate(bodycomment, nameof(bodycomment), required: false);
+            WorkflowValue.Validate(bodytaskId, nameof(bodytaskId), required: false);
+            return new DeferredBodyAction<CloseTaskResponse>(() =>
+            {
+                var apiCallPath = "/Process/CloseTask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["connectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["processId"] = ExpressionConverter.ConvertO(bodyprocessId);
+                if (bodycomment != null)
+                {
+                    body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodytaskId != null)
+                {
+                    body["taskId"] = ExpressionConverter.ConvertO(bodytaskId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["IgnoreHashValidation"] = true;
-                bodypropCount++;
-            }
+                body["assignUsers"] = ExpressionConverter.ConvertO(bodyassignUsers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<CloseTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseProcessResponse> CloseProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodycomment = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDocument))]
+        public IBodyWorkflowAction<GetDocumentResponse> GetDocument([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId)
         {
-            var apiCallPath = "/Process/CloseProcess";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["connectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["processId"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodycomment != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDocumentResponse> __BuildGetDocument(WorkflowValue<string> archiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodydocumentId)
+        {
+            WorkflowValue.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            return new DeferredBodyAction<GetDocumentResponse>(() =>
             {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                var apiCallPath = "/Document/GetDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["connectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CloseProcessResponse>(callPayload);
+                return new ApiConnectionAction<GetDocumentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonWithHashedPasswordResponse> LogonWithHashedPassword(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyuserName, Expression<Func<string>> bodypasswordHashed, Expression<Func<string>> bodytenantName = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetProcess))]
+        public IBodyWorkflowAction<GetProcessResponse> GetProcess([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId)
         {
-            var apiCallPath = "/Authentication/Logon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
-            bodypropCount++;
-            body["passwordHashed"] = ExpressionConverter.ConvertO(bodypasswordHashed);
-            if (bodytenantName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProcessResponse> __BuildGetProcess(WorkflowValue<string> archiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyprocessId)
+        {
+            WorkflowValue.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            return new DeferredBodyAction<GetProcessResponse>(() =>
             {
-                body["tenantName"] = ExpressionConverter.ConvertO(bodytenantName);
+                var apiCallPath = "/Process/GetProcess";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["connectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["processId"] = ExpressionConverter.ConvertO(bodyprocessId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LogonWithHashedPasswordResponse>(callPayload);
+                return new ApiConnectionAction<GetProcessResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskResponse> CloseTask(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<bool>> bodyassignUsers, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodytaskId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFileContentConverted))]
+        public IBodyWorkflowAction<JToken> GetFileContentConverted([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodytargetFormat, [WorkflowExpression] Func<string> bodyversionId = null, [WorkflowExpression] Func<string> bodydocumentDataId = null, [WorkflowExpression] Func<string> bodyrenditionId = null, [WorkflowExpression] Func<bool> bodyaddAnnotatins = null, [WorkflowExpression] Func<bool> bodyaddOverlay = null)
         {
-            var apiCallPath = "/Process/CloseTask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["connectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["processId"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodycomment != null)
-            {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodytaskId != null)
-            {
-                body["taskId"] = ExpressionConverter.ConvertO(bodytaskId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["assignUsers"] = ExpressionConverter.ConvertO(bodyassignUsers);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CloseTaskResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetFileContentConverted(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodydocumentId, WorkflowValue<string> bodytargetFormat, WorkflowValue<string> bodyversionId = null, WorkflowValue<string> bodydocumentDataId = null, WorkflowValue<string> bodyrenditionId = null, WorkflowValue<bool> bodyaddAnnotatins = null, WorkflowValue<bool> bodyaddOverlay = null)
         {
-            var apiCallPath = "/Document/GetDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["connectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["documentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowValue.Validate(bodytargetFormat, nameof(bodytargetFormat), required: true);
+            WorkflowValue.Validate(bodyversionId, nameof(bodyversionId), required: false);
+            WorkflowValue.Validate(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
+            WorkflowValue.Validate(bodyrenditionId, nameof(bodyrenditionId), required: false);
+            WorkflowValue.Validate(bodyaddAnnotatins, nameof(bodyaddAnnotatins), required: false);
+            WorkflowValue.Validate(bodyaddOverlay, nameof(bodyaddOverlay), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetDocumentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessResponse> GetProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId)
-        {
-            var apiCallPath = "/Process/GetProcess";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = ExpressionConverter.Convert(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["connectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["processId"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetProcessResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken> GetFileContentConverted(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodytargetFormat, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyaddAnnotatins = null, Expression<Func<bool>> bodyaddOverlay = null)
-        {
-            var apiCallPath = "/api/GetFileContentConverted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodyversionId != null)
-            {
-                body["VersionId"] = ExpressionConverter.ConvertO(bodyversionId);
+                var apiCallPath = "/api/GetFileContentConverted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydocumentDataId != null)
-            {
-                body["DocumentDataId"] = ExpressionConverter.ConvertO(bodydocumentDataId);
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
                 bodypropCount++;
-            }
-
-            if (bodyrenditionId != null)
-            {
-                body["RenditionId"] = ExpressionConverter.ConvertO(bodyrenditionId);
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
                 bodypropCount++;
-            }
+                body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodyversionId != null)
+                {
+                    body["VersionId"] = ExpressionConverter.ConvertO(bodyversionId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["TargetFormat"] = ExpressionConverter.ConvertO(bodytargetFormat);
-            if (bodyaddAnnotatins != null)
-            {
+                if (bodydocumentDataId != null)
+                {
+                    body["DocumentDataId"] = ExpressionConverter.ConvertO(bodydocumentDataId);
+                    bodypropCount++;
+                }
+
+                if (bodyrenditionId != null)
+                {
+                    body["RenditionId"] = ExpressionConverter.ConvertO(bodyrenditionId);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["TargetFormat"] = ExpressionConverter.ConvertO(bodytargetFormat);
                 if (bodyaddAnnotatins != null)
                 {
-                    body["AddAnnotatins"] = ExpressionConverter.ConvertO(bodyaddAnnotatins);
+                    if (bodyaddAnnotatins != null)
+                    {
+                        body["AddAnnotatins"] = ExpressionConverter.ConvertO(bodyaddAnnotatins);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["AddAnnotatins"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["AddAnnotatins"] = true;
-                bodypropCount++;
-            }
-
-            if (bodyaddOverlay != null)
-            {
                 if (bodyaddOverlay != null)
                 {
-                    body["AddOverlay"] = ExpressionConverter.ConvertO(bodyaddOverlay);
+                    if (bodyaddOverlay != null)
+                    {
+                        body["AddOverlay"] = ExpressionConverter.ConvertO(bodyaddOverlay);
+                        bodypropCount++;
+                    }
+
                     bodypropCount++;
                 }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["AddOverlay"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateProcessResponse> CreateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessTemplateName, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodydocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyculture = null)
-        {
-            var apiCallPath = "/api/CreateProcess";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            if (bodyprocessProperties != null)
-            {
-                body["ProcessProperties"] = ExpressionConverter.ConvertO(bodyprocessProperties);
-                bodypropCount++;
-            }
-
-            if (bodycustomProperties != null)
-            {
-                body["CustomProperties"] = ExpressionConverter.ConvertO(bodycustomProperties);
-                bodypropCount++;
-            }
-
-            if (bodydocumentIds != null)
-            {
-                body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["ProcessTemplateName"] = ExpressionConverter.ConvertO(bodyprocessTemplateName);
-            if (bodydueDate != null)
-            {
-                body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateProcessResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null, Expression<Func<string>> bodyorderByClause = null, Expression<Func<bool>> bodyaddColumnHeaders = null)
-        {
-            var apiCallPath = "/api/UserTableGetRecords";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
-            if (bodywhereClause != null)
-            {
-                body["WhereClause"] = ExpressionConverter.ConvertO(bodywhereClause);
-                bodypropCount++;
-            }
-
-            if (bodyorderByClause != null)
-            {
-                body["OrderByClause"] = ExpressionConverter.ConvertO(bodyorderByClause);
-                bodypropCount++;
-            }
-
-            if (bodyaddColumnHeaders != null)
-            {
-                body["AddColumnHeaders"] = ExpressionConverter.ConvertO(bodyaddColumnHeaders);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableGetRecordsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyvalues, Expression<Func<bool>> bodydeleteAllValues = null, Expression<Func<bool>> bodyfirstRowContainsColumnHeaders = null)
-        {
-            var apiCallPath = "/api/UserTableImportData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
-            bodypropCount++;
-            body["Values"] = ExpressionConverter.ConvertO(bodyvalues);
-            if (bodydeleteAllValues != null)
-            {
-                if (bodydeleteAllValues != null)
+                else
                 {
-                    body["DeleteAllValues"] = ExpressionConverter.ConvertO(bodydeleteAllValues);
+                    body["AddOverlay"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["DeleteAllValues"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyfirstRowContainsColumnHeaders != null)
-            {
-                if (bodyfirstRowContainsColumnHeaders != null)
+                if (bodypropCount > 0)
                 {
-                    body["FirstRowContainsColumnHeaders"] = ExpressionConverter.ConvertO(bodyfirstRowContainsColumnHeaders);
-                    bodypropCount++;
+                    callPayload.Body = body;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["FirstRowContainsColumnHeaders"] = false;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableImportDataResponse>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodycolumnHeaders)
+        [WorkflowExpressionFactory(nameof(__BuildCreateProcess))]
+        public IBodyWorkflowAction<CreateProcessResponse> CreateProcess([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessTemplateName, [WorkflowExpression] Func<string> bodyprocessProperties = null, [WorkflowExpression] Func<string> bodycustomProperties = null, [WorkflowExpression] Func<string> bodydocumentIds = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            var apiCallPath = "/api/UserTableCreateTable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
-            bodypropCount++;
-            body["ColumnHeaders"] = ExpressionConverter.ConvertO(bodycolumnHeaders);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableCreateTableResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateProcessResponse> __BuildCreateProcess(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyprocessTemplateName, WorkflowValue<string> bodyprocessProperties = null, WorkflowValue<string> bodycustomProperties = null, WorkflowValue<string> bodydocumentIds = null, WorkflowValue<string> bodydueDate = null, WorkflowValue<bodypriorityInput> bodypriority = null, WorkflowValue<string> bodycomment = null, WorkflowValue<string> bodyculture = null)
         {
-            var apiCallPath = "/api/UserTableDeleteRecords";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
-            if (bodywhereClause != null)
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyprocessTemplateName, nameof(bodyprocessTemplateName), required: true);
+            WorkflowValue.Validate(bodyprocessProperties, nameof(bodyprocessProperties), required: false);
+            WorkflowValue.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
+            WorkflowValue.Validate(bodydocumentIds, nameof(bodydocumentIds), required: false);
+            WorkflowValue.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodycomment, nameof(bodycomment), required: false);
+            WorkflowValue.Validate(bodyculture, nameof(bodyculture), required: false);
+            return new DeferredBodyAction<CreateProcessResponse>(() =>
             {
-                body["WhereClause"] = ExpressionConverter.ConvertO(bodywhereClause);
+                var apiCallPath = "/api/CreateProcess";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableDeleteRecordsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentIdToAppend, Expression<Func<bool>> bodyforceUndoCheckout = null)
-        {
-            var apiCallPath = "/api/MergePDFDocumentsToVersion";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            bodypropCount++;
-            body["DocumentIdToAppend"] = ExpressionConverter.ConvertO(bodydocumentIdToAppend);
-            if (bodyforceUndoCheckout != null)
-            {
-                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MergePDFDocumentsToVersionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyculture = null)
-        {
-            var apiCallPath = "/api/ProcessSearch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            if (bodyconditions != null)
-            {
-                body["Conditions"] = ExpressionConverter.ConvertO(bodyconditions);
-                bodypropCount++;
-            }
-
-            if (bodyresultProperties != null)
-            {
-                body["ResultProperties"] = ExpressionConverter.ConvertO(bodyresultProperties);
-                bodypropCount++;
-            }
-
-            if (bodymaxSerchResults != null)
-            {
-                body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodymaxSerchResults);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                if (bodyculture != null)
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                if (bodyprocessProperties != null)
                 {
-                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    body["ProcessProperties"] = ExpressionConverter.ConvertO(bodyprocessProperties);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProcessSearchResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyrowData)
-        {
-            var apiCallPath = "/api/UserTableUpdateRow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
-            bodypropCount++;
-            body["RowData"] = ExpressionConverter.ConvertO(bodyrowData);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableUpdateRowResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetSelectionResponse> GetSelection(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyselectionId)
-        {
-            var apiCallPath = "/api/GetSelection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["SelectionId"] = ExpressionConverter.ConvertO(bodyselectionId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetSelectionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentTitle, Expression<Func<string>> bodyfileContent, Expression<Func<string>> bodyimportTemplate = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyblog = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyinfoStore = null, Expression<Func<string>> bodylifeCycle = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyoriginalFileFormat = null, Expression<Func<int>> bodychunkSize = null)
-        {
-            var apiCallPath = "/api/CreateDocumentV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
-            if (bodyimportTemplate != null)
-            {
-                body["ImportTemplate"] = ExpressionConverter.ConvertO(bodyimportTemplate);
-                bodypropCount++;
-            }
-
-            if (bodydocumentProperties != null)
-            {
-                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyblog != null)
-            {
-                body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                if (bodyculture != null)
+                if (bodycustomProperties != null)
                 {
-                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                    body["CustomProperties"] = ExpressionConverter.ConvertO(bodycustomProperties);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
-
-            if (bodyinfoStore != null)
-            {
-                body["InfoStore"] = ExpressionConverter.ConvertO(bodyinfoStore);
-                bodypropCount++;
-            }
-
-            if (bodylifeCycle != null)
-            {
-                body["LifeCycle"] = ExpressionConverter.ConvertO(bodylifeCycle);
-                bodypropCount++;
-            }
-
-            if (bodyprotectionDomain != null)
-            {
-                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
-                bodypropCount++;
-            }
-
-            if (bodyuploadMethod != null)
-            {
-                if (bodyuploadMethod != null)
+                if (bodydocumentIds != null)
                 {
-                    body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
+                    body["DocumentIds"] = ExpressionConverter.ConvertO(bodydocumentIds);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["UploadMethod"] = "UploadFileBytesLarge";
-                bodypropCount++;
-            }
-
-            if (bodyoriginalFileFormat != null)
-            {
-                body["OriginalFileFormat"] = ExpressionConverter.ConvertO(bodyoriginalFileFormat);
-                bodypropCount++;
-            }
-
-            if (bodychunkSize != null)
-            {
-                if (bodychunkSize != null)
+                body["ProcessTemplateName"] = ExpressionConverter.ConvertO(bodyprocessTemplateName);
+                if (bodydueDate != null)
                 {
-                    body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
+                    body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ChunkSize"] = 262144;
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateDocumentV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodystores = null)
-        {
-            var apiCallPath = "/api/DocumentSearchV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            if (bodyconditions != null)
-            {
-                body["Conditions"] = ExpressionConverter.ConvertO(bodyconditions);
-                bodypropCount++;
-            }
-
-            if (bodymaxSerchResults != null)
-            {
-                body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodymaxSerchResults);
-                bodypropCount++;
-            }
-
-            if (bodyresultProperties != null)
-            {
-                body["ResultProperties"] = ExpressionConverter.ConvertO(bodyresultProperties);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                if (bodyculture != null)
-                {
-                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
-
-            if (bodystores != null)
-            {
-                body["Stores"] = ExpressionConverter.ConvertO(bodystores);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentSearchV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyremoveDocumentProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<string>> bodyblog = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<int>> bodychunkSize = null)
-        {
-            var apiCallPath = "/api/UpdateDocumentV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            if (bodydocumentTitle != null)
-            {
-                body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
-                bodypropCount++;
-            }
-
-            if (bodydocumentProperties != null)
-            {
-                body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyremoveDocumentProperties != null)
-            {
-                body["RemoveDocumentProperties"] = ExpressionConverter.ConvertO(bodyremoveDocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                if (bodyculture != null)
-                {
-                    body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
-            if (bodyprotectionDomain != null)
-            {
-                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
-                bodypropCount++;
-            }
-
-            if (bodyblog != null)
-            {
-                body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
-                bodypropCount++;
-            }
-
-            if (bodyuploadMethod != null)
-            {
-                if (bodyuploadMethod != null)
-                {
-                    body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["UploadMethod"] = "UploadFileBytesLarge";
-                bodypropCount++;
-            }
-
-            if (bodyfileContent != null)
-            {
-                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-                bodypropCount++;
-            }
-
-            if (bodyforceUndoCheckout != null)
-            {
-                body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
-                bodypropCount++;
-            }
-
-            if (bodychunkSize != null)
-            {
-                if (bodychunkSize != null)
-                {
-                    body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["ChunkSize"] = 262144;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateDocumentV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodyremoveProcessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyassignUserLoginNames = null, Expression<Func<string>> bodyaddDocumentIds = null, Expression<Func<string>> bodyremoveDocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyculture = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<string>> bodyprotectionDomain = null)
-        {
-            var apiCallPath = "/api/UpdateProcessV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
-            bodypropCount++;
-            body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
-            if (bodyprocessProperties != null)
-            {
-                body["ProcessProperties"] = ExpressionConverter.ConvertO(bodyprocessProperties);
-                bodypropCount++;
-            }
-
-            if (bodyremoveProcessProperties != null)
-            {
-                body["RemoveProcessProperties"] = ExpressionConverter.ConvertO(bodyremoveProcessProperties);
-                bodypropCount++;
-            }
-
-            if (bodycustomProperties != null)
-            {
-                body["CustomProperties"] = ExpressionConverter.ConvertO(bodycustomProperties);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodyassignUserLoginNames != null)
-            {
-                body["AssignUserLoginNames"] = ExpressionConverter.ConvertO(bodyassignUserLoginNames);
-                bodypropCount++;
-            }
-
-            if (bodyaddDocumentIds != null)
-            {
-                body["AddDocumentIds"] = ExpressionConverter.ConvertO(bodyaddDocumentIds);
-                bodypropCount++;
-            }
-
-            if (bodyremoveDocumentIds != null)
-            {
-                body["RemoveDocumentIds"] = ExpressionConverter.ConvertO(bodyremoveDocumentIds);
-                bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
                 if (bodypriority != null)
                 {
                     body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Priority"] = "Normal";
-                bodypropCount++;
-            }
+                if (bodycomment != null)
+                {
+                    body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    bodypropCount++;
+                }
 
-            if (bodyculture != null)
-            {
                 if (bodyculture != null)
                 {
                     body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyforceUndoCheckout != null)
+                return new ApiConnectionAction<CreateProcessResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildUserTableGetRecords))]
+        public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodywhereClause = null, [WorkflowExpression] Func<string> bodyorderByClause = null, [WorkflowExpression] Func<bool> bodyaddColumnHeaders = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserTableGetRecordsResponse> __BuildUserTableGetRecords(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyuserTable, WorkflowValue<string> bodywhereClause = null, WorkflowValue<string> bodyorderByClause = null, WorkflowValue<bool> bodyaddColumnHeaders = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            WorkflowValue.Validate(bodywhereClause, nameof(bodywhereClause), required: false);
+            WorkflowValue.Validate(bodyorderByClause, nameof(bodyorderByClause), required: false);
+            WorkflowValue.Validate(bodyaddColumnHeaders, nameof(bodyaddColumnHeaders), required: false);
+            return new DeferredBodyAction<UserTableGetRecordsResponse>(() =>
             {
+                var apiCallPath = "/api/UserTableGetRecords";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
+                if (bodywhereClause != null)
+                {
+                    body["WhereClause"] = ExpressionConverter.ConvertO(bodywhereClause);
+                    bodypropCount++;
+                }
+
+                if (bodyorderByClause != null)
+                {
+                    body["OrderByClause"] = ExpressionConverter.ConvertO(bodyorderByClause);
+                    bodypropCount++;
+                }
+
+                if (bodyaddColumnHeaders != null)
+                {
+                    body["AddColumnHeaders"] = ExpressionConverter.ConvertO(bodyaddColumnHeaders);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UserTableGetRecordsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildUserTableImportData))]
+        public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodyvalues, [WorkflowExpression] Func<bool> bodydeleteAllValues = null, [WorkflowExpression] Func<bool> bodyfirstRowContainsColumnHeaders = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserTableImportDataResponse> __BuildUserTableImportData(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyuserTable, WorkflowValue<string> bodyvalues, WorkflowValue<bool> bodydeleteAllValues = null, WorkflowValue<bool> bodyfirstRowContainsColumnHeaders = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            WorkflowValue.Validate(bodyvalues, nameof(bodyvalues), required: true);
+            WorkflowValue.Validate(bodydeleteAllValues, nameof(bodydeleteAllValues), required: false);
+            WorkflowValue.Validate(bodyfirstRowContainsColumnHeaders, nameof(bodyfirstRowContainsColumnHeaders), required: false);
+            return new DeferredBodyAction<UserTableImportDataResponse>(() =>
+            {
+                var apiCallPath = "/api/UserTableImportData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
+                bodypropCount++;
+                body["Values"] = ExpressionConverter.ConvertO(bodyvalues);
+                if (bodydeleteAllValues != null)
+                {
+                    if (bodydeleteAllValues != null)
+                    {
+                        body["DeleteAllValues"] = ExpressionConverter.ConvertO(bodydeleteAllValues);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["DeleteAllValues"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodyfirstRowContainsColumnHeaders != null)
+                {
+                    if (bodyfirstRowContainsColumnHeaders != null)
+                    {
+                        body["FirstRowContainsColumnHeaders"] = ExpressionConverter.ConvertO(bodyfirstRowContainsColumnHeaders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["FirstRowContainsColumnHeaders"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UserTableImportDataResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildUserTableCreateTable))]
+        public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodycolumnHeaders)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserTableCreateTableResponse> __BuildUserTableCreateTable(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyuserTable, WorkflowValue<string> bodycolumnHeaders)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            WorkflowValue.Validate(bodycolumnHeaders, nameof(bodycolumnHeaders), required: true);
+            return new DeferredBodyAction<UserTableCreateTableResponse>(() =>
+            {
+                var apiCallPath = "/api/UserTableCreateTable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
+                bodypropCount++;
+                body["ColumnHeaders"] = ExpressionConverter.ConvertO(bodycolumnHeaders);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UserTableCreateTableResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildUserTableDeleteRecords))]
+        public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodywhereClause = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserTableDeleteRecordsResponse> __BuildUserTableDeleteRecords(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyuserTable, WorkflowValue<string> bodywhereClause = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            WorkflowValue.Validate(bodywhereClause, nameof(bodywhereClause), required: false);
+            return new DeferredBodyAction<UserTableDeleteRecordsResponse>(() =>
+            {
+                var apiCallPath = "/api/UserTableDeleteRecords";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
+                if (bodywhereClause != null)
+                {
+                    body["WhereClause"] = ExpressionConverter.ConvertO(bodywhereClause);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UserTableDeleteRecordsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildMergePDFDocumentsToVersion))]
+        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentIdToAppend, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> __BuildMergePDFDocumentsToVersion(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodydocumentId, WorkflowValue<string> bodydocumentIdToAppend, WorkflowValue<bool> bodyforceUndoCheckout = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowValue.Validate(bodydocumentIdToAppend, nameof(bodydocumentIdToAppend), required: true);
+            WorkflowValue.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            return new DeferredBodyAction<MergePDFDocumentsToVersionResponse>(() =>
+            {
+                var apiCallPath = "/api/MergePDFDocumentsToVersion";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                bodypropCount++;
+                body["DocumentIdToAppend"] = ExpressionConverter.ConvertO(bodydocumentIdToAppend);
                 if (bodyforceUndoCheckout != null)
                 {
                     body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ForceUndoCheckout"] = true;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyprotectionDomain != null)
+                return new ApiConnectionAction<MergePDFDocumentsToVersionResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildProcessSearch))]
+        public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyconditions = null, [WorkflowExpression] Func<string> bodyresultProperties = null, [WorkflowExpression] Func<string> bodymaxSerchResults = null, [WorkflowExpression] Func<string> bodyculture = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProcessSearchResponse> __BuildProcessSearch(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyconditions = null, WorkflowValue<string> bodyresultProperties = null, WorkflowValue<string> bodymaxSerchResults = null, WorkflowValue<string> bodyculture = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            WorkflowValue.Validate(bodyresultProperties, nameof(bodyresultProperties), required: false);
+            WorkflowValue.Validate(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
+            WorkflowValue.Validate(bodyculture, nameof(bodyculture), required: false);
+            return new DeferredBodyAction<ProcessSearchResponse>(() =>
             {
-                body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
+                var apiCallPath = "/api/ProcessSearch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                if (bodyconditions != null)
+                {
+                    body["Conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodyresultProperties != null)
+                {
+                    body["ResultProperties"] = ExpressionConverter.ConvertO(bodyresultProperties);
+                    bodypropCount++;
+                }
+
+                if (bodymaxSerchResults != null)
+                {
+                    body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodymaxSerchResults);
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ProcessSearchResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildUserTableUpdateRow))]
+        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodyrowData)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserTableUpdateRowResponse> __BuildUserTableUpdateRow(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyuserTable, WorkflowValue<string> bodyrowData)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            WorkflowValue.Validate(bodyrowData, nameof(bodyrowData), required: true);
+            return new DeferredBodyAction<UserTableUpdateRowResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/UserTableUpdateRow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = ExpressionConverter.ConvertO(bodyuserTable);
+                bodypropCount++;
+                body["RowData"] = ExpressionConverter.ConvertO(bodyrowData);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateProcessV2Response>(callPayload);
+                return new ApiConnectionAction<UserTableUpdateRowResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildGetSelection))]
+        public IBodyWorkflowAction<GetSelectionResponse> GetSelection([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyselectionId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSelectionResponse> __BuildGetSelection(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyselectionId)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyselectionId, nameof(bodyselectionId), required: true);
+            return new DeferredBodyAction<GetSelectionResponse>(() =>
+            {
+                var apiCallPath = "/api/GetSelection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["SelectionId"] = ExpressionConverter.ConvertO(bodyselectionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetSelectionResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateDocument))]
+        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocument([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentTitle, [WorkflowExpression] Func<string> bodyfileContent, [WorkflowExpression] Func<string> bodyimportTemplate = null, [WorkflowExpression] Func<string> bodydocumentProperties = null, [WorkflowExpression] Func<string> bodyblog = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodyinfoStore = null, [WorkflowExpression] Func<string> bodylifeCycle = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null, [WorkflowExpression] Func<bodyuploadMethodInput> bodyuploadMethod = null, [WorkflowExpression] Func<string> bodyoriginalFileFormat = null, [WorkflowExpression] Func<int> bodychunkSize = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateDocumentV2Response> __BuildCreateDocument(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodydocumentTitle, WorkflowValue<string> bodyfileContent, WorkflowValue<string> bodyimportTemplate = null, WorkflowValue<string> bodydocumentProperties = null, WorkflowValue<string> bodyblog = null, WorkflowValue<string> bodyculture = null, WorkflowValue<string> bodyinfoStore = null, WorkflowValue<string> bodylifeCycle = null, WorkflowValue<string> bodyprotectionDomain = null, WorkflowValue<bodyuploadMethodInput> bodyuploadMethod = null, WorkflowValue<string> bodyoriginalFileFormat = null, WorkflowValue<int> bodychunkSize = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: true);
+            WorkflowValue.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
+            WorkflowValue.Validate(bodyimportTemplate, nameof(bodyimportTemplate), required: false);
+            WorkflowValue.Validate(bodydocumentProperties, nameof(bodydocumentProperties), required: false);
+            WorkflowValue.Validate(bodyblog, nameof(bodyblog), required: false);
+            WorkflowValue.Validate(bodyculture, nameof(bodyculture), required: false);
+            WorkflowValue.Validate(bodyinfoStore, nameof(bodyinfoStore), required: false);
+            WorkflowValue.Validate(bodylifeCycle, nameof(bodylifeCycle), required: false);
+            WorkflowValue.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            WorkflowValue.Validate(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
+            WorkflowValue.Validate(bodyoriginalFileFormat, nameof(bodyoriginalFileFormat), required: false);
+            WorkflowValue.Validate(bodychunkSize, nameof(bodychunkSize), required: false);
+            return new DeferredBodyAction<CreateDocumentV2Response>(() =>
+            {
+                var apiCallPath = "/api/CreateDocumentV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                if (bodyimportTemplate != null)
+                {
+                    body["ImportTemplate"] = ExpressionConverter.ConvertO(bodyimportTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentProperties != null)
+                {
+                    body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyblog != null)
+                {
+                    body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                if (bodyinfoStore != null)
+                {
+                    body["InfoStore"] = ExpressionConverter.ConvertO(bodyinfoStore);
+                    bodypropCount++;
+                }
+
+                if (bodylifeCycle != null)
+                {
+                    body["LifeCycle"] = ExpressionConverter.ConvertO(bodylifeCycle);
+                    bodypropCount++;
+                }
+
+                if (bodyprotectionDomain != null)
+                {
+                    body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
+                    bodypropCount++;
+                }
+
+                if (bodyuploadMethod != null)
+                {
+                    if (bodyuploadMethod != null)
+                    {
+                        body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["UploadMethod"] = "UploadFileBytesLarge";
+                    bodypropCount++;
+                }
+
+                if (bodyoriginalFileFormat != null)
+                {
+                    body["OriginalFileFormat"] = ExpressionConverter.ConvertO(bodyoriginalFileFormat);
+                    bodypropCount++;
+                }
+
+                if (bodychunkSize != null)
+                {
+                    if (bodychunkSize != null)
+                    {
+                        body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ChunkSize"] = 262144;
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateDocumentV2Response>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildDocumentSearch))]
+        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearch([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyconditions = null, [WorkflowExpression] Func<string> bodymaxSerchResults = null, [WorkflowExpression] Func<string> bodyresultProperties = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodystores = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocumentSearchV2Response> __BuildDocumentSearch(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyconditions = null, WorkflowValue<string> bodymaxSerchResults = null, WorkflowValue<string> bodyresultProperties = null, WorkflowValue<string> bodyculture = null, WorkflowValue<string> bodystores = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            WorkflowValue.Validate(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
+            WorkflowValue.Validate(bodyresultProperties, nameof(bodyresultProperties), required: false);
+            WorkflowValue.Validate(bodyculture, nameof(bodyculture), required: false);
+            WorkflowValue.Validate(bodystores, nameof(bodystores), required: false);
+            return new DeferredBodyAction<DocumentSearchV2Response>(() =>
+            {
+                var apiCallPath = "/api/DocumentSearchV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                if (bodyconditions != null)
+                {
+                    body["Conditions"] = ExpressionConverter.ConvertO(bodyconditions);
+                    bodypropCount++;
+                }
+
+                if (bodymaxSerchResults != null)
+                {
+                    body["MaxSerchResults"] = ExpressionConverter.ConvertO(bodymaxSerchResults);
+                    bodypropCount++;
+                }
+
+                if (bodyresultProperties != null)
+                {
+                    body["ResultProperties"] = ExpressionConverter.ConvertO(bodyresultProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                if (bodystores != null)
+                {
+                    body["Stores"] = ExpressionConverter.ConvertO(bodystores);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DocumentSearchV2Response>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateDocument))]
+        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocument([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodydocumentProperties = null, [WorkflowExpression] Func<string> bodyremoveDocumentProperties = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null, [WorkflowExpression] Func<string> bodyblog = null, [WorkflowExpression] Func<bodyuploadMethodInput> bodyuploadMethod = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null, [WorkflowExpression] Func<int> bodychunkSize = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateDocumentV2Response> __BuildUpdateDocument(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodydocumentId, WorkflowValue<string> bodydocumentTitle = null, WorkflowValue<string> bodydocumentProperties = null, WorkflowValue<string> bodyremoveDocumentProperties = null, WorkflowValue<string> bodyculture = null, WorkflowValue<string> bodyprotectionDomain = null, WorkflowValue<string> bodyblog = null, WorkflowValue<bodyuploadMethodInput> bodyuploadMethod = null, WorkflowValue<string> bodyfileContent = null, WorkflowValue<bool> bodyforceUndoCheckout = null, WorkflowValue<int> bodychunkSize = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            WorkflowValue.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            WorkflowValue.Validate(bodydocumentProperties, nameof(bodydocumentProperties), required: false);
+            WorkflowValue.Validate(bodyremoveDocumentProperties, nameof(bodyremoveDocumentProperties), required: false);
+            WorkflowValue.Validate(bodyculture, nameof(bodyculture), required: false);
+            WorkflowValue.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            WorkflowValue.Validate(bodyblog, nameof(bodyblog), required: false);
+            WorkflowValue.Validate(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
+            WorkflowValue.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
+            WorkflowValue.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            WorkflowValue.Validate(bodychunkSize, nameof(bodychunkSize), required: false);
+            return new DeferredBodyAction<UpdateDocumentV2Response>(() =>
+            {
+                var apiCallPath = "/api/UpdateDocumentV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                if (bodydocumentTitle != null)
+                {
+                    body["DocumentTitle"] = ExpressionConverter.ConvertO(bodydocumentTitle);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentProperties != null)
+                {
+                    body["DocumentProperties"] = ExpressionConverter.ConvertO(bodydocumentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyremoveDocumentProperties != null)
+                {
+                    body["RemoveDocumentProperties"] = ExpressionConverter.ConvertO(bodyremoveDocumentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["DocumentId"] = ExpressionConverter.ConvertO(bodydocumentId);
+                if (bodyprotectionDomain != null)
+                {
+                    body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
+                    bodypropCount++;
+                }
+
+                if (bodyblog != null)
+                {
+                    body["Blog"] = ExpressionConverter.ConvertO(bodyblog);
+                    bodypropCount++;
+                }
+
+                if (bodyuploadMethod != null)
+                {
+                    if (bodyuploadMethod != null)
+                    {
+                        body["UploadMethod"] = ExpressionConverter.ConvertO(bodyuploadMethod);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["UploadMethod"] = "UploadFileBytesLarge";
+                    bodypropCount++;
+                }
+
+                if (bodyfileContent != null)
+                {
+                    body["FileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                    bodypropCount++;
+                }
+
+                if (bodyforceUndoCheckout != null)
+                {
+                    body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
+                    bodypropCount++;
+                }
+
+                if (bodychunkSize != null)
+                {
+                    if (bodychunkSize != null)
+                    {
+                        body["ChunkSize"] = ExpressionConverter.ConvertO(bodychunkSize);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ChunkSize"] = 262144;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateDocumentV2Response>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateProcess))]
+        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcess([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyprocessProperties = null, [WorkflowExpression] Func<string> bodyremoveProcessProperties = null, [WorkflowExpression] Func<string> bodycustomProperties = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyassignUserLoginNames = null, [WorkflowExpression] Func<string> bodyaddDocumentIds = null, [WorkflowExpression] Func<string> bodyremoveDocumentIds = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateProcessV2Response> __BuildUpdateProcess(WorkflowValue<string> bodyarchiveUrl, WorkflowValue<string> bodyconnectionId, WorkflowValue<string> bodyprocessId, WorkflowValue<string> bodyprocessProperties = null, WorkflowValue<string> bodyremoveProcessProperties = null, WorkflowValue<string> bodycustomProperties = null, WorkflowValue<string> bodycomment = null, WorkflowValue<string> bodyassignUserLoginNames = null, WorkflowValue<string> bodyaddDocumentIds = null, WorkflowValue<string> bodyremoveDocumentIds = null, WorkflowValue<string> bodydueDate = null, WorkflowValue<bodypriorityInput> bodypriority = null, WorkflowValue<string> bodyculture = null, WorkflowValue<bool> bodyforceUndoCheckout = null, WorkflowValue<string> bodyprotectionDomain = null)
+        {
+            WorkflowValue.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            WorkflowValue.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            WorkflowValue.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            WorkflowValue.Validate(bodyprocessProperties, nameof(bodyprocessProperties), required: false);
+            WorkflowValue.Validate(bodyremoveProcessProperties, nameof(bodyremoveProcessProperties), required: false);
+            WorkflowValue.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
+            WorkflowValue.Validate(bodycomment, nameof(bodycomment), required: false);
+            WorkflowValue.Validate(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: false);
+            WorkflowValue.Validate(bodyaddDocumentIds, nameof(bodyaddDocumentIds), required: false);
+            WorkflowValue.Validate(bodyremoveDocumentIds, nameof(bodyremoveDocumentIds), required: false);
+            WorkflowValue.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyculture, nameof(bodyculture), required: false);
+            WorkflowValue.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            WorkflowValue.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            return new DeferredBodyAction<UpdateProcessV2Response>(() =>
+            {
+                var apiCallPath = "/api/UpdateProcessV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = ExpressionConverter.ConvertO(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = ExpressionConverter.ConvertO(bodyconnectionId);
+                bodypropCount++;
+                body["ProcessId"] = ExpressionConverter.ConvertO(bodyprocessId);
+                if (bodyprocessProperties != null)
+                {
+                    body["ProcessProperties"] = ExpressionConverter.ConvertO(bodyprocessProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyremoveProcessProperties != null)
+                {
+                    body["RemoveProcessProperties"] = ExpressionConverter.ConvertO(bodyremoveProcessProperties);
+                    bodypropCount++;
+                }
+
+                if (bodycustomProperties != null)
+                {
+                    body["CustomProperties"] = ExpressionConverter.ConvertO(bodycustomProperties);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["Comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodyassignUserLoginNames != null)
+                {
+                    body["AssignUserLoginNames"] = ExpressionConverter.ConvertO(bodyassignUserLoginNames);
+                    bodypropCount++;
+                }
+
+                if (bodyaddDocumentIds != null)
+                {
+                    body["AddDocumentIds"] = ExpressionConverter.ConvertO(bodyaddDocumentIds);
+                    bodypropCount++;
+                }
+
+                if (bodyremoveDocumentIds != null)
+                {
+                    body["RemoveDocumentIds"] = ExpressionConverter.ConvertO(bodyremoveDocumentIds);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["DueDate"] = ExpressionConverter.ConvertO(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    if (bodypriority != null)
+                    {
+                        body["Priority"] = ExpressionConverter.ConvertO(bodypriority);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Priority"] = "Normal";
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = ExpressionConverter.ConvertO(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                if (bodyforceUndoCheckout != null)
+                {
+                    if (bodyforceUndoCheckout != null)
+                    {
+                        body["ForceUndoCheckout"] = ExpressionConverter.ConvertO(bodyforceUndoCheckout);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ForceUndoCheckout"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodyprotectionDomain != null)
+                {
+                    body["ProtectionDomain"] = ExpressionConverter.ConvertO(bodyprotectionDomain);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateProcessV2Response>(callPayload);
+            });
         }
     }
 

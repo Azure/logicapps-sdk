@@ -4,62 +4,103 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Delijnip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DelijnipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<HaltesHits> SearchStops(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchStops))]
+        public IBodyWorkflowAction<HaltesHits> SearchStops([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/haltes/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
-            callPayload.Queries["startIndex"] = Convert.ToString(0);
-            if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
-            callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
-            if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
-            return new ApiConnectionAction<HaltesHits>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<HaltesHits> __BuildSearchStops(WorkflowValue<string> searchTerm, WorkflowValue<string> huidigePositie = null, WorkflowValue<int> startIndex = null, WorkflowValue<int> maxAantalHits = null)
+        {
+            WorkflowValue.Validate(searchTerm, nameof(searchTerm), required: true);
+            WorkflowValue.Validate(huidigePositie, nameof(huidigePositie), required: false);
+            WorkflowValue.Validate(startIndex, nameof(startIndex), required: false);
+            WorkflowValue.Validate(maxAantalHits, nameof(maxAantalHits), required: false);
+            return new DeferredBodyAction<HaltesHits>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/haltes/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (huidigePositie != null)
+                    callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
+                callPayload.Queries["startIndex"] = Convert.ToString(0);
+                if (startIndex != null)
+                    callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
+                if (maxAantalHits != null)
+                    callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
+                return new ApiConnectionAction<HaltesHits>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<LijnRichtingHits> SearchLines(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchLines))]
+        public IBodyWorkflowAction<LijnRichtingHits> SearchLines([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/lijnrichtingen/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
-            callPayload.Queries["startIndex"] = Convert.ToString(0);
-            if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
-            callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
-            if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
-            return new ApiConnectionAction<LijnRichtingHits>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LijnRichtingHits> __BuildSearchLines(WorkflowValue<string> searchTerm, WorkflowValue<string> huidigePositie = null, WorkflowValue<int> startIndex = null, WorkflowValue<int> maxAantalHits = null)
+        {
+            WorkflowValue.Validate(searchTerm, nameof(searchTerm), required: true);
+            WorkflowValue.Validate(huidigePositie, nameof(huidigePositie), required: false);
+            WorkflowValue.Validate(startIndex, nameof(startIndex), required: false);
+            WorkflowValue.Validate(maxAantalHits, nameof(maxAantalHits), required: false);
+            return new DeferredBodyAction<LijnRichtingHits>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/lijnrichtingen/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (huidigePositie != null)
+                    callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
+                callPayload.Queries["startIndex"] = Convert.ToString(0);
+                if (startIndex != null)
+                    callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
+                if (maxAantalHits != null)
+                    callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
+                return new ApiConnectionAction<LijnRichtingHits>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "delijnip")]
-        public IBodyWorkflowAction<LocatiesHits> SearchLocations(Expression<Func<string>> searchTerm, Expression<Func<string>> huidigePositie = null, Expression<Func<int>> startIndex = null, Expression<Func<int>> maxAantalHits = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchLocations))]
+        public IBodyWorkflowAction<LocatiesHits> SearchLocations([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<string> huidigePositie = null, [WorkflowExpression] Func<int> startIndex = null, [WorkflowExpression] Func<int> maxAantalHits = null)
         {
-            var apiCallPath = String.Format("/zoek/locaties/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (huidigePositie != null)
-                callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
-            callPayload.Queries["startIndex"] = Convert.ToString(0);
-            if (startIndex != null)
-                callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
-            callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
-            if (maxAantalHits != null)
-                callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
-            return new ApiConnectionAction<LocatiesHits>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LocatiesHits> __BuildSearchLocations(WorkflowValue<string> searchTerm, WorkflowValue<string> huidigePositie = null, WorkflowValue<int> startIndex = null, WorkflowValue<int> maxAantalHits = null)
+        {
+            WorkflowValue.Validate(searchTerm, nameof(searchTerm), required: true);
+            WorkflowValue.Validate(huidigePositie, nameof(huidigePositie), required: false);
+            WorkflowValue.Validate(startIndex, nameof(startIndex), required: false);
+            WorkflowValue.Validate(maxAantalHits, nameof(maxAantalHits), required: false);
+            return new DeferredBodyAction<LocatiesHits>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/zoek/locaties/{0}", ExpressionConverter.ConvertWithUrlEncoding(searchTerm, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (huidigePositie != null)
+                    callPayload.Queries["huidigePositie"] = ExpressionConverter.Convert(huidigePositie);
+                callPayload.Queries["startIndex"] = Convert.ToString(0);
+                if (startIndex != null)
+                    callPayload.Queries["startIndex"] = ExpressionConverter.Convert(startIndex);
+                callPayload.Queries["maxAantalHits"] = Convert.ToString(10);
+                if (maxAantalHits != null)
+                    callPayload.Queries["maxAantalHits"] = ExpressionConverter.Convert(maxAantalHits);
+                return new ApiConnectionAction<LocatiesHits>(callPayload);
+            });
         }
     }
 

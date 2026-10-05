@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,102 +20,134 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zoommeetingsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
-        public IBodyWorkflowAction<CreateMeetingResponse> CreateMeeting(Expression<Func<string>> bodytopic = null, Expression<Func<int>> bodytype = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyduration = null, Expression<Func<bool>> bodysettingshostVideo = null, Expression<Func<bool>> bodysettingsparticipantVideo = null, Expression<Func<bool>> bodysettingsjoinBeforeHost = null, Expression<Func<string>> bodysettingsmuteUponEntry = null, Expression<Func<string>> bodysettingswatermark = null, Expression<Func<string>> bodysettingsaudio = null, Expression<Func<string>> bodysettingsautoRecording = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateMeeting))]
+        public IBodyWorkflowAction<CreateMeetingResponse> CreateMeeting([WorkflowExpression] Func<string> bodytopic = null, [WorkflowExpression] Func<int> bodytype = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyduration = null, [WorkflowExpression] Func<bool> bodysettingshostVideo = null, [WorkflowExpression] Func<bool> bodysettingsparticipantVideo = null, [WorkflowExpression] Func<bool> bodysettingsjoinBeforeHost = null, [WorkflowExpression] Func<string> bodysettingsmuteUponEntry = null, [WorkflowExpression] Func<string> bodysettingswatermark = null, [WorkflowExpression] Func<string> bodysettingsaudio = null, [WorkflowExpression] Func<string> bodysettingsautoRecording = null)
         {
-            var apiCallPath = "/v2/users/me/meetings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytopic != null)
-            {
-                body["topic"] = ExpressionConverter.ConvertO(bodytopic);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodytype != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateMeetingResponse> __BuildCreateMeeting(WorkflowValue<string> bodytopic = null, WorkflowValue<int> bodytype = null, WorkflowValue<string> bodystartTime = null, WorkflowValue<string> bodyduration = null, WorkflowValue<bool> bodysettingshostVideo = null, WorkflowValue<bool> bodysettingsparticipantVideo = null, WorkflowValue<bool> bodysettingsjoinBeforeHost = null, WorkflowValue<string> bodysettingsmuteUponEntry = null, WorkflowValue<string> bodysettingswatermark = null, WorkflowValue<string> bodysettingsaudio = null, WorkflowValue<string> bodysettingsautoRecording = null)
+        {
+            WorkflowValue.Validate(bodytopic, nameof(bodytopic), required: false);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            WorkflowValue.Validate(bodyduration, nameof(bodyduration), required: false);
+            WorkflowValue.Validate(bodysettingshostVideo, nameof(bodysettingshostVideo), required: false);
+            WorkflowValue.Validate(bodysettingsparticipantVideo, nameof(bodysettingsparticipantVideo), required: false);
+            WorkflowValue.Validate(bodysettingsjoinBeforeHost, nameof(bodysettingsjoinBeforeHost), required: false);
+            WorkflowValue.Validate(bodysettingsmuteUponEntry, nameof(bodysettingsmuteUponEntry), required: false);
+            WorkflowValue.Validate(bodysettingswatermark, nameof(bodysettingswatermark), required: false);
+            WorkflowValue.Validate(bodysettingsaudio, nameof(bodysettingsaudio), required: false);
+            WorkflowValue.Validate(bodysettingsautoRecording, nameof(bodysettingsautoRecording), required: false);
+            return new DeferredBodyAction<CreateMeetingResponse>(() =>
             {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v2/users/me/meetings";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytopic != null)
+                {
+                    body["topic"] = ExpressionConverter.ConvertO(bodytopic);
+                    bodypropCount++;
+                }
 
-            if (bodystartTime != null)
-            {
-                body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            if (bodyduration != null)
-            {
-                body["duration"] = ExpressionConverter.ConvertO(bodyduration);
-                bodypropCount++;
-            }
+                if (bodystartTime != null)
+                {
+                    body["start_time"] = ExpressionConverter.ConvertO(bodystartTime);
+                    bodypropCount++;
+                }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingshostVideo != null)
-            {
-                settingsObject["host_video"] = ExpressionConverter.ConvertO(bodysettingshostVideo);
-                settingsObjectpropCount++;
-            }
+                if (bodyduration != null)
+                {
+                    body["duration"] = ExpressionConverter.ConvertO(bodyduration);
+                    bodypropCount++;
+                }
 
-            if (bodysettingsparticipantVideo != null)
-            {
-                settingsObject["participant_video"] = ExpressionConverter.ConvertO(bodysettingsparticipantVideo);
-                settingsObjectpropCount++;
-            }
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (bodysettingshostVideo != null)
+                {
+                    settingsObject["host_video"] = ExpressionConverter.ConvertO(bodysettingshostVideo);
+                    settingsObjectpropCount++;
+                }
 
-            if (bodysettingsjoinBeforeHost != null)
-            {
-                settingsObject["join_before_host"] = ExpressionConverter.ConvertO(bodysettingsjoinBeforeHost);
-                settingsObjectpropCount++;
-            }
+                if (bodysettingsparticipantVideo != null)
+                {
+                    settingsObject["participant_video"] = ExpressionConverter.ConvertO(bodysettingsparticipantVideo);
+                    settingsObjectpropCount++;
+                }
 
-            if (bodysettingsmuteUponEntry != null)
-            {
-                settingsObject["mute_upon_entry"] = ExpressionConverter.ConvertO(bodysettingsmuteUponEntry);
-                settingsObjectpropCount++;
-            }
+                if (bodysettingsjoinBeforeHost != null)
+                {
+                    settingsObject["join_before_host"] = ExpressionConverter.ConvertO(bodysettingsjoinBeforeHost);
+                    settingsObjectpropCount++;
+                }
 
-            if (bodysettingswatermark != null)
-            {
-                settingsObject["watermark"] = ExpressionConverter.ConvertO(bodysettingswatermark);
-                settingsObjectpropCount++;
-            }
+                if (bodysettingsmuteUponEntry != null)
+                {
+                    settingsObject["mute_upon_entry"] = ExpressionConverter.ConvertO(bodysettingsmuteUponEntry);
+                    settingsObjectpropCount++;
+                }
 
-            if (bodysettingsaudio != null)
-            {
-                settingsObject["audio"] = ExpressionConverter.ConvertO(bodysettingsaudio);
-                settingsObjectpropCount++;
-            }
+                if (bodysettingswatermark != null)
+                {
+                    settingsObject["watermark"] = ExpressionConverter.ConvertO(bodysettingswatermark);
+                    settingsObjectpropCount++;
+                }
 
-            if (bodysettingsautoRecording != null)
-            {
-                settingsObject["auto_recording"] = ExpressionConverter.ConvertO(bodysettingsautoRecording);
-                settingsObjectpropCount++;
-            }
+                if (bodysettingsaudio != null)
+                {
+                    settingsObject["audio"] = ExpressionConverter.ConvertO(bodysettingsaudio);
+                    settingsObjectpropCount++;
+                }
 
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
+                if (bodysettingsautoRecording != null)
+                {
+                    settingsObject["auto_recording"] = ExpressionConverter.ConvertO(bodysettingsautoRecording);
+                    settingsObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateMeetingResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateMeetingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zoommeetingsip")]
-        public IBodyWorkflowAction<MeetingDetailsResponse> MeetingDetails(Expression<Func<string>> meetingid)
+        [WorkflowExpressionFactory(nameof(__BuildMeetingDetails))]
+        public IBodyWorkflowAction<MeetingDetailsResponse> MeetingDetails([WorkflowExpression] Func<string> meetingid)
         {
-            var apiCallPath = String.Format("/v2/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(meetingid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MeetingDetailsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MeetingDetailsResponse> __BuildMeetingDetails(WorkflowValue<string> meetingid)
+        {
+            WorkflowValue.Validate(meetingid, nameof(meetingid), required: true);
+            return new DeferredBodyAction<MeetingDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/meetings/{0}", ExpressionConverter.ConvertWithUrlEncoding(meetingid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MeetingDetailsResponse>(callPayload);
+            });
         }
     }
 

@@ -4,48 +4,77 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aplaceioip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AplaceioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<string>> sessionId = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> countries = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null, Expression<Func<string>> lang = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchGet))]
+        public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> countries = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null, [WorkflowExpression] Func<string> lang = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            if (sessionId != null)
-                callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
-            if (type != null)
-                callPayload.Queries["type"] = ExpressionConverter.Convert(type);
-            if (countries != null)
-                callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
-            if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-            if (radius != null)
-                callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchGetResponse> __BuildSearchGet(WorkflowValue<string> q, WorkflowValue<string> sessionId = null, WorkflowValue<typeInput> type = null, WorkflowValue<string> countries = null, WorkflowValue<double> lat = null, WorkflowValue<double> lon = null, WorkflowValue<double> radius = null, WorkflowValue<string> lang = null)
+        {
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: false);
+            WorkflowValue.Validate(type, nameof(type), required: false);
+            WorkflowValue.Validate(countries, nameof(countries), required: false);
+            WorkflowValue.Validate(lat, nameof(lat), required: false);
+            WorkflowValue.Validate(lon, nameof(lon), required: false);
+            WorkflowValue.Validate(radius, nameof(radius), required: false);
+            WorkflowValue.Validate(lang, nameof(lang), required: false);
+            return new DeferredBodyAction<SearchGetResponse>(() =>
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                if (sessionId != null)
+                    callPayload.Queries["session_id"] = ExpressionConverter.Convert(sessionId);
+                if (type != null)
+                    callPayload.Queries["type"] = ExpressionConverter.Convert(type);
+                if (countries != null)
+                    callPayload.Queries["countries"] = ExpressionConverter.Convert(countries);
+                if (lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                if (lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                if (radius != null)
+                    callPayload.Queries["radius"] = ExpressionConverter.Convert(radius);
+                if (lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aplaceioip")]
-        public IBodyWorkflowAction<PIPGetResponse> PIPGet(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null)
+        [WorkflowExpressionFactory(nameof(__BuildPIPGet))]
+        public IBodyWorkflowAction<PIPGetResponse> PIPGet([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null)
         {
-            var apiCallPath = "/pip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-            return new ApiConnectionAction<PIPGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PIPGetResponse> __BuildPIPGet(WorkflowValue<double> lat = null, WorkflowValue<double> lon = null)
+        {
+            WorkflowValue.Validate(lat, nameof(lat), required: false);
+            WorkflowValue.Validate(lon, nameof(lon), required: false);
+            return new DeferredBodyAction<PIPGetResponse>(() =>
+            {
+                var apiCallPath = "/pip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                if (lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                return new ApiConnectionAction<PIPGetResponse>(callPayload);
+            });
         }
     }
 

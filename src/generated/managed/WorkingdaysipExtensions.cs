@@ -4,229 +4,373 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workingdaysip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WorkingdaysipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddWorkingDaysResponse> AddWorkingDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddWorkingDays))]
+        public IBodyWorkflowAction<AddWorkingDaysResponse> AddWorkingDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            var apiCallPath = "/1.2/add_working_days";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
-            callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
-            callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-            if (configuration != null)
-                callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
-            callPayload.Queries["weekend"] = Convert.ToString("1000001");
-            if (weekend != null)
-                callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
-            callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-            if (weekTimes != null)
-                callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-            if (startTemplate != null)
-                callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
-            callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-            if (useCustomConfiguration != null)
-                callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
-            callPayload.Queries["profile_id"] = Convert.ToString("ut");
-            if (profileId != null)
-                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<AddWorkingDaysResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddWorkingDaysResponse> __BuildAddWorkingDays(WorkflowValue<countryCodeInput> countryCode, WorkflowValue<string> startDate, WorkflowValue<string> increment, WorkflowValue<bool> includeStart, WorkflowValue<string> configuration = null, WorkflowValue<string> weekend = null, WorkflowValue<string> weekTimes = null, WorkflowValue<string> startTemplate = null, WorkflowValue<bool> useCustomConfiguration = null, WorkflowValue<string> profileId = null)
+        {
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(increment, nameof(increment), required: true);
+            WorkflowValue.Validate(includeStart, nameof(includeStart), required: true);
+            WorkflowValue.Validate(configuration, nameof(configuration), required: false);
+            WorkflowValue.Validate(weekend, nameof(weekend), required: false);
+            WorkflowValue.Validate(weekTimes, nameof(weekTimes), required: false);
+            WorkflowValue.Validate(startTemplate, nameof(startTemplate), required: false);
+            WorkflowValue.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            WorkflowValue.Validate(profileId, nameof(profileId), required: false);
+            return new DeferredBodyAction<AddWorkingDaysResponse>(() =>
+            {
+                var apiCallPath = "/1.2/add_working_days";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
+                callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
+                callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
+                if (configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                callPayload.Queries["weekend"] = Convert.ToString("1000001");
+                if (weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
+                if (weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
+                if (startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
+                if (useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                callPayload.Queries["profile_id"] = Convert.ToString("ut");
+                if (profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<AddWorkingDaysResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> startTime = null, Expression<Func<string>> endTime = null, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        [WorkflowExpressionFactory(nameof(__BuildAnalyze))]
+        public IBodyWorkflowAction<AnalyzeResponse> Analyze([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> endTime = null, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            var apiCallPath = "/1.2/analyse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            if (startTime != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnalyzeResponse> __BuildAnalyze(WorkflowValue<countryCodeInput> countryCode, WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<string> startTime = null, WorkflowValue<string> endTime = null, WorkflowValue<string> configuration = null, WorkflowValue<string> weekend = null, WorkflowValue<string> weekTimes = null, WorkflowValue<string> startTemplate = null, WorkflowValue<bool> useCustomConfiguration = null, WorkflowValue<string> profileId = null)
+        {
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(startTime, nameof(startTime), required: false);
+            WorkflowValue.Validate(endTime, nameof(endTime), required: false);
+            WorkflowValue.Validate(configuration, nameof(configuration), required: false);
+            WorkflowValue.Validate(weekend, nameof(weekend), required: false);
+            WorkflowValue.Validate(weekTimes, nameof(weekTimes), required: false);
+            WorkflowValue.Validate(startTemplate, nameof(startTemplate), required: false);
+            WorkflowValue.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            WorkflowValue.Validate(profileId, nameof(profileId), required: false);
+            return new DeferredBodyAction<AnalyzeResponse>(() =>
+            {
+                var apiCallPath = "/1.2/analyse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                if (startTime != null)
+                    callPayload.Queries["start_time"] = ExpressionConverter.Convert(startTime);
+                if (endTime != null)
+                    callPayload.Queries["end_time"] = ExpressionConverter.Convert(endTime);
+                callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
+                if (configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                callPayload.Queries["weekend"] = Convert.ToString("1000001");
+                if (weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
+                if (weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
+                if (startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
+                if (useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                callPayload.Queries["profile_id"] = Convert.ToString("ut");
+                if (profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
+        [WorkflowExpressionFactory(nameof(__BuildGetInfoDay))]
+        public IBodyWorkflowAction<GetInfoDayResponse> GetInfoDay([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetInfoDayResponse> __BuildGetInfoDay(WorkflowValue<countryCodeInput> countryCode, WorkflowValue<string> date, WorkflowValue<string> configuration = null, WorkflowValue<string> weekend = null, WorkflowValue<bool> useCustomConfiguration = null, WorkflowValue<string> profileId = null)
+        {
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowValue.Validate(date, nameof(date), required: true);
+            WorkflowValue.Validate(configuration, nameof(configuration), required: false);
+            WorkflowValue.Validate(weekend, nameof(weekend), required: false);
+            WorkflowValue.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            WorkflowValue.Validate(profileId, nameof(profileId), required: false);
+            return new DeferredBodyAction<GetInfoDayResponse>(() =>
+            {
+                var apiCallPath = "/1.2/get_info_day";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["date"] = ExpressionConverter.Convert(date);
+                callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
+                if (configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                callPayload.Queries["weekend"] = Convert.ToString("1000001");
+                if (weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
+                if (useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                callPayload.Queries["profile_id"] = Convert.ToString("ut");
+                if (profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<GetInfoDayResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
+        [WorkflowExpressionFactory(nameof(__BuildListNonWorkingDays))]
+        public IBodyWorkflowAction<ListNonWorkingDaysResponse> ListNonWorkingDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListNonWorkingDaysResponse> __BuildListNonWorkingDays(WorkflowValue<countryCodeInput> countryCode, WorkflowValue<string> startDate, WorkflowValue<string> endDate, WorkflowValue<string> configuration = null, WorkflowValue<string> weekend = null, WorkflowValue<bool> useCustomConfiguration = null, WorkflowValue<string> profileId = null)
+        {
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(endDate, nameof(endDate), required: true);
+            WorkflowValue.Validate(configuration, nameof(configuration), required: false);
+            WorkflowValue.Validate(weekend, nameof(weekend), required: false);
+            WorkflowValue.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            WorkflowValue.Validate(profileId, nameof(profileId), required: false);
+            return new DeferredBodyAction<ListNonWorkingDaysResponse>(() =>
+            {
+                var apiCallPath = "/1.2/list_non_working_days";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
+                callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
+                if (configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                callPayload.Queries["weekend"] = Convert.ToString("1000001");
+                if (weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
+                if (useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                callPayload.Queries["profile_id"] = Convert.ToString("ut");
+                if (profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<ListNonWorkingDaysResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
+        [WorkflowExpressionFactory(nameof(__BuildAddWorkingHours))]
+        public IBodyWorkflowAction<AddWorkingHoursResponse> AddWorkingHours([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> startTime, [WorkflowExpression] Func<string> incrementTime, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddWorkingHoursResponse> __BuildAddWorkingHours(WorkflowValue<countryCodeInput> countryCode, WorkflowValue<string> startDate, WorkflowValue<string> startTime, WorkflowValue<string> incrementTime, WorkflowValue<string> configuration = null, WorkflowValue<string> weekend = null, WorkflowValue<string> weekTimes = null, WorkflowValue<string> startTemplate = null, WorkflowValue<bool> useCustomConfiguration = null, WorkflowValue<string> profileId = null)
+        {
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(startTime, nameof(startTime), required: true);
+            WorkflowValue.Validate(incrementTime, nameof(incrementTime), required: true);
+            WorkflowValue.Validate(configuration, nameof(configuration), required: false);
+            WorkflowValue.Validate(weekend, nameof(weekend), required: false);
+            WorkflowValue.Validate(weekTimes, nameof(weekTimes), required: false);
+            WorkflowValue.Validate(startTemplate, nameof(startTemplate), required: false);
+            WorkflowValue.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            WorkflowValue.Validate(profileId, nameof(profileId), required: false);
+            return new DeferredBodyAction<AddWorkingHoursResponse>(() =>
+            {
+                var apiCallPath = "/1.2/add_working_hours";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
                 callPayload.Queries["start_time"] = ExpressionConverter.Convert(startTime);
-            if (endTime != null)
-                callPayload.Queries["end_time"] = ExpressionConverter.Convert(endTime);
-            callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-            if (configuration != null)
-                callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
-            callPayload.Queries["weekend"] = Convert.ToString("1000001");
-            if (weekend != null)
-                callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
-            callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-            if (weekTimes != null)
-                callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-            if (startTemplate != null)
-                callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
-            callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-            if (useCustomConfiguration != null)
-                callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
-            callPayload.Queries["profile_id"] = Convert.ToString("ut");
-            if (profileId != null)
-                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+                callPayload.Queries["increment_time"] = ExpressionConverter.Convert(incrementTime);
+                callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
+                if (configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                callPayload.Queries["weekend"] = Convert.ToString("1000001");
+                if (weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
+                if (weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
+                if (startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
+                if (useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                callPayload.Queries["profile_id"] = Convert.ToString("ut");
+                if (profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<AddWorkingHoursResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<GetInfoDayResponse> GetInfoDay(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> date, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddPublicHolidays))]
+        public IBodyWorkflowAction<AddPublicHolidaysResponse> AddPublicHolidays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            var apiCallPath = "/1.2/get_info_day";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["date"] = ExpressionConverter.Convert(date);
-            callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-            if (configuration != null)
-                callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
-            callPayload.Queries["weekend"] = Convert.ToString("1000001");
-            if (weekend != null)
-                callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
-            callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-            if (useCustomConfiguration != null)
-                callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
-            callPayload.Queries["profile_id"] = Convert.ToString("ut");
-            if (profileId != null)
-                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<GetInfoDayResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddPublicHolidaysResponse> __BuildAddPublicHolidays(WorkflowValue<countryCodeInput> countryCode, WorkflowValue<string> startDate, WorkflowValue<string> increment, WorkflowValue<bool> includeStart, WorkflowValue<string> configuration = null, WorkflowValue<string> weekend = null, WorkflowValue<string> weekTimes = null, WorkflowValue<string> startTemplate = null, WorkflowValue<bool> useCustomConfiguration = null, WorkflowValue<string> profileId = null)
+        {
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(increment, nameof(increment), required: true);
+            WorkflowValue.Validate(includeStart, nameof(includeStart), required: true);
+            WorkflowValue.Validate(configuration, nameof(configuration), required: false);
+            WorkflowValue.Validate(weekend, nameof(weekend), required: false);
+            WorkflowValue.Validate(weekTimes, nameof(weekTimes), required: false);
+            WorkflowValue.Validate(startTemplate, nameof(startTemplate), required: false);
+            WorkflowValue.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            WorkflowValue.Validate(profileId, nameof(profileId), required: false);
+            return new DeferredBodyAction<AddPublicHolidaysResponse>(() =>
+            {
+                var apiCallPath = "/1.2/add_public_holidays";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
+                callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
+                callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
+                if (configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                callPayload.Queries["weekend"] = Convert.ToString("1000001");
+                if (weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
+                if (weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
+                if (startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
+                if (useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                callPayload.Queries["profile_id"] = Convert.ToString("ut");
+                if (profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<AddPublicHolidaysResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<ListNonWorkingDaysResponse> ListNonWorkingDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> endDate, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddWeekendDays))]
+        public IBodyWorkflowAction<AddWeekendDaysResponse> AddWeekendDays([WorkflowExpression] Func<countryCodeInput> countryCode, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> increment, [WorkflowExpression] Func<bool> includeStart, [WorkflowExpression] Func<string> configuration = null, [WorkflowExpression] Func<string> weekend = null, [WorkflowExpression] Func<string> weekTimes = null, [WorkflowExpression] Func<string> startTemplate = null, [WorkflowExpression] Func<bool> useCustomConfiguration = null, [WorkflowExpression] Func<string> profileId = null)
         {
-            var apiCallPath = "/1.2/list_non_working_days";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["end_date"] = ExpressionConverter.Convert(endDate);
-            callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-            if (configuration != null)
-                callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
-            callPayload.Queries["weekend"] = Convert.ToString("1000001");
-            if (weekend != null)
-                callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
-            callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-            if (useCustomConfiguration != null)
-                callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
-            callPayload.Queries["profile_id"] = Convert.ToString("ut");
-            if (profileId != null)
-                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<ListNonWorkingDaysResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddWeekendDaysResponse> __BuildAddWeekendDays(WorkflowValue<countryCodeInput> countryCode, WorkflowValue<string> startDate, WorkflowValue<string> increment, WorkflowValue<bool> includeStart, WorkflowValue<string> configuration = null, WorkflowValue<string> weekend = null, WorkflowValue<string> weekTimes = null, WorkflowValue<string> startTemplate = null, WorkflowValue<bool> useCustomConfiguration = null, WorkflowValue<string> profileId = null)
+        {
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: true);
+            WorkflowValue.Validate(startDate, nameof(startDate), required: true);
+            WorkflowValue.Validate(increment, nameof(increment), required: true);
+            WorkflowValue.Validate(includeStart, nameof(includeStart), required: true);
+            WorkflowValue.Validate(configuration, nameof(configuration), required: false);
+            WorkflowValue.Validate(weekend, nameof(weekend), required: false);
+            WorkflowValue.Validate(weekTimes, nameof(weekTimes), required: false);
+            WorkflowValue.Validate(startTemplate, nameof(startTemplate), required: false);
+            WorkflowValue.Validate(useCustomConfiguration, nameof(useCustomConfiguration), required: false);
+            WorkflowValue.Validate(profileId, nameof(profileId), required: false);
+            return new DeferredBodyAction<AddWeekendDaysResponse>(() =>
+            {
+                var apiCallPath = "/1.2/add_weekend_days";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
+                callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
+                callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
+                callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
+                callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
+                if (configuration != null)
+                    callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
+                callPayload.Queries["weekend"] = Convert.ToString("1000001");
+                if (weekend != null)
+                    callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
+                callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
+                if (weekTimes != null)
+                    callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
+                if (startTemplate != null)
+                    callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
+                callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
+                if (useCustomConfiguration != null)
+                    callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
+                callPayload.Queries["profile_id"] = Convert.ToString("ut");
+                if (profileId != null)
+                    callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<AddWeekendDaysResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddWorkingHoursResponse> AddWorkingHours(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> startTime, Expression<Func<string>> incrementTime, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddressToConfiguration))]
+        public IBodyWorkflowAction<AddressToConfigurationResponse> AddressToConfiguration([WorkflowExpression] Func<string> address)
         {
-            var apiCallPath = "/1.2/add_working_hours";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["start_time"] = ExpressionConverter.Convert(startTime);
-            callPayload.Queries["increment_time"] = ExpressionConverter.Convert(incrementTime);
-            callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-            if (configuration != null)
-                callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
-            callPayload.Queries["weekend"] = Convert.ToString("1000001");
-            if (weekend != null)
-                callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
-            callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-            if (weekTimes != null)
-                callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-            if (startTemplate != null)
-                callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
-            callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-            if (useCustomConfiguration != null)
-                callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
-            callPayload.Queries["profile_id"] = Convert.ToString("ut");
-            if (profileId != null)
-                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<AddWorkingHoursResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddPublicHolidaysResponse> AddPublicHolidays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddressToConfigurationResponse> __BuildAddressToConfiguration(WorkflowValue<string> address)
         {
-            var apiCallPath = "/1.2/add_public_holidays";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
-            callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
-            callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-            if (configuration != null)
-                callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
-            callPayload.Queries["weekend"] = Convert.ToString("1000001");
-            if (weekend != null)
-                callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
-            callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-            if (weekTimes != null)
-                callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-            if (startTemplate != null)
-                callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
-            callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-            if (useCustomConfiguration != null)
-                callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
-            callPayload.Queries["profile_id"] = Convert.ToString("ut");
-            if (profileId != null)
-                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<AddPublicHolidaysResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddWeekendDaysResponse> AddWeekendDays(Expression<Func<countryCodeInput>> countryCode, Expression<Func<string>> startDate, Expression<Func<string>> increment, Expression<Func<bool>> includeStart, Expression<Func<string>> configuration = null, Expression<Func<string>> weekend = null, Expression<Func<string>> weekTimes = null, Expression<Func<string>> startTemplate = null, Expression<Func<bool>> useCustomConfiguration = null, Expression<Func<string>> profileId = null)
-        {
-            var apiCallPath = "/1.2/add_weekend_days";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = ExpressionConverter.Convert(countryCode);
-            callPayload.Queries["start_date"] = ExpressionConverter.Convert(startDate);
-            callPayload.Queries["increment"] = ExpressionConverter.Convert(increment);
-            callPayload.Queries["include_start"] = ExpressionConverter.Convert(includeStart);
-            callPayload.Queries["configuration"] = Convert.ToString("Federal holidays");
-            if (configuration != null)
-                callPayload.Queries["configuration"] = ExpressionConverter.Convert(configuration);
-            callPayload.Queries["weekend"] = Convert.ToString("1000001");
-            if (weekend != null)
-                callPayload.Queries["weekend"] = ExpressionConverter.Convert(weekend);
-            callPayload.Queries["week_times"] = Convert.ToString("08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*08:00*12:00*14:00*18:00*");
-            if (weekTimes != null)
-                callPayload.Queries["week_times"] = ExpressionConverter.Convert(weekTimes);
-            if (startTemplate != null)
-                callPayload.Queries["start_template"] = ExpressionConverter.Convert(startTemplate);
-            callPayload.Queries["use_custom_configuration"] = Convert.ToString(false);
-            if (useCustomConfiguration != null)
-                callPayload.Queries["use_custom_configuration"] = ExpressionConverter.Convert(useCustomConfiguration);
-            callPayload.Queries["profile_id"] = Convert.ToString("ut");
-            if (profileId != null)
-                callPayload.Queries["profile_id"] = ExpressionConverter.Convert(profileId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<AddWeekendDaysResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]
-        public IBodyWorkflowAction<AddressToConfigurationResponse> AddressToConfiguration(Expression<Func<string>> address)
-        {
-            var apiCallPath = "/1.2/address_to_configuration";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["address"] = ExpressionConverter.Convert(address);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<AddressToConfigurationResponse>(callPayload);
+            WorkflowValue.Validate(address, nameof(address), required: true);
+            return new DeferredBodyAction<AddressToConfigurationResponse>(() =>
+            {
+                var apiCallPath = "/1.2/address_to_configuration";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["address"] = ExpressionConverter.Convert(address);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<AddressToConfigurationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workingdaysip")]

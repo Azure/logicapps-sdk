@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,23 +14,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 
     public class PokaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook(Expression<Func<string>> bodyselectALanguage, Expression<Func<string>> item, Expression<Func<string>> operationName, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
+        public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook([WorkflowExpression] Func<string> bodyselectALanguage, [WorkflowExpression] Func<string> item, [WorkflowExpression] Func<string> operationName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/api/v2.2/web-hooks/register/{0}/{1}/", ExpressionConverter.ConvertWithUrlEncoding(item, 1), ExpressionConverter.ConvertWithUrlEncoding(operationName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodyselectALanguage);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger<WebHookDetail>(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<WebHookDetail> __BuildCreateWebhook(WorkflowValue<string> bodyselectALanguage, WorkflowValue<string> item, WorkflowValue<string> operationName, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodyselectALanguage, nameof(bodyselectALanguage), required: true);
+            WorkflowValue.Validate(item, nameof(item), required: true);
+            WorkflowValue.Validate(operationName, nameof(operationName), required: true);
+            return new DeferredBodyTrigger<WebHookDetail>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", ExpressionConverter.ConvertWithUrlEncoding(item, 1), ExpressionConverter.ConvertWithUrlEncoding(operationName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["language"] = ExpressionConverter.ConvertO(bodyselectALanguage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<WebHookDetail>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

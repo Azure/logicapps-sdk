@@ -4,297 +4,468 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fdic
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FdicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<InstitutionsResponse> SearchInstitutions(Expression<Func<string>> filters = null, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchInstitutions))]
+        public IBodyWorkflowAction<InstitutionsResponse> SearchInstitutions([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/institutions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Queries["sort_by"] = Convert.ToString("NAME");
-            if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
-            callPayload.Queries["sort_order"] = Convert.ToString("ASC");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (download != null)
-                callPayload.Queries["download"] = ExpressionConverter.Convert(download);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            return new ApiConnectionAction<InstitutionsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InstitutionsResponse> __BuildSearchInstitutions(WorkflowValue<string> filters = null, WorkflowValue<string> search = null, WorkflowValue<string> fields = null, WorkflowValue<string> sortBy = null, WorkflowValue<string> sortOrder = null, WorkflowValue<int> limit = null, WorkflowValue<int> offset = null, WorkflowValue<formatInput> format = null, WorkflowValue<bool> download = null, WorkflowValue<string> filename = null)
+        {
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            WorkflowValue.Validate(sortBy, nameof(sortBy), required: false);
+            WorkflowValue.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(format, nameof(format), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<InstitutionsResponse>(() =>
+            {
+                var apiCallPath = "/institutions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["sort_by"] = Convert.ToString("NAME");
+                if (sortBy != null)
+                    callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_order"] = Convert.ToString("ASC");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (download != null)
+                    callPayload.Queries["download"] = ExpressionConverter.Convert(download);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                return new ApiConnectionAction<InstitutionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<LocationsResponse> SearchLocations(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchLocations))]
+        public IBodyWorkflowAction<LocationsResponse> SearchLocations([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/locations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Queries["sort_by"] = Convert.ToString("NAME");
-            if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
-            callPayload.Queries["sort_order"] = Convert.ToString("ASC");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (download != null)
-                callPayload.Queries["download"] = ExpressionConverter.Convert(download);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            return new ApiConnectionAction<LocationsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LocationsResponse> __BuildSearchLocations(WorkflowValue<string> filters = null, WorkflowValue<string> fields = null, WorkflowValue<string> sortBy = null, WorkflowValue<string> sortOrder = null, WorkflowValue<int> limit = null, WorkflowValue<int> offset = null, WorkflowValue<formatInput> format = null, WorkflowValue<bool> download = null, WorkflowValue<string> filename = null)
+        {
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            WorkflowValue.Validate(sortBy, nameof(sortBy), required: false);
+            WorkflowValue.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(format, nameof(format), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<LocationsResponse>(() =>
+            {
+                var apiCallPath = "/locations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["sort_by"] = Convert.ToString("NAME");
+                if (sortBy != null)
+                    callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_order"] = Convert.ToString("ASC");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (download != null)
+                    callPayload.Queries["download"] = ExpressionConverter.Convert(download);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                return new ApiConnectionAction<LocationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<HistoryResponse> GetHistory(Expression<Func<string>> filters = null, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetHistory))]
+        public IBodyWorkflowAction<HistoryResponse> GetHistory([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Queries["sort_by"] = Convert.ToString("PROCDATE");
-            if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
-            callPayload.Queries["sort_order"] = Convert.ToString("ASC");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (aggBy != null)
-                callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
-            if (aggTermFields != null)
-                callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
-            callPayload.Queries["agg_limit"] = Convert.ToString(10);
-            if (aggLimit != null)
-                callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (download != null)
-                callPayload.Queries["download"] = ExpressionConverter.Convert(download);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            return new ApiConnectionAction<HistoryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<HistoryResponse> __BuildGetHistory(WorkflowValue<string> filters = null, WorkflowValue<string> search = null, WorkflowValue<string> fields = null, WorkflowValue<string> sortBy = null, WorkflowValue<string> sortOrder = null, WorkflowValue<int> limit = null, WorkflowValue<int> offset = null, WorkflowValue<string> aggBy = null, WorkflowValue<string> aggTermFields = null, WorkflowValue<int> aggLimit = null, WorkflowValue<formatInput> format = null, WorkflowValue<bool> download = null, WorkflowValue<string> filename = null)
+        {
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            WorkflowValue.Validate(sortBy, nameof(sortBy), required: false);
+            WorkflowValue.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(aggBy, nameof(aggBy), required: false);
+            WorkflowValue.Validate(aggTermFields, nameof(aggTermFields), required: false);
+            WorkflowValue.Validate(aggLimit, nameof(aggLimit), required: false);
+            WorkflowValue.Validate(format, nameof(format), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<HistoryResponse>(() =>
+            {
+                var apiCallPath = "/history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["sort_by"] = Convert.ToString("PROCDATE");
+                if (sortBy != null)
+                    callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_order"] = Convert.ToString("ASC");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (aggBy != null)
+                    callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
+                if (aggTermFields != null)
+                    callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
+                callPayload.Queries["agg_limit"] = Convert.ToString(10);
+                if (aggLimit != null)
+                    callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
+                if (format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (download != null)
+                    callPayload.Queries["download"] = ExpressionConverter.Convert(download);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                return new ApiConnectionAction<HistoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<FinancialsResponse> GetFinancials(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFinancials))]
+        public IBodyWorkflowAction<FinancialsResponse> GetFinancials([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<string> aggSumFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/financials";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Queries["sort_by"] = Convert.ToString("REPDTE");
-            if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
-            callPayload.Queries["sort_order"] = Convert.ToString("ASC");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (aggBy != null)
-                callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
-            if (aggTermFields != null)
-                callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
-            if (aggSumFields != null)
-                callPayload.Queries["agg_sum_fields"] = ExpressionConverter.Convert(aggSumFields);
-            if (aggLimit != null)
-                callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (download != null)
-                callPayload.Queries["download"] = ExpressionConverter.Convert(download);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            return new ApiConnectionAction<FinancialsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FinancialsResponse> __BuildGetFinancials(WorkflowValue<string> filters = null, WorkflowValue<string> fields = null, WorkflowValue<string> sortBy = null, WorkflowValue<string> sortOrder = null, WorkflowValue<int> limit = null, WorkflowValue<int> offset = null, WorkflowValue<string> aggBy = null, WorkflowValue<string> aggTermFields = null, WorkflowValue<string> aggSumFields = null, WorkflowValue<int> aggLimit = null, WorkflowValue<formatInput> format = null, WorkflowValue<bool> download = null, WorkflowValue<string> filename = null)
+        {
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            WorkflowValue.Validate(sortBy, nameof(sortBy), required: false);
+            WorkflowValue.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(aggBy, nameof(aggBy), required: false);
+            WorkflowValue.Validate(aggTermFields, nameof(aggTermFields), required: false);
+            WorkflowValue.Validate(aggSumFields, nameof(aggSumFields), required: false);
+            WorkflowValue.Validate(aggLimit, nameof(aggLimit), required: false);
+            WorkflowValue.Validate(format, nameof(format), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<FinancialsResponse>(() =>
+            {
+                var apiCallPath = "/financials";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["sort_by"] = Convert.ToString("REPDTE");
+                if (sortBy != null)
+                    callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_order"] = Convert.ToString("ASC");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (aggBy != null)
+                    callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
+                if (aggTermFields != null)
+                    callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
+                if (aggSumFields != null)
+                    callPayload.Queries["agg_sum_fields"] = ExpressionConverter.Convert(aggSumFields);
+                if (aggLimit != null)
+                    callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
+                if (format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (download != null)
+                    callPayload.Queries["download"] = ExpressionConverter.Convert(download);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                return new ApiConnectionAction<FinancialsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<SummaryResponse> GetHistorical(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<string>> maxValue = null, Expression<Func<string>> maxValueBy = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetHistorical))]
+        public IBodyWorkflowAction<SummaryResponse> GetHistorical([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<string> aggSumFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<string> maxValue = null, [WorkflowExpression] Func<string> maxValueBy = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/summary";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Queries["sort_by"] = Convert.ToString("YEAR");
-            if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
-            callPayload.Queries["sort_order"] = Convert.ToString("ASC");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (aggBy != null)
-                callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
-            if (aggTermFields != null)
-                callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
-            if (aggSumFields != null)
-                callPayload.Queries["agg_sum_fields"] = ExpressionConverter.Convert(aggSumFields);
-            if (aggLimit != null)
-                callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
-            if (maxValue != null)
-                callPayload.Queries["max_value"] = ExpressionConverter.Convert(maxValue);
-            if (maxValueBy != null)
-                callPayload.Queries["max_value_by"] = ExpressionConverter.Convert(maxValueBy);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (download != null)
-                callPayload.Queries["download"] = ExpressionConverter.Convert(download);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            return new ApiConnectionAction<SummaryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SummaryResponse> __BuildGetHistorical(WorkflowValue<string> filters = null, WorkflowValue<string> fields = null, WorkflowValue<string> sortBy = null, WorkflowValue<string> sortOrder = null, WorkflowValue<int> limit = null, WorkflowValue<int> offset = null, WorkflowValue<string> aggBy = null, WorkflowValue<string> aggTermFields = null, WorkflowValue<string> aggSumFields = null, WorkflowValue<int> aggLimit = null, WorkflowValue<string> maxValue = null, WorkflowValue<string> maxValueBy = null, WorkflowValue<formatInput> format = null, WorkflowValue<bool> download = null, WorkflowValue<string> filename = null)
+        {
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            WorkflowValue.Validate(sortBy, nameof(sortBy), required: false);
+            WorkflowValue.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(aggBy, nameof(aggBy), required: false);
+            WorkflowValue.Validate(aggTermFields, nameof(aggTermFields), required: false);
+            WorkflowValue.Validate(aggSumFields, nameof(aggSumFields), required: false);
+            WorkflowValue.Validate(aggLimit, nameof(aggLimit), required: false);
+            WorkflowValue.Validate(maxValue, nameof(maxValue), required: false);
+            WorkflowValue.Validate(maxValueBy, nameof(maxValueBy), required: false);
+            WorkflowValue.Validate(format, nameof(format), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<SummaryResponse>(() =>
+            {
+                var apiCallPath = "/summary";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["sort_by"] = Convert.ToString("YEAR");
+                if (sortBy != null)
+                    callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_order"] = Convert.ToString("ASC");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (aggBy != null)
+                    callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
+                if (aggTermFields != null)
+                    callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
+                if (aggSumFields != null)
+                    callPayload.Queries["agg_sum_fields"] = ExpressionConverter.Convert(aggSumFields);
+                if (aggLimit != null)
+                    callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
+                if (maxValue != null)
+                    callPayload.Queries["max_value"] = ExpressionConverter.Convert(maxValue);
+                if (maxValueBy != null)
+                    callPayload.Queries["max_value_by"] = ExpressionConverter.Convert(maxValueBy);
+                if (format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (download != null)
+                    callPayload.Queries["download"] = ExpressionConverter.Convert(download);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                return new ApiConnectionAction<SummaryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<FailuresResponse> GetFailures(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> totalFields = null, Expression<Func<string>> subtotalBy = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFailures))]
+        public IBodyWorkflowAction<FailuresResponse> GetFailures([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> totalFields = null, [WorkflowExpression] Func<string> subtotalBy = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<string> aggSumFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/failures";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Queries["sort_by"] = Convert.ToString("FAILDATE");
-            if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
-            callPayload.Queries["sort_order"] = Convert.ToString("ASC");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (totalFields != null)
-                callPayload.Queries["total_fields"] = ExpressionConverter.Convert(totalFields);
-            if (subtotalBy != null)
-                callPayload.Queries["subtotal_by"] = ExpressionConverter.Convert(subtotalBy);
-            if (aggBy != null)
-                callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
-            if (aggTermFields != null)
-                callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
-            if (aggSumFields != null)
-                callPayload.Queries["agg_sum_fields"] = ExpressionConverter.Convert(aggSumFields);
-            callPayload.Queries["agg_limit"] = Convert.ToString(10);
-            if (aggLimit != null)
-                callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (download != null)
-                callPayload.Queries["download"] = ExpressionConverter.Convert(download);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            return new ApiConnectionAction<FailuresResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FailuresResponse> __BuildGetFailures(WorkflowValue<string> filters = null, WorkflowValue<string> fields = null, WorkflowValue<string> sortBy = null, WorkflowValue<string> sortOrder = null, WorkflowValue<int> limit = null, WorkflowValue<int> offset = null, WorkflowValue<string> totalFields = null, WorkflowValue<string> subtotalBy = null, WorkflowValue<string> aggBy = null, WorkflowValue<string> aggTermFields = null, WorkflowValue<string> aggSumFields = null, WorkflowValue<int> aggLimit = null, WorkflowValue<formatInput> format = null, WorkflowValue<bool> download = null, WorkflowValue<string> filename = null)
+        {
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            WorkflowValue.Validate(sortBy, nameof(sortBy), required: false);
+            WorkflowValue.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(totalFields, nameof(totalFields), required: false);
+            WorkflowValue.Validate(subtotalBy, nameof(subtotalBy), required: false);
+            WorkflowValue.Validate(aggBy, nameof(aggBy), required: false);
+            WorkflowValue.Validate(aggTermFields, nameof(aggTermFields), required: false);
+            WorkflowValue.Validate(aggSumFields, nameof(aggSumFields), required: false);
+            WorkflowValue.Validate(aggLimit, nameof(aggLimit), required: false);
+            WorkflowValue.Validate(format, nameof(format), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<FailuresResponse>(() =>
+            {
+                var apiCallPath = "/failures";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["sort_by"] = Convert.ToString("FAILDATE");
+                if (sortBy != null)
+                    callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_order"] = Convert.ToString("ASC");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (totalFields != null)
+                    callPayload.Queries["total_fields"] = ExpressionConverter.Convert(totalFields);
+                if (subtotalBy != null)
+                    callPayload.Queries["subtotal_by"] = ExpressionConverter.Convert(subtotalBy);
+                if (aggBy != null)
+                    callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
+                if (aggTermFields != null)
+                    callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
+                if (aggSumFields != null)
+                    callPayload.Queries["agg_sum_fields"] = ExpressionConverter.Convert(aggSumFields);
+                callPayload.Queries["agg_limit"] = Convert.ToString(10);
+                if (aggLimit != null)
+                    callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
+                if (format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (download != null)
+                    callPayload.Queries["download"] = ExpressionConverter.Convert(download);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                return new ApiConnectionAction<FailuresResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<SodResponse> GetSod(Expression<Func<string>> filters = null, Expression<Func<string>> fields = null, Expression<Func<string>> sortBy = null, Expression<Func<string>> sortOrder = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> aggBy = null, Expression<Func<string>> aggTermFields = null, Expression<Func<string>> aggSumFields = null, Expression<Func<int>> aggLimit = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSod))]
+        public IBodyWorkflowAction<SodResponse> GetSod([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sortBy = null, [WorkflowExpression] Func<string> sortOrder = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> aggBy = null, [WorkflowExpression] Func<string> aggTermFields = null, [WorkflowExpression] Func<string> aggSumFields = null, [WorkflowExpression] Func<int> aggLimit = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/sod";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Queries["sort_by"] = Convert.ToString("YEAR");
-            if (sortBy != null)
-                callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
-            callPayload.Queries["sort_order"] = Convert.ToString("ASC");
-            if (sortOrder != null)
-                callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (aggBy != null)
-                callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
-            if (aggTermFields != null)
-                callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
-            if (aggSumFields != null)
-                callPayload.Queries["agg_sum_fields"] = ExpressionConverter.Convert(aggSumFields);
-            if (aggLimit != null)
-                callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (download != null)
-                callPayload.Queries["download"] = ExpressionConverter.Convert(download);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            return new ApiConnectionAction<SodResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SodResponse> __BuildGetSod(WorkflowValue<string> filters = null, WorkflowValue<string> fields = null, WorkflowValue<string> sortBy = null, WorkflowValue<string> sortOrder = null, WorkflowValue<int> limit = null, WorkflowValue<int> offset = null, WorkflowValue<string> aggBy = null, WorkflowValue<string> aggTermFields = null, WorkflowValue<string> aggSumFields = null, WorkflowValue<int> aggLimit = null, WorkflowValue<formatInput> format = null, WorkflowValue<bool> download = null, WorkflowValue<string> filename = null)
+        {
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            WorkflowValue.Validate(sortBy, nameof(sortBy), required: false);
+            WorkflowValue.Validate(sortOrder, nameof(sortOrder), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(aggBy, nameof(aggBy), required: false);
+            WorkflowValue.Validate(aggTermFields, nameof(aggTermFields), required: false);
+            WorkflowValue.Validate(aggSumFields, nameof(aggSumFields), required: false);
+            WorkflowValue.Validate(aggLimit, nameof(aggLimit), required: false);
+            WorkflowValue.Validate(format, nameof(format), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<SodResponse>(() =>
+            {
+                var apiCallPath = "/sod";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Queries["sort_by"] = Convert.ToString("YEAR");
+                if (sortBy != null)
+                    callPayload.Queries["sort_by"] = ExpressionConverter.Convert(sortBy);
+                callPayload.Queries["sort_order"] = Convert.ToString("ASC");
+                if (sortOrder != null)
+                    callPayload.Queries["sort_order"] = ExpressionConverter.Convert(sortOrder);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (aggBy != null)
+                    callPayload.Queries["agg_by"] = ExpressionConverter.Convert(aggBy);
+                if (aggTermFields != null)
+                    callPayload.Queries["agg_term_fields"] = ExpressionConverter.Convert(aggTermFields);
+                if (aggSumFields != null)
+                    callPayload.Queries["agg_sum_fields"] = ExpressionConverter.Convert(aggSumFields);
+                if (aggLimit != null)
+                    callPayload.Queries["agg_limit"] = ExpressionConverter.Convert(aggLimit);
+                if (format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (download != null)
+                    callPayload.Queries["download"] = ExpressionConverter.Convert(download);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                return new ApiConnectionAction<SodResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fdic")]
-        public IBodyWorkflowAction<DemographicsResponse> GetDemographics(Expression<Func<string>> filters = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> download = null, Expression<Func<string>> filename = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDemographics))]
+        public IBodyWorkflowAction<DemographicsResponse> GetDemographics([WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> download = null, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/demographics";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (format != null)
-                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            if (download != null)
-                callPayload.Queries["download"] = ExpressionConverter.Convert(download);
-            if (filename != null)
-                callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
-            return new ApiConnectionAction<DemographicsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DemographicsResponse> __BuildGetDemographics(WorkflowValue<string> filters = null, WorkflowValue<formatInput> format = null, WorkflowValue<bool> download = null, WorkflowValue<string> filename = null)
+        {
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(format, nameof(format), required: false);
+            WorkflowValue.Validate(download, nameof(download), required: false);
+            WorkflowValue.Validate(filename, nameof(filename), required: false);
+            return new DeferredBodyAction<DemographicsResponse>(() =>
+            {
+                var apiCallPath = "/demographics";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (format != null)
+                    callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                if (download != null)
+                    callPayload.Queries["download"] = ExpressionConverter.Convert(download);
+                if (filename != null)
+                    callPayload.Queries["filename"] = ExpressionConverter.Convert(filename);
+                return new ApiConnectionAction<DemographicsResponse>(callPayload);
+            });
         }
     }
 

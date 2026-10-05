@@ -4,53 +4,88 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Powerform7Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
-        public IWorkflowAction SubmitForm(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, Expression<Func<object>> query = null)
+        [WorkflowExpressionFactory(nameof(__BuildSubmitForm))]
+        public IWorkflowAction SubmitForm([WorkflowExpression] Func<string> wPSITEURL, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<object> query = null)
         {
-            var apiCallPath = String.Format("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
-            callPayload.Body = ExpressionConverter.ConvertO(query);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSubmitForm(WorkflowValue<string> wPSITEURL, WorkflowValue<string> formId, WorkflowValue<object> query = null)
+        {
+            WorkflowValue.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
+            WorkflowValue.Validate(formId, nameof(formId), required: true);
+            WorkflowValue.Validate(query, nameof(query), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
+                callPayload.Body = ExpressionConverter.ConvertO(query);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
-        public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms(Expression<Func<string>> wPSITEURL)
+        [WorkflowExpressionFactory(nameof(__BuildGetCF7Forms))]
+        public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms([WorkflowExpression] Func<string> wPSITEURL)
         {
-            var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
-            return new ApiConnectionAction<GetCF7FormsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCF7FormsResponseItem[]> __BuildGetCF7Forms(WorkflowValue<string> wPSITEURL)
+        {
+            WorkflowValue.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
+            return new DeferredBodyAction<GetCF7FormsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
+                return new ApiConnectionAction<GetCF7FormsResponseItem[]>(callPayload);
+            });
         }
     }
 
     public class Powerform7Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
+        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> wPSITEURL, [WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/proxy/power-form-7/v1/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
-            var callbackUrl = new JObject();
-            var callbackUrlpropCount = 0;
-            callbackUrl["callback_url"] = "@listCallbackUrl()";
-            callbackUrlpropCount++;
-            if (callbackUrlpropCount > 0)
-            {
-                callPayload.Body = callbackUrl;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateWebhook(WorkflowValue<string> wPSITEURL, WorkflowValue<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
+            WorkflowValue.Validate(formId, nameof(formId), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
+                var callbackUrl = new JObject();
+                var callbackUrlpropCount = 0;
+                callbackUrl["callback_url"] = "#{listCallbackUrl()}";
+                callbackUrlpropCount++;
+                if (callbackUrlpropCount > 0)
+                {
+                    callPayload.Body = callbackUrl;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

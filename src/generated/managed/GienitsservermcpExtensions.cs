@@ -4,22 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gienitsservermcp
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GienitsservermcpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gienitsservermcp")]
-        public IBodyWorkflowAction<QueryResponse> GieniTSserver(Expression<Func<string>> sessionId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGieniTSserver))]
+        public IBodyWorkflowAction<QueryResponse> GieniTSserver([WorkflowExpression] Func<string> sessionId = null)
         {
-            var apiCallPath = "/sse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            return new ApiConnectionAction<QueryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<QueryResponse> __BuildGieniTSserver(WorkflowValue<string> sessionId = null)
+        {
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: false);
+            return new DeferredBodyAction<QueryResponse>(() =>
+            {
+                var apiCallPath = "/sse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                return new ApiConnectionAction<QueryResponse>(callPayload);
+            });
         }
     }
 

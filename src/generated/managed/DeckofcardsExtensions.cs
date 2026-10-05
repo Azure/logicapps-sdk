@@ -4,87 +4,173 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deckofcards
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DeckofcardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<CardGetResponse> CardGet(Expression<Func<string>> deckId, Expression<Func<string>> cards, Expression<Func<int>> count = null)
+        [WorkflowExpressionFactory(nameof(__BuildCardGet))]
+        public IBodyWorkflowAction<CardGetResponse> CardGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> cards, [WorkflowExpression] Func<int> count = null)
         {
-            var apiCallPath = String.Format("/deck/{0}/draw/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
-            return new ApiConnectionAction<CardGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<ShuffleGetResponse> ShuffleGet(Expression<Func<int>> deckCount = null, Expression<Func<string>> cards = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CardGetResponse> __BuildCardGet(WorkflowValue<string> deckId, WorkflowValue<string> cards, WorkflowValue<int> count = null)
         {
-            var apiCallPath = "/deck/new/shuffle/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (deckCount != null)
-                callPayload.Queries["deck_count"] = ExpressionConverter.Convert(deckCount);
-            if (cards != null)
+            WorkflowValue.Validate(deckId, nameof(deckId), required: true);
+            WorkflowValue.Validate(cards, nameof(cards), required: true);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            return new DeferredBodyAction<CardGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/draw/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
                 callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
-            return new ApiConnectionAction<ShuffleGetResponse>(callPayload);
+                return new ApiConnectionAction<CardGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<ReshuffleGetResponse> ReshuffleGet(Expression<Func<string>> deckId, Expression<Func<bool>> remaining = null)
+        [WorkflowExpressionFactory(nameof(__BuildShuffleGet))]
+        public IBodyWorkflowAction<ShuffleGetResponse> ShuffleGet([WorkflowExpression] Func<int> deckCount = null, [WorkflowExpression] Func<string> cards = null)
         {
-            var apiCallPath = String.Format("/deck/{0}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (remaining != null)
-                callPayload.Queries["remaining"] = ExpressionConverter.Convert(remaining);
-            return new ApiConnectionAction<ReshuffleGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ShuffleGetResponse> __BuildShuffleGet(WorkflowValue<int> deckCount = null, WorkflowValue<string> cards = null)
+        {
+            WorkflowValue.Validate(deckCount, nameof(deckCount), required: false);
+            WorkflowValue.Validate(cards, nameof(cards), required: false);
+            return new DeferredBodyAction<ShuffleGetResponse>(() =>
+            {
+                var apiCallPath = "/deck/new/shuffle/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (deckCount != null)
+                    callPayload.Queries["deck_count"] = ExpressionConverter.Convert(deckCount);
+                if (cards != null)
+                    callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                return new ApiConnectionAction<ShuffleGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<PileGetResponse> PileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<string>> cards)
+        [WorkflowExpressionFactory(nameof(__BuildReshuffleGet))]
+        public IBodyWorkflowAction<ReshuffleGetResponse> ReshuffleGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<bool> remaining = null)
         {
-            var apiCallPath = String.Format("/deck/{0}/pile/{1}/add/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
-            return new ApiConnectionAction<PileGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReshuffleGetResponse> __BuildReshuffleGet(WorkflowValue<string> deckId, WorkflowValue<bool> remaining = null)
+        {
+            WorkflowValue.Validate(deckId, nameof(deckId), required: true);
+            WorkflowValue.Validate(remaining, nameof(remaining), required: false);
+            return new DeferredBodyAction<ReshuffleGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (remaining != null)
+                    callPayload.Queries["remaining"] = ExpressionConverter.Convert(remaining);
+                return new ApiConnectionAction<ReshuffleGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<ShufflePileGetResponse> ShufflePileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName)
+        [WorkflowExpressionFactory(nameof(__BuildPileGet))]
+        public IBodyWorkflowAction<PileGetResponse> PileGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> pileName, [WorkflowExpression] Func<string> cards)
         {
-            var apiCallPath = String.Format("/deck/{0}/pile/{1}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ShufflePileGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PileGetResponse> __BuildPileGet(WorkflowValue<string> deckId, WorkflowValue<string> pileName, WorkflowValue<string> cards)
+        {
+            WorkflowValue.Validate(deckId, nameof(deckId), required: true);
+            WorkflowValue.Validate(pileName, nameof(pileName), required: true);
+            WorkflowValue.Validate(cards, nameof(cards), required: true);
+            return new DeferredBodyAction<PileGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/add/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                return new ApiConnectionAction<PileGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<DrawPileGetResponse> DrawPileGet(Expression<Func<string>> deckId, Expression<Func<string>> pileName, Expression<Func<int>> count = null)
+        [WorkflowExpressionFactory(nameof(__BuildShufflePileGet))]
+        public IBodyWorkflowAction<ShufflePileGetResponse> ShufflePileGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> pileName)
         {
-            var apiCallPath = String.Format("/deck/{0}/pile/{1}/draw/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            return new ApiConnectionAction<DrawPileGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ShufflePileGetResponse> __BuildShufflePileGet(WorkflowValue<string> deckId, WorkflowValue<string> pileName)
+        {
+            WorkflowValue.Validate(deckId, nameof(deckId), required: true);
+            WorkflowValue.Validate(pileName, nameof(pileName), required: true);
+            return new DeferredBodyAction<ShufflePileGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/shuffle/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ShufflePileGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
-        public IBodyWorkflowAction<ReturnGetResponse> ReturnGet(Expression<Func<string>> deckId, Expression<Func<string>> cards)
+        [WorkflowExpressionFactory(nameof(__BuildDrawPileGet))]
+        public IBodyWorkflowAction<DrawPileGetResponse> DrawPileGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> pileName, [WorkflowExpression] Func<int> count = null)
         {
-            var apiCallPath = String.Format("/deck/{0}/return/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
-            return new ApiConnectionAction<ReturnGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DrawPileGetResponse> __BuildDrawPileGet(WorkflowValue<string> deckId, WorkflowValue<string> pileName, WorkflowValue<int> count = null)
+        {
+            WorkflowValue.Validate(deckId, nameof(deckId), required: true);
+            WorkflowValue.Validate(pileName, nameof(pileName), required: true);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            return new DeferredBodyAction<DrawPileGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/pile/{1}/draw/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1), ExpressionConverter.ConvertWithUrlEncoding(pileName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                return new ApiConnectionAction<DrawPileGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deckofcards")]
+        [WorkflowExpressionFactory(nameof(__BuildReturnGet))]
+        public IBodyWorkflowAction<ReturnGetResponse> ReturnGet([WorkflowExpression] Func<string> deckId, [WorkflowExpression] Func<string> cards)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReturnGetResponse> __BuildReturnGet(WorkflowValue<string> deckId, WorkflowValue<string> cards)
+        {
+            WorkflowValue.Validate(deckId, nameof(deckId), required: true);
+            WorkflowValue.Validate(cards, nameof(cards), required: true);
+            return new DeferredBodyAction<ReturnGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/deck/{0}/return/", ExpressionConverter.ConvertWithUrlEncoding(deckId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["cards"] = ExpressionConverter.Convert(cards);
+                return new ApiConnectionAction<ReturnGetResponse>(callPayload);
+            });
         }
     }
 

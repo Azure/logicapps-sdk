@@ -4,46 +4,79 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SlackActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<SetDNDResponse> SetDND(Expression<Func<string>> numMinutes = null)
+        [WorkflowExpressionFactory(nameof(__BuildSetDND))]
+        public IBodyWorkflowAction<SetDNDResponse> SetDND([WorkflowExpression] Func<string> numMinutes = null)
         {
-            var apiCallPath = "/dnd.setSnooze";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (numMinutes != null)
-                callPayload.Queries["num_minutes"] = ExpressionConverter.Convert(numMinutes);
-            return new ApiConnectionAction<SetDNDResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SetDNDResponse> __BuildSetDND(WorkflowValue<string> numMinutes = null)
+        {
+            WorkflowValue.Validate(numMinutes, nameof(numMinutes), required: false);
+            return new DeferredBodyAction<SetDNDResponse>(() =>
+            {
+                var apiCallPath = "/dnd.setSnooze";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (numMinutes != null)
+                    callPayload.Queries["num_minutes"] = ExpressionConverter.Convert(numMinutes);
+                return new ApiConnectionAction<SetDNDResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<CreateChannelResponse> CreateChannel(Expression<Func<string>> name = null, Expression<Func<bool>> isPrivate = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateChannel))]
+        public IBodyWorkflowAction<CreateChannelResponse> CreateChannel([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<bool> isPrivate = null)
         {
-            var apiCallPath = "/conversations.create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = ExpressionConverter.Convert(name);
-            if (isPrivate != null)
-                callPayload.Queries["is_private"] = ExpressionConverter.Convert(isPrivate);
-            return new ApiConnectionAction<CreateChannelResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateChannelResponse> __BuildCreateChannel(WorkflowValue<string> name = null, WorkflowValue<bool> isPrivate = null)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: false);
+            WorkflowValue.Validate(isPrivate, nameof(isPrivate), required: false);
+            return new DeferredBodyAction<CreateChannelResponse>(() =>
+            {
+                var apiCallPath = "/conversations.create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = ExpressionConverter.Convert(name);
+                if (isPrivate != null)
+                    callPayload.Queries["is_private"] = ExpressionConverter.Convert(isPrivate);
+                return new ApiConnectionAction<CreateChannelResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<JoinChannelResponseV2> JoinChannel(Expression<Func<string>> channel = null)
+        [WorkflowExpressionFactory(nameof(__BuildJoinChannel))]
+        public IBodyWorkflowAction<JoinChannelResponseV2> JoinChannel([WorkflowExpression] Func<string> channel = null)
         {
-            var apiCallPath = "/conversations.join";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (channel != null)
-                callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
-            return new ApiConnectionAction<JoinChannelResponseV2>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JoinChannelResponseV2> __BuildJoinChannel(WorkflowValue<string> channel = null)
+        {
+            WorkflowValue.Validate(channel, nameof(channel), required: false);
+            return new DeferredBodyAction<JoinChannelResponseV2>(() =>
+            {
+                var apiCallPath = "/conversations.join";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (channel != null)
+                    callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
+                return new ApiConnectionAction<JoinChannelResponseV2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
@@ -56,89 +89,121 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "slack")]
-        public IBodyWorkflowAction<PostMessageResponse> PostMessage(Expression<Func<string>> messagechannelName, Expression<Func<string>> messagemessageText, Expression<Func<string>> messagebotName = null, Expression<Func<bool>> messagepostAsUser = null, Expression<Func<messageparseModeInput>> messageparseMode = null, Expression<Func<bool>> messageslackMarkupParsing = null, Expression<Func<int>> messagelinkNames = null, Expression<Func<bool>> messageunfurlLinks = null, Expression<Func<bool>> messageunfurlMedia = null, Expression<Func<string>> messageiconUrl = null, Expression<Func<string>> messageiconEmoji = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostMessage))]
+        public IBodyWorkflowAction<PostMessageResponse> PostMessage([WorkflowExpression] Func<string> messagechannelName, [WorkflowExpression] Func<string> messagemessageText, [WorkflowExpression] Func<string> messagebotName = null, [WorkflowExpression] Func<bool> messagepostAsUser = null, [WorkflowExpression] Func<messageparseModeInput> messageparseMode = null, [WorkflowExpression] Func<bool> messageslackMarkupParsing = null, [WorkflowExpression] Func<int> messagelinkNames = null, [WorkflowExpression] Func<bool> messageunfurlLinks = null, [WorkflowExpression] Func<bool> messageunfurlMedia = null, [WorkflowExpression] Func<string> messageiconUrl = null, [WorkflowExpression] Func<string> messageiconEmoji = null)
         {
-            var apiCallPath = "/v2/chat.postMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var message = new JObject();
-            var messagepropCount = 0;
-            messagepropCount++;
-            message["channel"] = ExpressionConverter.ConvertO(messagechannelName);
-            messagepropCount++;
-            message["text"] = ExpressionConverter.ConvertO(messagemessageText);
-            if (messagebotName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostMessageResponse> __BuildPostMessage(WorkflowValue<string> messagechannelName, WorkflowValue<string> messagemessageText, WorkflowValue<string> messagebotName = null, WorkflowValue<bool> messagepostAsUser = null, WorkflowValue<messageparseModeInput> messageparseMode = null, WorkflowValue<bool> messageslackMarkupParsing = null, WorkflowValue<int> messagelinkNames = null, WorkflowValue<bool> messageunfurlLinks = null, WorkflowValue<bool> messageunfurlMedia = null, WorkflowValue<string> messageiconUrl = null, WorkflowValue<string> messageiconEmoji = null)
+        {
+            WorkflowValue.Validate(messagechannelName, nameof(messagechannelName), required: true);
+            WorkflowValue.Validate(messagemessageText, nameof(messagemessageText), required: true);
+            WorkflowValue.Validate(messagebotName, nameof(messagebotName), required: false);
+            WorkflowValue.Validate(messagepostAsUser, nameof(messagepostAsUser), required: false);
+            WorkflowValue.Validate(messageparseMode, nameof(messageparseMode), required: false);
+            WorkflowValue.Validate(messageslackMarkupParsing, nameof(messageslackMarkupParsing), required: false);
+            WorkflowValue.Validate(messagelinkNames, nameof(messagelinkNames), required: false);
+            WorkflowValue.Validate(messageunfurlLinks, nameof(messageunfurlLinks), required: false);
+            WorkflowValue.Validate(messageunfurlMedia, nameof(messageunfurlMedia), required: false);
+            WorkflowValue.Validate(messageiconUrl, nameof(messageiconUrl), required: false);
+            WorkflowValue.Validate(messageiconEmoji, nameof(messageiconEmoji), required: false);
+            return new DeferredBodyAction<PostMessageResponse>(() =>
             {
-                message["username"] = ExpressionConverter.ConvertO(messagebotName);
+                var apiCallPath = "/v2/chat.postMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var message = new JObject();
+                var messagepropCount = 0;
                 messagepropCount++;
-            }
-
-            if (messagepostAsUser != null)
-            {
-                message["as_user"] = ExpressionConverter.ConvertO(messagepostAsUser);
+                message["channel"] = ExpressionConverter.ConvertO(messagechannelName);
                 messagepropCount++;
-            }
+                message["text"] = ExpressionConverter.ConvertO(messagemessageText);
+                if (messagebotName != null)
+                {
+                    message["username"] = ExpressionConverter.ConvertO(messagebotName);
+                    messagepropCount++;
+                }
 
-            if (messageparseMode != null)
-            {
-                message["parse"] = ExpressionConverter.ConvertO(messageparseMode);
-                messagepropCount++;
-            }
+                if (messagepostAsUser != null)
+                {
+                    message["as_user"] = ExpressionConverter.ConvertO(messagepostAsUser);
+                    messagepropCount++;
+                }
 
-            if (messageslackMarkupParsing != null)
-            {
-                message["mrkdwn"] = ExpressionConverter.ConvertO(messageslackMarkupParsing);
-                messagepropCount++;
-            }
+                if (messageparseMode != null)
+                {
+                    message["parse"] = ExpressionConverter.ConvertO(messageparseMode);
+                    messagepropCount++;
+                }
 
-            if (messagelinkNames != null)
-            {
-                message["link_names"] = ExpressionConverter.ConvertO(messagelinkNames);
-                messagepropCount++;
-            }
+                if (messageslackMarkupParsing != null)
+                {
+                    message["mrkdwn"] = ExpressionConverter.ConvertO(messageslackMarkupParsing);
+                    messagepropCount++;
+                }
 
-            if (messageunfurlLinks != null)
-            {
-                message["unfurl_links"] = ExpressionConverter.ConvertO(messageunfurlLinks);
-                messagepropCount++;
-            }
+                if (messagelinkNames != null)
+                {
+                    message["link_names"] = ExpressionConverter.ConvertO(messagelinkNames);
+                    messagepropCount++;
+                }
 
-            if (messageunfurlMedia != null)
-            {
-                message["unfurl_media"] = ExpressionConverter.ConvertO(messageunfurlMedia);
-                messagepropCount++;
-            }
+                if (messageunfurlLinks != null)
+                {
+                    message["unfurl_links"] = ExpressionConverter.ConvertO(messageunfurlLinks);
+                    messagepropCount++;
+                }
 
-            if (messageiconUrl != null)
-            {
-                message["icon_url"] = ExpressionConverter.ConvertO(messageiconUrl);
-                messagepropCount++;
-            }
+                if (messageunfurlMedia != null)
+                {
+                    message["unfurl_media"] = ExpressionConverter.ConvertO(messageunfurlMedia);
+                    messagepropCount++;
+                }
 
-            if (messageiconEmoji != null)
-            {
-                message["icon_emoji"] = ExpressionConverter.ConvertO(messageiconEmoji);
-                messagepropCount++;
-            }
+                if (messageiconUrl != null)
+                {
+                    message["icon_url"] = ExpressionConverter.ConvertO(messageiconUrl);
+                    messagepropCount++;
+                }
 
-            if (messagepropCount > 0)
-            {
-                callPayload.Body = message;
-            }
+                if (messageiconEmoji != null)
+                {
+                    message["icon_emoji"] = ExpressionConverter.ConvertO(messageiconEmoji);
+                    messagepropCount++;
+                }
 
-            return new ApiConnectionAction<PostMessageResponse>(callPayload);
+                if (messagepropCount > 0)
+                {
+                    callPayload.Body = message;
+                }
+
+                return new ApiConnectionAction<PostMessageResponse>(callPayload);
+            });
         }
     }
 
     public class SlackTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile(Expression<Func<string>> channel, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewFile))]
+        public IBodyWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile([WorkflowExpression] Func<string> channel, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/files.list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
-            return new ApiConnectionTrigger<OnNewFileResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnNewFileResponseItem[]> __BuildOnNewFile(WorkflowValue<string> channel, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(channel, nameof(channel), required: true);
+            return new DeferredBodyTrigger<OnNewFileResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/files.list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
+                return new ApiConnectionTrigger<OnNewFileResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

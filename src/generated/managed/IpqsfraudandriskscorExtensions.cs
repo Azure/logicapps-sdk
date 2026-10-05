@@ -4,47 +4,105 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class IpqsfraudandriskscorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION(Expression<Func<string>> ip, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> userAgent = null, Expression<Func<string>> userLanguage = null, Expression<Func<bool>> fast = null, Expression<Func<bool>> mobile = null, Expression<Func<bool>> allowPublicAccessPoints = null, Expression<Func<bool>> lighterPenalties = null)
+        [WorkflowExpressionFactory(nameof(__BuildIPREPUTATION))]
+        public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> userLanguage = null, [WorkflowExpression] Func<bool> fast = null, [WorkflowExpression] Func<bool> mobile = null, [WorkflowExpression] Func<bool> allowPublicAccessPoints = null, [WorkflowExpression] Func<bool> lighterPenalties = null)
         {
-            var apiCallPath = "/ip";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IPREPUTATIONResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<IPREPUTATIONResponse> __BuildIPREPUTATION(WorkflowValue<string> ip, WorkflowValue<strictnessInput> strictness, WorkflowValue<string> userAgent = null, WorkflowValue<string> userLanguage = null, WorkflowValue<bool> fast = null, WorkflowValue<bool> mobile = null, WorkflowValue<bool> allowPublicAccessPoints = null, WorkflowValue<bool> lighterPenalties = null)
+        {
+            WorkflowValue.Validate(ip, nameof(ip), required: true);
+            WorkflowValue.Validate(strictness, nameof(strictness), required: true);
+            WorkflowValue.Validate(userAgent, nameof(userAgent), required: false);
+            WorkflowValue.Validate(userLanguage, nameof(userLanguage), required: false);
+            WorkflowValue.Validate(fast, nameof(fast), required: false);
+            WorkflowValue.Validate(mobile, nameof(mobile), required: false);
+            WorkflowValue.Validate(allowPublicAccessPoints, nameof(allowPublicAccessPoints), required: false);
+            WorkflowValue.Validate(lighterPenalties, nameof(lighterPenalties), required: false);
+            return new DeferredBodyAction<IPREPUTATIONResponse>(() =>
+            {
+                var apiCallPath = "/ip";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<IPREPUTATIONResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION(Expression<Func<string>> email, Expression<Func<abuseStrictnessInput>> abuseStrictness, Expression<Func<bool>> fast = null, Expression<Func<int>> timeout = null, Expression<Func<bool>> suggestDomain = null)
+        [WorkflowExpressionFactory(nameof(__BuildEMAILREPUTATION))]
+        public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<abuseStrictnessInput> abuseStrictness, [WorkflowExpression] Func<bool> fast = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<bool> suggestDomain = null)
         {
-            var apiCallPath = "/email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EMAILREPUTATIONResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EMAILREPUTATIONResponse> __BuildEMAILREPUTATION(WorkflowValue<string> email, WorkflowValue<abuseStrictnessInput> abuseStrictness, WorkflowValue<bool> fast = null, WorkflowValue<int> timeout = null, WorkflowValue<bool> suggestDomain = null)
+        {
+            WorkflowValue.Validate(email, nameof(email), required: true);
+            WorkflowValue.Validate(abuseStrictness, nameof(abuseStrictness), required: true);
+            WorkflowValue.Validate(fast, nameof(fast), required: false);
+            WorkflowValue.Validate(timeout, nameof(timeout), required: false);
+            WorkflowValue.Validate(suggestDomain, nameof(suggestDomain), required: false);
+            return new DeferredBodyAction<EMAILREPUTATIONResponse>(() =>
+            {
+                var apiCallPath = "/email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<EMAILREPUTATIONResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION(Expression<Func<string>> url, Expression<Func<strictnessInput>> strictness, Expression<Func<bool>> fast = null)
+        [WorkflowExpressionFactory(nameof(__BuildURLREPUTATION))]
+        public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<bool> fast = null)
         {
-            var apiCallPath = "/url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<URLREPUTATIONResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<URLREPUTATIONResponse> __BuildURLREPUTATION(WorkflowValue<string> url, WorkflowValue<strictnessInput> strictness, WorkflowValue<bool> fast = null)
+        {
+            WorkflowValue.Validate(url, nameof(url), required: true);
+            WorkflowValue.Validate(strictness, nameof(strictness), required: true);
+            WorkflowValue.Validate(fast, nameof(fast), required: false);
+            return new DeferredBodyAction<URLREPUTATIONResponse>(() =>
+            {
+                var apiCallPath = "/url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<URLREPUTATIONResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION(Expression<Func<string>> phone, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> country = null)
+        [WorkflowExpressionFactory(nameof(__BuildPHONEREPUTATION))]
+        public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION([WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/phone";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PHONEREPUTATIONResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PHONEREPUTATIONResponse> __BuildPHONEREPUTATION(WorkflowValue<string> phone, WorkflowValue<strictnessInput> strictness, WorkflowValue<string> country = null)
+        {
+            WorkflowValue.Validate(phone, nameof(phone), required: true);
+            WorkflowValue.Validate(strictness, nameof(strictness), required: true);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            return new DeferredBodyAction<PHONEREPUTATIONResponse>(() =>
+            {
+                var apiCallPath = "/phone";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PHONEREPUTATIONResponse>(callPayload);
+            });
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -22,411 +21,680 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> filter, Expression<Func<int>> top, Expression<Func<skipInput>> skip = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetUsers))]
+        public IBodyWorkflowAction<GetUsersResponse> GetUsers([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<int> top, [WorkflowExpression] Func<skipInput> skip = null)
         {
-            var apiCallPath = "/directory/v1/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            callPayload.Queries["$count"] = Convert.ToString(true);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
-            return new ApiConnectionAction<GetUsersResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUsersResponse> __BuildGetUsers(WorkflowValue<string> filter, WorkflowValue<int> top, WorkflowValue<skipInput> skip = null)
+        {
+            WorkflowValue.Validate(filter, nameof(filter), required: true);
+            WorkflowValue.Validate(top, nameof(top), required: true);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            return new DeferredBodyAction<GetUsersResponse>(() =>
+            {
+                var apiCallPath = "/directory/v1/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                callPayload.Queries["$count"] = Convert.ToString(true);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
+                return new ApiConnectionAction<GetUsersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> organizationId, Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<string>> bodyuserPrincipalName = null, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateUser))]
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<bool> bodyaccountEnabled = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodymailNickname = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null, [WorkflowExpression] Func<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, [WorkflowExpression] Func<string> bodypasswordProfilepassword = null)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountEnabled != null)
-            {
-                body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydisplayName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowValue<string> organizationId, WorkflowValue<bool> bodyaccountEnabled = null, WorkflowValue<string> bodydisplayName = null, WorkflowValue<string> bodymailNickname = null, WorkflowValue<string> bodyuserPrincipalName = null, WorkflowValue<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, WorkflowValue<string> bodypasswordProfilepassword = null)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            WorkflowValue.Validate(bodymailNickname, nameof(bodymailNickname), required: false);
+            WorkflowValue.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            WorkflowValue.Validate(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
+            WorkflowValue.Validate(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            return new DeferredBodyAction<CreateUserResponse>(() =>
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountEnabled != null)
+                {
+                    body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
+                    bodypropCount++;
+                }
 
-            if (bodymailNickname != null)
-            {
-                body["mailNickname"] = ExpressionConverter.ConvertO(bodymailNickname);
-                bodypropCount++;
-            }
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodyuserPrincipalName != null)
-            {
-                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
-                bodypropCount++;
-            }
+                if (bodymailNickname != null)
+                {
+                    body["mailNickname"] = ExpressionConverter.ConvertO(bodymailNickname);
+                    bodypropCount++;
+                }
 
-            var passwordProfileObject = new JObject();
-            var passwordProfileObjectpropCount = 0;
-            if (bodypasswordProfileforceChangePasswordNextSignIn != null)
-            {
-                passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(bodypasswordProfileforceChangePasswordNextSignIn);
-                passwordProfileObjectpropCount++;
-            }
+                if (bodyuserPrincipalName != null)
+                {
+                    body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                    bodypropCount++;
+                }
 
-            if (bodypasswordProfilepassword != null)
-            {
-                passwordProfileObject["password"] = ExpressionConverter.ConvertO(bodypasswordProfilepassword);
-                passwordProfileObjectpropCount++;
-            }
+                var passwordProfileObject = new JObject();
+                var passwordProfileObjectpropCount = 0;
+                if (bodypasswordProfileforceChangePasswordNextSignIn != null)
+                {
+                    passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(bodypasswordProfileforceChangePasswordNextSignIn);
+                    passwordProfileObjectpropCount++;
+                }
 
-            if (passwordProfileObjectpropCount > 0)
-            {
-                body["passwordProfile"] = passwordProfileObject;
-                bodypropCount++;
-            }
+                if (bodypasswordProfilepassword != null)
+                {
+                    passwordProfileObject["password"] = ExpressionConverter.ConvertO(bodypasswordProfilepassword);
+                    passwordProfileObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (passwordProfileObjectpropCount > 0)
+                {
+                    body["passwordProfile"] = passwordProfileObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateUserResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetGraphUserResponse> GetGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
+        [WorkflowExpressionFactory(nameof(__BuildGetGraphUser))]
+        public IBodyWorkflowAction<GetGraphUserResponse> GetGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGraphUserResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGraphUserResponse> __BuildGetGraphUser(WorkflowValue<string> organizationId, WorkflowValue<string> microsoftObjectId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            return new DeferredBodyAction<GetGraphUserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetGraphUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction DeleteGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteGraphUser))]
+        public IWorkflowAction DeleteGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteGraphUser(WorkflowValue<string> organizationId, WorkflowValue<string> microsoftObjectId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction PatchGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodygivenName = null, Expression<Func<string>> bodyjobTitle = null, Expression<Func<string>> bodymail = null, Expression<Func<string>> bodymobilePhone = null, Expression<Func<string>> bodyofficeLocation = null, Expression<Func<string>> bodypreferredLanguage = null, Expression<Func<string>> bodysurname = null, Expression<Func<string>> bodyuserPrincipalName = null, Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null)
+        [WorkflowExpressionFactory(nameof(__BuildPatchGraphUser))]
+        public IWorkflowAction PatchGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodygivenName = null, [WorkflowExpression] Func<string> bodyjobTitle = null, [WorkflowExpression] Func<string> bodymail = null, [WorkflowExpression] Func<string> bodymobilePhone = null, [WorkflowExpression] Func<string> bodyofficeLocation = null, [WorkflowExpression] Func<string> bodypreferredLanguage = null, [WorkflowExpression] Func<string> bodysurname = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null, [WorkflowExpression] Func<bool> bodyaccountEnabled = null, [WorkflowExpression] Func<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, [WorkflowExpression] Func<string> bodypasswordProfilepassword = null)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydisplayName != null)
-            {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodygivenName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPatchGraphUser(WorkflowValue<string> organizationId, WorkflowValue<string> microsoftObjectId, WorkflowValue<string> bodydisplayName = null, WorkflowValue<string> bodygivenName = null, WorkflowValue<string> bodyjobTitle = null, WorkflowValue<string> bodymail = null, WorkflowValue<string> bodymobilePhone = null, WorkflowValue<string> bodyofficeLocation = null, WorkflowValue<string> bodypreferredLanguage = null, WorkflowValue<string> bodysurname = null, WorkflowValue<string> bodyuserPrincipalName = null, WorkflowValue<bool> bodyaccountEnabled = null, WorkflowValue<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, WorkflowValue<string> bodypasswordProfilepassword = null)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            WorkflowValue.Validate(bodygivenName, nameof(bodygivenName), required: false);
+            WorkflowValue.Validate(bodyjobTitle, nameof(bodyjobTitle), required: false);
+            WorkflowValue.Validate(bodymail, nameof(bodymail), required: false);
+            WorkflowValue.Validate(bodymobilePhone, nameof(bodymobilePhone), required: false);
+            WorkflowValue.Validate(bodyofficeLocation, nameof(bodyofficeLocation), required: false);
+            WorkflowValue.Validate(bodypreferredLanguage, nameof(bodypreferredLanguage), required: false);
+            WorkflowValue.Validate(bodysurname, nameof(bodysurname), required: false);
+            WorkflowValue.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            WorkflowValue.Validate(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
+            WorkflowValue.Validate(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
+            WorkflowValue.Validate(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["givenName"] = ExpressionConverter.ConvertO(bodygivenName);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodyjobTitle != null)
-            {
-                body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
-                bodypropCount++;
-            }
+                if (bodygivenName != null)
+                {
+                    body["givenName"] = ExpressionConverter.ConvertO(bodygivenName);
+                    bodypropCount++;
+                }
 
-            if (bodymail != null)
-            {
-                body["mail"] = ExpressionConverter.ConvertO(bodymail);
-                bodypropCount++;
-            }
+                if (bodyjobTitle != null)
+                {
+                    body["jobTitle"] = ExpressionConverter.ConvertO(bodyjobTitle);
+                    bodypropCount++;
+                }
 
-            if (bodymobilePhone != null)
-            {
-                body["mobilePhone"] = ExpressionConverter.ConvertO(bodymobilePhone);
-                bodypropCount++;
-            }
+                if (bodymail != null)
+                {
+                    body["mail"] = ExpressionConverter.ConvertO(bodymail);
+                    bodypropCount++;
+                }
 
-            if (bodyofficeLocation != null)
-            {
-                body["officeLocation"] = ExpressionConverter.ConvertO(bodyofficeLocation);
-                bodypropCount++;
-            }
+                if (bodymobilePhone != null)
+                {
+                    body["mobilePhone"] = ExpressionConverter.ConvertO(bodymobilePhone);
+                    bodypropCount++;
+                }
 
-            if (bodypreferredLanguage != null)
-            {
-                body["preferredLanguage"] = ExpressionConverter.ConvertO(bodypreferredLanguage);
-                bodypropCount++;
-            }
+                if (bodyofficeLocation != null)
+                {
+                    body["officeLocation"] = ExpressionConverter.ConvertO(bodyofficeLocation);
+                    bodypropCount++;
+                }
 
-            if (bodysurname != null)
-            {
-                body["surname"] = ExpressionConverter.ConvertO(bodysurname);
-                bodypropCount++;
-            }
+                if (bodypreferredLanguage != null)
+                {
+                    body["preferredLanguage"] = ExpressionConverter.ConvertO(bodypreferredLanguage);
+                    bodypropCount++;
+                }
 
-            if (bodyuserPrincipalName != null)
-            {
-                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
-                bodypropCount++;
-            }
+                if (bodysurname != null)
+                {
+                    body["surname"] = ExpressionConverter.ConvertO(bodysurname);
+                    bodypropCount++;
+                }
 
-            if (bodyaccountEnabled != null)
-            {
-                body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
-                bodypropCount++;
-            }
+                if (bodyuserPrincipalName != null)
+                {
+                    body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                    bodypropCount++;
+                }
 
-            var passwordProfileObject = new JObject();
-            var passwordProfileObjectpropCount = 0;
-            if (bodypasswordProfileforceChangePasswordNextSignIn != null)
-            {
-                passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(bodypasswordProfileforceChangePasswordNextSignIn);
-                passwordProfileObjectpropCount++;
-            }
+                if (bodyaccountEnabled != null)
+                {
+                    body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
+                    bodypropCount++;
+                }
 
-            if (bodypasswordProfilepassword != null)
-            {
-                passwordProfileObject["password"] = ExpressionConverter.ConvertO(bodypasswordProfilepassword);
-                passwordProfileObjectpropCount++;
-            }
+                var passwordProfileObject = new JObject();
+                var passwordProfileObjectpropCount = 0;
+                if (bodypasswordProfileforceChangePasswordNextSignIn != null)
+                {
+                    passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(bodypasswordProfileforceChangePasswordNextSignIn);
+                    passwordProfileObjectpropCount++;
+                }
 
-            if (passwordProfileObjectpropCount > 0)
-            {
-                body["passwordProfile"] = passwordProfileObject;
-                bodypropCount++;
-            }
+                if (bodypasswordProfilepassword != null)
+                {
+                    passwordProfileObject["password"] = ExpressionConverter.ConvertO(bodypasswordProfilepassword);
+                    passwordProfileObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (passwordProfileObjectpropCount > 0)
+                {
+                    body["passwordProfile"] = passwordProfileObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetUserLicenseDetailsResponse> GetUserLicenseDetails(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
+        [WorkflowExpressionFactory(nameof(__BuildGetUserLicenseDetails))]
+        public IBodyWorkflowAction<GetUserLicenseDetailsResponse> GetUserLicenseDetails([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users/{1}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUserLicenseDetailsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetsubscribedSkusResponse> GetsubscribedSkus(Expression<Func<string>> organizationId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUserLicenseDetailsResponse> __BuildGetUserLicenseDetails(WorkflowValue<string> organizationId, WorkflowValue<string> microsoftObjectId)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/subscribedSkus", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetsubscribedSkusResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<PostUserLicenseResponse> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<bodyaddLicensesInputItem[]>> bodyaddLicenses, Expression<Func<string[]>> bodyremoveLicenses = null)
-        {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["addLicenses"] = ExpressionConverter.ConvertO(bodyaddLicenses);
-            if (bodyremoveLicenses != null)
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            return new DeferredBodyAction<GetUserLicenseDetailsResponse>(() =>
             {
-                body["removeLicenses"] = ExpressionConverter.ConvertO(bodyremoveLicenses);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/licenseDetails", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetUserLicenseDetailsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildGetsubscribedSkus))]
+        public IBodyWorkflowAction<GetsubscribedSkusResponse> GetsubscribedSkus([WorkflowExpression] Func<string> organizationId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetsubscribedSkusResponse> __BuildGetsubscribedSkus(WorkflowValue<string> organizationId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            return new DeferredBodyAction<GetsubscribedSkusResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/subscribedSkus", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetsubscribedSkusResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildPostUserLicense))]
+        public IBodyWorkflowAction<PostUserLicenseResponse> PostUserLicense([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<bodyaddLicensesInputItem[]> bodyaddLicenses, [WorkflowExpression] Func<string[]> bodyremoveLicenses = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostUserLicenseResponse> __BuildPostUserLicense(WorkflowValue<string> organizationId, WorkflowValue<string> microsoftObjectId, WorkflowValue<bodyaddLicensesInputItem[]> bodyaddLicenses, WorkflowValue<string[]> bodyremoveLicenses = null)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            WorkflowValue.Validate(bodyaddLicenses, nameof(bodyaddLicenses), required: true);
+            WorkflowValue.Validate(bodyremoveLicenses, nameof(bodyremoveLicenses), required: false);
+            return new DeferredBodyAction<PostUserLicenseResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["addLicenses"] = ExpressionConverter.ConvertO(bodyaddLicenses);
+                if (bodyremoveLicenses != null)
+                {
+                    body["removeLicenses"] = ExpressionConverter.ConvertO(bodyremoveLicenses);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostUserLicenseResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildGetGroups))]
+        public IBodyWorkflowAction<GetGroupsResponse> GetGroups([WorkflowExpression] Func<string> filter)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGroupsResponse> __BuildGetGroups(WorkflowValue<string> filter)
+        {
+            WorkflowValue.Validate(filter, nameof(filter), required: true);
+            return new DeferredBodyAction<GetGroupsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostUserLicenseResponse>(callPayload);
+                var apiCallPath = "/directory/v1/usergroups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
+                return new ApiConnectionAction<GetGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetGroupsResponse> GetGroups(Expression<Func<string>> filter)
+        [WorkflowExpressionFactory(nameof(__BuildUserGroupMembers))]
+        public IBodyWorkflowAction<UserGroupMembersResponse> UserGroupMembers([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId)
         {
-            var apiCallPath = "/directory/v1/usergroups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
-            return new ApiConnectionAction<GetGroupsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<UserGroupMembersResponse> UserGroupMembers(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserGroupMembersResponse> __BuildUserGroupMembers(WorkflowValue<string> organizationId, WorkflowValue<string> userGroupId)
         {
-            var apiCallPath = String.Format("/directory/v1/organizations/{0}/usergroups/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(userGroupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
-            return new ApiConnectionAction<UserGroupMembersResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetADSecurityGroupsResponse> GetADSecurityGroups(Expression<Func<string>> organizationId)
-        {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/groups", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$select"] = Convert.ToString("createdDateTime,displayName,groupTypes,id,securityEnabled");
-            return new ApiConnectionAction<GetADSecurityGroupsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<PostGraphGroupResponse> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodygroupTypes = null, Expression<Func<bool>> bodymailEnabled = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<bool>> bodysecurityEnabled = null)
-        {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/groups", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(userGroupId, nameof(userGroupId), required: true);
+            return new DeferredBodyAction<UserGroupMembersResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(userGroupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
+                return new ApiConnectionAction<UserGroupMembersResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildGetADSecurityGroups))]
+        public IBodyWorkflowAction<GetADSecurityGroupsResponse> GetADSecurityGroups([WorkflowExpression] Func<string> organizationId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetADSecurityGroupsResponse> __BuildGetADSecurityGroups(WorkflowValue<string> organizationId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            return new DeferredBodyAction<GetADSecurityGroupsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$select"] = Convert.ToString("createdDateTime,displayName,groupTypes,id,securityEnabled");
+                return new ApiConnectionAction<GetADSecurityGroupsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildPostGraphGroup))]
+        public IBodyWorkflowAction<PostGraphGroupResponse> PostGraphGroup([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string[]> bodygroupTypes = null, [WorkflowExpression] Func<bool> bodymailEnabled = null, [WorkflowExpression] Func<string> bodymailNickname = null, [WorkflowExpression] Func<bool> bodysecurityEnabled = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostGraphGroupResponse> __BuildPostGraphGroup(WorkflowValue<string> organizationId, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodydisplayName = null, WorkflowValue<string[]> bodygroupTypes = null, WorkflowValue<bool> bodymailEnabled = null, WorkflowValue<string> bodymailNickname = null, WorkflowValue<bool> bodysecurityEnabled = null)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            WorkflowValue.Validate(bodygroupTypes, nameof(bodygroupTypes), required: false);
+            WorkflowValue.Validate(bodymailEnabled, nameof(bodymailEnabled), required: false);
+            WorkflowValue.Validate(bodymailNickname, nameof(bodymailNickname), required: false);
+            WorkflowValue.Validate(bodysecurityEnabled, nameof(bodysecurityEnabled), required: false);
+            return new DeferredBodyAction<PostGraphGroupResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
+
+                if (bodygroupTypes != null)
+                {
+                    body["groupTypes"] = ExpressionConverter.ConvertO(bodygroupTypes);
+                    bodypropCount++;
+                }
+
+                if (bodymailEnabled != null)
+                {
+                    body["mailEnabled"] = ExpressionConverter.ConvertO(bodymailEnabled);
+                    bodypropCount++;
+                }
+
+                if (bodymailNickname != null)
+                {
+                    body["mailNickname"] = ExpressionConverter.ConvertO(bodymailNickname);
+                    bodypropCount++;
+                }
+
+                if (bodysecurityEnabled != null)
+                {
+                    body["securityEnabled"] = ExpressionConverter.ConvertO(bodysecurityEnabled);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostGraphGroupResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildGetGraphDomains))]
+        public IBodyWorkflowAction<GetGraphDomainsResponse> GetGraphDomains([WorkflowExpression] Func<string> organizationId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGraphDomainsResponse> __BuildGetGraphDomains(WorkflowValue<string> organizationId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            return new DeferredBodyAction<GetGraphDomainsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/domains", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetGraphDomainsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteUserGroup))]
+        public IWorkflowAction DeleteUserGroup([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteUserGroup(WorkflowValue<string> organizationId, WorkflowValue<string> userGroupId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(userGroupId, nameof(userGroupId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(userGroupId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteUserGroupMember))]
+        public IWorkflowAction DeleteUserGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId, [WorkflowExpression] Func<string> userId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteUserGroupMember(WorkflowValue<string> organizationId, WorkflowValue<string> userGroupId, WorkflowValue<string> userId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(userGroupId, nameof(userGroupId), required: true);
+            WorkflowValue.Validate(userId, nameof(userId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(userGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildPostUserGroupMember))]
+        public IWorkflowAction PostUserGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId, [WorkflowExpression] Func<string> userId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostUserGroupMember(WorkflowValue<string> organizationId, WorkflowValue<string> userGroupId, WorkflowValue<string> userId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(userGroupId, nameof(userGroupId), required: true);
+            WorkflowValue.Validate(userId, nameof(userId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(userGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildAddGraphGroupMember))]
+        public IWorkflowAction AddGraphGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<string> bodyid)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddGraphGroupMember(WorkflowValue<string> organizationId, WorkflowValue<string> microsoftObjectId, WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["@odata.id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodydisplayName != null)
-            {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-                bodypropCount++;
-            }
-
-            if (bodygroupTypes != null)
-            {
-                body["groupTypes"] = ExpressionConverter.ConvertO(bodygroupTypes);
-                bodypropCount++;
-            }
-
-            if (bodymailEnabled != null)
-            {
-                body["mailEnabled"] = ExpressionConverter.ConvertO(bodymailEnabled);
-                bodypropCount++;
-            }
-
-            if (bodymailNickname != null)
-            {
-                body["mailNickname"] = ExpressionConverter.ConvertO(bodymailNickname);
-                bodypropCount++;
-            }
-
-            if (bodysecurityEnabled != null)
-            {
-                body["securityEnabled"] = ExpressionConverter.ConvertO(bodysecurityEnabled);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostGraphGroupResponse>(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetGraphDomainsResponse> GetGraphDomains(Expression<Func<string>> organizationId)
+        [WorkflowExpressionFactory(nameof(__BuildRemoveGraphGroupMember))]
+        public IWorkflowAction RemoveGraphGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> groupMicrosoftObjectId, [WorkflowExpression] Func<string> userMicrosoftObjectId)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/domains", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGraphDomainsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction DeleteUserGroup(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRemoveGraphGroupMember(WorkflowValue<string> organizationId, WorkflowValue<string> groupMicrosoftObjectId, WorkflowValue<string> userMicrosoftObjectId)
         {
-            var apiCallPath = String.Format("/directory/v1/organizations/{0}/usergroups/{1}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(userGroupId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction DeleteUserGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId, Expression<Func<string>> userId)
-        {
-            var apiCallPath = String.Format("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(userGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction PostUserGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId, Expression<Func<string>> userId)
-        {
-            var apiCallPath = String.Format("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(userGroupId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyid)
-        {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["@odata.id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(groupMicrosoftObjectId, nameof(groupMicrosoftObjectId), required: true);
+            WorkflowValue.Validate(userMicrosoftObjectId, nameof(userMicrosoftObjectId), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(groupMicrosoftObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(userMicrosoftObjectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction RemoveGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> groupMicrosoftObjectId, Expression<Func<string>> userMicrosoftObjectId)
+        [WorkflowExpressionFactory(nameof(__BuildGetSubscriptions))]
+        public IBodyWorkflowAction<GetSubscriptionsResponse> GetSubscriptions([WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> tenantId)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/{2}/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(groupMicrosoftObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(userMicrosoftObjectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetSubscriptionsResponse> GetSubscriptions(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSubscriptionsResponse> __BuildGetSubscriptions(WorkflowValue<string> partnerId, WorkflowValue<string> customerId, WorkflowValue<string> tenantId)
         {
-            var apiCallPath = String.Format("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(partnerId, 1), ExpressionConverter.ConvertWithUrlEncoding(customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSubscriptionsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<int>> bodyquantity = null)
-        {
-            var apiCallPath = String.Format("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", ExpressionConverter.ConvertWithUrlEncoding(partnerId, 1), ExpressionConverter.ConvertWithUrlEncoding(customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1), ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyquantity != null)
+            WorkflowValue.Validate(partnerId, nameof(partnerId), required: true);
+            WorkflowValue.Validate(customerId, nameof(customerId), required: true);
+            WorkflowValue.Validate(tenantId, nameof(tenantId), required: true);
+            return new DeferredBodyAction<GetSubscriptionsResponse>(() =>
             {
-                body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(partnerId, 1), ExpressionConverter.ConvertWithUrlEncoding(customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSubscriptionsResponse>(callPayload);
+            });
+        }
 
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
+        [WorkflowExpressionFactory(nameof(__BuildPatchSubscriptionQuantity))]
+        public IWorkflowAction PatchSubscriptionQuantity([WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<int> bodyquantity = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPatchSubscriptionQuantity(WorkflowValue<string> partnerId, WorkflowValue<string> customerId, WorkflowValue<string> tenantId, WorkflowValue<string> subscriptionId, WorkflowValue<int> bodyquantity = null)
+        {
+            WorkflowValue.Validate(partnerId, nameof(partnerId), required: true);
+            WorkflowValue.Validate(customerId, nameof(customerId), required: true);
+            WorkflowValue.Validate(tenantId, nameof(tenantId), required: true);
+            WorkflowValue.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            WorkflowValue.Validate(bodyquantity, nameof(bodyquantity), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", ExpressionConverter.ConvertWithUrlEncoding(partnerId, 1), ExpressionConverter.ConvertWithUrlEncoding(customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1), ExpressionConverter.ConvertWithUrlEncoding(subscriptionId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyquantity != null)
+                {
+                    body["quantity"] = ExpressionConverter.ConvertO(bodyquantity);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
@@ -440,34 +708,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nablecloudcommander
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IBodyWorkflowAction<GetAssignManagerResponse> GetAssignManager(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
+        [WorkflowExpressionFactory(nameof(__BuildGetAssignManager))]
+        public IBodyWorkflowAction<GetAssignManagerResponse> GetAssignManager([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users/{1}/manager", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAssignManagerResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAssignManagerResponse> __BuildGetAssignManager(WorkflowValue<string> organizationId, WorkflowValue<string> microsoftObjectId)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            return new DeferredBodyAction<GetAssignManagerResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/manager", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAssignManagerResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nablecloudcommander")]
-        public IWorkflowAction PutAssignManager(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyid = null)
+        [WorkflowExpressionFactory(nameof(__BuildPutAssignManager))]
+        public IWorkflowAction PutAssignManager([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<string> bodyid = null)
         {
-            var apiCallPath = String.Format("/graph/v1/organizations/{0}/v1.0/users/{1}/manager/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
-            {
-                body["@odata.id"] = ExpressionConverter.ConvertO(bodyid);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPutAssignManager(WorkflowValue<string> organizationId, WorkflowValue<string> microsoftObjectId, WorkflowValue<string> bodyid = null)
+        {
+            WorkflowValue.Validate(organizationId, nameof(organizationId), required: true);
+            WorkflowValue.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/manager/$ref", ExpressionConverter.ConvertWithUrlEncoding(organizationId, 1), ExpressionConverter.ConvertWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["@odata.id"] = ExpressionConverter.ConvertO(bodyid);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

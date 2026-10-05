@@ -4,33 +4,45 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CioplenuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cioplenu")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> taskDatatitle, Expression<Func<string>> taskDatadescription, Expression<Func<int>> taskDatapriority)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> taskDatatitle, [WorkflowExpression] Func<string> taskDatadescription, [WorkflowExpression] Func<int> taskDatapriority)
         {
-            var apiCallPath = "/task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var taskData = new JObject();
-            var taskDatapropCount = 0;
-            taskDatapropCount++;
-            taskData["title"] = ExpressionConverter.ConvertO(taskDatatitle);
-            taskDatapropCount++;
-            taskData["description"] = ExpressionConverter.ConvertO(taskDatadescription);
-            taskDatapropCount++;
-            taskData["priority"] = ExpressionConverter.ConvertO(taskDatapriority);
-            if (taskDatapropCount > 0)
-            {
-                callPayload.Body = taskData;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowValue<string> taskDatatitle, WorkflowValue<string> taskDatadescription, WorkflowValue<int> taskDatapriority)
+        {
+            WorkflowValue.Validate(taskDatatitle, nameof(taskDatatitle), required: true);
+            WorkflowValue.Validate(taskDatadescription, nameof(taskDatadescription), required: true);
+            WorkflowValue.Validate(taskDatapriority, nameof(taskDatapriority), required: true);
+            return new DeferredBodyAction<CreateTaskResponse>(() =>
+            {
+                var apiCallPath = "/task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var taskData = new JObject();
+                var taskDatapropCount = 0;
+                taskDatapropCount++;
+                taskData["title"] = ExpressionConverter.ConvertO(taskDatatitle);
+                taskDatapropCount++;
+                taskData["description"] = ExpressionConverter.ConvertO(taskDatadescription);
+                taskDatapropCount++;
+                taskData["priority"] = ExpressionConverter.ConvertO(taskDatapriority);
+                if (taskDatapropCount > 0)
+                {
+                    callPayload.Body = taskData;
+                }
+
+                return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            });
         }
     }
 

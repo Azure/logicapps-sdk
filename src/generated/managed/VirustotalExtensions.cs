@@ -4,74 +4,150 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class VirustotalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<UrlResult> VirusTotalGetUrlReport(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildVirusTotalGetUrlReport))]
+        public IBodyWorkflowAction<UrlResult> VirusTotalGetUrlReport([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v3/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UrlResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UrlResult> __BuildVirusTotalGetUrlReport(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<UrlResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/urls/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UrlResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<FilesReport> VirusTotalAnalyesFile(Expression<Func<object>> file)
+        [WorkflowExpressionFactory(nameof(__BuildVirusTotalAnalyesFile))]
+        public IBodyWorkflowAction<FilesReport> VirusTotalAnalyesFile([WorkflowExpression] Func<object> file)
         {
-            var apiCallPath = "/api/v3/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilesReport>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FilesReport> __BuildVirusTotalAnalyesFile(WorkflowValue<object> file)
+        {
+            WorkflowValue.Validate(file, nameof(file), required: true);
+            return new DeferredBodyAction<FilesReport>(() =>
+            {
+                var apiCallPath = "/api/v3/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FilesReport>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<DomainResult> VirusTotalGetDomainReport(Expression<Func<string>> domain)
+        [WorkflowExpressionFactory(nameof(__BuildVirusTotalGetDomainReport))]
+        public IBodyWorkflowAction<DomainResult> VirusTotalGetDomainReport([WorkflowExpression] Func<string> domain)
         {
-            var apiCallPath = String.Format("/api/v3/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DomainResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DomainResult> __BuildVirusTotalGetDomainReport(WorkflowValue<string> domain)
+        {
+            WorkflowValue.Validate(domain, nameof(domain), required: true);
+            return new DeferredBodyAction<DomainResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DomainResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<UrlReport> VirusTotalAnalysisurl(Expression<Func<string>> url)
+        [WorkflowExpressionFactory(nameof(__BuildVirusTotalAnalysisurl))]
+        public IBodyWorkflowAction<UrlReport> VirusTotalAnalysisurl([WorkflowExpression] Func<string> url)
         {
-            var apiCallPath = "/api/v3/urls";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UrlReport>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UrlReport> __BuildVirusTotalAnalysisurl(WorkflowValue<string> url)
+        {
+            WorkflowValue.Validate(url, nameof(url), required: true);
+            return new DeferredBodyAction<UrlReport>(() =>
+            {
+                var apiCallPath = "/api/v3/urls";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UrlReport>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3(Expression<Func<string>> ip)
+        [WorkflowExpressionFactory(nameof(__BuildVirusTotalGetIpScanV3))]
+        public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3([WorkflowExpression] Func<string> ip)
         {
-            var apiCallPath = String.Format("/api/v3/ip_addresses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(ip, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Ip>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Ip> __BuildVirusTotalGetIpScanV3(WorkflowValue<string> ip)
+        {
+            WorkflowValue.Validate(ip, nameof(ip), required: true);
+            return new DeferredBodyAction<Ip>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/ip_addresses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(ip, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Ip>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfo(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildVirusTotalRetrieveInfo))]
+        public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfo([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v3/analyses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Analyses>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Analyses> __BuildVirusTotalRetrieveInfo(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<Analyses>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/analyses/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Analyses>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFile(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildVirusTotalRetrieveInfoaboutFile))]
+        public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFile([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/api/v3/files/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<File>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<File> __BuildVirusTotalRetrieveInfoaboutFile(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<File>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v3/files/connectorV2/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<File>(callPayload);
+            });
         }
     }
 

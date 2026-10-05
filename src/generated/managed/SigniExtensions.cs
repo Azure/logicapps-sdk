@@ -4,211 +4,307 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SigniActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IWorkflowAction RegisterWebhookV2New(Expression<Func<string>> workspaceId, Expression<Func<string>> contractId)
+        [WorkflowExpressionFactory(nameof(__BuildRegisterWebhookV2New))]
+        public IWorkflowAction RegisterWebhookV2New([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> contractId)
         {
-            var apiCallPath = String.Format("/v2/registerwebhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(contractId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRegisterWebhookV2New(WorkflowValue<string> workspaceId, WorkflowValue<string> contractId)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(contractId, nameof(contractId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/registerwebhook/{0}", ExpressionConverter.ConvertWithUrlEncoding(contractId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewResponse> SignContractFromProvidedFileV2New(Expression<Func<string>> workspaceId, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent, Expression<Func<bodypeopleInputItem[]>> bodypeople, Expression<Func<string>> bodycontractNumber = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodysettingsrulesForSendingEMailsAndSignaturesInput>> bodysettingsrulesForSendingEMailsAndSignatures = null, Expression<Func<string>> bodysettingsautosignByProposer = null, Expression<Func<bodysettingsautomaticSignPlacementInput>> bodysettingsautomaticSignPlacement = null)
+        [WorkflowExpressionFactory(nameof(__BuildSignContractFromProvidedFileV2New))]
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewResponse> SignContractFromProvidedFileV2New([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent, [WorkflowExpression] Func<bodypeopleInputItem[]> bodypeople, [WorkflowExpression] Func<string> bodycontractNumber = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodysettingsrulesForSendingEMailsAndSignaturesInput> bodysettingsrulesForSendingEMailsAndSignatures = null, [WorkflowExpression] Func<string> bodysettingsautosignByProposer = null, [WorkflowExpression] Func<bodysettingsautomaticSignPlacementInput> bodysettingsautomaticSignPlacement = null)
         {
-            var apiCallPath = "/v2.1/contract/sign/provided";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            if (bodycontractNumber != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewResponse> __BuildSignContractFromProvidedFileV2New(WorkflowValue<string> workspaceId, WorkflowValue<string> bodyfileName, WorkflowValue<string> bodyfileContent, WorkflowValue<bodypeopleInputItem[]> bodypeople, WorkflowValue<string> bodycontractNumber = null, WorkflowValue<bodylanguageInput> bodylanguage = null, WorkflowValue<bodysettingsrulesForSendingEMailsAndSignaturesInput> bodysettingsrulesForSendingEMailsAndSignatures = null, WorkflowValue<string> bodysettingsautosignByProposer = null, WorkflowValue<bodysettingsautomaticSignPlacementInput> bodysettingsautomaticSignPlacement = null)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            WorkflowValue.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
+            WorkflowValue.Validate(bodypeople, nameof(bodypeople), required: true);
+            WorkflowValue.Validate(bodycontractNumber, nameof(bodycontractNumber), required: false);
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            WorkflowValue.Validate(bodysettingsrulesForSendingEMailsAndSignatures, nameof(bodysettingsrulesForSendingEMailsAndSignatures), required: false);
+            WorkflowValue.Validate(bodysettingsautosignByProposer, nameof(bodysettingsautosignByProposer), required: false);
+            WorkflowValue.Validate(bodysettingsautomaticSignPlacement, nameof(bodysettingsautomaticSignPlacement), required: false);
+            return new DeferredBodyAction<SignContractFromProvidedFileV2NewResponse>(() =>
             {
-                body["number"] = ExpressionConverter.ConvertO(bodycontractNumber);
+                var apiCallPath = "/v2.1/contract/sign/provided";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                if (bodycontractNumber != null)
+                {
+                    body["number"] = ExpressionConverter.ConvertO(bodycontractNumber);
+                    bodypropCount++;
+                }
 
-            if (bodylanguage != null)
-            {
-                body["locale"] = ExpressionConverter.ConvertO(bodylanguage);
+                if (bodylanguage != null)
+                {
+                    body["locale"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["fileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-            bodypropCount++;
-            body["people"] = ExpressionConverter.ConvertO(bodypeople);
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsrulesForSendingEMailsAndSignatures != null)
-            {
-                settingsObject["signing_order"] = ExpressionConverter.ConvertO(bodysettingsrulesForSendingEMailsAndSignatures);
-                settingsObjectpropCount++;
-            }
-
-            if (bodysettingsautosignByProposer != null)
-            {
-                settingsObject["autosign_proposers"] = ExpressionConverter.ConvertO(bodysettingsautosignByProposer);
-                settingsObjectpropCount++;
-            }
-
-            if (bodysettingsautomaticSignPlacement != null)
-            {
-                settingsObject["missing_positions"] = ExpressionConverter.ConvertO(bodysettingsautomaticSignPlacement);
-                settingsObjectpropCount++;
-            }
-
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
+                body["fileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
                 bodypropCount++;
-            }
+                body["people"] = ExpressionConverter.ConvertO(bodypeople);
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (bodysettingsrulesForSendingEMailsAndSignatures != null)
+                {
+                    settingsObject["signing_order"] = ExpressionConverter.ConvertO(bodysettingsrulesForSendingEMailsAndSignatures);
+                    settingsObjectpropCount++;
+                }
 
-            body["file"] = "uploaded_file_key";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysettingsautosignByProposer != null)
+                {
+                    settingsObject["autosign_proposers"] = ExpressionConverter.ConvertO(bodysettingsautosignByProposer);
+                    settingsObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SignContractFromProvidedFileV2NewResponse>(callPayload);
+                if (bodysettingsautomaticSignPlacement != null)
+                {
+                    settingsObject["missing_positions"] = ExpressionConverter.ConvertO(bodysettingsautomaticSignPlacement);
+                    settingsObjectpropCount++;
+                }
+
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
+
+                body["file"] = "uploaded_file_key";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SignContractFromProvidedFileV2NewResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewWaitResponse> SignContractFromProvidedFileV2NewWait(Expression<Func<string>> workspaceId, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfileContent, Expression<Func<bodypeopleInputItem2[]>> bodypeople, Expression<Func<string>> bodycontractNumber = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodysettingsrulesForSendingEMailsAndSignaturesInput>> bodysettingsrulesForSendingEMailsAndSignatures = null, Expression<Func<string>> bodysettingsautosignByProposer = null, Expression<Func<bodysettingsautomaticSignPlacementInput>> bodysettingsautomaticSignPlacement = null)
+        [WorkflowExpressionFactory(nameof(__BuildSignContractFromProvidedFileV2NewWait))]
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewWaitResponse> SignContractFromProvidedFileV2NewWait([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfileContent, [WorkflowExpression] Func<bodypeopleInputItem2[]> bodypeople, [WorkflowExpression] Func<string> bodycontractNumber = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodysettingsrulesForSendingEMailsAndSignaturesInput> bodysettingsrulesForSendingEMailsAndSignatures = null, [WorkflowExpression] Func<string> bodysettingsautosignByProposer = null, [WorkflowExpression] Func<bodysettingsautomaticSignPlacementInput> bodysettingsautomaticSignPlacement = null)
         {
-            var apiCallPath = "/v2.1/contract/sign/provided/wait";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
-            if (bodycontractNumber != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2NewWaitResponse> __BuildSignContractFromProvidedFileV2NewWait(WorkflowValue<string> workspaceId, WorkflowValue<string> bodyfileName, WorkflowValue<string> bodyfileContent, WorkflowValue<bodypeopleInputItem2[]> bodypeople, WorkflowValue<string> bodycontractNumber = null, WorkflowValue<bodylanguageInput> bodylanguage = null, WorkflowValue<bodysettingsrulesForSendingEMailsAndSignaturesInput> bodysettingsrulesForSendingEMailsAndSignatures = null, WorkflowValue<string> bodysettingsautosignByProposer = null, WorkflowValue<bodysettingsautomaticSignPlacementInput> bodysettingsautomaticSignPlacement = null)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            WorkflowValue.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
+            WorkflowValue.Validate(bodypeople, nameof(bodypeople), required: true);
+            WorkflowValue.Validate(bodycontractNumber, nameof(bodycontractNumber), required: false);
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            WorkflowValue.Validate(bodysettingsrulesForSendingEMailsAndSignatures, nameof(bodysettingsrulesForSendingEMailsAndSignatures), required: false);
+            WorkflowValue.Validate(bodysettingsautosignByProposer, nameof(bodysettingsautosignByProposer), required: false);
+            WorkflowValue.Validate(bodysettingsautomaticSignPlacement, nameof(bodysettingsautomaticSignPlacement), required: false);
+            return new DeferredBodyAction<SignContractFromProvidedFileV2NewWaitResponse>(() =>
             {
-                body["number"] = ExpressionConverter.ConvertO(bodycontractNumber);
+                var apiCallPath = "/v2.1/contract/sign/provided/wait";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                body["locale"] = ExpressionConverter.ConvertO(bodylanguage);
                 bodypropCount++;
-            }
+                body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
+                if (bodycontractNumber != null)
+                {
+                    body["number"] = ExpressionConverter.ConvertO(bodycontractNumber);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["fileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
-            bodypropCount++;
-            body["people"] = ExpressionConverter.ConvertO(bodypeople);
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsrulesForSendingEMailsAndSignatures != null)
-            {
-                settingsObject["signing_order"] = ExpressionConverter.ConvertO(bodysettingsrulesForSendingEMailsAndSignatures);
-                settingsObjectpropCount++;
-            }
+                if (bodylanguage != null)
+                {
+                    body["locale"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
 
-            if (bodysettingsautosignByProposer != null)
-            {
-                settingsObject["autosign_proposers"] = ExpressionConverter.ConvertO(bodysettingsautosignByProposer);
-                settingsObjectpropCount++;
-            }
-
-            if (bodysettingsautomaticSignPlacement != null)
-            {
-                settingsObject["missing_positions"] = ExpressionConverter.ConvertO(bodysettingsautomaticSignPlacement);
-                settingsObjectpropCount++;
-            }
-
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
                 bodypropCount++;
-            }
+                body["fileContent"] = ExpressionConverter.ConvertO(bodyfileContent);
+                bodypropCount++;
+                body["people"] = ExpressionConverter.ConvertO(bodypeople);
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (bodysettingsrulesForSendingEMailsAndSignatures != null)
+                {
+                    settingsObject["signing_order"] = ExpressionConverter.ConvertO(bodysettingsrulesForSendingEMailsAndSignatures);
+                    settingsObjectpropCount++;
+                }
 
-            body["file"] = "uploaded_file_key";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysettingsautosignByProposer != null)
+                {
+                    settingsObject["autosign_proposers"] = ExpressionConverter.ConvertO(bodysettingsautosignByProposer);
+                    settingsObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<SignContractFromProvidedFileV2NewWaitResponse>(callPayload);
+                if (bodysettingsautomaticSignPlacement != null)
+                {
+                    settingsObject["missing_positions"] = ExpressionConverter.ConvertO(bodysettingsautomaticSignPlacement);
+                    settingsObjectpropCount++;
+                }
+
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
+
+                body["file"] = "uploaded_file_key";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SignContractFromProvidedFileV2NewWaitResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<GetContractDetailV2Response> GetContractDetail(Expression<Func<string>> workspaceId, Expression<Func<string>> contractId)
+        [WorkflowExpressionFactory(nameof(__BuildGetContractDetail))]
+        public IBodyWorkflowAction<GetContractDetailV2Response> GetContractDetail([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> contractId)
         {
-            var apiCallPath = String.Format("/v2/contract/{0}", ExpressionConverter.ConvertWithUrlEncoding(contractId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            return new ApiConnectionAction<GetContractDetailV2Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<string> GetContractPdf(Expression<Func<string>> workspaceId, Expression<Func<string>> contractId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetContractDetailV2Response> __BuildGetContractDetail(WorkflowValue<string> workspaceId, WorkflowValue<string> contractId)
         {
-            var apiCallPath = String.Format("/v2/contract/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(contractId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<string> GetRevisionListPdf(Expression<Func<string>> workspaceId, Expression<Func<string>> bodycontractID = null)
-        {
-            var apiCallPath = "/v2/contract/revisionList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontractID != null)
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(contractId, nameof(contractId), required: true);
+            return new DeferredBodyAction<GetContractDetailV2Response>(() =>
             {
-                body["contract_id"] = ExpressionConverter.ConvertO(bodycontractID);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/contract/{0}", ExpressionConverter.ConvertWithUrlEncoding(contractId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                return new ApiConnectionAction<GetContractDetailV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<GetTemplatesV2Response> GetTemplates(Expression<Func<string>> workspaceId)
+        [WorkflowExpressionFactory(nameof(__BuildGetContractPdf))]
+        public IBodyWorkflowAction<string> GetContractPdf([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> contractId)
         {
-            var apiCallPath = "/v2/contract/templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            return new ApiConnectionAction<GetTemplatesV2Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetContractPdf(WorkflowValue<string> workspaceId, WorkflowValue<string> contractId)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(contractId, nameof(contractId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/contract/{0}/download", ExpressionConverter.ConvertWithUrlEncoding(contractId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
+        [WorkflowExpressionFactory(nameof(__BuildGetRevisionListPdf))]
+        public IBodyWorkflowAction<string> GetRevisionListPdf([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> bodycontractID = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetRevisionListPdf(WorkflowValue<string> workspaceId, WorkflowValue<string> bodycontractID = null)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(bodycontractID, nameof(bodycontractID), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/v2/contract/revisionList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontractID != null)
+                {
+                    body["contract_id"] = ExpressionConverter.ConvertO(bodycontractID);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTemplates))]
+        public IBodyWorkflowAction<GetTemplatesV2Response> GetTemplates([WorkflowExpression] Func<string> workspaceId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTemplatesV2Response> __BuildGetTemplates(WorkflowValue<string> workspaceId)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            return new DeferredBodyAction<GetTemplatesV2Response>(() =>
+            {
+                var apiCallPath = "/v2/contract/templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                return new ApiConnectionAction<GetTemplatesV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
@@ -221,297 +317,367 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromProvidedFileV2Response> SignContractFromProvidedFile(Expression<Func<string>> workspaceId, Expression<Func<int>> bodysignatureSignerPage, Expression<Func<string>> bodysignerEMail, Expression<Func<bodysignerTypeInput>> bodysignerType, Expression<Func<string>> bodycontractSignDate, Expression<Func<string>> bodyauthorEMail, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodycontractName, Expression<Func<string>> bodysignerPhone, Expression<Func<string>> bodyfile, Expression<Func<string>> bodysignerSurname, Expression<Func<string>> bodysignerFirstName, Expression<Func<int>> bodysignatureSignerX, Expression<Func<bool>> bodysignerShouldSign, Expression<Func<int>> bodysignatureSignerY, Expression<Func<bool>> bodyauthorShouldSign, Expression<Func<int>> bodysignatureAuthorPage = null, Expression<Func<string>> bodysignerDateOfBirth = null, Expression<Func<string>> bodysignerStreet = null, Expression<Func<string>> bodysignerVATID = null, Expression<Func<string>> bodysignerCity = null, Expression<Func<string>> bodysignerCompanyName = null, Expression<Func<int>> bodysignatureAuthorX = null, Expression<Func<string>> bodysignerCompanyID = null, Expression<Func<string>> bodysignerZIP = null, Expression<Func<int>> bodysignatureAuthorY = null, Expression<Func<string>> bodycontractNumber = null, Expression<Func<string>> bodycontractSignLocation = null)
+        [WorkflowExpressionFactory(nameof(__BuildSignContractFromProvidedFile))]
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2Response> SignContractFromProvidedFile([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<int> bodysignatureSignerPage, [WorkflowExpression] Func<string> bodysignerEMail, [WorkflowExpression] Func<bodysignerTypeInput> bodysignerType, [WorkflowExpression] Func<string> bodycontractSignDate, [WorkflowExpression] Func<string> bodyauthorEMail, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodycontractName, [WorkflowExpression] Func<string> bodysignerPhone, [WorkflowExpression] Func<string> bodyfile, [WorkflowExpression] Func<string> bodysignerSurname, [WorkflowExpression] Func<string> bodysignerFirstName, [WorkflowExpression] Func<int> bodysignatureSignerX, [WorkflowExpression] Func<bool> bodysignerShouldSign, [WorkflowExpression] Func<int> bodysignatureSignerY, [WorkflowExpression] Func<bool> bodyauthorShouldSign, [WorkflowExpression] Func<int> bodysignatureAuthorPage = null, [WorkflowExpression] Func<string> bodysignerDateOfBirth = null, [WorkflowExpression] Func<string> bodysignerStreet = null, [WorkflowExpression] Func<string> bodysignerVATID = null, [WorkflowExpression] Func<string> bodysignerCity = null, [WorkflowExpression] Func<string> bodysignerCompanyName = null, [WorkflowExpression] Func<int> bodysignatureAuthorX = null, [WorkflowExpression] Func<string> bodysignerCompanyID = null, [WorkflowExpression] Func<string> bodysignerZIP = null, [WorkflowExpression] Func<int> bodysignatureAuthorY = null, [WorkflowExpression] Func<string> bodycontractNumber = null, [WorkflowExpression] Func<string> bodycontractSignLocation = null)
         {
-            var apiCallPath = "/v2/contract/sign/provided";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sign_negotiator[position][page]"] = ExpressionConverter.ConvertO(bodysignatureSignerPage);
-            bodypropCount++;
-            body["email_signer"] = ExpressionConverter.ConvertO(bodysignerEMail);
-            bodypropCount++;
-            body["person_type"] = ExpressionConverter.ConvertO(bodysignerType);
-            bodypropCount++;
-            body["sign_date"] = ExpressionConverter.ConvertO(bodycontractSignDate);
-            if (bodysignatureAuthorPage != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SignContractFromProvidedFileV2Response> __BuildSignContractFromProvidedFile(WorkflowValue<string> workspaceId, WorkflowValue<int> bodysignatureSignerPage, WorkflowValue<string> bodysignerEMail, WorkflowValue<bodysignerTypeInput> bodysignerType, WorkflowValue<string> bodycontractSignDate, WorkflowValue<string> bodyauthorEMail, WorkflowValue<string> bodyfileName, WorkflowValue<string> bodycontractName, WorkflowValue<string> bodysignerPhone, WorkflowValue<string> bodyfile, WorkflowValue<string> bodysignerSurname, WorkflowValue<string> bodysignerFirstName, WorkflowValue<int> bodysignatureSignerX, WorkflowValue<bool> bodysignerShouldSign, WorkflowValue<int> bodysignatureSignerY, WorkflowValue<bool> bodyauthorShouldSign, WorkflowValue<int> bodysignatureAuthorPage = null, WorkflowValue<string> bodysignerDateOfBirth = null, WorkflowValue<string> bodysignerStreet = null, WorkflowValue<string> bodysignerVATID = null, WorkflowValue<string> bodysignerCity = null, WorkflowValue<string> bodysignerCompanyName = null, WorkflowValue<int> bodysignatureAuthorX = null, WorkflowValue<string> bodysignerCompanyID = null, WorkflowValue<string> bodysignerZIP = null, WorkflowValue<int> bodysignatureAuthorY = null, WorkflowValue<string> bodycontractNumber = null, WorkflowValue<string> bodycontractSignLocation = null)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(bodysignatureSignerPage, nameof(bodysignatureSignerPage), required: true);
+            WorkflowValue.Validate(bodysignerEMail, nameof(bodysignerEMail), required: true);
+            WorkflowValue.Validate(bodysignerType, nameof(bodysignerType), required: true);
+            WorkflowValue.Validate(bodycontractSignDate, nameof(bodycontractSignDate), required: true);
+            WorkflowValue.Validate(bodyauthorEMail, nameof(bodyauthorEMail), required: true);
+            WorkflowValue.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            WorkflowValue.Validate(bodycontractName, nameof(bodycontractName), required: true);
+            WorkflowValue.Validate(bodysignerPhone, nameof(bodysignerPhone), required: true);
+            WorkflowValue.Validate(bodyfile, nameof(bodyfile), required: true);
+            WorkflowValue.Validate(bodysignerSurname, nameof(bodysignerSurname), required: true);
+            WorkflowValue.Validate(bodysignerFirstName, nameof(bodysignerFirstName), required: true);
+            WorkflowValue.Validate(bodysignatureSignerX, nameof(bodysignatureSignerX), required: true);
+            WorkflowValue.Validate(bodysignerShouldSign, nameof(bodysignerShouldSign), required: true);
+            WorkflowValue.Validate(bodysignatureSignerY, nameof(bodysignatureSignerY), required: true);
+            WorkflowValue.Validate(bodyauthorShouldSign, nameof(bodyauthorShouldSign), required: true);
+            WorkflowValue.Validate(bodysignatureAuthorPage, nameof(bodysignatureAuthorPage), required: false);
+            WorkflowValue.Validate(bodysignerDateOfBirth, nameof(bodysignerDateOfBirth), required: false);
+            WorkflowValue.Validate(bodysignerStreet, nameof(bodysignerStreet), required: false);
+            WorkflowValue.Validate(bodysignerVATID, nameof(bodysignerVATID), required: false);
+            WorkflowValue.Validate(bodysignerCity, nameof(bodysignerCity), required: false);
+            WorkflowValue.Validate(bodysignerCompanyName, nameof(bodysignerCompanyName), required: false);
+            WorkflowValue.Validate(bodysignatureAuthorX, nameof(bodysignatureAuthorX), required: false);
+            WorkflowValue.Validate(bodysignerCompanyID, nameof(bodysignerCompanyID), required: false);
+            WorkflowValue.Validate(bodysignerZIP, nameof(bodysignerZIP), required: false);
+            WorkflowValue.Validate(bodysignatureAuthorY, nameof(bodysignatureAuthorY), required: false);
+            WorkflowValue.Validate(bodycontractNumber, nameof(bodycontractNumber), required: false);
+            WorkflowValue.Validate(bodycontractSignLocation, nameof(bodycontractSignLocation), required: false);
+            return new DeferredBodyAction<SignContractFromProvidedFileV2Response>(() =>
             {
-                body["sign_proposer[position][page]"] = ExpressionConverter.ConvertO(bodysignatureAuthorPage);
+                var apiCallPath = "/v2/contract/sign/provided";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysignerDateOfBirth != null)
-            {
-                body["date_of_birth"] = ExpressionConverter.ConvertO(bodysignerDateOfBirth);
+                body["sign_negotiator[position][page]"] = ExpressionConverter.ConvertO(bodysignatureSignerPage);
                 bodypropCount++;
-            }
-
-            body["webhooks[0][state]"] = "signed";
-            bodypropCount++;
-            bodypropCount++;
-            body["email_author"] = ExpressionConverter.ConvertO(bodyauthorEMail);
-            if (bodysignerStreet != null)
-            {
-                body["street"] = ExpressionConverter.ConvertO(bodysignerStreet);
+                body["email_signer"] = ExpressionConverter.ConvertO(bodysignerEMail);
                 bodypropCount++;
-            }
-
-            if (bodysignerVATID != null)
-            {
-                body["dic"] = ExpressionConverter.ConvertO(bodysignerVATID);
+                body["person_type"] = ExpressionConverter.ConvertO(bodysignerType);
                 bodypropCount++;
-            }
+                body["sign_date"] = ExpressionConverter.ConvertO(bodycontractSignDate);
+                if (bodysignatureAuthorPage != null)
+                {
+                    body["sign_proposer[position][page]"] = ExpressionConverter.ConvertO(bodysignatureAuthorPage);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-            body["webhooks[1][url]"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["webhooks[1][state]"] = "rejected";
-            bodypropCount++;
-            bodypropCount++;
-            body["contract_name"] = ExpressionConverter.ConvertO(bodycontractName);
-            if (bodysignerCity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodysignerCity);
+                if (bodysignerDateOfBirth != null)
+                {
+                    body["date_of_birth"] = ExpressionConverter.ConvertO(bodysignerDateOfBirth);
+                    bodypropCount++;
+                }
+
+                body["webhooks[0][state]"] = "signed";
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["phone_signer"] = ExpressionConverter.ConvertO(bodysignerPhone);
-            body["last_document"] = true;
-            bodypropCount++;
-            bodypropCount++;
-            body["file"] = ExpressionConverter.ConvertO(bodyfile);
-            bodypropCount++;
-            body["lastname_signer"] = ExpressionConverter.ConvertO(bodysignerSurname);
-            if (bodysignerCompanyName != null)
-            {
-                body["company_name"] = ExpressionConverter.ConvertO(bodysignerCompanyName);
                 bodypropCount++;
-            }
+                body["email_author"] = ExpressionConverter.ConvertO(bodyauthorEMail);
+                if (bodysignerStreet != null)
+                {
+                    body["street"] = ExpressionConverter.ConvertO(bodysignerStreet);
+                    bodypropCount++;
+                }
 
-            if (bodysignatureAuthorX != null)
-            {
-                body["sign_proposer[position][x]"] = ExpressionConverter.ConvertO(bodysignatureAuthorX);
+                if (bodysignerVATID != null)
+                {
+                    body["dic"] = ExpressionConverter.ConvertO(bodysignerVATID);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["firstname_signer"] = ExpressionConverter.ConvertO(bodysignerFirstName);
-            if (bodysignerCompanyID != null)
-            {
-                body["ic"] = ExpressionConverter.ConvertO(bodysignerCompanyID);
+                body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
+                body["webhooks[1][url]"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
-
-            body["webhooks[0][url]"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodysignerZIP != null)
-            {
-                body["zip_code"] = ExpressionConverter.ConvertO(bodysignerZIP);
+                body["webhooks[1][state]"] = "rejected";
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["sign_negotiator[position][x]"] = ExpressionConverter.ConvertO(bodysignatureSignerX);
-            body["webhooks[2][state]"] = "expired";
-            bodypropCount++;
-            bodypropCount++;
-            body["negotiator_sign"] = ExpressionConverter.ConvertO(bodysignerShouldSign);
-            bodypropCount++;
-            body["sign_negotiator[position][y]"] = ExpressionConverter.ConvertO(bodysignatureSignerY);
-            if (bodysignatureAuthorY != null)
-            {
-                body["sign_proposer[position][y]"] = ExpressionConverter.ConvertO(bodysignatureAuthorY);
                 bodypropCount++;
-            }
+                body["contract_name"] = ExpressionConverter.ConvertO(bodycontractName);
+                if (bodysignerCity != null)
+                {
+                    body["city"] = ExpressionConverter.ConvertO(bodysignerCity);
+                    bodypropCount++;
+                }
 
-            if (bodycontractNumber != null)
-            {
-                body["contract_number"] = ExpressionConverter.ConvertO(bodycontractNumber);
                 bodypropCount++;
-            }
-
-            if (bodycontractSignLocation != null)
-            {
-                body["sign_place"] = ExpressionConverter.ConvertO(bodycontractSignLocation);
+                body["phone_signer"] = ExpressionConverter.ConvertO(bodysignerPhone);
+                body["last_document"] = true;
                 bodypropCount++;
-            }
+                bodypropCount++;
+                body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                bodypropCount++;
+                body["lastname_signer"] = ExpressionConverter.ConvertO(bodysignerSurname);
+                if (bodysignerCompanyName != null)
+                {
+                    body["company_name"] = ExpressionConverter.ConvertO(bodysignerCompanyName);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["proposer_sign"] = ExpressionConverter.ConvertO(bodyauthorShouldSign);
-            body["webhooks[2][url]"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysignatureAuthorX != null)
+                {
+                    body["sign_proposer[position][x]"] = ExpressionConverter.ConvertO(bodysignatureAuthorX);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SignContractFromProvidedFileV2Response>(callPayload);
+                bodypropCount++;
+                body["firstname_signer"] = ExpressionConverter.ConvertO(bodysignerFirstName);
+                if (bodysignerCompanyID != null)
+                {
+                    body["ic"] = ExpressionConverter.ConvertO(bodysignerCompanyID);
+                    bodypropCount++;
+                }
+
+                body["webhooks[0][url]"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodysignerZIP != null)
+                {
+                    body["zip_code"] = ExpressionConverter.ConvertO(bodysignerZIP);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["sign_negotiator[position][x]"] = ExpressionConverter.ConvertO(bodysignatureSignerX);
+                body["webhooks[2][state]"] = "expired";
+                bodypropCount++;
+                bodypropCount++;
+                body["negotiator_sign"] = ExpressionConverter.ConvertO(bodysignerShouldSign);
+                bodypropCount++;
+                body["sign_negotiator[position][y]"] = ExpressionConverter.ConvertO(bodysignatureSignerY);
+                if (bodysignatureAuthorY != null)
+                {
+                    body["sign_proposer[position][y]"] = ExpressionConverter.ConvertO(bodysignatureAuthorY);
+                    bodypropCount++;
+                }
+
+                if (bodycontractNumber != null)
+                {
+                    body["contract_number"] = ExpressionConverter.ConvertO(bodycontractNumber);
+                    bodypropCount++;
+                }
+
+                if (bodycontractSignLocation != null)
+                {
+                    body["sign_place"] = ExpressionConverter.ConvertO(bodycontractSignLocation);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["proposer_sign"] = ExpressionConverter.ConvertO(bodyauthorShouldSign);
+                body["webhooks[2][url]"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SignContractFromProvidedFileV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signi")]
-        public IBodyWorkflowAction<SignContractFromTemplateV2Response> SignContractFromTemplate(Expression<Func<string>> workspaceId, Expression<Func<bodypersonTypeInput>> bodypersonType, Expression<Func<string>> bodyemailSigner, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontractName, Expression<Func<bool>> bodynegotiatorSign, Expression<Func<bool>> bodyproposerSign, Expression<Func<string>> bodyemailAuthor, Expression<Func<string>> bodystreet = null, Expression<Func<string>> bodylastnameSigner = null, Expression<Func<string>> bodycompanyName = null, Expression<Func<string>> bodydic = null, Expression<Func<object>> bodyparameters = null, Expression<Func<string>> bodyic = null, Expression<Func<string>> bodysignDate = null, Expression<Func<string>> bodysignPlace = null, Expression<Func<string>> bodyfirstnameSigner = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodyphoneSigner = null, Expression<Func<string>> bodydateOfBirth = null, Expression<Func<string>> bodyzipCode = null, Expression<Func<string>> bodycontractNumber = null)
+        [WorkflowExpressionFactory(nameof(__BuildSignContractFromTemplate))]
+        public IBodyWorkflowAction<SignContractFromTemplateV2Response> SignContractFromTemplate([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<bodypersonTypeInput> bodypersonType, [WorkflowExpression] Func<string> bodyemailSigner, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodycontractName, [WorkflowExpression] Func<bool> bodynegotiatorSign, [WorkflowExpression] Func<bool> bodyproposerSign, [WorkflowExpression] Func<string> bodyemailAuthor, [WorkflowExpression] Func<string> bodystreet = null, [WorkflowExpression] Func<string> bodylastnameSigner = null, [WorkflowExpression] Func<string> bodycompanyName = null, [WorkflowExpression] Func<string> bodydic = null, [WorkflowExpression] Func<object> bodyparameters = null, [WorkflowExpression] Func<string> bodyic = null, [WorkflowExpression] Func<string> bodysignDate = null, [WorkflowExpression] Func<string> bodysignPlace = null, [WorkflowExpression] Func<string> bodyfirstnameSigner = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodyphoneSigner = null, [WorkflowExpression] Func<string> bodydateOfBirth = null, [WorkflowExpression] Func<string> bodyzipCode = null, [WorkflowExpression] Func<string> bodycontractNumber = null)
         {
-            var apiCallPath = "/v2/contract/sign/template";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystreet != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SignContractFromTemplateV2Response> __BuildSignContractFromTemplate(WorkflowValue<string> workspaceId, WorkflowValue<bodypersonTypeInput> bodypersonType, WorkflowValue<string> bodyemailSigner, WorkflowValue<string> bodytemplateId, WorkflowValue<string> bodycontractName, WorkflowValue<bool> bodynegotiatorSign, WorkflowValue<bool> bodyproposerSign, WorkflowValue<string> bodyemailAuthor, WorkflowValue<string> bodystreet = null, WorkflowValue<string> bodylastnameSigner = null, WorkflowValue<string> bodycompanyName = null, WorkflowValue<string> bodydic = null, WorkflowValue<object> bodyparameters = null, WorkflowValue<string> bodyic = null, WorkflowValue<string> bodysignDate = null, WorkflowValue<string> bodysignPlace = null, WorkflowValue<string> bodyfirstnameSigner = null, WorkflowValue<string> bodycity = null, WorkflowValue<string> bodyphoneSigner = null, WorkflowValue<string> bodydateOfBirth = null, WorkflowValue<string> bodyzipCode = null, WorkflowValue<string> bodycontractNumber = null)
+        {
+            WorkflowValue.Validate(workspaceId, nameof(workspaceId), required: true);
+            WorkflowValue.Validate(bodypersonType, nameof(bodypersonType), required: true);
+            WorkflowValue.Validate(bodyemailSigner, nameof(bodyemailSigner), required: true);
+            WorkflowValue.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
+            WorkflowValue.Validate(bodycontractName, nameof(bodycontractName), required: true);
+            WorkflowValue.Validate(bodynegotiatorSign, nameof(bodynegotiatorSign), required: true);
+            WorkflowValue.Validate(bodyproposerSign, nameof(bodyproposerSign), required: true);
+            WorkflowValue.Validate(bodyemailAuthor, nameof(bodyemailAuthor), required: true);
+            WorkflowValue.Validate(bodystreet, nameof(bodystreet), required: false);
+            WorkflowValue.Validate(bodylastnameSigner, nameof(bodylastnameSigner), required: false);
+            WorkflowValue.Validate(bodycompanyName, nameof(bodycompanyName), required: false);
+            WorkflowValue.Validate(bodydic, nameof(bodydic), required: false);
+            WorkflowValue.Validate(bodyparameters, nameof(bodyparameters), required: false);
+            WorkflowValue.Validate(bodyic, nameof(bodyic), required: false);
+            WorkflowValue.Validate(bodysignDate, nameof(bodysignDate), required: false);
+            WorkflowValue.Validate(bodysignPlace, nameof(bodysignPlace), required: false);
+            WorkflowValue.Validate(bodyfirstnameSigner, nameof(bodyfirstnameSigner), required: false);
+            WorkflowValue.Validate(bodycity, nameof(bodycity), required: false);
+            WorkflowValue.Validate(bodyphoneSigner, nameof(bodyphoneSigner), required: false);
+            WorkflowValue.Validate(bodydateOfBirth, nameof(bodydateOfBirth), required: false);
+            WorkflowValue.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
+            WorkflowValue.Validate(bodycontractNumber, nameof(bodycontractNumber), required: false);
+            return new DeferredBodyAction<SignContractFromTemplateV2Response>(() =>
             {
-                body["street"] = ExpressionConverter.ConvertO(bodystreet);
+                var apiCallPath = "/v2/contract/sign/template";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystreet != null)
+                {
+                    body["street"] = ExpressionConverter.ConvertO(bodystreet);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["person_type"] = ExpressionConverter.ConvertO(bodypersonType);
-            bodypropCount++;
-            body["email_signer"] = ExpressionConverter.ConvertO(bodyemailSigner);
-            if (bodylastnameSigner != null)
-            {
-                body["lastname_signer"] = ExpressionConverter.ConvertO(bodylastnameSigner);
+                body["person_type"] = ExpressionConverter.ConvertO(bodypersonType);
                 bodypropCount++;
-            }
+                body["email_signer"] = ExpressionConverter.ConvertO(bodyemailSigner);
+                if (bodylastnameSigner != null)
+                {
+                    body["lastname_signer"] = ExpressionConverter.ConvertO(bodylastnameSigner);
+                    bodypropCount++;
+                }
 
-            var webhooksObject = new JObject();
-            var webhooksObjectpropCount = 0;
-            var _2Object = new JObject();
-            var _2ObjectpropCount = 0;
-            _2Object["state"] = "expired";
-            _2ObjectpropCount++;
-            _2Object["url"] = "@listCallbackUrl()";
-            _2ObjectpropCount++;
-            if (_2ObjectpropCount > 0)
-            {
-                webhooksObject["2"] = _2Object;
-                webhooksObjectpropCount++;
-            }
+                var webhooksObject = new JObject();
+                var webhooksObjectpropCount = 0;
+                var _2Object = new JObject();
+                var _2ObjectpropCount = 0;
+                _2Object["state"] = "expired";
+                _2ObjectpropCount++;
+                _2Object["url"] = "#{listCallbackUrl()}";
+                _2ObjectpropCount++;
+                if (_2ObjectpropCount > 0)
+                {
+                    webhooksObject["2"] = _2Object;
+                    webhooksObjectpropCount++;
+                }
 
-            var _1Object = new JObject();
-            var _1ObjectpropCount = 0;
-            _1Object["state"] = "rejected";
-            _1ObjectpropCount++;
-            _1Object["url"] = "@listCallbackUrl()";
-            _1ObjectpropCount++;
-            if (_1ObjectpropCount > 0)
-            {
-                webhooksObject["1"] = _1Object;
-                webhooksObjectpropCount++;
-            }
+                var _1Object = new JObject();
+                var _1ObjectpropCount = 0;
+                _1Object["state"] = "rejected";
+                _1ObjectpropCount++;
+                _1Object["url"] = "#{listCallbackUrl()}";
+                _1ObjectpropCount++;
+                if (_1ObjectpropCount > 0)
+                {
+                    webhooksObject["1"] = _1Object;
+                    webhooksObjectpropCount++;
+                }
 
-            var _0Object = new JObject();
-            var _0ObjectpropCount = 0;
-            _0Object["state"] = "signed";
-            _0ObjectpropCount++;
-            _0Object["url"] = "@listCallbackUrl()";
-            _0ObjectpropCount++;
-            if (_0ObjectpropCount > 0)
-            {
-                webhooksObject["0"] = _0Object;
-                webhooksObjectpropCount++;
-            }
+                var _0Object = new JObject();
+                var _0ObjectpropCount = 0;
+                _0Object["state"] = "signed";
+                _0ObjectpropCount++;
+                _0Object["url"] = "#{listCallbackUrl()}";
+                _0ObjectpropCount++;
+                if (_0ObjectpropCount > 0)
+                {
+                    webhooksObject["0"] = _0Object;
+                    webhooksObjectpropCount++;
+                }
 
-            if (webhooksObjectpropCount > 0)
-            {
-                body["webhooks"] = webhooksObject;
+                if (webhooksObjectpropCount > 0)
+                {
+                    body["webhooks"] = webhooksObject;
+                    bodypropCount++;
+                }
+
+                body["last_document"] = true;
                 bodypropCount++;
-            }
+                if (bodycompanyName != null)
+                {
+                    body["company_name"] = ExpressionConverter.ConvertO(bodycompanyName);
+                    bodypropCount++;
+                }
 
-            body["last_document"] = true;
-            bodypropCount++;
-            if (bodycompanyName != null)
-            {
-                body["company_name"] = ExpressionConverter.ConvertO(bodycompanyName);
+                if (bodydic != null)
+                {
+                    body["dic"] = ExpressionConverter.ConvertO(bodydic);
+                    bodypropCount++;
+                }
+
+                if (bodyparameters != null)
+                {
+                    body["parameters"] = ExpressionConverter.ConvertO(bodyparameters);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
+                if (bodyic != null)
+                {
+                    body["ic"] = ExpressionConverter.ConvertO(bodyic);
+                    bodypropCount++;
+                }
 
-            if (bodydic != null)
-            {
-                body["dic"] = ExpressionConverter.ConvertO(bodydic);
+                if (bodysignDate != null)
+                {
+                    body["sign_date"] = ExpressionConverter.ConvertO(bodysignDate);
+                    bodypropCount++;
+                }
+
+                if (bodysignPlace != null)
+                {
+                    body["sign_place"] = ExpressionConverter.ConvertO(bodysignPlace);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyparameters != null)
-            {
-                body["parameters"] = ExpressionConverter.ConvertO(bodyparameters);
+                body["contract_name"] = ExpressionConverter.ConvertO(bodycontractName);
                 bodypropCount++;
-            }
+                body["negotiator_sign"] = ExpressionConverter.ConvertO(bodynegotiatorSign);
+                if (bodyfirstnameSigner != null)
+                {
+                    body["firstname_signer"] = ExpressionConverter.ConvertO(bodyfirstnameSigner);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["template_id"] = ExpressionConverter.ConvertO(bodytemplateId);
-            if (bodyic != null)
-            {
-                body["ic"] = ExpressionConverter.ConvertO(bodyic);
                 bodypropCount++;
-            }
+                body["proposer_sign"] = ExpressionConverter.ConvertO(bodyproposerSign);
+                if (bodycity != null)
+                {
+                    body["city"] = ExpressionConverter.ConvertO(bodycity);
+                    bodypropCount++;
+                }
 
-            if (bodysignDate != null)
-            {
-                body["sign_date"] = ExpressionConverter.ConvertO(bodysignDate);
+                if (bodyphoneSigner != null)
+                {
+                    body["phone_signer"] = ExpressionConverter.ConvertO(bodyphoneSigner);
+                    bodypropCount++;
+                }
+
+                if (bodydateOfBirth != null)
+                {
+                    body["date_of_birth"] = ExpressionConverter.ConvertO(bodydateOfBirth);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycontractNumber != null)
+                {
+                    body["contract_number"] = ExpressionConverter.ConvertO(bodycontractNumber);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["email_author"] = ExpressionConverter.ConvertO(bodyemailAuthor);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodysignPlace != null)
-            {
-                body["sign_place"] = ExpressionConverter.ConvertO(bodysignPlace);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["contract_name"] = ExpressionConverter.ConvertO(bodycontractName);
-            bodypropCount++;
-            body["negotiator_sign"] = ExpressionConverter.ConvertO(bodynegotiatorSign);
-            if (bodyfirstnameSigner != null)
-            {
-                body["firstname_signer"] = ExpressionConverter.ConvertO(bodyfirstnameSigner);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["proposer_sign"] = ExpressionConverter.ConvertO(bodyproposerSign);
-            if (bodycity != null)
-            {
-                body["city"] = ExpressionConverter.ConvertO(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodyphoneSigner != null)
-            {
-                body["phone_signer"] = ExpressionConverter.ConvertO(bodyphoneSigner);
-                bodypropCount++;
-            }
-
-            if (bodydateOfBirth != null)
-            {
-                body["date_of_birth"] = ExpressionConverter.ConvertO(bodydateOfBirth);
-                bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["zip_code"] = ExpressionConverter.ConvertO(bodyzipCode);
-                bodypropCount++;
-            }
-
-            if (bodycontractNumber != null)
-            {
-                body["contract_number"] = ExpressionConverter.ConvertO(bodycontractNumber);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["email_author"] = ExpressionConverter.ConvertO(bodyemailAuthor);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SignContractFromTemplateV2Response>(callPayload);
+                return new ApiConnectionAction<SignContractFromTemplateV2Response>(callPayload);
+            });
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,113 +20,200 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenotepersonalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookPostResponse> Notebook(Expression<Func<string>> bodydisplayName)
+        [WorkflowExpressionFactory(nameof(__BuildNotebook))]
+        public IBodyWorkflowAction<NotebookPostResponse> Notebook([WorkflowExpression] Func<string> bodydisplayName)
         {
-            var apiCallPath = "/notebooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            if (bodypropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NotebookPostResponse> __BuildNotebook(WorkflowValue<string> bodydisplayName)
+        {
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            return new DeferredBodyAction<NotebookPostResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/notebooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<NotebookPostResponse>(callPayload);
+                return new ApiConnectionAction<NotebookPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<NotebookGetAResponse> NotebookGetA(Expression<Func<string>> notebookId)
+        [WorkflowExpressionFactory(nameof(__BuildNotebookGetA))]
+        public IBodyWorkflowAction<NotebookGetAResponse> NotebookGetA([WorkflowExpression] Func<string> notebookId)
         {
-            var apiCallPath = String.Format("/notebooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NotebookGetAResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<SectionGetResponse> SectionGet(Expression<Func<string>> notebookId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NotebookGetAResponse> __BuildNotebookGetA(WorkflowValue<string> notebookId)
         {
-            var apiCallPath = String.Format("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            return new ApiConnectionAction<SectionGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<SectionPostResponse> Section(Expression<Func<string>> notebookId, Expression<Func<string>> bodydisplayName)
-        {
-            var apiCallPath = String.Format("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(notebookId, nameof(notebookId), required: true);
+            return new DeferredBodyAction<NotebookGetAResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SectionPostResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<NotebookGetAResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<PageGetResponse> PageGet(Expression<Func<string>> sectionId, Expression<Func<string>> filter = null, Expression<Func<string>> expand = null, Expression<Func<string>> orderby = null, Expression<Func<string>> search = null, Expression<Func<string>> select = null, Expression<Func<int>> skip = null, Expression<Func<int>> top = null, Expression<Func<bool>> count = null, Expression<Func<string>> skiptoken = null)
+        [WorkflowExpressionFactory(nameof(__BuildSectionGet))]
+        public IBodyWorkflowAction<SectionGetResponse> SectionGet([WorkflowExpression] Func<string> notebookId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<bool> count = null, [WorkflowExpression] Func<string> skiptoken = null)
         {
-            var apiCallPath = String.Format("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(sectionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (expand != null)
-                callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (search != null)
-                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (count != null)
-                callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
-            return new ApiConnectionAction<PageGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SectionGetResponse> __BuildSectionGet(WorkflowValue<string> notebookId, WorkflowValue<string> filter = null, WorkflowValue<string> expand = null, WorkflowValue<string> orderby = null, WorkflowValue<string> search = null, WorkflowValue<string> select = null, WorkflowValue<int> skip = null, WorkflowValue<int> top = null, WorkflowValue<bool> count = null, WorkflowValue<string> skiptoken = null)
+        {
+            WorkflowValue.Validate(notebookId, nameof(notebookId), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(expand, nameof(expand), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(skiptoken, nameof(skiptoken), required: false);
+            return new DeferredBodyAction<SectionGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (search != null)
+                    callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                return new ApiConnectionAction<SectionGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
-        public IBodyWorkflowAction<PagePostResponse> Page(Expression<Func<string>> sectionId, Expression<Func<string>> contentType, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildSection))]
+        public IBodyWorkflowAction<SectionPostResponse> Section([WorkflowExpression] Func<string> notebookId, [WorkflowExpression] Func<string> bodydisplayName)
         {
-            var apiCallPath = String.Format("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(sectionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PagePostResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SectionPostResponse> __BuildSection(WorkflowValue<string> notebookId, WorkflowValue<string> bodydisplayName)
+        {
+            WorkflowValue.Validate(notebookId, nameof(notebookId), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            return new DeferredBodyAction<SectionPostResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/notebooks/{0}/sections", ExpressionConverter.ConvertWithUrlEncoding(notebookId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SectionPostResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
+        [WorkflowExpressionFactory(nameof(__BuildPageGet))]
+        public IBodyWorkflowAction<PageGetResponse> PageGet([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<bool> count = null, [WorkflowExpression] Func<string> skiptoken = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PageGetResponse> __BuildPageGet(WorkflowValue<string> sectionId, WorkflowValue<string> filter = null, WorkflowValue<string> expand = null, WorkflowValue<string> orderby = null, WorkflowValue<string> search = null, WorkflowValue<string> select = null, WorkflowValue<int> skip = null, WorkflowValue<int> top = null, WorkflowValue<bool> count = null, WorkflowValue<string> skiptoken = null)
+        {
+            WorkflowValue.Validate(sectionId, nameof(sectionId), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(expand, nameof(expand), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(skiptoken, nameof(skiptoken), required: false);
+            return new DeferredBodyAction<PageGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(sectionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (expand != null)
+                    callPayload.Queries["$expand"] = ExpressionConverter.Convert(expand);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (search != null)
+                    callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (count != null)
+                    callPayload.Queries["$count"] = ExpressionConverter.Convert(count);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = ExpressionConverter.Convert(skiptoken);
+                return new ApiConnectionAction<PageGetResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "onenotepersonalip")]
+        [WorkflowExpressionFactory(nameof(__BuildPage))]
+        public IBodyWorkflowAction<PagePostResponse> Page([WorkflowExpression] Func<string> sectionId, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PagePostResponse> __BuildPage(WorkflowValue<string> sectionId, WorkflowValue<string> contentType, WorkflowValue<string> body = null)
+        {
+            WorkflowValue.Validate(sectionId, nameof(sectionId), required: true);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PagePostResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/sections/{0}/pages", ExpressionConverter.ConvertWithUrlEncoding(sectionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PagePostResponse>(callPayload);
+            });
         }
     }
 

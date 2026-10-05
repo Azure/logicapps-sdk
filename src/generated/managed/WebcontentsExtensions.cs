@@ -4,55 +4,78 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WebcontentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> path)
+        [WorkflowExpressionFactory(nameof(__BuildGetFileContent))]
+        public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> path)
         {
-            var apiCallPath = "/GetFileContent";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = ExpressionConverter.Convert(path);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetFileContent(WorkflowValue<string> path)
+        {
+            WorkflowValue.Validate(path, nameof(path), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/GetFileContent";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = ExpressionConverter.Convert(path);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        public IBodyWorkflowAction<JToken> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
+        [WorkflowExpressionFactory(nameof(__BuildInvokeHttp))]
+        public IBodyWorkflowAction<JToken> InvokeHttp([WorkflowExpression] Func<requestmethodInput> requestmethod, [WorkflowExpression] Func<string> requesturlOfTheRequest, [WorkflowExpression] Func<string> requestbodyOfTheRequest = null)
         {
-            var apiCallPath = "/codeless/InvokeHttp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["method"] = ExpressionConverter.ConvertO(requestmethod);
-            requestpropCount++;
-            request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildInvokeHttp(WorkflowValue<requestmethodInput> requestmethod, WorkflowValue<string> requesturlOfTheRequest, WorkflowValue<string> requestbodyOfTheRequest = null)
+        {
+            WorkflowValue.Validate(requestmethod, nameof(requestmethod), required: true);
+            WorkflowValue.Validate(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
+            WorkflowValue.Validate(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                request["headers"] = headersObject;
+                var apiCallPath = "/codeless/InvokeHttp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestbodyOfTheRequest != null)
-            {
-                request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                request["method"] = ExpressionConverter.ConvertO(requestmethod);
                 requestpropCount++;
-            }
+                request["url"] = ExpressionConverter.ConvertO(requesturlOfTheRequest);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    request["headers"] = headersObject;
+                    requestpropCount++;
+                }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
+                if (requestbodyOfTheRequest != null)
+                {
+                    request["body"] = ExpressionConverter.ConvertO(requestbodyOfTheRequest);
+                    requestpropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

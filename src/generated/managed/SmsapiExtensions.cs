@@ -4,67 +4,81 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SmsapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsapi")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodygroup = null, Expression<Func<int>> bodyfast = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendSms))]
+        public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodygroup = null, [WorkflowExpression] Func<int> bodyfast = null)
         {
-            var apiCallPath = "/sms.do";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            body["format"] = "json";
-            bodypropCount++;
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfrom != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendSmsResponse> __BuildSendSms(WorkflowValue<string> bodymessage, WorkflowValue<string> bodyto = null, WorkflowValue<string> bodyfrom = null, WorkflowValue<string> bodygroup = null, WorkflowValue<int> bodyfast = null)
+        {
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: true);
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowValue.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowValue.Validate(bodygroup, nameof(bodygroup), required: false);
+            WorkflowValue.Validate(bodyfast, nameof(bodyfast), required: false);
+            return new DeferredBodyAction<SendSmsResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                var apiCallPath = "/sms.do";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            body["encoding"] = "utf-8";
-            bodypropCount++;
-            if (bodygroup != null)
-            {
-                body["group"] = ExpressionConverter.ConvertO(bodygroup);
+                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                body["format"] = "json";
                 bodypropCount++;
-            }
-
-            if (bodyfast != null)
-            {
-                if (bodyfast != null)
+                if (bodyto != null)
                 {
-                    body["fast"] = ExpressionConverter.ConvertO(bodyfast);
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["fast"] = 0;
-                bodypropCount++;
-            }
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                body["encoding"] = "utf-8";
+                bodypropCount++;
+                if (bodygroup != null)
+                {
+                    body["group"] = ExpressionConverter.ConvertO(bodygroup);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendSmsResponse>(callPayload);
+                if (bodyfast != null)
+                {
+                    if (bodyfast != null)
+                    {
+                        body["fast"] = ExpressionConverter.ConvertO(bodyfast);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["fast"] = 0;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            });
         }
     }
 

@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
     using System.Collections;
-    using System.Linq.Expressions;
 
     /// <summary>
     /// Provides factory methods for creating variable actions
@@ -21,14 +20,20 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The type of the variable value.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the initial value.</param>
-        public IVariableWorkflowAction InitializeVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+        [WorkflowExpressionFactory(nameof(__BuildInitializeVariable))]
+        public IVariableWorkflowAction InitializeVariable<T>([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IVariableWorkflowAction __BuildInitializeVariable<T>(WorkflowValue<string> name, WorkflowValue<T> value)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            var nameStr = ExpressionConverter.LiteralName(name);
             var typeStr = InferVariableType(typeof(T));
-            return new InitializeVariableAction(nameStr, typeStr, valueToken);
+            return new DeferredVariableAction(nameStr, () => new InitializeVariableAction(nameStr, typeStr, ExpressionConverter.ConvertO(value)));
         }
 
         /// <summary>
@@ -37,13 +42,19 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The type of the variable value.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the new value.</param>
-        public IVariableWorkflowAction SetVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+        [WorkflowExpressionFactory(nameof(__BuildSetVariable))]
+        public IVariableWorkflowAction SetVariable<T>([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
-            return new SetVariableAction(nameStr, valueToken);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IVariableWorkflowAction __BuildSetVariable<T>(WorkflowValue<string> name, WorkflowValue<T> value)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            var nameStr = ExpressionConverter.LiteralName(name);
+            return new DeferredVariableAction(nameStr, () => new SetVariableAction(nameStr, ExpressionConverter.ConvertO(value)));
         }
 
         /// <summary>
@@ -52,13 +63,19 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The numeric type of the increment value.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the increment value.</param>
-        public IVariableWorkflowAction IncrementVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+        [WorkflowExpressionFactory(nameof(__BuildIncrementVariable))]
+        public IVariableWorkflowAction IncrementVariable<T>([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
-            return new IncrementVariableAction(nameStr, valueToken);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IVariableWorkflowAction __BuildIncrementVariable<T>(WorkflowValue<string> name, WorkflowValue<T> value)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            var nameStr = ExpressionConverter.LiteralName(name);
+            return new DeferredVariableAction(nameStr, () => new IncrementVariableAction(nameStr, ExpressionConverter.ConvertO(value)));
         }
 
         /// <summary>
@@ -67,13 +84,19 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The numeric type of the decrement value.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the decrement value.</param>
-        public IVariableWorkflowAction DecrementVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+        [WorkflowExpressionFactory(nameof(__BuildDecrementVariable))]
+        public IVariableWorkflowAction DecrementVariable<T>([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
-            return new DecrementVariableAction(nameStr, valueToken);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IVariableWorkflowAction __BuildDecrementVariable<T>(WorkflowValue<string> name, WorkflowValue<T> value)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            var nameStr = ExpressionConverter.LiteralName(name);
+            return new DeferredVariableAction(nameStr, () => new DecrementVariableAction(nameStr, ExpressionConverter.ConvertO(value)));
         }
 
         /// <summary>
@@ -81,13 +104,19 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the string to append.</param>
-        public IVariableWorkflowAction AppendToStringVariable(
-            Expression<Func<string>> name,
-            Expression<Func<string>> value)
+        [WorkflowExpressionFactory(nameof(__BuildAppendToStringVariable))]
+        public IVariableWorkflowAction AppendToStringVariable([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
-            return new AppendToStringVariableAction(nameStr, valueToken);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IVariableWorkflowAction __BuildAppendToStringVariable(WorkflowValue<string> name, WorkflowValue<string> value)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            var nameStr = ExpressionConverter.LiteralName(name);
+            return new DeferredVariableAction(nameStr, () => new AppendToStringVariableAction(nameStr, ExpressionConverter.ConvertO(value)));
         }
 
         /// <summary>
@@ -96,13 +125,19 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <typeparam name="T">The type of the value to append.</typeparam>
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the value to append.</param>
-        public IVariableWorkflowAction AppendToArrayVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+        [WorkflowExpressionFactory(nameof(__BuildAppendToArrayVariable))]
+        public IVariableWorkflowAction AppendToArrayVariable<T>([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
-            return new AppendToArrayVariableAction(nameStr, valueToken);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IVariableWorkflowAction __BuildAppendToArrayVariable<T>(WorkflowValue<string> name, WorkflowValue<T> value)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            var nameStr = ExpressionConverter.LiteralName(name);
+            return new DeferredVariableAction(nameStr, () => new AppendToArrayVariableAction(nameStr, ExpressionConverter.ConvertO(value)));
         }
 
         /// <summary>

@@ -4,37 +4,50 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class IntellihrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
-        public IBodyWorkflowAction<SingleJob> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
+        [WorkflowExpressionFactory(nameof(__BuildEndJob))]
+        public IBodyWorkflowAction<SingleJob> EndJob([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string> bodyturnoverType, [WorkflowExpression] Func<string> bodyturnoverReason = null)
         {
-            var apiCallPath = String.Format("/job-end/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
-            bodypropCount++;
-            body["turnoverType"] = ExpressionConverter.ConvertO(bodyturnoverType);
-            if (bodyturnoverReason != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SingleJob> __BuildEndJob(WorkflowValue<string> id, WorkflowValue<string> bodyendDate, WorkflowValue<string> bodyturnoverType, WorkflowValue<string> bodyturnoverReason = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(bodyendDate, nameof(bodyendDate), required: true);
+            WorkflowValue.Validate(bodyturnoverType, nameof(bodyturnoverType), required: true);
+            WorkflowValue.Validate(bodyturnoverReason, nameof(bodyturnoverReason), required: false);
+            return new DeferredBodyAction<SingleJob>(() =>
             {
-                body["turnoverReason"] = ExpressionConverter.ConvertO(bodyturnoverReason);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/job-end/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["endDate"] = ExpressionConverter.ConvertO(bodyendDate);
+                bodypropCount++;
+                body["turnoverType"] = ExpressionConverter.ConvertO(bodyturnoverType);
+                if (bodyturnoverReason != null)
+                {
+                    body["turnoverReason"] = ExpressionConverter.ConvertO(bodyturnoverReason);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SingleJob>(callPayload);
+                return new ApiConnectionAction<SingleJob>(callPayload);
+            });
         }
     }
 

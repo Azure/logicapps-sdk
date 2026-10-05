@@ -4,30 +4,43 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AbbreviationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abbreviationsip")]
-        public IBodyWorkflowAction<AbbrGetResponse> AbbrGet(Expression<Func<string>> term, Expression<Func<string>> categoryid = null, Expression<Func<sortbyInput>> sortby = null, Expression<Func<searchtypeInput>> searchtype = null)
+        [WorkflowExpressionFactory(nameof(__BuildAbbrGet))]
+        public IBodyWorkflowAction<AbbrGetResponse> AbbrGet([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<string> categoryid = null, [WorkflowExpression] Func<sortbyInput> sortby = null, [WorkflowExpression] Func<searchtypeInput> searchtype = null)
         {
-            var apiCallPath = "/abbr.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["term"] = ExpressionConverter.Convert(term);
-            if (categoryid != null)
-                callPayload.Queries["categoryid"] = ExpressionConverter.Convert(categoryid);
-            callPayload.Queries["sortby"] = Convert.ToString("p");
-            if (sortby != null)
-                callPayload.Queries["sortby"] = ExpressionConverter.Convert(sortby);
-            callPayload.Queries["searchtype"] = Convert.ToString("e");
-            if (searchtype != null)
-                callPayload.Queries["searchtype"] = ExpressionConverter.Convert(searchtype);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<AbbrGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AbbrGetResponse> __BuildAbbrGet(WorkflowValue<string> term, WorkflowValue<string> categoryid = null, WorkflowValue<sortbyInput> sortby = null, WorkflowValue<searchtypeInput> searchtype = null)
+        {
+            WorkflowValue.Validate(term, nameof(term), required: true);
+            WorkflowValue.Validate(categoryid, nameof(categoryid), required: false);
+            WorkflowValue.Validate(sortby, nameof(sortby), required: false);
+            WorkflowValue.Validate(searchtype, nameof(searchtype), required: false);
+            return new DeferredBodyAction<AbbrGetResponse>(() =>
+            {
+                var apiCallPath = "/abbr.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+                if (categoryid != null)
+                    callPayload.Queries["categoryid"] = ExpressionConverter.Convert(categoryid);
+                callPayload.Queries["sortby"] = Convert.ToString("p");
+                if (sortby != null)
+                    callPayload.Queries["sortby"] = ExpressionConverter.Convert(sortby);
+                callPayload.Queries["searchtype"] = Convert.ToString("e");
+                if (searchtype != null)
+                    callPayload.Queries["searchtype"] = ExpressionConverter.Convert(searchtype);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return new ApiConnectionAction<AbbrGetResponse>(callPayload);
+            });
         }
     }
 

@@ -240,7 +240,7 @@ public class ApiConnectionTriggerInput : ApiConnectionActionInput
         : base(path, method, connectionId)
     {
         this.Recurrence = recurrence.ToJToken();
-        this.SplitOn = "@triggerOutputs()?['body']";
+        this.SplitOn = enableSplitOn ? "#{triggerOutputs()?[\"body\"]}" : null;
     }
 
     /// <summary>

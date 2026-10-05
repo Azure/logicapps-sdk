@@ -4,47 +4,61 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CiscowebexmeetingsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
-        public IBodyWorkflowAction<NewMeetingResponse> NewMeeting(Expression<Func<string>> bodytopic, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyattendees = null, Expression<Func<string>> bodyagenda = null)
+        [WorkflowExpressionFactory(nameof(__BuildNewMeeting))]
+        public IBodyWorkflowAction<NewMeetingResponse> NewMeeting([WorkflowExpression] Func<string> bodytopic, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyattendees = null, [WorkflowExpression] Func<string> bodyagenda = null)
         {
-            var apiCallPath = "/workflow/meetings/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["topic"] = ExpressionConverter.ConvertO(bodytopic);
-            bodypropCount++;
-            body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-            if (bodyattendees != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NewMeetingResponse> __BuildNewMeeting(WorkflowValue<string> bodytopic, WorkflowValue<string> bodystartTime, WorkflowValue<string> bodyendTime, WorkflowValue<string> bodyattendees = null, WorkflowValue<string> bodyagenda = null)
+        {
+            WorkflowValue.Validate(bodytopic, nameof(bodytopic), required: true);
+            WorkflowValue.Validate(bodystartTime, nameof(bodystartTime), required: true);
+            WorkflowValue.Validate(bodyendTime, nameof(bodyendTime), required: true);
+            WorkflowValue.Validate(bodyattendees, nameof(bodyattendees), required: false);
+            WorkflowValue.Validate(bodyagenda, nameof(bodyagenda), required: false);
+            return new DeferredBodyAction<NewMeetingResponse>(() =>
             {
-                body["attendees"] = ExpressionConverter.ConvertO(bodyattendees);
+                var apiCallPath = "/workflow/meetings/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyagenda != null)
-            {
-                body["agenda"] = ExpressionConverter.ConvertO(bodyagenda);
+                body["topic"] = ExpressionConverter.ConvertO(bodytopic);
                 bodypropCount++;
-            }
+                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                bodypropCount++;
+                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                if (bodyattendees != null)
+                {
+                    body["attendees"] = ExpressionConverter.ConvertO(bodyattendees);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyagenda != null)
+                {
+                    body["agenda"] = ExpressionConverter.ConvertO(bodyagenda);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<NewMeetingResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<NewMeetingResponse>(callPayload);
+            });
         }
     }
 

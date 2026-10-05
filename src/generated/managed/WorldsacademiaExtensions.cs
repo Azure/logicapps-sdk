@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -30,12 +29,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        public IBodyWorkflowAction<string[]> GetAListCountriesInAContinent(Expression<Func<string>> continentName)
+        [WorkflowExpressionFactory(nameof(__BuildGetAListCountriesInAContinent))]
+        public IBodyWorkflowAction<string[]> GetAListCountriesInAContinent([WorkflowExpression] Func<string> continentName)
         {
-            var apiCallPath = String.Format("/api/v1/continent/{0}", ExpressionConverter.ConvertWithUrlEncoding(continentName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string[]> __BuildGetAListCountriesInAContinent(WorkflowValue<string> continentName)
+        {
+            WorkflowValue.Validate(continentName, nameof(continentName), required: true);
+            return new DeferredBodyAction<string[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/continent/{0}", ExpressionConverter.ConvertWithUrlEncoding(continentName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
@@ -66,30 +76,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldsacademia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> GetAllUniversitiesInACountryViaCountryName(Expression<Func<string>> countryName)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllUniversitiesInACountryViaCountryName))]
+        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> GetAllUniversitiesInACountryViaCountryName([WorkflowExpression] Func<string> countryName)
         {
-            var apiCallPath = String.Format("/api/v1/sch/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]> __BuildGetAllUniversitiesInACountryViaCountryName(WorkflowValue<string> countryName)
+        {
+            WorkflowValue.Validate(countryName, nameof(countryName), required: true);
+            return new DeferredBodyAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/country/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryNameResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> GetAllUniversitiesInACountryViaCountryCode(Expression<Func<string>> countryCode)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllUniversitiesInACountryViaCountryCode))]
+        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> GetAllUniversitiesInACountryViaCountryCode([WorkflowExpression] Func<string> countryCode)
         {
-            var apiCallPath = String.Format("/api/v1/sch/countrycode/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]> __BuildGetAllUniversitiesInACountryViaCountryCode(WorkflowValue<string> countryCode)
+        {
+            WorkflowValue.Validate(countryCode, nameof(countryCode), required: true);
+            return new DeferredBodyAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/countrycode/{0}", ExpressionConverter.ConvertWithUrlEncoding(countryCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllUniversitiesInACountryViaCountryCodeResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]
-        public IBodyWorkflowAction<GetAllUniversityDetailsResponse> GetAllUniversityDetails(Expression<Func<string>> universityName)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllUniversityDetails))]
+        public IBodyWorkflowAction<GetAllUniversityDetailsResponse> GetAllUniversityDetails([WorkflowExpression] Func<string> universityName)
         {
-            var apiCallPath = String.Format("/api/v1/sch/university/{0}", ExpressionConverter.ConvertWithUrlEncoding(universityName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllUniversityDetailsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllUniversityDetailsResponse> __BuildGetAllUniversityDetails(WorkflowValue<string> universityName)
+        {
+            WorkflowValue.Validate(universityName, nameof(universityName), required: true);
+            return new DeferredBodyAction<GetAllUniversityDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/sch/university/{0}", ExpressionConverter.ConvertWithUrlEncoding(universityName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllUniversityDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldsacademia")]

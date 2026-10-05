@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,37 +20,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.D7sms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "d7sms")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendSMS))]
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null)
         {
-            var apiCallPath = "/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfrom != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendSMSResponse> __BuildSendSMS(WorkflowValue<string> bodycontent = null, WorkflowValue<string> bodyfrom = null, WorkflowValue<string> bodyto = null)
+        {
+            WorkflowValue.Validate(bodycontent, nameof(bodycontent), required: false);
+            WorkflowValue.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: false);
+            return new DeferredBodyAction<SendSMSResponse>(() =>
             {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
+                var apiCallPath = "/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    bodypropCount++;
+                }
 
-            if (bodyto != null)
-            {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+            });
         }
     }
 

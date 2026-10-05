@@ -4,869 +4,1356 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Verified
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class VerifiedActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<PostAuthenticateResponse> PostAuthenticate(Expression<Func<int>> withoutIpLock)
+        [WorkflowExpressionFactory(nameof(__BuildPostAuthenticate))]
+        public IBodyWorkflowAction<PostAuthenticateResponse> PostAuthenticate([WorkflowExpression] Func<int> withoutIpLock)
         {
-            var apiCallPath = "/auth";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["withoutIpLock"] = ExpressionConverter.Convert(withoutIpLock);
-            return new ApiConnectionAction<PostAuthenticateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostAuthenticateResponse> __BuildPostAuthenticate(WorkflowValue<int> withoutIpLock)
+        {
+            WorkflowValue.Validate(withoutIpLock, nameof(withoutIpLock), required: true);
+            return new DeferredBodyAction<PostAuthenticateResponse>(() =>
+            {
+                var apiCallPath = "/auth";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["withoutIpLock"] = ExpressionConverter.Convert(withoutIpLock);
+                return new ApiConnectionAction<PostAuthenticateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Company> GetCompaniesCompanyId(Expression<Func<string>> token, Expression<Func<string>> companyId)
+        [WorkflowExpressionFactory(nameof(__BuildGetCompaniesCompanyId))]
+        public IBodyWorkflowAction<Company> GetCompaniesCompanyId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> companyId)
         {
-            var apiCallPath = String.Format("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<Company>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Company> __BuildGetCompaniesCompanyId(WorkflowValue<string> token, WorkflowValue<string> companyId)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(companyId, nameof(companyId), required: true);
+            return new DeferredBodyAction<Company>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<Company>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Recipient[]> GetEnvelopesEnvelopeIdRecipients(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopesEnvelopeIdRecipients))]
+        public IBodyWorkflowAction<Recipient[]> GetEnvelopesEnvelopeIdRecipients([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<Recipient[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Recipient[]> __BuildGetEnvelopesEnvelopeIdRecipients(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredBodyAction<Recipient[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<Recipient[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PostEnvelopesEnvelopeIdRecipients(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> bodygivenName, Expression<Func<string>> bodyfamilyName, Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<bodysigningMethodInput>> bodysigningMethod, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyroleaction, Expression<Func<string>> bodyrolelabel, Expression<Func<string>> bodyrolename, Expression<Func<string>> xNamespace = null, Expression<Func<bodynotificationMethodInput>> bodynotificationMethod = null, Expression<Func<string>> bodytelephone = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodysecure = null, Expression<Func<bool>> bodysms = null, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodybank = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopesEnvelopeIdRecipients))]
+        public IWorkflowAction PostEnvelopesEnvelopeIdRecipients([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodygivenName, [WorkflowExpression] Func<string> bodyfamilyName, [WorkflowExpression] Func<bodylanguageInput> bodylanguage, [WorkflowExpression] Func<bodysigningMethodInput> bodysigningMethod, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyroleaction, [WorkflowExpression] Func<string> bodyrolelabel, [WorkflowExpression] Func<string> bodyrolename, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<bodynotificationMethodInput> bodynotificationMethod = null, [WorkflowExpression] Func<string> bodytelephone = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<bool> bodysecure = null, [WorkflowExpression] Func<bool> bodysms = null, [WorkflowExpression] Func<string> bodyssn = null, [WorkflowExpression] Func<string> bodybank = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["givenName"] = ExpressionConverter.ConvertO(bodygivenName);
-            bodypropCount++;
-            body["familyName"] = ExpressionConverter.ConvertO(bodyfamilyName);
-            bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-            bodypropCount++;
-            body["signingMethod"] = ExpressionConverter.ConvertO(bodysigningMethod);
-            if (bodynotificationMethod != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostEnvelopesEnvelopeIdRecipients(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> bodygivenName, WorkflowValue<string> bodyfamilyName, WorkflowValue<bodylanguageInput> bodylanguage, WorkflowValue<bodysigningMethodInput> bodysigningMethod, WorkflowValue<string> bodyemail, WorkflowValue<string> bodyroleaction, WorkflowValue<string> bodyrolelabel, WorkflowValue<string> bodyrolename, WorkflowValue<string> xNamespace = null, WorkflowValue<bodynotificationMethodInput> bodynotificationMethod = null, WorkflowValue<string> bodytelephone = null, WorkflowValue<int> bodyorder = null, WorkflowValue<bool> bodysecure = null, WorkflowValue<bool> bodysms = null, WorkflowValue<string> bodyssn = null, WorkflowValue<string> bodybank = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(bodygivenName, nameof(bodygivenName), required: true);
+            WorkflowValue.Validate(bodyfamilyName, nameof(bodyfamilyName), required: true);
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: true);
+            WorkflowValue.Validate(bodysigningMethod, nameof(bodysigningMethod), required: true);
+            WorkflowValue.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowValue.Validate(bodyroleaction, nameof(bodyroleaction), required: true);
+            WorkflowValue.Validate(bodyrolelabel, nameof(bodyrolelabel), required: true);
+            WorkflowValue.Validate(bodyrolename, nameof(bodyrolename), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodynotificationMethod, nameof(bodynotificationMethod), required: false);
+            WorkflowValue.Validate(bodytelephone, nameof(bodytelephone), required: false);
+            WorkflowValue.Validate(bodyorder, nameof(bodyorder), required: false);
+            WorkflowValue.Validate(bodysecure, nameof(bodysecure), required: false);
+            WorkflowValue.Validate(bodysms, nameof(bodysms), required: false);
+            WorkflowValue.Validate(bodyssn, nameof(bodyssn), required: false);
+            WorkflowValue.Validate(bodybank, nameof(bodybank), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["notificationMethod"] = ExpressionConverter.ConvertO(bodynotificationMethod);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodytelephone != null)
-            {
-                body["telephone"] = ExpressionConverter.ConvertO(bodytelephone);
+                body["givenName"] = ExpressionConverter.ConvertO(bodygivenName);
                 bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
+                body["familyName"] = ExpressionConverter.ConvertO(bodyfamilyName);
                 bodypropCount++;
-            }
-
-            var roleObject = new JObject();
-            var roleObjectpropCount = 0;
-            roleObjectpropCount++;
-            roleObject["action"] = ExpressionConverter.ConvertO(bodyroleaction);
-            roleObjectpropCount++;
-            roleObject["label"] = ExpressionConverter.ConvertO(bodyrolelabel);
-            roleObjectpropCount++;
-            roleObject["name"] = ExpressionConverter.ConvertO(bodyrolename);
-            if (roleObjectpropCount > 0)
-            {
-                body["role"] = roleObject;
+                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
                 bodypropCount++;
-            }
+                body["signingMethod"] = ExpressionConverter.ConvertO(bodysigningMethod);
+                if (bodynotificationMethod != null)
+                {
+                    body["notificationMethod"] = ExpressionConverter.ConvertO(bodynotificationMethod);
+                    bodypropCount++;
+                }
 
-            if (bodysecure != null)
-            {
-                body["secure"] = ExpressionConverter.ConvertO(bodysecure);
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodytelephone != null)
+                {
+                    body["telephone"] = ExpressionConverter.ConvertO(bodytelephone);
+                    bodypropCount++;
+                }
 
-            if (bodysms != null)
-            {
-                body["sms"] = ExpressionConverter.ConvertO(bodysms);
-                bodypropCount++;
-            }
+                if (bodyorder != null)
+                {
+                    body["order"] = ExpressionConverter.ConvertO(bodyorder);
+                    bodypropCount++;
+                }
 
-            if (bodyssn != null)
-            {
-                body["ssn"] = ExpressionConverter.ConvertO(bodyssn);
-                bodypropCount++;
-            }
+                var roleObject = new JObject();
+                var roleObjectpropCount = 0;
+                roleObjectpropCount++;
+                roleObject["action"] = ExpressionConverter.ConvertO(bodyroleaction);
+                roleObjectpropCount++;
+                roleObject["label"] = ExpressionConverter.ConvertO(bodyrolelabel);
+                roleObjectpropCount++;
+                roleObject["name"] = ExpressionConverter.ConvertO(bodyrolename);
+                if (roleObjectpropCount > 0)
+                {
+                    body["role"] = roleObject;
+                    bodypropCount++;
+                }
 
-            if (bodybank != null)
-            {
-                body["bank"] = ExpressionConverter.ConvertO(bodybank);
-                bodypropCount++;
-            }
+                if (bodysecure != null)
+                {
+                    body["secure"] = ExpressionConverter.ConvertO(bodysecure);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysms != null)
+                {
+                    body["sms"] = ExpressionConverter.ConvertO(bodysms);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodyssn != null)
+                {
+                    body["ssn"] = ExpressionConverter.ConvertO(bodyssn);
+                    bodypropCount++;
+                }
+
+                if (bodybank != null)
+                {
+                    body["bank"] = ExpressionConverter.ConvertO(bodybank);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Recipient> GetEnvelopesEnvelopeIdRecipientsRecipientId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> xNamespace = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopesEnvelopeIdRecipientsRecipientId))]
+        public IBodyWorkflowAction<Recipient> GetEnvelopesEnvelopeIdRecipientsRecipientId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> xNamespace = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<Recipient>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Recipient> __BuildGetEnvelopesEnvelopeIdRecipientsRecipientId(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> recipientId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(recipientId, nameof(recipientId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredBodyAction<Recipient>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<Recipient>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PutEnvelopesEnvelopeIdRecipientsRecipientId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> recipientId, Expression<Func<string>> bodygivenName, Expression<Func<string>> bodyfamilyName, Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<bodysigningMethodInput>> bodysigningMethod, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyroleaction, Expression<Func<string>> bodyrolelabel, Expression<Func<string>> bodyrolename, Expression<Func<string>> xNamespace = null, Expression<Func<bodynotificationMethodInput>> bodynotificationMethod = null, Expression<Func<string>> bodytelephone = null, Expression<Func<int>> bodyorder = null, Expression<Func<bool>> bodysecure = null, Expression<Func<bool>> bodysms = null, Expression<Func<string>> bodyssn = null, Expression<Func<string>> bodybank = null)
+        [WorkflowExpressionFactory(nameof(__BuildPutEnvelopesEnvelopeIdRecipientsRecipientId))]
+        public IWorkflowAction PutEnvelopesEnvelopeIdRecipientsRecipientId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> recipientId, [WorkflowExpression] Func<string> bodygivenName, [WorkflowExpression] Func<string> bodyfamilyName, [WorkflowExpression] Func<bodylanguageInput> bodylanguage, [WorkflowExpression] Func<bodysigningMethodInput> bodysigningMethod, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyroleaction, [WorkflowExpression] Func<string> bodyrolelabel, [WorkflowExpression] Func<string> bodyrolename, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<bodynotificationMethodInput> bodynotificationMethod = null, [WorkflowExpression] Func<string> bodytelephone = null, [WorkflowExpression] Func<int> bodyorder = null, [WorkflowExpression] Func<bool> bodysecure = null, [WorkflowExpression] Func<bool> bodysms = null, [WorkflowExpression] Func<string> bodyssn = null, [WorkflowExpression] Func<string> bodybank = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["givenName"] = ExpressionConverter.ConvertO(bodygivenName);
-            bodypropCount++;
-            body["familyName"] = ExpressionConverter.ConvertO(bodyfamilyName);
-            bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-            bodypropCount++;
-            body["signingMethod"] = ExpressionConverter.ConvertO(bodysigningMethod);
-            if (bodynotificationMethod != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPutEnvelopesEnvelopeIdRecipientsRecipientId(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> recipientId, WorkflowValue<string> bodygivenName, WorkflowValue<string> bodyfamilyName, WorkflowValue<bodylanguageInput> bodylanguage, WorkflowValue<bodysigningMethodInput> bodysigningMethod, WorkflowValue<string> bodyemail, WorkflowValue<string> bodyroleaction, WorkflowValue<string> bodyrolelabel, WorkflowValue<string> bodyrolename, WorkflowValue<string> xNamespace = null, WorkflowValue<bodynotificationMethodInput> bodynotificationMethod = null, WorkflowValue<string> bodytelephone = null, WorkflowValue<int> bodyorder = null, WorkflowValue<bool> bodysecure = null, WorkflowValue<bool> bodysms = null, WorkflowValue<string> bodyssn = null, WorkflowValue<string> bodybank = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(recipientId, nameof(recipientId), required: true);
+            WorkflowValue.Validate(bodygivenName, nameof(bodygivenName), required: true);
+            WorkflowValue.Validate(bodyfamilyName, nameof(bodyfamilyName), required: true);
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: true);
+            WorkflowValue.Validate(bodysigningMethod, nameof(bodysigningMethod), required: true);
+            WorkflowValue.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowValue.Validate(bodyroleaction, nameof(bodyroleaction), required: true);
+            WorkflowValue.Validate(bodyrolelabel, nameof(bodyrolelabel), required: true);
+            WorkflowValue.Validate(bodyrolename, nameof(bodyrolename), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodynotificationMethod, nameof(bodynotificationMethod), required: false);
+            WorkflowValue.Validate(bodytelephone, nameof(bodytelephone), required: false);
+            WorkflowValue.Validate(bodyorder, nameof(bodyorder), required: false);
+            WorkflowValue.Validate(bodysecure, nameof(bodysecure), required: false);
+            WorkflowValue.Validate(bodysms, nameof(bodysms), required: false);
+            WorkflowValue.Validate(bodyssn, nameof(bodyssn), required: false);
+            WorkflowValue.Validate(bodybank, nameof(bodybank), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["notificationMethod"] = ExpressionConverter.ConvertO(bodynotificationMethod);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/recipients/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(recipientId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            if (bodytelephone != null)
-            {
-                body["telephone"] = ExpressionConverter.ConvertO(bodytelephone);
+                body["givenName"] = ExpressionConverter.ConvertO(bodygivenName);
                 bodypropCount++;
-            }
-
-            if (bodyorder != null)
-            {
-                body["order"] = ExpressionConverter.ConvertO(bodyorder);
+                body["familyName"] = ExpressionConverter.ConvertO(bodyfamilyName);
                 bodypropCount++;
-            }
-
-            var roleObject = new JObject();
-            var roleObjectpropCount = 0;
-            roleObjectpropCount++;
-            roleObject["action"] = ExpressionConverter.ConvertO(bodyroleaction);
-            roleObjectpropCount++;
-            roleObject["label"] = ExpressionConverter.ConvertO(bodyrolelabel);
-            roleObjectpropCount++;
-            roleObject["name"] = ExpressionConverter.ConvertO(bodyrolename);
-            if (roleObjectpropCount > 0)
-            {
-                body["role"] = roleObject;
+                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
                 bodypropCount++;
-            }
+                body["signingMethod"] = ExpressionConverter.ConvertO(bodysigningMethod);
+                if (bodynotificationMethod != null)
+                {
+                    body["notificationMethod"] = ExpressionConverter.ConvertO(bodynotificationMethod);
+                    bodypropCount++;
+                }
 
-            if (bodysecure != null)
-            {
-                body["secure"] = ExpressionConverter.ConvertO(bodysecure);
                 bodypropCount++;
-            }
+                body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                if (bodytelephone != null)
+                {
+                    body["telephone"] = ExpressionConverter.ConvertO(bodytelephone);
+                    bodypropCount++;
+                }
 
-            if (bodysms != null)
-            {
-                body["sms"] = ExpressionConverter.ConvertO(bodysms);
-                bodypropCount++;
-            }
+                if (bodyorder != null)
+                {
+                    body["order"] = ExpressionConverter.ConvertO(bodyorder);
+                    bodypropCount++;
+                }
 
-            if (bodyssn != null)
-            {
-                body["ssn"] = ExpressionConverter.ConvertO(bodyssn);
-                bodypropCount++;
-            }
+                var roleObject = new JObject();
+                var roleObjectpropCount = 0;
+                roleObjectpropCount++;
+                roleObject["action"] = ExpressionConverter.ConvertO(bodyroleaction);
+                roleObjectpropCount++;
+                roleObject["label"] = ExpressionConverter.ConvertO(bodyrolelabel);
+                roleObjectpropCount++;
+                roleObject["name"] = ExpressionConverter.ConvertO(bodyrolename);
+                if (roleObjectpropCount > 0)
+                {
+                    body["role"] = roleObject;
+                    bodypropCount++;
+                }
 
-            if (bodybank != null)
-            {
-                body["bank"] = ExpressionConverter.ConvertO(bodybank);
-                bodypropCount++;
-            }
+                if (bodysecure != null)
+                {
+                    body["secure"] = ExpressionConverter.ConvertO(bodysecure);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodysms != null)
+                {
+                    body["sms"] = ExpressionConverter.ConvertO(bodysms);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodyssn != null)
+                {
+                    body["ssn"] = ExpressionConverter.ConvertO(bodyssn);
+                    bodypropCount++;
+                }
+
+                if (bodybank != null)
+                {
+                    body["bank"] = ExpressionConverter.ConvertO(bodybank);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse> GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrl(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> fileId, Expression<Func<string>> xNamespace = null, Expression<Func<bool>> asObject = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrl))]
+        public IBodyWorkflowAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse> GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrl([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<bool> asObject = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/files/{2}/url", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (asObject != null)
-                callPayload.Queries["asObject"] = ExpressionConverter.Convert(asObject);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Setting> GetCompaniesCompanyIdUsersUserIdSettings(Expression<Func<string>> token, Expression<Func<string>> companyId, Expression<Func<string>> userId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse> __BuildGetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrl(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> documentId, WorkflowValue<string> fileId, WorkflowValue<string> xNamespace = null, WorkflowValue<bool> asObject = null)
         {
-            var apiCallPath = String.Format("/companies/{0}/users/{1}/settings", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<Setting>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Envelope> GetEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<Envelope>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction DeleteEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PutEnvelopesEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<bool>> bodysequentialSigning = null, Expression<Func<string>> bodygreeting = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<double>> bodyautomaticReminders = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysequentialSigning != null)
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(fileId, nameof(fileId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(asObject, nameof(asObject), required: false);
+            return new DeferredBodyAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse>(() =>
             {
-                body["sequentialSigning"] = ExpressionConverter.ConvertO(bodysequentialSigning);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files/{2}/url", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (asObject != null)
+                    callPayload.Queries["asObject"] = ExpressionConverter.Convert(asObject);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<GetEnvelopesEnvelopeIdDocumentsDocumentIdFilesFileIdUrlResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCompaniesCompanyIdUsersUserIdSettings))]
+        public IBodyWorkflowAction<Setting> GetCompaniesCompanyIdUsersUserIdSettings([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> userId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Setting> __BuildGetCompaniesCompanyIdUsersUserIdSettings(WorkflowValue<string> token, WorkflowValue<string> companyId, WorkflowValue<string> userId)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(companyId, nameof(companyId), required: true);
+            WorkflowValue.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<Setting>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/companies/{0}/users/{1}/settings", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1), ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<Setting>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopesEnvelopeId))]
+        public IBodyWorkflowAction<Envelope> GetEnvelopesEnvelopeId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Envelope> __BuildGetEnvelopesEnvelopeId(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredBodyAction<Envelope>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<Envelope>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteEnvelopesEnvelopeId))]
+        public IWorkflowAction DeleteEnvelopesEnvelopeId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteEnvelopesEnvelopeId(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPutEnvelopesEnvelopeId))]
+        public IWorkflowAction PutEnvelopesEnvelopeId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<bool> bodysequentialSigning = null, [WorkflowExpression] Func<string> bodygreeting = null, [WorkflowExpression] Func<string> bodyexpiration = null, [WorkflowExpression] Func<double> bodyautomaticReminders = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPutEnvelopesEnvelopeId(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null, WorkflowValue<bool> bodysequentialSigning = null, WorkflowValue<string> bodygreeting = null, WorkflowValue<string> bodyexpiration = null, WorkflowValue<double> bodyautomaticReminders = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodysequentialSigning, nameof(bodysequentialSigning), required: false);
+            WorkflowValue.Validate(bodygreeting, nameof(bodygreeting), required: false);
+            WorkflowValue.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
+            WorkflowValue.Validate(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysequentialSigning != null)
+                {
+                    body["sequentialSigning"] = ExpressionConverter.ConvertO(bodysequentialSigning);
+                    bodypropCount++;
+                }
+
+                if (bodygreeting != null)
+                {
+                    body["greeting"] = ExpressionConverter.ConvertO(bodygreeting);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiration != null)
+                {
+                    body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                    bodypropCount++;
+                }
+
+                if (bodyautomaticReminders != null)
+                {
+                    body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPutEnvelopesEnvelopeIdPublishStatus))]
+        public IWorkflowAction PutEnvelopesEnvelopeIdPublishStatus([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<bool> bodypublished, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPutEnvelopesEnvelopeIdPublishStatus(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<bool> bodypublished, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(bodypublished, nameof(bodypublished), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/publish-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["published"] = ExpressionConverter.ConvertO(bodypublished);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodygreeting != null)
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData))]
+        public IWorkflowAction PostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> documentId, WorkflowValue<string> templateId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(templateId, nameof(templateId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["greeting"] = ExpressionConverter.ConvertO(bodygreeting);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/templates/{2}/user-data", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPutEnvelopesEnvelopeIdAbortStatus))]
+        public IWorkflowAction PutEnvelopesEnvelopeIdAbortStatus([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> bodycomment = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPutEnvelopesEnvelopeIdAbortStatus(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null, WorkflowValue<string> bodycomment = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodycomment, nameof(bodycomment), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/abort-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycomment != null)
+                {
+                    body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopesEnvelopeIdDocumentsDocumentIdFiles))]
+        public IBodyWorkflowAction<File[]> GetEnvelopesEnvelopeIdDocumentsDocumentIdFiles([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<File[]> __BuildGetEnvelopesEnvelopeIdDocumentsDocumentIdFiles(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> documentId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredBodyAction<File[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<File[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdFiles))]
+        public IBodyWorkflowAction<File> PostEnvelopesEnvelopeIdDocumentsDocumentIdFiles([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyfileType, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> bodyhash = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<File> __BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> documentId, WorkflowValue<string> bodyname, WorkflowValue<string> bodyfileType, WorkflowValue<string> xNamespace = null, WorkflowValue<string> bodyhash = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodyfileType, nameof(bodyfileType), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodyhash, nameof(bodyhash), required: false);
+            return new DeferredBodyAction<File>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyexpiration != null)
-            {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
                 bodypropCount++;
-            }
+                body["fileType"] = ExpressionConverter.ConvertO(bodyfileType);
+                if (bodyhash != null)
+                {
+                    body["hash"] = ExpressionConverter.ConvertO(bodyhash);
+                    bodypropCount++;
+                }
 
-            if (bodyautomaticReminders != null)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<File>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetAuthUserinfo))]
+        public IBodyWorkflowAction<UserInfo> GetAuthUserinfo([WorkflowExpression] Func<string> token)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserInfo> __BuildGetAuthUserinfo(WorkflowValue<string> token)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            return new DeferredBodyAction<UserInfo>(() =>
             {
-                body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
+                var apiCallPath = "/auth/userinfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<UserInfo>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdStatusAborted))]
+        public IWorkflowAction PostEnvelopesEnvelopeIdDocumentsDocumentIdStatusAborted([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostEnvelopesEnvelopeIdDocumentsDocumentIdStatusAborted(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> documentId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}/status/aborted", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPutEnvelopesEnvelopeIdTrashStatus))]
+        public IWorkflowAction PutEnvelopesEnvelopeIdTrashStatus([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> bodycomment = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPutEnvelopesEnvelopeIdTrashStatus(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null, WorkflowValue<string> bodycomment = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodycomment, nameof(bodycomment), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/trash-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycomment != null)
+                {
+                    body["comment"] = ExpressionConverter.ConvertO(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetQueryEnvelopes))]
+        public IBodyWorkflowAction<EnvelopeDescriptorString[]> GetQueryEnvelopes([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<int> from = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EnvelopeDescriptorString[]> __BuildGetQueryEnvelopes(WorkflowValue<string> token, WorkflowValue<string> xNamespace = null, WorkflowValue<string> filters = null, WorkflowValue<int> from = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(from, nameof(from), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<EnvelopeDescriptorString[]>(() =>
+            {
+                var apiCallPath = "/query/envelopes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<EnvelopeDescriptorString[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetSearchEnvelopes))]
+        public IBodyWorkflowAction<EnvelopeDescriptorString[]> GetSearchEnvelopes([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> filters = null, [WorkflowExpression] Func<int> from = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EnvelopeDescriptorString[]> __BuildGetSearchEnvelopes(WorkflowValue<string> token, WorkflowValue<string> xNamespace = null, WorkflowValue<string> filters = null, WorkflowValue<int> from = null, WorkflowValue<int> limit = null, WorkflowValue<string> sort = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            WorkflowValue.Validate(from, nameof(from), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            return new DeferredBodyAction<EnvelopeDescriptorString[]>(() =>
+            {
+                var apiCallPath = "/search/envelopes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<EnvelopeDescriptorString[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopeDescriptors))]
+        public IBodyWorkflowAction<Descriptor[]> GetEnvelopeDescriptors([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> filters = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Descriptor[]> __BuildGetEnvelopeDescriptors(WorkflowValue<string> token, WorkflowValue<string> xNamespace = null, WorkflowValue<string> filters = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            return new DeferredBodyAction<Descriptor[]>(() =>
+            {
+                var apiCallPath = "/envelope-descriptors";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<Descriptor[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFlowsFlowIdJobsEnvelopeId))]
+        public IBodyWorkflowAction<GetFlowsFlowIdJobsEnvelopeIdResponse> GetFlowsFlowIdJobsEnvelopeId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> flowId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFlowsFlowIdJobsEnvelopeIdResponse> __BuildGetFlowsFlowIdJobsEnvelopeId(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> flowId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(flowId, nameof(flowId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredBodyAction<GetFlowsFlowIdJobsEnvelopeIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flows/{0}/jobs/{1}", ExpressionConverter.ConvertWithUrlEncoding(flowId, 1), ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<GetFlowsFlowIdJobsEnvelopeIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopesEnvelopeIdDocumentsDocumentId))]
+        public IBodyWorkflowAction<Document> GetEnvelopesEnvelopeIdDocumentsDocumentId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Document> __BuildGetEnvelopesEnvelopeIdDocumentsDocumentId(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> documentId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredBodyAction<Document>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<Document>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteEnvelopesEnvelopeIdDocumentsDocumentId))]
+        public IWorkflowAction DeleteEnvelopesEnvelopeIdDocumentsDocumentId([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteEnvelopesEnvelopeIdDocumentsDocumentId(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> documentId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(documentId, nameof(documentId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes))]
+        public IBodyWorkflowAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse> PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeDescriptorId, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> bodysenderemail = null, [WorkflowExpression] Func<string> bodysendergivenName = null, [WorkflowExpression] Func<string> bodysenderfamilyName = null, [WorkflowExpression] Func<double> bodyautomaticReminders = null, [WorkflowExpression] Func<string> bodyexpiration = null, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse> __BuildPostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes(WorkflowValue<string> token, WorkflowValue<string> envelopeDescriptorId, WorkflowValue<string> xNamespace = null, WorkflowValue<string> bodysenderemail = null, WorkflowValue<string> bodysendergivenName = null, WorkflowValue<string> bodysenderfamilyName = null, WorkflowValue<double> bodyautomaticReminders = null, WorkflowValue<string> bodyexpiration = null, WorkflowValue<bodydocumentsInputItem[]> bodydocuments = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeDescriptorId, nameof(envelopeDescriptorId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodysenderemail, nameof(bodysenderemail), required: false);
+            WorkflowValue.Validate(bodysendergivenName, nameof(bodysendergivenName), required: false);
+            WorkflowValue.Validate(bodysenderfamilyName, nameof(bodysenderfamilyName), required: false);
+            WorkflowValue.Validate(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
+            WorkflowValue.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
+            WorkflowValue.Validate(bodydocuments, nameof(bodydocuments), required: false);
+            return new DeferredBodyAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelope-descriptors/{0}/envelopes", ExpressionConverter.ConvertWithUrlEncoding(envelopeDescriptorId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var senderObject = new JObject();
+                var senderObjectpropCount = 0;
+                if (bodysenderemail != null)
+                {
+                    senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
+                    senderObjectpropCount++;
+                }
+
+                if (bodysendergivenName != null)
+                {
+                    senderObject["givenName"] = ExpressionConverter.ConvertO(bodysendergivenName);
+                    senderObjectpropCount++;
+                }
+
+                if (bodysenderfamilyName != null)
+                {
+                    senderObject["familyName"] = ExpressionConverter.ConvertO(bodysenderfamilyName);
+                    senderObjectpropCount++;
+                }
+
+                if (senderObjectpropCount > 0)
+                {
+                    body["sender"] = senderObject;
+                    bodypropCount++;
+                }
+
+                if (bodyautomaticReminders != null)
+                {
+                    body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiration != null)
+                {
+                    body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                    bodypropCount++;
+                }
+
+                if (bodydocuments != null)
+                {
+                    body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopesEnvelopeIdDocuments))]
+        public IBodyWorkflowAction<Document[]> GetEnvelopesEnvelopeIdDocuments([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Document[]> __BuildGetEnvelopesEnvelopeIdDocuments(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            return new DeferredBodyAction<Document[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<Document[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopesEnvelopeIdDocuments))]
+        public IWorkflowAction PostEnvelopesEnvelopeIdDocuments([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<int> bodydescriptorhash = null, [WorkflowExpression] Func<string> bodysource = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostEnvelopesEnvelopeIdDocuments(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> bodyname, WorkflowValue<string> xNamespace = null, WorkflowValue<int> bodydescriptorhash = null, WorkflowValue<string> bodysource = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodydescriptorhash, nameof(bodydescriptorhash), required: false);
+            WorkflowValue.Validate(bodysource, nameof(bodysource), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var descriptorObject = new JObject();
+                var descriptorObjectpropCount = 0;
+                if (bodydescriptorhash != null)
+                {
+                    descriptorObject["hash"] = ExpressionConverter.ConvertO(bodydescriptorhash);
+                    descriptorObjectpropCount++;
+                }
+
+                if (descriptorObjectpropCount > 0)
+                {
+                    body["descriptor"] = descriptorObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodysource != null)
+                {
+                    body["source"] = ExpressionConverter.ConvertO(bodysource);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PutEnvelopesEnvelopeIdPublishStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<bool>> bodypublished, Expression<Func<string>> xNamespace = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopesEnvelopeIdJobsGetSignLink))]
+        public IBodyWorkflowAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse> PostEnvelopesEnvelopeIdJobsGetSignLink([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> bodyrecipientid = null, [WorkflowExpression] Func<string> bodyredirectTo = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/publish-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["published"] = ExpressionConverter.ConvertO(bodypublished);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse> __BuildPostEnvelopesEnvelopeIdJobsGetSignLink(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null, WorkflowValue<string> bodyrecipientid = null, WorkflowValue<string> bodyredirectTo = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodyrecipientid, nameof(bodyrecipientid), required: false);
+            WorkflowValue.Validate(bodyredirectTo, nameof(bodyredirectTo), required: false);
+            return new DeferredBodyAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/jobs/get.sign.link", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var recipientObject = new JObject();
+                var recipientObjectpropCount = 0;
+                if (bodyrecipientid != null)
+                {
+                    recipientObject["id"] = ExpressionConverter.ConvertO(bodyrecipientid);
+                    recipientObjectpropCount++;
+                }
+
+                if (recipientObjectpropCount > 0)
+                {
+                    body["recipient"] = recipientObject;
+                    bodypropCount++;
+                }
+
+                if (bodyredirectTo != null)
+                {
+                    body["redirectTo"] = ExpressionConverter.ConvertO(bodyredirectTo);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PostEnvelopesEnvelopeIdDocumentsDocumentIdTemplatesTemplateIdUserData(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> templateId, Expression<Func<string>> xNamespace = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopeDescriptorsDefaultEnvelopes))]
+        public IBodyWorkflowAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse> PostEnvelopeDescriptorsDefaultEnvelopes([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> bodysenderemail = null, [WorkflowExpression] Func<string> bodysendergivenName = null, [WorkflowExpression] Func<string> bodysenderfamilyName = null, [WorkflowExpression] Func<double> bodyautomaticReminders = null, [WorkflowExpression] Func<string> bodyexpiration = null, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/templates/{2}/user-data", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1), ExpressionConverter.ConvertWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse> __BuildPostEnvelopeDescriptorsDefaultEnvelopes(WorkflowValue<string> token, WorkflowValue<string> xNamespace = null, WorkflowValue<string> bodysenderemail = null, WorkflowValue<string> bodysendergivenName = null, WorkflowValue<string> bodysenderfamilyName = null, WorkflowValue<double> bodyautomaticReminders = null, WorkflowValue<string> bodyexpiration = null, WorkflowValue<bodydocumentsInputItem[]> bodydocuments = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodysenderemail, nameof(bodysenderemail), required: false);
+            WorkflowValue.Validate(bodysendergivenName, nameof(bodysendergivenName), required: false);
+            WorkflowValue.Validate(bodysenderfamilyName, nameof(bodysenderfamilyName), required: false);
+            WorkflowValue.Validate(bodyautomaticReminders, nameof(bodyautomaticReminders), required: false);
+            WorkflowValue.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
+            WorkflowValue.Validate(bodydocuments, nameof(bodydocuments), required: false);
+            return new DeferredBodyAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse>(() =>
+            {
+                var apiCallPath = "/envelope-descriptors/default/envelopes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var senderObject = new JObject();
+                var senderObjectpropCount = 0;
+                if (bodysenderemail != null)
+                {
+                    senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
+                    senderObjectpropCount++;
+                }
+
+                if (bodysendergivenName != null)
+                {
+                    senderObject["givenName"] = ExpressionConverter.ConvertO(bodysendergivenName);
+                    senderObjectpropCount++;
+                }
+
+                if (bodysenderfamilyName != null)
+                {
+                    senderObject["familyName"] = ExpressionConverter.ConvertO(bodysenderfamilyName);
+                    senderObjectpropCount++;
+                }
+
+                if (senderObjectpropCount > 0)
+                {
+                    body["sender"] = senderObject;
+                    bodypropCount++;
+                }
+
+                if (bodyautomaticReminders != null)
+                {
+                    body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiration != null)
+                {
+                    body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
+                    bodypropCount++;
+                }
+
+                if (bodydocuments != null)
+                {
+                    body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PutEnvelopesEnvelopeIdAbortStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodycomment = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopeDescriptorsDefault))]
+        public IBodyWorkflowAction<Descriptor> GetEnvelopeDescriptorsDefault([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> filters = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/abort-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
-            {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Descriptor> __BuildGetEnvelopeDescriptorsDefault(WorkflowValue<string> token, WorkflowValue<string> xNamespace = null, WorkflowValue<string> filters = null)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(filters, nameof(filters), required: false);
+            return new DeferredBodyAction<Descriptor>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                var apiCallPath = "/envelope-descriptors/default";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filters != null)
+                    callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                return new ApiConnectionAction<Descriptor>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<File[]> GetEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostEnvelopesEnvelopIdJobsSendNotification))]
+        public IWorkflowAction PostEnvelopesEnvelopIdJobsSendNotification([WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> envelopeId, [WorkflowExpression] Func<string> xNamespace = null, [WorkflowExpression] Func<string> bodyenvelopegreeting = null, [WorkflowExpression] Func<string> bodyrecipientid = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<File[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<File> PostEnvelopesEnvelopeIdDocumentsDocumentIdFiles(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyfileType, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyhash = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostEnvelopesEnvelopIdJobsSendNotification(WorkflowValue<string> token, WorkflowValue<string> envelopeId, WorkflowValue<string> xNamespace = null, WorkflowValue<string> bodyenvelopegreeting = null, WorkflowValue<string> bodyrecipientid = null)
         {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["fileType"] = ExpressionConverter.ConvertO(bodyfileType);
-            if (bodyhash != null)
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            WorkflowValue.Validate(envelopeId, nameof(envelopeId), required: true);
+            WorkflowValue.Validate(xNamespace, nameof(xNamespace), required: false);
+            WorkflowValue.Validate(bodyenvelopegreeting, nameof(bodyenvelopegreeting), required: false);
+            WorkflowValue.Validate(bodyrecipientid, nameof(bodyrecipientid), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["hash"] = ExpressionConverter.ConvertO(bodyhash);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/envelopes/{0}/jobs/send.notification", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["token"] = ExpressionConverter.Convert(token);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (xNamespace != null)
+                    callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var envelopeObject = new JObject();
+                var envelopeObjectpropCount = 0;
+                if (bodyenvelopegreeting != null)
+                {
+                    envelopeObject["greeting"] = ExpressionConverter.ConvertO(bodyenvelopegreeting);
+                    envelopeObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (envelopeObjectpropCount > 0)
+                {
+                    body["envelope"] = envelopeObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<File>(callPayload);
-        }
+                var recipientObject = new JObject();
+                var recipientObjectpropCount = 0;
+                if (bodyrecipientid != null)
+                {
+                    recipientObject["id"] = ExpressionConverter.ConvertO(bodyrecipientid);
+                    recipientObjectpropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<UserInfo> GetAuthUserinfo(Expression<Func<string>> token)
-        {
-            var apiCallPath = "/auth/userinfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<UserInfo>(callPayload);
-        }
+                if (recipientObjectpropCount > 0)
+                {
+                    body["recipient"] = recipientObject;
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PostEnvelopesEnvelopeIdDocumentsDocumentIdStatusAborted(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}/status/aborted", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction(callPayload);
-        }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PutEnvelopesEnvelopeIdTrashStatus(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodycomment = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/trash-status", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
-            {
-                body["comment"] = ExpressionConverter.ConvertO(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<EnvelopeDescriptorString[]> GetQueryEnvelopes(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> filters = null, Expression<Func<int>> from = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
-        {
-            var apiCallPath = "/query/envelopes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<EnvelopeDescriptorString[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<EnvelopeDescriptorString[]> GetSearchEnvelopes(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> filters = null, Expression<Func<int>> from = null, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null)
-        {
-            var apiCallPath = "/search/envelopes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<EnvelopeDescriptorString[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Descriptor[]> GetEnvelopeDescriptors(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> filters = null)
-        {
-            var apiCallPath = "/envelope-descriptors";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<Descriptor[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<GetFlowsFlowIdJobsEnvelopeIdResponse> GetFlowsFlowIdJobsEnvelopeId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> flowId, Expression<Func<string>> xNamespace = null)
-        {
-            var apiCallPath = String.Format("/flows/{0}/jobs/{1}", ExpressionConverter.ConvertWithUrlEncoding(flowId, 1), ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<GetFlowsFlowIdJobsEnvelopeIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Document> GetEnvelopesEnvelopeIdDocumentsDocumentId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<Document>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction DeleteEnvelopesEnvelopeIdDocumentsDocumentId(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> documentId, Expression<Func<string>> xNamespace = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/documents/{1}", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1), ExpressionConverter.ConvertWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse> PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopes(Expression<Func<string>> token, Expression<Func<string>> envelopeDescriptorId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string>> bodysendergivenName = null, Expression<Func<string>> bodysenderfamilyName = null, Expression<Func<double>> bodyautomaticReminders = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
-        {
-            var apiCallPath = String.Format("/envelope-descriptors/{0}/envelopes", ExpressionConverter.ConvertWithUrlEncoding(envelopeDescriptorId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var senderObject = new JObject();
-            var senderObjectpropCount = 0;
-            if (bodysenderemail != null)
-            {
-                senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
-                senderObjectpropCount++;
-            }
-
-            if (bodysendergivenName != null)
-            {
-                senderObject["givenName"] = ExpressionConverter.ConvertO(bodysendergivenName);
-                senderObjectpropCount++;
-            }
-
-            if (bodysenderfamilyName != null)
-            {
-                senderObject["familyName"] = ExpressionConverter.ConvertO(bodysenderfamilyName);
-                senderObjectpropCount++;
-            }
-
-            if (senderObjectpropCount > 0)
-            {
-                body["sender"] = senderObject;
-                bodypropCount++;
-            }
-
-            if (bodyautomaticReminders != null)
-            {
-                body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
-                bodypropCount++;
-            }
-
-            if (bodyexpiration != null)
-            {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
-                bodypropCount++;
-            }
-
-            if (bodydocuments != null)
-            {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostEnvelopeDescriptorsEnvelopeDescriptorIdEnvelopesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Document[]> GetEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<Document[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PostEnvelopesEnvelopeIdDocuments(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> bodyname, Expression<Func<string>> xNamespace = null, Expression<Func<int>> bodydescriptorhash = null, Expression<Func<string>> bodysource = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/documents", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var descriptorObject = new JObject();
-            var descriptorObjectpropCount = 0;
-            if (bodydescriptorhash != null)
-            {
-                descriptorObject["hash"] = ExpressionConverter.ConvertO(bodydescriptorhash);
-                descriptorObjectpropCount++;
-            }
-
-            if (descriptorObjectpropCount > 0)
-            {
-                body["descriptor"] = descriptorObject;
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodysource != null)
-            {
-                body["source"] = ExpressionConverter.ConvertO(bodysource);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse> PostEnvelopesEnvelopeIdJobsGetSignLink(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyrecipientid = null, Expression<Func<string>> bodyredirectTo = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/jobs/get.sign.link", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var recipientObject = new JObject();
-            var recipientObjectpropCount = 0;
-            if (bodyrecipientid != null)
-            {
-                recipientObject["id"] = ExpressionConverter.ConvertO(bodyrecipientid);
-                recipientObjectpropCount++;
-            }
-
-            if (recipientObjectpropCount > 0)
-            {
-                body["recipient"] = recipientObject;
-                bodypropCount++;
-            }
-
-            if (bodyredirectTo != null)
-            {
-                body["redirectTo"] = ExpressionConverter.ConvertO(bodyredirectTo);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostEnvelopesEnvelopeIdJobsGetSignLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse> PostEnvelopeDescriptorsDefaultEnvelopes(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodysenderemail = null, Expression<Func<string>> bodysendergivenName = null, Expression<Func<string>> bodysenderfamilyName = null, Expression<Func<double>> bodyautomaticReminders = null, Expression<Func<string>> bodyexpiration = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null)
-        {
-            var apiCallPath = "/envelope-descriptors/default/envelopes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var senderObject = new JObject();
-            var senderObjectpropCount = 0;
-            if (bodysenderemail != null)
-            {
-                senderObject["email"] = ExpressionConverter.ConvertO(bodysenderemail);
-                senderObjectpropCount++;
-            }
-
-            if (bodysendergivenName != null)
-            {
-                senderObject["givenName"] = ExpressionConverter.ConvertO(bodysendergivenName);
-                senderObjectpropCount++;
-            }
-
-            if (bodysenderfamilyName != null)
-            {
-                senderObject["familyName"] = ExpressionConverter.ConvertO(bodysenderfamilyName);
-                senderObjectpropCount++;
-            }
-
-            if (senderObjectpropCount > 0)
-            {
-                body["sender"] = senderObject;
-                bodypropCount++;
-            }
-
-            if (bodyautomaticReminders != null)
-            {
-                body["automaticReminders"] = ExpressionConverter.ConvertO(bodyautomaticReminders);
-                bodypropCount++;
-            }
-
-            if (bodyexpiration != null)
-            {
-                body["expiration"] = ExpressionConverter.ConvertO(bodyexpiration);
-                bodypropCount++;
-            }
-
-            if (bodydocuments != null)
-            {
-                body["documents"] = ExpressionConverter.ConvertO(bodydocuments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostEnvelopeDescriptorsDefaultEnvelopesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IBodyWorkflowAction<Descriptor> GetEnvelopeDescriptorsDefault(Expression<Func<string>> token, Expression<Func<string>> xNamespace = null, Expression<Func<string>> filters = null)
-        {
-            var apiCallPath = "/envelope-descriptors/default";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filters != null)
-                callPayload.Queries["filters"] = ExpressionConverter.Convert(filters);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            return new ApiConnectionAction<Descriptor>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "verified")]
-        public IWorkflowAction PostEnvelopesEnvelopIdJobsSendNotification(Expression<Func<string>> token, Expression<Func<string>> envelopeId, Expression<Func<string>> xNamespace = null, Expression<Func<string>> bodyenvelopegreeting = null, Expression<Func<string>> bodyrecipientid = null)
-        {
-            var apiCallPath = String.Format("/envelopes/{0}/jobs/send.notification", ExpressionConverter.ConvertWithUrlEncoding(envelopeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["token"] = ExpressionConverter.Convert(token);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (xNamespace != null)
-                callPayload.Headers["x-namespace"] = ExpressionConverter.Convert(xNamespace);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var envelopeObject = new JObject();
-            var envelopeObjectpropCount = 0;
-            if (bodyenvelopegreeting != null)
-            {
-                envelopeObject["greeting"] = ExpressionConverter.ConvertO(bodyenvelopegreeting);
-                envelopeObjectpropCount++;
-            }
-
-            if (envelopeObjectpropCount > 0)
-            {
-                body["envelope"] = envelopeObject;
-                bodypropCount++;
-            }
-
-            var recipientObject = new JObject();
-            var recipientObjectpropCount = 0;
-            if (bodyrecipientid != null)
-            {
-                recipientObject["id"] = ExpressionConverter.ConvertO(bodyrecipientid);
-                recipientObjectpropCount++;
-            }
-
-            if (recipientObjectpropCount > 0)
-            {
-                body["recipient"] = recipientObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

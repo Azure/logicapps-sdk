@@ -4,127 +4,201 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ApppowerformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddForm(Expression<Func<string>> bodyformName, Expression<Func<string>> bodyformDescription = null, Expression<Func<string>> bodythankYouText = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddForm))]
+        public IBodyWorkflowAction<JToken> AddForm([WorkflowExpression] Func<string> bodyformName, [WorkflowExpression] Func<string> bodyformDescription = null, [WorkflowExpression] Func<string> bodythankYouText = null)
         {
-            var apiCallPath = "/AddNewForm";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["formTitle"] = ExpressionConverter.ConvertO(bodyformName);
-            if (bodyformDescription != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildAddForm(WorkflowValue<string> bodyformName, WorkflowValue<string> bodyformDescription = null, WorkflowValue<string> bodythankYouText = null)
+        {
+            WorkflowValue.Validate(bodyformName, nameof(bodyformName), required: true);
+            WorkflowValue.Validate(bodyformDescription, nameof(bodyformDescription), required: false);
+            WorkflowValue.Validate(bodythankYouText, nameof(bodythankYouText), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                body["welcomeText"] = ExpressionConverter.ConvertO(bodyformDescription);
+                var apiCallPath = "/AddNewForm";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["formTitle"] = ExpressionConverter.ConvertO(bodyformName);
+                if (bodyformDescription != null)
+                {
+                    body["welcomeText"] = ExpressionConverter.ConvertO(bodyformDescription);
+                    bodypropCount++;
+                }
 
-            if (bodythankYouText != null)
-            {
-                body["thankYouText"] = ExpressionConverter.ConvertO(bodythankYouText);
-                bodypropCount++;
-            }
+                if (bodythankYouText != null)
+                {
+                    body["thankYouText"] = ExpressionConverter.ConvertO(bodythankYouText);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddFormField(Expression<Func<string>> bodyformID, Expression<Func<string>> bodyformName, Expression<Func<string>> bodyfieldName, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldConfiguration = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddFormField))]
+        public IBodyWorkflowAction<JToken> AddFormField([WorkflowExpression] Func<string> bodyformID, [WorkflowExpression] Func<string> bodyformName, [WorkflowExpression] Func<string> bodyfieldName, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<object> bodyfieldConfiguration = null)
         {
-            var apiCallPath = "/AddFormField";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["instanceId"] = ExpressionConverter.ConvertO(bodyformID);
-            bodypropCount++;
-            body["formName"] = ExpressionConverter.ConvertO(bodyformName);
-            bodypropCount++;
-            body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
-            bodypropCount++;
-            body["fieldType"] = ExpressionConverter.ConvertO(bodyfieldType);
-            if (bodyfieldConfiguration != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildAddFormField(WorkflowValue<string> bodyformID, WorkflowValue<string> bodyformName, WorkflowValue<string> bodyfieldName, WorkflowValue<string> bodyfieldType, WorkflowValue<object> bodyfieldConfiguration = null)
+        {
+            WorkflowValue.Validate(bodyformID, nameof(bodyformID), required: true);
+            WorkflowValue.Validate(bodyformName, nameof(bodyformName), required: true);
+            WorkflowValue.Validate(bodyfieldName, nameof(bodyfieldName), required: true);
+            WorkflowValue.Validate(bodyfieldType, nameof(bodyfieldType), required: true);
+            WorkflowValue.Validate(bodyfieldConfiguration, nameof(bodyfieldConfiguration), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                body["fieldConfiguration"] = ExpressionConverter.ConvertO(bodyfieldConfiguration);
+                var apiCallPath = "/AddFormField";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddAdaptiveCard(Expression<Func<string>> bodyname, Expression<Func<string>> bodycard, Expression<Func<string>> bodycardAfterSubmit = null)
-        {
-            var apiCallPath = "/AddAdaptiveCard";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            bodypropCount++;
-            body["card"] = ExpressionConverter.ConvertO(bodycard);
-            if (bodycardAfterSubmit != null)
-            {
-                body["cardAfterSubmit"] = ExpressionConverter.ConvertO(bodycardAfterSubmit);
+                body["instanceId"] = ExpressionConverter.ConvertO(bodyformID);
                 bodypropCount++;
-            }
+                body["formName"] = ExpressionConverter.ConvertO(bodyformName);
+                bodypropCount++;
+                body["fieldName"] = ExpressionConverter.ConvertO(bodyfieldName);
+                bodypropCount++;
+                body["fieldType"] = ExpressionConverter.ConvertO(bodyfieldType);
+                if (bodyfieldConfiguration != null)
+                {
+                    body["fieldConfiguration"] = ExpressionConverter.ConvertO(bodyfieldConfiguration);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
+        [WorkflowExpressionFactory(nameof(__BuildAddAdaptiveCard))]
+        public IBodyWorkflowAction<JToken> AddAdaptiveCard([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycard, [WorkflowExpression] Func<string> bodycardAfterSubmit = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildAddAdaptiveCard(WorkflowValue<string> bodyname, WorkflowValue<string> bodycard, WorkflowValue<string> bodycardAfterSubmit = null)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodycard, nameof(bodycard), required: true);
+            WorkflowValue.Validate(bodycardAfterSubmit, nameof(bodycardAfterSubmit), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/AddAdaptiveCard";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                bodypropCount++;
+                body["card"] = ExpressionConverter.ConvertO(bodycard);
+                if (bodycardAfterSubmit != null)
+                {
+                    body["cardAfterSubmit"] = ExpressionConverter.ConvertO(bodycardAfterSubmit);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> GetCardResponse(Expression<Func<string>> instanceId, Expression<Func<string>> name)
+        [WorkflowExpressionFactory(nameof(__BuildGetCardResponse))]
+        public IBodyWorkflowAction<JToken> GetCardResponse([WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string> name)
         {
-            var apiCallPath = String.Format("/GetCardResponse/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(name, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetCardResponse(WorkflowValue<string> instanceId, WorkflowValue<string> name)
+        {
+            WorkflowValue.Validate(instanceId, nameof(instanceId), required: true);
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/GetCardResponse/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1), ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<string> GetFormAdaptiveCardJson(Expression<Func<string>> instanceId)
+        [WorkflowExpressionFactory(nameof(__BuildGetFormAdaptiveCardJson))]
+        public IBodyWorkflowAction<string> GetFormAdaptiveCardJson([WorkflowExpression] Func<string> instanceId)
         {
-            var apiCallPath = String.Format("/GetFormAdaptiveCardJson/{0}", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetFormAdaptiveCardJson(WorkflowValue<string> instanceId)
+        {
+            WorkflowValue.Validate(instanceId, nameof(instanceId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/GetFormAdaptiveCardJson/{0}", ExpressionConverter.ConvertWithUrlEncoding(instanceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class ApppowerformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse(Expression<Func<string>> name, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildTriggerGetCardResponse))]
+        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse([WorkflowExpression] Func<string> name, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/TriggerGetCardResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");
-            return new ApiConnectionTrigger<TriggerGetCardResponseResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> __BuildTriggerGetCardResponse(WorkflowValue<string> name, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            return new DeferredBodyTrigger<TriggerGetCardResponseResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/TriggerGetCardResponse/{0}", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");
+                return new ApiConnectionTrigger<TriggerGetCardResponseResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

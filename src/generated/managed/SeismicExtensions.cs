@@ -4,39 +4,73 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SeismicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp> GetGenerationResultAsync(Expression<Func<string>> generatedLivedocId)
+        [WorkflowExpressionFactory(nameof(__BuildGetGenerationResultAsync))]
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp> GetGenerationResultAsync([WorkflowExpression] Func<string> generatedLivedocId)
         {
-            var apiCallPath = String.Format("/generatedLivedocs/{0}", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp> __BuildGetGenerationResultAsync(WorkflowValue<string> generatedLivedocId)
+        {
+            WorkflowValue.Validate(generatedLivedocId, nameof(generatedLivedocId), required: true);
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenResultResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2CommonModelsDownloadLocationResp> GetGeneratedLiveDocContent(Expression<Func<string>> generatedLivedocId, Expression<Func<string>> outputId)
+        [WorkflowExpressionFactory(nameof(__BuildGetGeneratedLiveDocContent))]
+        public IBodyWorkflowAction<V2CommonModelsDownloadLocationResp> GetGeneratedLiveDocContent([WorkflowExpression] Func<string> generatedLivedocId, [WorkflowExpression] Func<string> outputId)
         {
-            var apiCallPath = String.Format("/generatedLivedocs/{0}/outputs/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1), ExpressionConverter.ConvertWithUrlEncoding(outputId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["redirect"] = Convert.ToString(false);
-            return new ApiConnectionAction<V2CommonModelsDownloadLocationResp>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2CommonModelsDownloadLocationResp> __BuildGetGeneratedLiveDocContent(WorkflowValue<string> generatedLivedocId, WorkflowValue<string> outputId)
+        {
+            WorkflowValue.Validate(generatedLivedocId, nameof(generatedLivedocId), required: true);
+            WorkflowValue.Validate(outputId, nameof(outputId), required: true);
+            return new DeferredBodyAction<V2CommonModelsDownloadLocationResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/generatedLivedocs/{0}/outputs/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(generatedLivedocId, 1), ExpressionConverter.ConvertWithUrlEncoding(outputId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["redirect"] = Convert.ToString(false);
+                return new ApiConnectionAction<V2CommonModelsDownloadLocationResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2PredictiveContentModelsPredictiveContentResponse[]> GetPredictiveContentResultSet(Expression<Func<string>> predictiveContentId, Expression<Func<string>> contextId)
+        [WorkflowExpressionFactory(nameof(__BuildGetPredictiveContentResultSet))]
+        public IBodyWorkflowAction<V2PredictiveContentModelsPredictiveContentResponse[]> GetPredictiveContentResultSet([WorkflowExpression] Func<string> predictiveContentId, [WorkflowExpression] Func<string> contextId)
         {
-            var apiCallPath = String.Format("/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(contextId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2PredictiveContentModelsPredictiveContentResponse[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2PredictiveContentModelsPredictiveContentResponse[]> __BuildGetPredictiveContentResultSet(WorkflowValue<string> predictiveContentId, WorkflowValue<string> contextId)
+        {
+            WorkflowValue.Validate(predictiveContentId, nameof(predictiveContentId), required: true);
+            WorkflowValue.Validate(contextId, nameof(contextId), required: true);
+            return new DeferredBodyAction<V2PredictiveContentModelsPredictiveContentResponse[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/predictiveContent/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(predictiveContentId, 1), ExpressionConverter.ConvertWithUrlEncoding(contextId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2PredictiveContentModelsPredictiveContentResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
@@ -49,220 +83,370 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismic
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryContentManagementModelsFileResponse> CreateLibraryFile(Expression<Func<string>> teamsiteId, Expression<Func<string>> metadata, Expression<Func<object>> content)
+        [WorkflowExpressionFactory(nameof(__BuildCreateLibraryFile))]
+        public IBodyWorkflowAction<V2LibraryContentManagementModelsFileResponse> CreateLibraryFile([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> metadata, [WorkflowExpression] Func<object> content)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2LibraryContentManagementModelsFileResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryContentManagementModelsItemResponse> GetItemInformation(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2LibraryContentManagementModelsFileResponse> __BuildCreateLibraryFile(WorkflowValue<string> teamsiteId, WorkflowValue<string> metadata, WorkflowValue<object> content)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2LibraryContentManagementModelsItemResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IWorkflowAction SubmitLibraryItemToWorkflow(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentId, Expression<Func<string>> commentcomments = null)
-        {
-            var apiCallPath = String.Format("/teamsites/{0}/items/{1}/submit", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var comment = new JObject();
-            var commentpropCount = 0;
-            if (commentcomments != null)
+            WorkflowValue.Validate(teamsiteId, nameof(teamsiteId), required: true);
+            WorkflowValue.Validate(metadata, nameof(metadata), required: true);
+            WorkflowValue.Validate(content, nameof(content), required: true);
+            return new DeferredBodyAction<V2LibraryContentManagementModelsFileResponse>(() =>
             {
-                comment["comments"] = ExpressionConverter.ConvertO(commentcomments);
-                commentpropCount++;
-            }
-
-            if (commentpropCount > 0)
-            {
-                callPayload.Body = comment;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/files", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2LibraryContentManagementModelsFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp> GetLiveDocInputParams(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId)
+        [WorkflowExpressionFactory(nameof(__BuildGetItemInformation))]
+        public IBodyWorkflowAction<V2LibraryContentManagementModelsItemResponse> GetItemInformation([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2LibraryContentManagementModelsItemResponse> __BuildGetItemInformation(WorkflowValue<string> teamsiteId, WorkflowValue<string> libraryContentId)
+        {
+            WorkflowValue.Validate(teamsiteId, nameof(teamsiteId), required: true);
+            WorkflowValue.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            return new DeferredBodyAction<V2LibraryContentManagementModelsItemResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2LibraryContentManagementModelsItemResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp> GenerateAsync(Expression<Func<string>> teamsiteId, Expression<Func<string>> libraryContentVersionId, Expression<Func<genInputReqoutputsInputItem[]>> genInputReqoutputs, Expression<Func<V2AdHocInputs[]>> genInputReqadHocInputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildSubmitLibraryItemToWorkflow))]
+        public IWorkflowAction SubmitLibraryItemToWorkflow([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentId, [WorkflowExpression] Func<string> commentcomments = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var genInputReq = new JObject();
-            var genInputReqpropCount = 0;
-            if (genInputReqadHocInputs != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSubmitLibraryItemToWorkflow(WorkflowValue<string> teamsiteId, WorkflowValue<string> libraryContentId, WorkflowValue<string> commentcomments = null)
+        {
+            WorkflowValue.Validate(teamsiteId, nameof(teamsiteId), required: true);
+            WorkflowValue.Validate(libraryContentId, nameof(libraryContentId), required: true);
+            WorkflowValue.Validate(commentcomments, nameof(commentcomments), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                genInputReq["adHocInputs"] = ExpressionConverter.ConvertO(genInputReqadHocInputs);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/items/{1}/submit", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var comment = new JObject();
+                var commentpropCount = 0;
+                if (commentcomments != null)
+                {
+                    comment["comments"] = ExpressionConverter.ConvertO(commentcomments);
+                    commentpropCount++;
+                }
+
+                if (commentpropCount > 0)
+                {
+                    callPayload.Body = comment;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
+        [WorkflowExpressionFactory(nameof(__BuildGetLiveDocInputParams))]
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp> GetLiveDocInputParams([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentVersionId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp> __BuildGetLiveDocInputParams(WorkflowValue<string> teamsiteId, WorkflowValue<string> libraryContentVersionId)
+        {
+            WorkflowValue.Validate(teamsiteId, nameof(teamsiteId), required: true);
+            WorkflowValue.Validate(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocVersionResp>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
+        [WorkflowExpressionFactory(nameof(__BuildGenerateAsync))]
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp> GenerateAsync([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> libraryContentVersionId, [WorkflowExpression] Func<genInputReqoutputsInputItem[]> genInputReqoutputs, [WorkflowExpression] Func<V2AdHocInputs[]> genInputReqadHocInputs = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp> __BuildGenerateAsync(WorkflowValue<string> teamsiteId, WorkflowValue<string> libraryContentVersionId, WorkflowValue<genInputReqoutputsInputItem[]> genInputReqoutputs, WorkflowValue<V2AdHocInputs[]> genInputReqadHocInputs = null)
+        {
+            WorkflowValue.Validate(teamsiteId, nameof(teamsiteId), required: true);
+            WorkflowValue.Validate(libraryContentVersionId, nameof(libraryContentVersionId), required: true);
+            WorkflowValue.Validate(genInputReqoutputs, nameof(genInputReqoutputs), required: true);
+            WorkflowValue.Validate(genInputReqadHocInputs, nameof(genInputReqadHocInputs), required: false);
+            return new DeferredBodyAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/livedocVersions/{1}", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1), ExpressionConverter.ConvertWithUrlEncoding(libraryContentVersionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var genInputReq = new JObject();
+                var genInputReqpropCount = 0;
+                if (genInputReqadHocInputs != null)
+                {
+                    genInputReq["adHocInputs"] = ExpressionConverter.ConvertO(genInputReqadHocInputs);
+                    genInputReqpropCount++;
+                }
+
                 genInputReqpropCount++;
-            }
+                genInputReq["outputs"] = ExpressionConverter.ConvertO(genInputReqoutputs);
+                if (genInputReqpropCount > 0)
+                {
+                    callPayload.Body = genInputReq;
+                }
 
-            genInputReqpropCount++;
-            genInputReq["outputs"] = ExpressionConverter.ConvertO(genInputReqoutputs);
-            if (genInputReqpropCount > 0)
-            {
-                callPayload.Body = genInputReq;
-            }
-
-            return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(callPayload);
+                return new ApiConnectionAction<V2LiveDocsModelsResponseModelsLiveDocGenSuccinctResultResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse> PublishLibraryItems(Expression<Func<string>> teamsiteId, Expression<Func<string>> publishRequestcomment = null, Expression<Func<V2LibraryPublishingPublishContentItem[]>> publishRequestcontent = null, Expression<Func<string>> publishRequestpublishAt = null)
+        [WorkflowExpressionFactory(nameof(__BuildPublishLibraryItems))]
+        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse> PublishLibraryItems([WorkflowExpression] Func<string> teamsiteId, [WorkflowExpression] Func<string> publishRequestcomment = null, [WorkflowExpression] Func<V2LibraryPublishingPublishContentItem[]> publishRequestcontent = null, [WorkflowExpression] Func<string> publishRequestpublishAt = null)
         {
-            var apiCallPath = String.Format("/teamsites/{0}/publish", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var publishRequest = new JObject();
-            var publishRequestpropCount = 0;
-            if (publishRequestcomment != null)
-            {
-                publishRequest["comment"] = ExpressionConverter.ConvertO(publishRequestcomment);
-                publishRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (publishRequestcontent != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2LibraryPublishingPublishResponse> __BuildPublishLibraryItems(WorkflowValue<string> teamsiteId, WorkflowValue<string> publishRequestcomment = null, WorkflowValue<V2LibraryPublishingPublishContentItem[]> publishRequestcontent = null, WorkflowValue<string> publishRequestpublishAt = null)
+        {
+            WorkflowValue.Validate(teamsiteId, nameof(teamsiteId), required: true);
+            WorkflowValue.Validate(publishRequestcomment, nameof(publishRequestcomment), required: false);
+            WorkflowValue.Validate(publishRequestcontent, nameof(publishRequestcontent), required: false);
+            WorkflowValue.Validate(publishRequestpublishAt, nameof(publishRequestpublishAt), required: false);
+            return new DeferredBodyAction<V2LibraryPublishingPublishResponse>(() =>
             {
-                publishRequest["content"] = ExpressionConverter.ConvertO(publishRequestcontent);
-                publishRequestpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/teamsites/{0}/publish", ExpressionConverter.ConvertWithUrlEncoding(teamsiteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var publishRequest = new JObject();
+                var publishRequestpropCount = 0;
+                if (publishRequestcomment != null)
+                {
+                    publishRequest["comment"] = ExpressionConverter.ConvertO(publishRequestcomment);
+                    publishRequestpropCount++;
+                }
 
-            if (publishRequestpublishAt != null)
-            {
-                publishRequest["publishAt"] = ExpressionConverter.ConvertO(publishRequestpublishAt);
-                publishRequestpropCount++;
-            }
+                if (publishRequestcontent != null)
+                {
+                    publishRequest["content"] = ExpressionConverter.ConvertO(publishRequestcontent);
+                    publishRequestpropCount++;
+                }
 
-            if (publishRequestpropCount > 0)
-            {
-                callPayload.Body = publishRequest;
-            }
+                if (publishRequestpublishAt != null)
+                {
+                    publishRequest["publishAt"] = ExpressionConverter.ConvertO(publishRequestpublishAt);
+                    publishRequestpropCount++;
+                }
 
-            return new ApiConnectionAction<V2LibraryPublishingPublishResponse>(callPayload);
+                if (publishRequestpropCount > 0)
+                {
+                    callPayload.Body = publishRequest;
+                }
+
+                return new ApiConnectionAction<V2LibraryPublishingPublishResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2UsersUserResponse> GetUserDetails(Expression<Func<string>> userId)
+        [WorkflowExpressionFactory(nameof(__BuildGetUserDetails))]
+        public IBodyWorkflowAction<V2UsersUserResponse> GetUserDetails([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = String.Format("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2UsersUserResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2UsersUserResponse> __BuildGetUserDetails(WorkflowValue<string> userId)
+        {
+            WorkflowValue.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<V2UsersUserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2UsersUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFileResp> CreateFile(Expression<Func<string>> metadata, Expression<Func<object>> content)
+        [WorkflowExpressionFactory(nameof(__BuildCreateFile))]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFileResp> CreateFile([WorkflowExpression] Func<string> metadata, [WorkflowExpression] Func<object> content)
         {
-            var apiCallPath = "/workspace/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFileResp>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFileResp> __BuildCreateFile(WorkflowValue<string> metadata, WorkflowValue<object> content)
+        {
+            WorkflowValue.Validate(metadata, nameof(metadata), required: true);
+            WorkflowValue.Validate(content, nameof(content), required: true);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFileResp>(() =>
+            {
+                var apiCallPath = "/workspace/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFileResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> CreateWorkspaceFolder(Expression<Func<string>> foldername = null, Expression<Func<string>> folderparentFolderId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceFolder))]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> CreateWorkspaceFolder([WorkflowExpression] Func<string> foldername = null, [WorkflowExpression] Func<string> folderparentFolderId = null)
         {
-            var apiCallPath = "/workspace/folders";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var folder = new JObject();
-            var folderpropCount = 0;
-            if (foldername != null)
-            {
-                folder["name"] = ExpressionConverter.ConvertO(foldername);
-                folderpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (folderparentFolderId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> __BuildCreateWorkspaceFolder(WorkflowValue<string> foldername = null, WorkflowValue<string> folderparentFolderId = null)
+        {
+            WorkflowValue.Validate(foldername, nameof(foldername), required: false);
+            WorkflowValue.Validate(folderparentFolderId, nameof(folderparentFolderId), required: false);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp>(() =>
             {
-                folder["parentFolderId"] = ExpressionConverter.ConvertO(folderparentFolderId);
-                folderpropCount++;
-            }
+                var apiCallPath = "/workspace/folders";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var folder = new JObject();
+                var folderpropCount = 0;
+                if (foldername != null)
+                {
+                    folder["name"] = ExpressionConverter.ConvertO(foldername);
+                    folderpropCount++;
+                }
 
-            if (folderpropCount > 0)
-            {
-                callPayload.Body = folder;
-            }
+                if (folderparentFolderId != null)
+                {
+                    folder["parentFolderId"] = ExpressionConverter.ConvertO(folderparentFolderId);
+                    folderpropCount++;
+                }
 
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
+                if (folderpropCount > 0)
+                {
+                    callPayload.Body = folder;
+                }
+
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> CreateWorkspaceContextualFolder(Expression<Func<string>> foldercontextId = null, Expression<Func<string>> foldercontextType = null, Expression<Func<string>> foldercontextTypePlural = null, Expression<Func<string>> foldername = null, Expression<Func<string>> foldersystemType = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWorkspaceContextualFolder))]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> CreateWorkspaceContextualFolder([WorkflowExpression] Func<string> foldercontextId = null, [WorkflowExpression] Func<string> foldercontextType = null, [WorkflowExpression] Func<string> foldercontextTypePlural = null, [WorkflowExpression] Func<string> foldername = null, [WorkflowExpression] Func<string> foldersystemType = null)
         {
-            var apiCallPath = "/workspace/folders/createContextualFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var folder = new JObject();
-            var folderpropCount = 0;
-            if (foldercontextId != null)
-            {
-                folder["contextId"] = ExpressionConverter.ConvertO(foldercontextId);
-                folderpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (foldercontextType != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsFolderResp> __BuildCreateWorkspaceContextualFolder(WorkflowValue<string> foldercontextId = null, WorkflowValue<string> foldercontextType = null, WorkflowValue<string> foldercontextTypePlural = null, WorkflowValue<string> foldername = null, WorkflowValue<string> foldersystemType = null)
+        {
+            WorkflowValue.Validate(foldercontextId, nameof(foldercontextId), required: false);
+            WorkflowValue.Validate(foldercontextType, nameof(foldercontextType), required: false);
+            WorkflowValue.Validate(foldercontextTypePlural, nameof(foldercontextTypePlural), required: false);
+            WorkflowValue.Validate(foldername, nameof(foldername), required: false);
+            WorkflowValue.Validate(foldersystemType, nameof(foldersystemType), required: false);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsFolderResp>(() =>
             {
-                folder["contextType"] = ExpressionConverter.ConvertO(foldercontextType);
-                folderpropCount++;
-            }
+                var apiCallPath = "/workspace/folders/createContextualFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var folder = new JObject();
+                var folderpropCount = 0;
+                if (foldercontextId != null)
+                {
+                    folder["contextId"] = ExpressionConverter.ConvertO(foldercontextId);
+                    folderpropCount++;
+                }
 
-            if (foldercontextTypePlural != null)
-            {
-                folder["contextTypePlural"] = ExpressionConverter.ConvertO(foldercontextTypePlural);
-                folderpropCount++;
-            }
+                if (foldercontextType != null)
+                {
+                    folder["contextType"] = ExpressionConverter.ConvertO(foldercontextType);
+                    folderpropCount++;
+                }
 
-            if (foldername != null)
-            {
-                folder["name"] = ExpressionConverter.ConvertO(foldername);
-                folderpropCount++;
-            }
+                if (foldercontextTypePlural != null)
+                {
+                    folder["contextTypePlural"] = ExpressionConverter.ConvertO(foldercontextTypePlural);
+                    folderpropCount++;
+                }
 
-            if (foldersystemType != null)
-            {
-                folder["systemType"] = ExpressionConverter.ConvertO(foldersystemType);
-                folderpropCount++;
-            }
+                if (foldername != null)
+                {
+                    folder["name"] = ExpressionConverter.ConvertO(foldername);
+                    folderpropCount++;
+                }
 
-            if (folderpropCount > 0)
-            {
-                callPayload.Body = folder;
-            }
+                if (foldersystemType != null)
+                {
+                    folder["systemType"] = ExpressionConverter.ConvertO(foldersystemType);
+                    folderpropCount++;
+                }
 
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
+                if (folderpropCount > 0)
+                {
+                    callPayload.Body = folder;
+                }
+
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsFolderResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp> GetWorkspaceFolderItems(Expression<Func<string>> workspaceFolderId)
+        [WorkflowExpressionFactory(nameof(__BuildGetWorkspaceFolderItems))]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp> GetWorkspaceFolderItems([WorkflowExpression] Func<string> workspaceFolderId)
         {
-            var apiCallPath = String.Format("/workspace/folders/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(workspaceFolderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp> __BuildGetWorkspaceFolderItems(WorkflowValue<string> workspaceFolderId)
+        {
+            WorkflowValue.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workspace/folders/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsItemsOfV2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismic")]
-        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsItemResp> GetItem(Expression<Func<string>> workspaceContentId)
+        [WorkflowExpressionFactory(nameof(__BuildGetItem))]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsItemResp> GetItem([WorkflowExpression] Func<string> workspaceContentId)
         {
-            var apiCallPath = String.Format("/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<V2WorkSpaceContentManagerModelsWsItemResp> __BuildGetItem(WorkflowValue<string> workspaceContentId)
+        {
+            WorkflowValue.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            return new DeferredBodyAction<V2WorkSpaceContentManagerModelsWsItemResp>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workspace/items/{0}", ExpressionConverter.ConvertWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<V2WorkSpaceContentManagerModelsWsItemResp>(callPayload);
+            });
         }
     }
 

@@ -4,71 +4,89 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openexperience
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OpenexperienceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openexperience")]
-        public IBodyWorkflowAction<CreateNewProjectResponse> CreateNewProject(Expression<Func<string>> projectSettingscustomerId, Expression<Func<string>> projectSettingsid, Expression<Func<string>> projectSettingsname, Expression<Func<int>> projectSettingscontactPhone, Expression<Func<string>> projectSettingscontactEmail, Expression<Func<string>> projectSettingsresponsible, Expression<Func<string[]>> projectSettingsservices, Expression<Func<string>> projectSettingsaddress = null, Expression<Func<bool>> projectSettingssettingsprojectAdminMembersAccess = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateNewProject))]
+        public IBodyWorkflowAction<CreateNewProjectResponse> CreateNewProject([WorkflowExpression] Func<string> projectSettingscustomerId, [WorkflowExpression] Func<string> projectSettingsid, [WorkflowExpression] Func<string> projectSettingsname, [WorkflowExpression] Func<int> projectSettingscontactPhone, [WorkflowExpression] Func<string> projectSettingscontactEmail, [WorkflowExpression] Func<string> projectSettingsresponsible, [WorkflowExpression] Func<string[]> projectSettingsservices, [WorkflowExpression] Func<string> projectSettingsaddress = null, [WorkflowExpression] Func<bool> projectSettingssettingsprojectAdminMembersAccess = null)
         {
-            var apiCallPath = "/connector/createProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var projectSettings = new JObject();
-            var projectSettingspropCount = 0;
-            projectSettingspropCount++;
-            projectSettings["customerId"] = ExpressionConverter.ConvertO(projectSettingscustomerId);
-            projectSettingspropCount++;
-            projectSettings["id"] = ExpressionConverter.ConvertO(projectSettingsid);
-            projectSettingspropCount++;
-            projectSettings["name"] = ExpressionConverter.ConvertO(projectSettingsname);
-            if (projectSettingsaddress != null)
-            {
-                projectSettings["address"] = ExpressionConverter.ConvertO(projectSettingsaddress);
-                projectSettingspropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            projectSettingspropCount++;
-            projectSettings["contactPhone"] = ExpressionConverter.ConvertO(projectSettingscontactPhone);
-            projectSettingspropCount++;
-            projectSettings["contactEmail"] = ExpressionConverter.ConvertO(projectSettingscontactEmail);
-            projectSettingspropCount++;
-            projectSettings["responsible"] = ExpressionConverter.ConvertO(projectSettingsresponsible);
-            projectSettingspropCount++;
-            projectSettings["services"] = ExpressionConverter.ConvertO(projectSettingsservices);
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (projectSettingssettingsprojectAdminMembersAccess != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateNewProjectResponse> __BuildCreateNewProject(WorkflowValue<string> projectSettingscustomerId, WorkflowValue<string> projectSettingsid, WorkflowValue<string> projectSettingsname, WorkflowValue<int> projectSettingscontactPhone, WorkflowValue<string> projectSettingscontactEmail, WorkflowValue<string> projectSettingsresponsible, WorkflowValue<string[]> projectSettingsservices, WorkflowValue<string> projectSettingsaddress = null, WorkflowValue<bool> projectSettingssettingsprojectAdminMembersAccess = null)
+        {
+            WorkflowValue.Validate(projectSettingscustomerId, nameof(projectSettingscustomerId), required: true);
+            WorkflowValue.Validate(projectSettingsid, nameof(projectSettingsid), required: true);
+            WorkflowValue.Validate(projectSettingsname, nameof(projectSettingsname), required: true);
+            WorkflowValue.Validate(projectSettingscontactPhone, nameof(projectSettingscontactPhone), required: true);
+            WorkflowValue.Validate(projectSettingscontactEmail, nameof(projectSettingscontactEmail), required: true);
+            WorkflowValue.Validate(projectSettingsresponsible, nameof(projectSettingsresponsible), required: true);
+            WorkflowValue.Validate(projectSettingsservices, nameof(projectSettingsservices), required: true);
+            WorkflowValue.Validate(projectSettingsaddress, nameof(projectSettingsaddress), required: false);
+            WorkflowValue.Validate(projectSettingssettingsprojectAdminMembersAccess, nameof(projectSettingssettingsprojectAdminMembersAccess), required: false);
+            return new DeferredBodyAction<CreateNewProjectResponse>(() =>
             {
+                var apiCallPath = "/connector/createProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var projectSettings = new JObject();
+                var projectSettingspropCount = 0;
+                projectSettingspropCount++;
+                projectSettings["customerId"] = ExpressionConverter.ConvertO(projectSettingscustomerId);
+                projectSettingspropCount++;
+                projectSettings["id"] = ExpressionConverter.ConvertO(projectSettingsid);
+                projectSettingspropCount++;
+                projectSettings["name"] = ExpressionConverter.ConvertO(projectSettingsname);
+                if (projectSettingsaddress != null)
+                {
+                    projectSettings["address"] = ExpressionConverter.ConvertO(projectSettingsaddress);
+                    projectSettingspropCount++;
+                }
+
+                projectSettingspropCount++;
+                projectSettings["contactPhone"] = ExpressionConverter.ConvertO(projectSettingscontactPhone);
+                projectSettingspropCount++;
+                projectSettings["contactEmail"] = ExpressionConverter.ConvertO(projectSettingscontactEmail);
+                projectSettingspropCount++;
+                projectSettings["responsible"] = ExpressionConverter.ConvertO(projectSettingsresponsible);
+                projectSettingspropCount++;
+                projectSettings["services"] = ExpressionConverter.ConvertO(projectSettingsservices);
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
                 if (projectSettingssettingsprojectAdminMembersAccess != null)
                 {
-                    settingsObject["projectAdminMembersAccess"] = ExpressionConverter.ConvertO(projectSettingssettingsprojectAdminMembersAccess);
+                    if (projectSettingssettingsprojectAdminMembersAccess != null)
+                    {
+                        settingsObject["projectAdminMembersAccess"] = ExpressionConverter.ConvertO(projectSettingssettingsprojectAdminMembersAccess);
+                        settingsObjectpropCount++;
+                    }
+
+                    settingsObjectpropCount++;
+                }
+                else
+                {
+                    settingsObject["projectAdminMembersAccess"] = false;
                     settingsObjectpropCount++;
                 }
 
-                settingsObjectpropCount++;
-            }
-            else
-            {
-                settingsObject["projectAdminMembersAccess"] = false;
-                settingsObjectpropCount++;
-            }
+                if (settingsObjectpropCount > 0)
+                {
+                    projectSettings["settings"] = settingsObject;
+                    projectSettingspropCount++;
+                }
 
-            if (settingsObjectpropCount > 0)
-            {
-                projectSettings["settings"] = settingsObject;
-                projectSettingspropCount++;
-            }
+                if (projectSettingspropCount > 0)
+                {
+                    callPayload.Body = projectSettings;
+                }
 
-            if (projectSettingspropCount > 0)
-            {
-                callPayload.Body = projectSettings;
-            }
-
-            return new ApiConnectionAction<CreateNewProjectResponse>(callPayload);
+                return new ApiConnectionAction<CreateNewProjectResponse>(callPayload);
+            });
         }
     }
 

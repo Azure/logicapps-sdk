@@ -4,59 +4,73 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MintlifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
-        public IBodyWorkflowAction<DocGenResponse> DocGen(Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<string>> bodycode, Expression<Func<bool>> bodycommented = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodycontext = null)
+        [WorkflowExpressionFactory(nameof(__BuildDocGen))]
+        public IBodyWorkflowAction<DocGenResponse> DocGen([WorkflowExpression] Func<bodylanguageInput> bodylanguage, [WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<bool> bodycommented = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<string> bodycontext = null)
         {
-            var apiCallPath = "/v1/document";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycommented != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocGenResponse> __BuildDocGen(WorkflowValue<bodylanguageInput> bodylanguage, WorkflowValue<string> bodycode, WorkflowValue<bool> bodycommented = null, WorkflowValue<bodyformatInput> bodyformat = null, WorkflowValue<string> bodycontext = null)
+        {
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: true);
+            WorkflowValue.Validate(bodycode, nameof(bodycode), required: true);
+            WorkflowValue.Validate(bodycommented, nameof(bodycommented), required: false);
+            WorkflowValue.Validate(bodyformat, nameof(bodyformat), required: false);
+            WorkflowValue.Validate(bodycontext, nameof(bodycontext), required: false);
+            return new DeferredBodyAction<DocGenResponse>(() =>
             {
+                var apiCallPath = "/v1/document";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodycommented != null)
                 {
-                    body["commented"] = ExpressionConverter.ConvertO(bodycommented);
+                    if (bodycommented != null)
+                    {
+                        body["commented"] = ExpressionConverter.ConvertO(bodycommented);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["commented"] = true;
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["commented"] = true;
+                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
                 bodypropCount++;
-            }
+                body["code"] = ExpressionConverter.ConvertO(bodycode);
+                if (bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-            bodypropCount++;
-            body["code"] = ExpressionConverter.ConvertO(bodycode);
-            if (bodyformat != null)
-            {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
-                bodypropCount++;
-            }
+                if (bodycontext != null)
+                {
+                    body["context"] = ExpressionConverter.ConvertO(bodycontext);
+                    bodypropCount++;
+                }
 
-            if (bodycontext != null)
-            {
-                body["context"] = ExpressionConverter.ConvertO(bodycontext);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocGenResponse>(callPayload);
+                return new ApiConnectionAction<DocGenResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]

@@ -3,6 +3,14 @@
 
 The **Azure Logic Apps SDK** is a framework that simplifies the creation of workflows using code.
 
+## C# workflow expression inputs
+
+Value lambdas support expression bodies and synchronous blocks. The .NET 8 source
+compiler creates explicit descriptors; it never runs the authoring delegate.
+The Logic Apps host must include the matching SDK expression contract and approved
+SDK model reference. See [C# expression architecture](CSharpExpressionArchitecture.md)
+for the build, capture, rendering, runtime, and package contracts.
+
 Strongly typed action results in custom code
 ---
 

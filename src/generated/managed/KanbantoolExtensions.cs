@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,282 +20,479 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetBoardResponse> GetBoard(Expression<Func<string>> boardId)
+        [WorkflowExpressionFactory(nameof(__BuildGetBoard))]
+        public IBodyWorkflowAction<GetBoardResponse> GetBoard([WorkflowExpression] Func<string> boardId)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBoardResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetBoardResponse> __BuildGetBoard(WorkflowValue<string> boardId)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<GetBoardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetBoardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetTaskResponse[]> GetTasks(Expression<Func<string>> boardId)
+        [WorkflowExpressionFactory(nameof(__BuildGetTasks))]
+        public IBodyWorkflowAction<GetTaskResponse[]> GetTasks([WorkflowExpression] Func<string> boardId)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskResponse[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTaskResponse[]> __BuildGetTasks(WorkflowValue<string> boardId)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<GetTaskResponse[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTaskResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> boardId, Expression<Func<string>> taskname, Expression<Func<string>> taskdescription = null, Expression<Func<string>> taskswimlaneId = null, Expression<Func<string>> taskworkflowStageId = null, Expression<Func<string>> taskcardTypeId = null, Expression<Func<string>> taskassignedUserId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTask))]
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskname, [WorkflowExpression] Func<string> taskdescription = null, [WorkflowExpression] Func<string> taskswimlaneId = null, [WorkflowExpression] Func<string> taskworkflowStageId = null, [WorkflowExpression] Func<string> taskcardTypeId = null, [WorkflowExpression] Func<string> taskassignedUserId = null)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            taskpropCount++;
-            task["name"] = ExpressionConverter.ConvertO(taskname);
-            if (taskdescription != null)
-            {
-                task["description"] = ExpressionConverter.ConvertO(taskdescription);
-                taskpropCount++;
-            }
-
-            if (taskswimlaneId != null)
-            {
-                task["swimlane_id"] = ExpressionConverter.ConvertO(taskswimlaneId);
-                taskpropCount++;
-            }
-
-            if (taskworkflowStageId != null)
-            {
-                task["workflow_stage_id"] = ExpressionConverter.ConvertO(taskworkflowStageId);
-                taskpropCount++;
-            }
-
-            if (taskcardTypeId != null)
-            {
-                task["card_type_id"] = ExpressionConverter.ConvertO(taskcardTypeId);
-                taskpropCount++;
-            }
-
-            if (taskassignedUserId != null)
-            {
-                task["assigned_user_id"] = ExpressionConverter.ConvertO(taskassignedUserId);
-                taskpropCount++;
-            }
-
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetTaskResponse2> GetTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateTaskResponse> __BuildCreateTask(WorkflowValue<string> boardId, WorkflowValue<string> taskname, WorkflowValue<string> taskdescription = null, WorkflowValue<string> taskswimlaneId = null, WorkflowValue<string> taskworkflowStageId = null, WorkflowValue<string> taskcardTypeId = null, WorkflowValue<string> taskassignedUserId = null)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskResponse2>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
-        {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> taskname = null, Expression<Func<string>> taskdescription = null, Expression<Func<string>> taskcardTypeId = null, Expression<Func<string>> taskassignedUserId = null)
-        {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            if (taskname != null)
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskname, nameof(taskname), required: true);
+            WorkflowValue.Validate(taskdescription, nameof(taskdescription), required: false);
+            WorkflowValue.Validate(taskswimlaneId, nameof(taskswimlaneId), required: false);
+            WorkflowValue.Validate(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
+            WorkflowValue.Validate(taskcardTypeId, nameof(taskcardTypeId), required: false);
+            WorkflowValue.Validate(taskassignedUserId, nameof(taskassignedUserId), required: false);
+            return new DeferredBodyAction<CreateTaskResponse>(() =>
             {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
+                taskpropCount++;
                 task["name"] = ExpressionConverter.ConvertO(taskname);
-                taskpropCount++;
-            }
+                if (taskdescription != null)
+                {
+                    task["description"] = ExpressionConverter.ConvertO(taskdescription);
+                    taskpropCount++;
+                }
 
-            if (taskdescription != null)
-            {
-                task["description"] = ExpressionConverter.ConvertO(taskdescription);
-                taskpropCount++;
-            }
+                if (taskswimlaneId != null)
+                {
+                    task["swimlane_id"] = ExpressionConverter.ConvertO(taskswimlaneId);
+                    taskpropCount++;
+                }
 
-            if (taskcardTypeId != null)
-            {
-                task["card_type_id"] = ExpressionConverter.ConvertO(taskcardTypeId);
-                taskpropCount++;
-            }
+                if (taskworkflowStageId != null)
+                {
+                    task["workflow_stage_id"] = ExpressionConverter.ConvertO(taskworkflowStageId);
+                    taskpropCount++;
+                }
 
-            if (taskassignedUserId != null)
-            {
-                task["assigned_user_id"] = ExpressionConverter.ConvertO(taskassignedUserId);
-                taskpropCount++;
-            }
+                if (taskcardTypeId != null)
+                {
+                    task["card_type_id"] = ExpressionConverter.ConvertO(taskcardTypeId);
+                    taskpropCount++;
+                }
 
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
+                if (taskassignedUserId != null)
+                {
+                    task["assigned_user_id"] = ExpressionConverter.ConvertO(taskassignedUserId);
+                    taskpropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+
+                return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<MoveTaskResponse> MoveTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<taskdirectionInput>> taskdirection = null, Expression<Func<string>> taskswimlaneId = null, Expression<Func<string>> taskworkflowStageId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetTask))]
+        public IBodyWorkflowAction<GetTaskResponse2> GetTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}/move.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            if (taskdirection != null)
-            {
-                task["direction"] = ExpressionConverter.ConvertO(taskdirection);
-                taskpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (taskswimlaneId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTaskResponse2> __BuildGetTask(WorkflowValue<string> boardId, WorkflowValue<string> taskId)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<GetTaskResponse2>(() =>
             {
-                task["swimlane_id"] = ExpressionConverter.ConvertO(taskswimlaneId);
-                taskpropCount++;
-            }
-
-            if (taskworkflowStageId != null)
-            {
-                task["workflow_stage_id"] = ExpressionConverter.ConvertO(taskworkflowStageId);
-                taskpropCount++;
-            }
-
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
-
-            return new ApiConnectionAction<MoveTaskResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTaskResponse2>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<ArchiveTaskResponse> ArchiveTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteTask))]
+        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}/archive.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ArchiveTaskResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetActivitiesResponseItem[]> BoardActivities(Expression<Func<string>> boardId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteTaskResponse> __BuildDeleteTask(WorkflowValue<string> boardId, WorkflowValue<string> taskId)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/changelog.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetCommentResponse[]> GetComments(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
-        {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}/comments.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCommentResponse[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetCommentResponse> CreateComment(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> commentcontent)
-        {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}/comments.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var comment = new JObject();
-            var commentpropCount = 0;
-            commentpropCount++;
-            comment["content"] = ExpressionConverter.ConvertO(commentcontent);
-            if (commentpropCount > 0)
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<DeleteTaskResponse>(() =>
             {
-                callPayload.Body = comment;
-            }
-
-            return new ApiConnectionAction<GetCommentResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse[]> GetSubtasks(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateTask))]
+        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> taskname = null, [WorkflowExpression] Func<string> taskdescription = null, [WorkflowExpression] Func<string> taskcardTypeId = null, [WorkflowExpression] Func<string> taskassignedUserId = null)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}/subtasks.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSubtaskResponse[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse> CreateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskname, Expression<Func<string>> subtaskassignedUserId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateTaskResponse> __BuildUpdateTask(WorkflowValue<string> boardId, WorkflowValue<string> taskId, WorkflowValue<string> taskname = null, WorkflowValue<string> taskdescription = null, WorkflowValue<string> taskcardTypeId = null, WorkflowValue<string> taskassignedUserId = null)
         {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}/subtasks.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subtask = new JObject();
-            var subtaskpropCount = 0;
-            subtaskpropCount++;
-            subtask["name"] = ExpressionConverter.ConvertO(subtaskname);
-            if (subtaskassignedUserId != null)
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            WorkflowValue.Validate(taskname, nameof(taskname), required: false);
+            WorkflowValue.Validate(taskdescription, nameof(taskdescription), required: false);
+            WorkflowValue.Validate(taskcardTypeId, nameof(taskcardTypeId), required: false);
+            WorkflowValue.Validate(taskassignedUserId, nameof(taskassignedUserId), required: false);
+            return new DeferredBodyAction<UpdateTaskResponse>(() =>
             {
-                subtask["assigned_user_id"] = ExpressionConverter.ConvertO(subtaskassignedUserId);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
+                if (taskname != null)
+                {
+                    task["name"] = ExpressionConverter.ConvertO(taskname);
+                    taskpropCount++;
+                }
+
+                if (taskdescription != null)
+                {
+                    task["description"] = ExpressionConverter.ConvertO(taskdescription);
+                    taskpropCount++;
+                }
+
+                if (taskcardTypeId != null)
+                {
+                    task["card_type_id"] = ExpressionConverter.ConvertO(taskcardTypeId);
+                    taskpropCount++;
+                }
+
+                if (taskassignedUserId != null)
+                {
+                    task["assigned_user_id"] = ExpressionConverter.ConvertO(taskassignedUserId);
+                    taskpropCount++;
+                }
+
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+
+                return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildMoveTask))]
+        public IBodyWorkflowAction<MoveTaskResponse> MoveTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<taskdirectionInput> taskdirection = null, [WorkflowExpression] Func<string> taskswimlaneId = null, [WorkflowExpression] Func<string> taskworkflowStageId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MoveTaskResponse> __BuildMoveTask(WorkflowValue<string> boardId, WorkflowValue<string> taskId, WorkflowValue<taskdirectionInput> taskdirection = null, WorkflowValue<string> taskswimlaneId = null, WorkflowValue<string> taskworkflowStageId = null)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            WorkflowValue.Validate(taskdirection, nameof(taskdirection), required: false);
+            WorkflowValue.Validate(taskswimlaneId, nameof(taskswimlaneId), required: false);
+            WorkflowValue.Validate(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
+            return new DeferredBodyAction<MoveTaskResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/move.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
+                if (taskdirection != null)
+                {
+                    task["direction"] = ExpressionConverter.ConvertO(taskdirection);
+                    taskpropCount++;
+                }
+
+                if (taskswimlaneId != null)
+                {
+                    task["swimlane_id"] = ExpressionConverter.ConvertO(taskswimlaneId);
+                    taskpropCount++;
+                }
+
+                if (taskworkflowStageId != null)
+                {
+                    task["workflow_stage_id"] = ExpressionConverter.ConvertO(taskworkflowStageId);
+                    taskpropCount++;
+                }
+
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+
+                return new ApiConnectionAction<MoveTaskResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildArchiveTask))]
+        public IBodyWorkflowAction<ArchiveTaskResponse> ArchiveTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ArchiveTaskResponse> __BuildArchiveTask(WorkflowValue<string> boardId, WorkflowValue<string> taskId)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<ArchiveTaskResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/archive.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ArchiveTaskResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildBoardActivities))]
+        public IBodyWorkflowAction<GetActivitiesResponseItem[]> BoardActivities([WorkflowExpression] Func<string> boardId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetActivitiesResponseItem[]> __BuildBoardActivities(WorkflowValue<string> boardId)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            return new DeferredBodyAction<GetActivitiesResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/changelog.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildGetComments))]
+        public IBodyWorkflowAction<GetCommentResponse[]> GetComments([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCommentResponse[]> __BuildGetComments(WorkflowValue<string> boardId, WorkflowValue<string> taskId)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<GetCommentResponse[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCommentResponse[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateComment))]
+        public IBodyWorkflowAction<GetCommentResponse> CreateComment([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> commentcontent)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCommentResponse> __BuildCreateComment(WorkflowValue<string> boardId, WorkflowValue<string> taskId, WorkflowValue<string> commentcontent)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            WorkflowValue.Validate(commentcontent, nameof(commentcontent), required: true);
+            return new DeferredBodyAction<GetCommentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var comment = new JObject();
+                var commentpropCount = 0;
+                commentpropCount++;
+                comment["content"] = ExpressionConverter.ConvertO(commentcontent);
+                if (commentpropCount > 0)
+                {
+                    callPayload.Body = comment;
+                }
+
+                return new ApiConnectionAction<GetCommentResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildGetSubtasks))]
+        public IBodyWorkflowAction<GetSubtaskResponse[]> GetSubtasks([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSubtaskResponse[]> __BuildGetSubtasks(WorkflowValue<string> boardId, WorkflowValue<string> taskId)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<GetSubtaskResponse[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSubtaskResponse[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateSubtask))]
+        public IBodyWorkflowAction<GetSubtaskResponse> CreateSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskname, [WorkflowExpression] Func<string> subtaskassignedUserId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSubtaskResponse> __BuildCreateSubtask(WorkflowValue<string> boardId, WorkflowValue<string> taskId, WorkflowValue<string> subtaskname, WorkflowValue<string> subtaskassignedUserId = null)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            WorkflowValue.Validate(subtaskname, nameof(subtaskname), required: true);
+            WorkflowValue.Validate(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
+            return new DeferredBodyAction<GetSubtaskResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subtask = new JObject();
+                var subtaskpropCount = 0;
                 subtaskpropCount++;
-            }
-
-            if (subtaskpropCount > 0)
-            {
-                callPayload.Body = subtask;
-            }
-
-            return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse> DeleteSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskId)
-        {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1), ExpressionConverter.ConvertWithUrlEncoding(subtaskId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse> UpdateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskId, Expression<Func<string>> subtaskname = null, Expression<Func<bool>> subtaskisCompleted = null, Expression<Func<string>> subtaskassignedUserId = null)
-        {
-            var apiCallPath = String.Format("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1), ExpressionConverter.ConvertWithUrlEncoding(subtaskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subtask = new JObject();
-            var subtaskpropCount = 0;
-            if (subtaskname != null)
-            {
                 subtask["name"] = ExpressionConverter.ConvertO(subtaskname);
-                subtaskpropCount++;
-            }
+                if (subtaskassignedUserId != null)
+                {
+                    subtask["assigned_user_id"] = ExpressionConverter.ConvertO(subtaskassignedUserId);
+                    subtaskpropCount++;
+                }
 
-            if (subtaskisCompleted != null)
+                if (subtaskpropCount > 0)
+                {
+                    callPayload.Body = subtask;
+                }
+
+                return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteSubtask))]
+        public IBodyWorkflowAction<GetSubtaskResponse> DeleteSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSubtaskResponse> __BuildDeleteSubtask(WorkflowValue<string> boardId, WorkflowValue<string> taskId, WorkflowValue<string> subtaskId)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            WorkflowValue.Validate(subtaskId, nameof(subtaskId), required: true);
+            return new DeferredBodyAction<GetSubtaskResponse>(() =>
             {
-                subtask["is_completed"] = ExpressionConverter.ConvertO(subtaskisCompleted);
-                subtaskpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1), ExpressionConverter.ConvertWithUrlEncoding(subtaskId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
+            });
+        }
 
-            if (subtaskassignedUserId != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateSubtask))]
+        public IBodyWorkflowAction<GetSubtaskResponse> UpdateSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskId, [WorkflowExpression] Func<string> subtaskname = null, [WorkflowExpression] Func<bool> subtaskisCompleted = null, [WorkflowExpression] Func<string> subtaskassignedUserId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSubtaskResponse> __BuildUpdateSubtask(WorkflowValue<string> boardId, WorkflowValue<string> taskId, WorkflowValue<string> subtaskId, WorkflowValue<string> subtaskname = null, WorkflowValue<bool> subtaskisCompleted = null, WorkflowValue<string> subtaskassignedUserId = null)
+        {
+            WorkflowValue.Validate(boardId, nameof(boardId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            WorkflowValue.Validate(subtaskId, nameof(subtaskId), required: true);
+            WorkflowValue.Validate(subtaskname, nameof(subtaskname), required: false);
+            WorkflowValue.Validate(subtaskisCompleted, nameof(subtaskisCompleted), required: false);
+            WorkflowValue.Validate(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
+            return new DeferredBodyAction<GetSubtaskResponse>(() =>
             {
-                subtask["assigned_user_id"] = ExpressionConverter.ConvertO(subtaskassignedUserId);
-                subtaskpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", ExpressionConverter.ConvertWithUrlEncoding(boardId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1), ExpressionConverter.ConvertWithUrlEncoding(subtaskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subtask = new JObject();
+                var subtaskpropCount = 0;
+                if (subtaskname != null)
+                {
+                    subtask["name"] = ExpressionConverter.ConvertO(subtaskname);
+                    subtaskpropCount++;
+                }
 
-            if (subtaskpropCount > 0)
-            {
-                callPayload.Body = subtask;
-            }
+                if (subtaskisCompleted != null)
+                {
+                    subtask["is_completed"] = ExpressionConverter.ConvertO(subtaskisCompleted);
+                    subtaskpropCount++;
+                }
 
-            return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
+                if (subtaskassignedUserId != null)
+                {
+                    subtask["assigned_user_id"] = ExpressionConverter.ConvertO(subtaskassignedUserId);
+                    subtaskpropCount++;
+                }
+
+                if (subtaskpropCount > 0)
+                {
+                    callPayload.Body = subtask;
+                }
+
+                return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
+            });
         }
     }
 

@@ -4,26 +4,45 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ProgressusadvancedprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
-        public IWorkflowAction Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantID, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyID, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
+        [WorkflowExpressionFactory(nameof(__BuildGet))]
+        public IWorkflowAction Get([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> tenantID, [WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<aPINameInput> aPIName, [WorkflowExpression] Func<string> aPIVersion2, [WorkflowExpression] Func<string> companyID, [WorkflowExpression] Func<pluralAPINameInput> pluralAPIName, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(pluralAPIName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGet(WorkflowValue<string> aPIVersion, WorkflowValue<string> tenantID, WorkflowValue<string> environmentName, WorkflowValue<aPINameInput> aPIName, WorkflowValue<string> aPIVersion2, WorkflowValue<string> companyID, WorkflowValue<pluralAPINameInput> pluralAPIName, WorkflowValue<string> filter = null, WorkflowValue<string> select = null, WorkflowValue<string> orderby = null)
+        {
+            WorkflowValue.Validate(aPIVersion, nameof(aPIVersion), required: true);
+            WorkflowValue.Validate(tenantID, nameof(tenantID), required: true);
+            WorkflowValue.Validate(environmentName, nameof(environmentName), required: true);
+            WorkflowValue.Validate(aPIName, nameof(aPIName), required: true);
+            WorkflowValue.Validate(aPIVersion2, nameof(aPIVersion2), required: true);
+            WorkflowValue.Validate(companyID, nameof(companyID), required: true);
+            WorkflowValue.Validate(pluralAPIName, nameof(pluralAPIName), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", ExpressionConverter.ConvertWithUrlEncoding(aPIVersion, 1), ExpressionConverter.ConvertWithUrlEncoding(tenantID, 1), ExpressionConverter.ConvertWithUrlEncoding(environmentName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIName, 1), ExpressionConverter.ConvertWithUrlEncoding(aPIVersion2, 1), ExpressionConverter.ConvertWithUrlEncoding(companyID, 1), ExpressionConverter.ConvertWithUrlEncoding(pluralAPIName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

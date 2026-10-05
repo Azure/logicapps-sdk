@@ -4,29 +4,40 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FuntranslationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
-        public IBodyWorkflowAction<TranslatePostResponse> Translate(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
+        [WorkflowExpressionFactory(nameof(__BuildTranslate))]
+        public IBodyWorkflowAction<TranslatePostResponse> Translate([WorkflowExpression] Func<languageInput> language, [WorkflowExpression] Func<string> bodytext)
         {
-            var apiCallPath = String.Format("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TranslatePostResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TranslatePostResponse> __BuildTranslate(WorkflowValue<languageInput> language, WorkflowValue<string> bodytext)
+        {
+            WorkflowValue.Validate(language, nameof(language), required: true);
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            return new DeferredBodyAction<TranslatePostResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(language, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<TranslatePostResponse>(callPayload);
+            });
         }
     }
 

@@ -4,155 +4,222 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SaplingaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<SpellcheckResponse> Spellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
+        [WorkflowExpressionFactory(nameof(__BuildSpellcheck))]
+        public IBodyWorkflowAction<SpellcheckResponse> Spellcheck([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength, [WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodymultipleEdits = null, [WorkflowExpression] Func<bool> bodyneuralSpellcheck = null, [WorkflowExpression] Func<string> bodylang = null)
         {
-            var apiCallPath = "/v1/spellcheck";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            bodypropCount++;
-            body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
-            bodypropCount++;
-            body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
-            if (bodymultipleEdits != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SpellcheckResponse> __BuildSpellcheck(WorkflowValue<string> bodytext, WorkflowValue<int> bodyminLength, WorkflowValue<string> bodysessionId, WorkflowValue<bool> bodymultipleEdits = null, WorkflowValue<bool> bodyneuralSpellcheck = null, WorkflowValue<string> bodylang = null)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            WorkflowValue.Validate(bodyminLength, nameof(bodyminLength), required: true);
+            WorkflowValue.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            WorkflowValue.Validate(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
+            WorkflowValue.Validate(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
+            WorkflowValue.Validate(bodylang, nameof(bodylang), required: false);
+            return new DeferredBodyAction<SpellcheckResponse>(() =>
             {
-                body["multiple_edits"] = ExpressionConverter.ConvertO(bodymultipleEdits);
+                var apiCallPath = "/v1/spellcheck";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyneuralSpellcheck != null)
-            {
-                body["neural_spellcheck"] = ExpressionConverter.ConvertO(bodyneuralSpellcheck);
+                body["text"] = ExpressionConverter.ConvertO(bodytext);
                 bodypropCount++;
-            }
-
-            if (bodylang != null)
-            {
-                body["lang"] = ExpressionConverter.ConvertO(bodylang);
+                body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
                 bodypropCount++;
-            }
+                body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+                if (bodymultipleEdits != null)
+                {
+                    body["multiple_edits"] = ExpressionConverter.ConvertO(bodymultipleEdits);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyneuralSpellcheck != null)
+                {
+                    body["neural_spellcheck"] = ExpressionConverter.ConvertO(bodyneuralSpellcheck);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SpellcheckResponse>(callPayload);
+                if (bodylang != null)
+                {
+                    body["lang"] = ExpressionConverter.ConvertO(bodylang);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SpellcheckResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<MedicalSpellcheckResponse> MedicalSpellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
+        [WorkflowExpressionFactory(nameof(__BuildMedicalSpellcheck))]
+        public IBodyWorkflowAction<MedicalSpellcheckResponse> MedicalSpellcheck([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength, [WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodymultipleEdits = null, [WorkflowExpression] Func<bool> bodyneuralSpellcheck = null, [WorkflowExpression] Func<string> bodylang = null)
         {
-            var apiCallPath = "/v1/medical-spellcheck";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            bodypropCount++;
-            body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
-            bodypropCount++;
-            body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
-            if (bodymultipleEdits != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MedicalSpellcheckResponse> __BuildMedicalSpellcheck(WorkflowValue<string> bodytext, WorkflowValue<int> bodyminLength, WorkflowValue<string> bodysessionId, WorkflowValue<bool> bodymultipleEdits = null, WorkflowValue<bool> bodyneuralSpellcheck = null, WorkflowValue<string> bodylang = null)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            WorkflowValue.Validate(bodyminLength, nameof(bodyminLength), required: true);
+            WorkflowValue.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            WorkflowValue.Validate(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
+            WorkflowValue.Validate(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
+            WorkflowValue.Validate(bodylang, nameof(bodylang), required: false);
+            return new DeferredBodyAction<MedicalSpellcheckResponse>(() =>
             {
-                body["multiple_edits"] = ExpressionConverter.ConvertO(bodymultipleEdits);
+                var apiCallPath = "/v1/medical-spellcheck";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyneuralSpellcheck != null)
-            {
-                body["neural_spellcheck"] = ExpressionConverter.ConvertO(bodyneuralSpellcheck);
+                body["text"] = ExpressionConverter.ConvertO(bodytext);
                 bodypropCount++;
-            }
-
-            if (bodylang != null)
-            {
-                body["lang"] = ExpressionConverter.ConvertO(bodylang);
+                body["min_length"] = ExpressionConverter.ConvertO(bodyminLength);
                 bodypropCount++;
-            }
+                body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+                if (bodymultipleEdits != null)
+                {
+                    body["multiple_edits"] = ExpressionConverter.ConvertO(bodymultipleEdits);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyneuralSpellcheck != null)
+                {
+                    body["neural_spellcheck"] = ExpressionConverter.ConvertO(bodyneuralSpellcheck);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MedicalSpellcheckResponse>(callPayload);
+                if (bodylang != null)
+                {
+                    body["lang"] = ExpressionConverter.ConvertO(bodylang);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MedicalSpellcheckResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<AutocompleteResponse> Autocomplete(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysessionId)
+        [WorkflowExpressionFactory(nameof(__BuildAutocomplete))]
+        public IBodyWorkflowAction<AutocompleteResponse> Autocomplete([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodysessionId)
         {
-            var apiCallPath = "/v1/complete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            bodypropCount++;
-            body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AutocompleteResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<StatisticsResponse> Statistics(Expression<Func<string>> bodytext, Expression<Func<string>> bodysessionId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AutocompleteResponse> __BuildAutocomplete(WorkflowValue<string> bodyquery, WorkflowValue<string> bodysessionId)
         {
-            var apiCallPath = "/v1/statistics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            bodypropCount++;
-            body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: true);
+            WorkflowValue.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            return new DeferredBodyAction<AutocompleteResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StatisticsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<DetectAiResponse> DetectAi(Expression<Func<string>> bodytext, Expression<Func<bool>> bodysentScores = null)
-        {
-            var apiCallPath = "/v1/aidetect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = ExpressionConverter.ConvertO(bodytext);
-            if (bodysentScores != null)
-            {
-                body["sent_scores"] = ExpressionConverter.ConvertO(bodysentScores);
+                var apiCallPath = "/v1/complete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                bodypropCount++;
+                body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
+                return new ApiConnectionAction<AutocompleteResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
+        [WorkflowExpressionFactory(nameof(__BuildStatistics))]
+        public IBodyWorkflowAction<StatisticsResponse> Statistics([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodysessionId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StatisticsResponse> __BuildStatistics(WorkflowValue<string> bodytext, WorkflowValue<string> bodysessionId)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            WorkflowValue.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            return new DeferredBodyAction<StatisticsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/v1/statistics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                bodypropCount++;
+                body["session_id"] = ExpressionConverter.ConvertO(bodysessionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<DetectAiResponse>(callPayload);
+                return new ApiConnectionAction<StatisticsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
+        [WorkflowExpressionFactory(nameof(__BuildDetectAi))]
+        public IBodyWorkflowAction<DetectAiResponse> DetectAi([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodysentScores = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetectAiResponse> __BuildDetectAi(WorkflowValue<string> bodytext, WorkflowValue<bool> bodysentScores = null)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: true);
+            WorkflowValue.Validate(bodysentScores, nameof(bodysentScores), required: false);
+            return new DeferredBodyAction<DetectAiResponse>(() =>
+            {
+                var apiCallPath = "/v1/aidetect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = ExpressionConverter.ConvertO(bodytext);
+                if (bodysentScores != null)
+                {
+                    body["sent_scores"] = ExpressionConverter.ConvertO(bodysentScores);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DetectAiResponse>(callPayload);
+            });
         }
     }
 

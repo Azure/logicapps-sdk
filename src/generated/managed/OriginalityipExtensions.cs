@@ -4,85 +4,139 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Originalityip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OriginalityipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<GetCreditBalanceResponse> GetCreditBalance(Expression<Func<string>> accept)
+        [WorkflowExpressionFactory(nameof(__BuildGetCreditBalance))]
+        public IBodyWorkflowAction<GetCreditBalanceResponse> GetCreditBalance([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetCreditBalanceResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCreditBalanceResponse> __BuildGetCreditBalance(WorkflowValue<string> accept)
+        {
+            WorkflowValue.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetCreditBalanceResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/account/credits/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetCreditBalanceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<GetCreditUsageResponse> GetCreditUsage(Expression<Func<string>> accept)
+        [WorkflowExpressionFactory(nameof(__BuildGetCreditUsage))]
+        public IBodyWorkflowAction<GetCreditUsageResponse> GetCreditUsage([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/content_scan_usage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetCreditUsageResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCreditUsageResponse> __BuildGetCreditUsage(WorkflowValue<string> accept)
+        {
+            WorkflowValue.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetCreditUsageResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/account/credits/content_scan_usage";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetCreditUsageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<GetPaymentResponse> GetPayment(Expression<Func<string>> accept)
+        [WorkflowExpressionFactory(nameof(__BuildGetPayment))]
+        public IBodyWorkflowAction<GetPaymentResponse> GetPayment([WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = "/api/v1/account/credits/payments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
-            return new ApiConnectionAction<GetPaymentResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPaymentResponse> __BuildGetPayment(WorkflowValue<string> accept)
+        {
+            WorkflowValue.Validate(accept, nameof(accept), required: true);
+            return new DeferredBodyAction<GetPaymentResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/account/credits/payments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = ExpressionConverter.Convert(accept);
+                return new ApiConnectionAction<GetPaymentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<PostAIDetectionResponse> PostAIDetection(Expression<Func<string>> bodycontent = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostAIDetection))]
+        public IBodyWorkflowAction<PostAIDetectionResponse> PostAIDetection([WorkflowExpression] Func<string> bodycontent = null)
         {
-            var apiCallPath = "/api/v1/scan/ai";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
-            {
-                body["content"] = ExpressionConverter.ConvertO(bodycontent);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostAIDetectionResponse> __BuildPostAIDetection(WorkflowValue<string> bodycontent = null)
+        {
+            WorkflowValue.Validate(bodycontent, nameof(bodycontent), required: false);
+            return new DeferredBodyAction<PostAIDetectionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/v1/scan/ai";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontent != null)
+                {
+                    body["content"] = ExpressionConverter.ConvertO(bodycontent);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostAIDetectionResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostAIDetectionResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "originalityip")]
-        public IBodyWorkflowAction<PostUrlAIDetectionResponse> PostUrlAIDetection(Expression<Func<string>> bodyurl = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostUrlAIDetection))]
+        public IBodyWorkflowAction<PostUrlAIDetectionResponse> PostUrlAIDetection([WorkflowExpression] Func<string> bodyurl = null)
         {
-            var apiCallPath = "/api/v1/scan/url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyurl != null)
-            {
-                body["url"] = ExpressionConverter.ConvertO(bodyurl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostUrlAIDetectionResponse> __BuildPostUrlAIDetection(WorkflowValue<string> bodyurl = null)
+        {
+            WorkflowValue.Validate(bodyurl, nameof(bodyurl), required: false);
+            return new DeferredBodyAction<PostUrlAIDetectionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/v1/scan/url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyurl != null)
+                {
+                    body["url"] = ExpressionConverter.ConvertO(bodyurl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostUrlAIDetectionResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostUrlAIDetectionResponse>(callPayload);
+            });
         }
     }
 

@@ -4,24 +4,35 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enlyftforcopilot
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EnlyftforcopilotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enlyftforcopilot")]
-        public IBodyWorkflowAction<ExportContactFromEnlyftResponse> ExportContactFromEnlyft(Expression<Func<string>> personId = null, Expression<Func<string>> userEmail = null)
+        [WorkflowExpressionFactory(nameof(__BuildExportContactFromEnlyft))]
+        public IBodyWorkflowAction<ExportContactFromEnlyftResponse> ExportContactFromEnlyft([WorkflowExpression] Func<string> personId = null, [WorkflowExpression] Func<string> userEmail = null)
         {
-            var apiCallPath = "/export-contact";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (personId != null)
-                callPayload.Queries["person_id"] = ExpressionConverter.Convert(personId);
-            if (userEmail != null)
-                callPayload.Queries["userEmail"] = ExpressionConverter.Convert(userEmail);
-            return new ApiConnectionAction<ExportContactFromEnlyftResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExportContactFromEnlyftResponse> __BuildExportContactFromEnlyft(WorkflowValue<string> personId = null, WorkflowValue<string> userEmail = null)
+        {
+            WorkflowValue.Validate(personId, nameof(personId), required: false);
+            WorkflowValue.Validate(userEmail, nameof(userEmail), required: false);
+            return new DeferredBodyAction<ExportContactFromEnlyftResponse>(() =>
+            {
+                var apiCallPath = "/export-contact";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (personId != null)
+                    callPayload.Queries["person_id"] = ExpressionConverter.Convert(personId);
+                if (userEmail != null)
+                    callPayload.Queries["userEmail"] = ExpressionConverter.Convert(userEmail);
+                return new ApiConnectionAction<ExportContactFromEnlyftResponse>(callPayload);
+            });
         }
     }
 

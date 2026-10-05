@@ -4,101 +4,137 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maqtextanalytics
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MaqtextanalyticsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier(Expression<Func<bodydataInputItem[]>> bodydata = null)
+        [WorkflowExpressionFactory(nameof(__BuildSentimentClassifier))]
+        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> SentimentClassifier([WorkflowExpression] Func<bodydataInputItem[]> bodydata = null)
         {
-            var apiCallPath = "/text/SentimentClassifier";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SentimentClassifierResponseItem[]> __BuildSentimentClassifier(WorkflowValue<bodydataInputItem[]> bodydata = null)
+        {
+            WorkflowValue.Validate(bodydata, nameof(bodydata), required: false);
+            return new DeferredBodyAction<SentimentClassifierResponseItem[]>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/text/SentimentClassifier";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = ExpressionConverter.ConvertO(bodydata);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SentimentClassifierResponseItem[]>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SentimentClassifierResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber(Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyentityList = null)
+        [WorkflowExpressionFactory(nameof(__BuildPIIScrubber))]
+        public IBodyWorkflowAction<PIIScrubberResponse> PIIScrubber([WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodyentityList = null)
         {
-            var apiCallPath = "/text/PIIScrubber";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyentityList != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PIIScrubberResponse> __BuildPIIScrubber(WorkflowValue<string> bodydata = null, WorkflowValue<string> bodyentityList = null)
+        {
+            WorkflowValue.Validate(bodydata, nameof(bodydata), required: false);
+            WorkflowValue.Validate(bodyentityList, nameof(bodyentityList), required: false);
+            return new DeferredBodyAction<PIIScrubberResponse>(() =>
             {
-                body["entity_list"] = ExpressionConverter.ConvertO(bodyentityList);
-                bodypropCount++;
-            }
+                var apiCallPath = "/text/PIIScrubber";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = ExpressionConverter.ConvertO(bodydata);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyentityList != null)
+                {
+                    body["entity_list"] = ExpressionConverter.ConvertO(bodyentityList);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PIIScrubberResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PIIScrubberResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "maqtextanalytics")]
-        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor(Expression<Func<string>> bodytext = null, Expression<Func<int>> bodykeyphrasesCount = null, Expression<Func<double>> bodydiversityThreshold = null, Expression<Func<double>> bodyaliasThreshold = null)
+        [WorkflowExpressionFactory(nameof(__BuildKeyPhraseExtractor))]
+        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> KeyPhraseExtractor([WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<int> bodykeyphrasesCount = null, [WorkflowExpression] Func<double> bodydiversityThreshold = null, [WorkflowExpression] Func<double> bodyaliasThreshold = null)
         {
-            var apiCallPath = "/text/KeyPhrase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodykeyphrasesCount != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<KeyPhraseExtractorResponseItem[]> __BuildKeyPhraseExtractor(WorkflowValue<string> bodytext = null, WorkflowValue<int> bodykeyphrasesCount = null, WorkflowValue<double> bodydiversityThreshold = null, WorkflowValue<double> bodyaliasThreshold = null)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: false);
+            WorkflowValue.Validate(bodykeyphrasesCount, nameof(bodykeyphrasesCount), required: false);
+            WorkflowValue.Validate(bodydiversityThreshold, nameof(bodydiversityThreshold), required: false);
+            WorkflowValue.Validate(bodyaliasThreshold, nameof(bodyaliasThreshold), required: false);
+            return new DeferredBodyAction<KeyPhraseExtractorResponseItem[]>(() =>
             {
-                body["keyphrases_count"] = ExpressionConverter.ConvertO(bodykeyphrasesCount);
-                bodypropCount++;
-            }
+                var apiCallPath = "/text/KeyPhrase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
 
-            if (bodydiversityThreshold != null)
-            {
-                body["diversity_threshold"] = ExpressionConverter.ConvertO(bodydiversityThreshold);
-                bodypropCount++;
-            }
+                if (bodykeyphrasesCount != null)
+                {
+                    body["keyphrases_count"] = ExpressionConverter.ConvertO(bodykeyphrasesCount);
+                    bodypropCount++;
+                }
 
-            if (bodyaliasThreshold != null)
-            {
-                body["alias_threshold"] = ExpressionConverter.ConvertO(bodyaliasThreshold);
-                bodypropCount++;
-            }
+                if (bodydiversityThreshold != null)
+                {
+                    body["diversity_threshold"] = ExpressionConverter.ConvertO(bodydiversityThreshold);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyaliasThreshold != null)
+                {
+                    body["alias_threshold"] = ExpressionConverter.ConvertO(bodyaliasThreshold);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<KeyPhraseExtractorResponseItem[]>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<KeyPhraseExtractorResponseItem[]>(callPayload);
+            });
         }
     }
 

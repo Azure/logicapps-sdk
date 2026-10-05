@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,22 +14,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
 
     public class DataactivatorpreviewTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreatePowerAutomateWorkflow(Expression<Func<string>> connectionString, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreatePowerAutomateWorkflow))]
+        public IWorkflowTrigger CreatePowerAutomateWorkflow([WorkflowExpression] Func<string> connectionString, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/powerAutomateFlow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Connection-String"] = ExpressionConverter.Convert(connectionString);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreatePowerAutomateWorkflow(WorkflowValue<string> connectionString, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(connectionString, nameof(connectionString), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/powerAutomateFlow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Connection-String"] = ExpressionConverter.Convert(connectionString);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 }

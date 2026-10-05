@@ -4,68 +4,103 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robotsforpowerbi
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RobotsforpowerbiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildPlaylistEnable))]
+        public IBodyWorkflowAction<PlaylistEnableResponse> PlaylistEnable([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api/v1/playlist.enable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<PlaylistEnableResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PlaylistEnableResponse> __BuildPlaylistEnable(WorkflowValue<string> accountId, WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<PlaylistEnableResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/playlist.enable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PlaylistEnableResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildPlaylistDisable))]
+        public IBodyWorkflowAction<PlaylistDisableResponse> PlaylistDisable([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api/v1/playlist.disable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<PlaylistDisableResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PlaylistDisableResponse> __BuildPlaylistDisable(WorkflowValue<string> accountId, WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<PlaylistDisableResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/playlist.disable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PlaylistDisableResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robotsforpowerbi")]
-        public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute(Expression<Func<string>> accountId, Expression<Func<string>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildPlaylistExecute))]
+        public IBodyWorkflowAction<PlaylistExecuteResponse> PlaylistExecute([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api/v1/playlist.execute";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<PlaylistExecuteResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PlaylistExecuteResponse> __BuildPlaylistExecute(WorkflowValue<string> accountId, WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(accountId, nameof(accountId), required: true);
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<PlaylistExecuteResponse>(() =>
+            {
+                var apiCallPath = "/api/v1/playlist.execute";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Account Id"] = ExpressionConverter.Convert(accountId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PlaylistExecuteResponse>(callPayload);
+            });
         }
     }
 

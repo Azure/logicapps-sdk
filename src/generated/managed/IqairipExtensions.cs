@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,55 +20,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iqairip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<ListStatesResponse> ListStates(Expression<Func<string>> country = null)
+        [WorkflowExpressionFactory(nameof(__BuildListStates))]
+        public IBodyWorkflowAction<ListStatesResponse> ListStates([WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/states";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<ListStatesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListStatesResponse> __BuildListStates(WorkflowValue<string> country = null)
+        {
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            return new DeferredBodyAction<ListStatesResponse>(() =>
+            {
+                var apiCallPath = "/states";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                return new ApiConnectionAction<ListStatesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<ListCitiesResponse> ListCities(Expression<Func<string>> state = null, Expression<Func<string>> country = null)
+        [WorkflowExpressionFactory(nameof(__BuildListCities))]
+        public IBodyWorkflowAction<ListCitiesResponse> ListCities([WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/cities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<ListCitiesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListCitiesResponse> __BuildListCities(WorkflowValue<string> state = null, WorkflowValue<string> country = null)
+        {
+            WorkflowValue.Validate(state, nameof(state), required: false);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            return new DeferredBodyAction<ListCitiesResponse>(() =>
+            {
+                var apiCallPath = "/cities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                return new ApiConnectionAction<ListCitiesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<CityResponse> GetDataByCoordinates(Expression<Func<string>> lat = null, Expression<Func<string>> lon = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDataByCoordinates))]
+        public IBodyWorkflowAction<CityResponse> GetDataByCoordinates([WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<string> lon = null)
         {
-            var apiCallPath = "/nearest_city";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
-            if (lon != null)
-                callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
-            return new ApiConnectionAction<CityResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CityResponse> __BuildGetDataByCoordinates(WorkflowValue<string> lat = null, WorkflowValue<string> lon = null)
+        {
+            WorkflowValue.Validate(lat, nameof(lat), required: false);
+            WorkflowValue.Validate(lon, nameof(lon), required: false);
+            return new DeferredBodyAction<CityResponse>(() =>
+            {
+                var apiCallPath = "/nearest_city";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = ExpressionConverter.Convert(lat);
+                if (lon != null)
+                    callPayload.Queries["lon"] = ExpressionConverter.Convert(lon);
+                return new ApiConnectionAction<CityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iqairip")]
-        public IBodyWorkflowAction<CityResponse> GetDataByCity(Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> country = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetDataByCity))]
+        public IBodyWorkflowAction<CityResponse> GetDataByCity([WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/city";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (city != null)
-                callPayload.Queries["city"] = ExpressionConverter.Convert(city);
-            if (state != null)
-                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<CityResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CityResponse> __BuildGetDataByCity(WorkflowValue<string> city = null, WorkflowValue<string> state = null, WorkflowValue<string> country = null)
+        {
+            WorkflowValue.Validate(city, nameof(city), required: false);
+            WorkflowValue.Validate(state, nameof(state), required: false);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            return new DeferredBodyAction<CityResponse>(() =>
+            {
+                var apiCallPath = "/city";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (city != null)
+                    callPayload.Queries["city"] = ExpressionConverter.Convert(city);
+                if (state != null)
+                    callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                return new ApiConnectionAction<CityResponse>(callPayload);
+            });
         }
     }
 

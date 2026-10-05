@@ -4,551 +4,676 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.A365mcpservers
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class A365mcpserversActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpMailTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpMailTools))]
+        public IWorkflowAction McpMailTools([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_MailTools";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpMailTools(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_MailTools";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpMeServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpMeServer))]
+        public IWorkflowAction McpMeServer([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_MeServer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpMeServer(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_MeServer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpCalendarTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpCalendarTools))]
+        public IWorkflowAction McpCalendarTools([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_CalendarTools";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpCalendarTools(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_CalendarTools";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpTeamsServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpTeamsServer))]
+        public IWorkflowAction McpTeamsServer([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_TeamsServer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpTeamsServer(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_TeamsServer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpODSPRemoteServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpODSPRemoteServer))]
+        public IWorkflowAction McpODSPRemoteServer([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_ODSPRemoteServer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpODSPRemoteServer(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_ODSPRemoteServer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpSharepointListsTools(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpSharepointListsTools))]
+        public IWorkflowAction McpSharepointListsTools([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_SharepointListsTools";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpSharepointListsTools(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_SharepointListsTools";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpAdmin365Tools(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpAdmin365Tools))]
+        public IWorkflowAction McpAdmin365Tools([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_Admin365Tools";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpAdmin365Tools(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_Admin365Tools";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpWordServer(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpWordServer))]
+        public IWorkflowAction McpWordServer([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_WordServer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpWordServer(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_WordServer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "a365mcpservers")]
-        public IWorkflowAction McpM365copilot(Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpM365copilot))]
+        public IWorkflowAction McpM365copilot([WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = "/servers/mcp_m365copilot";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildMcpM365copilot(WorkflowValue<string> mcpSessionId = null, WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null)
+        {
+            WorkflowValue.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/servers/mcp_m365copilot";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = ExpressionConverter.Convert(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

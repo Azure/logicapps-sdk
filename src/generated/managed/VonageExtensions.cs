@@ -4,57 +4,124 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vonage
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class VonageActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<VerifyRequestResponse> VerifyRequest(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> brand, Expression<Func<string>> country = null, Expression<Func<string>> senderId = null, Expression<Func<codeLengthInput>> codeLength = null, Expression<Func<lgInput>> lg = null, Expression<Func<int>> pinExpiry = null, Expression<Func<int>> nextEventWait = null, Expression<Func<workflowIdInput>> workflowId = null)
+        [WorkflowExpressionFactory(nameof(__BuildVerifyRequest))]
+        public IBodyWorkflowAction<VerifyRequestResponse> VerifyRequest([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> brand, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> senderId = null, [WorkflowExpression] Func<codeLengthInput> codeLength = null, [WorkflowExpression] Func<lgInput> lg = null, [WorkflowExpression] Func<int> pinExpiry = null, [WorkflowExpression] Func<int> nextEventWait = null, [WorkflowExpression] Func<workflowIdInput> workflowId = null)
         {
-            var apiCallPath = String.Format("/verify/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VerifyRequestResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VerifyRequestResponse> __BuildVerifyRequest(WorkflowValue<formatInput> format, WorkflowValue<string> apiKey, WorkflowValue<string> apiSecret, WorkflowValue<string> number, WorkflowValue<string> brand, WorkflowValue<string> country = null, WorkflowValue<string> senderId = null, WorkflowValue<codeLengthInput> codeLength = null, WorkflowValue<lgInput> lg = null, WorkflowValue<int> pinExpiry = null, WorkflowValue<int> nextEventWait = null, WorkflowValue<workflowIdInput> workflowId = null)
+        {
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(apiKey, nameof(apiKey), required: true);
+            WorkflowValue.Validate(apiSecret, nameof(apiSecret), required: true);
+            WorkflowValue.Validate(number, nameof(number), required: true);
+            WorkflowValue.Validate(brand, nameof(brand), required: true);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            WorkflowValue.Validate(senderId, nameof(senderId), required: false);
+            WorkflowValue.Validate(codeLength, nameof(codeLength), required: false);
+            WorkflowValue.Validate(lg, nameof(lg), required: false);
+            WorkflowValue.Validate(pinExpiry, nameof(pinExpiry), required: false);
+            WorkflowValue.Validate(nextEventWait, nameof(nextEventWait), required: false);
+            WorkflowValue.Validate(workflowId, nameof(workflowId), required: false);
+            return new DeferredBodyAction<VerifyRequestResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VerifyRequestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<VerifyCheckResponse> VerifyCheck(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> requestId, Expression<Func<string>> code)
+        [WorkflowExpressionFactory(nameof(__BuildVerifyCheck))]
+        public IBodyWorkflowAction<VerifyCheckResponse> VerifyCheck([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = String.Format("/verify/check/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VerifyCheckResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VerifyCheckResponse> __BuildVerifyCheck(WorkflowValue<formatInput> format, WorkflowValue<string> apiKey, WorkflowValue<string> apiSecret, WorkflowValue<string> requestId, WorkflowValue<string> code)
+        {
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(apiKey, nameof(apiKey), required: true);
+            WorkflowValue.Validate(apiSecret, nameof(apiSecret), required: true);
+            WorkflowValue.Validate(requestId, nameof(requestId), required: true);
+            WorkflowValue.Validate(code, nameof(code), required: true);
+            return new DeferredBodyAction<VerifyCheckResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/verify/check/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VerifyCheckResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country)
+        [WorkflowExpressionFactory(nameof(__BuildBasicNumberInsight))]
+        public IBodyWorkflowAction<BasicNumberInsightResponse> BasicNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country)
         {
-            var apiCallPath = String.Format("/ni/basic/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
-            callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<BasicNumberInsightResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BasicNumberInsightResponse> __BuildBasicNumberInsight(WorkflowValue<formatInput> format, WorkflowValue<string> apiKey, WorkflowValue<string> apiSecret, WorkflowValue<string> number, WorkflowValue<string> country)
+        {
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(apiKey, nameof(apiKey), required: true);
+            WorkflowValue.Validate(apiSecret, nameof(apiSecret), required: true);
+            WorkflowValue.Validate(number, nameof(number), required: true);
+            WorkflowValue.Validate(country, nameof(country), required: true);
+            return new DeferredBodyAction<BasicNumberInsightResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/basic/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
+                callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
+                callPayload.Queries["number"] = ExpressionConverter.Convert(number);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                return new ApiConnectionAction<BasicNumberInsightResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vonage")]
-        public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight(Expression<Func<formatInput>> format, Expression<Func<string>> apiKey, Expression<Func<string>> apiSecret, Expression<Func<string>> number, Expression<Func<string>> country, Expression<Func<string>> cnam = null)
+        [WorkflowExpressionFactory(nameof(__BuildStandardNumberInsight))]
+        public IBodyWorkflowAction<StandardNumberInsightResponse> StandardNumberInsight([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> apiSecret, [WorkflowExpression] Func<string> number, [WorkflowExpression] Func<string> country, [WorkflowExpression] Func<string> cnam = null)
         {
-            var apiCallPath = String.Format("/ni/standard/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
-            callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
-            callPayload.Queries["number"] = ExpressionConverter.Convert(number);
-            callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (cnam != null)
-                callPayload.Queries["cnam"] = ExpressionConverter.Convert(cnam);
-            return new ApiConnectionAction<StandardNumberInsightResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StandardNumberInsightResponse> __BuildStandardNumberInsight(WorkflowValue<formatInput> format, WorkflowValue<string> apiKey, WorkflowValue<string> apiSecret, WorkflowValue<string> number, WorkflowValue<string> country, WorkflowValue<string> cnam = null)
+        {
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(apiKey, nameof(apiKey), required: true);
+            WorkflowValue.Validate(apiSecret, nameof(apiSecret), required: true);
+            WorkflowValue.Validate(number, nameof(number), required: true);
+            WorkflowValue.Validate(country, nameof(country), required: true);
+            WorkflowValue.Validate(cnam, nameof(cnam), required: false);
+            return new DeferredBodyAction<StandardNumberInsightResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ni/standard/{0}", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api_key"] = ExpressionConverter.Convert(apiKey);
+                callPayload.Queries["api_secret"] = ExpressionConverter.Convert(apiSecret);
+                callPayload.Queries["number"] = ExpressionConverter.Convert(number);
+                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (cnam != null)
+                    callPayload.Queries["cnam"] = ExpressionConverter.Convert(cnam);
+                return new ApiConnectionAction<StandardNumberInsightResponse>(callPayload);
+            });
         }
     }
 

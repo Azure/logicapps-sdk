@@ -4,20 +4,30 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class StrakerverifyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<string> GetFile(Expression<Func<string>> fileId)
+        [WorkflowExpressionFactory(nameof(__BuildGetFile))]
+        public IBodyWorkflowAction<string> GetFile([WorkflowExpression] Func<string> fileId)
         {
-            var apiCallPath = String.Format("/file/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetFile(WorkflowValue<string> fileId)
+        {
+            WorkflowValue.Validate(fileId, nameof(fileId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/file/{0}", ExpressionConverter.ConvertWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
@@ -30,89 +40,164 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetKeyResponse> CreateKey(Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateKey))]
+        public IBodyWorkflowAction<GetKeyResponse> CreateKey([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            var apiCallPath = "/key";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetKeyResponse> __BuildCreateKey(WorkflowValue<string> bodyname, WorkflowValue<string> bodydescription = null)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            return new DeferredBodyAction<GetKeyResponse>(() =>
             {
+                var apiCallPath = "/key";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodydescription != null)
                 {
-                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    if (bodydescription != null)
+                    {
+                        body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["description"] = "";
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetKeyResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
+        [WorkflowExpressionFactory(nameof(__BuildGetKey))]
+        public IBodyWorkflowAction<GetKeyResponse> GetKey([WorkflowExpression] Func<string> keyId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetKeyResponse> __BuildGetKey(WorkflowValue<string> keyId)
+        {
+            WorkflowValue.Validate(keyId, nameof(keyId), required: true);
+            return new DeferredBodyAction<GetKeyResponse>(() =>
             {
-                body["description"] = "";
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/key/{0}", ExpressionConverter.ConvertWithUrlEncoding(keyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetKeyResponse>(callPayload);
+            });
+        }
 
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateProject))]
+        public IBodyWorkflowAction<CreateProjectResponse> CreateProject([WorkflowExpression] Func<object> files, [WorkflowExpression] Func<string[]> languages, [WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> title, [WorkflowExpression] Func<string> callbackUri)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateProjectResponse> __BuildCreateProject(WorkflowValue<object> files, WorkflowValue<string[]> languages, WorkflowValue<string> workflowId, WorkflowValue<string> title, WorkflowValue<string> callbackUri)
+        {
+            WorkflowValue.Validate(files, nameof(files), required: true);
+            WorkflowValue.Validate(languages, nameof(languages), required: true);
+            WorkflowValue.Validate(workflowId, nameof(workflowId), required: true);
+            WorkflowValue.Validate(title, nameof(title), required: true);
+            WorkflowValue.Validate(callbackUri, nameof(callbackUri), required: true);
+            return new DeferredBodyAction<CreateProjectResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetKeyResponse>(callPayload);
+                var apiCallPath = "/project";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["app_source"] = Convert.ToString("powerautomate");
+                return new ApiConnectionAction<CreateProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetKeyResponse> GetKey(Expression<Func<string>> keyId)
+        [WorkflowExpressionFactory(nameof(__BuildGetProject))]
+        public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/key/{0}", ExpressionConverter.ConvertWithUrlEncoding(keyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetKeyResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProjectResponse> __BuildGetProject(WorkflowValue<string> projectId)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<GetProjectResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<CreateProjectResponse> CreateProject(Expression<Func<object>> files, Expression<Func<string[]>> languages, Expression<Func<string>> workflowId, Expression<Func<string>> title, Expression<Func<string>> callbackUri)
+        [WorkflowExpressionFactory(nameof(__BuildGetSegments))]
+        public IBodyWorkflowAction<GetSegmentResponse> GetSegments([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> languageId, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            var apiCallPath = "/project";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["app_source"] = Convert.ToString("powerautomate");
-            return new ApiConnectionAction<CreateProjectResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSegmentResponse> __BuildGetSegments(WorkflowValue<string> projectId, WorkflowValue<string> fileId, WorkflowValue<string> languageId, WorkflowValue<int> page = null, WorkflowValue<int> pageSize = null)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            WorkflowValue.Validate(fileId, nameof(fileId), required: true);
+            WorkflowValue.Validate(languageId, nameof(languageId), required: true);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            WorkflowValue.Validate(pageSize, nameof(pageSize), required: false);
+            return new DeferredBodyAction<GetSegmentResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/project/{0}/segments/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1), ExpressionConverter.ConvertWithUrlEncoding(languageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                callPayload.Queries["page_size"] = Convert.ToString(100);
+                if (pageSize != null)
+                    callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
+                return new ApiConnectionAction<GetSegmentResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
+        [WorkflowExpressionFactory(nameof(__BuildConfirmProject))]
+        public IWorkflowAction ConfirmProject([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/project/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProjectResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetSegmentResponse> GetSegments(Expression<Func<string>> projectId, Expression<Func<string>> fileId, Expression<Func<string>> languageId, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildConfirmProject(WorkflowValue<string> projectId)
         {
-            var apiCallPath = String.Format("/project/{0}/segments/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(fileId, 1), ExpressionConverter.ConvertWithUrlEncoding(languageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            callPayload.Queries["page_size"] = Convert.ToString(100);
-            if (pageSize != null)
-                callPayload.Queries["page_size"] = ExpressionConverter.Convert(pageSize);
-            return new ApiConnectionAction<GetSegmentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IWorkflowAction ConfirmProject(Expression<Func<string>> projectId)
-        {
-            var apiCallPath = "/project/confirm";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/project/confirm";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
@@ -125,12 +210,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strakerverify
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strakerverify")]
-        public IBodyWorkflowAction<GetWorkflowResponse> GetWorkflow(Expression<Func<string>> workflowId)
+        [WorkflowExpressionFactory(nameof(__BuildGetWorkflow))]
+        public IBodyWorkflowAction<GetWorkflowResponse> GetWorkflow([WorkflowExpression] Func<string> workflowId)
         {
-            var apiCallPath = String.Format("/workflow/{0}", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWorkflowResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetWorkflowResponse> __BuildGetWorkflow(WorkflowValue<string> workflowId)
+        {
+            WorkflowValue.Validate(workflowId, nameof(workflowId), required: true);
+            return new DeferredBodyAction<GetWorkflowResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/workflow/{0}", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetWorkflowResponse>(callPayload);
+            });
         }
     }
 

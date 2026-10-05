@@ -4,31 +4,42 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viesip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ViesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viesip")]
-        public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity(Expression<Func<bodycountryCodeInput>> bodycountryCode, Expression<Func<string>> bodyvatNumber)
+        [WorkflowExpressionFactory(nameof(__BuildCheckVATValidity))]
+        public IBodyWorkflowAction<CheckVATValidityResponse> CheckVATValidity([WorkflowExpression] Func<bodycountryCodeInput> bodycountryCode, [WorkflowExpression] Func<string> bodyvatNumber)
         {
-            var apiCallPath = "/taxation_customs/vies/services/checkVatService";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
-            bodypropCount++;
-            body["vatNumber"] = ExpressionConverter.ConvertO(bodyvatNumber);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<CheckVATValidityResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckVATValidityResponse> __BuildCheckVATValidity(WorkflowValue<bodycountryCodeInput> bodycountryCode, WorkflowValue<string> bodyvatNumber)
+        {
+            WorkflowValue.Validate(bodycountryCode, nameof(bodycountryCode), required: true);
+            WorkflowValue.Validate(bodyvatNumber, nameof(bodyvatNumber), required: true);
+            return new DeferredBodyAction<CheckVATValidityResponse>(() =>
+            {
+                var apiCallPath = "/taxation_customs/vies/services/checkVatService";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["countryCode"] = ExpressionConverter.ConvertO(bodycountryCode);
+                bodypropCount++;
+                body["vatNumber"] = ExpressionConverter.ConvertO(bodyvatNumber);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CheckVATValidityResponse>(callPayload);
+            });
         }
     }
 

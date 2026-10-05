@@ -4,32 +4,54 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class OpencagegeocodingipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
-        public IBodyWorkflowAction<ReverseGeocodingResponse> ReverseGeocoding(Expression<Func<string>> lat, Expression<Func<string>> @long)
+        [WorkflowExpressionFactory(nameof(__BuildReverseGeocoding))]
+        public IBodyWorkflowAction<ReverseGeocodingResponse> ReverseGeocoding([WorkflowExpression] Func<string> lat, [WorkflowExpression] Func<string> @long)
         {
-            var apiCallPath = "/v1/json/reverse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["lat"] = ExpressionConverter.Convert(lat);
-            callPayload.Headers["long"] = ExpressionConverter.Convert(@long);
-            return new ApiConnectionAction<ReverseGeocodingResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReverseGeocodingResponse> __BuildReverseGeocoding(WorkflowValue<string> lat, WorkflowValue<string> @long)
+        {
+            WorkflowValue.Validate(lat, nameof(lat), required: true);
+            WorkflowValue.Validate(@long, nameof(@long), required: true);
+            return new DeferredBodyAction<ReverseGeocodingResponse>(() =>
+            {
+                var apiCallPath = "/v1/json/reverse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["lat"] = ExpressionConverter.Convert(lat);
+                callPayload.Headers["long"] = ExpressionConverter.Convert(@long);
+                return new ApiConnectionAction<ReverseGeocodingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
-        public IBodyWorkflowAction<ForwardGeocodingResponse> ForwardGeocoding(Expression<Func<string>> placename)
+        [WorkflowExpressionFactory(nameof(__BuildForwardGeocoding))]
+        public IBodyWorkflowAction<ForwardGeocodingResponse> ForwardGeocoding([WorkflowExpression] Func<string> placename)
         {
-            var apiCallPath = "/v1/json/forward";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["placename"] = ExpressionConverter.Convert(placename);
-            return new ApiConnectionAction<ForwardGeocodingResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ForwardGeocodingResponse> __BuildForwardGeocoding(WorkflowValue<string> placename)
+        {
+            WorkflowValue.Validate(placename, nameof(placename), required: true);
+            return new DeferredBodyAction<ForwardGeocodingResponse>(() =>
+            {
+                var apiCallPath = "/v1/json/forward";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["placename"] = ExpressionConverter.Convert(placename);
+                return new ApiConnectionAction<ForwardGeocodingResponse>(callPayload);
+            });
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,279 +20,414 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitskout
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginForFileResponse> RunPluginForFile(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildRunPluginForFile))]
+        public IBodyWorkflowAction<RunPluginForFileResponse> RunPluginForFile([WorkflowExpression] Func<string> bodyplugin = null, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = "/powerauto/run_file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyplugin != null)
-            {
-                body["plugin"] = ExpressionConverter.ConvertO(bodyplugin);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfileUrl != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RunPluginForFileResponse> __BuildRunPluginForFile(WorkflowValue<string> bodyplugin = null, WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(bodyplugin, nameof(bodyplugin), required: false);
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<RunPluginForFileResponse>(() =>
             {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+                var apiCallPath = "/powerauto/run_file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyplugin != null)
+                {
+                    body["plugin"] = ExpressionConverter.ConvertO(bodyplugin);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<RunPluginForFileResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RunPluginForFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<RunPluginTextResponse> RunPluginText(Expression<Func<string>> bodyplugin = null, Expression<Func<string>> bodytext = null)
+        [WorkflowExpressionFactory(nameof(__BuildRunPluginText))]
+        public IBodyWorkflowAction<RunPluginTextResponse> RunPluginText([WorkflowExpression] Func<string> bodyplugin = null, [WorkflowExpression] Func<string> bodytext = null)
         {
-            var apiCallPath = "/powerauto/run_text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyplugin != null)
-            {
-                body["plugin"] = ExpressionConverter.ConvertO(bodyplugin);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodytext != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RunPluginTextResponse> __BuildRunPluginText(WorkflowValue<string> bodyplugin = null, WorkflowValue<string> bodytext = null)
+        {
+            WorkflowValue.Validate(bodyplugin, nameof(bodyplugin), required: false);
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<RunPluginTextResponse>(() =>
             {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+                var apiCallPath = "/powerauto/run_text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyplugin != null)
+                {
+                    body["plugin"] = ExpressionConverter.ConvertO(bodyplugin);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<RunPluginTextResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<RunPluginTextResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> ExtractDataFromInvoice(Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractDataFromInvoice))]
+        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> ExtractDataFromInvoice([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = "/actions/invoices";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractDataFromInvoiceResponse> __BuildExtractDataFromInvoice(WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<ExtractDataFromInvoiceResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/invoices";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractDataFromInvoiceResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractDataFromInvoiceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> ExtractDataPurchaseOrders(Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractDataPurchaseOrders))]
+        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> ExtractDataPurchaseOrders([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = "/actions/purchase_order";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractDataPurchaseOrdersResponse> __BuildExtractDataPurchaseOrders(WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<ExtractDataPurchaseOrdersResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/purchase_order";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractDataPurchaseOrdersResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractDataPurchaseOrdersResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBillofLadingResponse> ExtractDataBillofLading(Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractDataBillofLading))]
+        public IBodyWorkflowAction<ExtractDataBillofLadingResponse> ExtractDataBillofLading([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = "/actions/bill_of_lading";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractDataBillofLadingResponse> __BuildExtractDataBillofLading(WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<ExtractDataBillofLadingResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/bill_of_lading";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractDataBillofLadingResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractDataBillofLadingResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataCVResponse> ExtractDataCV(Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractDataCV))]
+        public IBodyWorkflowAction<ExtractDataCVResponse> ExtractDataCV([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = "/actions/cv";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractDataCVResponse> __BuildExtractDataCV(WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<ExtractDataCVResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/cv";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractDataCVResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractDataCVResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectDocumentTypeResponse> DetectDocumentType(Expression<Func<doctypeInput>> doctype, Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildDetectDocumentType))]
+        public IBodyWorkflowAction<DetectDocumentTypeResponse> DetectDocumentType([WorkflowExpression] Func<doctypeInput> doctype, [WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = String.Format("/actions/doctype_{0}", ExpressionConverter.ConvertWithUrlEncoding(doctype, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetectDocumentTypeResponse> __BuildDetectDocumentType(WorkflowValue<doctypeInput> doctype, WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(doctype, nameof(doctype), required: true);
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<DetectDocumentTypeResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions/doctype_{0}", ExpressionConverter.ConvertWithUrlEncoding(doctype, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<DetectDocumentTypeResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DetectDocumentTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> ExtractDataBusinessCards(Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractDataBusinessCards))]
+        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> ExtractDataBusinessCards([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = "/actions/business_cards";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractDataBusinessCardsResponse> __BuildExtractDataBusinessCards(WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<ExtractDataBusinessCardsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/business_cards";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractDataBusinessCardsResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractDataBusinessCardsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractQRCodeResponse> ExtractQRCode(Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractQRCode))]
+        public IBodyWorkflowAction<ExtractQRCodeResponse> ExtractQRCode([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = "/actions/qrcodes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractQRCodeResponse> __BuildExtractQRCode(WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<ExtractQRCodeResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/qrcodes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractQRCodeResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractQRCodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> ExtractBarcodeFromFile(Expression<Func<string>> bodyfileUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractBarcodeFromFile))]
+        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> ExtractBarcodeFromFile([WorkflowExpression] Func<string> bodyfileUrl = null)
         {
-            var apiCallPath = "/actions/barcodes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractBarcodeFromFileResponse> __BuildExtractBarcodeFromFile(WorkflowValue<string> bodyfileUrl = null)
+        {
+            WorkflowValue.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            return new DeferredBodyAction<ExtractBarcodeFromFileResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/barcodes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = ExpressionConverter.ConvertO(bodyfileUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractBarcodeFromFileResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractBarcodeFromFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<DetectResponseColdEmailResponse> DetectResponseColdEmail(Expression<Func<string>> bodytext = null)
+        [WorkflowExpressionFactory(nameof(__BuildDetectResponseColdEmail))]
+        public IBodyWorkflowAction<DetectResponseColdEmailResponse> DetectResponseColdEmail([WorkflowExpression] Func<string> bodytext = null)
         {
-            var apiCallPath = "/actions/cold_response";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetectResponseColdEmailResponse> __BuildDetectResponseColdEmail(WorkflowValue<string> bodytext = null)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<DetectResponseColdEmailResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/cold_response";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<DetectResponseColdEmailResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DetectResponseColdEmailResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bitskout")]
-        public IBodyWorkflowAction<ExtractDataHAROResponse> ExtractDataHARO(Expression<Func<string>> bodytext = null)
+        [WorkflowExpressionFactory(nameof(__BuildExtractDataHARO))]
+        public IBodyWorkflowAction<ExtractDataHAROResponse> ExtractDataHARO([WorkflowExpression] Func<string> bodytext = null)
         {
-            var apiCallPath = "/actions/haro";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
-            {
-                body["text"] = ExpressionConverter.ConvertO(bodytext);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExtractDataHAROResponse> __BuildExtractDataHARO(WorkflowValue<string> bodytext = null)
+        {
+            WorkflowValue.Validate(bodytext, nameof(bodytext), required: false);
+            return new DeferredBodyAction<ExtractDataHAROResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/actions/haro";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = ExpressionConverter.ConvertO(bodytext);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ExtractDataHAROResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ExtractDataHAROResponse>(callPayload);
+            });
         }
     }
 

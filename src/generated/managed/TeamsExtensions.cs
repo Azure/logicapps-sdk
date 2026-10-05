@@ -4,201 +4,231 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TeamsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<NewMeetingRespone> CreateTeamsMeeting(Expression<Func<calendaridInput>> calendarid, Expression<Func<string>> itemsubject, Expression<Func<string>> itemtimeZone, Expression<Func<string>> itembodyeventMessageContent = null, Expression<Func<string>> itemstartstartTime = null, Expression<Func<string>> itemendendTime = null, Expression<Func<string>> itemrequiredAttendees = null, Expression<Func<string>> itemoptionalAttendees = null, Expression<Func<string>> itemlocationdisplayName = null, Expression<Func<itemimportanceInput>> itemimportance = null, Expression<Func<itemrecurrencepatternrecurrencePatternInput>> itemrecurrencepatternrecurrencePattern = null, Expression<Func<int>> itemrecurrencepatternrecurrenceInterval = null, Expression<Func<string[]>> itemrecurrencepatterndaysOfWeek = null, Expression<Func<itemrecurrencepatternweekIndexInput>> itemrecurrencepatternweekIndex = null, Expression<Func<string>> itemrecurrencerangerecurrenceStartDate = null, Expression<Func<string>> itemrecurrencerangerecurrenceEndDate = null, Expression<Func<bool>> itemallDayEvent = null, Expression<Func<int>> itempreEventReminderTime = null, Expression<Func<bool>> itemenableReminders = null, Expression<Func<itemstatusShowAsInput>> itemstatusShowAs = null, Expression<Func<bool>> itemrequestResponse = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTeamsMeeting))]
+        public IBodyWorkflowAction<NewMeetingRespone> CreateTeamsMeeting([WorkflowExpression] Func<calendaridInput> calendarid, [WorkflowExpression] Func<string> itemsubject, [WorkflowExpression] Func<string> itemtimeZone, [WorkflowExpression] Func<string> itembodyeventMessageContent = null, [WorkflowExpression] Func<string> itemstartstartTime = null, [WorkflowExpression] Func<string> itemendendTime = null, [WorkflowExpression] Func<string> itemrequiredAttendees = null, [WorkflowExpression] Func<string> itemoptionalAttendees = null, [WorkflowExpression] Func<string> itemlocationdisplayName = null, [WorkflowExpression] Func<itemimportanceInput> itemimportance = null, [WorkflowExpression] Func<itemrecurrencepatternrecurrencePatternInput> itemrecurrencepatternrecurrencePattern = null, [WorkflowExpression] Func<int> itemrecurrencepatternrecurrenceInterval = null, [WorkflowExpression] Func<string[]> itemrecurrencepatterndaysOfWeek = null, [WorkflowExpression] Func<itemrecurrencepatternweekIndexInput> itemrecurrencepatternweekIndex = null, [WorkflowExpression] Func<string> itemrecurrencerangerecurrenceStartDate = null, [WorkflowExpression] Func<string> itemrecurrencerangerecurrenceEndDate = null, [WorkflowExpression] Func<bool> itemallDayEvent = null, [WorkflowExpression] Func<int> itempreEventReminderTime = null, [WorkflowExpression] Func<bool> itemenableReminders = null, [WorkflowExpression] Func<itemstatusShowAsInput> itemstatusShowAs = null, [WorkflowExpression] Func<bool> itemrequestResponse = null)
         {
-            var apiCallPath = String.Format("/v1.0/me/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var item = new JObject();
-            var itempropCount = 0;
-            itempropCount++;
-            item["subject"] = ExpressionConverter.ConvertO(itemsubject);
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (itembodyeventMessageContent != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NewMeetingRespone> __BuildCreateTeamsMeeting(WorkflowValue<calendaridInput> calendarid, WorkflowValue<string> itemsubject, WorkflowValue<string> itemtimeZone, WorkflowValue<string> itembodyeventMessageContent = null, WorkflowValue<string> itemstartstartTime = null, WorkflowValue<string> itemendendTime = null, WorkflowValue<string> itemrequiredAttendees = null, WorkflowValue<string> itemoptionalAttendees = null, WorkflowValue<string> itemlocationdisplayName = null, WorkflowValue<itemimportanceInput> itemimportance = null, WorkflowValue<itemrecurrencepatternrecurrencePatternInput> itemrecurrencepatternrecurrencePattern = null, WorkflowValue<int> itemrecurrencepatternrecurrenceInterval = null, WorkflowValue<string[]> itemrecurrencepatterndaysOfWeek = null, WorkflowValue<itemrecurrencepatternweekIndexInput> itemrecurrencepatternweekIndex = null, WorkflowValue<string> itemrecurrencerangerecurrenceStartDate = null, WorkflowValue<string> itemrecurrencerangerecurrenceEndDate = null, WorkflowValue<bool> itemallDayEvent = null, WorkflowValue<int> itempreEventReminderTime = null, WorkflowValue<bool> itemenableReminders = null, WorkflowValue<itemstatusShowAsInput> itemstatusShowAs = null, WorkflowValue<bool> itemrequestResponse = null)
+        {
+            WorkflowValue.Validate(calendarid, nameof(calendarid), required: true);
+            WorkflowValue.Validate(itemsubject, nameof(itemsubject), required: true);
+            WorkflowValue.Validate(itemtimeZone, nameof(itemtimeZone), required: true);
+            WorkflowValue.Validate(itembodyeventMessageContent, nameof(itembodyeventMessageContent), required: false);
+            WorkflowValue.Validate(itemstartstartTime, nameof(itemstartstartTime), required: false);
+            WorkflowValue.Validate(itemendendTime, nameof(itemendendTime), required: false);
+            WorkflowValue.Validate(itemrequiredAttendees, nameof(itemrequiredAttendees), required: false);
+            WorkflowValue.Validate(itemoptionalAttendees, nameof(itemoptionalAttendees), required: false);
+            WorkflowValue.Validate(itemlocationdisplayName, nameof(itemlocationdisplayName), required: false);
+            WorkflowValue.Validate(itemimportance, nameof(itemimportance), required: false);
+            WorkflowValue.Validate(itemrecurrencepatternrecurrencePattern, nameof(itemrecurrencepatternrecurrencePattern), required: false);
+            WorkflowValue.Validate(itemrecurrencepatternrecurrenceInterval, nameof(itemrecurrencepatternrecurrenceInterval), required: false);
+            WorkflowValue.Validate(itemrecurrencepatterndaysOfWeek, nameof(itemrecurrencepatterndaysOfWeek), required: false);
+            WorkflowValue.Validate(itemrecurrencepatternweekIndex, nameof(itemrecurrencepatternweekIndex), required: false);
+            WorkflowValue.Validate(itemrecurrencerangerecurrenceStartDate, nameof(itemrecurrencerangerecurrenceStartDate), required: false);
+            WorkflowValue.Validate(itemrecurrencerangerecurrenceEndDate, nameof(itemrecurrencerangerecurrenceEndDate), required: false);
+            WorkflowValue.Validate(itemallDayEvent, nameof(itemallDayEvent), required: false);
+            WorkflowValue.Validate(itempreEventReminderTime, nameof(itempreEventReminderTime), required: false);
+            WorkflowValue.Validate(itemenableReminders, nameof(itemenableReminders), required: false);
+            WorkflowValue.Validate(itemstatusShowAs, nameof(itemstatusShowAs), required: false);
+            WorkflowValue.Validate(itemrequestResponse, nameof(itemrequestResponse), required: false);
+            return new DeferredBodyAction<NewMeetingRespone>(() =>
             {
-                bodyObject["content"] = ExpressionConverter.ConvertO(itembodyeventMessageContent);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/me/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var item = new JObject();
+                var itempropCount = 0;
+                itempropCount++;
+                item["subject"] = ExpressionConverter.ConvertO(itemsubject);
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (itembodyeventMessageContent != null)
+                {
+                    bodyObject["content"] = ExpressionConverter.ConvertO(itembodyeventMessageContent);
+                    bodyObjectpropCount++;
+                }
+
+                bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
-            }
+                if (bodyObjectpropCount > 0)
+                {
+                    item["body"] = bodyObject;
+                    itempropCount++;
+                }
 
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodyObjectpropCount > 0)
-            {
-                item["body"] = bodyObject;
                 itempropCount++;
-            }
+                item["timeZone"] = ExpressionConverter.ConvertO(itemtimeZone);
+                var startObject = new JObject();
+                var startObjectpropCount = 0;
+                if (itemstartstartTime != null)
+                {
+                    startObject["dateTime"] = ExpressionConverter.ConvertO(itemstartstartTime);
+                    startObjectpropCount++;
+                }
 
-            itempropCount++;
-            item["timeZone"] = ExpressionConverter.ConvertO(itemtimeZone);
-            var startObject = new JObject();
-            var startObjectpropCount = 0;
-            if (itemstartstartTime != null)
-            {
-                startObject["dateTime"] = ExpressionConverter.ConvertO(itemstartstartTime);
-                startObjectpropCount++;
-            }
+                if (startObjectpropCount > 0)
+                {
+                    item["start"] = startObject;
+                    itempropCount++;
+                }
 
-            if (startObjectpropCount > 0)
-            {
-                item["start"] = startObject;
+                var endObject = new JObject();
+                var endObjectpropCount = 0;
+                if (itemendendTime != null)
+                {
+                    endObject["dateTime"] = ExpressionConverter.ConvertO(itemendendTime);
+                    endObjectpropCount++;
+                }
+
+                if (endObjectpropCount > 0)
+                {
+                    item["end"] = endObject;
+                    itempropCount++;
+                }
+
+                if (itemrequiredAttendees != null)
+                {
+                    item["requiredAttendees"] = ExpressionConverter.ConvertO(itemrequiredAttendees);
+                    itempropCount++;
+                }
+
+                if (itemoptionalAttendees != null)
+                {
+                    item["optionalAttendees"] = ExpressionConverter.ConvertO(itemoptionalAttendees);
+                    itempropCount++;
+                }
+
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (itemlocationdisplayName != null)
+                {
+                    locationObject["displayName"] = ExpressionConverter.ConvertO(itemlocationdisplayName);
+                    locationObjectpropCount++;
+                }
+
+                if (locationObjectpropCount > 0)
+                {
+                    item["location"] = locationObject;
+                    itempropCount++;
+                }
+
+                if (itemimportance != null)
+                {
+                    item["importance"] = ExpressionConverter.ConvertO(itemimportance);
+                    itempropCount++;
+                }
+
+                var recurrenceObject = new JObject();
+                var recurrenceObjectpropCount = 0;
+                var patternObject = new JObject();
+                var patternObjectpropCount = 0;
+                if (itemrecurrencepatternrecurrencePattern != null)
+                {
+                    patternObject["type"] = ExpressionConverter.ConvertO(itemrecurrencepatternrecurrencePattern);
+                    patternObjectpropCount++;
+                }
+
+                if (itemrecurrencepatternrecurrenceInterval != null)
+                {
+                    patternObject["interval"] = ExpressionConverter.ConvertO(itemrecurrencepatternrecurrenceInterval);
+                    patternObjectpropCount++;
+                }
+
+                if (itemrecurrencepatterndaysOfWeek != null)
+                {
+                    patternObject["daysOfWeek"] = ExpressionConverter.ConvertO(itemrecurrencepatterndaysOfWeek);
+                    patternObjectpropCount++;
+                }
+
+                if (itemrecurrencepatternweekIndex != null)
+                {
+                    patternObject["index"] = ExpressionConverter.ConvertO(itemrecurrencepatternweekIndex);
+                    patternObjectpropCount++;
+                }
+
+                if (patternObjectpropCount > 0)
+                {
+                    recurrenceObject["pattern"] = patternObject;
+                    recurrenceObjectpropCount++;
+                }
+
+                var rangeObject = new JObject();
+                var rangeObjectpropCount = 0;
+                if (itemrecurrencerangerecurrenceStartDate != null)
+                {
+                    rangeObject["startDate"] = ExpressionConverter.ConvertO(itemrecurrencerangerecurrenceStartDate);
+                    rangeObjectpropCount++;
+                }
+
+                if (itemrecurrencerangerecurrenceEndDate != null)
+                {
+                    rangeObject["endDate"] = ExpressionConverter.ConvertO(itemrecurrencerangerecurrenceEndDate);
+                    rangeObjectpropCount++;
+                }
+
+                if (rangeObjectpropCount > 0)
+                {
+                    recurrenceObject["range"] = rangeObject;
+                    recurrenceObjectpropCount++;
+                }
+
+                if (recurrenceObjectpropCount > 0)
+                {
+                    item["recurrence"] = recurrenceObject;
+                    itempropCount++;
+                }
+
+                if (itemallDayEvent != null)
+                {
+                    item["isAllDay"] = ExpressionConverter.ConvertO(itemallDayEvent);
+                    itempropCount++;
+                }
+
+                if (itempreEventReminderTime != null)
+                {
+                    item["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(itempreEventReminderTime);
+                    itempropCount++;
+                }
+
+                if (itemenableReminders != null)
+                {
+                    item["isReminderOn"] = ExpressionConverter.ConvertO(itemenableReminders);
+                    itempropCount++;
+                }
+
+                if (itemstatusShowAs != null)
+                {
+                    item["showAs"] = ExpressionConverter.ConvertO(itemstatusShowAs);
+                    itempropCount++;
+                }
+
+                if (itemrequestResponse != null)
+                {
+                    item["responseRequested"] = ExpressionConverter.ConvertO(itemrequestResponse);
+                    itempropCount++;
+                }
+
+                item["isOnlineMeeting"] = true;
                 itempropCount++;
-            }
-
-            var endObject = new JObject();
-            var endObjectpropCount = 0;
-            if (itemendendTime != null)
-            {
-                endObject["dateTime"] = ExpressionConverter.ConvertO(itemendendTime);
-                endObjectpropCount++;
-            }
-
-            if (endObjectpropCount > 0)
-            {
-                item["end"] = endObject;
+                item["onlineMeetingProvider"] = "teamsForBusiness";
                 itempropCount++;
-            }
+                if (itempropCount > 0)
+                {
+                    callPayload.Body = item;
+                }
 
-            if (itemrequiredAttendees != null)
-            {
-                item["requiredAttendees"] = ExpressionConverter.ConvertO(itemrequiredAttendees);
-                itempropCount++;
-            }
-
-            if (itemoptionalAttendees != null)
-            {
-                item["optionalAttendees"] = ExpressionConverter.ConvertO(itemoptionalAttendees);
-                itempropCount++;
-            }
-
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (itemlocationdisplayName != null)
-            {
-                locationObject["displayName"] = ExpressionConverter.ConvertO(itemlocationdisplayName);
-                locationObjectpropCount++;
-            }
-
-            if (locationObjectpropCount > 0)
-            {
-                item["location"] = locationObject;
-                itempropCount++;
-            }
-
-            if (itemimportance != null)
-            {
-                item["importance"] = ExpressionConverter.ConvertO(itemimportance);
-                itempropCount++;
-            }
-
-            var recurrenceObject = new JObject();
-            var recurrenceObjectpropCount = 0;
-            var patternObject = new JObject();
-            var patternObjectpropCount = 0;
-            if (itemrecurrencepatternrecurrencePattern != null)
-            {
-                patternObject["type"] = ExpressionConverter.ConvertO(itemrecurrencepatternrecurrencePattern);
-                patternObjectpropCount++;
-            }
-
-            if (itemrecurrencepatternrecurrenceInterval != null)
-            {
-                patternObject["interval"] = ExpressionConverter.ConvertO(itemrecurrencepatternrecurrenceInterval);
-                patternObjectpropCount++;
-            }
-
-            if (itemrecurrencepatterndaysOfWeek != null)
-            {
-                patternObject["daysOfWeek"] = ExpressionConverter.ConvertO(itemrecurrencepatterndaysOfWeek);
-                patternObjectpropCount++;
-            }
-
-            if (itemrecurrencepatternweekIndex != null)
-            {
-                patternObject["index"] = ExpressionConverter.ConvertO(itemrecurrencepatternweekIndex);
-                patternObjectpropCount++;
-            }
-
-            if (patternObjectpropCount > 0)
-            {
-                recurrenceObject["pattern"] = patternObject;
-                recurrenceObjectpropCount++;
-            }
-
-            var rangeObject = new JObject();
-            var rangeObjectpropCount = 0;
-            if (itemrecurrencerangerecurrenceStartDate != null)
-            {
-                rangeObject["startDate"] = ExpressionConverter.ConvertO(itemrecurrencerangerecurrenceStartDate);
-                rangeObjectpropCount++;
-            }
-
-            if (itemrecurrencerangerecurrenceEndDate != null)
-            {
-                rangeObject["endDate"] = ExpressionConverter.ConvertO(itemrecurrencerangerecurrenceEndDate);
-                rangeObjectpropCount++;
-            }
-
-            if (rangeObjectpropCount > 0)
-            {
-                recurrenceObject["range"] = rangeObject;
-                recurrenceObjectpropCount++;
-            }
-
-            if (recurrenceObjectpropCount > 0)
-            {
-                item["recurrence"] = recurrenceObject;
-                itempropCount++;
-            }
-
-            if (itemallDayEvent != null)
-            {
-                item["isAllDay"] = ExpressionConverter.ConvertO(itemallDayEvent);
-                itempropCount++;
-            }
-
-            if (itempreEventReminderTime != null)
-            {
-                item["reminderMinutesBeforeStart"] = ExpressionConverter.ConvertO(itempreEventReminderTime);
-                itempropCount++;
-            }
-
-            if (itemenableReminders != null)
-            {
-                item["isReminderOn"] = ExpressionConverter.ConvertO(itemenableReminders);
-                itempropCount++;
-            }
-
-            if (itemstatusShowAs != null)
-            {
-                item["showAs"] = ExpressionConverter.ConvertO(itemstatusShowAs);
-                itempropCount++;
-            }
-
-            if (itemrequestResponse != null)
-            {
-                item["responseRequested"] = ExpressionConverter.ConvertO(itemrequestResponse);
-                itempropCount++;
-            }
-
-            item["isOnlineMeeting"] = true;
-            itempropCount++;
-            item["onlineMeetingProvider"] = "teamsForBusiness";
-            itempropCount++;
-            if (itempropCount > 0)
-            {
-                callPayload.Body = item;
-            }
-
-            return new ApiConnectionAction<NewMeetingRespone>(callPayload);
+                return new ApiConnectionAction<NewMeetingRespone>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
@@ -220,488 +250,922 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetChannelsForGroupResponse> GetChannelsForGroup(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetChannelsForGroup))]
+        public IBodyWorkflowAction<GetChannelsForGroupResponse> GetChannelsForGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            var apiCallPath = String.Format("/beta/groups/{0}/channels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            return new ApiConnectionAction<GetChannelsForGroupResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateChannelResponse> CreateChannel(Expression<Func<string>> groupId, Expression<Func<string>> bodyname, Expression<Func<string>> bodydescription = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetChannelsForGroupResponse> __BuildGetChannelsForGroup(WorkflowValue<string> groupId, WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null)
         {
-            var apiCallPath = String.Format("/beta/groups/{0}/channels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            return new DeferredBodyAction<GetChannelsForGroupResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/channels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                return new ApiConnectionAction<GetChannelsForGroupResponse>(callPayload);
+            });
+        }
 
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateChannel))]
+        public IBodyWorkflowAction<CreateChannelResponse> CreateChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydescription = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateChannelResponse> __BuildCreateChannel(WorkflowValue<string> groupId, WorkflowValue<string> bodyname, WorkflowValue<string> bodydescription = null)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            return new DeferredBodyAction<CreateChannelResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateChannelResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetChannelResponse> GetChannel(Expression<Func<string>> groupId, Expression<Func<string>> channelId)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/channels/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetChannelResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetAllChannelsForTeamResponse> GetAllChannelsForTeam(Expression<Func<string>> groupId, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/allChannels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            return new ApiConnectionAction<GetAllChannelsForTeamResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetChatsResponse> GetChats(Expression<Func<chatTypeInput>> chatType, Expression<Func<topicInput>> topic)
-        {
-            var apiCallPath = String.Format("/flowbot/actions/listchats/chattypes/{0}/topic/{1}/expandmembers/false", ExpressionConverter.ConvertWithUrlEncoding(chatType, 1), ExpressionConverter.ConvertWithUrlEncoding(topic, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetChatsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetTagsResponseSchema> GetTags(Expression<Func<string>> groupId)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTagsResponseSchema>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateTagResponseSchema> CreateTag(Expression<Func<string>> groupId, Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodymembersIDs)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            bodypropCount++;
-            body["members"] = ExpressionConverter.ConvertO(bodymembersIDs);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTagResponseSchema>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<AddMemberToTagResponseSchema> AddMemberToTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId, Expression<Func<string>> bodyuserSID)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuserSID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddMemberToTagResponseSchema>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetTagMembersResponseSchema> GetTagMembers(Expression<Func<string>> groupId, Expression<Func<string>> tagId)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTagMembersResponseSchema>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction DeleteTagMember(Expression<Func<string>> groupId, Expression<Func<string>> tagId, Expression<Func<string>> tagMemberId)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagMemberId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction PostFeedNotification(Expression<Func<posterInput>> poster, Expression<Func<notificationTypeInput>> notificationType, Expression<Func<object>> body = null)
-        {
-            var apiCallPath = String.Format("/flowbot/feednotification/poster/{0}/notificationType/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(notificationType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<AtMentionTagResponse> AtMentionTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AtMentionTagResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction DeleteTag(Expression<Func<string>> groupId, Expression<Func<string>> tagId)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetMessagesFromChannelResponse> GetMessagesFromChannel(Expression<Func<string>> groupId, Expression<Func<string>> channelId)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMessagesFromChannelResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<JToken> GetMessageDetails(Expression<Func<string>> messageId, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> body = null)
-        {
-            var apiCallPath = String.Format("/beta/teams/messages/{0}/messageType/{1}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<ListRepliesResponseSchema> ListRepliesToMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId, Expression<Func<string>> messageId, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = String.Format("/v1.0/teams/{0}/channels/{1}/messages/{2}/replies", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$top"] = Convert.ToString(20);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<ListRepliesResponseSchema>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<ListMembersResponseSchema> ListMembers(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> body = null)
-        {
-            var apiCallPath = String.Format("/v1.0/teams/listmembers/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<ListMembersResponseSchema>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction SubscribeUserMessageWithOptions(Expression<Func<object>> userMessageWithOptionsSubscriptionRequest = null)
-        {
-            var apiCallPath = "/flowbot/actions/messagewithoptions/recipienttypes/user/$subscriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(userMessageWithOptionsSubscriptionRequest);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<GetTeamResponse> GetTeam(Expression<Func<string>> teamId)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTeamResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<AtMentionUserV1> AtMentionUser(Expression<Func<string>> userId)
-        {
-            var apiCallPath = String.Format("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AtMentionUserV1>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<NewChatResponse> CreateChat(Expression<Func<string>> itemmembersToAdd, Expression<Func<string>> itemtitle = null)
-        {
-            var apiCallPath = "/beta/chats";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var item = new JObject();
-            var itempropCount = 0;
-            if (itemtitle != null)
-            {
-                item["topic"] = ExpressionConverter.ConvertO(itemtitle);
-                itempropCount++;
-            }
-
-            itempropCount++;
-            item["members"] = ExpressionConverter.ConvertO(itemmembersToAdd);
-            if (itempropCount > 0)
-            {
-                callPayload.Body = item;
-            }
-
-            return new ApiConnectionAction<NewChatResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<CreateATeamResponse> CreateATeam(Expression<Func<string>> bodyteamName, Expression<Func<string>> bodydescription, Expression<Func<bodyvisibilityInput>> bodyvisibility = null)
-        {
-            var apiCallPath = "/beta/teams";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodyteamName);
-            bodypropCount++;
-            body["description"] = ExpressionConverter.ConvertO(bodydescription);
-            if (bodyvisibility != null)
-            {
-                if (bodyvisibility != null)
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/groups/{0}/channels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
                 {
-                    body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["visibility"] = "Public";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateATeamResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IWorkflowAction AddMemberToTeam(Expression<Func<string>> teamId, Expression<Func<string>> bodyuser, Expression<Func<bool>> bodysetUserAsTeamOwner = null)
-        {
-            var apiCallPath = String.Format("/beta/teams/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userId"] = ExpressionConverter.ConvertO(bodyuser);
-            if (bodysetUserAsTeamOwner != null)
-            {
-                body["owner"] = ExpressionConverter.ConvertO(bodysetUserAsTeamOwner);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse> PostMessageToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
-        {
-            var apiCallPath = String.Format("/beta/teams/conversation/message/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse> ReplyWithMessageToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
-        {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/replyWithMessage/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse> PostCardToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
-        {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/adaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<JToken> PostCardAndWaitForResponse(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> bodybodyrecipient = null, Expression<Func<string>> bodybodymessage = null, Expression<Func<string>> bodybodyupdateMessage = null)
-        {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/gatherinput/poster/{0}/location/{1}/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["notificationUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            if (bodybodyrecipient != null)
-            {
-                bodyObject["recipient"] = ExpressionConverter.ConvertO(bodybodyrecipient);
-                bodyObjectpropCount++;
-            }
-
-            if (bodybodymessage != null)
-            {
-                bodyObject["messageBody"] = ExpressionConverter.ConvertO(bodybodymessage);
-                bodyObjectpropCount++;
-            }
-
-            if (bodybodyupdateMessage != null)
-            {
-                if (bodybodyupdateMessage != null)
+                body["displayName"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodypropCount > 0)
                 {
-                    bodyObject["updateMessage"] = ExpressionConverter.ConvertO(bodybodyupdateMessage);
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateChannelResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildGetChannel))]
+        public IBodyWorkflowAction<GetChannelResponse> GetChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetChannelResponse> __BuildGetChannel(WorkflowValue<string> groupId, WorkflowValue<string> channelId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(channelId, nameof(channelId), required: true);
+            return new DeferredBodyAction<GetChannelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/channels/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetChannelResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildGetAllChannelsForTeam))]
+        public IBodyWorkflowAction<GetAllChannelsForTeamResponse> GetAllChannelsForTeam([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllChannelsForTeamResponse> __BuildGetAllChannelsForTeam(WorkflowValue<string> groupId, WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            return new DeferredBodyAction<GetAllChannelsForTeamResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/allChannels", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                return new ApiConnectionAction<GetAllChannelsForTeamResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildGetChats))]
+        public IBodyWorkflowAction<GetChatsResponse> GetChats([WorkflowExpression] Func<chatTypeInput> chatType, [WorkflowExpression] Func<topicInput> topic)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetChatsResponse> __BuildGetChats(WorkflowValue<chatTypeInput> chatType, WorkflowValue<topicInput> topic)
+        {
+            WorkflowValue.Validate(chatType, nameof(chatType), required: true);
+            WorkflowValue.Validate(topic, nameof(topic), required: true);
+            return new DeferredBodyAction<GetChatsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flowbot/actions/listchats/chattypes/{0}/topic/{1}/expandmembers/false", ExpressionConverter.ConvertWithUrlEncoding(chatType, 1), ExpressionConverter.ConvertWithUrlEncoding(topic, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetChatsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTags))]
+        public IBodyWorkflowAction<GetTagsResponseSchema> GetTags([WorkflowExpression] Func<string> groupId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTagsResponseSchema> __BuildGetTags(WorkflowValue<string> groupId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<GetTagsResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTagsResponseSchema>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateTag))]
+        public IBodyWorkflowAction<CreateTagResponseSchema> CreateTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodymembersIDs)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateTagResponseSchema> __BuildCreateTag(WorkflowValue<string> groupId, WorkflowValue<string> bodydisplayName, WorkflowValue<string> bodymembersIDs)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            WorkflowValue.Validate(bodymembersIDs, nameof(bodymembersIDs), required: true);
+            return new DeferredBodyAction<CreateTagResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                bodypropCount++;
+                body["members"] = ExpressionConverter.ConvertO(bodymembersIDs);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateTagResponseSchema>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildAddMemberToTag))]
+        public IBodyWorkflowAction<AddMemberToTagResponseSchema> AddMemberToTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> bodyuserSID)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddMemberToTagResponseSchema> __BuildAddMemberToTag(WorkflowValue<string> groupId, WorkflowValue<string> tagId, WorkflowValue<string> bodyuserSID)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(tagId, nameof(tagId), required: true);
+            WorkflowValue.Validate(bodyuserSID, nameof(bodyuserSID), required: true);
+            return new DeferredBodyAction<AddMemberToTagResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userId"] = ExpressionConverter.ConvertO(bodyuserSID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddMemberToTagResponseSchema>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTagMembers))]
+        public IBodyWorkflowAction<GetTagMembersResponseSchema> GetTagMembers([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTagMembersResponseSchema> __BuildGetTagMembers(WorkflowValue<string> groupId, WorkflowValue<string> tagId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(tagId, nameof(tagId), required: true);
+            return new DeferredBodyAction<GetTagMembersResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTagMembersResponseSchema>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteTagMember))]
+        public IWorkflowAction DeleteTagMember([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<string> tagMemberId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteTagMember(WorkflowValue<string> groupId, WorkflowValue<string> tagId, WorkflowValue<string> tagMemberId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(tagId, nameof(tagId), required: true);
+            WorkflowValue.Validate(tagMemberId, nameof(tagMemberId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}/members/{2}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagMemberId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildPostFeedNotification))]
+        public IWorkflowAction PostFeedNotification([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<notificationTypeInput> notificationType, [WorkflowExpression] Func<object> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostFeedNotification(WorkflowValue<posterInput> poster, WorkflowValue<notificationTypeInput> notificationType, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(poster, nameof(poster), required: true);
+            WorkflowValue.Validate(notificationType, nameof(notificationType), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/flowbot/feednotification/poster/{0}/notificationType/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(notificationType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildAtMentionTag))]
+        public IBodyWorkflowAction<AtMentionTagResponse> AtMentionTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AtMentionTagResponse> __BuildAtMentionTag(WorkflowValue<string> groupId, WorkflowValue<string> tagId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(tagId, nameof(tagId), required: true);
+            return new DeferredBodyAction<AtMentionTagResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AtMentionTagResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteTag))]
+        public IWorkflowAction DeleteTag([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> tagId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteTag(WorkflowValue<string> groupId, WorkflowValue<string> tagId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(tagId, nameof(tagId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromChannel))]
+        public IBodyWorkflowAction<GetMessagesFromChannelResponse> GetMessagesFromChannel([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetMessagesFromChannelResponse> __BuildGetMessagesFromChannel(WorkflowValue<string> groupId, WorkflowValue<string> channelId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(channelId, nameof(channelId), required: true);
+            return new DeferredBodyAction<GetMessagesFromChannelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetMessagesFromChannelResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMessageDetails))]
+        public IBodyWorkflowAction<JToken> GetMessageDetails([WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetMessageDetails(WorkflowValue<string> messageId, WorkflowValue<threadTypeInput> threadType, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(messageId, nameof(messageId), required: true);
+            WorkflowValue.Validate(threadType, nameof(threadType), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/messages/{0}/messageType/{1}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1), ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildListRepliesToMessage))]
+        public IBodyWorkflowAction<ListRepliesResponseSchema> ListRepliesToMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<int> top = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListRepliesResponseSchema> __BuildListRepliesToMessage(WorkflowValue<string> groupId, WorkflowValue<string> channelId, WorkflowValue<string> messageId, WorkflowValue<int> top = null)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(channelId, nameof(channelId), required: true);
+            WorkflowValue.Validate(messageId, nameof(messageId), required: true);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<ListRepliesResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/{0}/channels/{1}/messages/{2}/replies", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$top"] = Convert.ToString(20);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                return new ApiConnectionAction<ListRepliesResponseSchema>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildListMembers))]
+        public IBodyWorkflowAction<ListMembersResponseSchema> ListMembers([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListMembersResponseSchema> __BuildListMembers(WorkflowValue<threadTypeInput> threadType, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(threadType, nameof(threadType), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<ListMembersResponseSchema>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/listmembers/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<ListMembersResponseSchema>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildSubscribeUserMessageWithOptions))]
+        public IWorkflowAction SubscribeUserMessageWithOptions([WorkflowExpression] Func<object> userMessageWithOptionsSubscriptionRequest = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSubscribeUserMessageWithOptions(WorkflowValue<object> userMessageWithOptionsSubscriptionRequest = null)
+        {
+            WorkflowValue.Validate(userMessageWithOptionsSubscriptionRequest, nameof(userMessageWithOptionsSubscriptionRequest), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/flowbot/actions/messagewithoptions/recipienttypes/user/$subscriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(userMessageWithOptionsSubscriptionRequest);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildGetTeam))]
+        public IBodyWorkflowAction<GetTeamResponse> GetTeam([WorkflowExpression] Func<string> teamId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTeamResponse> __BuildGetTeam(WorkflowValue<string> teamId)
+        {
+            WorkflowValue.Validate(teamId, nameof(teamId), required: true);
+            return new DeferredBodyAction<GetTeamResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTeamResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildAtMentionUser))]
+        public IBodyWorkflowAction<AtMentionUserV1> AtMentionUser([WorkflowExpression] Func<string> userId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AtMentionUserV1> __BuildAtMentionUser(WorkflowValue<string> userId)
+        {
+            WorkflowValue.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<AtMentionUserV1>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AtMentionUserV1>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateChat))]
+        public IBodyWorkflowAction<NewChatResponse> CreateChat([WorkflowExpression] Func<string> itemmembersToAdd, [WorkflowExpression] Func<string> itemtitle = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NewChatResponse> __BuildCreateChat(WorkflowValue<string> itemmembersToAdd, WorkflowValue<string> itemtitle = null)
+        {
+            WorkflowValue.Validate(itemmembersToAdd, nameof(itemmembersToAdd), required: true);
+            WorkflowValue.Validate(itemtitle, nameof(itemtitle), required: false);
+            return new DeferredBodyAction<NewChatResponse>(() =>
+            {
+                var apiCallPath = "/beta/chats";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var item = new JObject();
+                var itempropCount = 0;
+                if (itemtitle != null)
+                {
+                    item["topic"] = ExpressionConverter.ConvertO(itemtitle);
+                    itempropCount++;
+                }
+
+                itempropCount++;
+                item["members"] = ExpressionConverter.ConvertO(itemmembersToAdd);
+                if (itempropCount > 0)
+                {
+                    callPayload.Body = item;
+                }
+
+                return new ApiConnectionAction<NewChatResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateATeam))]
+        public IBodyWorkflowAction<CreateATeamResponse> CreateATeam([WorkflowExpression] Func<string> bodyteamName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<bodyvisibilityInput> bodyvisibility = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateATeamResponse> __BuildCreateATeam(WorkflowValue<string> bodyteamName, WorkflowValue<string> bodydescription, WorkflowValue<bodyvisibilityInput> bodyvisibility = null)
+        {
+            WorkflowValue.Validate(bodyteamName, nameof(bodyteamName), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: true);
+            WorkflowValue.Validate(bodyvisibility, nameof(bodyvisibility), required: false);
+            return new DeferredBodyAction<CreateATeamResponse>(() =>
+            {
+                var apiCallPath = "/beta/teams";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = ExpressionConverter.ConvertO(bodyteamName);
+                bodypropCount++;
+                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                if (bodyvisibility != null)
+                {
+                    if (bodyvisibility != null)
+                    {
+                        body["visibility"] = ExpressionConverter.ConvertO(bodyvisibility);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["visibility"] = "Public";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateATeamResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildAddMemberToTeam))]
+        public IWorkflowAction AddMemberToTeam([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> bodyuser, [WorkflowExpression] Func<bool> bodysetUserAsTeamOwner = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildAddMemberToTeam(WorkflowValue<string> teamId, WorkflowValue<string> bodyuser, WorkflowValue<bool> bodysetUserAsTeamOwner = null)
+        {
+            WorkflowValue.Validate(teamId, nameof(teamId), required: true);
+            WorkflowValue.Validate(bodyuser, nameof(bodyuser), required: true);
+            WorkflowValue.Validate(bodysetUserAsTeamOwner, nameof(bodysetUserAsTeamOwner), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(teamId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userId"] = ExpressionConverter.ConvertO(bodyuser);
+                if (bodysetUserAsTeamOwner != null)
+                {
+                    body["owner"] = ExpressionConverter.ConvertO(bodysetUserAsTeamOwner);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildPostMessageToConversation))]
+        public IBodyWorkflowAction<PostToConversationResponse> PostMessageToConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostToConversationResponse> __BuildPostMessageToConversation(WorkflowValue<posterInput> poster, WorkflowValue<string> location, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(poster, nameof(poster), required: true);
+            WorkflowValue.Validate(location, nameof(location), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/teams/conversation/message/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildReplyWithMessageToConversation))]
+        public IBodyWorkflowAction<PostToConversationResponse> ReplyWithMessageToConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostToConversationResponse> __BuildReplyWithMessageToConversation(WorkflowValue<posterInput> poster, WorkflowValue<string> location, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(poster, nameof(poster), required: true);
+            WorkflowValue.Validate(location, nameof(location), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/replyWithMessage/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildPostCardToConversation))]
+        public IBodyWorkflowAction<PostToConversationResponse> PostCardToConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostToConversationResponse> __BuildPostCardToConversation(WorkflowValue<posterInput> poster, WorkflowValue<string> location, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(poster, nameof(poster), required: true);
+            WorkflowValue.Validate(location, nameof(location), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/adaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
+        [WorkflowExpressionFactory(nameof(__BuildPostCardAndWaitForResponse))]
+        public IBodyWorkflowAction<JToken> PostCardAndWaitForResponse([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> bodybodyrecipient = null, [WorkflowExpression] Func<string> bodybodymessage = null, [WorkflowExpression] Func<string> bodybodyupdateMessage = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildPostCardAndWaitForResponse(WorkflowValue<posterInput> poster, WorkflowValue<string> location, WorkflowValue<object> bodybodyrecipient = null, WorkflowValue<string> bodybodymessage = null, WorkflowValue<string> bodybodyupdateMessage = null)
+        {
+            WorkflowValue.Validate(poster, nameof(poster), required: true);
+            WorkflowValue.Validate(location, nameof(location), required: true);
+            WorkflowValue.Validate(bodybodyrecipient, nameof(bodybodyrecipient), required: false);
+            WorkflowValue.Validate(bodybodymessage, nameof(bodybodymessage), required: false);
+            WorkflowValue.Validate(bodybodyupdateMessage, nameof(bodybodyupdateMessage), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/gatherinput/poster/{0}/location/{1}/$subscriptions", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["notificationUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                if (bodybodyrecipient != null)
+                {
+                    bodyObject["recipient"] = ExpressionConverter.ConvertO(bodybodyrecipient);
                     bodyObjectpropCount++;
                 }
 
-                bodyObjectpropCount++;
-            }
-            else
-            {
-                bodyObject["updateMessage"] = "Thanks for your response!";
-                bodyObjectpropCount++;
-            }
+                if (bodybodymessage != null)
+                {
+                    bodyObject["messageBody"] = ExpressionConverter.ConvertO(bodybodymessage);
+                    bodyObjectpropCount++;
+                }
 
-            if (bodyObjectpropCount > 0)
-            {
-                body["body"] = bodyObject;
-                bodypropCount++;
-            }
+                if (bodybodyupdateMessage != null)
+                {
+                    if (bodybodyupdateMessage != null)
+                    {
+                        bodyObject["updateMessage"] = ExpressionConverter.ConvertO(bodybodyupdateMessage);
+                        bodyObjectpropCount++;
+                    }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                    bodyObjectpropCount++;
+                }
+                else
+                {
+                    bodyObject["updateMessage"] = "Thanks for your response!";
+                    bodyObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse> ReplyWithCardToConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildReplyWithCardToConversation))]
+        public IBodyWorkflowAction<PostToConversationResponse> ReplyWithCardToConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/replyWithAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostToConversationResponse> __BuildReplyWithCardToConversation(WorkflowValue<posterInput> poster, WorkflowValue<string> location, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(poster, nameof(poster), required: true);
+            WorkflowValue.Validate(location, nameof(location), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/replyWithAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<PostToConversationResponse> UpdateCardInConversation(Expression<Func<posterInput>> poster, Expression<Func<string>> location, Expression<Func<object>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateCardInConversation))]
+        public IBodyWorkflowAction<PostToConversationResponse> UpdateCardInConversation([WorkflowExpression] Func<posterInput> poster, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = String.Format("/v1.0/teams/conversation/updateAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostToConversationResponse> __BuildUpdateCardInConversation(WorkflowValue<posterInput> poster, WorkflowValue<string> location, WorkflowValue<object> body = null)
+        {
+            WorkflowValue.Validate(poster, nameof(poster), required: true);
+            WorkflowValue.Validate(location, nameof(location), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PostToConversationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v1.0/teams/conversation/updateAdaptivecard/poster/{0}/location/{1}", ExpressionConverter.ConvertWithUrlEncoding(poster, 1), ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PostToConversationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teams")]
-        public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
+        [WorkflowExpressionFactory(nameof(__BuildHttpRequest))]
+        public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
         {
-            var apiCallPath = "/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
-            callPayload.Headers["ContentType"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
-            if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
-            if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
-            if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
-            if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
-            if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowValue<string> uri, WorkflowValue<methodInput> method, WorkflowValue<string> body = null, WorkflowValue<string> contentType = null, WorkflowValue<string> customHeader1 = null, WorkflowValue<string> customHeader2 = null, WorkflowValue<string> customHeader3 = null, WorkflowValue<string> customHeader4 = null, WorkflowValue<string> customHeader5 = null)
+        {
+            WorkflowValue.Validate(uri, nameof(uri), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: false);
+            WorkflowValue.Validate(customHeader1, nameof(customHeader1), required: false);
+            WorkflowValue.Validate(customHeader2, nameof(customHeader2), required: false);
+            WorkflowValue.Validate(customHeader3, nameof(customHeader3), required: false);
+            WorkflowValue.Validate(customHeader4, nameof(customHeader4), required: false);
+            WorkflowValue.Validate(customHeader5, nameof(customHeader5), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
+                callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
+                callPayload.Headers["ContentType"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
+                if (customHeader1 != null)
+                    callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
+                if (customHeader2 != null)
+                    callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
+                if (customHeader3 != null)
+                    callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
+                if (customHeader4 != null)
+                    callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
+                if (customHeader5 != null)
+                    callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class TeamsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage(Expression<Func<string>> groupId, Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewChannelMessage))]
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$top"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe(Expression<Func<string>> groupId, Expression<Func<string>> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> __BuildOnNewChannelMessage(WorkflowValue<string> groupId, WorkflowValue<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$top"] = Convert.ToString(50);
-            return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(channelId, nameof(channelId), required: true);
+            return new DeferredBodyTrigger<OnNewChannelMessageResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$top"] = Convert.ToString(50);
+                return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger WebhookAtMentionTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewChannelMessageMentioningMe))]
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/beta/subscriptions/atmentiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger WebhookMessageReactionTrigger(Expression<Func<string>> reactionKey, Expression<Func<frequencyInput>> frequency, Expression<Func<runningPolicyInput>> runningPolicy, Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> __BuildOnNewChannelMessageMentioningMe(WorkflowValue<string> groupId, WorkflowValue<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/beta/subscriptions/messagereactiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["reactionKey"] = ExpressionConverter.Convert(reactionKey);
-            callPayload.Queries["frequency"] = ExpressionConverter.Convert(frequency);
-            callPayload.Queries["runningPolicy"] = ExpressionConverter.Convert(runningPolicy);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(channelId, nameof(channelId), required: true);
+            return new DeferredBodyTrigger<OnNewChannelMessageResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/beta/teams/{0}/channels/{1}/messages_mentioningme", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1), ExpressionConverter.ConvertWithUrlEncoding(channelId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$top"] = Convert.ToString(50);
+                return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWebhookAtMentionTrigger))]
+        public IWorkflowTrigger WebhookAtMentionTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWebhookAtMentionTrigger(WorkflowValue<threadTypeInput> threadType, WorkflowValue<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(threadType, nameof(threadType), required: true);
+            WorkflowValue.Validate(requestBody, nameof(requestBody), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/atmentiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(requestBody);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWebhookMessageReactionTrigger))]
+        public IWorkflowTrigger WebhookMessageReactionTrigger([WorkflowExpression] Func<string> reactionKey, [WorkflowExpression] Func<frequencyInput> frequency, [WorkflowExpression] Func<runningPolicyInput> runningPolicy, [WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWebhookMessageReactionTrigger(WorkflowValue<string> reactionKey, WorkflowValue<frequencyInput> frequency, WorkflowValue<runningPolicyInput> runningPolicy, WorkflowValue<threadTypeInput> threadType, WorkflowValue<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(reactionKey, nameof(reactionKey), required: true);
+            WorkflowValue.Validate(frequency, nameof(frequency), required: true);
+            WorkflowValue.Validate(runningPolicy, nameof(runningPolicy), required: true);
+            WorkflowValue.Validate(threadType, nameof(threadType), required: true);
+            WorkflowValue.Validate(requestBody, nameof(requestBody), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/messagereactiontrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["reactionKey"] = ExpressionConverter.Convert(reactionKey);
+                callPayload.Queries["frequency"] = ExpressionConverter.Convert(frequency);
+                callPayload.Queries["runningPolicy"] = ExpressionConverter.Convert(runningPolicy);
+                callPayload.Body = ExpressionConverter.ConvertO(requestBody);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
         public IWorkflowTrigger WebhookChatMessageTrigger(string triggerName = null, FlowRecurrence recurrence = null)
@@ -721,43 +1185,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookKeywordTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<string>> search, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildWebhookKeywordTrigger))]
+        public IWorkflowTrigger WebhookKeywordTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<string> search, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/beta/subscriptions/keywordtrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger WebhookNewMessageTrigger(Expression<Func<threadTypeInput>> threadType, Expression<Func<object>> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWebhookKeywordTrigger(WorkflowValue<threadTypeInput> threadType, WorkflowValue<string> search, WorkflowValue<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/beta/subscriptions/newmessagetrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(threadType, nameof(threadType), required: true);
+            WorkflowValue.Validate(search, nameof(search), required: true);
+            WorkflowValue.Validate(requestBody, nameof(requestBody), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/keywordtrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
+                callPayload.Body = ExpressionConverter.ConvertO(requestBody);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberRemoved(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildWebhookNewMessageTrigger))]
+        public IWorkflowTrigger WebhookNewMessageTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1.0/groups/removal";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["$select"] = Convert.ToString("members");
-            return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberAdded(Expression<Func<string>> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWebhookNewMessageTrigger(WorkflowValue<threadTypeInput> threadType, WorkflowValue<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/v1.0/groups/delta";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["$select"] = Convert.ToString("members");
-            return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(threadType, nameof(threadType), required: true);
+            WorkflowValue.Validate(requestBody, nameof(requestBody), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/subscriptions/newmessagetrigger/threadType/{0}", ExpressionConverter.ConvertWithUrlEncoding(threadType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(requestBody);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnTeamMemberRemoved))]
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberRemoved([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> __BuildOnTeamMemberRemoved(WorkflowValue<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            return new DeferredBodyTrigger<OnGroupMemberChangeResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/v1.0/groups/removal";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["$select"] = Convert.ToString("members");
+                return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnTeamMemberAdded))]
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberAdded([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> __BuildOnTeamMemberAdded(WorkflowValue<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            return new DeferredBodyTrigger<OnGroupMemberChangeResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/v1.0/groups/delta";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["$select"] = Convert.ToString("members");
+                return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,67 +4,117 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SurveymonkeycanadaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<Survey> GetSurvey(Expression<Func<string>> surveyId)
+        [WorkflowExpressionFactory(nameof(__BuildGetSurvey))]
+        public IBodyWorkflowAction<Survey> GetSurvey([WorkflowExpression] Func<string> surveyId)
         {
-            var apiCallPath = String.Format("/surveys/{0}", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Survey>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<SurveyMessageResponse> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<string>> bodyscheduledDate = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Survey> __BuildGetSurvey(WorkflowValue<string> surveyId)
         {
-            var apiCallPath = String.Format("/collectors/{0}/messages/{1}/send", ExpressionConverter.ConvertWithUrlEncoding(collectorId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyscheduledDate != null)
+            WorkflowValue.Validate(surveyId, nameof(surveyId), required: true);
+            return new DeferredBodyAction<Survey>(() =>
             {
-                body["scheduled_date"] = ExpressionConverter.ConvertO(bodyscheduledDate);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/surveys/{0}", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Survey>(callPayload);
+            });
+        }
 
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
+        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
+        public IBodyWorkflowAction<SurveyMessageResponse> SendMessage([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> collectorId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> bodyscheduledDate = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SurveyMessageResponse> __BuildSendMessage(WorkflowValue<string> surveyId, WorkflowValue<string> collectorId, WorkflowValue<string> messageId, WorkflowValue<string> bodyscheduledDate = null)
+        {
+            WorkflowValue.Validate(surveyId, nameof(surveyId), required: true);
+            WorkflowValue.Validate(collectorId, nameof(collectorId), required: true);
+            WorkflowValue.Validate(messageId, nameof(messageId), required: true);
+            WorkflowValue.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: false);
+            return new DeferredBodyAction<SurveyMessageResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/collectors/{0}/messages/{1}/send", ExpressionConverter.ConvertWithUrlEncoding(collectorId, 1), ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyscheduledDate != null)
+                {
+                    body["scheduled_date"] = ExpressionConverter.ConvertO(bodyscheduledDate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SurveyMessageResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SurveyMessageResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<GetResponseDetailsResponse> GetResponseDetails(Expression<Func<string>> surveyId, Expression<Func<string>> responseId, Expression<Func<string>> questionIds = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetResponseDetails))]
+        public IBodyWorkflowAction<GetResponseDetailsResponse> GetResponseDetails([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> questionIds = null)
         {
-            var apiCallPath = String.Format("/actions1/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(responseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["simple"] = Convert.ToString(true);
-            if (questionIds != null)
-                callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
-            return new ApiConnectionAction<GetResponseDetailsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetResponseDetailsResponse> __BuildGetResponseDetails(WorkflowValue<string> surveyId, WorkflowValue<string> responseId, WorkflowValue<string> questionIds = null)
+        {
+            WorkflowValue.Validate(surveyId, nameof(surveyId), required: true);
+            WorkflowValue.Validate(responseId, nameof(responseId), required: true);
+            WorkflowValue.Validate(questionIds, nameof(questionIds), required: false);
+            return new DeferredBodyAction<GetResponseDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions1/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(responseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["simple"] = Convert.ToString(true);
+                if (questionIds != null)
+                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
+                return new ApiConnectionAction<GetResponseDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> GetResponseDetailsNoPages(Expression<Func<string>> surveyId, Expression<Func<string>> responseId, Expression<Func<string>> questionIds = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetResponseDetailsNoPages))]
+        public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> GetResponseDetailsNoPages([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> questionIds = null)
         {
-            var apiCallPath = String.Format("/actions2/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(responseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["simple"] = Convert.ToString(true);
-            if (questionIds != null)
-                callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
-            return new ApiConnectionAction<GetResponseDetailsNoPagesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> __BuildGetResponseDetailsNoPages(WorkflowValue<string> surveyId, WorkflowValue<string> responseId, WorkflowValue<string> questionIds = null)
+        {
+            WorkflowValue.Validate(surveyId, nameof(surveyId), required: true);
+            WorkflowValue.Validate(responseId, nameof(responseId), required: true);
+            WorkflowValue.Validate(questionIds, nameof(questionIds), required: false);
+            return new DeferredBodyAction<GetResponseDetailsNoPagesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/actions2/surveys/{0}/responses/{1}/details", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1), ExpressionConverter.ConvertWithUrlEncoding(responseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["simple"] = Convert.ToString(true);
+                if (questionIds != null)
+                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
+                return new ApiConnectionAction<GetResponseDetailsNoPagesResponse>(callPayload);
+            });
         }
     }
 
@@ -78,41 +128,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
             return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated(Expression<Func<string>> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnSurveyCollectorCreated))]
+        public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated([WorkflowExpression] Func<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger2/surveys/{0}/collectors", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<NewCollectorsItem[]> __BuildOnSurveyCollectorCreated(WorkflowValue<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger3/collectors/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(collectorId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
-            return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(surveyId, nameof(surveyId), required: true);
+            return new DeferredBodyTrigger<NewCollectorsItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewResponseAddedCollector))]
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> collectorId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger4/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseAddedCollector(WorkflowValue<string> surveyId, WorkflowValue<string> collectorId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger5/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pageIds != null)
-                callPayload.Queries["page_ids"] = ExpressionConverter.Convert(pageIds);
-            if (questionIds != null)
-                callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
-            return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(surveyId, nameof(surveyId), required: true);
+            WorkflowValue.Validate(collectorId, nameof(collectorId), required: true);
+            return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/collectors/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(collectorId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
+                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewResponseAddedSurvey))]
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey([WorkflowExpression] Func<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseAddedSurvey(WorkflowValue<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(surveyId, nameof(surveyId), required: true);
+            return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnNewResponseToQuestionAdded))]
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> pageIds = null, [WorkflowExpression] Func<string> questionIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseToQuestionAdded(WorkflowValue<string> surveyId, WorkflowValue<string> pageIds = null, WorkflowValue<string> questionIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(surveyId, nameof(surveyId), required: true);
+            WorkflowValue.Validate(pageIds, nameof(pageIds), required: false);
+            WorkflowValue.Validate(questionIds, nameof(questionIds), required: false);
+            return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger5/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (pageIds != null)
+                    callPayload.Queries["page_ids"] = ExpressionConverter.Convert(pageIds);
+                if (questionIds != null)
+                    callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
+                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

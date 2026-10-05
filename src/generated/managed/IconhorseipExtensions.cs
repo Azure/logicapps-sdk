@@ -4,20 +4,30 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iconhorseip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class IconhorseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iconhorseip")]
-        public IBodyWorkflowAction<JToken> FaviconGet(Expression<Func<string>> domain)
+        [WorkflowExpressionFactory(nameof(__BuildFaviconGet))]
+        public IBodyWorkflowAction<JToken> FaviconGet([WorkflowExpression] Func<string> domain)
         {
-            var apiCallPath = String.Format("/icon/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildFaviconGet(WorkflowValue<string> domain)
+        {
+            WorkflowValue.Validate(domain, nameof(domain), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/icon/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 

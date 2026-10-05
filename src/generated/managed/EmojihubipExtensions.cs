@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,21 +20,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<AllCategoryResponseItem[]> AllCategory(Expression<Func<categoryNameInput>> categoryName)
+        [WorkflowExpressionFactory(nameof(__BuildAllCategory))]
+        public IBodyWorkflowAction<AllCategoryResponseItem[]> AllCategory([WorkflowExpression] Func<categoryNameInput> categoryName)
         {
-            var apiCallPath = String.Format("/all/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllCategoryResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AllCategoryResponseItem[]> __BuildAllCategory(WorkflowValue<categoryNameInput> categoryName)
+        {
+            WorkflowValue.Validate(categoryName, nameof(categoryName), required: true);
+            return new DeferredBodyAction<AllCategoryResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/all/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AllCategoryResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<AllGroupResponseItem[]> AllGroup(Expression<Func<groupNameInput>> groupName)
+        [WorkflowExpressionFactory(nameof(__BuildAllGroup))]
+        public IBodyWorkflowAction<AllGroupResponseItem[]> AllGroup([WorkflowExpression] Func<groupNameInput> groupName)
         {
-            var apiCallPath = String.Format("/all/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllGroupResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AllGroupResponseItem[]> __BuildAllGroup(WorkflowValue<groupNameInput> groupName)
+        {
+            WorkflowValue.Validate(groupName, nameof(groupName), required: true);
+            return new DeferredBodyAction<AllGroupResponseItem[]>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/all/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AllGroupResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
@@ -48,21 +69,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emojihubip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<RandomCategoryResponse> RandomCategory(Expression<Func<categoryNameInput>> categoryName)
+        [WorkflowExpressionFactory(nameof(__BuildRandomCategory))]
+        public IBodyWorkflowAction<RandomCategoryResponse> RandomCategory([WorkflowExpression] Func<categoryNameInput> categoryName)
         {
-            var apiCallPath = String.Format("/random/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RandomCategoryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RandomCategoryResponse> __BuildRandomCategory(WorkflowValue<categoryNameInput> categoryName)
+        {
+            WorkflowValue.Validate(categoryName, nameof(categoryName), required: true);
+            return new DeferredBodyAction<RandomCategoryResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/random/category_{0}", ExpressionConverter.ConvertWithUrlEncoding(categoryName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RandomCategoryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emojihubip")]
-        public IBodyWorkflowAction<RandomGroupResponse> RandomGroup(Expression<Func<groupNameInput>> groupName)
+        [WorkflowExpressionFactory(nameof(__BuildRandomGroup))]
+        public IBodyWorkflowAction<RandomGroupResponse> RandomGroup([WorkflowExpression] Func<groupNameInput> groupName)
         {
-            var apiCallPath = String.Format("/random/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RandomGroupResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RandomGroupResponse> __BuildRandomGroup(WorkflowValue<groupNameInput> groupName)
+        {
+            WorkflowValue.Validate(groupName, nameof(groupName), required: true);
+            return new DeferredBodyAction<RandomGroupResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/random/group_{0}", ExpressionConverter.ConvertWithUrlEncoding(groupName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<RandomGroupResponse>(callPayload);
+            });
         }
     }
 

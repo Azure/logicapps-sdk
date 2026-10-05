@@ -4,142 +4,276 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescuegroupsip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RescuegroupsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedResponse> Breed(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildBreed))]
+        public IBodyWorkflowAction<BreedResponse> Breed([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/public/animals/breeds/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<BreedResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BreedResponse> __BuildBreed(WorkflowValue<int> limit = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<BreedResponse>(() =>
+            {
+                var apiCallPath = "/public/animals/breeds/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<BreedResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedIDResponse> BreedID(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildBreedID))]
+        public IBodyWorkflowAction<BreedIDResponse> BreedID([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/public/animals/breeds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BreedIDResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BreedIDResponse> __BuildBreedID(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<BreedIDResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BreedIDResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedSpeciesResponse> BreedSpecies(Expression<Func<string>> species, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildBreedSpecies))]
+        public IBodyWorkflowAction<BreedSpeciesResponse> BreedSpecies([WorkflowExpression] Func<string> species, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/public/animals/breeds/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(species, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<BreedSpeciesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BreedSpeciesResponse> __BuildBreedSpecies(WorkflowValue<string> species, WorkflowValue<int> limit = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(species, nameof(species), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<BreedSpeciesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/breeds/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(species, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<BreedSpeciesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<BreedSpeciesIDResponse> BreedSpeciesID(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildBreedSpeciesID))]
+        public IBodyWorkflowAction<BreedSpeciesIDResponse> BreedSpeciesID([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/public/animals/species/{0}/breeds/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<BreedSpeciesIDResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BreedSpeciesIDResponse> __BuildBreedSpeciesID(WorkflowValue<string> id, WorkflowValue<int> limit = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<BreedSpeciesIDResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/species/{0}/breeds/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<BreedSpeciesIDResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationResponse> Organization(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildOrganization))]
+        public IBodyWorkflowAction<OrganizationResponse> Organization([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/public/orgs/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<OrganizationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OrganizationResponse> __BuildOrganization(WorkflowValue<int> limit = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<OrganizationResponse>(() =>
+            {
+                var apiCallPath = "/public/orgs/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<OrganizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationIDResponse> OrganizationID(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildOrganizationID))]
+        public IBodyWorkflowAction<OrganizationIDResponse> OrganizationID([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/public/orgs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OrganizationIDResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OrganizationIDResponse> __BuildOrganizationID(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<OrganizationIDResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<OrganizationIDResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<AnimalResponse> Animal(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildAnimal))]
+        public IBodyWorkflowAction<AnimalResponse> Animal([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/public/animals/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<AnimalResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnimalResponse> __BuildAnimal(WorkflowValue<int> limit = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<AnimalResponse>(() =>
+            {
+                var apiCallPath = "/public/animals/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<AnimalResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<AnimalStatusResponse> AnimalStatus(Expression<Func<string>> status, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildAnimalStatus))]
+        public IBodyWorkflowAction<AnimalStatusResponse> AnimalStatus([WorkflowExpression] Func<string> status, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/public/animals/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(status, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<AnimalStatusResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnimalStatusResponse> __BuildAnimalStatus(WorkflowValue<string> status, WorkflowValue<int> limit = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(status, nameof(status), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<AnimalStatusResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/search/{0}/", ExpressionConverter.ConvertWithUrlEncoding(status, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<AnimalStatusResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<AnimalIDResponse> AnimalID(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildAnimalID))]
+        public IBodyWorkflowAction<AnimalIDResponse> AnimalID([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/public/animals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AnimalIDResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnimalIDResponse> __BuildAnimalID(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<AnimalIDResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/animals/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<AnimalIDResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationAnimalResponse> OrganizationAnimal(Expression<Func<string>> id, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildOrganizationAnimal))]
+        public IBodyWorkflowAction<OrganizationAnimalResponse> OrganizationAnimal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/public/orgs/{0}/animals/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<OrganizationAnimalResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OrganizationAnimalResponse> __BuildOrganizationAnimal(WorkflowValue<string> id, WorkflowValue<int> limit = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<OrganizationAnimalResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<OrganizationAnimalResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescuegroupsip")]
-        public IBodyWorkflowAction<OrganizationAnimalStatusResponse> OrganizationAnimalStatus(Expression<Func<string>> id, Expression<Func<string>> status, Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildOrganizationAnimalStatus))]
+        public IBodyWorkflowAction<OrganizationAnimalStatusResponse> OrganizationAnimalStatus([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> status, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = String.Format("/public/orgs/{0}/animals/search/{1}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<OrganizationAnimalStatusResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OrganizationAnimalStatusResponse> __BuildOrganizationAnimalStatus(WorkflowValue<string> id, WorkflowValue<string> status, WorkflowValue<int> limit = null, WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(status, nameof(status), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<OrganizationAnimalStatusResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/public/orgs/{0}/animals/search/{1}/", ExpressionConverter.ConvertWithUrlEncoding(id, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<OrganizationAnimalStatusResponse>(callPayload);
+            });
         }
     }
 

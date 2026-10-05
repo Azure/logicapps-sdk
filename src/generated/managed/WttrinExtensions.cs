@@ -4,25 +4,37 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wttrin
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class WttrinActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wttrin")]
-        public IBodyWorkflowAction<string> WeatherGet(Expression<Func<string>> location, Expression<Func<viewInput>> view = null, Expression<Func<langInput>> lang = null)
+        [WorkflowExpressionFactory(nameof(__BuildWeatherGet))]
+        public IBodyWorkflowAction<string> WeatherGet([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<viewInput> view = null, [WorkflowExpression] Func<langInput> lang = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-            callPayload.Queries["lang"] = Convert.ToString("en");
-            if (lang != null)
-                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildWeatherGet(WorkflowValue<string> location, WorkflowValue<viewInput> view = null, WorkflowValue<langInput> lang = null)
+        {
+            WorkflowValue.Validate(location, nameof(location), required: true);
+            WorkflowValue.Validate(view, nameof(view), required: false);
+            WorkflowValue.Validate(lang, nameof(lang), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = ExpressionConverter.Convert(view);
+                callPayload.Queries["lang"] = Convert.ToString("en");
+                if (lang != null)
+                    callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

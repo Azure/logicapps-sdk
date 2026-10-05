@@ -4,69 +4,81 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CluedinActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
-        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse(Expression<Func<string>> bodyresultapproval = null, Expression<Func<string>> bodyresultreason = null, Expression<Func<string>> bodyresultreviewedBy = null)
+        [WorkflowExpressionFactory(nameof(__BuildApprovalResponse))]
+        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse([WorkflowExpression] Func<string> bodyresultapproval = null, [WorkflowExpression] Func<string> bodyresultreason = null, [WorkflowExpression] Func<string> bodyresultreviewedBy = null)
         {
-            var apiCallPath = "/callback";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var workflowMetadataObject = new JObject();
-            var workflowMetadataObjectpropCount = 0;
-            if (workflowMetadataObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ApprovalResponseResponse> __BuildApprovalResponse(WorkflowValue<string> bodyresultapproval = null, WorkflowValue<string> bodyresultreason = null, WorkflowValue<string> bodyresultreviewedBy = null)
+        {
+            WorkflowValue.Validate(bodyresultapproval, nameof(bodyresultapproval), required: false);
+            WorkflowValue.Validate(bodyresultreason, nameof(bodyresultreason), required: false);
+            WorkflowValue.Validate(bodyresultreviewedBy, nameof(bodyresultreviewedBy), required: false);
+            return new DeferredBodyAction<ApprovalResponseResponse>(() =>
             {
-                body["workflowMetadata"] = workflowMetadataObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/callback";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (bodyresultapproval != null)
-            {
-                resultObject["approval"] = ExpressionConverter.ConvertO(bodyresultapproval);
-                resultObjectpropCount++;
-            }
+                var workflowMetadataObject = new JObject();
+                var workflowMetadataObjectpropCount = 0;
+                if (workflowMetadataObjectpropCount > 0)
+                {
+                    body["workflowMetadata"] = workflowMetadataObject;
+                    bodypropCount++;
+                }
 
-            if (bodyresultreason != null)
-            {
-                resultObject["reason"] = ExpressionConverter.ConvertO(bodyresultreason);
-                resultObjectpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (bodyresultapproval != null)
+                {
+                    resultObject["approval"] = ExpressionConverter.ConvertO(bodyresultapproval);
+                    resultObjectpropCount++;
+                }
 
-            if (bodyresultreviewedBy != null)
-            {
-                resultObject["reviewedBy"] = ExpressionConverter.ConvertO(bodyresultreviewedBy);
-                resultObjectpropCount++;
-            }
+                if (bodyresultreason != null)
+                {
+                    resultObject["reason"] = ExpressionConverter.ConvertO(bodyresultreason);
+                    resultObjectpropCount++;
+                }
 
-            if (resultObjectpropCount > 0)
-            {
-                body["result"] = resultObject;
-                bodypropCount++;
-            }
+                if (bodyresultreviewedBy != null)
+                {
+                    resultObject["reviewedBy"] = ExpressionConverter.ConvertO(bodyresultreviewedBy);
+                    resultObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (resultObjectpropCount > 0)
+                {
+                    body["result"] = resultObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ApprovalResponseResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ApprovalResponseResponse>(callPayload);
+            });
         }
     }
 

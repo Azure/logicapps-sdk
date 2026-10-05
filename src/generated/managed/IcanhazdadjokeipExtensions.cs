@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -22,29 +21,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icanhazdadjokeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        public IBodyWorkflowAction<SearchForDadJokesResponse> SearchForDadJokes(Expression<Func<int>> page = null, Expression<Func<int>> limit = null, Expression<Func<string>> term = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchForDadJokes))]
+        public IBodyWorkflowAction<SearchForDadJokesResponse> SearchForDadJokes([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> term = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (term != null)
-                callPayload.Queries["term"] = ExpressionConverter.Convert(term);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<SearchForDadJokesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchForDadJokesResponse> __BuildSearchForDadJokes(WorkflowValue<int> page = null, WorkflowValue<int> limit = null, WorkflowValue<string> term = null)
+        {
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(term, nameof(term), required: false);
+            return new DeferredBodyAction<SearchForDadJokesResponse>(() =>
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (term != null)
+                    callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<SearchForDadJokesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "icanhazdadjokeip")]
-        public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke(Expression<Func<string>> jokeid)
+        [WorkflowExpressionFactory(nameof(__BuildFetchaDadJoke))]
+        public IBodyWorkflowAction<FetchaDadJokeResponse> FetchaDadJoke([WorkflowExpression] Func<string> jokeid)
         {
-            var apiCallPath = String.Format("/j/{0}", ExpressionConverter.ConvertWithUrlEncoding(jokeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<FetchaDadJokeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FetchaDadJokeResponse> __BuildFetchaDadJoke(WorkflowValue<string> jokeid)
+        {
+            WorkflowValue.Validate(jokeid, nameof(jokeid), required: true);
+            return new DeferredBodyAction<FetchaDadJokeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/j/{0}", ExpressionConverter.ConvertWithUrlEncoding(jokeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<FetchaDadJokeResponse>(callPayload);
+            });
         }
     }
 

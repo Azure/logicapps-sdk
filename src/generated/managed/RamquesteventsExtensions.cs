@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,50 +14,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
 
     public class RamquesteventsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CCEEventTrigger(Expression<Func<bodyactionInput>> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCCEEventTrigger))]
+        public IWorkflowTrigger CCEEventTrigger([WorkflowExpression] Func<bodyactionInput> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/register/cce";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webHook"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyaction != null)
-            {
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger HorizonEventTrigger(Expression<Func<string>> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCCEEventTrigger(WorkflowValue<bodyactionInput> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/register/horizon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webHook"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyaction != null)
+            WorkflowValue.Validate(bodyaction, nameof(bodyaction), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                var apiCallPath = "/register/cce";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webHook"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodyaction != null)
+                {
+                    body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildHorizonEventTrigger))]
+        public IWorkflowTrigger HorizonEventTrigger([WorkflowExpression] Func<string> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildHorizonEventTrigger(WorkflowValue<string> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodyaction, nameof(bodyaction), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/register/horizon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webHook"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodyaction != null)
+                {
+                    body["action"] = ExpressionConverter.ConvertO(bodyaction);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

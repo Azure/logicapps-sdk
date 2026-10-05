@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -39,14 +38,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spotifyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spotifyip")]
-        public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases(Expression<Func<string>> country = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetNewReleases))]
+        public IBodyWorkflowAction<GetNewReleasesResponse> GetNewReleases([WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/v1/browse/new-releases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<GetNewReleasesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetNewReleasesResponse> __BuildGetNewReleases(WorkflowValue<string> country = null)
+        {
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            return new DeferredBodyAction<GetNewReleasesResponse>(() =>
+            {
+                var apiCallPath = "/v1/browse/new-releases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                return new ApiConnectionAction<GetNewReleasesResponse>(callPayload);
+            });
         }
     }
 

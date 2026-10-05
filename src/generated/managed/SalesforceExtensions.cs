@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,467 +20,822 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken> GetItemByExternalId(Expression<Func<string>> table, Expression<Func<string>> externalIdField, Expression<Func<string>> externalId)
+        [WorkflowExpressionFactory(nameof(__BuildGetItemByExternalId))]
+        public IBodyWorkflowAction<JToken> GetItemByExternalId([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> externalIdField, [WorkflowExpression] Func<string> externalId)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/externalIdFields/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(externalIdField, 2), ExpressionConverter.ConvertWithUrlEncoding(externalId, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetItemByExternalId(WorkflowValue<string> table, WorkflowValue<string> externalIdField, WorkflowValue<string> externalId)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<ItemsList> GetItemsTableAccount(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/datasets/default/tables/account/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<ItemsList> GetItemsTableUser(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/datasets/default/tables/user/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<ItemsList> GetItemsTableCase(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/datasets/default/tables/case/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<ItemsList> GetItemsTableOpportunity(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/datasets/default/tables/opportunity/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<ItemsList> GetItemsTableProduct2(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/datasets/default/tables/product2/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<ItemsList> GetItemsTableContact(Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/datasets/default/tables/contact/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IWorkflowAction DeleteItem(Expression<Func<string>> table, Expression<Func<string>> id)
-        {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken> ExecuteSoqlQuery(Expression<Func<string>> queryParameterssOQLQuery)
-        {
-            var apiCallPath = "/soql/executesoqlquery";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var queryParameters = new JObject();
-            var queryParameterspropCount = 0;
-            queryParameterspropCount++;
-            queryParameters["query"] = ExpressionConverter.ConvertO(queryParameterssOQLQuery);
-            var parametersObject = new JObject();
-            var parametersObjectpropCount = 0;
-            if (parametersObjectpropCount > 0)
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(externalIdField, nameof(externalIdField), required: true);
+            WorkflowValue.Validate(externalId, nameof(externalId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                queryParameters["parameters"] = parametersObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/externalIdFields/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(externalIdField, 2), ExpressionConverter.ConvertWithUrlEncoding(externalId, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItems))]
+        public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetItems(WorkflowValue<string> table, WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<int> top = null, WorkflowValue<int> skip = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItemsTableAccount))]
+        public IBodyWorkflowAction<ItemsList> GetItemsTableAccount([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableAccount(WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<int> top = null, WorkflowValue<int> skip = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables/account/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItemsTableUser))]
+        public IBodyWorkflowAction<ItemsList> GetItemsTableUser([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableUser(WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<int> top = null, WorkflowValue<int> skip = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables/user/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItemsTableCase))]
+        public IBodyWorkflowAction<ItemsList> GetItemsTableCase([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableCase(WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<int> top = null, WorkflowValue<int> skip = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables/case/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItemsTableOpportunity))]
+        public IBodyWorkflowAction<ItemsList> GetItemsTableOpportunity([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableOpportunity(WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<int> top = null, WorkflowValue<int> skip = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables/opportunity/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItemsTableProduct2))]
+        public IBodyWorkflowAction<ItemsList> GetItemsTableProduct2([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableProduct2(WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<int> top = null, WorkflowValue<int> skip = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables/product2/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItemsTableContact))]
+        public IBodyWorkflowAction<ItemsList> GetItemsTableContact([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetItemsTableContact(WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<int> top = null, WorkflowValue<int> skip = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(skip, nameof(skip), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = "/datasets/default/tables/contact/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteItem))]
+        public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteItem(WorkflowValue<string> table, WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildExecuteSoqlQuery))]
+        public IBodyWorkflowAction<JToken> ExecuteSoqlQuery([WorkflowExpression] Func<string> queryParameterssOQLQuery)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildExecuteSoqlQuery(WorkflowValue<string> queryParameterssOQLQuery)
+        {
+            WorkflowValue.Validate(queryParameterssOQLQuery, nameof(queryParameterssOQLQuery), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/soql/executesoqlquery";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var queryParameters = new JObject();
+                var queryParameterspropCount = 0;
                 queryParameterspropCount++;
-            }
+                queryParameters["query"] = ExpressionConverter.ConvertO(queryParameterssOQLQuery);
+                var parametersObject = new JObject();
+                var parametersObjectpropCount = 0;
+                if (parametersObjectpropCount > 0)
+                {
+                    queryParameters["parameters"] = parametersObject;
+                    queryParameterspropCount++;
+                }
 
-            if (queryParameterspropCount > 0)
-            {
-                callPayload.Body = queryParameters;
-            }
+                if (queryParameterspropCount > 0)
+                {
+                    callPayload.Body = queryParameters;
+                }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<GetAllJobsResponse> GetAllJobs(Expression<Func<concurrenyModeInput>> concurrenyMode = null, Expression<Func<bool>> isPkChunkingEnabled = null, Expression<Func<jobTypeInput>> jobType = null, Expression<Func<string>> queryLocator = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllJobs))]
+        public IBodyWorkflowAction<GetAllJobsResponse> GetAllJobs([WorkflowExpression] Func<concurrenyModeInput> concurrenyMode = null, [WorkflowExpression] Func<bool> isPkChunkingEnabled = null, [WorkflowExpression] Func<jobTypeInput> jobType = null, [WorkflowExpression] Func<string> queryLocator = null)
         {
-            var apiCallPath = "/codeless/jobs/ingest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (concurrenyMode != null)
-                callPayload.Queries["concurrenyMode"] = ExpressionConverter.Convert(concurrenyMode);
-            if (isPkChunkingEnabled != null)
-                callPayload.Queries["isPkChunkingEnabled"] = ExpressionConverter.Convert(isPkChunkingEnabled);
-            callPayload.Queries["jobType"] = Convert.ToString("V2Ingest");
-            if (jobType != null)
-                callPayload.Queries["jobType"] = ExpressionConverter.Convert(jobType);
-            if (queryLocator != null)
-                callPayload.Queries["queryLocator"] = ExpressionConverter.Convert(queryLocator);
-            return new ApiConnectionAction<GetAllJobsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllJobsResponse> __BuildGetAllJobs(WorkflowValue<concurrenyModeInput> concurrenyMode = null, WorkflowValue<bool> isPkChunkingEnabled = null, WorkflowValue<jobTypeInput> jobType = null, WorkflowValue<string> queryLocator = null)
+        {
+            WorkflowValue.Validate(concurrenyMode, nameof(concurrenyMode), required: false);
+            WorkflowValue.Validate(isPkChunkingEnabled, nameof(isPkChunkingEnabled), required: false);
+            WorkflowValue.Validate(jobType, nameof(jobType), required: false);
+            WorkflowValue.Validate(queryLocator, nameof(queryLocator), required: false);
+            return new DeferredBodyAction<GetAllJobsResponse>(() =>
+            {
+                var apiCallPath = "/codeless/jobs/ingest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (concurrenyMode != null)
+                    callPayload.Queries["concurrenyMode"] = ExpressionConverter.Convert(concurrenyMode);
+                if (isPkChunkingEnabled != null)
+                    callPayload.Queries["isPkChunkingEnabled"] = ExpressionConverter.Convert(isPkChunkingEnabled);
+                callPayload.Queries["jobType"] = Convert.ToString("V2Ingest");
+                if (jobType != null)
+                    callPayload.Queries["jobType"] = ExpressionConverter.Convert(jobType);
+                if (queryLocator != null)
+                    callPayload.Queries["queryLocator"] = ExpressionConverter.Convert(queryLocator);
+                return new ApiConnectionAction<GetAllJobsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IWorkflowAction UploadJobData(Expression<Func<string>> jobId, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildUploadJobData))]
+        public IWorkflowAction UploadJobData([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}/batches", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUploadJobData(WorkflowValue<string> jobId, WorkflowValue<string> body = null)
+        {
+            WorkflowValue.Validate(jobId, nameof(jobId), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}/batches", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<CheckJobResponse> GetJobInfo(Expression<Func<string>> jobId)
+        [WorkflowExpressionFactory(nameof(__BuildGetJobInfo))]
+        public IBodyWorkflowAction<CheckJobResponse> GetJobInfo([WorkflowExpression] Func<string> jobId)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CheckJobResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckJobResponse> __BuildGetJobInfo(WorkflowValue<string> jobId)
+        {
+            WorkflowValue.Validate(jobId, nameof(jobId), required: true);
+            return new DeferredBodyAction<CheckJobResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CheckJobResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JobInfo> CloseJob(Expression<Func<string>> jobId, Expression<Func<bodystateInput>> bodystate)
+        [WorkflowExpressionFactory(nameof(__BuildCloseJob))]
+        public IBodyWorkflowAction<JobInfo> CloseJob([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<bodystateInput> bodystate)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["state"] = ExpressionConverter.ConvertO(bodystate);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<JobInfo>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JobInfo> __BuildCloseJob(WorkflowValue<string> jobId, WorkflowValue<bodystateInput> bodystate)
+        {
+            WorkflowValue.Validate(jobId, nameof(jobId), required: true);
+            WorkflowValue.Validate(bodystate, nameof(bodystate), required: true);
+            return new DeferredBodyAction<JobInfo>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["state"] = ExpressionConverter.ConvertO(bodystate);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<JobInfo>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IWorkflowAction DeleteJob(Expression<Func<string>> jobId)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteJob))]
+        public IWorkflowAction DeleteJob([WorkflowExpression] Func<string> jobId)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteJob(WorkflowValue<string> jobId)
+        {
+            WorkflowValue.Validate(jobId, nameof(jobId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<string> GetJobRecordResults(Expression<Func<string>> jobId, Expression<Func<resultTypeInput>> resultType)
+        [WorkflowExpressionFactory(nameof(__BuildGetJobRecordResults))]
+        public IBodyWorkflowAction<string> GetJobRecordResults([WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<resultTypeInput> resultType)
         {
-            var apiCallPath = String.Format("/codeless/jobs/ingest/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["resultType"] = ExpressionConverter.Convert(resultType);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetJobRecordResults(WorkflowValue<string> jobId, WorkflowValue<resultTypeInput> resultType)
+        {
+            WorkflowValue.Validate(jobId, nameof(jobId), required: true);
+            WorkflowValue.Validate(resultType, nameof(resultType), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/codeless/jobs/ingest/{0}/results", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["resultType"] = ExpressionConverter.Convert(resultType);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<SOSLSearchQueryResponse> ExecuteSOSLQuery(Expression<Func<string>> q)
+        [WorkflowExpressionFactory(nameof(__BuildExecuteSOSLQuery))]
+        public IBodyWorkflowAction<SOSLSearchQueryResponse> ExecuteSOSLQuery([WorkflowExpression] Func<string> q)
         {
-            var apiCallPath = "/codeless/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionAction<SOSLSearchQueryResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SOSLSearchQueryResponse> __BuildExecuteSOSLQuery(WorkflowValue<string> q)
+        {
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            return new DeferredBodyAction<SOSLSearchQueryResponse>(() =>
+            {
+                var apiCallPath = "/codeless/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                return new ApiConnectionAction<SOSLSearchQueryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken> HttpRequest(Expression<Func<string>> uri, Expression<Func<methodInput>> method, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null, Expression<Func<string>> customHeader1 = null, Expression<Func<string>> customHeader2 = null, Expression<Func<string>> customHeader3 = null, Expression<Func<string>> customHeader4 = null, Expression<Func<string>> customHeader5 = null)
+        [WorkflowExpressionFactory(nameof(__BuildHttpRequest))]
+        public IBodyWorkflowAction<JToken> HttpRequest([WorkflowExpression] Func<string> uri, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> customHeader1 = null, [WorkflowExpression] Func<string> customHeader2 = null, [WorkflowExpression] Func<string> customHeader3 = null, [WorkflowExpression] Func<string> customHeader4 = null, [WorkflowExpression] Func<string> customHeader5 = null)
         {
-            var apiCallPath = "/codeless/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
-            callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
-            callPayload.Headers["ContentType"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
-            if (customHeader1 != null)
-                callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
-            if (customHeader2 != null)
-                callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
-            if (customHeader3 != null)
-                callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
-            if (customHeader4 != null)
-                callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
-            if (customHeader5 != null)
-                callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildHttpRequest(WorkflowValue<string> uri, WorkflowValue<methodInput> method, WorkflowValue<string> body = null, WorkflowValue<string> contentType = null, WorkflowValue<string> customHeader1 = null, WorkflowValue<string> customHeader2 = null, WorkflowValue<string> customHeader3 = null, WorkflowValue<string> customHeader4 = null, WorkflowValue<string> customHeader5 = null)
+        {
+            WorkflowValue.Validate(uri, nameof(uri), required: true);
+            WorkflowValue.Validate(method, nameof(method), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: false);
+            WorkflowValue.Validate(customHeader1, nameof(customHeader1), required: false);
+            WorkflowValue.Validate(customHeader2, nameof(customHeader2), required: false);
+            WorkflowValue.Validate(customHeader3, nameof(customHeader3), required: false);
+            WorkflowValue.Validate(customHeader4, nameof(customHeader4), required: false);
+            WorkflowValue.Validate(customHeader5, nameof(customHeader5), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/codeless/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Uri"] = ExpressionConverter.Convert(uri);
+                callPayload.Headers["Method"] = ExpressionConverter.Convert(method);
+                callPayload.Headers["ContentType"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["ContentType"] = ExpressionConverter.Convert(contentType);
+                if (customHeader1 != null)
+                    callPayload.Headers["CustomHeader1"] = ExpressionConverter.Convert(customHeader1);
+                if (customHeader2 != null)
+                    callPayload.Headers["CustomHeader2"] = ExpressionConverter.Convert(customHeader2);
+                if (customHeader3 != null)
+                    callPayload.Headers["CustomHeader3"] = ExpressionConverter.Convert(customHeader3);
+                if (customHeader4 != null)
+                    callPayload.Headers["CustomHeader4"] = ExpressionConverter.Convert(customHeader4);
+                if (customHeader5 != null)
+                    callPayload.Headers["CustomHeader5"] = ExpressionConverter.Convert(customHeader5);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<MCPQueryResponse> McpSalesforceManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpSalesforceManagement))]
+        public IBodyWorkflowAction<MCPQueryResponse> McpSalesforceManagement([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            var apiCallPath = "/mcp/SalesforceManagement";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MCPQueryResponse> __BuildMcpSalesforceManagement(WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null, WorkflowValue<string> sessionId = null)
+        {
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: false);
+            return new DeferredBodyAction<MCPQueryResponse>(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/mcp/SalesforceManagement";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> parametersobject, Expression<Func<parametersoperationInput>> parametersoperation, Expression<Func<string>> parameterscolumnDelimiter = null, Expression<Func<string>> parametersexternalIDFieldName = null, Expression<Func<string>> parameterslineEnding = null, Expression<Func<string>> parameterscontentType = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateJob))]
+        public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> parametersobject, [WorkflowExpression] Func<parametersoperationInput> parametersoperation, [WorkflowExpression] Func<string> parameterscolumnDelimiter = null, [WorkflowExpression] Func<string> parametersexternalIDFieldName = null, [WorkflowExpression] Func<string> parameterslineEnding = null, [WorkflowExpression] Func<string> parameterscontentType = null)
         {
-            var apiCallPath = "/bulk/createjob";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["object"] = ExpressionConverter.ConvertO(parametersobject);
-            parameterspropCount++;
-            parameters["operation"] = ExpressionConverter.ConvertO(parametersoperation);
-            if (parameterscolumnDelimiter != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateJobResponse> __BuildCreateJob(WorkflowValue<string> parametersobject, WorkflowValue<parametersoperationInput> parametersoperation, WorkflowValue<string> parameterscolumnDelimiter = null, WorkflowValue<string> parametersexternalIDFieldName = null, WorkflowValue<string> parameterslineEnding = null, WorkflowValue<string> parameterscontentType = null)
+        {
+            WorkflowValue.Validate(parametersobject, nameof(parametersobject), required: true);
+            WorkflowValue.Validate(parametersoperation, nameof(parametersoperation), required: true);
+            WorkflowValue.Validate(parameterscolumnDelimiter, nameof(parameterscolumnDelimiter), required: false);
+            WorkflowValue.Validate(parametersexternalIDFieldName, nameof(parametersexternalIDFieldName), required: false);
+            WorkflowValue.Validate(parameterslineEnding, nameof(parameterslineEnding), required: false);
+            WorkflowValue.Validate(parameterscontentType, nameof(parameterscontentType), required: false);
+            return new DeferredBodyAction<CreateJobResponse>(() =>
             {
-                parameters["columnDelimiter"] = ExpressionConverter.ConvertO(parameterscolumnDelimiter);
+                var apiCallPath = "/bulk/createjob";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
                 parameterspropCount++;
-            }
-
-            if (parametersexternalIDFieldName != null)
-            {
-                parameters["externalIdFieldName"] = ExpressionConverter.ConvertO(parametersexternalIDFieldName);
+                parameters["object"] = ExpressionConverter.ConvertO(parametersobject);
                 parameterspropCount++;
-            }
+                parameters["operation"] = ExpressionConverter.ConvertO(parametersoperation);
+                if (parameterscolumnDelimiter != null)
+                {
+                    parameters["columnDelimiter"] = ExpressionConverter.ConvertO(parameterscolumnDelimiter);
+                    parameterspropCount++;
+                }
 
-            if (parameterslineEnding != null)
+                if (parametersexternalIDFieldName != null)
+                {
+                    parameters["externalIdFieldName"] = ExpressionConverter.ConvertO(parametersexternalIDFieldName);
+                    parameterspropCount++;
+                }
+
+                if (parameterslineEnding != null)
+                {
+                    parameters["lineEnding"] = ExpressionConverter.ConvertO(parameterslineEnding);
+                    parameterspropCount++;
+                }
+
+                if (parameterscontentType != null)
+                {
+                    parameters["contentType"] = ExpressionConverter.ConvertO(parameterscontentType);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+
+                return new ApiConnectionAction<CreateJobResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildGetItem))]
+        public IBodyWorkflowAction<JToken> GetItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetItem(WorkflowValue<string> table, WorkflowValue<string> id, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                parameters["lineEnding"] = ExpressionConverter.ConvertO(parameterslineEnding);
-                parameterspropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
 
-            if (parameterscontentType != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildPatchItem))]
+        public IBodyWorkflowAction<JToken> PatchItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> select = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildPatchItem(WorkflowValue<string> table, WorkflowValue<string> id, WorkflowValue<object> item = null, WorkflowValue<string> select = null)
+        {
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(item, nameof(item), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                parameters["contentType"] = ExpressionConverter.ConvertO(parameterscontentType);
-                parameterspropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                callPayload.Body = ExpressionConverter.ConvertO(item);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
+        }
 
-            if (parameterspropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
+        [WorkflowExpressionFactory(nameof(__BuildPatchItemByExternalId))]
+        public IBodyWorkflowAction<JToken> PatchItemByExternalId([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> externalIdField, [WorkflowExpression] Func<string> externalId, [WorkflowExpression] Func<object> item = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildPatchItemByExternalId(WorkflowValue<string> table, WorkflowValue<string> externalIdField, WorkflowValue<string> externalId, WorkflowValue<object> item = null)
+        {
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(externalIdField, nameof(externalIdField), required: true);
+            WorkflowValue.Validate(externalId, nameof(externalId), required: true);
+            WorkflowValue.Validate(item, nameof(item), required: false);
+            return new DeferredBodyAction<JToken>(() =>
             {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction<CreateJobResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/externalIdFields/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(externalIdField, 2), ExpressionConverter.ConvertWithUrlEncoding(externalId, 2));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(item);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<string>> select = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostItem))]
+        public IBodyWorkflowAction<JToken> PostItem([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> item = null)
         {
-            var apiCallPath = String.Format("/v2/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null, Expression<Func<string>> select = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildPostItem(WorkflowValue<string> table, WorkflowValue<object> item = null)
         {
-            var apiCallPath = String.Format("/v3/datasets/default/tables/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken> PatchItemByExternalId(Expression<Func<string>> table, Expression<Func<string>> externalIdField, Expression<Func<string>> externalId, Expression<Func<object>> item = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/default/tables/{0}/externalIdFields/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(table, 2), ExpressionConverter.ConvertWithUrlEncoding(externalIdField, 2), ExpressionConverter.ConvertWithUrlEncoding(externalId, 2));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "salesforce")]
-        public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> table, Expression<Func<object>> item = null)
-        {
-            var apiCallPath = String.Format("/v2/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(item);
-            return new ApiConnectionAction<JToken>(callPayload);
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(item, nameof(item), required: false);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v2/datasets/default/tables/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(item);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class SalesforceTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewItems))]
+        public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<string>> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewItems(WorkflowValue<string> table, WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/datasets/default/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
-            if (select != null)
-                callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-            return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyTrigger<ItemsList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onnewitems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnUpdatedItems))]
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedItems(WorkflowValue<string> table, WorkflowValue<string> filter = null, WorkflowValue<string> orderby = null, WorkflowValue<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(table, nameof(table), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(orderby, nameof(orderby), required: false);
+            WorkflowValue.Validate(select, nameof(select), required: false);
+            return new DeferredBodyTrigger<ItemsList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/default/tables/{0}/onupdateditems", ExpressionConverter.ConvertWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
+                if (select != null)
+                    callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

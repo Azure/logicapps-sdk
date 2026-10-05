@@ -4,47 +4,93 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ConfluenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<string>> cloudId)
+        [WorkflowExpressionFactory(nameof(__BuildGetSpaces))]
+        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces([WorkflowExpression] Func<string> cloudId)
         {
-            var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/spaces", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSpacesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSpacesResponse> __BuildGetSpaces(WorkflowValue<string> cloudId)
+        {
+            WorkflowValue.Validate(cloudId, nameof(cloudId), required: true);
+            return new DeferredBodyAction<GetSpacesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSpacesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPages(Expression<Func<string>> cloudId)
+        [WorkflowExpressionFactory(nameof(__BuildGetPages))]
+        public IBodyWorkflowAction<GetPagesResponse> GetPages([WorkflowExpression] Func<string> cloudId)
         {
-            var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/pages", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPagesResponse> __BuildGetPages(WorkflowValue<string> cloudId)
+        {
+            WorkflowValue.Validate(cloudId, nameof(cloudId), required: true);
+            return new DeferredBodyAction<GetPagesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId)
+        [WorkflowExpressionFactory(nameof(__BuildGetPagesBySpace))]
+        public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace([WorkflowExpression] Func<string> cloudId, [WorkflowExpression] Func<string> spaceId)
         {
-            var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPagesResponse> __BuildGetPagesBySpace(WorkflowValue<string> cloudId, WorkflowValue<string> spaceId)
+        {
+            WorkflowValue.Validate(cloudId, nameof(cloudId), required: true);
+            WorkflowValue.Validate(spaceId, nameof(spaceId), required: true);
+            return new DeferredBodyAction<GetPagesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId, Expression<Func<string>> pageId)
+        [WorkflowExpressionFactory(nameof(__BuildGetPageMetadata))]
+        public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata([WorkflowExpression] Func<string> cloudId, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> pageId)
         {
-            var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetPagesResponse> __BuildGetPageMetadata(WorkflowValue<string> cloudId, WorkflowValue<string> spaceId, WorkflowValue<string> pageId)
+        {
+            WorkflowValue.Validate(cloudId, nameof(cloudId), required: true);
+            WorkflowValue.Validate(spaceId, nameof(spaceId), required: true);
+            WorkflowValue.Validate(pageId, nameof(pageId), required: true);
+            return new DeferredBodyAction<GetPagesResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            });
         }
     }
 

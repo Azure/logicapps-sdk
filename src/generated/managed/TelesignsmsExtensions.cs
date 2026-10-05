@@ -4,49 +4,63 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TelesignsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyphoneNumber, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodymessageType = null, Expression<Func<string>> bodysenderId = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendSMS))]
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodyphoneNumber, [WorkflowExpression] Func<string> bodymessageText, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodymessageType = null, [WorkflowExpression] Func<string> bodysenderId = null)
         {
-            var apiCallPath = "/api/SMS";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
-            if (bodyexternalId != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendSMSResponse> __BuildSendSMS(WorkflowValue<string> bodyphoneNumber, WorkflowValue<string> bodymessageText, WorkflowValue<string> bodyexternalId = null, WorkflowValue<string> bodymessageType = null, WorkflowValue<string> bodysenderId = null)
+        {
+            WorkflowValue.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
+            WorkflowValue.Validate(bodymessageText, nameof(bodymessageText), required: true);
+            WorkflowValue.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
+            WorkflowValue.Validate(bodymessageType, nameof(bodymessageType), required: false);
+            WorkflowValue.Validate(bodysenderId, nameof(bodysenderId), required: false);
+            return new DeferredBodyAction<SendSMSResponse>(() =>
             {
-                body["ExternalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                var apiCallPath = "/api/SMS";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["PhoneNumber"] = ExpressionConverter.ConvertO(bodyphoneNumber);
+                if (bodyexternalId != null)
+                {
+                    body["ExternalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
-            if (bodymessageType != null)
-            {
-                body["MessageType"] = ExpressionConverter.ConvertO(bodymessageType);
                 bodypropCount++;
-            }
+                body["MessageText"] = ExpressionConverter.ConvertO(bodymessageText);
+                if (bodymessageType != null)
+                {
+                    body["MessageType"] = ExpressionConverter.ConvertO(bodymessageType);
+                    bodypropCount++;
+                }
 
-            if (bodysenderId != null)
-            {
-                body["SenderId"] = ExpressionConverter.ConvertO(bodysenderId);
-                bodypropCount++;
-            }
+                if (bodysenderId != null)
+                {
+                    body["SenderId"] = ExpressionConverter.ConvertO(bodysenderId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendSMSResponse>(callPayload);
+                return new ApiConnectionAction<SendSMSResponse>(callPayload);
+            });
         }
     }
 

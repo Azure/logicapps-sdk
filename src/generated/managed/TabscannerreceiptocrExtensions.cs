@@ -4,66 +4,91 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class TabscannerreceiptocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Process> Process(Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodydefaultDateParsing = null, Expression<Func<string>> bodydecimalPlaces = null)
+        [WorkflowExpressionFactory(nameof(__BuildProcess))]
+        public IBodyWorkflowAction<Process> Process([WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodydocumentType = null, [WorkflowExpression] Func<string> bodydefaultDateParsing = null, [WorkflowExpression] Func<string> bodydecimalPlaces = null)
         {
-            var apiCallPath = "/api/2/processbase64";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyimage != null)
-            {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyregion != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Process> __BuildProcess(WorkflowValue<string> bodyimage = null, WorkflowValue<string> bodyregion = null, WorkflowValue<string> bodydocumentType = null, WorkflowValue<string> bodydefaultDateParsing = null, WorkflowValue<string> bodydecimalPlaces = null)
+        {
+            WorkflowValue.Validate(bodyimage, nameof(bodyimage), required: false);
+            WorkflowValue.Validate(bodyregion, nameof(bodyregion), required: false);
+            WorkflowValue.Validate(bodydocumentType, nameof(bodydocumentType), required: false);
+            WorkflowValue.Validate(bodydefaultDateParsing, nameof(bodydefaultDateParsing), required: false);
+            WorkflowValue.Validate(bodydecimalPlaces, nameof(bodydecimalPlaces), required: false);
+            return new DeferredBodyAction<Process>(() =>
             {
-                body["region"] = ExpressionConverter.ConvertO(bodyregion);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api/2/processbase64";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyimage != null)
+                {
+                    body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                    bodypropCount++;
+                }
 
-            if (bodydocumentType != null)
-            {
-                body["documentType"] = ExpressionConverter.ConvertO(bodydocumentType);
-                bodypropCount++;
-            }
+                if (bodyregion != null)
+                {
+                    body["region"] = ExpressionConverter.ConvertO(bodyregion);
+                    bodypropCount++;
+                }
 
-            if (bodydefaultDateParsing != null)
-            {
-                body["defaultDateParsing"] = ExpressionConverter.ConvertO(bodydefaultDateParsing);
-                bodypropCount++;
-            }
+                if (bodydocumentType != null)
+                {
+                    body["documentType"] = ExpressionConverter.ConvertO(bodydocumentType);
+                    bodypropCount++;
+                }
 
-            if (bodydecimalPlaces != null)
-            {
-                body["decimalPlaces"] = ExpressionConverter.ConvertO(bodydecimalPlaces);
-                bodypropCount++;
-            }
+                if (bodydefaultDateParsing != null)
+                {
+                    body["defaultDateParsing"] = ExpressionConverter.ConvertO(bodydefaultDateParsing);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodydecimalPlaces != null)
+                {
+                    body["decimalPlaces"] = ExpressionConverter.ConvertO(bodydecimalPlaces);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Process>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Process>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Result> Result(Expression<Func<string>> token)
+        [WorkflowExpressionFactory(nameof(__BuildResult))]
+        public IBodyWorkflowAction<Result> Result([WorkflowExpression] Func<string> token)
         {
-            var apiCallPath = String.Format("/api/result/{0}", ExpressionConverter.ConvertWithUrlEncoding(token, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Result>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Result> __BuildResult(WorkflowValue<string> token)
+        {
+            WorkflowValue.Validate(token, nameof(token), required: true);
+            return new DeferredBodyAction<Result>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/result/{0}", ExpressionConverter.ConvertWithUrlEncoding(token, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<Result>(callPayload);
+            });
         }
     }
 

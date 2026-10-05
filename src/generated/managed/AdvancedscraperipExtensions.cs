@@ -4,48 +4,78 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Advancedscraperip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AdvancedscraperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
-        public IBodyWorkflowAction<ScrapeResponse> Scrape(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null)
+        [WorkflowExpressionFactory(nameof(__BuildScrape))]
+        public IBodyWorkflowAction<ScrapeResponse> Scrape([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> render = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<int> timeout = null)
         {
-            var apiCallPath = "/scraper";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (render != null)
-                callPayload.Queries["render"] = ExpressionConverter.Convert(render);
-            if (selector != null)
-                callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            return new ApiConnectionAction<ScrapeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScrapeResponse> __BuildScrape(WorkflowValue<string> url, WorkflowValue<string> country = null, WorkflowValue<bool> render = null, WorkflowValue<string> selector = null, WorkflowValue<int> timeout = null)
+        {
+            WorkflowValue.Validate(url, nameof(url), required: true);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            WorkflowValue.Validate(render, nameof(render), required: false);
+            WorkflowValue.Validate(selector, nameof(selector), required: false);
+            WorkflowValue.Validate(timeout, nameof(timeout), required: false);
+            return new DeferredBodyAction<ScrapeResponse>(() =>
+            {
+                var apiCallPath = "/scraper";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (render != null)
+                    callPayload.Queries["render"] = ExpressionConverter.Convert(render);
+                if (selector != null)
+                    callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
+                return new ApiConnectionAction<ScrapeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "advancedscraperip")]
-        public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm(Expression<Func<string>> url, Expression<Func<string>> country = null, Expression<Func<bool>> render = null, Expression<Func<string>> selector = null, Expression<Func<int>> timeout = null, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildScrapeForm))]
+        public IBodyWorkflowAction<ScrapeFormResponse> ScrapeForm([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> render = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/scraper";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            if (render != null)
-                callPayload.Queries["render"] = ExpressionConverter.Convert(render);
-            if (selector != null)
-                callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<ScrapeFormResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScrapeFormResponse> __BuildScrapeForm(WorkflowValue<string> url, WorkflowValue<string> country = null, WorkflowValue<bool> render = null, WorkflowValue<string> selector = null, WorkflowValue<int> timeout = null, WorkflowValue<string> body = null)
+        {
+            WorkflowValue.Validate(url, nameof(url), required: true);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            WorkflowValue.Validate(render, nameof(render), required: false);
+            WorkflowValue.Validate(selector, nameof(selector), required: false);
+            WorkflowValue.Validate(timeout, nameof(timeout), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<ScrapeFormResponse>(() =>
+            {
+                var apiCallPath = "/scraper";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                if (render != null)
+                    callPayload.Queries["render"] = ExpressionConverter.Convert(render);
+                if (selector != null)
+                    callPayload.Queries["selector"] = ExpressionConverter.Convert(selector);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = ExpressionConverter.Convert(timeout);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<ScrapeFormResponse>(callPayload);
+            });
         }
     }
 

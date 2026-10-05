@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,61 +14,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
 
     public class CognitoformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEntry(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildNewEntry))]
+        public IWorkflowTrigger NewEntry([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribenewentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
-            {
-                callPayload.Body = endpoint;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger UpdateEntry(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildNewEntry(WorkflowValue<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribeupdateentry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
+            WorkflowValue.Validate(publisher, nameof(publisher), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = endpoint;
-            }
+                var apiCallPath = "/integration/oauth/subscribenewentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger EntryDeleted(Expression<Func<string>> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateEntry))]
+        public IWorkflowTrigger UpdateEntry([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/integration/oauth/subscribeentrydeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["module"] = Convert.ToString("forms");
-            callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
-            var endpoint = new JObject();
-            var endpointpropCount = 0;
-            endpoint["notificationUrl"] = "@listCallbackUrl()";
-            endpointpropCount++;
-            if (endpointpropCount > 0)
-            {
-                callPayload.Body = endpoint;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildUpdateEntry(WorkflowValue<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(publisher, nameof(publisher), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/integration/oauth/subscribeupdateentry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEntryDeleted))]
+        public IWorkflowTrigger EntryDeleted([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildEntryDeleted(WorkflowValue<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(publisher, nameof(publisher), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/integration/oauth/subscribeentrydeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["module"] = Convert.ToString("forms");
+                callPayload.Queries["publisher"] = ExpressionConverter.Convert(publisher);
+                var endpoint = new JObject();
+                var endpointpropCount = 0;
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
+                endpointpropCount++;
+                if (endpointpropCount > 0)
+                {
+                    callPayload.Body = endpoint;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 }

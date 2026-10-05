@@ -4,1007 +4,1503 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EgnyteActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup(Expression<Func<string>> bodydisplayName, Expression<Func<bodymembersInputItem[]>> bodymembers = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateGroup))]
+        public IBodyWorkflowAction<CreateGroupResponse> CreateGroup([WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<bodymembersInputItem[]> bodymembers = null)
         {
-            var apiCallPath = "/api-proxy/CreateGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            if (bodymembers != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateGroupResponse> __BuildCreateGroup(WorkflowValue<string> bodydisplayName, WorkflowValue<bodymembersInputItem[]> bodymembers = null)
+        {
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            WorkflowValue.Validate(bodymembers, nameof(bodymembers), required: false);
+            return new DeferredBodyAction<CreateGroupResponse>(() =>
             {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                var apiCallPath = "/api-proxy/CreateGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                if (bodymembers != null)
+                {
+                    body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateGroupResponse>(callPayload);
+                return new ApiConnectionAction<CreateGroupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<GroupInfoByIdResponse> GroupInfoById(Expression<Func<string>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildGroupInfoById))]
+        public IBodyWorkflowAction<GroupInfoByIdResponse> GroupInfoById([WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api-proxy/GroupInfoById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<GroupInfoByIdResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GroupInfoByIdResponse> __BuildGroupInfoById(WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<GroupInfoByIdResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/GroupInfoById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GroupInfoByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ListGroupsResponse> ListGroups(Expression<Func<int>> bodystartIndex = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfilter = null)
+        [WorkflowExpressionFactory(nameof(__BuildListGroups))]
+        public IBodyWorkflowAction<ListGroupsResponse> ListGroups([WorkflowExpression] Func<int> bodystartIndex = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyfilter = null)
         {
-            var apiCallPath = "/api-proxy/ListGroups";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystartIndex != null)
-            {
-                body["startIndex"] = ExpressionConverter.ConvertO(bodystartIndex);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodycount != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListGroupsResponse> __BuildListGroups(WorkflowValue<int> bodystartIndex = null, WorkflowValue<int> bodycount = null, WorkflowValue<string> bodyfilter = null)
+        {
+            WorkflowValue.Validate(bodystartIndex, nameof(bodystartIndex), required: false);
+            WorkflowValue.Validate(bodycount, nameof(bodycount), required: false);
+            WorkflowValue.Validate(bodyfilter, nameof(bodyfilter), required: false);
+            return new DeferredBodyAction<ListGroupsResponse>(() =>
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api-proxy/ListGroups";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystartIndex != null)
+                {
+                    body["startIndex"] = ExpressionConverter.ConvertO(bodystartIndex);
+                    bodypropCount++;
+                }
 
-            if (bodyfilter != null)
-            {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
-                bodypropCount++;
-            }
+                if (bodycount != null)
+                {
+                    body["count"] = ExpressionConverter.ConvertO(bodycount);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyfilter != null)
+                {
+                    body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ListGroupsResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ListGroupsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UserInfoResponse> GetUser(Expression<Func<int>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
+        public IBodyWorkflowAction<UserInfoResponse> GetUser([WorkflowExpression] Func<int> bodyid)
         {
-            var apiCallPath = "/api-proxy/GetUser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<UserInfoResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserInfoResponse> __BuildGetUser(WorkflowValue<int> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<UserInfoResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/GetUser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UserInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UserListResponse> GetUserList(Expression<Func<int>> bodystartIndex = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfilter = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetUserList))]
+        public IBodyWorkflowAction<UserListResponse> GetUserList([WorkflowExpression] Func<int> bodystartIndex = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyfilter = null)
         {
-            var apiCallPath = "/api-proxy/GetUserList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystartIndex != null)
-            {
-                body["startIndex"] = ExpressionConverter.ConvertO(bodystartIndex);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodycount != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserListResponse> __BuildGetUserList(WorkflowValue<int> bodystartIndex = null, WorkflowValue<int> bodycount = null, WorkflowValue<string> bodyfilter = null)
+        {
+            WorkflowValue.Validate(bodystartIndex, nameof(bodystartIndex), required: false);
+            WorkflowValue.Validate(bodycount, nameof(bodycount), required: false);
+            WorkflowValue.Validate(bodyfilter, nameof(bodyfilter), required: false);
+            return new DeferredBodyAction<UserListResponse>(() =>
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
+                var apiCallPath = "/api-proxy/GetUserList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystartIndex != null)
+                {
+                    body["startIndex"] = ExpressionConverter.ConvertO(bodystartIndex);
+                    bodypropCount++;
+                }
 
-            if (bodyfilter != null)
-            {
-                body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
-                bodypropCount++;
-            }
+                if (bodycount != null)
+                {
+                    body["count"] = ExpressionConverter.ConvertO(bodycount);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyfilter != null)
+                {
+                    body["filter"] = ExpressionConverter.ConvertO(bodyfilter);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UserListResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UserListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UpdateUserResponse> UpdateUser(Expression<Func<int>> bodyid, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodynamegivenName = null, Expression<Func<string>> bodynamefamilyName = null, Expression<Func<bool>> bodyactive = null, Expression<Func<bool>> bodysendInvite = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<bodyauthTypeInput>> bodyauthType = null, Expression<Func<bodyuserTypeInput>> bodyuserType = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodyidpUserId = null, Expression<Func<string>> bodyuserPrincipalName = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateUser))]
+        public IBodyWorkflowAction<UpdateUserResponse> UpdateUser([WorkflowExpression] Func<int> bodyid, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodynamegivenName = null, [WorkflowExpression] Func<string> bodynamefamilyName = null, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<bool> bodysendInvite = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<bodyauthTypeInput> bodyauthType = null, [WorkflowExpression] Func<bodyuserTypeInput> bodyuserType = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodyidpUserId = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null)
         {
-            var apiCallPath = "/api-proxy/UpdateUser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodyemail != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateUserResponse> __BuildUpdateUser(WorkflowValue<int> bodyid, WorkflowValue<string> bodyemail = null, WorkflowValue<string> bodynamegivenName = null, WorkflowValue<string> bodynamefamilyName = null, WorkflowValue<bool> bodyactive = null, WorkflowValue<bool> bodysendInvite = null, WorkflowValue<bodylanguageInput> bodylanguage = null, WorkflowValue<bodyauthTypeInput> bodyauthType = null, WorkflowValue<bodyuserTypeInput> bodyuserType = null, WorkflowValue<string> bodyrole = null, WorkflowValue<string> bodyidpUserId = null, WorkflowValue<string> bodyuserPrincipalName = null)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodyemail, nameof(bodyemail), required: false);
+            WorkflowValue.Validate(bodynamegivenName, nameof(bodynamegivenName), required: false);
+            WorkflowValue.Validate(bodynamefamilyName, nameof(bodynamefamilyName), required: false);
+            WorkflowValue.Validate(bodyactive, nameof(bodyactive), required: false);
+            WorkflowValue.Validate(bodysendInvite, nameof(bodysendInvite), required: false);
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            WorkflowValue.Validate(bodyauthType, nameof(bodyauthType), required: false);
+            WorkflowValue.Validate(bodyuserType, nameof(bodyuserType), required: false);
+            WorkflowValue.Validate(bodyrole, nameof(bodyrole), required: false);
+            WorkflowValue.Validate(bodyidpUserId, nameof(bodyidpUserId), required: false);
+            WorkflowValue.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            return new DeferredBodyAction<UpdateUserResponse>(() =>
             {
+                var apiCallPath = "/api-proxy/UpdateUser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodyemail != null)
+                {
+                    body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                    bodypropCount++;
+                }
+
+                var nameObject = new JObject();
+                var nameObjectpropCount = 0;
+                if (bodynamegivenName != null)
+                {
+                    nameObject["givenName"] = ExpressionConverter.ConvertO(bodynamegivenName);
+                    nameObjectpropCount++;
+                }
+
+                if (bodynamefamilyName != null)
+                {
+                    nameObject["familyName"] = ExpressionConverter.ConvertO(bodynamefamilyName);
+                    nameObjectpropCount++;
+                }
+
+                if (nameObjectpropCount > 0)
+                {
+                    body["name"] = nameObject;
+                    bodypropCount++;
+                }
+
+                if (bodyactive != null)
+                {
+                    body["active"] = ExpressionConverter.ConvertO(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodysendInvite != null)
+                {
+                    body["sendInvite"] = ExpressionConverter.ConvertO(bodysendInvite);
+                    bodypropCount++;
+                }
+
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
+
+                if (bodyauthType != null)
+                {
+                    body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
+                    bodypropCount++;
+                }
+
+                if (bodyuserType != null)
+                {
+                    body["userType"] = ExpressionConverter.ConvertO(bodyuserType);
+                    bodypropCount++;
+                }
+
+                if (bodyrole != null)
+                {
+                    body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                    bodypropCount++;
+                }
+
+                if (bodyidpUserId != null)
+                {
+                    body["idpUserId"] = ExpressionConverter.ConvertO(bodyidpUserId);
+                    bodypropCount++;
+                }
+
+                if (bodyuserPrincipalName != null)
+                {
+                    body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateUserResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateUser))]
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyuserName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bool> bodyactive, [WorkflowExpression] Func<bodyuserTypeInput> bodyuserType, [WorkflowExpression] Func<bodyauthTypeInput> bodyauthType, [WorkflowExpression] Func<string> bodynamegivenName = null, [WorkflowExpression] Func<string> bodynamefamilyName = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<bool> bodysendInvite = null, [WorkflowExpression] Func<bool> bodyisServiceAccount = null, [WorkflowExpression] Func<bodylanguageInput> bodylanguage = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodyidpUserId = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateUserResponse> __BuildCreateUser(WorkflowValue<string> bodyuserName, WorkflowValue<string> bodyemail, WorkflowValue<bool> bodyactive, WorkflowValue<bodyuserTypeInput> bodyuserType, WorkflowValue<bodyauthTypeInput> bodyauthType, WorkflowValue<string> bodynamegivenName = null, WorkflowValue<string> bodynamefamilyName = null, WorkflowValue<string> bodyexternalId = null, WorkflowValue<bool> bodysendInvite = null, WorkflowValue<bool> bodyisServiceAccount = null, WorkflowValue<bodylanguageInput> bodylanguage = null, WorkflowValue<string> bodyrole = null, WorkflowValue<string> bodyidpUserId = null, WorkflowValue<string> bodyuserPrincipalName = null)
+        {
+            WorkflowValue.Validate(bodyuserName, nameof(bodyuserName), required: true);
+            WorkflowValue.Validate(bodyemail, nameof(bodyemail), required: true);
+            WorkflowValue.Validate(bodyactive, nameof(bodyactive), required: true);
+            WorkflowValue.Validate(bodyuserType, nameof(bodyuserType), required: true);
+            WorkflowValue.Validate(bodyauthType, nameof(bodyauthType), required: true);
+            WorkflowValue.Validate(bodynamegivenName, nameof(bodynamegivenName), required: false);
+            WorkflowValue.Validate(bodynamefamilyName, nameof(bodynamefamilyName), required: false);
+            WorkflowValue.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
+            WorkflowValue.Validate(bodysendInvite, nameof(bodysendInvite), required: false);
+            WorkflowValue.Validate(bodyisServiceAccount, nameof(bodyisServiceAccount), required: false);
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            WorkflowValue.Validate(bodyrole, nameof(bodyrole), required: false);
+            WorkflowValue.Validate(bodyidpUserId, nameof(bodyidpUserId), required: false);
+            WorkflowValue.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            return new DeferredBodyAction<CreateUserResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/CreateUser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
+                bodypropCount++;
                 body["email"] = ExpressionConverter.ConvertO(bodyemail);
+                var nameObject = new JObject();
+                var nameObjectpropCount = 0;
+                if (bodynamegivenName != null)
+                {
+                    nameObject["givenName"] = ExpressionConverter.ConvertO(bodynamegivenName);
+                    nameObjectpropCount++;
+                }
+
+                if (bodynamefamilyName != null)
+                {
+                    nameObject["familyName"] = ExpressionConverter.ConvertO(bodynamefamilyName);
+                    nameObjectpropCount++;
+                }
+
+                if (nameObjectpropCount > 0)
+                {
+                    body["name"] = nameObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            var nameObject = new JObject();
-            var nameObjectpropCount = 0;
-            if (bodynamegivenName != null)
-            {
-                nameObject["givenName"] = ExpressionConverter.ConvertO(bodynamegivenName);
-                nameObjectpropCount++;
-            }
-
-            if (bodynamefamilyName != null)
-            {
-                nameObject["familyName"] = ExpressionConverter.ConvertO(bodynamefamilyName);
-                nameObjectpropCount++;
-            }
-
-            if (nameObjectpropCount > 0)
-            {
-                body["name"] = nameObject;
-                bodypropCount++;
-            }
-
-            if (bodyactive != null)
-            {
                 body["active"] = ExpressionConverter.ConvertO(bodyactive);
                 bodypropCount++;
-            }
-
-            if (bodysendInvite != null)
-            {
-                body["sendInvite"] = ExpressionConverter.ConvertO(bodysendInvite);
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
-
-            if (bodyauthType != null)
-            {
-                body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
-                bodypropCount++;
-            }
-
-            if (bodyuserType != null)
-            {
                 body["userType"] = ExpressionConverter.ConvertO(bodyuserType);
                 bodypropCount++;
-            }
+                body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
+                if (bodyexternalId != null)
+                {
+                    body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                    bodypropCount++;
+                }
 
-            if (bodyrole != null)
-            {
-                body["role"] = ExpressionConverter.ConvertO(bodyrole);
-                bodypropCount++;
-            }
+                if (bodysendInvite != null)
+                {
+                    body["sendInvite"] = ExpressionConverter.ConvertO(bodysendInvite);
+                    bodypropCount++;
+                }
 
-            if (bodyidpUserId != null)
-            {
-                body["idpUserId"] = ExpressionConverter.ConvertO(bodyidpUserId);
-                bodypropCount++;
-            }
+                if (bodyisServiceAccount != null)
+                {
+                    body["isServiceAccount"] = ExpressionConverter.ConvertO(bodyisServiceAccount);
+                    bodypropCount++;
+                }
 
-            if (bodyuserPrincipalName != null)
-            {
-                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
-                bodypropCount++;
-            }
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyrole != null)
+                {
+                    body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateUserResponse>(callPayload);
+                if (bodyidpUserId != null)
+                {
+                    body["idpUserId"] = ExpressionConverter.ConvertO(bodyidpUserId);
+                    bodypropCount++;
+                }
+
+                if (bodyuserPrincipalName != null)
+                {
+                    body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyuserName, Expression<Func<string>> bodyemail, Expression<Func<bool>> bodyactive, Expression<Func<bodyuserTypeInput>> bodyuserType, Expression<Func<bodyauthTypeInput>> bodyauthType, Expression<Func<string>> bodynamegivenName = null, Expression<Func<string>> bodynamefamilyName = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<bool>> bodysendInvite = null, Expression<Func<bool>> bodyisServiceAccount = null, Expression<Func<bodylanguageInput>> bodylanguage = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodyidpUserId = null, Expression<Func<string>> bodyuserPrincipalName = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteUser))]
+        public IWorkflowAction DeleteUser([WorkflowExpression] Func<int> bodyid)
         {
-            var apiCallPath = "/api-proxy/CreateUser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userName"] = ExpressionConverter.ConvertO(bodyuserName);
-            bodypropCount++;
-            body["email"] = ExpressionConverter.ConvertO(bodyemail);
-            var nameObject = new JObject();
-            var nameObjectpropCount = 0;
-            if (bodynamegivenName != null)
-            {
-                nameObject["givenName"] = ExpressionConverter.ConvertO(bodynamegivenName);
-                nameObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodynamefamilyName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteUser(WorkflowValue<int> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                nameObject["familyName"] = ExpressionConverter.ConvertO(bodynamefamilyName);
-                nameObjectpropCount++;
-            }
-
-            if (nameObjectpropCount > 0)
-            {
-                body["name"] = nameObject;
+                var apiCallPath = "/api-proxy/DeleteUser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["active"] = ExpressionConverter.ConvertO(bodyactive);
-            bodypropCount++;
-            body["userType"] = ExpressionConverter.ConvertO(bodyuserType);
-            bodypropCount++;
-            body["authType"] = ExpressionConverter.ConvertO(bodyauthType);
-            if (bodyexternalId != null)
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateFolder))]
+        public IBodyWorkflowAction<CreateFolderResponse> CreateFolder([WorkflowExpression] Func<string> bodypath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateFolderResponse> __BuildCreateFolder(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<CreateFolderResponse>(() =>
             {
-                body["externalId"] = ExpressionConverter.ConvertO(bodyexternalId);
+                var apiCallPath = "/api-proxy/CreateFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodysendInvite != null)
+                return new ApiConnectionAction<CreateFolderResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteFileByPath))]
+        public IBodyWorkflowAction<DeleteFileByPathResponse> DeleteFileByPath([WorkflowExpression] Func<string> bodypath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteFileByPathResponse> __BuildDeleteFileByPath(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<DeleteFileByPathResponse>(() =>
             {
-                body["sendInvite"] = ExpressionConverter.ConvertO(bodysendInvite);
+                var apiCallPath = "/api-proxy/DeleteFileByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyisServiceAccount != null)
+                return new ApiConnectionAction<DeleteFileByPathResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteFolderByPath))]
+        public IBodyWorkflowAction<DeleteFolderByPathResponse> DeleteFolderByPath([WorkflowExpression] Func<string> bodypath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteFolderByPathResponse> __BuildDeleteFolderByPath(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<DeleteFolderByPathResponse>(() =>
             {
-                body["isServiceAccount"] = ExpressionConverter.ConvertO(bodyisServiceAccount);
+                var apiCallPath = "/api-proxy/DeleteFolderByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodylanguage != null)
+                return new ApiConnectionAction<DeleteFolderByPathResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteFolderById))]
+        public IBodyWorkflowAction<DeleteFolderByIdResponse> DeleteFolderById([WorkflowExpression] Func<string> bodyid)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteFolderByIdResponse> __BuildDeleteFolderById(WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<DeleteFolderByIdResponse>(() =>
             {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                var apiCallPath = "/api-proxy/DeleteFolderById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyrole != null)
+                return new ApiConnectionAction<DeleteFolderByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteFileById))]
+        public IBodyWorkflowAction<DeleteFileByIdResponse> DeleteFileById([WorkflowExpression] Func<string> bodyid)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeleteFileByIdResponse> __BuildDeleteFileById(WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<DeleteFileByIdResponse>(() =>
             {
-                body["role"] = ExpressionConverter.ConvertO(bodyrole);
+                var apiCallPath = "/api-proxy/DeleteFileById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyidpUserId != null)
+                return new ApiConnectionAction<DeleteFileByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildCopyFileByPath))]
+        public IBodyWorkflowAction<CopyFileByPathResponse> CopyFileByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodydestinationPath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CopyFileByPathResponse> __BuildCopyFileByPath(WorkflowValue<string> bodypath, WorkflowValue<string> bodydestinationPath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
+            return new DeferredBodyAction<CopyFileByPathResponse>(() =>
             {
-                body["idpUserId"] = ExpressionConverter.ConvertO(bodyidpUserId);
+                var apiCallPath = "/api-proxy/CopyFileByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyuserPrincipalName != null)
-            {
-                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
                 bodypropCount++;
-            }
+                body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateUserResponse>(callPayload);
+                return new ApiConnectionAction<CopyFileByPathResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction DeleteUser(Expression<Func<int>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildCopyFolderByPath))]
+        public IBodyWorkflowAction<CopyFolderByPathResponse> CopyFolderByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            var apiCallPath = "/api-proxy/DeleteUser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateFolderResponse> CreateFolder(Expression<Func<string>> bodypath)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CopyFolderByPathResponse> __BuildCopyFolderByPath(WorkflowValue<string> bodypath, WorkflowValue<string> bodydestinationPath)
         {
-            var apiCallPath = "/api-proxy/CreateFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
+            return new DeferredBodyAction<CopyFolderByPathResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateFolderResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteFileByPathResponse> DeleteFileByPath(Expression<Func<string>> bodypath)
-        {
-            var apiCallPath = "/api-proxy/DeleteFileByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteFileByPathResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteFolderByPathResponse> DeleteFolderByPath(Expression<Func<string>> bodypath)
-        {
-            var apiCallPath = "/api-proxy/DeleteFolderByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteFolderByPathResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteFolderByIdResponse> DeleteFolderById(Expression<Func<string>> bodyid)
-        {
-            var apiCallPath = "/api-proxy/DeleteFolderById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteFolderByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeleteFileByIdResponse> DeleteFileById(Expression<Func<string>> bodyid)
-        {
-            var apiCallPath = "/api-proxy/DeleteFileById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteFileByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CopyFileByPathResponse> CopyFileByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodydestinationPath)
-        {
-            var apiCallPath = "/api-proxy/CopyFileByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CopyFileByPathResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CopyFolderByPathResponse> CopyFolderByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodydestinationPath)
-        {
-            var apiCallPath = "/api-proxy/CopyFolderByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CopyFolderByPathResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FullGroupUpdateResponse> FullGroupUpdate(Expression<Func<string>> bodyid, Expression<Func<string>> bodydisplayName, Expression<Func<bodymembersInputItem2[]>> bodymembers = null)
-        {
-            var apiCallPath = "/api-proxy/FullGroupUpdate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-            if (bodymembers != null)
-            {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                var apiCallPath = "/api-proxy/CopyFolderByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                bodypropCount++;
+                body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FullGroupUpdateResponse>(callPayload);
+                return new ApiConnectionAction<CopyFolderByPathResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<PartialGroupUpdateResponse> PartialGroupUpdate(Expression<Func<string>> bodyid, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodymembersInputItem22[]>> bodymembers = null)
+        [WorkflowExpressionFactory(nameof(__BuildFullGroupUpdate))]
+        public IBodyWorkflowAction<FullGroupUpdateResponse> FullGroupUpdate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<bodymembersInputItem2[]> bodymembers = null)
         {
-            var apiCallPath = "/api-proxy/PartialGroupUpdate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodydisplayName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FullGroupUpdateResponse> __BuildFullGroupUpdate(WorkflowValue<string> bodyid, WorkflowValue<string> bodydisplayName, WorkflowValue<bodymembersInputItem2[]> bodymembers = null)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            WorkflowValue.Validate(bodymembers, nameof(bodymembers), required: false);
+            return new DeferredBodyAction<FullGroupUpdateResponse>(() =>
             {
+                var apiCallPath = "/api-proxy/FullGroupUpdate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
                 body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                if (bodymembers != null)
+                {
+                    body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FullGroupUpdateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildPartialGroupUpdate))]
+        public IBodyWorkflowAction<PartialGroupUpdateResponse> PartialGroupUpdate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bodymembersInputItem22[]> bodymembers = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PartialGroupUpdateResponse> __BuildPartialGroupUpdate(WorkflowValue<string> bodyid, WorkflowValue<string> bodydisplayName = null, WorkflowValue<bodymembersInputItem22[]> bodymembers = null)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            WorkflowValue.Validate(bodymembers, nameof(bodymembers), required: false);
+            return new DeferredBodyAction<PartialGroupUpdateResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/PartialGroupUpdate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodymembers != null)
+                if (bodymembers != null)
+                {
+                    body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PartialGroupUpdateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteGroup))]
+        public IWorkflowAction DeleteGroup([WorkflowExpression] Func<string> bodyid)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteGroup(WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                body["members"] = ExpressionConverter.ConvertO(bodymembers);
+                var apiCallPath = "/api-proxy/DeleteGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PartialGroupUpdateResponse>(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction DeleteGroup(Expression<Func<string>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildCopyFileById))]
+        public IBodyWorkflowAction<CopyFileByIdResponse> CopyFileById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            var apiCallPath = "/api-proxy/DeleteGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CopyFileByIdResponse> CopyFileById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydestinationPath)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CopyFileByIdResponse> __BuildCopyFileById(WorkflowValue<string> bodyid, WorkflowValue<string> bodydestinationPath)
         {
-            var apiCallPath = "/api-proxy/CopyFileById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
+            return new DeferredBodyAction<CopyFileByIdResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CopyFileByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CopyFolderByIdResponse> CopyFolderById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydestinationPath)
-        {
-            var apiCallPath = "/api-proxy/CopyFolderById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CopyFolderByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MoveFileByPathResponse> MoveFileByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodydestinationPath)
-        {
-            var apiCallPath = "/api-proxy/MoveFileByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MoveFileByPathResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MoveFolderByPathResponse> MoveFolderByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodydestinationPath)
-        {
-            var apiCallPath = "/api-proxy/MoveFolderByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MoveFolderByPathResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MoveFileByIdResponse> MoveFileById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydestinationPath)
-        {
-            var apiCallPath = "/api-proxy/MoveFileById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MoveFileByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MoveFolderByIdResponse> MoveFolderById(Expression<Func<string>> bodyid, Expression<Func<string>> bodydestinationPath)
-        {
-            var apiCallPath = "/api-proxy/MoveFolderById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MoveFolderByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ShareFileResponse> ShareFile(Expression<Func<string>> bodypath)
-        {
-            var apiCallPath = "/api-proxy/ShareFile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ShareFileResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ShareFolderResponse> ShareFolder(Expression<Func<string>> bodypath)
-        {
-            var apiCallPath = "/api-proxy/ShareFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ShareFolderResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FileInfoResponse> FileInfoByPath(Expression<Func<string>> bodypath)
-        {
-            var apiCallPath = "/api-proxy/FileInfoByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FileInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FolderInfoResponse> FolderInfoByPath(Expression<Func<string>> bodypath)
-        {
-            var apiCallPath = "/api-proxy/FolderInfoByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FolderInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ModifyFolderOptionsResponse> ModifyFolderOptions(Expression<Func<string>> bodypath, Expression<Func<string>> bodyfolderDescription = null, Expression<Func<bool>> bodyallowLinks = null, Expression<Func<bodypublicLinksInput>> bodypublicLinks = null, Expression<Func<bool>> bodyrestrictMoveDelete = null, Expression<Func<bool>> bodyemailPreferencescontentUpdates = null, Expression<Func<bool>> bodyemailPreferencescontentAccessed = null)
-        {
-            var apiCallPath = "/api-proxy/ModifyFolderOptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodyfolderDescription != null)
-            {
-                body["folder_description"] = ExpressionConverter.ConvertO(bodyfolderDescription);
+                var apiCallPath = "/api-proxy/CopyFileById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyallowLinks != null)
-            {
-                body["allow_links"] = ExpressionConverter.ConvertO(bodyallowLinks);
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
                 bodypropCount++;
-            }
+                body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypublicLinks != null)
+                return new ApiConnectionAction<CopyFileByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildCopyFolderById))]
+        public IBodyWorkflowAction<CopyFolderByIdResponse> CopyFolderById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydestinationPath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CopyFolderByIdResponse> __BuildCopyFolderById(WorkflowValue<string> bodyid, WorkflowValue<string> bodydestinationPath)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
+            return new DeferredBodyAction<CopyFolderByIdResponse>(() =>
             {
-                body["public_links"] = ExpressionConverter.ConvertO(bodypublicLinks);
+                var apiCallPath = "/api-proxy/CopyFolderById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyrestrictMoveDelete != null)
-            {
-                body["restrict_move_delete"] = ExpressionConverter.ConvertO(bodyrestrictMoveDelete);
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
                 bodypropCount++;
-            }
+                body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            var emailPreferencesObject = new JObject();
-            var emailPreferencesObjectpropCount = 0;
-            if (bodyemailPreferencescontentUpdates != null)
-            {
-                emailPreferencesObject["content_updates"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentUpdates);
-                emailPreferencesObjectpropCount++;
-            }
+                return new ApiConnectionAction<CopyFolderByIdResponse>(callPayload);
+            });
+        }
 
-            if (bodyemailPreferencescontentAccessed != null)
-            {
-                emailPreferencesObject["content_accessed"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentAccessed);
-                emailPreferencesObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildMoveFileByPath))]
+        public IBodyWorkflowAction<MoveFileByPathResponse> MoveFileByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodydestinationPath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (emailPreferencesObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MoveFileByPathResponse> __BuildMoveFileByPath(WorkflowValue<string> bodypath, WorkflowValue<string> bodydestinationPath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
+            return new DeferredBodyAction<MoveFileByPathResponse>(() =>
             {
-                body["email_preferences"] = emailPreferencesObject;
+                var apiCallPath = "/api-proxy/MoveFileByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                bodypropCount++;
+                body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ModifyFolderOptionsResponse>(callPayload);
+                return new ApiConnectionAction<MoveFileByPathResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FileInfoResponse> FileInfoById(Expression<Func<string>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildMoveFolderByPath))]
+        public IBodyWorkflowAction<MoveFolderByPathResponse> MoveFolderByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            var apiCallPath = "/api-proxy/FileInfoById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<FileInfoResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MoveFolderByPathResponse> __BuildMoveFolderByPath(WorkflowValue<string> bodypath, WorkflowValue<string> bodydestinationPath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
+            return new DeferredBodyAction<MoveFolderByPathResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/MoveFolderByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                bodypropCount++;
+                body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MoveFolderByPathResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<FolderInfoResponse> FolderInfoById(Expression<Func<string>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildMoveFileById))]
+        public IBodyWorkflowAction<MoveFileByIdResponse> MoveFileById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            var apiCallPath = "/api-proxy/FolderInfoById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<FolderInfoResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MoveFileByIdResponse> __BuildMoveFileById(WorkflowValue<string> bodyid, WorkflowValue<string> bodydestinationPath)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
+            return new DeferredBodyAction<MoveFileByIdResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/MoveFileById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MoveFileByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<LockFileByPathResponse> LockFileByPath(Expression<Func<string>> bodypath)
+        [WorkflowExpressionFactory(nameof(__BuildMoveFolderById))]
+        public IBodyWorkflowAction<MoveFolderByIdResponse> MoveFolderById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodydestinationPath)
         {
-            var apiCallPath = "/api-proxy/LockFileByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<LockFileByPathResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MoveFolderByIdResponse> __BuildMoveFolderById(WorkflowValue<string> bodyid, WorkflowValue<string> bodydestinationPath)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodydestinationPath, nameof(bodydestinationPath), required: true);
+            return new DeferredBodyAction<MoveFolderByIdResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/MoveFolderById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["destination_path"] = ExpressionConverter.ConvertO(bodydestinationPath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MoveFolderByIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction UnlockFileByPath(Expression<Func<string>> bodypath, Expression<Func<string>> bodylockToken)
+        [WorkflowExpressionFactory(nameof(__BuildShareFile))]
+        public IBodyWorkflowAction<ShareFileResponse> ShareFile([WorkflowExpression] Func<string> bodypath)
         {
-            var apiCallPath = "/api-proxy/UnlockFileByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            bodypropCount++;
-            body["lock_token"] = ExpressionConverter.ConvertO(bodylockToken);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ShareFileResponse> __BuildShareFile(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<ShareFileResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/ShareFile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ShareFileResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<LockFileByIdResponse> LockFileById(Expression<Func<string>> bodyid)
+        [WorkflowExpressionFactory(nameof(__BuildShareFolder))]
+        public IBodyWorkflowAction<ShareFolderResponse> ShareFolder([WorkflowExpression] Func<string> bodypath)
         {
-            var apiCallPath = "/api-proxy/LockFileById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<LockFileByIdResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ShareFolderResponse> __BuildShareFolder(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<ShareFolderResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/ShareFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ShareFolderResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction UnlockFileById(Expression<Func<string>> bodyid, Expression<Func<string>> bodylockToken)
+        [WorkflowExpressionFactory(nameof(__BuildFileInfoByPath))]
+        public IBodyWorkflowAction<FileInfoResponse> FileInfoByPath([WorkflowExpression] Func<string> bodypath)
         {
-            var apiCallPath = "/api-proxy/UnlockFileById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["lock_token"] = ExpressionConverter.ConvertO(bodylockToken);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FileInfoResponse> __BuildFileInfoByPath(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<FileInfoResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/FileInfoByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FileInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction GetFileContentByPath(Expression<Func<string>> bodyfilePath)
+        [WorkflowExpressionFactory(nameof(__BuildFolderInfoByPath))]
+        public IBodyWorkflowAction<FolderInfoResponse> FolderInfoByPath([WorkflowExpression] Func<string> bodypath)
         {
-            var apiCallPath = "/api-proxy/DownloadFileByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["filePath"] = ExpressionConverter.ConvertO(bodyfilePath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FolderInfoResponse> __BuildFolderInfoByPath(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<FolderInfoResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/FolderInfoByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FolderInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction GetFileContentById(Expression<Func<string>> bodyfileId)
+        [WorkflowExpressionFactory(nameof(__BuildModifyFolderOptions))]
+        public IBodyWorkflowAction<ModifyFolderOptionsResponse> ModifyFolderOptions([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyfolderDescription = null, [WorkflowExpression] Func<bool> bodyallowLinks = null, [WorkflowExpression] Func<bodypublicLinksInput> bodypublicLinks = null, [WorkflowExpression] Func<bool> bodyrestrictMoveDelete = null, [WorkflowExpression] Func<bool> bodyemailPreferencescontentUpdates = null, [WorkflowExpression] Func<bool> bodyemailPreferencescontentAccessed = null)
         {
-            var apiCallPath = "/api-proxy/DownloadFileById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ModifyFolderOptionsResponse> __BuildModifyFolderOptions(WorkflowValue<string> bodypath, WorkflowValue<string> bodyfolderDescription = null, WorkflowValue<bool> bodyallowLinks = null, WorkflowValue<bodypublicLinksInput> bodypublicLinks = null, WorkflowValue<bool> bodyrestrictMoveDelete = null, WorkflowValue<bool> bodyemailPreferencescontentUpdates = null, WorkflowValue<bool> bodyemailPreferencescontentAccessed = null)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodyfolderDescription, nameof(bodyfolderDescription), required: false);
+            WorkflowValue.Validate(bodyallowLinks, nameof(bodyallowLinks), required: false);
+            WorkflowValue.Validate(bodypublicLinks, nameof(bodypublicLinks), required: false);
+            WorkflowValue.Validate(bodyrestrictMoveDelete, nameof(bodyrestrictMoveDelete), required: false);
+            WorkflowValue.Validate(bodyemailPreferencescontentUpdates, nameof(bodyemailPreferencescontentUpdates), required: false);
+            WorkflowValue.Validate(bodyemailPreferencescontentAccessed, nameof(bodyemailPreferencescontentAccessed), required: false);
+            return new DeferredBodyAction<ModifyFolderOptionsResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/ModifyFolderOptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodyfolderDescription != null)
+                {
+                    body["folder_description"] = ExpressionConverter.ConvertO(bodyfolderDescription);
+                    bodypropCount++;
+                }
+
+                if (bodyallowLinks != null)
+                {
+                    body["allow_links"] = ExpressionConverter.ConvertO(bodyallowLinks);
+                    bodypropCount++;
+                }
+
+                if (bodypublicLinks != null)
+                {
+                    body["public_links"] = ExpressionConverter.ConvertO(bodypublicLinks);
+                    bodypropCount++;
+                }
+
+                if (bodyrestrictMoveDelete != null)
+                {
+                    body["restrict_move_delete"] = ExpressionConverter.ConvertO(bodyrestrictMoveDelete);
+                    bodypropCount++;
+                }
+
+                var emailPreferencesObject = new JObject();
+                var emailPreferencesObjectpropCount = 0;
+                if (bodyemailPreferencescontentUpdates != null)
+                {
+                    emailPreferencesObject["content_updates"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentUpdates);
+                    emailPreferencesObjectpropCount++;
+                }
+
+                if (bodyemailPreferencescontentAccessed != null)
+                {
+                    emailPreferencesObject["content_accessed"] = ExpressionConverter.ConvertO(bodyemailPreferencescontentAccessed);
+                    emailPreferencesObjectpropCount++;
+                }
+
+                if (emailPreferencesObjectpropCount > 0)
+                {
+                    body["email_preferences"] = emailPreferencesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ModifyFolderOptionsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateFileResponse> CreateFile(Expression<Func<string>> name, Expression<Func<string>> path, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileInfoById))]
+        public IBodyWorkflowAction<FileInfoResponse> FileInfoById([WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api-proxy/UploadFile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
-            callPayload.Queries["Path"] = ExpressionConverter.Convert(path);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<CreateFileResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FileInfoResponse> __BuildFileInfoById(WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<FileInfoResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/FileInfoById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FileInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction SetMetadataByFileId(Expression<Func<string>> bodyfileId, Expression<Func<string>> bodynamespaceName, Expression<Func<string>> bodymetadataName, Expression<Func<string>> bodymetadataValue = null)
+        [WorkflowExpressionFactory(nameof(__BuildFolderInfoById))]
+        public IBodyWorkflowAction<FolderInfoResponse> FolderInfoById([WorkflowExpression] Func<string> bodyid)
         {
-            var apiCallPath = "/api-proxy/SetMetadataByFileId";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
-            bodypropCount++;
-            body["namespaceName"] = ExpressionConverter.ConvertO(bodynamespaceName);
-            bodypropCount++;
-            body["metadataName"] = ExpressionConverter.ConvertO(bodymetadataName);
-            if (bodymetadataValue != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FolderInfoResponse> __BuildFolderInfoById(WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<FolderInfoResponse>(() =>
             {
+                var apiCallPath = "/api-proxy/FolderInfoById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FolderInfoResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildLockFileByPath))]
+        public IBodyWorkflowAction<LockFileByPathResponse> LockFileByPath([WorkflowExpression] Func<string> bodypath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LockFileByPathResponse> __BuildLockFileByPath(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<LockFileByPathResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/LockFileByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<LockFileByPathResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildUnlockFileByPath))]
+        public IWorkflowAction UnlockFileByPath([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodylockToken)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUnlockFileByPath(WorkflowValue<string> bodypath, WorkflowValue<string> bodylockToken)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodylockToken, nameof(bodylockToken), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/UnlockFileByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                bodypropCount++;
+                body["lock_token"] = ExpressionConverter.ConvertO(bodylockToken);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildLockFileById))]
+        public IBodyWorkflowAction<LockFileByIdResponse> LockFileById([WorkflowExpression] Func<string> bodyid)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LockFileByIdResponse> __BuildLockFileById(WorkflowValue<string> bodyid)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            return new DeferredBodyAction<LockFileByIdResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/LockFileById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<LockFileByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildUnlockFileById))]
+        public IWorkflowAction UnlockFileById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodylockToken)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUnlockFileById(WorkflowValue<string> bodyid, WorkflowValue<string> bodylockToken)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodylockToken, nameof(bodylockToken), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/UnlockFileById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["lock_token"] = ExpressionConverter.ConvertO(bodylockToken);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFileContentByPath))]
+        public IWorkflowAction GetFileContentByPath([WorkflowExpression] Func<string> bodyfilePath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetFileContentByPath(WorkflowValue<string> bodyfilePath)
+        {
+            WorkflowValue.Validate(bodyfilePath, nameof(bodyfilePath), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/DownloadFileByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["filePath"] = ExpressionConverter.ConvertO(bodyfilePath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFileContentById))]
+        public IWorkflowAction GetFileContentById([WorkflowExpression] Func<string> bodyfileId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetFileContentById(WorkflowValue<string> bodyfileId)
+        {
+            WorkflowValue.Validate(bodyfileId, nameof(bodyfileId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/DownloadFileById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateFile))]
+        public IBodyWorkflowAction<CreateFileResponse> CreateFile([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> path, [WorkflowExpression] Func<string> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateFileResponse> __BuildCreateFile(WorkflowValue<string> name, WorkflowValue<string> path, WorkflowValue<string> body = null)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            WorkflowValue.Validate(path, nameof(path), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<CreateFileResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/UploadFile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Name"] = ExpressionConverter.Convert(name);
+                callPayload.Queries["Path"] = ExpressionConverter.Convert(path);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<CreateFileResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildSetMetadataByFileId))]
+        public IWorkflowAction SetMetadataByFileId([WorkflowExpression] Func<string> bodyfileId, [WorkflowExpression] Func<string> bodynamespaceName, [WorkflowExpression] Func<string> bodymetadataName, [WorkflowExpression] Func<string> bodymetadataValue = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSetMetadataByFileId(WorkflowValue<string> bodyfileId, WorkflowValue<string> bodynamespaceName, WorkflowValue<string> bodymetadataName, WorkflowValue<string> bodymetadataValue = null)
+        {
+            WorkflowValue.Validate(bodyfileId, nameof(bodyfileId), required: true);
+            WorkflowValue.Validate(bodynamespaceName, nameof(bodynamespaceName), required: true);
+            WorkflowValue.Validate(bodymetadataName, nameof(bodymetadataName), required: true);
+            WorkflowValue.Validate(bodymetadataValue, nameof(bodymetadataValue), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/SetMetadataByFileId";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
+                bodypropCount++;
+                body["namespaceName"] = ExpressionConverter.ConvertO(bodynamespaceName);
+                bodypropCount++;
+                body["metadataName"] = ExpressionConverter.ConvertO(bodymetadataName);
+                if (bodymetadataValue != null)
+                {
+                    body["metadataValue"] = ExpressionConverter.ConvertO(bodymetadataValue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildSetMetadataByFolderId))]
+        public IWorkflowAction SetMetadataByFolderId([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodynamespaceName, [WorkflowExpression] Func<string> bodymetadataName, [WorkflowExpression] Func<string> bodymetadataValue)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSetMetadataByFolderId(WorkflowValue<string> bodyfolderId, WorkflowValue<string> bodynamespaceName, WorkflowValue<string> bodymetadataName, WorkflowValue<string> bodymetadataValue)
+        {
+            WorkflowValue.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
+            WorkflowValue.Validate(bodynamespaceName, nameof(bodynamespaceName), required: true);
+            WorkflowValue.Validate(bodymetadataName, nameof(bodymetadataName), required: true);
+            WorkflowValue.Validate(bodymetadataValue, nameof(bodymetadataValue), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/SetMetadataByFolderId";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
+                bodypropCount++;
+                body["namespaceName"] = ExpressionConverter.ConvertO(bodynamespaceName);
+                bodypropCount++;
+                body["metadataName"] = ExpressionConverter.ConvertO(bodymetadataName);
+                bodypropCount++;
                 body["metadataValue"] = ExpressionConverter.ConvertO(bodymetadataValue);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction SetMetadataByFolderId(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodynamespaceName, Expression<Func<string>> bodymetadataName, Expression<Func<string>> bodymetadataValue)
-        {
-            var apiCallPath = "/api-proxy/SetMetadataByFolderId";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
-            bodypropCount++;
-            body["namespaceName"] = ExpressionConverter.ConvertO(bodynamespaceName);
-            bodypropCount++;
-            body["metadataName"] = ExpressionConverter.ConvertO(bodymetadataName);
-            bodypropCount++;
-            body["metadataValue"] = ExpressionConverter.ConvertO(bodymetadataValue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1017,155 +1513,221 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction CreateNamespace(Expression<Func<string>> bodyname, Expression<Func<bodyscopeInput>> bodyscope, Expression<Func<bodykeysInputItem[]>> bodykeys, Expression<Func<string>> bodydisplayName = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateNamespace))]
+        public IWorkflowAction CreateNamespace([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyscopeInput> bodyscope, [WorkflowExpression] Func<bodykeysInputItem[]> bodykeys, [WorkflowExpression] Func<string> bodydisplayName = null)
         {
-            var apiCallPath = "/api-proxy/CreateNamespace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydisplayName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateNamespace(WorkflowValue<string> bodyname, WorkflowValue<bodyscopeInput> bodyscope, WorkflowValue<bodykeysInputItem[]> bodykeys, WorkflowValue<string> bodydisplayName = null)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodyscope, nameof(bodyscope), required: true);
+            WorkflowValue.Validate(bodykeys, nameof(bodykeys), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                var apiCallPath = "/api-proxy/CreateNamespace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["scope"] = ExpressionConverter.ConvertO(bodyscope);
-            bodypropCount++;
-            body["keys"] = ExpressionConverter.ConvertO(bodykeys);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                bodypropCount++;
+                body["scope"] = ExpressionConverter.ConvertO(bodyscope);
+                bodypropCount++;
+                body["keys"] = ExpressionConverter.ConvertO(bodykeys);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<NamespaceItem> UpdateNamespaceAttributes(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodydisplayName = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateNamespaceAttributes))]
+        public IBodyWorkflowAction<NamespaceItem> UpdateNamespaceAttributes([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodydisplayName = null)
         {
-            var apiCallPath = "/api-proxy/UpdateNamespaceAttributes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
-            if (bodydisplayName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NamespaceItem> __BuildUpdateNamespaceAttributes(WorkflowValue<string> bodyNamespace, WorkflowValue<string> bodydisplayName = null)
+        {
+            WorkflowValue.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            return new DeferredBodyAction<NamespaceItem>(() =>
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                var apiCallPath = "/api-proxy/UpdateNamespaceAttributes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            var prioritiesObject = new JObject();
-            var prioritiesObjectpropCount = 0;
-            if (prioritiesObjectpropCount > 0)
-            {
-                body["priorities"] = prioritiesObject;
-                bodypropCount++;
-            }
+                var prioritiesObject = new JObject();
+                var prioritiesObjectpropCount = 0;
+                if (prioritiesObjectpropCount > 0)
+                {
+                    body["priorities"] = prioritiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<NamespaceItem>(callPayload);
+                return new ApiConnectionAction<NamespaceItem>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<UpdateNamespaceKeysResponse> UpdateNamespaceKeys(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<string>> bodydisplayName = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodyhelpText = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateNamespaceKeys))]
+        public IBodyWorkflowAction<UpdateNamespaceKeysResponse> UpdateNamespaceKeys([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<double> bodypriority = null, [WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodyhelpText = null)
         {
-            var apiCallPath = "/api-proxy/UpdateNamespaceKeys";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            if (bodydisplayName != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateNamespaceKeysResponse> __BuildUpdateNamespaceKeys(WorkflowValue<string> bodyNamespace, WorkflowValue<string> bodykey, WorkflowValue<string> bodydisplayName = null, WorkflowValue<bodytypeInput> bodytype = null, WorkflowValue<double> bodypriority = null, WorkflowValue<string> bodydata = null, WorkflowValue<string> bodyhelpText = null)
+        {
+            WorkflowValue.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
+            WorkflowValue.Validate(bodykey, nameof(bodykey), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodydata, nameof(bodydata), required: false);
+            WorkflowValue.Validate(bodyhelpText, nameof(bodyhelpText), required: false);
+            return new DeferredBodyAction<UpdateNamespaceKeysResponse>(() =>
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                var apiCallPath = "/api-proxy/UpdateNamespaceKeys";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
                 bodypropCount++;
-            }
+                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
 
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
+                if (bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodyhelpText != null)
-            {
-                body["helpText"] = ExpressionConverter.ConvertO(bodyhelpText);
-                bodypropCount++;
-            }
+                if (bodydata != null)
+                {
+                    body["data"] = ExpressionConverter.ConvertO(bodydata);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyhelpText != null)
+                {
+                    body["helpText"] = ExpressionConverter.ConvertO(bodyhelpText);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateNamespaceKeysResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateNamespaceKeysResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<NamespaceItem> GetNamespace(Expression<Func<string>> bodyNamespace)
+        [WorkflowExpressionFactory(nameof(__BuildGetNamespace))]
+        public IBodyWorkflowAction<NamespaceItem> GetNamespace([WorkflowExpression] Func<string> bodyNamespace)
         {
-            var apiCallPath = "/api-proxy/GetNamespace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<NamespaceItem>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NamespaceItem> __BuildGetNamespace(WorkflowValue<string> bodyNamespace)
+        {
+            WorkflowValue.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
+            return new DeferredBodyAction<NamespaceItem>(() =>
+            {
+                var apiCallPath = "/api-proxy/GetNamespace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<NamespaceItem>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction DeleteNamespace(Expression<Func<string>> bodyNamespace, Expression<Func<bool>> bodyforce = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteNamespace))]
+        public IWorkflowAction DeleteNamespace([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<bool> bodyforce = null)
         {
-            var apiCallPath = "/api-proxy/DeleteNamespace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
-            if (bodyforce != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteNamespace(WorkflowValue<string> bodyNamespace, WorkflowValue<bool> bodyforce = null)
+        {
+            WorkflowValue.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
+            WorkflowValue.Validate(bodyforce, nameof(bodyforce), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                var apiCallPath = "/api-proxy/DeleteNamespace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                if (bodyforce != null)
+                {
+                    body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
@@ -1178,1347 +1740,1885 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<MarkFolderAsProjectResponse> MarkFolderAsProject(Expression<Func<string>> bodyrootFolderId, Expression<Func<string>> bodyname, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodycompletionDate = null)
+        [WorkflowExpressionFactory(nameof(__BuildMarkFolderAsProject))]
+        public IBodyWorkflowAction<MarkFolderAsProjectResponse> MarkFolderAsProject([WorkflowExpression] Func<string> bodyrootFolderId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodycompletionDate = null)
         {
-            var apiCallPath = "/api-proxy/MarkFolderAsProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["rootFolderId"] = ExpressionConverter.ConvertO(bodyrootFolderId);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydescription != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MarkFolderAsProjectResponse> __BuildMarkFolderAsProject(WorkflowValue<string> bodyrootFolderId, WorkflowValue<string> bodyname, WorkflowValue<bodystatusInput> bodystatus, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodystartDate = null, WorkflowValue<string> bodycompletionDate = null)
+        {
+            WorkflowValue.Validate(bodyrootFolderId, nameof(bodyrootFolderId), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowValue.Validate(bodycompletionDate, nameof(bodycompletionDate), required: false);
+            return new DeferredBodyAction<MarkFolderAsProjectResponse>(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/api-proxy/MarkFolderAsProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                body["rootFolderId"] = ExpressionConverter.ConvertO(bodyrootFolderId);
                 bodypropCount++;
-            }
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
 
-            if (bodycompletionDate != null)
-            {
-                body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
                 bodypropCount++;
-            }
+                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodycompletionDate != null)
+                {
+                    body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MarkFolderAsProjectResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MarkFolderAsProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateProjectFromTemplateResponse> CreateProjectFromTemplate(Expression<Func<string>> bodyparentFolderId, Expression<Func<string>> bodytemplateFolderId, Expression<Func<string>> bodyfolderName, Expression<Func<string>> bodyname, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<string>> bodycustomerName = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodycompletionDate = null, Expression<Func<string>> bodylocationstreetAddress1 = null, Expression<Func<string>> bodylocationstreetAddress2 = null, Expression<Func<string>> bodylocationcity = null, Expression<Func<string>> bodylocationstate = null, Expression<Func<string>> bodylocationcountry = null, Expression<Func<string>> bodylocationpostalCode = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateProjectFromTemplate))]
+        public IBodyWorkflowAction<CreateProjectFromTemplateResponse> CreateProjectFromTemplate([WorkflowExpression] Func<string> bodyparentFolderId, [WorkflowExpression] Func<string> bodytemplateFolderId, [WorkflowExpression] Func<string> bodyfolderName, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<string> bodycustomerName = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodycompletionDate = null, [WorkflowExpression] Func<string> bodylocationstreetAddress1 = null, [WorkflowExpression] Func<string> bodylocationstreetAddress2 = null, [WorkflowExpression] Func<string> bodylocationcity = null, [WorkflowExpression] Func<string> bodylocationstate = null, [WorkflowExpression] Func<string> bodylocationcountry = null, [WorkflowExpression] Func<string> bodylocationpostalCode = null)
         {
-            var apiCallPath = "/api-proxy/CreateProjectFromTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
-            bodypropCount++;
-            body["templateFolderId"] = ExpressionConverter.ConvertO(bodytemplateFolderId);
-            bodypropCount++;
-            body["folderName"] = ExpressionConverter.ConvertO(bodyfolderName);
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydescription != null)
-            {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprojectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateProjectFromTemplateResponse> __BuildCreateProjectFromTemplate(WorkflowValue<string> bodyparentFolderId, WorkflowValue<string> bodytemplateFolderId, WorkflowValue<string> bodyfolderName, WorkflowValue<string> bodyname, WorkflowValue<bodystatusInput> bodystatus, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodyprojectId = null, WorkflowValue<string> bodycustomerName = null, WorkflowValue<string> bodystartDate = null, WorkflowValue<string> bodycompletionDate = null, WorkflowValue<string> bodylocationstreetAddress1 = null, WorkflowValue<string> bodylocationstreetAddress2 = null, WorkflowValue<string> bodylocationcity = null, WorkflowValue<string> bodylocationstate = null, WorkflowValue<string> bodylocationcountry = null, WorkflowValue<string> bodylocationpostalCode = null)
+        {
+            WorkflowValue.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: true);
+            WorkflowValue.Validate(bodytemplateFolderId, nameof(bodytemplateFolderId), required: true);
+            WorkflowValue.Validate(bodyfolderName, nameof(bodyfolderName), required: true);
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            WorkflowValue.Validate(bodycustomerName, nameof(bodycustomerName), required: false);
+            WorkflowValue.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowValue.Validate(bodycompletionDate, nameof(bodycompletionDate), required: false);
+            WorkflowValue.Validate(bodylocationstreetAddress1, nameof(bodylocationstreetAddress1), required: false);
+            WorkflowValue.Validate(bodylocationstreetAddress2, nameof(bodylocationstreetAddress2), required: false);
+            WorkflowValue.Validate(bodylocationcity, nameof(bodylocationcity), required: false);
+            WorkflowValue.Validate(bodylocationstate, nameof(bodylocationstate), required: false);
+            WorkflowValue.Validate(bodylocationcountry, nameof(bodylocationcountry), required: false);
+            WorkflowValue.Validate(bodylocationpostalCode, nameof(bodylocationpostalCode), required: false);
+            return new DeferredBodyAction<CreateProjectFromTemplateResponse>(() =>
             {
+                var apiCallPath = "/api-proxy/CreateProjectFromTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["parentFolderId"] = ExpressionConverter.ConvertO(bodyparentFolderId);
+                bodypropCount++;
+                body["templateFolderId"] = ExpressionConverter.ConvertO(bodytemplateFolderId);
+                bodypropCount++;
+                body["folderName"] = ExpressionConverter.ConvertO(bodyfolderName);
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectId != null)
+                {
+                    body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerName != null)
+                {
+                    body["customerName"] = ExpressionConverter.ConvertO(bodycustomerName);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodycompletionDate != null)
+                {
+                    body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
+                    bodypropCount++;
+                }
+
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (bodylocationstreetAddress1 != null)
+                {
+                    locationObject["streetAddress1"] = ExpressionConverter.ConvertO(bodylocationstreetAddress1);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationstreetAddress2 != null)
+                {
+                    locationObject["streetAddress2"] = ExpressionConverter.ConvertO(bodylocationstreetAddress2);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationcity != null)
+                {
+                    locationObject["city"] = ExpressionConverter.ConvertO(bodylocationcity);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationstate != null)
+                {
+                    locationObject["state"] = ExpressionConverter.ConvertO(bodylocationstate);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationcountry != null)
+                {
+                    locationObject["country"] = ExpressionConverter.ConvertO(bodylocationcountry);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationpostalCode != null)
+                {
+                    locationObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationpostalCode);
+                    locationObjectpropCount++;
+                }
+
+                if (locationObjectpropCount > 0)
+                {
+                    body["location"] = locationObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateProjectFromTemplateResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProjectById))]
+        public IBodyWorkflowAction<ProjectItem> GetProjectById([WorkflowExpression] Func<string> bodyprojectId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProjectItem> __BuildGetProjectById(WorkflowValue<string> bodyprojectId)
+        {
+            WorkflowValue.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
+            return new DeferredBodyAction<ProjectItem>(() =>
+            {
+                var apiCallPath = "/api-proxy/GetProjectById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ProjectItem>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateProjectById))]
+        public IWorkflowAction UpdateProjectById([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<bodystatusInput> bodystatus, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycustomProjectId = null, [WorkflowExpression] Func<string> bodycustomerName = null, [WorkflowExpression] Func<string> bodylocationstreetAddress1 = null, [WorkflowExpression] Func<string> bodylocationstreetAddress2 = null, [WorkflowExpression] Func<string> bodylocationcity = null, [WorkflowExpression] Func<string> bodylocationstate = null, [WorkflowExpression] Func<string> bodylocationpostalCode = null, [WorkflowExpression] Func<string> bodylocationcountry = null, [WorkflowExpression] Func<string> bodystartDate = null, [WorkflowExpression] Func<string> bodycompletionDate = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateProjectById(WorkflowValue<string> bodyname, WorkflowValue<string> bodyprojectId, WorkflowValue<bodystatusInput> bodystatus, WorkflowValue<string> bodydescription = null, WorkflowValue<string> bodycustomProjectId = null, WorkflowValue<string> bodycustomerName = null, WorkflowValue<string> bodylocationstreetAddress1 = null, WorkflowValue<string> bodylocationstreetAddress2 = null, WorkflowValue<string> bodylocationcity = null, WorkflowValue<string> bodylocationstate = null, WorkflowValue<string> bodylocationpostalCode = null, WorkflowValue<string> bodylocationcountry = null, WorkflowValue<string> bodystartDate = null, WorkflowValue<string> bodycompletionDate = null)
+        {
+            WorkflowValue.Validate(bodyname, nameof(bodyname), required: true);
+            WorkflowValue.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
+            WorkflowValue.Validate(bodystatus, nameof(bodystatus), required: true);
+            WorkflowValue.Validate(bodydescription, nameof(bodydescription), required: false);
+            WorkflowValue.Validate(bodycustomProjectId, nameof(bodycustomProjectId), required: false);
+            WorkflowValue.Validate(bodycustomerName, nameof(bodycustomerName), required: false);
+            WorkflowValue.Validate(bodylocationstreetAddress1, nameof(bodylocationstreetAddress1), required: false);
+            WorkflowValue.Validate(bodylocationstreetAddress2, nameof(bodylocationstreetAddress2), required: false);
+            WorkflowValue.Validate(bodylocationcity, nameof(bodylocationcity), required: false);
+            WorkflowValue.Validate(bodylocationstate, nameof(bodylocationstate), required: false);
+            WorkflowValue.Validate(bodylocationpostalCode, nameof(bodylocationpostalCode), required: false);
+            WorkflowValue.Validate(bodylocationcountry, nameof(bodylocationcountry), required: false);
+            WorkflowValue.Validate(bodystartDate, nameof(bodystartDate), required: false);
+            WorkflowValue.Validate(bodycompletionDate, nameof(bodycompletionDate), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/UpdateProjectById";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = ExpressionConverter.ConvertO(bodyname);
+                if (bodydescription != null)
+                {
+                    body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
+                if (bodycustomProjectId != null)
+                {
+                    body["customProjectId"] = ExpressionConverter.ConvertO(bodycustomProjectId);
+                    bodypropCount++;
+                }
+
+                if (bodycustomerName != null)
+                {
+                    body["customerName"] = ExpressionConverter.ConvertO(bodycustomerName);
+                    bodypropCount++;
+                }
+
+                var locationObject = new JObject();
+                var locationObjectpropCount = 0;
+                if (bodylocationstreetAddress1 != null)
+                {
+                    locationObject["streetAddress1"] = ExpressionConverter.ConvertO(bodylocationstreetAddress1);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationstreetAddress2 != null)
+                {
+                    locationObject["streetAddress2"] = ExpressionConverter.ConvertO(bodylocationstreetAddress2);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationcity != null)
+                {
+                    locationObject["city"] = ExpressionConverter.ConvertO(bodylocationcity);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationstate != null)
+                {
+                    locationObject["state"] = ExpressionConverter.ConvertO(bodylocationstate);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationpostalCode != null)
+                {
+                    locationObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationpostalCode);
+                    locationObjectpropCount++;
+                }
+
+                if (bodylocationcountry != null)
+                {
+                    locationObject["country"] = ExpressionConverter.ConvertO(bodylocationcountry);
+                    locationObjectpropCount++;
+                }
+
+                if (locationObjectpropCount > 0)
+                {
+                    body["location"] = locationObject;
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["status"] = ExpressionConverter.ConvertO(bodystatus);
+                if (bodystartDate != null)
+                {
+                    body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
+                    bodypropCount++;
+                }
+
+                if (bodycompletionDate != null)
+                {
+                    body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteProjectById))]
+        public IWorkflowAction DeleteProjectById([WorkflowExpression] Func<string> projectId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteProjectById(WorkflowValue<string> projectId)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api-proxy/DeleteProjectById/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProjectByRootFolderId))]
+        public IBodyWorkflowAction<ProjectItem> GetProjectByRootFolderId([WorkflowExpression] Func<string> bodyrootFolderId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ProjectItem> __BuildGetProjectByRootFolderId(WorkflowValue<string> bodyrootFolderId)
+        {
+            WorkflowValue.Validate(bodyrootFolderId, nameof(bodyrootFolderId), required: true);
+            return new DeferredBodyAction<ProjectItem>(() =>
+            {
+                var apiCallPath = "/api-proxy/GetProjectByRootFolderId";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["rootFolderId"] = ExpressionConverter.ConvertO(bodyrootFolderId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ProjectItem>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildCleanupProject))]
+        public IBodyWorkflowAction<CleanupProjectResponse> CleanupProject([WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<bool> bodydeleteLinks, [WorkflowExpression] Func<int[]> bodyusersToDelete = null, [WorkflowExpression] Func<int[]> bodyusersToDisable = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CleanupProjectResponse> __BuildCleanupProject(WorkflowValue<string> bodyprojectId, WorkflowValue<bool> bodydeleteLinks, WorkflowValue<int[]> bodyusersToDelete = null, WorkflowValue<int[]> bodyusersToDisable = null)
+        {
+            WorkflowValue.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
+            WorkflowValue.Validate(bodydeleteLinks, nameof(bodydeleteLinks), required: true);
+            WorkflowValue.Validate(bodyusersToDelete, nameof(bodyusersToDelete), required: false);
+            WorkflowValue.Validate(bodyusersToDisable, nameof(bodyusersToDisable), required: false);
+            return new DeferredBodyAction<CleanupProjectResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/CleanupProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
                 bodypropCount++;
-            }
+                body["deleteLinks"] = ExpressionConverter.ConvertO(bodydeleteLinks);
+                if (bodyusersToDelete != null)
+                {
+                    body["usersToDelete"] = ExpressionConverter.ConvertO(bodyusersToDelete);
+                    bodypropCount++;
+                }
 
-            if (bodycustomerName != null)
-            {
-                body["customerName"] = ExpressionConverter.ConvertO(bodycustomerName);
-                bodypropCount++;
-            }
+                if (bodyusersToDisable != null)
+                {
+                    body["usersToDisable"] = ExpressionConverter.ConvertO(bodyusersToDisable);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodycompletionDate != null)
-            {
-                body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
-                bodypropCount++;
-            }
-
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodylocationstreetAddress1 != null)
-            {
-                locationObject["streetAddress1"] = ExpressionConverter.ConvertO(bodylocationstreetAddress1);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationstreetAddress2 != null)
-            {
-                locationObject["streetAddress2"] = ExpressionConverter.ConvertO(bodylocationstreetAddress2);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationcity != null)
-            {
-                locationObject["city"] = ExpressionConverter.ConvertO(bodylocationcity);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationstate != null)
-            {
-                locationObject["state"] = ExpressionConverter.ConvertO(bodylocationstate);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationcountry != null)
-            {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodylocationcountry);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationpostalCode != null)
-            {
-                locationObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationpostalCode);
-                locationObjectpropCount++;
-            }
-
-            if (locationObjectpropCount > 0)
-            {
-                body["location"] = locationObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateProjectFromTemplateResponse>(callPayload);
+                return new ApiConnectionAction<CleanupProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ProjectItem> GetProjectById(Expression<Func<string>> bodyprojectId)
+        [WorkflowExpressionFactory(nameof(__BuildCreateMetadataKey))]
+        public IWorkflowAction CreateMetadataKey([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<double> bodypriority = null, [WorkflowExpression] Func<string> bodyhelpText = null, [WorkflowExpression] Func<string[]> bodydata = null)
         {
-            var apiCallPath = "/api-proxy/GetProjectById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProjectItem>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction UpdateProjectById(Expression<Func<string>> bodyname, Expression<Func<string>> bodyprojectId, Expression<Func<bodystatusInput>> bodystatus, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycustomProjectId = null, Expression<Func<string>> bodycustomerName = null, Expression<Func<string>> bodylocationstreetAddress1 = null, Expression<Func<string>> bodylocationstreetAddress2 = null, Expression<Func<string>> bodylocationcity = null, Expression<Func<string>> bodylocationstate = null, Expression<Func<string>> bodylocationpostalCode = null, Expression<Func<string>> bodylocationcountry = null, Expression<Func<string>> bodystartDate = null, Expression<Func<string>> bodycompletionDate = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateMetadataKey(WorkflowValue<string> bodyNamespace, WorkflowValue<string> bodykey, WorkflowValue<bodytypeInput> bodytype, WorkflowValue<string> bodydisplayName = null, WorkflowValue<double> bodypriority = null, WorkflowValue<string> bodyhelpText = null, WorkflowValue<string[]> bodydata = null)
         {
-            var apiCallPath = "/api-proxy/UpdateProjectById";
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = ExpressionConverter.ConvertO(bodyname);
-            if (bodydescription != null)
+            WorkflowValue.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
+            WorkflowValue.Validate(bodykey, nameof(bodykey), required: true);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            WorkflowValue.Validate(bodypriority, nameof(bodypriority), required: false);
+            WorkflowValue.Validate(bodyhelpText, nameof(bodyhelpText), required: false);
+            WorkflowValue.Validate(bodydata, nameof(bodydata), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["description"] = ExpressionConverter.ConvertO(bodydescription);
+                var apiCallPath = "/api-proxy/CreateMetadataKey";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            if (bodycustomProjectId != null)
-            {
-                body["customProjectId"] = ExpressionConverter.ConvertO(bodycustomProjectId);
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
                 bodypropCount++;
-            }
-
-            if (bodycustomerName != null)
-            {
-                body["customerName"] = ExpressionConverter.ConvertO(bodycustomerName);
+                body["key"] = ExpressionConverter.ConvertO(bodykey);
                 bodypropCount++;
-            }
-
-            var locationObject = new JObject();
-            var locationObjectpropCount = 0;
-            if (bodylocationstreetAddress1 != null)
-            {
-                locationObject["streetAddress1"] = ExpressionConverter.ConvertO(bodylocationstreetAddress1);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationstreetAddress2 != null)
-            {
-                locationObject["streetAddress2"] = ExpressionConverter.ConvertO(bodylocationstreetAddress2);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationcity != null)
-            {
-                locationObject["city"] = ExpressionConverter.ConvertO(bodylocationcity);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationstate != null)
-            {
-                locationObject["state"] = ExpressionConverter.ConvertO(bodylocationstate);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationpostalCode != null)
-            {
-                locationObject["postalCode"] = ExpressionConverter.ConvertO(bodylocationpostalCode);
-                locationObjectpropCount++;
-            }
-
-            if (bodylocationcountry != null)
-            {
-                locationObject["country"] = ExpressionConverter.ConvertO(bodylocationcountry);
-                locationObjectpropCount++;
-            }
-
-            if (locationObjectpropCount > 0)
-            {
-                body["location"] = locationObject;
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["status"] = ExpressionConverter.ConvertO(bodystatus);
-            if (bodystartDate != null)
-            {
-                body["startDate"] = ExpressionConverter.ConvertO(bodystartDate);
-                bodypropCount++;
-            }
-
-            if (bodycompletionDate != null)
-            {
-                body["completionDate"] = ExpressionConverter.ConvertO(bodycompletionDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction DeleteProjectById(Expression<Func<string>> projectId)
-        {
-            var apiCallPath = String.Format("/api-proxy/DeleteProjectById/{0}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ProjectItem> GetProjectByRootFolderId(Expression<Func<string>> bodyrootFolderId)
-        {
-            var apiCallPath = "/api-proxy/GetProjectByRootFolderId";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["rootFolderId"] = ExpressionConverter.ConvertO(bodyrootFolderId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProjectItem>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CleanupProjectResponse> CleanupProject(Expression<Func<string>> bodyprojectId, Expression<Func<bool>> bodydeleteLinks, Expression<Func<int[]>> bodyusersToDelete = null, Expression<Func<int[]>> bodyusersToDisable = null)
-        {
-            var apiCallPath = "/api-proxy/CleanupProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["projectId"] = ExpressionConverter.ConvertO(bodyprojectId);
-            bodypropCount++;
-            body["deleteLinks"] = ExpressionConverter.ConvertO(bodydeleteLinks);
-            if (bodyusersToDelete != null)
-            {
-                body["usersToDelete"] = ExpressionConverter.ConvertO(bodyusersToDelete);
-                bodypropCount++;
-            }
-
-            if (bodyusersToDisable != null)
-            {
-                body["usersToDisable"] = ExpressionConverter.ConvertO(bodyusersToDisable);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CleanupProjectResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction CreateMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydisplayName = null, Expression<Func<double>> bodypriority = null, Expression<Func<string>> bodyhelpText = null, Expression<Func<string[]>> bodydata = null)
-        {
-            var apiCallPath = "/api-proxy/CreateMetadataKey";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodydisplayName != null)
-            {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["priority"] = ExpressionConverter.ConvertO(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodyhelpText != null)
-            {
-                body["helpText"] = ExpressionConverter.ConvertO(bodyhelpText);
-                bodypropCount++;
-            }
-
-            if (bodydata != null)
-            {
-                body["data"] = ExpressionConverter.ConvertO(bodydata);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction DeleteMetadataKey(Expression<Func<string>> bodyNamespace, Expression<Func<string>> bodykey, Expression<Func<bool>> bodyforce = null)
-        {
-            var apiCallPath = "/api-proxy/DeleteMetadataKey";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
-            bodypropCount++;
-            body["key"] = ExpressionConverter.ConvertO(bodykey);
-            if (bodyforce != null)
-            {
-                body["force"] = ExpressionConverter.ConvertO(bodyforce);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction GetMetadataByFileId(Expression<Func<string>> bodyfileId, Expression<Func<string>> bodyNamespace)
-        {
-            var apiCallPath = "/api-proxy/GetMetadataByFileId";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
-            bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction GetMetadataByFolderId(Expression<Func<string>> bodyfolderId, Expression<Func<string>> bodyNamespace)
-        {
-            var apiCallPath = "/api-proxy/GetMetadataByFolderId";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
-            bodypropCount++;
-            body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction SearchMetadata(Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyhasKeyInputItem[]>> bodyhasKey = null, Expression<Func<bodykeyWithValueInputItem[]>> bodykeyWithValue = null)
-        {
-            var apiCallPath = "/api-proxy/SearchMetadata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytype != null)
-            {
                 body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodyhasKey != null)
-            {
-                body["hasKey"] = ExpressionConverter.ConvertO(bodyhasKey);
-                bodypropCount++;
-            }
+                if (bodypriority != null)
+                {
+                    body["priority"] = ExpressionConverter.ConvertO(bodypriority);
+                    bodypropCount++;
+                }
 
-            if (bodykeyWithValue != null)
-            {
-                body["keyWithValue"] = ExpressionConverter.ConvertO(bodykeyWithValue);
-                bodypropCount++;
-            }
+                if (bodyhelpText != null)
+                {
+                    body["helpText"] = ExpressionConverter.ConvertO(bodyhelpText);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodydata != null)
+                {
+                    body["data"] = ExpressionConverter.ConvertO(bodydata);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<GetEffectivePermissionsResponse> GetEffectivePermissions(Expression<Func<string>> bodypath, Expression<Func<string>> bodyusername)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteMetadataKey))]
+        public IWorkflowAction DeleteMetadataKey([WorkflowExpression] Func<string> bodyNamespace, [WorkflowExpression] Func<string> bodykey, [WorkflowExpression] Func<bool> bodyforce = null)
         {
-            var apiCallPath = "/api-proxy/GetEffectivePermissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            bodypropCount++;
-            body["username"] = ExpressionConverter.ConvertO(bodyusername);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetEffectivePermissionsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction SetFolderPermissions(Expression<Func<string>> bodypath, Expression<Func<bool>> bodyinheritsPermissions = null, Expression<Func<bool>> bodykeepParentPermissions = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteMetadataKey(WorkflowValue<string> bodyNamespace, WorkflowValue<string> bodykey, WorkflowValue<bool> bodyforce = null)
         {
-            var apiCallPath = "/api-proxy/SetFolderPermissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            var userPermsObject = new JObject();
-            var userPermsObjectpropCount = 0;
-            if (userPermsObjectpropCount > 0)
+            WorkflowValue.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
+            WorkflowValue.Validate(bodykey, nameof(bodykey), required: true);
+            WorkflowValue.Validate(bodyforce, nameof(bodyforce), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                body["userPerms"] = userPermsObject;
+                var apiCallPath = "/api-proxy/DeleteMetadataKey";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var groupPermsObject = new JObject();
-            var groupPermsObjectpropCount = 0;
-            if (groupPermsObjectpropCount > 0)
-            {
-                body["groupPerms"] = groupPermsObject;
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
                 bodypropCount++;
-            }
+                body["key"] = ExpressionConverter.ConvertO(bodykey);
+                if (bodyforce != null)
+                {
+                    body["force"] = ExpressionConverter.ConvertO(bodyforce);
+                    bodypropCount++;
+                }
 
-            if (bodyinheritsPermissions != null)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildGetMetadataByFileId))]
+        public IWorkflowAction GetMetadataByFileId([WorkflowExpression] Func<string> bodyfileId, [WorkflowExpression] Func<string> bodyNamespace)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetMetadataByFileId(WorkflowValue<string> bodyfileId, WorkflowValue<string> bodyNamespace)
+        {
+            WorkflowValue.Validate(bodyfileId, nameof(bodyfileId), required: true);
+            WorkflowValue.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                body["inheritsPermissions"] = ExpressionConverter.ConvertO(bodyinheritsPermissions);
+                var apiCallPath = "/api-proxy/GetMetadataByFileId";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodykeepParentPermissions != null)
-            {
-                body["keepParentPermissions"] = ExpressionConverter.ConvertO(bodykeepParentPermissions);
+                body["fileId"] = ExpressionConverter.ConvertO(bodyfileId);
                 bodypropCount++;
-            }
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<GetFolderPermissionsResponse> GetFolderPermissions(Expression<Func<string>> bodypath)
+        [WorkflowExpressionFactory(nameof(__BuildGetMetadataByFolderId))]
+        public IWorkflowAction GetMetadataByFolderId([WorkflowExpression] Func<string> bodyfolderId, [WorkflowExpression] Func<string> bodyNamespace)
         {
-            var apiCallPath = "/api-proxy/GetFolderPermissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<GetFolderPermissionsResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetMetadataByFolderId(WorkflowValue<string> bodyfolderId, WorkflowValue<string> bodyNamespace)
+        {
+            WorkflowValue.Validate(bodyfolderId, nameof(bodyfolderId), required: true);
+            WorkflowValue.Validate(bodyNamespace, nameof(bodyNamespace), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/GetMetadataByFolderId";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["folderId"] = ExpressionConverter.ConvertO(bodyfolderId);
+                bodypropCount++;
+                body["namespace"] = ExpressionConverter.ConvertO(bodyNamespace);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeepLinksByIdResponse> DeepLinksById(Expression<Func<string>> bodyid, Expression<Func<bodytypeInput>> bodytype)
+        [WorkflowExpressionFactory(nameof(__BuildSearchMetadata))]
+        public IWorkflowAction SearchMetadata([WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bodyhasKeyInputItem[]> bodyhasKey = null, [WorkflowExpression] Func<bodykeyWithValueInputItem[]> bodykeyWithValue = null)
         {
-            var apiCallPath = "/api-proxy/DeepLinksById";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = ExpressionConverter.ConvertO(bodyid);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<DeepLinksByIdResponse>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSearchMetadata(WorkflowValue<bodytypeInput> bodytype = null, WorkflowValue<bodyhasKeyInputItem[]> bodyhasKey = null, WorkflowValue<bodykeyWithValueInputItem[]> bodykeyWithValue = null)
+        {
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodyhasKey, nameof(bodyhasKey), required: false);
+            WorkflowValue.Validate(bodykeyWithValue, nameof(bodykeyWithValue), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/SearchMetadata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodyhasKey != null)
+                {
+                    body["hasKey"] = ExpressionConverter.ConvertO(bodyhasKey);
+                    bodypropCount++;
+                }
+
+                if (bodykeyWithValue != null)
+                {
+                    body["keyWithValue"] = ExpressionConverter.ConvertO(bodykeyWithValue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<DeepLinksByPathResponse> DeepLinksByPath(Expression<Func<string>> bodypath)
+        [WorkflowExpressionFactory(nameof(__BuildGetEffectivePermissions))]
+        public IBodyWorkflowAction<GetEffectivePermissionsResponse> GetEffectivePermissions([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<string> bodyusername)
         {
-            var apiCallPath = "/api-proxy/DeepLinksByPath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeepLinksByPathResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ListLinksResponse> ListLinks(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodycreatedBefore = null, Expression<Func<string>> bodycreatedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodycount = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEffectivePermissionsResponse> __BuildGetEffectivePermissions(WorkflowValue<string> bodypath, WorkflowValue<string> bodyusername)
         {
-            var apiCallPath = "/api-proxy/ListLinks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypath != null)
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodyusername, nameof(bodyusername), required: true);
+            return new DeferredBodyAction<GetEffectivePermissionsResponse>(() =>
             {
+                var apiCallPath = "/api-proxy/GetEffectivePermissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
                 body["path"] = ExpressionConverter.ConvertO(bodypath);
                 bodypropCount++;
-            }
-
-            if (bodyusername != null)
-            {
                 body["username"] = ExpressionConverter.ConvertO(bodyusername);
-                bodypropCount++;
-            }
-
-            if (bodycreatedBefore != null)
-            {
-                body["createdBefore"] = ExpressionConverter.ConvertO(bodycreatedBefore);
-                bodypropCount++;
-            }
-
-            if (bodycreatedAfter != null)
-            {
-                body["createdAfter"] = ExpressionConverter.ConvertO(bodycreatedAfter);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodyaccessibility != null)
-            {
-                body["accessibility"] = ExpressionConverter.ConvertO(bodyaccessibility);
-                bodypropCount++;
-            }
-
-            if (bodyoffset != null)
-            {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
-                bodypropCount++;
-            }
-
-            if (bodycount != null)
-            {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ListLinksResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<ShowLinkDetailsResponse> ShowLinkDetails(Expression<Func<string>> bodylinkId)
-        {
-            var apiCallPath = "/api-proxy/ShowLinkDetails";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["linkId"] = ExpressionConverter.ConvertO(bodylinkId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ShowLinkDetailsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<CreateLinkResponse> CreateLink(Expression<Func<string>> bodypath, Expression<Func<bodytypeInput>> bodytype, Expression<Func<bool>> bodyuseDefaultSettings, Expression<Func<bodyaccessibilityInput>> bodyaccessibility = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string[]>> bodyrecipients = null, Expression<Func<string>> bodymessage = null, Expression<Func<bool>> bodycopyMe = null, Expression<Func<bool>> bodynotify = null, Expression<Func<bool>> bodylinkToCurrent = null, Expression<Func<string>> bodyexpiryDate = null, Expression<Func<double>> bodyexpiryClicks = null, Expression<Func<bool>> bodyaddFileName = null, Expression<Func<string>> bodypassword = null, Expression<Func<bodyprotectionInput>> bodyprotection = null, Expression<Func<bool>> bodyfolderPerRecipient = null)
-        {
-            var apiCallPath = "/api-proxy/CreateLink";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["path"] = ExpressionConverter.ConvertO(bodypath);
-            bodypropCount++;
-            body["type"] = ExpressionConverter.ConvertO(bodytype);
-            if (bodyaccessibility != null)
-            {
-                body["accessibility"] = ExpressionConverter.ConvertO(bodyaccessibility);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["useDefaultSettings"] = ExpressionConverter.ConvertO(bodyuseDefaultSettings);
-            if (bodysendEmail != null)
-            {
-                body["send_email"] = ExpressionConverter.ConvertO(bodysendEmail);
-                bodypropCount++;
-            }
-
-            if (bodyrecipients != null)
-            {
-                body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
-                bodypropCount++;
-            }
-
-            if (bodymessage != null)
-            {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
-                bodypropCount++;
-            }
-
-            if (bodycopyMe != null)
-            {
-                body["copy_me"] = ExpressionConverter.ConvertO(bodycopyMe);
-                bodypropCount++;
-            }
-
-            if (bodynotify != null)
-            {
-                body["notify"] = ExpressionConverter.ConvertO(bodynotify);
-                bodypropCount++;
-            }
-
-            if (bodylinkToCurrent != null)
-            {
-                body["link_to_current"] = ExpressionConverter.ConvertO(bodylinkToCurrent);
-                bodypropCount++;
-            }
-
-            if (bodyexpiryDate != null)
-            {
-                body["expiry_date"] = ExpressionConverter.ConvertO(bodyexpiryDate);
-                bodypropCount++;
-            }
-
-            if (bodyexpiryClicks != null)
-            {
-                body["expiry_clicks"] = ExpressionConverter.ConvertO(bodyexpiryClicks);
-                bodypropCount++;
-            }
-
-            if (bodyaddFileName != null)
-            {
-                body["add_file_name"] = ExpressionConverter.ConvertO(bodyaddFileName);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
-                body["password"] = ExpressionConverter.ConvertO(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodyprotection != null)
-            {
-                body["protection"] = ExpressionConverter.ConvertO(bodyprotection);
-                bodypropCount++;
-            }
-
-            if (bodyfolderPerRecipient != null)
-            {
-                body["folder_per_recipient"] = ExpressionConverter.ConvertO(bodyfolderPerRecipient);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IWorkflowAction DeleteLink(Expression<Func<string>> bodylinkId)
-        {
-            var apiCallPath = "/api-proxy/DeleteLink";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["linkId"] = ExpressionConverter.ConvertO(bodylinkId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AIQuestionResponse> AskDocumentQuestion(Expression<Func<string>> bodyentryId = null, Expression<Func<string>> bodyquestion = null, Expression<Func<bool>> bodyincludeCitations = null, Expression<Func<AIMessage[]>> bodychatHistorymessages = null)
-        {
-            var apiCallPath = "/api-proxy/AskDocumentQuestion";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyentryId != null)
-            {
-                body["entryId"] = ExpressionConverter.ConvertO(bodyentryId);
-                bodypropCount++;
-            }
-
-            if (bodyquestion != null)
-            {
-                body["question"] = ExpressionConverter.ConvertO(bodyquestion);
-                bodypropCount++;
-            }
-
-            if (bodyincludeCitations != null)
-            {
-                if (bodyincludeCitations != null)
+                if (bodypropCount > 0)
                 {
-                    body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetEffectivePermissionsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildSetFolderPermissions))]
+        public IWorkflowAction SetFolderPermissions([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<bool> bodyinheritsPermissions = null, [WorkflowExpression] Func<bool> bodykeepParentPermissions = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSetFolderPermissions(WorkflowValue<string> bodypath, WorkflowValue<bool> bodyinheritsPermissions = null, WorkflowValue<bool> bodykeepParentPermissions = null)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodyinheritsPermissions, nameof(bodyinheritsPermissions), required: false);
+            WorkflowValue.Validate(bodykeepParentPermissions, nameof(bodykeepParentPermissions), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api-proxy/SetFolderPermissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                var userPermsObject = new JObject();
+                var userPermsObjectpropCount = 0;
+                if (userPermsObjectpropCount > 0)
+                {
+                    body["userPerms"] = userPermsObject;
+                    bodypropCount++;
+                }
+
+                var groupPermsObject = new JObject();
+                var groupPermsObjectpropCount = 0;
+                if (groupPermsObjectpropCount > 0)
+                {
+                    body["groupPerms"] = groupPermsObject;
+                    bodypropCount++;
+                }
+
+                if (bodyinheritsPermissions != null)
+                {
+                    body["inheritsPermissions"] = ExpressionConverter.ConvertO(bodyinheritsPermissions);
+                    bodypropCount++;
+                }
+
+                if (bodykeepParentPermissions != null)
+                {
+                    body["keepParentPermissions"] = ExpressionConverter.ConvertO(bodykeepParentPermissions);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildGetFolderPermissions))]
+        public IBodyWorkflowAction<GetFolderPermissionsResponse> GetFolderPermissions([WorkflowExpression] Func<string> bodypath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFolderPermissionsResponse> __BuildGetFolderPermissions(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<GetFolderPermissionsResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/GetFolderPermissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GetFolderPermissionsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildDeepLinksById))]
+        public IBodyWorkflowAction<DeepLinksByIdResponse> DeepLinksById([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bodytypeInput> bodytype)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeepLinksByIdResponse> __BuildDeepLinksById(WorkflowValue<string> bodyid, WorkflowValue<bodytypeInput> bodytype)
+        {
+            WorkflowValue.Validate(bodyid, nameof(bodyid), required: true);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: true);
+            return new DeferredBodyAction<DeepLinksByIdResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/DeepLinksById";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["id"] = ExpressionConverter.ConvertO(bodyid);
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DeepLinksByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildDeepLinksByPath))]
+        public IBodyWorkflowAction<DeepLinksByPathResponse> DeepLinksByPath([WorkflowExpression] Func<string> bodypath)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeepLinksByPathResponse> __BuildDeepLinksByPath(WorkflowValue<string> bodypath)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            return new DeferredBodyAction<DeepLinksByPathResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/DeepLinksByPath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<DeepLinksByPathResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildListLinks))]
+        public IBodyWorkflowAction<ListLinksResponse> ListLinks([WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodycreatedBefore = null, [WorkflowExpression] Func<string> bodycreatedAfter = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bodyaccessibilityInput> bodyaccessibility = null, [WorkflowExpression] Func<string> bodyoffset = null, [WorkflowExpression] Func<string> bodycount = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListLinksResponse> __BuildListLinks(WorkflowValue<string> bodypath = null, WorkflowValue<string> bodyusername = null, WorkflowValue<string> bodycreatedBefore = null, WorkflowValue<string> bodycreatedAfter = null, WorkflowValue<bodytypeInput> bodytype = null, WorkflowValue<bodyaccessibilityInput> bodyaccessibility = null, WorkflowValue<string> bodyoffset = null, WorkflowValue<string> bodycount = null)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: false);
+            WorkflowValue.Validate(bodyusername, nameof(bodyusername), required: false);
+            WorkflowValue.Validate(bodycreatedBefore, nameof(bodycreatedBefore), required: false);
+            WorkflowValue.Validate(bodycreatedAfter, nameof(bodycreatedAfter), required: false);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodyaccessibility, nameof(bodyaccessibility), required: false);
+            WorkflowValue.Validate(bodyoffset, nameof(bodyoffset), required: false);
+            WorkflowValue.Validate(bodycount, nameof(bodycount), required: false);
+            return new DeferredBodyAction<ListLinksResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/ListLinks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypath != null)
+                {
+                    body["path"] = ExpressionConverter.ConvertO(bodypath);
+                    bodypropCount++;
+                }
+
+                if (bodyusername != null)
+                {
+                    body["username"] = ExpressionConverter.ConvertO(bodyusername);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedBefore != null)
+                {
+                    body["createdBefore"] = ExpressionConverter.ConvertO(bodycreatedBefore);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedAfter != null)
+                {
+                    body["createdAfter"] = ExpressionConverter.ConvertO(bodycreatedAfter);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodyaccessibility != null)
+                {
+                    body["accessibility"] = ExpressionConverter.ConvertO(bodyaccessibility);
+                    bodypropCount++;
+                }
+
+                if (bodyoffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    bodypropCount++;
+                }
+
+                if (bodycount != null)
+                {
+                    body["count"] = ExpressionConverter.ConvertO(bodycount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ListLinksResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildShowLinkDetails))]
+        public IBodyWorkflowAction<ShowLinkDetailsResponse> ShowLinkDetails([WorkflowExpression] Func<string> bodylinkId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ShowLinkDetailsResponse> __BuildShowLinkDetails(WorkflowValue<string> bodylinkId)
+        {
+            WorkflowValue.Validate(bodylinkId, nameof(bodylinkId), required: true);
+            return new DeferredBodyAction<ShowLinkDetailsResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/ShowLinkDetails";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["linkId"] = ExpressionConverter.ConvertO(bodylinkId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ShowLinkDetailsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateLink))]
+        public IBodyWorkflowAction<CreateLinkResponse> CreateLink([WorkflowExpression] Func<string> bodypath, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<bool> bodyuseDefaultSettings, [WorkflowExpression] Func<bodyaccessibilityInput> bodyaccessibility = null, [WorkflowExpression] Func<bool> bodysendEmail = null, [WorkflowExpression] Func<string[]> bodyrecipients = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<bool> bodycopyMe = null, [WorkflowExpression] Func<bool> bodynotify = null, [WorkflowExpression] Func<bool> bodylinkToCurrent = null, [WorkflowExpression] Func<string> bodyexpiryDate = null, [WorkflowExpression] Func<double> bodyexpiryClicks = null, [WorkflowExpression] Func<bool> bodyaddFileName = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<bodyprotectionInput> bodyprotection = null, [WorkflowExpression] Func<bool> bodyfolderPerRecipient = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateLinkResponse> __BuildCreateLink(WorkflowValue<string> bodypath, WorkflowValue<bodytypeInput> bodytype, WorkflowValue<bool> bodyuseDefaultSettings, WorkflowValue<bodyaccessibilityInput> bodyaccessibility = null, WorkflowValue<bool> bodysendEmail = null, WorkflowValue<string[]> bodyrecipients = null, WorkflowValue<string> bodymessage = null, WorkflowValue<bool> bodycopyMe = null, WorkflowValue<bool> bodynotify = null, WorkflowValue<bool> bodylinkToCurrent = null, WorkflowValue<string> bodyexpiryDate = null, WorkflowValue<double> bodyexpiryClicks = null, WorkflowValue<bool> bodyaddFileName = null, WorkflowValue<string> bodypassword = null, WorkflowValue<bodyprotectionInput> bodyprotection = null, WorkflowValue<bool> bodyfolderPerRecipient = null)
+        {
+            WorkflowValue.Validate(bodypath, nameof(bodypath), required: true);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: true);
+            WorkflowValue.Validate(bodyuseDefaultSettings, nameof(bodyuseDefaultSettings), required: true);
+            WorkflowValue.Validate(bodyaccessibility, nameof(bodyaccessibility), required: false);
+            WorkflowValue.Validate(bodysendEmail, nameof(bodysendEmail), required: false);
+            WorkflowValue.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: false);
+            WorkflowValue.Validate(bodycopyMe, nameof(bodycopyMe), required: false);
+            WorkflowValue.Validate(bodynotify, nameof(bodynotify), required: false);
+            WorkflowValue.Validate(bodylinkToCurrent, nameof(bodylinkToCurrent), required: false);
+            WorkflowValue.Validate(bodyexpiryDate, nameof(bodyexpiryDate), required: false);
+            WorkflowValue.Validate(bodyexpiryClicks, nameof(bodyexpiryClicks), required: false);
+            WorkflowValue.Validate(bodyaddFileName, nameof(bodyaddFileName), required: false);
+            WorkflowValue.Validate(bodypassword, nameof(bodypassword), required: false);
+            WorkflowValue.Validate(bodyprotection, nameof(bodyprotection), required: false);
+            WorkflowValue.Validate(bodyfolderPerRecipient, nameof(bodyfolderPerRecipient), required: false);
+            return new DeferredBodyAction<CreateLinkResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/CreateLink";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["path"] = ExpressionConverter.ConvertO(bodypath);
+                bodypropCount++;
+                body["type"] = ExpressionConverter.ConvertO(bodytype);
+                if (bodyaccessibility != null)
+                {
+                    body["accessibility"] = ExpressionConverter.ConvertO(bodyaccessibility);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["includeCitations"] = false;
-                bodypropCount++;
-            }
-
-            var chatHistoryObject = new JObject();
-            var chatHistoryObjectpropCount = 0;
-            if (bodychatHistorymessages != null)
-            {
-                chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
-                chatHistoryObjectpropCount++;
-            }
-
-            if (chatHistoryObjectpropCount > 0)
-            {
-                body["chatHistory"] = chatHistoryObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AIQuestionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AISummaryResponse> SummarizeDocument(Expression<Func<string>> bodyentryId = null, Expression<Func<AIMessage[]>> bodychatHistorymessages = null)
-        {
-            var apiCallPath = "/api-proxy/SummarizeDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyentryId != null)
-            {
-                body["entryId"] = ExpressionConverter.ConvertO(bodyentryId);
-                bodypropCount++;
-            }
-
-            var chatHistoryObject = new JObject();
-            var chatHistoryObjectpropCount = 0;
-            if (bodychatHistorymessages != null)
-            {
-                chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
-                chatHistoryObjectpropCount++;
-            }
-
-            if (chatHistoryObjectpropCount > 0)
-            {
-                body["chatHistory"] = chatHistoryObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AISummaryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<AICopilotResponse> CopilotAsk(Expression<Func<string>> bodyquestion = null, Expression<Func<bodyselectedItemsfoldersInputItem[]>> bodyselectedItemsfolders = null, Expression<Func<bodyselectedItemsfilesInputItem[]>> bodyselectedItemsfiles = null, Expression<Func<bool>> bodyincludeCitations = null, Expression<Func<AIMessage[]>> bodychatHistorymessages = null)
-        {
-            var apiCallPath = "/api-proxy/CopilotAsk";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyquestion != null)
-            {
-                body["question"] = ExpressionConverter.ConvertO(bodyquestion);
-                bodypropCount++;
-            }
-
-            var selectedItemsObject = new JObject();
-            var selectedItemsObjectpropCount = 0;
-            if (bodyselectedItemsfolders != null)
-            {
-                selectedItemsObject["folders"] = ExpressionConverter.ConvertO(bodyselectedItemsfolders);
-                selectedItemsObjectpropCount++;
-            }
-
-            if (bodyselectedItemsfiles != null)
-            {
-                selectedItemsObject["files"] = ExpressionConverter.ConvertO(bodyselectedItemsfiles);
-                selectedItemsObjectpropCount++;
-            }
-
-            if (selectedItemsObjectpropCount > 0)
-            {
-                body["selectedItems"] = selectedItemsObject;
-                bodypropCount++;
-            }
-
-            if (bodyincludeCitations != null)
-            {
-                if (bodyincludeCitations != null)
+                body["useDefaultSettings"] = ExpressionConverter.ConvertO(bodyuseDefaultSettings);
+                if (bodysendEmail != null)
                 {
-                    body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                    body["send_email"] = ExpressionConverter.ConvertO(bodysendEmail);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["includeCitations"] = false;
-                bodypropCount++;
-            }
+                if (bodyrecipients != null)
+                {
+                    body["recipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                    bodypropCount++;
+                }
 
-            var chatHistoryObject = new JObject();
-            var chatHistoryObjectpropCount = 0;
-            if (bodychatHistorymessages != null)
-            {
-                chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
-                chatHistoryObjectpropCount++;
-            }
+                if (bodymessage != null)
+                {
+                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    bodypropCount++;
+                }
 
-            if (chatHistoryObjectpropCount > 0)
-            {
-                body["chatHistory"] = chatHistoryObject;
-                bodypropCount++;
-            }
+                if (bodycopyMe != null)
+                {
+                    body["copy_me"] = ExpressionConverter.ConvertO(bodycopyMe);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodynotify != null)
+                {
+                    body["notify"] = ExpressionConverter.ConvertO(bodynotify);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<AICopilotResponse>(callPayload);
+                if (bodylinkToCurrent != null)
+                {
+                    body["link_to_current"] = ExpressionConverter.ConvertO(bodylinkToCurrent);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiryDate != null)
+                {
+                    body["expiry_date"] = ExpressionConverter.ConvertO(bodyexpiryDate);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiryClicks != null)
+                {
+                    body["expiry_clicks"] = ExpressionConverter.ConvertO(bodyexpiryClicks);
+                    bodypropCount++;
+                }
+
+                if (bodyaddFileName != null)
+                {
+                    body["add_file_name"] = ExpressionConverter.ConvertO(bodyaddFileName);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["password"] = ExpressionConverter.ConvertO(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodyprotection != null)
+                {
+                    body["protection"] = ExpressionConverter.ConvertO(bodyprotection);
+                    bodypropCount++;
+                }
+
+                if (bodyfolderPerRecipient != null)
+                {
+                    body["folder_per_recipient"] = ExpressionConverter.ConvertO(bodyfolderPerRecipient);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateLinkResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
-        public IBodyWorkflowAction<SearchV2Response> Search(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodycount = null, Expression<Func<string>> bodyfolder = null, Expression<Func<int>> bodymodifiedBefore = null, Expression<Func<int>> bodymodifiedAfter = null, Expression<Func<int>> bodyuploadedBefore = null, Expression<Func<int>> bodyuploadedAfter = null, Expression<Func<bodytypeInput>> bodytype = null, Expression<Func<bool>> bodysnippetRequested = null, Expression<Func<bodysortByInput>> bodysortBy = null, Expression<Func<bodysortDirectionInput>> bodysortDirection = null, Expression<Func<bodyfileQueryFieldsInputItem[]>> bodyfileQueryFields = null, Expression<Func<bodyfolderQueryFieldsInputItem[]>> bodyfolderQueryFields = null, Expression<Func<bodyqueryOperatorInput>> bodyqueryOperator = null, Expression<Func<string[]>> bodymlt = null, Expression<Func<string[]>> bodymltt = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteLink))]
+        public IWorkflowAction DeleteLink([WorkflowExpression] Func<string> bodylinkId)
         {
-            var apiCallPath = "/api-proxy/SearchV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = ExpressionConverter.ConvertO(bodyquery);
-            if (bodyoffset != null)
-            {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodycount != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteLink(WorkflowValue<string> bodylinkId)
+        {
+            WorkflowValue.Validate(bodylinkId, nameof(bodylinkId), required: true);
+            return new DeferredWorkflowAction(() =>
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
+                var apiCallPath = "/api-proxy/DeleteLink";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["linkId"] = ExpressionConverter.ConvertO(bodylinkId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyfolder != null)
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildAskDocumentQuestion))]
+        public IBodyWorkflowAction<AIQuestionResponse> AskDocumentQuestion([WorkflowExpression] Func<string> bodyentryId = null, [WorkflowExpression] Func<string> bodyquestion = null, [WorkflowExpression] Func<bool> bodyincludeCitations = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AIQuestionResponse> __BuildAskDocumentQuestion(WorkflowValue<string> bodyentryId = null, WorkflowValue<string> bodyquestion = null, WorkflowValue<bool> bodyincludeCitations = null, WorkflowValue<AIMessage[]> bodychatHistorymessages = null)
+        {
+            WorkflowValue.Validate(bodyentryId, nameof(bodyentryId), required: false);
+            WorkflowValue.Validate(bodyquestion, nameof(bodyquestion), required: false);
+            WorkflowValue.Validate(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
+            WorkflowValue.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            return new DeferredBodyAction<AIQuestionResponse>(() =>
             {
-                body["folder"] = ExpressionConverter.ConvertO(bodyfolder);
+                var apiCallPath = "/api-proxy/AskDocumentQuestion";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyentryId != null)
+                {
+                    body["entryId"] = ExpressionConverter.ConvertO(bodyentryId);
+                    bodypropCount++;
+                }
+
+                if (bodyquestion != null)
+                {
+                    body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeCitations != null)
+                {
+                    if (bodyincludeCitations != null)
+                    {
+                        body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includeCitations"] = false;
+                    bodypropCount++;
+                }
+
+                var chatHistoryObject = new JObject();
+                var chatHistoryObjectpropCount = 0;
+                if (bodychatHistorymessages != null)
+                {
+                    chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
+                    chatHistoryObjectpropCount++;
+                }
+
+                if (chatHistoryObjectpropCount > 0)
+                {
+                    body["chatHistory"] = chatHistoryObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AIQuestionResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildSummarizeDocument))]
+        public IBodyWorkflowAction<AISummaryResponse> SummarizeDocument([WorkflowExpression] Func<string> bodyentryId = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AISummaryResponse> __BuildSummarizeDocument(WorkflowValue<string> bodyentryId = null, WorkflowValue<AIMessage[]> bodychatHistorymessages = null)
+        {
+            WorkflowValue.Validate(bodyentryId, nameof(bodyentryId), required: false);
+            WorkflowValue.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            return new DeferredBodyAction<AISummaryResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/SummarizeDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyentryId != null)
+                {
+                    body["entryId"] = ExpressionConverter.ConvertO(bodyentryId);
+                    bodypropCount++;
+                }
+
+                var chatHistoryObject = new JObject();
+                var chatHistoryObjectpropCount = 0;
+                if (bodychatHistorymessages != null)
+                {
+                    chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
+                    chatHistoryObjectpropCount++;
+                }
+
+                if (chatHistoryObjectpropCount > 0)
+                {
+                    body["chatHistory"] = chatHistoryObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AISummaryResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildCopilotAsk))]
+        public IBodyWorkflowAction<AICopilotResponse> CopilotAsk([WorkflowExpression] Func<string> bodyquestion = null, [WorkflowExpression] Func<bodyselectedItemsfoldersInputItem[]> bodyselectedItemsfolders = null, [WorkflowExpression] Func<bodyselectedItemsfilesInputItem[]> bodyselectedItemsfiles = null, [WorkflowExpression] Func<bool> bodyincludeCitations = null, [WorkflowExpression] Func<AIMessage[]> bodychatHistorymessages = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AICopilotResponse> __BuildCopilotAsk(WorkflowValue<string> bodyquestion = null, WorkflowValue<bodyselectedItemsfoldersInputItem[]> bodyselectedItemsfolders = null, WorkflowValue<bodyselectedItemsfilesInputItem[]> bodyselectedItemsfiles = null, WorkflowValue<bool> bodyincludeCitations = null, WorkflowValue<AIMessage[]> bodychatHistorymessages = null)
+        {
+            WorkflowValue.Validate(bodyquestion, nameof(bodyquestion), required: false);
+            WorkflowValue.Validate(bodyselectedItemsfolders, nameof(bodyselectedItemsfolders), required: false);
+            WorkflowValue.Validate(bodyselectedItemsfiles, nameof(bodyselectedItemsfiles), required: false);
+            WorkflowValue.Validate(bodyincludeCitations, nameof(bodyincludeCitations), required: false);
+            WorkflowValue.Validate(bodychatHistorymessages, nameof(bodychatHistorymessages), required: false);
+            return new DeferredBodyAction<AICopilotResponse>(() =>
+            {
+                var apiCallPath = "/api-proxy/CopilotAsk";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyquestion != null)
+                {
+                    body["question"] = ExpressionConverter.ConvertO(bodyquestion);
+                    bodypropCount++;
+                }
+
+                var selectedItemsObject = new JObject();
+                var selectedItemsObjectpropCount = 0;
+                if (bodyselectedItemsfolders != null)
+                {
+                    selectedItemsObject["folders"] = ExpressionConverter.ConvertO(bodyselectedItemsfolders);
+                    selectedItemsObjectpropCount++;
+                }
+
+                if (bodyselectedItemsfiles != null)
+                {
+                    selectedItemsObject["files"] = ExpressionConverter.ConvertO(bodyselectedItemsfiles);
+                    selectedItemsObjectpropCount++;
+                }
+
+                if (selectedItemsObjectpropCount > 0)
+                {
+                    body["selectedItems"] = selectedItemsObject;
+                    bodypropCount++;
+                }
+
+                if (bodyincludeCitations != null)
+                {
+                    if (bodyincludeCitations != null)
+                    {
+                        body["includeCitations"] = ExpressionConverter.ConvertO(bodyincludeCitations);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["includeCitations"] = false;
+                    bodypropCount++;
+                }
+
+                var chatHistoryObject = new JObject();
+                var chatHistoryObjectpropCount = 0;
+                if (bodychatHistorymessages != null)
+                {
+                    chatHistoryObject["messages"] = ExpressionConverter.ConvertO(bodychatHistorymessages);
+                    chatHistoryObjectpropCount++;
+                }
+
+                if (chatHistoryObjectpropCount > 0)
+                {
+                    body["chatHistory"] = chatHistoryObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AICopilotResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "egnyte")]
+        [WorkflowExpressionFactory(nameof(__BuildSearch))]
+        public IBodyWorkflowAction<SearchV2Response> Search([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodycount = null, [WorkflowExpression] Func<string> bodyfolder = null, [WorkflowExpression] Func<int> bodymodifiedBefore = null, [WorkflowExpression] Func<int> bodymodifiedAfter = null, [WorkflowExpression] Func<int> bodyuploadedBefore = null, [WorkflowExpression] Func<int> bodyuploadedAfter = null, [WorkflowExpression] Func<bodytypeInput> bodytype = null, [WorkflowExpression] Func<bool> bodysnippetRequested = null, [WorkflowExpression] Func<bodysortByInput> bodysortBy = null, [WorkflowExpression] Func<bodysortDirectionInput> bodysortDirection = null, [WorkflowExpression] Func<bodyfileQueryFieldsInputItem[]> bodyfileQueryFields = null, [WorkflowExpression] Func<bodyfolderQueryFieldsInputItem[]> bodyfolderQueryFields = null, [WorkflowExpression] Func<bodyqueryOperatorInput> bodyqueryOperator = null, [WorkflowExpression] Func<string[]> bodymlt = null, [WorkflowExpression] Func<string[]> bodymltt = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchV2Response> __BuildSearch(WorkflowValue<string> bodyquery, WorkflowValue<int> bodyoffset = null, WorkflowValue<int> bodycount = null, WorkflowValue<string> bodyfolder = null, WorkflowValue<int> bodymodifiedBefore = null, WorkflowValue<int> bodymodifiedAfter = null, WorkflowValue<int> bodyuploadedBefore = null, WorkflowValue<int> bodyuploadedAfter = null, WorkflowValue<bodytypeInput> bodytype = null, WorkflowValue<bool> bodysnippetRequested = null, WorkflowValue<bodysortByInput> bodysortBy = null, WorkflowValue<bodysortDirectionInput> bodysortDirection = null, WorkflowValue<bodyfileQueryFieldsInputItem[]> bodyfileQueryFields = null, WorkflowValue<bodyfolderQueryFieldsInputItem[]> bodyfolderQueryFields = null, WorkflowValue<bodyqueryOperatorInput> bodyqueryOperator = null, WorkflowValue<string[]> bodymlt = null, WorkflowValue<string[]> bodymltt = null)
+        {
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: true);
+            WorkflowValue.Validate(bodyoffset, nameof(bodyoffset), required: false);
+            WorkflowValue.Validate(bodycount, nameof(bodycount), required: false);
+            WorkflowValue.Validate(bodyfolder, nameof(bodyfolder), required: false);
+            WorkflowValue.Validate(bodymodifiedBefore, nameof(bodymodifiedBefore), required: false);
+            WorkflowValue.Validate(bodymodifiedAfter, nameof(bodymodifiedAfter), required: false);
+            WorkflowValue.Validate(bodyuploadedBefore, nameof(bodyuploadedBefore), required: false);
+            WorkflowValue.Validate(bodyuploadedAfter, nameof(bodyuploadedAfter), required: false);
+            WorkflowValue.Validate(bodytype, nameof(bodytype), required: false);
+            WorkflowValue.Validate(bodysnippetRequested, nameof(bodysnippetRequested), required: false);
+            WorkflowValue.Validate(bodysortBy, nameof(bodysortBy), required: false);
+            WorkflowValue.Validate(bodysortDirection, nameof(bodysortDirection), required: false);
+            WorkflowValue.Validate(bodyfileQueryFields, nameof(bodyfileQueryFields), required: false);
+            WorkflowValue.Validate(bodyfolderQueryFields, nameof(bodyfolderQueryFields), required: false);
+            WorkflowValue.Validate(bodyqueryOperator, nameof(bodyqueryOperator), required: false);
+            WorkflowValue.Validate(bodymlt, nameof(bodymlt), required: false);
+            WorkflowValue.Validate(bodymltt, nameof(bodymltt), required: false);
+            return new DeferredBodyAction<SearchV2Response>(() =>
+            {
+                var apiCallPath = "/api-proxy/SearchV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                if (bodyoffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    bodypropCount++;
+                }
 
-            if (bodymodifiedBefore != null)
-            {
-                body["modifiedBefore"] = ExpressionConverter.ConvertO(bodymodifiedBefore);
-                bodypropCount++;
-            }
+                if (bodycount != null)
+                {
+                    body["count"] = ExpressionConverter.ConvertO(bodycount);
+                    bodypropCount++;
+                }
 
-            if (bodymodifiedAfter != null)
-            {
-                body["modifiedAfter"] = ExpressionConverter.ConvertO(bodymodifiedAfter);
-                bodypropCount++;
-            }
+                if (bodyfolder != null)
+                {
+                    body["folder"] = ExpressionConverter.ConvertO(bodyfolder);
+                    bodypropCount++;
+                }
 
-            if (bodyuploadedBefore != null)
-            {
-                body["uploadedBefore"] = ExpressionConverter.ConvertO(bodyuploadedBefore);
-                bodypropCount++;
-            }
+                if (bodymodifiedBefore != null)
+                {
+                    body["modifiedBefore"] = ExpressionConverter.ConvertO(bodymodifiedBefore);
+                    bodypropCount++;
+                }
 
-            if (bodyuploadedAfter != null)
-            {
-                body["uploadedAfter"] = ExpressionConverter.ConvertO(bodyuploadedAfter);
-                bodypropCount++;
-            }
+                if (bodymodifiedAfter != null)
+                {
+                    body["modifiedAfter"] = ExpressionConverter.ConvertO(bodymodifiedAfter);
+                    bodypropCount++;
+                }
 
-            if (bodytype != null)
-            {
-                body["type"] = ExpressionConverter.ConvertO(bodytype);
-                bodypropCount++;
-            }
+                if (bodyuploadedBefore != null)
+                {
+                    body["uploadedBefore"] = ExpressionConverter.ConvertO(bodyuploadedBefore);
+                    bodypropCount++;
+                }
 
-            if (bodysnippetRequested != null)
-            {
+                if (bodyuploadedAfter != null)
+                {
+                    body["uploadedAfter"] = ExpressionConverter.ConvertO(bodyuploadedAfter);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = ExpressionConverter.ConvertO(bodytype);
+                    bodypropCount++;
+                }
+
                 if (bodysnippetRequested != null)
                 {
-                    body["snippetRequested"] = ExpressionConverter.ConvertO(bodysnippetRequested);
+                    if (bodysnippetRequested != null)
+                    {
+                        body["snippetRequested"] = ExpressionConverter.ConvertO(bodysnippetRequested);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["snippetRequested"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["snippetRequested"] = true;
-                bodypropCount++;
-            }
+                if (bodysortBy != null)
+                {
+                    body["sortBy"] = ExpressionConverter.ConvertO(bodysortBy);
+                    bodypropCount++;
+                }
 
-            if (bodysortBy != null)
-            {
-                body["sortBy"] = ExpressionConverter.ConvertO(bodysortBy);
-                bodypropCount++;
-            }
+                if (bodysortDirection != null)
+                {
+                    body["sortDirection"] = ExpressionConverter.ConvertO(bodysortDirection);
+                    bodypropCount++;
+                }
 
-            if (bodysortDirection != null)
-            {
-                body["sortDirection"] = ExpressionConverter.ConvertO(bodysortDirection);
-                bodypropCount++;
-            }
+                if (bodyfileQueryFields != null)
+                {
+                    body["fileQueryFields"] = ExpressionConverter.ConvertO(bodyfileQueryFields);
+                    bodypropCount++;
+                }
 
-            if (bodyfileQueryFields != null)
-            {
-                body["fileQueryFields"] = ExpressionConverter.ConvertO(bodyfileQueryFields);
-                bodypropCount++;
-            }
+                if (bodyfolderQueryFields != null)
+                {
+                    body["folderQueryFields"] = ExpressionConverter.ConvertO(bodyfolderQueryFields);
+                    bodypropCount++;
+                }
 
-            if (bodyfolderQueryFields != null)
-            {
-                body["folderQueryFields"] = ExpressionConverter.ConvertO(bodyfolderQueryFields);
-                bodypropCount++;
-            }
+                if (bodyqueryOperator != null)
+                {
+                    body["queryOperator"] = ExpressionConverter.ConvertO(bodyqueryOperator);
+                    bodypropCount++;
+                }
 
-            if (bodyqueryOperator != null)
-            {
-                body["queryOperator"] = ExpressionConverter.ConvertO(bodyqueryOperator);
-                bodypropCount++;
-            }
+                if (bodymlt != null)
+                {
+                    body["mlt"] = ExpressionConverter.ConvertO(bodymlt);
+                    bodypropCount++;
+                }
 
-            if (bodymlt != null)
-            {
-                body["mlt"] = ExpressionConverter.ConvertO(bodymlt);
-                bodypropCount++;
-            }
+                if (bodymltt != null)
+                {
+                    body["mltt"] = ExpressionConverter.ConvertO(bodymltt);
+                    bodypropCount++;
+                }
 
-            if (bodymltt != null)
-            {
-                body["mltt"] = ExpressionConverter.ConvertO(bodymltt);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SearchV2Response>(callPayload);
+                return new ApiConnectionAction<SearchV2Response>(callPayload);
+            });
         }
     }
 
     public class EgnyteTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FileLocked(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileLocked))]
+        public IWorkflowTrigger FileLocked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FileLocked";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger FileUnlocked(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFileLocked(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FileUnlocked";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/FileLocked";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger FileUpdated(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileUnlocked))]
+        public IWorkflowTrigger FileUnlocked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FileUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger FileCreated(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFileUnlocked(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FileCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/FileUnlocked";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger ShareLinkCreated(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileUpdated))]
+        public IWorkflowTrigger FileUpdated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/ShareLinkCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger ShareLinkDeleted(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFileUpdated(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/ShareLinkDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/FileUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger FileOrFolderPermissionChange(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileCreated))]
+        public IWorkflowTrigger FileCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FileOrFolderPermissionChange";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger FileOrFolderMetadataChange(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFileCreated(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FileOrFolderMetadataChange";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/FileCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger FolderProjectAdded(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildShareLinkCreated))]
+        public IWorkflowTrigger ShareLinkCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FolderProjectAdded";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger FolderProjectUnmarked(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildShareLinkCreated(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FolderProjectUnmarked";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/ShareLinkCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger FolderProjectUpdated(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildShareLinkDeleted))]
+        public IWorkflowTrigger ShareLinkDeleted([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/FolderProjectUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger WorkflowCreated(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildShareLinkDeleted(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/WorkflowCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/ShareLinkDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger WorkflowCompleted(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileOrFolderPermissionChange))]
+        public IWorkflowTrigger FileOrFolderPermissionChange([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/WorkflowCompleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger WorkflowApprovalTaskApproved(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFileOrFolderPermissionChange(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/WorkflowApprovalTaskApproved";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook/FileOrFolderPermissionChange";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IWorkflowTrigger WorkflowApprovalTaskRejected(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileOrFolderMetadataChange))]
+        public IWorkflowTrigger FileOrFolderMetadataChange([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/WorkflowApprovalTaskRejected";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFileOrFolderMetadataChange(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhook/FileOrFolderMetadataChange";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildFolderProjectAdded))]
+        public IWorkflowTrigger FolderProjectAdded([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFolderProjectAdded(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhook/FolderProjectAdded";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildFolderProjectUnmarked))]
+        public IWorkflowTrigger FolderProjectUnmarked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFolderProjectUnmarked(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhook/FolderProjectUnmarked";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildFolderProjectUpdated))]
+        public IWorkflowTrigger FolderProjectUpdated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildFolderProjectUpdated(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhook/FolderProjectUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWorkflowCreated))]
+        public IWorkflowTrigger WorkflowCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWorkflowCreated(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhook/WorkflowCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWorkflowCompleted))]
+        public IWorkflowTrigger WorkflowCompleted([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWorkflowCompleted(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhook/WorkflowCompleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWorkflowApprovalTaskApproved))]
+        public IWorkflowTrigger WorkflowApprovalTaskApproved([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWorkflowApprovalTaskApproved(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhook/WorkflowApprovalTaskApproved";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildWorkflowApprovalTaskRejected))]
+        public IWorkflowTrigger WorkflowApprovalTaskRejected([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildWorkflowApprovalTaskRejected(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhook/WorkflowApprovalTaskRejected";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
         public IWorkflowTrigger GroupCreated(string triggerName = null, FlowRecurrence recurrence = null)
@@ -2572,94 +3672,204 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> PollCreatedFiles(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildPollCreatedFiles))]
+        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> PollCreatedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/created-files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollCreatedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> __BuildPollCreatedFiles(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/created-folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollCreatedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollCreatedFilesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/created-files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollCreatedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildPollCreatedFolders))]
+        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/deleted-files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollDeletedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> __BuildPollCreatedFolders(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/deleted-folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollDeletedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollCreatedFoldersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/created-folders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollCreatedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildPollDeletedFiles))]
+        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/renamed-files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollRenamedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> __BuildPollDeletedFiles(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/renamed-folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollRenamedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollDeletedFilesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/deleted-files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollDeletedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildPollDeletedFolders))]
+        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/moved-files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollMovedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> __BuildPollDeletedFolders(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/moved-folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollMovedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollDeletedFoldersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/deleted-folders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollDeletedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildPollRenamedFiles))]
+        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/copied-files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollCopiedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders(Expression<Func<string>> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> __BuildPollRenamedFiles(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/polling/copied-folders";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-            return new ApiConnectionTrigger<PollCopiedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollRenamedFilesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/renamed-files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollRenamedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPollRenamedFolders))]
+        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> __BuildPollRenamedFolders(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollRenamedFoldersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/renamed-folders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollRenamedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPollMovedFiles))]
+        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> __BuildPollMovedFiles(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollMovedFilesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/moved-files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollMovedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPollMovedFolders))]
+        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> __BuildPollMovedFolders(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollMovedFoldersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/moved-folders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollMovedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPollCopiedFiles))]
+        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> __BuildPollCopiedFiles(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollCopiedFilesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/copied-files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollCopiedFilesResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildPollCopiedFolders))]
+        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> __BuildPollCopiedFolders(WorkflowValue<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(folderPath, nameof(folderPath), required: true);
+            return new DeferredBodyTrigger<PollCopiedFoldersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/trigger/polling/copied-folders";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
+                return new ApiConnectionTrigger<PollCopiedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

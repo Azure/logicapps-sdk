@@ -4,20 +4,31 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class GooglebigqueryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlebigqueryip")]
-        public IBodyWorkflowAction<GetDatasetResponse> GetDataset(Expression<Func<string>> projectId, Expression<Func<string>> datasetId)
+        [WorkflowExpressionFactory(nameof(__BuildGetDataset))]
+        public IBodyWorkflowAction<GetDatasetResponse> GetDataset([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> datasetId)
         {
-            var apiCallPath = String.Format("/bigquery/v2/projects/{0}/datasets/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDatasetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDatasetResponse> __BuildGetDataset(WorkflowValue<string> projectId, WorkflowValue<string> datasetId)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            WorkflowValue.Validate(datasetId, nameof(datasetId), required: true);
+            return new DeferredBodyAction<GetDatasetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/bigquery/v2/projects/{0}/datasets/{1}", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1), ExpressionConverter.ConvertWithUrlEncoding(datasetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDatasetResponse>(callPayload);
+            });
         }
     }
 

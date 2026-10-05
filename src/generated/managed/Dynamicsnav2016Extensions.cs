@@ -4,33 +4,61 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Dynamicsnav2016Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
-        public IBodyWorkflowAction<ItemsList> GetAllSalesOrder(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> filter = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllSalesOrder))]
+        public IBodyWorkflowAction<ItemsList> GetAllSalesOrder([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> instancename, [WorkflowExpression] Func<string> salesorderservice, [WorkflowExpression] Func<string> filter = null)
         {
-            var apiCallPath = String.Format("/{0}/OData/Company('{1}')/{2}", ExpressionConverter.ConvertWithUrlEncoding(instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1), ExpressionConverter.ConvertWithUrlEncoding(salesorderservice, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ItemsList>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetAllSalesOrder(WorkflowValue<string> company, WorkflowValue<string> instancename, WorkflowValue<string> salesorderservice, WorkflowValue<string> filter = null)
+        {
+            WorkflowValue.Validate(company, nameof(company), required: true);
+            WorkflowValue.Validate(instancename, nameof(instancename), required: true);
+            WorkflowValue.Validate(salesorderservice, nameof(salesorderservice), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/OData/Company('{1}')/{2}", ExpressionConverter.ConvertWithUrlEncoding(instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1), ExpressionConverter.ConvertWithUrlEncoding(salesorderservice, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = ExpressionConverter.Convert(filter);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
-        public IBodyWorkflowAction<ItemsList> GetAllSalesLine(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> ordernumber, Expression<Func<string>> saleslineservice)
+        [WorkflowExpressionFactory(nameof(__BuildGetAllSalesLine))]
+        public IBodyWorkflowAction<ItemsList> GetAllSalesLine([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> instancename, [WorkflowExpression] Func<string> salesorderservice, [WorkflowExpression] Func<string> ordernumber, [WorkflowExpression] Func<string> saleslineservice)
         {
-            var apiCallPath = String.Format("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", ExpressionConverter.ConvertWithUrlEncoding(instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1), ExpressionConverter.ConvertWithUrlEncoding(salesorderservice, 1), ExpressionConverter.ConvertWithUrlEncoding(ordernumber, 1), ExpressionConverter.ConvertWithUrlEncoding(saleslineservice, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ItemsList>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ItemsList> __BuildGetAllSalesLine(WorkflowValue<string> company, WorkflowValue<string> instancename, WorkflowValue<string> salesorderservice, WorkflowValue<string> ordernumber, WorkflowValue<string> saleslineservice)
+        {
+            WorkflowValue.Validate(company, nameof(company), required: true);
+            WorkflowValue.Validate(instancename, nameof(instancename), required: true);
+            WorkflowValue.Validate(salesorderservice, nameof(salesorderservice), required: true);
+            WorkflowValue.Validate(ordernumber, nameof(ordernumber), required: true);
+            WorkflowValue.Validate(saleslineservice, nameof(saleslineservice), required: true);
+            return new DeferredBodyAction<ItemsList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", ExpressionConverter.ConvertWithUrlEncoding(instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1), ExpressionConverter.ConvertWithUrlEncoding(salesorderservice, 1), ExpressionConverter.ConvertWithUrlEncoding(ordernumber, 1), ExpressionConverter.ConvertWithUrlEncoding(saleslineservice, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return new ApiConnectionAction<ItemsList>(callPayload);
+            });
         }
     }
 

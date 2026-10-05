@@ -1,0 +1,58 @@
+<Project>
+  <Import Project="$(MSBuildThisFileDirectory)Microsoft.Azure.Workflows.Sdk.BuildTasks.targets" />
+
+  <Target Name="CompileWorkflowExpressions" BeforeTargets="CoreCompile"
+          DependsOnTargets="ResolveReferences;GenerateGlobalUsings;GenerateAssemblyInfo"
+          Condition="'$(DesignTimeBuild)' != 'true' and '$(IsCrossTargetingBuild)' != 'true' and '@(Compile)' != ''">
+    <PropertyGroup>
+      <_WorkflowSourceRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildProjectDirectory)', '$(IntermediateOutputPath)', 'workflow-source'))</_WorkflowSourceRoot>
+      <_WorkflowDotNet Condition="'$(DotNetHostPath)' != ''">$(DotNetHostPath)</_WorkflowDotNet>
+      <_WorkflowDotNet Condition="'$(_WorkflowDotNet)' == '' and '$(DOTNET_HOST_PATH)' != ''">$(DOTNET_HOST_PATH)</_WorkflowDotNet>
+      <_WorkflowDotNet Condition="'$(_WorkflowDotNet)' == ''">dotnet</_WorkflowDotNet>
+      <_WorkflowAllowUnsafe>false</_WorkflowAllowUnsafe>
+      <_WorkflowAllowUnsafe Condition="'$(AllowUnsafeBlocks)' == 'true'">true</_WorkflowAllowUnsafe>
+      <_WorkflowCheckOverflow>false</_WorkflowCheckOverflow>
+      <_WorkflowCheckOverflow Condition="'$(CheckForOverflowUnderflow)' == 'true'">true</_WorkflowCheckOverflow>
+      <_WorkflowSign>false</_WorkflowSign>
+      <_WorkflowSign Condition="'$(SignAssembly)' == 'true'">true</_WorkflowSign>
+      <_WorkflowDelaySign>false</_WorkflowDelaySign>
+      <_WorkflowDelaySign Condition="'$(DelaySign)' == 'true'">true</_WorkflowDelaySign>
+      <_WorkflowPublicSign>false</_WorkflowPublicSign>
+      <_WorkflowPublicSign Condition="'$(PublicSign)' == 'true'">true</_WorkflowPublicSign>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(WorkflowBuildToolPath)')" Text="The SDK workflow compiler is missing. Restore Microsoft.Azure.Workflows.Sdk with its build assets." />
+    <ItemGroup>
+      <_WorkflowOriginalCompile Include="@(Compile)" />
+      <_WorkflowReferences Include="@(ReferencePathWithRefAssemblies)" />
+      <_WorkflowReferences Include="@(ReferencePath)" Condition="'@(_WorkflowReferences)' == ''" />
+    </ItemGroup>
+    <MakeDir Directories="$(_WorkflowSourceRoot)" />
+    <Delete Files="$(_WorkflowSourceRoot)compiled-files.txt" />
+    <WriteWorkflowBuildManifest Sources="@(_WorkflowOriginalCompile)" References="@(_WorkflowReferences)"
+        Defines="$(DefineConstants)" LanguageVersion="$(LangVersion)" Nullable="$(Nullable)"
+        AllowUnsafe="$(_WorkflowAllowUnsafe)" CheckOverflow="$(_WorkflowCheckOverflow)"
+        OutputKind="$(OutputType)" Platform="$(PlatformTarget)" AssemblyName="$(AssemblyName)"
+        SignAssembly="$(_WorkflowSign)" DelaySign="$(_WorkflowDelaySign)" PublicSign="$(_WorkflowPublicSign)"
+        KeyFile="$(KeyOriginatorFile)" KeyContainer="$(KeyContainerName)"
+        ManifestPath="$(_WorkflowSourceRoot)build-manifest.json" />
+    <Exec Command="&quot;$(_WorkflowDotNet)&quot; &quot;$(WorkflowBuildToolPath)&quot; &quot;$(_WorkflowSourceRoot)build-manifest.json&quot; &quot;$(_WorkflowSourceRoot).&quot;" />
+    <ReadWorkflowCompiledFiles Sources="@(_WorkflowOriginalCompile)" ListPath="$(_WorkflowSourceRoot)compiled-files.txt">
+      <Output TaskParameter="CompiledFiles" ItemName="_WorkflowTransformedCompile" />
+    </ReadWorkflowCompiledFiles>
+    <ItemGroup>
+      <Compile Remove="@(_WorkflowOriginalCompile)" />
+      <Compile Include="@(_WorkflowTransformedCompile)" />
+      <FileWrites Include="$(_WorkflowSourceRoot)**\*" />
+    </ItemGroup>
+  </Target>
+
+  <Target Name="RestoreWorkflowCompileItems" AfterTargets="CoreCompile" Condition="'@(_WorkflowOriginalCompile)' != ''">
+    <ItemGroup>
+      <Compile Remove="@(_WorkflowTransformedCompile)" />
+      <Compile Include="@(_WorkflowOriginalCompile)" />
+      <_WorkflowOriginalCompile Remove="@(_WorkflowOriginalCompile)" />
+      <_WorkflowTransformedCompile Remove="@(_WorkflowTransformedCompile)" />
+      <_WorkflowReferences Remove="@(_WorkflowReferences)" />
+    </ItemGroup>
+  </Target>
+</Project>

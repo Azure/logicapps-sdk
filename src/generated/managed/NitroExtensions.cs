@@ -4,21 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class NitroActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nitro")]
-        public IBodyWorkflowAction<Error> TemplateSignatureRequest(Expression<Func<string>> id, Expression<Func<object>> dynamicSchema = null)
+        [WorkflowExpressionFactory(nameof(__BuildTemplateSignatureRequest))]
+        public IBodyWorkflowAction<Error> TemplateSignatureRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> dynamicSchema = null)
         {
-            var apiCallPath = String.Format("/templates/{0}/signature-requests", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(dynamicSchema);
-            return new ApiConnectionAction<Error>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Error> __BuildTemplateSignatureRequest(WorkflowValue<string> id, WorkflowValue<object> dynamicSchema = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(dynamicSchema, nameof(dynamicSchema), required: false);
+            return new DeferredBodyAction<Error>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}/signature-requests", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(dynamicSchema);
+                return new ApiConnectionAction<Error>(callPayload);
+            });
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,69 +20,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
-        public IBodyWorkflowAction<TaskListEntry> CreateTaskList(Expression<Func<string>> listtitle)
+        [WorkflowExpressionFactory(nameof(__BuildCreateTaskList))]
+        public IBodyWorkflowAction<TaskListEntry> CreateTaskList([WorkflowExpression] Func<string> listtitle)
         {
-            var apiCallPath = "/users/@me/lists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var list = new JObject();
-            var listpropCount = 0;
-            listpropCount++;
-            list["title"] = ExpressionConverter.ConvertO(listtitle);
-            if (listpropCount > 0)
-            {
-                callPayload.Body = list;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<TaskListEntry>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskListEntry> __BuildCreateTaskList(WorkflowValue<string> listtitle)
+        {
+            WorkflowValue.Validate(listtitle, nameof(listtitle), required: true);
+            return new DeferredBodyAction<TaskListEntry>(() =>
+            {
+                var apiCallPath = "/users/@me/lists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var list = new JObject();
+                var listpropCount = 0;
+                listpropCount++;
+                list["title"] = ExpressionConverter.ConvertO(listtitle);
+                if (listpropCount > 0)
+                {
+                    callPayload.Body = list;
+                }
+
+                return new ApiConnectionAction<TaskListEntry>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
-        public IBodyWorkflowAction<TaskList> ListTasks(Expression<Func<string>> taskListId)
+        [WorkflowExpressionFactory(nameof(__BuildListTasks))]
+        public IBodyWorkflowAction<TaskList> ListTasks([WorkflowExpression] Func<string> taskListId)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskList>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskList> __BuildListTasks(WorkflowValue<string> taskListId)
+        {
+            WorkflowValue.Validate(taskListId, nameof(taskListId), required: true);
+            return new DeferredBodyAction<TaskList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TaskList>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
-        public IBodyWorkflowAction<TaskObject> CraeteTask(Expression<Func<string>> taskListId, Expression<Func<string>> tasktitle, Expression<Func<string>> tasknotes = null, Expression<Func<string>> taskdue = null)
+        [WorkflowExpressionFactory(nameof(__BuildCraeteTask))]
+        public IBodyWorkflowAction<TaskObject> CraeteTask([WorkflowExpression] Func<string> taskListId, [WorkflowExpression] Func<string> tasktitle, [WorkflowExpression] Func<string> tasknotes = null, [WorkflowExpression] Func<string> taskdue = null)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            taskpropCount++;
-            task["title"] = ExpressionConverter.ConvertO(tasktitle);
-            if (tasknotes != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskObject> __BuildCraeteTask(WorkflowValue<string> taskListId, WorkflowValue<string> tasktitle, WorkflowValue<string> tasknotes = null, WorkflowValue<string> taskdue = null)
+        {
+            WorkflowValue.Validate(taskListId, nameof(taskListId), required: true);
+            WorkflowValue.Validate(tasktitle, nameof(tasktitle), required: true);
+            WorkflowValue.Validate(tasknotes, nameof(tasknotes), required: false);
+            WorkflowValue.Validate(taskdue, nameof(taskdue), required: false);
+            return new DeferredBodyAction<TaskObject>(() =>
             {
-                task["notes"] = ExpressionConverter.ConvertO(tasknotes);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
                 taskpropCount++;
-            }
+                task["title"] = ExpressionConverter.ConvertO(tasktitle);
+                if (tasknotes != null)
+                {
+                    task["notes"] = ExpressionConverter.ConvertO(tasknotes);
+                    taskpropCount++;
+                }
 
-            if (taskdue != null)
-            {
-                task["due"] = ExpressionConverter.ConvertO(taskdue);
-                taskpropCount++;
-            }
+                if (taskdue != null)
+                {
+                    task["due"] = ExpressionConverter.ConvertO(taskdue);
+                    taskpropCount++;
+                }
 
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
 
-            return new ApiConnectionAction<TaskObject>(callPayload);
+                return new ApiConnectionAction<TaskObject>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googletasks")]
-        public IBodyWorkflowAction<TaskObject> ListTask(Expression<Func<string>> taskListId, Expression<Func<string>> taskId)
+        [WorkflowExpressionFactory(nameof(__BuildListTask))]
+        public IBodyWorkflowAction<TaskObject> ListTask([WorkflowExpression] Func<string> taskListId, [WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = String.Format("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskObject>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TaskObject> __BuildListTask(WorkflowValue<string> taskListId, WorkflowValue<string> taskId)
+        {
+            WorkflowValue.Validate(taskListId, nameof(taskListId), required: true);
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<TaskObject>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1), ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TaskObject>(callPayload);
+            });
         }
     }
 
@@ -97,28 +144,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
             return new ApiConnectionTrigger<TaskListList>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<TaskList> OnNewTaskInList(Expression<Func<string>> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewTaskInList))]
+        public IBodyWorkflowTrigger<TaskList> OnNewTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger2/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInList(Expression<Func<string>> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<TaskList> __BuildOnNewTaskInList(WorkflowValue<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger3/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(taskListId, nameof(taskListId), required: true);
+            return new DeferredBodyTrigger<TaskList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<TaskList> OnDueTaskInList(Expression<Func<string>> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnCompletedTaskInList))]
+        public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/trigger4/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<TaskList> __BuildOnCompletedTaskInList(WorkflowValue<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(taskListId, nameof(taskListId), required: true);
+            return new DeferredBodyTrigger<TaskList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnDueTaskInList))]
+        public IBodyWorkflowTrigger<TaskList> OnDueTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<TaskList> __BuildOnDueTaskInList(WorkflowValue<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(taskListId, nameof(taskListId), required: true);
+            return new DeferredBodyTrigger<TaskList>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

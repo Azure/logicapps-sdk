@@ -4,220 +4,412 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AletheiaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings(Expression<Func<string>> id, Expression<Func<string>> filing = null, Expression<Func<int>> before = null)
+        [WorkflowExpressionFactory(nameof(__BuildEntityFilings))]
+        public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> filing = null, [WorkflowExpression] Func<int> before = null)
         {
-            var apiCallPath = "/EntityFilings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (filing != null)
-                callPayload.Queries["filing"] = ExpressionConverter.Convert(filing);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<EntityFilingsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<OpenForm4Response> OpenForm4(Expression<Func<string>> filingurl)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EntityFilingsResponseItem[]> __BuildEntityFilings(WorkflowValue<string> id, WorkflowValue<string> filing = null, WorkflowValue<int> before = null)
         {
-            var apiCallPath = "/OpenForm4";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
-            return new ApiConnectionAction<OpenForm4Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials(Expression<Func<string>> filingurl)
-        {
-            var apiCallPath = "/OpenCommonFinancials";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
-            return new ApiConnectionAction<OpenCommonFinancialsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities(Expression<Func<string>> term, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = "/SearchEntities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["term"] = ExpressionConverter.Convert(term);
-            callPayload.Queries["top"] = Convert.ToString(12);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<SearchEntitiesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/GetEntity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<GetEntityResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetFilingResponse> GetFiling(Expression<Func<string>> id = null, Expression<Func<string>> url = null)
-        {
-            var apiCallPath = "/GetFiling";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(filing, nameof(filing), required: false);
+            WorkflowValue.Validate(before, nameof(before), required: false);
+            return new DeferredBodyAction<EntityFilingsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/EntityFilings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (url != null)
-                callPayload.Queries["url"] = ExpressionConverter.Convert(url);
-            return new ApiConnectionAction<GetFilingResponse>(callPayload);
+                if (filing != null)
+                    callPayload.Queries["filing"] = ExpressionConverter.Convert(filing);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                return new ApiConnectionAction<EntityFilingsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions(Expression<Func<string>> issuer = null, Expression<Func<int>> owner = null, Expression<Func<int>> top = null, Expression<Func<string>> before = null, Expression<Func<int>> securitytype = null, Expression<Func<int>> transactiontype = null, Expression<Func<bool>> cascade = null)
+        [WorkflowExpressionFactory(nameof(__BuildOpenForm4))]
+        public IBodyWorkflowAction<OpenForm4Response> OpenForm4([WorkflowExpression] Func<string> filingurl)
         {
-            var apiCallPath = "/LatestTransactions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (issuer != null)
-                callPayload.Queries["issuer"] = ExpressionConverter.Convert(issuer);
-            if (owner != null)
-                callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
-            callPayload.Queries["top"] = Convert.ToString(20);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            if (securitytype != null)
-                callPayload.Queries["securitytype"] = ExpressionConverter.Convert(securitytype);
-            if (transactiontype != null)
-                callPayload.Queries["transactiontype"] = ExpressionConverter.Convert(transactiontype);
-            if (cascade != null)
-                callPayload.Queries["cascade"] = ExpressionConverter.Convert(cascade);
-            return new ApiConnectionAction<LatestTransactionsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OpenForm4Response> __BuildOpenForm4(WorkflowValue<string> filingurl)
+        {
+            WorkflowValue.Validate(filingurl, nameof(filingurl), required: true);
+            return new DeferredBodyAction<OpenForm4Response>(() =>
+            {
+                var apiCallPath = "/OpenForm4";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
+                return new ApiConnectionAction<OpenForm4Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildOpenCommonFinancials))]
+        public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials([WorkflowExpression] Func<string> filingurl)
         {
-            var apiCallPath = "/AffiliatedOwners";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OpenCommonFinancialsResponse> __BuildOpenCommonFinancials(WorkflowValue<string> filingurl)
+        {
+            WorkflowValue.Validate(filingurl, nameof(filingurl), required: true);
+            return new DeferredBodyAction<OpenCommonFinancialsResponse>(() =>
+            {
+                var apiCallPath = "/OpenCommonFinancials";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filingurl"] = ExpressionConverter.Convert(filingurl);
+                return new ApiConnectionAction<OpenCommonFinancialsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<periodInput>> period = null, Expression<Func<string>> before = null)
+        [WorkflowExpressionFactory(nameof(__BuildSearchEntities))]
+        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = "/CommonFinancials";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            if (period != null)
-                callPayload.Queries["period"] = ExpressionConverter.Convert(period);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<GetCommonFinancialsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> __BuildSearchEntities(WorkflowValue<string> term, WorkflowValue<int> top = null)
+        {
+            WorkflowValue.Validate(term, nameof(term), required: true);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<SearchEntitiesResponseItem[]>(() =>
+            {
+                var apiCallPath = "/SearchEntities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["term"] = ExpressionConverter.Convert(term);
+                callPayload.Queries["top"] = Convert.ToString(12);
+                if (top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                return new ApiConnectionAction<SearchEntitiesResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend(Expression<Func<string>> id, Expression<Func<int>> label, Expression<Func<int>> period = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetEntity))]
+        public IBodyWorkflowAction<GetEntityResponse> GetEntity([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/FinancialFactTrend";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["label"] = ExpressionConverter.Convert(label);
-            if (period != null)
-                callPayload.Queries["period"] = ExpressionConverter.Convert(period);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEntityResponse> __BuildGetEntity(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetEntityResponse>(() =>
+            {
+                var apiCallPath = "/GetEntity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<GetEntityResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls(Expression<Func<string>> company = null, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> top = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetFiling))]
+        public IBodyWorkflowAction<GetFilingResponse> GetFiling([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> url = null)
         {
-            var apiCallPath = "/SearchEarningsCalls";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (company != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetFilingResponse> __BuildGetFiling(WorkflowValue<string> id = null, WorkflowValue<string> url = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: false);
+            WorkflowValue.Validate(url, nameof(url), required: false);
+            return new DeferredBodyAction<GetFilingResponse>(() =>
+            {
+                var apiCallPath = "/GetFiling";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (url != null)
+                    callPayload.Queries["url"] = ExpressionConverter.Convert(url);
+                return new ApiConnectionAction<GetFilingResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
+        [WorkflowExpressionFactory(nameof(__BuildLatestTransactions))]
+        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions([WorkflowExpression] Func<string> issuer = null, [WorkflowExpression] Func<int> owner = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<int> securitytype = null, [WorkflowExpression] Func<int> transactiontype = null, [WorkflowExpression] Func<bool> cascade = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> __BuildLatestTransactions(WorkflowValue<string> issuer = null, WorkflowValue<int> owner = null, WorkflowValue<int> top = null, WorkflowValue<string> before = null, WorkflowValue<int> securitytype = null, WorkflowValue<int> transactiontype = null, WorkflowValue<bool> cascade = null)
+        {
+            WorkflowValue.Validate(issuer, nameof(issuer), required: false);
+            WorkflowValue.Validate(owner, nameof(owner), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            WorkflowValue.Validate(before, nameof(before), required: false);
+            WorkflowValue.Validate(securitytype, nameof(securitytype), required: false);
+            WorkflowValue.Validate(transactiontype, nameof(transactiontype), required: false);
+            WorkflowValue.Validate(cascade, nameof(cascade), required: false);
+            return new DeferredBodyAction<LatestTransactionsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/LatestTransactions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (issuer != null)
+                    callPayload.Queries["issuer"] = ExpressionConverter.Convert(issuer);
+                if (owner != null)
+                    callPayload.Queries["owner"] = ExpressionConverter.Convert(owner);
+                callPayload.Queries["top"] = Convert.ToString(20);
+                if (top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                if (securitytype != null)
+                    callPayload.Queries["securitytype"] = ExpressionConverter.Convert(securitytype);
+                if (transactiontype != null)
+                    callPayload.Queries["transactiontype"] = ExpressionConverter.Convert(transactiontype);
+                if (cascade != null)
+                    callPayload.Queries["cascade"] = ExpressionConverter.Convert(cascade);
+                return new ApiConnectionAction<LatestTransactionsResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
+        [WorkflowExpressionFactory(nameof(__BuildAffiliatedOwners))]
+        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners([WorkflowExpression] Func<string> id)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> __BuildAffiliatedOwners(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<AffiliatedOwnersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/AffiliatedOwners";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
+        [WorkflowExpressionFactory(nameof(__BuildGetCommonFinancials))]
+        public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<periodInput> period = null, [WorkflowExpression] Func<string> before = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCommonFinancialsResponse> __BuildGetCommonFinancials(WorkflowValue<string> id, WorkflowValue<periodInput> period = null, WorkflowValue<string> before = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(period, nameof(period), required: false);
+            WorkflowValue.Validate(before, nameof(before), required: false);
+            return new DeferredBodyAction<GetCommonFinancialsResponse>(() =>
+            {
+                var apiCallPath = "/CommonFinancials";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                if (period != null)
+                    callPayload.Queries["period"] = ExpressionConverter.Convert(period);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                return new ApiConnectionAction<GetCommonFinancialsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
+        [WorkflowExpressionFactory(nameof(__BuildFinancialFactTrend))]
+        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> label, [WorkflowExpression] Func<int> period = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> __BuildFinancialFactTrend(WorkflowValue<string> id, WorkflowValue<int> label, WorkflowValue<int> period = null, WorkflowValue<string> after = null, WorkflowValue<string> before = null)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(label, nameof(label), required: true);
+            WorkflowValue.Validate(period, nameof(period), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(before, nameof(before), required: false);
+            return new DeferredBodyAction<FinancialFactTrendResponseItem[]>(() =>
+            {
+                var apiCallPath = "/FinancialFactTrend";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["label"] = ExpressionConverter.Convert(label);
+                if (period != null)
+                    callPayload.Queries["period"] = ExpressionConverter.Convert(period);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
+        [WorkflowExpressionFactory(nameof(__BuildSearchEarningsCalls))]
+        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls([WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> quarter = null, [WorkflowExpression] Func<int> top = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> __BuildSearchEarningsCalls(WorkflowValue<string> company = null, WorkflowValue<int> year = null, WorkflowValue<string> quarter = null, WorkflowValue<int> top = null)
+        {
+            WorkflowValue.Validate(company, nameof(company), required: false);
+            WorkflowValue.Validate(year, nameof(year), required: false);
+            WorkflowValue.Validate(quarter, nameof(quarter), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<SearchEarningsCallsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/SearchEarningsCalls";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (company != null)
+                    callPayload.Queries["company"] = ExpressionConverter.Convert(company);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (quarter != null)
+                    callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
+                if (top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
+        [WorkflowExpressionFactory(nameof(__BuildEarningsCall))]
+        public IBodyWorkflowAction<EarningsCallResponse> EarningsCall([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> quarter = null, [WorkflowExpression] Func<int> begin = null, [WorkflowExpression] Func<int> end = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EarningsCallResponse> __BuildEarningsCall(WorkflowValue<string> company, WorkflowValue<int> year = null, WorkflowValue<string> quarter = null, WorkflowValue<int> begin = null, WorkflowValue<int> end = null)
+        {
+            WorkflowValue.Validate(company, nameof(company), required: true);
+            WorkflowValue.Validate(year, nameof(year), required: false);
+            WorkflowValue.Validate(quarter, nameof(quarter), required: false);
+            WorkflowValue.Validate(begin, nameof(begin), required: false);
+            WorkflowValue.Validate(end, nameof(end), required: false);
+            return new DeferredBodyAction<EarningsCallResponse>(() =>
+            {
+                var apiCallPath = "/EarningsCall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            if (year != null)
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (quarter != null)
+                    callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
+                if (begin != null)
+                    callPayload.Queries["begin"] = ExpressionConverter.Convert(begin);
+                if (end != null)
+                    callPayload.Queries["end"] = ExpressionConverter.Convert(end);
+                return new ApiConnectionAction<EarningsCallResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
+        [WorkflowExpressionFactory(nameof(__BuildEarningsCallHighlights))]
+        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<string> quarter, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<int> top = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> __BuildEarningsCallHighlights(WorkflowValue<string> company, WorkflowValue<int> year, WorkflowValue<string> quarter, WorkflowValue<int> category = null, WorkflowValue<int> top = null)
+        {
+            WorkflowValue.Validate(company, nameof(company), required: true);
+            WorkflowValue.Validate(year, nameof(year), required: true);
+            WorkflowValue.Validate(quarter, nameof(quarter), required: true);
+            WorkflowValue.Validate(category, nameof(category), required: false);
+            WorkflowValue.Validate(top, nameof(top), required: false);
+            return new DeferredBodyAction<EarningsCallHighlightsResponseItem[]>(() =>
+            {
+                var apiCallPath = "/EarningsCallHighlights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = ExpressionConverter.Convert(company);
                 callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (quarter != null)
                 callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(callPayload);
+                if (category != null)
+                    callPayload.Queries["category"] = ExpressionConverter.Convert(category);
+                if (top != null)
+                    callPayload.Queries["top"] = ExpressionConverter.Convert(top);
+                return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EarningsCallResponse> EarningsCall(Expression<Func<string>> company, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> begin = null, Expression<Func<int>> end = null)
+        [WorkflowExpressionFactory(nameof(__BuildCryptoQuote))]
+        public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote([WorkflowExpression] Func<string> symbol)
         {
-            var apiCallPath = "/EarningsCall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (quarter != null)
-                callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-            if (begin != null)
-                callPayload.Queries["begin"] = ExpressionConverter.Convert(begin);
-            if (end != null)
-                callPayload.Queries["end"] = ExpressionConverter.Convert(end);
-            return new ApiConnectionAction<EarningsCallResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CryptoQuoteResponse> __BuildCryptoQuote(WorkflowValue<string> symbol)
+        {
+            WorkflowValue.Validate(symbol, nameof(symbol), required: true);
+            return new DeferredBodyAction<CryptoQuoteResponse>(() =>
+            {
+                var apiCallPath = "/Crypto";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights(Expression<Func<string>> company, Expression<Func<int>> year, Expression<Func<string>> quarter, Expression<Func<int>> category = null, Expression<Func<int>> top = null)
+        [WorkflowExpressionFactory(nameof(__BuildStockData))]
+        public IBodyWorkflowAction<StockDataV2Response> StockData([WorkflowExpression] Func<string> symbol, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/EarningsCallHighlights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = ExpressionConverter.Convert(company);
-            callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            callPayload.Queries["quarter"] = ExpressionConverter.Convert(quarter);
-            if (category != null)
-                callPayload.Queries["category"] = ExpressionConverter.Convert(category);
-            if (top != null)
-                callPayload.Queries["top"] = ExpressionConverter.Convert(top);
-            return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote(Expression<Func<string>> symbol)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StockDataV2Response> __BuildStockData(WorkflowValue<string> symbol, WorkflowValue<string> fields = null)
         {
-            var apiCallPath = "/Crypto";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<StockDataV2Response> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
-        {
-            var apiCallPath = "/v2/StockData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            callPayload.Headers["Accept-Version"] = Convert.ToString(2);
-            return new ApiConnectionAction<StockDataV2Response>(callPayload);
+            WorkflowValue.Validate(symbol, nameof(symbol), required: true);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<StockDataV2Response>(() =>
+            {
+                var apiCallPath = "/v2/StockData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                callPayload.Headers["Accept-Version"] = Convert.ToString(2);
+                return new ApiConnectionAction<StockDataV2Response>(callPayload);
+            });
         }
     }
 
@@ -240,45 +432,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildInsiderTrading))]
+        public IWorkflowTrigger InsiderTrading([WorkflowExpression] Func<string> bodyissuer = null, [WorkflowExpression] Func<int> bodyowner = null, [WorkflowExpression] Func<bodytransactionTypeInput> bodytransactionType = null, [WorkflowExpression] Func<bodysecurityTypeInput> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/SubscribeToInsiderTradingWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["endpoint"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyissuer != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildInsiderTrading(WorkflowValue<string> bodyissuer = null, WorkflowValue<int> bodyowner = null, WorkflowValue<bodytransactionTypeInput> bodytransactionType = null, WorkflowValue<bodysecurityTypeInput> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodyissuer, nameof(bodyissuer), required: false);
+            WorkflowValue.Validate(bodyowner, nameof(bodyowner), required: false);
+            WorkflowValue.Validate(bodytransactionType, nameof(bodytransactionType), required: false);
+            WorkflowValue.Validate(bodysecurityType, nameof(bodysecurityType), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                body["issuer"] = ExpressionConverter.ConvertO(bodyissuer);
+                var apiCallPath = "/SubscribeToInsiderTradingWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["endpoint"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodyissuer != null)
+                {
+                    body["issuer"] = ExpressionConverter.ConvertO(bodyissuer);
+                    bodypropCount++;
+                }
 
-            if (bodyowner != null)
-            {
-                body["owner"] = ExpressionConverter.ConvertO(bodyowner);
-                bodypropCount++;
-            }
+                if (bodyowner != null)
+                {
+                    body["owner"] = ExpressionConverter.ConvertO(bodyowner);
+                    bodypropCount++;
+                }
 
-            if (bodytransactionType != null)
-            {
-                body["transactionType"] = ExpressionConverter.ConvertO(bodytransactionType);
-                bodypropCount++;
-            }
+                if (bodytransactionType != null)
+                {
+                    body["transactionType"] = ExpressionConverter.ConvertO(bodytransactionType);
+                    bodypropCount++;
+                }
 
-            if (bodysecurityType != null)
-            {
-                body["securityType"] = ExpressionConverter.ConvertO(bodysecurityType);
-                bodypropCount++;
-            }
+                if (bodysecurityType != null)
+                {
+                    body["securityType"] = ExpressionConverter.ConvertO(bodysecurityType);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

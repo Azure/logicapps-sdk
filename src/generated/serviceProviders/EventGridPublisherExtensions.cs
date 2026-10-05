@@ -5,8 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
 {
     using System;
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
@@ -14,16 +13,27 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventGridPublisher
     public class EventGridPublisherActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventGridPublisher")]
-        public IOutputWorkflowAction<JToken> PublishEvents(Expression<Func<PublishEventsInputEventsTypeItem[]>> events)
+        [WorkflowExpressionFactory(nameof(__BuildPublishEvents))]
+        public IOutputWorkflowAction<JToken> PublishEvents([WorkflowExpression] Func<PublishEventsInputEventsTypeItem[]> events)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["events"] = ExpressionConverter.ConvertO(events);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IOutputWorkflowAction<JToken> __BuildPublishEvents(WorkflowValue<PublishEventsInputEventsTypeItem[]> events)
+        {
+            WorkflowValue.Validate(events, nameof(events), required: true);
+            return new DeferredOutputAction<JToken>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["events"] = ExpressionConverter.ConvertO(events);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventGridPublisher", operationId: "publishEvents", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            });
         }
     }
 

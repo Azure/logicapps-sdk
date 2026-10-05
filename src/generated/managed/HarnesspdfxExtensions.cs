@@ -4,20 +4,30 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harnesspdfx
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class HarnesspdfxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "harnesspdfx")]
-        public IBodyWorkflowAction<PostPdfResponse> PostPdf(Expression<Func<object>> fileToProcess = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostPdf))]
+        public IBodyWorkflowAction<PostPdfResponse> PostPdf([WorkflowExpression] Func<object> fileToProcess = null)
         {
-            var apiCallPath = "/pdfs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PostPdfResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostPdfResponse> __BuildPostPdf(WorkflowValue<object> fileToProcess = null)
+        {
+            WorkflowValue.Validate(fileToProcess, nameof(fileToProcess), required: false);
+            return new DeferredBodyAction<PostPdfResponse>(() =>
+            {
+                var apiCallPath = "/pdfs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<PostPdfResponse>(callPayload);
+            });
         }
     }
 

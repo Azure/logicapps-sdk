@@ -4,63 +4,77 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AzurecommunicationservicessmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurecommunicationservicessms")]
-        public IBodyWorkflowAction<SendSMSv2Response> SendSMSv2(Expression<Func<string>> bodyfromPhoneNumber, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodysmsSendOptionsdeliveryReport = null, Expression<Func<string>> bodysmsSendOptionstag = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendSMSv2))]
+        public IBodyWorkflowAction<SendSMSv2Response> SendSMSv2([WorkflowExpression] Func<string> bodyfromPhoneNumber, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodysmsSendOptionsdeliveryReport = null, [WorkflowExpression] Func<string> bodysmsSendOptionstag = null)
         {
-            var apiCallPath = "/v2/sms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = ExpressionConverter.ConvertO(bodyfromPhoneNumber);
-            bodypropCount++;
-            body["smsRecipients"] = ExpressionConverter.ConvertO(bodyrecipients);
-            bodypropCount++;
-            body["message"] = ExpressionConverter.ConvertO(bodymessage);
-            var smsSendOptionsObject = new JObject();
-            var smsSendOptionsObjectpropCount = 0;
-            if (bodysmsSendOptionsdeliveryReport != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendSMSv2Response> __BuildSendSMSv2(WorkflowValue<string> bodyfromPhoneNumber, WorkflowValue<bodyrecipientsInputItem[]> bodyrecipients, WorkflowValue<string> bodymessage, WorkflowValue<bool> bodysmsSendOptionsdeliveryReport = null, WorkflowValue<string> bodysmsSendOptionstag = null)
+        {
+            WorkflowValue.Validate(bodyfromPhoneNumber, nameof(bodyfromPhoneNumber), required: true);
+            WorkflowValue.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: true);
+            WorkflowValue.Validate(bodysmsSendOptionsdeliveryReport, nameof(bodysmsSendOptionsdeliveryReport), required: false);
+            WorkflowValue.Validate(bodysmsSendOptionstag, nameof(bodysmsSendOptionstag), required: false);
+            return new DeferredBodyAction<SendSMSv2Response>(() =>
             {
+                var apiCallPath = "/v2/sms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["from"] = ExpressionConverter.ConvertO(bodyfromPhoneNumber);
+                bodypropCount++;
+                body["smsRecipients"] = ExpressionConverter.ConvertO(bodyrecipients);
+                bodypropCount++;
+                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                var smsSendOptionsObject = new JObject();
+                var smsSendOptionsObjectpropCount = 0;
                 if (bodysmsSendOptionsdeliveryReport != null)
                 {
-                    smsSendOptionsObject["enableDeliveryReport"] = ExpressionConverter.ConvertO(bodysmsSendOptionsdeliveryReport);
+                    if (bodysmsSendOptionsdeliveryReport != null)
+                    {
+                        smsSendOptionsObject["enableDeliveryReport"] = ExpressionConverter.ConvertO(bodysmsSendOptionsdeliveryReport);
+                        smsSendOptionsObjectpropCount++;
+                    }
+
+                    smsSendOptionsObjectpropCount++;
+                }
+                else
+                {
+                    smsSendOptionsObject["enableDeliveryReport"] = false;
                     smsSendOptionsObjectpropCount++;
                 }
 
-                smsSendOptionsObjectpropCount++;
-            }
-            else
-            {
-                smsSendOptionsObject["enableDeliveryReport"] = false;
-                smsSendOptionsObjectpropCount++;
-            }
+                if (bodysmsSendOptionstag != null)
+                {
+                    smsSendOptionsObject["tag"] = ExpressionConverter.ConvertO(bodysmsSendOptionstag);
+                    smsSendOptionsObjectpropCount++;
+                }
 
-            if (bodysmsSendOptionstag != null)
-            {
-                smsSendOptionsObject["tag"] = ExpressionConverter.ConvertO(bodysmsSendOptionstag);
-                smsSendOptionsObjectpropCount++;
-            }
+                if (smsSendOptionsObjectpropCount > 0)
+                {
+                    body["smsSendOptions"] = smsSendOptionsObject;
+                    bodypropCount++;
+                }
 
-            if (smsSendOptionsObjectpropCount > 0)
-            {
-                body["smsSendOptions"] = smsSendOptionsObject;
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSMSv2Response>(callPayload);
+                return new ApiConnectionAction<SendSMSv2Response>(callPayload);
+            });
         }
     }
 

@@ -4,42 +4,63 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<VirusScanResult> ScanFile(Expression<Func<string>> inputFile)
+        [WorkflowExpressionFactory(nameof(__BuildScanFile))]
+        public IBodyWorkflowAction<VirusScanResult> ScanFile([WorkflowExpression] Func<string> inputFile)
         {
-            var apiCallPath = "/virus/scan/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VirusScanResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<VirusScanResult> __BuildScanFile(WorkflowValue<string> inputFile)
+        {
+            WorkflowValue.Validate(inputFile, nameof(inputFile), required: true);
+            return new DeferredBodyAction<VirusScanResult>(() =>
+            {
+                var apiCallPath = "/virus/scan/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<VirusScanResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputurl = null)
+        [WorkflowExpressionFactory(nameof(__BuildScanWebsite))]
+        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite([WorkflowExpression] Func<string> inputurl = null)
         {
-            var apiCallPath = "/virus/scan/website";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputurl != null)
-            {
-                input["Url"] = ExpressionConverter.ConvertO(inputurl);
-                inputpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (inputpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<WebsiteScanResult> __BuildScanWebsite(WorkflowValue<string> inputurl = null)
+        {
+            WorkflowValue.Validate(inputurl, nameof(inputurl), required: false);
+            return new DeferredBodyAction<WebsiteScanResult>(() =>
             {
-                callPayload.Body = input;
-            }
+                var apiCallPath = "/virus/scan/website";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputurl != null)
+                {
+                    input["Url"] = ExpressionConverter.ConvertO(inputurl);
+                    inputpropCount++;
+                }
 
-            return new ApiConnectionAction<WebsiteScanResult>(callPayload);
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+
+                return new ApiConnectionAction<WebsiteScanResult>(callPayload);
+            });
         }
     }
 

@@ -4,82 +4,136 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureadip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AzureadipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskUserResult> GetRiskUser(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetRiskUser))]
+        public IBodyWorkflowAction<GetRiskUserResult> GetRiskUser([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/beta/riskyUsers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRiskUserResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRiskUserResult> __BuildGetRiskUser(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetRiskUserResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRiskUserResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction ConfirmRiskUser(Expression<Func<string[]>> bodyuserIds = null)
+        [WorkflowExpressionFactory(nameof(__BuildConfirmRiskUser))]
+        public IWorkflowAction ConfirmRiskUser([WorkflowExpression] Func<string[]> bodyuserIds = null)
         {
-            var apiCallPath = "/beta/riskyUsers/confirmCompromised";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserIds != null)
-            {
-                body["userIds"] = ExpressionConverter.ConvertO(bodyuserIds);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildConfirmRiskUser(WorkflowValue<string[]> bodyuserIds = null)
+        {
+            WorkflowValue.Validate(bodyuserIds, nameof(bodyuserIds), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/beta/riskyUsers/confirmCompromised";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserIds != null)
+                {
+                    body["userIds"] = ExpressionConverter.ConvertO(bodyuserIds);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskDetection> RiskDetections(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRiskDetections))]
+        public IBodyWorkflowAction<GetRiskDetection> RiskDetections([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/beta/riskDetections/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRiskDetection>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRiskDetection> __BuildRiskDetections(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetRiskDetection>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/riskDetections/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRiskDetection>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IWorkflowAction DismissRiskUser(Expression<Func<string[]>> bodyuserIds = null)
+        [WorkflowExpressionFactory(nameof(__BuildDismissRiskUser))]
+        public IWorkflowAction DismissRiskUser([WorkflowExpression] Func<string[]> bodyuserIds = null)
         {
-            var apiCallPath = "/beta/riskyUsers/dismiss";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserIds != null)
-            {
-                body["userIds"] = ExpressionConverter.ConvertO(bodyuserIds);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDismissRiskUser(WorkflowValue<string[]> bodyuserIds = null)
+        {
+            WorkflowValue.Validate(bodyuserIds, nameof(bodyuserIds), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/beta/riskyUsers/dismiss";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserIds != null)
+                {
+                    body["userIds"] = ExpressionConverter.ConvertO(bodyuserIds);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureadip")]
-        public IBodyWorkflowAction<GetRiskHistory> GetRiskUserHistory(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetRiskUserHistory))]
+        public IBodyWorkflowAction<GetRiskHistory> GetRiskUserHistory([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = String.Format("/beta/riskyUsers/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRiskHistory>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRiskHistory> __BuildGetRiskUserHistory(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<GetRiskHistory>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/beta/riskyUsers/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetRiskHistory>(callPayload);
+            });
         }
     }
 

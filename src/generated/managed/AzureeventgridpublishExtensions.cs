@@ -4,21 +4,31 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AzureeventgridpublishActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureeventgridpublish")]
-        public IWorkflowAction PublishEvent(Expression<Func<bodyInputItem[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildPublishEvent))]
+        public IWorkflowAction PublishEvent([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = "/eventGrid/api/events";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPublishEvent(WorkflowValue<bodyInputItem[]> body = null)
+        {
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/eventGrid/api/events";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

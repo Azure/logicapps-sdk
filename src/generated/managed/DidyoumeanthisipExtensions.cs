@@ -4,21 +4,31 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Didyoumeanthisip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DidyoumeanthisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "didyoumeanthisip")]
-        public IBodyWorkflowAction<CheckResponse> Check(Expression<Func<string>> q)
+        [WorkflowExpressionFactory(nameof(__BuildCheck))]
+        public IBodyWorkflowAction<CheckResponse> Check([WorkflowExpression] Func<string> q)
         {
-            var apiCallPath = "/did_you_mean_this";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            return new ApiConnectionAction<CheckResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CheckResponse> __BuildCheck(WorkflowValue<string> q)
+        {
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            return new DeferredBodyAction<CheckResponse>(() =>
+            {
+                var apiCallPath = "/did_you_mean_this";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                return new ApiConnectionAction<CheckResponse>(callPayload);
+            });
         }
     }
 

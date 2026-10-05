@@ -4,66 +4,91 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class EnveloopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
-        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodytemplateVariablesInputItem[]>> bodytemplateVariables = null)
+        [WorkflowExpressionFactory(nameof(__BuildMessage))]
+        public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> bodytemplate = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodytemplateVariablesInputItem[]> bodytemplateVariables = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytemplate != null)
-            {
-                body["template"] = ExpressionConverter.ConvertO(bodytemplate);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyto != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MessagePostResponse> __BuildMessage(WorkflowValue<string> bodytemplate = null, WorkflowValue<string> bodyto = null, WorkflowValue<string> bodyfrom = null, WorkflowValue<string> bodysubject = null, WorkflowValue<bodytemplateVariablesInputItem[]> bodytemplateVariables = null)
+        {
+            WorkflowValue.Validate(bodytemplate, nameof(bodytemplate), required: false);
+            WorkflowValue.Validate(bodyto, nameof(bodyto), required: false);
+            WorkflowValue.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            WorkflowValue.Validate(bodysubject, nameof(bodysubject), required: false);
+            WorkflowValue.Validate(bodytemplateVariables, nameof(bodytemplateVariables), required: false);
+            return new DeferredBodyAction<MessagePostResponse>(() =>
             {
-                body["to"] = ExpressionConverter.ConvertO(bodyto);
-                bodypropCount++;
-            }
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytemplate != null)
+                {
+                    body["template"] = ExpressionConverter.ConvertO(bodytemplate);
+                    bodypropCount++;
+                }
 
-            if (bodyfrom != null)
-            {
-                body["from"] = ExpressionConverter.ConvertO(bodyfrom);
-                bodypropCount++;
-            }
+                if (bodyto != null)
+                {
+                    body["to"] = ExpressionConverter.ConvertO(bodyto);
+                    bodypropCount++;
+                }
 
-            if (bodysubject != null)
-            {
-                body["subject"] = ExpressionConverter.ConvertO(bodysubject);
-                bodypropCount++;
-            }
+                if (bodyfrom != null)
+                {
+                    body["from"] = ExpressionConverter.ConvertO(bodyfrom);
+                    bodypropCount++;
+                }
 
-            if (bodytemplateVariables != null)
-            {
-                body["templateVariables"] = ExpressionConverter.ConvertO(bodytemplateVariables);
-                bodypropCount++;
-            }
+                if (bodysubject != null)
+                {
+                    body["subject"] = ExpressionConverter.ConvertO(bodysubject);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodytemplateVariables != null)
+                {
+                    body["templateVariables"] = ExpressionConverter.ConvertO(bodytemplateVariables);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MessagePostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MessagePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateName)
+        [WorkflowExpressionFactory(nameof(__BuildTemplateGet))]
+        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> templateName)
         {
-            var apiCallPath = String.Format("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TemplateGetResponse> __BuildTemplateGet(WorkflowValue<string> templateName)
+        {
+            WorkflowValue.Validate(templateName, nameof(templateName), required: true);
+            return new DeferredBodyAction<TemplateGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/templates/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            });
         }
     }
 

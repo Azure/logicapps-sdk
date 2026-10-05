@@ -4,80 +4,156 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivebarcode
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CloudmersivebarcodeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<BarcodeLookupResponse> BarcodeLookupEanLookup(Expression<Func<string>> value = null)
+        [WorkflowExpressionFactory(nameof(__BuildBarcodeLookupEanLookup))]
+        public IBodyWorkflowAction<BarcodeLookupResponse> BarcodeLookupEanLookup([WorkflowExpression] Func<string> value = null)
         {
-            var apiCallPath = "/barcode/lookup/ean";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<BarcodeLookupResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BarcodeLookupResponse> __BuildBarcodeLookupEanLookup(WorkflowValue<string> value = null)
+        {
+            WorkflowValue.Validate(value, nameof(value), required: false);
+            return new DeferredBodyAction<BarcodeLookupResponse>(() =>
+            {
+                var apiCallPath = "/barcode/lookup/ean";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(value);
+                return new ApiConnectionAction<BarcodeLookupResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<BarcodeScanResult> BarcodeScanImage(Expression<Func<object>> imageFile)
+        [WorkflowExpressionFactory(nameof(__BuildBarcodeScanImage))]
+        public IBodyWorkflowAction<BarcodeScanResult> BarcodeScanImage([WorkflowExpression] Func<object> imageFile)
         {
-            var apiCallPath = "/barcode/scan/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BarcodeScanResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<BarcodeScanResult> __BuildBarcodeScanImage(WorkflowValue<object> imageFile)
+        {
+            WorkflowValue.Validate(imageFile, nameof(imageFile), required: true);
+            return new DeferredBodyAction<BarcodeScanResult>(() =>
+            {
+                var apiCallPath = "/barcode/scan/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<BarcodeScanResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string> GenerateBarcodeQRCode(Expression<Func<string>> value = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateBarcodeQRCode))]
+        public IBodyWorkflowAction<string> GenerateBarcodeQRCode([WorkflowExpression] Func<string> value = null)
         {
-            var apiCallPath = "/barcode/generate/qrcode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGenerateBarcodeQRCode(WorkflowValue<string> value = null)
+        {
+            WorkflowValue.Validate(value, nameof(value), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/barcode/generate/qrcode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(value);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string> GenerateBarcodeUPCA(Expression<Func<string>> value = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateBarcodeUPCA))]
+        public IBodyWorkflowAction<string> GenerateBarcodeUPCA([WorkflowExpression] Func<string> value = null)
         {
-            var apiCallPath = "/barcode/generate/upc-a";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGenerateBarcodeUPCA(WorkflowValue<string> value = null)
+        {
+            WorkflowValue.Validate(value, nameof(value), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/barcode/generate/upc-a";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(value);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string> GenerateBarcodeUPCE(Expression<Func<string>> value = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateBarcodeUPCE))]
+        public IBodyWorkflowAction<string> GenerateBarcodeUPCE([WorkflowExpression] Func<string> value = null)
         {
-            var apiCallPath = "/barcode/generate/upc-e";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGenerateBarcodeUPCE(WorkflowValue<string> value = null)
+        {
+            WorkflowValue.Validate(value, nameof(value), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/barcode/generate/upc-e";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(value);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string> GenerateBarcodeEAN13(Expression<Func<string>> value = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateBarcodeEAN13))]
+        public IBodyWorkflowAction<string> GenerateBarcodeEAN13([WorkflowExpression] Func<string> value = null)
         {
-            var apiCallPath = "/barcode/generate/ean-13";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGenerateBarcodeEAN13(WorkflowValue<string> value = null)
+        {
+            WorkflowValue.Validate(value, nameof(value), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/barcode/generate/ean-13";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(value);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivebarcode")]
-        public IBodyWorkflowAction<string> GenerateBarcodeEAN8(Expression<Func<string>> value = null)
+        [WorkflowExpressionFactory(nameof(__BuildGenerateBarcodeEAN8))]
+        public IBodyWorkflowAction<string> GenerateBarcodeEAN8([WorkflowExpression] Func<string> value = null)
         {
-            var apiCallPath = "/barcode/generate/ean-8";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(value);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGenerateBarcodeEAN8(WorkflowValue<string> value = null)
+        {
+            WorkflowValue.Validate(value, nameof(value), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/barcode/generate/ean-8";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(value);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

@@ -4,699 +4,1238 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class StrategicportfoliomanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Item[]> EntityTypesGetEntityTypes(Expression<Func<string>> siteUrl)
+        [WorkflowExpressionFactory(nameof(__BuildEntityTypesGetEntityTypes))]
+        public IBodyWorkflowAction<Item[]> EntityTypesGetEntityTypes([WorkflowExpression] Func<string> siteUrl)
         {
-            var apiCallPath = "/EntityTypes/GetEntityTypes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Item[]> __BuildEntityTypesGetEntityTypes(WorkflowValue<string> siteUrl)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            return new DeferredBodyAction<Item[]>(() =>
+            {
+                var apiCallPath = "/EntityTypes/GetEntityTypes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                return new ApiConnectionAction<Item[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesCreateEntityNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityTypeUid, Expression<Func<string>> entityName)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesCreateEntityNoRetry))]
+        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesCreateEntityNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityTypeUid, [WorkflowExpression] Func<string> entityName)
         {
-            var apiCallPath = "/FinancialEntities/CreateEntityNoRetry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityTypeUid"] = ExpressionConverter.Convert(entityTypeUid);
-            callPayload.Queries["entityName"] = ExpressionConverter.Convert(entityName);
-            return new ApiConnectionAction<CallResultWithData>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallResultWithData> __BuildFinancialEntitiesCreateEntityNoRetry(WorkflowValue<string> siteUrl, WorkflowValue<string> entityTypeUid, WorkflowValue<string> entityName)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityTypeUid, nameof(entityTypeUid), required: true);
+            WorkflowValue.Validate(entityName, nameof(entityName), required: true);
+            return new DeferredBodyAction<CallResultWithData>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/CreateEntityNoRetry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityTypeUid"] = ExpressionConverter.Convert(entityTypeUid);
+                callPayload.Queries["entityName"] = ExpressionConverter.Convert(entityName);
+                return new ApiConnectionAction<CallResultWithData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Entity[]> FinancialEntitiesGetAllEntities(Expression<Func<string>> siteUrl, Expression<Func<string>> filter = null, Expression<Func<string>> selectColumns = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetAllEntities))]
+        public IBodyWorkflowAction<Entity[]> FinancialEntitiesGetAllEntities([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            var apiCallPath = "/FinancialEntities/GetAllEntities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
-            return new ApiConnectionAction<Entity[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Entity[]> __BuildFinancialEntitiesGetAllEntities(WorkflowValue<string> siteUrl, WorkflowValue<string> filter = null, WorkflowValue<string> selectColumns = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(selectColumns, nameof(selectColumns), required: false);
+            return new DeferredBodyAction<Entity[]>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetAllEntities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                if (filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (selectColumns != null)
+                    callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
+                return new ApiConnectionAction<Entity[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetAllEntitiesNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> filter = null, Expression<Func<string>> selectColumns = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetAllEntitiesNoRetry))]
+        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetAllEntitiesNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            var apiCallPath = "/FinancialEntities/GetAllEntitiesNoRetry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
-            return new ApiConnectionAction<CallResultWithData>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallResultWithData> __BuildFinancialEntitiesGetAllEntitiesNoRetry(WorkflowValue<string> siteUrl, WorkflowValue<string> filter = null, WorkflowValue<string> selectColumns = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            WorkflowValue.Validate(selectColumns, nameof(selectColumns), required: false);
+            return new DeferredBodyAction<CallResultWithData>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetAllEntitiesNoRetry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                if (filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                if (selectColumns != null)
+                    callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
+                return new ApiConnectionAction<CallResultWithData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Entity> FinancialEntitiesGetEntity(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> selectColumns = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetEntity))]
+        public IBodyWorkflowAction<Entity> FinancialEntitiesGetEntity([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            var apiCallPath = "/FinancialEntities/GetEntity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
-            return new ApiConnectionAction<Entity>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Entity> __BuildFinancialEntitiesGetEntity(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> selectColumns = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(selectColumns, nameof(selectColumns), required: false);
+            return new DeferredBodyAction<Entity>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetEntity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                if (selectColumns != null)
+                    callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
+                return new ApiConnectionAction<Entity>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> selectColumns = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetEntityNoRetry))]
+        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> selectColumns = null)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityNoRetry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (selectColumns != null)
-                callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
-            return new ApiConnectionAction<CallResultWithData>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallResultWithData> __BuildFinancialEntitiesGetEntityNoRetry(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> selectColumns = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(selectColumns, nameof(selectColumns), required: false);
+            return new DeferredBodyAction<CallResultWithData>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityNoRetry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                if (selectColumns != null)
+                    callPayload.Queries["selectColumns"] = ExpressionConverter.Convert(selectColumns);
+                return new ApiConnectionAction<CallResultWithData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Item[]> FinancialEntitiesGetEntityFields(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetEntityFields))]
+        public IBodyWorkflowAction<Item[]> FinancialEntitiesGetEntityFields([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityFields";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Item[]> __BuildFinancialEntitiesGetEntityFields(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            return new DeferredBodyAction<Item[]>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityFields";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                return new ApiConnectionAction<Item[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityFieldValuesODataNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> filter = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetEntityFieldValuesODataNoRetry))]
+        public IBodyWorkflowAction<CallResultWithData> FinancialEntitiesGetEntityFieldValuesODataNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> filter = null)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityFieldValuesODataNoRetry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (filter != null)
-                callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
-            return new ApiConnectionAction<CallResultWithData>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallResultWithData> __BuildFinancialEntitiesGetEntityFieldValuesODataNoRetry(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> filter = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(filter, nameof(filter), required: false);
+            return new DeferredBodyAction<CallResultWithData>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityFieldValuesODataNoRetry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                if (filter != null)
+                    callPayload.Queries["filter"] = ExpressionConverter.Convert(filter);
+                return new ApiConnectionAction<CallResultWithData>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<FieldValue[]> FinancialEntitiesGetEntityFieldValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetEntityFieldValues))]
+        public IBodyWorkflowAction<FieldValue[]> FinancialEntitiesGetEntityFieldValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityFieldValues";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            return new ApiConnectionAction<FieldValue[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FieldValue[]> __BuildFinancialEntitiesGetEntityFieldValues(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            return new DeferredBodyAction<FieldValue[]>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityFieldValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                return new ApiConnectionAction<FieldValue[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<FieldValue> FinancialEntitiesGetEntityFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> fieldIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetEntityFieldValue))]
+        public IBodyWorkflowAction<FieldValue> FinancialEntitiesGetEntityFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> fieldIdentifier)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityFieldValue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            return new ApiConnectionAction<FieldValue>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FieldValue> __BuildFinancialEntitiesGetEntityFieldValue(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> fieldIdentifier)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
+            return new DeferredBodyAction<FieldValue>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
+                return new ApiConnectionAction<FieldValue>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<bool> FinancialEntitiesExecuteStageValidation(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesExecuteStageValidation))]
+        public IBodyWorkflowAction<bool> FinancialEntitiesExecuteStageValidation([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> stageId = null)
         {
-            var apiCallPath = "/FinancialEntities/ExecuteStageValidation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
-            return new ApiConnectionAction<bool>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<bool> __BuildFinancialEntitiesExecuteStageValidation(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> stageId = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(stageId, nameof(stageId), required: false);
+            return new DeferredBodyAction<bool>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/ExecuteStageValidation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                if (stageId != null)
+                    callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+                return new ApiConnectionAction<bool>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldValueNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> fieldIdentifier, Expression<Func<string>> value)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesSetEntityFieldValueNoRetry))]
+        public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldValueNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> fieldIdentifier, [WorkflowExpression] Func<string> value)
         {
-            var apiCallPath = "/FinancialEntities/SetEntityFieldValueNoRetry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction<CallResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallResult> __BuildFinancialEntitiesSetEntityFieldValueNoRetry(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> fieldIdentifier, WorkflowValue<string> value)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            return new DeferredBodyAction<CallResult>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/SetEntityFieldValueNoRetry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                return new ApiConnectionAction<CallResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldsValuesNoRetry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<EntityFieldValuePair[]>> fieldValues = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesSetEntityFieldsValuesNoRetry))]
+        public IBodyWorkflowAction<CallResult> FinancialEntitiesSetEntityFieldsValuesNoRetry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<EntityFieldValuePair[]> fieldValues = null)
         {
-            var apiCallPath = "/FinancialEntities/SetEntityFieldsValuesNoRetry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Body = ExpressionConverter.ConvertO(fieldValues);
-            return new ApiConnectionAction<CallResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallResult> __BuildFinancialEntitiesSetEntityFieldsValuesNoRetry(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<EntityFieldValuePair[]> fieldValues = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(fieldValues, nameof(fieldValues), required: false);
+            return new DeferredBodyAction<CallResult>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/SetEntityFieldsValuesNoRetry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                callPayload.Body = ExpressionConverter.ConvertO(fieldValues);
+                return new ApiConnectionAction<CallResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CustomFieldValueCreationInformation> FinancialEntitiesGetFinancialCustomFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<string>> fieldIdentifier)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetFinancialCustomFieldValue))]
+        public IBodyWorkflowAction<CustomFieldValueCreationInformation> FinancialEntitiesGetFinancialCustomFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<string> fieldIdentifier)
         {
-            var apiCallPath = "/FinancialEntities/GetFinancialCustomFieldValue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            return new ApiConnectionAction<CustomFieldValueCreationInformation>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CustomFieldValueCreationInformation> __BuildFinancialEntitiesGetFinancialCustomFieldValue(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> eftId, WorkflowValue<string> fdId, WorkflowValue<string> fnId, WorkflowValue<string> centerId, WorkflowValue<string> fieldIdentifier)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(eftId, nameof(eftId), required: true);
+            WorkflowValue.Validate(fdId, nameof(fdId), required: true);
+            WorkflowValue.Validate(fnId, nameof(fnId), required: true);
+            WorkflowValue.Validate(centerId, nameof(centerId), required: true);
+            WorkflowValue.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
+            return new DeferredBodyAction<CustomFieldValueCreationInformation>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetFinancialCustomFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
+                callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
+                callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
+                callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
+                callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
+                return new ApiConnectionAction<CustomFieldValueCreationInformation>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldValue(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<string>> fieldIdentifier, Expression<Func<string>> value)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesSetCustomFinancialFieldValue))]
+        public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldValue([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<string> fieldIdentifier, [WorkflowExpression] Func<string> value)
         {
-            var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldValue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
-            callPayload.Queries["value"] = ExpressionConverter.Convert(value);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildFinancialEntitiesSetCustomFinancialFieldValue(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> eftId, WorkflowValue<string> fdId, WorkflowValue<string> fnId, WorkflowValue<string> centerId, WorkflowValue<string> fieldIdentifier, WorkflowValue<string> value)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(eftId, nameof(eftId), required: true);
+            WorkflowValue.Validate(fdId, nameof(fdId), required: true);
+            WorkflowValue.Validate(fnId, nameof(fnId), required: true);
+            WorkflowValue.Validate(centerId, nameof(centerId), required: true);
+            WorkflowValue.Validate(fieldIdentifier, nameof(fieldIdentifier), required: true);
+            WorkflowValue.Validate(value, nameof(value), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldValue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
+                callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
+                callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
+                callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
+                callPayload.Queries["fieldIdentifier"] = ExpressionConverter.Convert(fieldIdentifier);
+                callPayload.Queries["value"] = ExpressionConverter.Convert(value);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldsValues(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> eftId, Expression<Func<string>> fdId, Expression<Func<string>> fnId, Expression<Func<string>> centerId, Expression<Func<FinancialFieldValuePair[]>> fieldValues = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesSetCustomFinancialFieldsValues))]
+        public IWorkflowAction FinancialEntitiesSetCustomFinancialFieldsValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> eftId, [WorkflowExpression] Func<string> fdId, [WorkflowExpression] Func<string> fnId, [WorkflowExpression] Func<string> centerId, [WorkflowExpression] Func<FinancialFieldValuePair[]> fieldValues = null)
         {
-            var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldsValues";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
-            callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
-            callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
-            callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
-            callPayload.Body = ExpressionConverter.ConvertO(fieldValues);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildFinancialEntitiesSetCustomFinancialFieldsValues(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> eftId, WorkflowValue<string> fdId, WorkflowValue<string> fnId, WorkflowValue<string> centerId, WorkflowValue<FinancialFieldValuePair[]> fieldValues = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(eftId, nameof(eftId), required: true);
+            WorkflowValue.Validate(fdId, nameof(fdId), required: true);
+            WorkflowValue.Validate(fnId, nameof(fnId), required: true);
+            WorkflowValue.Validate(centerId, nameof(centerId), required: true);
+            WorkflowValue.Validate(fieldValues, nameof(fieldValues), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/FinancialEntities/SetCustomFinancialFieldsValues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                callPayload.Queries["eftId"] = ExpressionConverter.Convert(eftId);
+                callPayload.Queries["fdId"] = ExpressionConverter.Convert(fdId);
+                callPayload.Queries["fnId"] = ExpressionConverter.Convert(fnId);
+                callPayload.Queries["centerId"] = ExpressionConverter.Convert(centerId);
+                callPayload.Body = ExpressionConverter.ConvertO(fieldValues);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Resource[]> FinancialEntitiesGetEntityResources(Expression<Func<string>> siteUrl, Expression<Func<string>> entityUid)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetEntityResources))]
+        public IBodyWorkflowAction<Resource[]> FinancialEntitiesGetEntityResources([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityUid)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityResources";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityUid"] = ExpressionConverter.Convert(entityUid);
-            return new ApiConnectionAction<Resource[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Resource[]> __BuildFinancialEntitiesGetEntityResources(WorkflowValue<string> siteUrl, WorkflowValue<string> entityUid)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityUid, nameof(entityUid), required: true);
+            return new DeferredBodyAction<Resource[]>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityResources";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityUid"] = ExpressionConverter.Convert(entityUid);
+                return new ApiConnectionAction<Resource[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<string> FinancialEntitiesAddEntityResource(Expression<Func<string>> siteUrl, Expression<Func<string>> entityUid, Expression<Func<string>> resourceUid)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesAddEntityResource))]
+        public IBodyWorkflowAction<string> FinancialEntitiesAddEntityResource([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityUid, [WorkflowExpression] Func<string> resourceUid)
         {
-            var apiCallPath = "/FinancialEntities/AddEntityResource";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityUid"] = ExpressionConverter.Convert(entityUid);
-            callPayload.Queries["resourceUid"] = ExpressionConverter.Convert(resourceUid);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildFinancialEntitiesAddEntityResource(WorkflowValue<string> siteUrl, WorkflowValue<string> entityUid, WorkflowValue<string> resourceUid)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityUid, nameof(entityUid), required: true);
+            WorkflowValue.Validate(resourceUid, nameof(resourceUid), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/AddEntityResource";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityUid"] = ExpressionConverter.Convert(entityUid);
+                callPayload.Queries["resourceUid"] = ExpressionConverter.Convert(resourceUid);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction FinancialEntitiesExecuteStageTransition(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> stageId = null)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesExecuteStageTransition))]
+        public IWorkflowAction FinancialEntitiesExecuteStageTransition([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> stageId = null)
         {
-            var apiCallPath = "/FinancialEntities/ExecuteStageTransition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            if (stageId != null)
-                callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildFinancialEntitiesExecuteStageTransition(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> stageId = null)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(stageId, nameof(stageId), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/FinancialEntities/ExecuteStageTransition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                if (stageId != null)
+                    callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<EntityHistoryEntry[]> FinancialEntitiesGetEntityHistoryEntries(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesGetEntityHistoryEntries))]
+        public IBodyWorkflowAction<EntityHistoryEntry[]> FinancialEntitiesGetEntityHistoryEntries([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId)
         {
-            var apiCallPath = "/FinancialEntities/GetEntityHistoryEntries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            return new ApiConnectionAction<EntityHistoryEntry[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EntityHistoryEntry[]> __BuildFinancialEntitiesGetEntityHistoryEntries(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            return new DeferredBodyAction<EntityHistoryEntry[]>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/GetEntityHistoryEntries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                return new ApiConnectionAction<EntityHistoryEntry[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<CallResult> FinancialEntitiesCreateEntityRelationship(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> relatedEntityId)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesCreateEntityRelationship))]
+        public IBodyWorkflowAction<CallResult> FinancialEntitiesCreateEntityRelationship([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> relatedEntityId)
         {
-            var apiCallPath = "/FinancialEntities/CreateEntityRelationship";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["relatedEntityId"] = ExpressionConverter.Convert(relatedEntityId);
-            return new ApiConnectionAction<CallResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CallResult> __BuildFinancialEntitiesCreateEntityRelationship(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> relatedEntityId)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(relatedEntityId, nameof(relatedEntityId), required: true);
+            return new DeferredBodyAction<CallResult>(() =>
+            {
+                var apiCallPath = "/FinancialEntities/CreateEntityRelationship";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                callPayload.Queries["relatedEntityId"] = ExpressionConverter.Convert(relatedEntityId);
+                return new ApiConnectionAction<CallResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IWorkflowAction FinancialEntitiesLogEntityHistoryEntry(Expression<Func<string>> siteUrl, Expression<Func<string>> entityId, Expression<Func<string>> activityType, Expression<Func<string>> activityTypeIcon, Expression<Func<string>> activityDetails, Expression<Func<string>> initiator)
+        [WorkflowExpressionFactory(nameof(__BuildFinancialEntitiesLogEntityHistoryEntry))]
+        public IWorkflowAction FinancialEntitiesLogEntityHistoryEntry([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> activityType, [WorkflowExpression] Func<string> activityTypeIcon, [WorkflowExpression] Func<string> activityDetails, [WorkflowExpression] Func<string> initiator)
         {
-            var apiCallPath = "/FinancialEntities/LogEntityHistoryEntry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
-            callPayload.Queries["activityType"] = ExpressionConverter.Convert(activityType);
-            callPayload.Queries["activityTypeIcon"] = ExpressionConverter.Convert(activityTypeIcon);
-            callPayload.Queries["activityDetails"] = ExpressionConverter.Convert(activityDetails);
-            callPayload.Queries["initiator"] = ExpressionConverter.Convert(initiator);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildFinancialEntitiesLogEntityHistoryEntry(WorkflowValue<string> siteUrl, WorkflowValue<string> entityId, WorkflowValue<string> activityType, WorkflowValue<string> activityTypeIcon, WorkflowValue<string> activityDetails, WorkflowValue<string> initiator)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            WorkflowValue.Validate(activityType, nameof(activityType), required: true);
+            WorkflowValue.Validate(activityTypeIcon, nameof(activityTypeIcon), required: true);
+            WorkflowValue.Validate(activityDetails, nameof(activityDetails), required: true);
+            WorkflowValue.Validate(initiator, nameof(initiator), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/FinancialEntities/LogEntityHistoryEntry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["entityId"] = ExpressionConverter.Convert(entityId);
+                callPayload.Queries["activityType"] = ExpressionConverter.Convert(activityType);
+                callPayload.Queries["activityTypeIcon"] = ExpressionConverter.Convert(activityTypeIcon);
+                callPayload.Queries["activityDetails"] = ExpressionConverter.Convert(activityDetails);
+                callPayload.Queries["initiator"] = ExpressionConverter.Convert(initiator);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Item[]> LookupTableGetLookupTables(Expression<Func<string>> siteUrl)
+        [WorkflowExpressionFactory(nameof(__BuildLookupTableGetLookupTables))]
+        public IBodyWorkflowAction<Item[]> LookupTableGetLookupTables([WorkflowExpression] Func<string> siteUrl)
         {
-            var apiCallPath = "/LookupTable/GetLookupTables";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Item[]> __BuildLookupTableGetLookupTables(WorkflowValue<string> siteUrl)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            return new DeferredBodyAction<Item[]>(() =>
+            {
+                var apiCallPath = "/LookupTable/GetLookupTables";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                return new ApiConnectionAction<Item[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "strategicportfoliomanager")]
-        public IBodyWorkflowAction<Item[]> LookupTableGetLookupTableValues(Expression<Func<string>> siteUrl, Expression<Func<string>> optionSetUid)
+        [WorkflowExpressionFactory(nameof(__BuildLookupTableGetLookupTableValues))]
+        public IBodyWorkflowAction<Item[]> LookupTableGetLookupTableValues([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> optionSetUid)
         {
-            var apiCallPath = "/LookupTable/GetLookupTableValues";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["optionSetUid"] = ExpressionConverter.Convert(optionSetUid);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Item[]> __BuildLookupTableGetLookupTableValues(WorkflowValue<string> siteUrl, WorkflowValue<string> optionSetUid)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(optionSetUid, nameof(optionSetUid), required: true);
+            return new DeferredBodyAction<Item[]>(() =>
+            {
+                var apiCallPath = "/LookupTable/GetLookupTableValues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["optionSetUid"] = ExpressionConverter.Convert(optionSetUid);
+                return new ApiConnectionAction<Item[]>(callPayload);
+            });
         }
     }
 
     public class StrategicportfoliomanagerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddFinancialValuesChangedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddFinancialValuesChangedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddFinancialValuesChangedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddEntityCreatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddFinancialValuesChangedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddEntityCreatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddEntityUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityCreatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddEntityDeletedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddEntityCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddEntityUpdatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddStageTransitionHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityUpdatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddEntityUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddEntityDeletedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityDeletedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddChangeRequestCreatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddEntityDeletedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddStageTransitionHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddStageTransitionHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddChangeRequestDeletedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddStageTransitionHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddActualsApprovalWorkflowStartedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddActualsApprovalWorkflowStartedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddActualsApprovalWorkflowStartedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddActualsPeriodStatusChangedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddActualsPeriodStatusChangedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddActualsPeriodStatusChangedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddChangeRequestCreatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddMilestoneCreatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestCreatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddMilestoneUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddChangeRequestCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddChangeRequestUpdatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddMilestoneDeletedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestUpdatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddRelationshipCreatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddChangeRequestUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddChangeRequestDeletedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddRelationshipUpdatedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
-            {
-                callPayload.Body = eventCreationInformation;
-            }
-
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook(Expression<Func<string>> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestDeletedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Events/AddRelationshipDeletedHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eventCreationInformation = new JObject();
-            var eventCreationInformationpropCount = 0;
-            eventCreationInformationpropCount++;
-            eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
-            eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
-            eventCreationInformationpropCount++;
-            if (eventCreationInformationpropCount > 0)
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
             {
-                callPayload.Body = eventCreationInformation;
-            }
+                var apiCallPath = "/Events/AddChangeRequestDeletedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
 
-            return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddChangeRequestStatusChangedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestStatusChangedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddChangeRequestStatusChangedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddResourceAssignmentAddedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentAddedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddResourceAssignmentAddedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddResourceAssignmentRemovedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentRemovedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddResourceAssignmentRemovedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddResourceAssignmentUpdatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentUpdatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddResourceAssignmentUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddMilestoneCreatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneCreatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddMilestoneCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddMilestoneUpdatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneUpdatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddMilestoneUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddMilestoneDeletedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneDeletedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddMilestoneDeletedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddRelationshipCreatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipCreatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddRelationshipCreatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddRelationshipUpdatedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipUpdatedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddRelationshipUpdatedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildEventsAddRelationshipDeletedHook))]
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipDeletedHook(WorkflowValue<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
+            return new DeferredBodyTrigger<EventCreationResponse>(() =>
+            {
+                var apiCallPath = "/Events/AddRelationshipDeletedHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eventCreationInformation = new JObject();
+                var eventCreationInformationpropCount = 0;
+                eventCreationInformationpropCount++;
+                eventCreationInformation["SiteURL"] = ExpressionConverter.ConvertO(eventCreationInformationsiteURL);
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
+                eventCreationInformationpropCount++;
+                if (eventCreationInformationpropCount > 0)
+                {
+                    callPayload.Body = eventCreationInformation;
+                }
+
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

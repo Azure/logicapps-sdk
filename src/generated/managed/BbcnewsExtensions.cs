@@ -4,39 +4,63 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BbcnewsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
-        public IBodyWorkflowAction<NewsResponse> GetNewsByTopic(Expression<Func<string>> lang, Expression<Func<string>> topic = null, Expression<Func<int>> limit = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetNewsByTopic))]
+        public IBodyWorkflowAction<NewsResponse> GetNewsByTopic([WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<string> topic = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/news";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (topic != null)
-                callPayload.Queries["topic"] = ExpressionConverter.Convert(topic);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<NewsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NewsResponse> __BuildGetNewsByTopic(WorkflowValue<string> lang, WorkflowValue<string> topic = null, WorkflowValue<int> limit = null)
+        {
+            WorkflowValue.Validate(lang, nameof(lang), required: true);
+            WorkflowValue.Validate(topic, nameof(topic), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<NewsResponse>(() =>
+            {
+                var apiCallPath = "/news";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (topic != null)
+                    callPayload.Queries["topic"] = ExpressionConverter.Convert(topic);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                return new ApiConnectionAction<NewsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
-        public IBodyWorkflowAction<NewsResponse> GetLatestNews(Expression<Func<string>> lang, Expression<Func<int>> limit = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetLatestNews))]
+        public IBodyWorkflowAction<NewsResponse> GetLatestNews([WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
-            return new ApiConnectionAction<NewsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<NewsResponse> __BuildGetLatestNews(WorkflowValue<string> lang, WorkflowValue<int> limit = null)
+        {
+            WorkflowValue.Validate(lang, nameof(lang), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<NewsResponse>(() =>
+            {
+                var apiCallPath = "/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                callPayload.Queries["lang"] = ExpressionConverter.Convert(lang);
+                return new ApiConnectionAction<NewsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]

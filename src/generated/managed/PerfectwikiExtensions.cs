@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,14 +20,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Perfectwiki
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "perfectwiki")]
-        public IWorkflowAction QueryKnowledgebase(Expression<Func<string>> q, Expression<Func<string>> chatId)
+        [WorkflowExpressionFactory(nameof(__BuildQueryKnowledgebase))]
+        public IWorkflowAction QueryKnowledgebase([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> chatId)
         {
-            var apiCallPath = "/chatgpt/organization/bot";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = ExpressionConverter.Convert(q);
-            callPayload.Queries["chatId"] = ExpressionConverter.Convert(chatId);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildQueryKnowledgebase(WorkflowValue<string> q, WorkflowValue<string> chatId)
+        {
+            WorkflowValue.Validate(q, nameof(q), required: true);
+            WorkflowValue.Validate(chatId, nameof(chatId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/chatgpt/organization/bot";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = ExpressionConverter.Convert(q);
+                callPayload.Queries["chatId"] = ExpressionConverter.Convert(chatId);
+                return new ApiConnectionAction(callPayload);
+            });
         }
     }
 

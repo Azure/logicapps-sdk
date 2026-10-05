@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,22 +20,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice = null)
+        [WorkflowExpressionFactory(nameof(__BuildCurrencyExchangeConvertCurrency))]
+        public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<double> sourcePrice = null)
         {
-            var apiCallPath = String.Format("/currency/exchange-rates/convert/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(destination, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(sourcePrice);
-            return new ApiConnectionAction<ConvertedCurrencyResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ConvertedCurrencyResult> __BuildCurrencyExchangeConvertCurrency(WorkflowValue<string> source, WorkflowValue<string> destination, WorkflowValue<double> sourcePrice = null)
+        {
+            WorkflowValue.Validate(source, nameof(source), required: true);
+            WorkflowValue.Validate(destination, nameof(destination), required: true);
+            WorkflowValue.Validate(sourcePrice, nameof(sourcePrice), required: false);
+            return new DeferredBodyAction<ConvertedCurrencyResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(destination, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(sourcePrice);
+                return new ApiConnectionAction<ConvertedCurrencyResult>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate(Expression<Func<string>> source, Expression<Func<string>> destination)
+        [WorkflowExpressionFactory(nameof(__BuildCurrencyExchangeGetExchangeRate))]
+        public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination)
         {
-            var apiCallPath = String.Format("/currency/exchange-rates/get/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(destination, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExchangeRateResult>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ExchangeRateResult> __BuildCurrencyExchangeGetExchangeRate(WorkflowValue<string> source, WorkflowValue<string> destination)
+        {
+            WorkflowValue.Validate(source, nameof(source), required: true);
+            WorkflowValue.Validate(destination, nameof(destination), required: true);
+            return new DeferredBodyAction<ExchangeRateResult>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(destination, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ExchangeRateResult>(callPayload);
+            });
         }
     }
 

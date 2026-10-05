@@ -4,56 +4,114 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PantryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> pantryID)
+        [WorkflowExpressionFactory(nameof(__BuildGetDetails))]
+        public IBodyWorkflowAction<GetDetailsResponse> GetDetails([WorkflowExpression] Func<string> pantryID)
         {
-            var apiCallPath = String.Format("/pantry/{0}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDetailsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDetailsResponse> __BuildGetDetails(WorkflowValue<string> pantryID)
+        {
+            WorkflowValue.Validate(pantryID, nameof(pantryID), required: true);
+            return new DeferredBodyAction<GetDetailsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDetailsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<GetContentsResponse> GetContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        [WorkflowExpressionFactory(nameof(__BuildGetContents))]
+        public IBodyWorkflowAction<GetContentsResponse> GetContents([WorkflowExpression] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
-            var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContentsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetContentsResponse> __BuildGetContents(WorkflowValue<string> pantryID, WorkflowValue<string> basketName)
+        {
+            WorkflowValue.Validate(pantryID, nameof(pantryID), required: true);
+            WorkflowValue.Validate(basketName, nameof(basketName), required: true);
+            return new DeferredBodyAction<GetContentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetContentsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<string> Delete(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        [WorkflowExpressionFactory(nameof(__BuildDelete))]
+        public IBodyWorkflowAction<string> Delete([WorkflowExpression] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
-            var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDelete(WorkflowValue<string> pantryID, WorkflowValue<string> basketName)
+        {
+            WorkflowValue.Validate(pantryID, nameof(pantryID), required: true);
+            WorkflowValue.Validate(basketName, nameof(basketName), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<string> CreateAndOrReplace(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        [WorkflowExpressionFactory(nameof(__BuildCreateAndOrReplace))]
+        public IBodyWorkflowAction<string> CreateAndOrReplace([WorkflowExpression] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
-            var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildCreateAndOrReplace(WorkflowValue<string> pantryID, WorkflowValue<string> basketName)
+        {
+            WorkflowValue.Validate(pantryID, nameof(pantryID), required: true);
+            WorkflowValue.Validate(basketName, nameof(basketName), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateContents))]
+        public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents([WorkflowExpression] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
-            var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UpdateContentsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateContentsResponse> __BuildUpdateContents(WorkflowValue<string> pantryID, WorkflowValue<string> basketName)
+        {
+            WorkflowValue.Validate(pantryID, nameof(pantryID), required: true);
+            WorkflowValue.Validate(basketName, nameof(basketName), required: true);
+            return new DeferredBodyAction<UpdateContentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<UpdateContentsResponse>(callPayload);
+            });
         }
     }
 

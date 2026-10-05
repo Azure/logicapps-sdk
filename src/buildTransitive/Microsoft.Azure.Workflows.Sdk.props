@@ -1,0 +1,5 @@
+<Project>
+  <PropertyGroup>
+    <WorkflowBuildToolPath Condition="'$(WorkflowBuildToolPath)' == ''">$(MSBuildThisFileDirectory)..\tools\workflow-build\Microsoft.Azure.Workflows.Sdk.Build.dll</WorkflowBuildToolPath>
+  </PropertyGroup>
+</Project>

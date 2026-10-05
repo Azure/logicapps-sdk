@@ -5,8 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
 {
     using System;
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
@@ -14,21 +13,33 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
     public class DocumentIntelligenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
-        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildAnalyzeDocument))]
+        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument([WorkflowExpression] Func<AnalyzeDocumentInputModelIdType> modelId, [WorkflowExpression] Func<object> modelIdInputs = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(modelId);
-            if (modelIdInputs != null)
-            {
-                serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnalyzeDocumentOutput> __BuildAnalyzeDocument(WorkflowValue<AnalyzeDocumentInputModelIdType> modelId, WorkflowValue<object> modelIdInputs = null)
+        {
+            WorkflowValue.Validate(modelId, nameof(modelId), required: true);
+            WorkflowValue.Validate(modelIdInputs, nameof(modelIdInputs), required: false);
+            return new DeferredBodyAction<AnalyzeDocumentOutput>(() =>
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["modelId"] = ExpressionConverter.ConvertO(modelId);
+                if (modelIdInputs != null)
+                {
+                    serviceProviderParameters["modelIdInputs"] = ExpressionConverter.ConvertO(modelIdInputs);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
+            });
         }
     }
 

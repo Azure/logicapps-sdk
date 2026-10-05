@@ -4,166 +4,315 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescomputervision
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CognitiveservicescomputervisionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DetectResponse> DetectObjects(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        [WorkflowExpressionFactory(nameof(__BuildDetectObjects))]
+        public IBodyWorkflowAction<DetectResponse> DetectObjects([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            var apiCallPath = "/vision/v2.0/detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<DetectResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<AreaOfInterestResponse> GetAreaOfInterest(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DetectResponse> __BuildDetectObjects(WorkflowValue<formatInput> format, WorkflowValue<object> image = null)
         {
-            var apiCallPath = "/vision/v2.0/areaOfInterest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<AreaOfInterestResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<AnalyzeResponse> AnalyzeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
-        {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/analyze", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["visualFeatures"] = Convert.ToString("Tags,Description,Categories");
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<AnalyzeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse> DescribeImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<object>> image = null)
-        {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/describe", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (maxCandidates != null)
-                callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<DescribeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse> DescribeImageContent(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> image = null)
-        {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/describeImageContent", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (maxCandidates != null)
-                callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<DescribeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DescribeResponse> DescribeImageURL(Expression<Func<string>> subdomainName, Expression<Func<double>> maxCandidates = null, Expression<Func<languageInput>> language = null, Expression<Func<string>> imageURLimageURL = null)
-        {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/describeImageURL", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (maxCandidates != null)
-                callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
-            if (language != null)
-                callPayload.Queries["language"] = ExpressionConverter.Convert(language);
-            var imageURL = new JObject();
-            var imageURLpropCount = 0;
-            if (imageURLimageURL != null)
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<DetectResponse>(() =>
             {
-                imageURL["url"] = ExpressionConverter.ConvertO(imageURLimageURL);
-                imageURLpropCount++;
-            }
+                var apiCallPath = "/vision/v2.0/detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<DetectResponse>(callPayload);
+            });
+        }
 
-            if (imageURLpropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        [WorkflowExpressionFactory(nameof(__BuildGetAreaOfInterest))]
+        public IBodyWorkflowAction<AreaOfInterestResponse> GetAreaOfInterest([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AreaOfInterestResponse> __BuildGetAreaOfInterest(WorkflowValue<formatInput> format, WorkflowValue<object> image = null)
+        {
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<AreaOfInterestResponse>(() =>
             {
-                callPayload.Body = imageURL;
-            }
-
-            return new ApiConnectionAction<DescribeResponse>(callPayload);
+                var apiCallPath = "/vision/v2.0/areaOfInterest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<AreaOfInterestResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<string> GetThumbnail(Expression<Func<string>> subdomainName, Expression<Func<double>> width, Expression<Func<double>> height, Expression<Func<formatInput>> format, Expression<Func<bool>> smartCropping = null, Expression<Func<object>> image = null)
+        [WorkflowExpressionFactory(nameof(__BuildAnalyzeImage))]
+        public IBodyWorkflowAction<AnalyzeResponse> AnalyzeImage([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<object> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["width"] = ExpressionConverter.Convert(width);
-            callPayload.Queries["height"] = ExpressionConverter.Convert(height);
-            callPayload.Queries["smartCropping"] = Convert.ToString(true);
-            if (smartCropping != null)
-                callPayload.Queries["smartCropping"] = ExpressionConverter.Convert(smartCropping);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AnalyzeResponse> __BuildAnalyzeImage(WorkflowValue<string> subdomainName, WorkflowValue<formatInput> format, WorkflowValue<languageInput> language = null, WorkflowValue<object> image = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(language, nameof(language), required: false);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<AnalyzeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/analyze", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["visualFeatures"] = Convert.ToString("Tags,Description,Categories");
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<OCRJsonResponse> OCR(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        [WorkflowExpressionFactory(nameof(__BuildDescribeImage))]
+        public IBodyWorkflowAction<DescribeResponse> DescribeImage([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<double> maxCandidates = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<object> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/ocr", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["language"] = Convert.ToString("unk");
-            callPayload.Queries["detectOrientation"] = Convert.ToString(true);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<OCRJsonResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DescribeResponse> __BuildDescribeImage(WorkflowValue<string> subdomainName, WorkflowValue<formatInput> format, WorkflowValue<double> maxCandidates = null, WorkflowValue<languageInput> language = null, WorkflowValue<object> image = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(maxCandidates, nameof(maxCandidates), required: false);
+            WorkflowValue.Validate(language, nameof(language), required: false);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<DescribeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describe", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (maxCandidates != null)
+                    callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<DescribeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<OCRTextResponse> OCRText(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        [WorkflowExpressionFactory(nameof(__BuildDescribeImageContent))]
+        public IBodyWorkflowAction<DescribeResponse> DescribeImageContent([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<double> maxCandidates = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/ocrtext", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["language"] = Convert.ToString("unk");
-            callPayload.Queries["detectOrientation"] = Convert.ToString(true);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<OCRTextResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DescribeResponse> __BuildDescribeImageContent(WorkflowValue<string> subdomainName, WorkflowValue<double> maxCandidates = null, WorkflowValue<languageInput> language = null, WorkflowValue<string> image = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(maxCandidates, nameof(maxCandidates), required: false);
+            WorkflowValue.Validate(language, nameof(language), required: false);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<DescribeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageContent", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (maxCandidates != null)
+                    callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<DescribeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<DomainModelResponse> RecognizeDomainSpecificContent(Expression<Func<string>> subdomainName, Expression<Func<modelInput>> model, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        [WorkflowExpressionFactory(nameof(__BuildDescribeImageURL))]
+        public IBodyWorkflowAction<DescribeResponse> DescribeImageURL([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<double> maxCandidates = null, [WorkflowExpression] Func<languageInput> language = null, [WorkflowExpression] Func<string> imageURLimageURL = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<DomainModelResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DescribeResponse> __BuildDescribeImageURL(WorkflowValue<string> subdomainName, WorkflowValue<double> maxCandidates = null, WorkflowValue<languageInput> language = null, WorkflowValue<string> imageURLimageURL = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(maxCandidates, nameof(maxCandidates), required: false);
+            WorkflowValue.Validate(language, nameof(language), required: false);
+            WorkflowValue.Validate(imageURLimageURL, nameof(imageURLimageURL), required: false);
+            return new DeferredBodyAction<DescribeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/describeImageURL", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (maxCandidates != null)
+                    callPayload.Queries["maxCandidates"] = ExpressionConverter.Convert(maxCandidates);
+                if (language != null)
+                    callPayload.Queries["language"] = ExpressionConverter.Convert(language);
+                var imageURL = new JObject();
+                var imageURLpropCount = 0;
+                if (imageURLimageURL != null)
+                {
+                    imageURL["url"] = ExpressionConverter.ConvertO(imageURLimageURL);
+                    imageURLpropCount++;
+                }
+
+                if (imageURLpropCount > 0)
+                {
+                    callPayload.Body = imageURL;
+                }
+
+                return new ApiConnectionAction<DescribeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
-        public IBodyWorkflowAction<TagResponse> TagImage(Expression<Func<string>> subdomainName, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetThumbnail))]
+        public IBodyWorkflowAction<string> GetThumbnail([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<double> width, [WorkflowExpression] Func<double> height, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> smartCropping = null, [WorkflowExpression] Func<object> image = null)
         {
-            var apiCallPath = String.Format("/v3/subdomain/{0}/vision/v2.0/tag", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = ExpressionConverter.Convert(format);
-            callPayload.Body = ExpressionConverter.ConvertO(image);
-            return new ApiConnectionAction<TagResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetThumbnail(WorkflowValue<string> subdomainName, WorkflowValue<double> width, WorkflowValue<double> height, WorkflowValue<formatInput> format, WorkflowValue<bool> smartCropping = null, WorkflowValue<object> image = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(width, nameof(width), required: true);
+            WorkflowValue.Validate(height, nameof(height), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(smartCropping, nameof(smartCropping), required: false);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/generateThumbnail", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["width"] = ExpressionConverter.Convert(width);
+                callPayload.Queries["height"] = ExpressionConverter.Convert(height);
+                callPayload.Queries["smartCropping"] = Convert.ToString(true);
+                if (smartCropping != null)
+                    callPayload.Queries["smartCropping"] = ExpressionConverter.Convert(smartCropping);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        [WorkflowExpressionFactory(nameof(__BuildOCR))]
+        public IBodyWorkflowAction<OCRJsonResponse> OCR([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OCRJsonResponse> __BuildOCR(WorkflowValue<string> subdomainName, WorkflowValue<formatInput> format, WorkflowValue<object> image = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<OCRJsonResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocr", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["language"] = Convert.ToString("unk");
+                callPayload.Queries["detectOrientation"] = Convert.ToString(true);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<OCRJsonResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        [WorkflowExpressionFactory(nameof(__BuildOCRText))]
+        public IBodyWorkflowAction<OCRTextResponse> OCRText([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<OCRTextResponse> __BuildOCRText(WorkflowValue<string> subdomainName, WorkflowValue<formatInput> format, WorkflowValue<object> image = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<OCRTextResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/ocrtext", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["language"] = Convert.ToString("unk");
+                callPayload.Queries["detectOrientation"] = Convert.ToString(true);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<OCRTextResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        [WorkflowExpressionFactory(nameof(__BuildRecognizeDomainSpecificContent))]
+        public IBodyWorkflowAction<DomainModelResponse> RecognizeDomainSpecificContent([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<modelInput> model, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DomainModelResponse> __BuildRecognizeDomainSpecificContent(WorkflowValue<string> subdomainName, WorkflowValue<modelInput> model, WorkflowValue<formatInput> format, WorkflowValue<object> image = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(model, nameof(model), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<DomainModelResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/models/{1}/analyze", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2), ExpressionConverter.ConvertWithUrlEncoding(model, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<DomainModelResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescomputervision")]
+        [WorkflowExpressionFactory(nameof(__BuildTagImage))]
+        public IBodyWorkflowAction<TagResponse> TagImage([WorkflowExpression] Func<string> subdomainName, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TagResponse> __BuildTagImage(WorkflowValue<string> subdomainName, WorkflowValue<formatInput> format, WorkflowValue<object> image = null)
+        {
+            WorkflowValue.Validate(subdomainName, nameof(subdomainName), required: true);
+            WorkflowValue.Validate(format, nameof(format), required: true);
+            WorkflowValue.Validate(image, nameof(image), required: false);
+            return new DeferredBodyAction<TagResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v3/subdomain/{0}/vision/v2.0/tag", ExpressionConverter.ConvertWithUrlEncoding(subdomainName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = ExpressionConverter.Convert(format);
+                callPayload.Body = ExpressionConverter.ConvertO(image);
+                return new ApiConnectionAction<TagResponse>(callPayload);
+            });
         }
     }
 

@@ -4,45 +4,78 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Binanceusip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class BinanceusipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice(Expression<Func<string>> symbol = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetLiveTickerPrice))]
+        public IBodyWorkflowAction<GetLiveTickerPriceResponse> GetLiveTickerPrice([WorkflowExpression] Func<string> symbol = null)
         {
-            var apiCallPath = "/ticker/price";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLiveTickerPriceResponse> __BuildGetLiveTickerPrice(WorkflowValue<string> symbol = null)
+        {
+            WorkflowValue.Validate(symbol, nameof(symbol), required: false);
+            return new DeferredBodyAction<GetLiveTickerPriceResponse>(() =>
+            {
+                var apiCallPath = "/ticker/price";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (symbol != null)
+                    callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                return new ApiConnectionAction<GetLiveTickerPriceResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation(Expression<Func<string>> symbol = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetExchangeInformation))]
+        public IBodyWorkflowAction<GetExchangeInfoResponse> GetExchangeInformation([WorkflowExpression] Func<string> symbol = null)
         {
-            var apiCallPath = "/exchangeInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (symbol != null)
-                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetExchangeInfoResponse> __BuildGetExchangeInformation(WorkflowValue<string> symbol = null)
+        {
+            WorkflowValue.Validate(symbol, nameof(symbol), required: false);
+            return new DeferredBodyAction<GetExchangeInfoResponse>(() =>
+            {
+                var apiCallPath = "/exchangeInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (symbol != null)
+                    callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                return new ApiConnectionAction<GetExchangeInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "binanceusip")]
-        public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades(Expression<Func<string>> symbol, Expression<Func<int>> limit = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetRecentTrades))]
+        public IBodyWorkflowAction<GetRecentTradesResponse> GetRecentTrades([WorkflowExpression] Func<string> symbol, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/trades";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetRecentTradesResponse> __BuildGetRecentTrades(WorkflowValue<string> symbol, WorkflowValue<int> limit = null)
+        {
+            WorkflowValue.Validate(symbol, nameof(symbol), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<GetRecentTradesResponse>(() =>
+            {
+                var apiCallPath = "/trades";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = ExpressionConverter.Convert(symbol);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                return new ApiConnectionAction<GetRecentTradesResponse>(callPayload);
+            });
         }
     }
 

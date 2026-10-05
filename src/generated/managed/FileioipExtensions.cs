@@ -4,117 +4,170 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class FileioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileListResponse> FileList(Expression<Func<string>> search = null, Expression<Func<string>> sort = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileList))]
+        public IBodyWorkflowAction<FileListResponse> FileList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = ExpressionConverter.Convert(search);
-            if (sort != null)
-                callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
-            if (offset != null)
-                callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<FileListResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FileListResponse> __BuildFileList(WorkflowValue<string> search = null, WorkflowValue<string> sort = null, WorkflowValue<int> offset = null, WorkflowValue<int> limit = null)
+        {
+            WorkflowValue.Validate(search, nameof(search), required: false);
+            WorkflowValue.Validate(sort, nameof(sort), required: false);
+            WorkflowValue.Validate(offset, nameof(offset), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<FileListResponse>(() =>
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = ExpressionConverter.Convert(search);
+                if (sort != null)
+                    callPayload.Queries["sort"] = ExpressionConverter.Convert(sort);
+                if (offset != null)
+                    callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                return new ApiConnectionAction<FileListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUploadResponse> FileUpload(Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileUpload))]
+        public IBodyWorkflowAction<FileUploadResponse> FileUpload([WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfile != null)
-            {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyexpires != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FileUploadResponse> __BuildFileUpload(WorkflowValue<string> bodyfile = null, WorkflowValue<string> bodyexpires = null, WorkflowValue<int> bodymaxDownloads = null, WorkflowValue<bool> bodyautoDelete = null)
+        {
+            WorkflowValue.Validate(bodyfile, nameof(bodyfile), required: false);
+            WorkflowValue.Validate(bodyexpires, nameof(bodyexpires), required: false);
+            WorkflowValue.Validate(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
+            WorkflowValue.Validate(bodyautoDelete, nameof(bodyautoDelete), required: false);
+            return new DeferredBodyAction<FileUploadResponse>(() =>
             {
-                body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
-                bodypropCount++;
-            }
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfile != null)
+                {
+                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    bodypropCount++;
+                }
 
-            if (bodymaxDownloads != null)
-            {
-                body["maxDownloads"] = ExpressionConverter.ConvertO(bodymaxDownloads);
-                bodypropCount++;
-            }
+                if (bodyexpires != null)
+                {
+                    body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
+                    bodypropCount++;
+                }
 
-            if (bodyautoDelete != null)
-            {
-                body["autoDelete"] = ExpressionConverter.ConvertO(bodyautoDelete);
-                bodypropCount++;
-            }
+                if (bodymaxDownloads != null)
+                {
+                    body["maxDownloads"] = ExpressionConverter.ConvertO(bodymaxDownloads);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyautoDelete != null)
+                {
+                    body["autoDelete"] = ExpressionConverter.ConvertO(bodyautoDelete);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<FileUploadResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FileUploadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUpdateResponse> FileUpdate(Expression<Func<string>> key, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
+        [WorkflowExpressionFactory(nameof(__BuildFileUpdate))]
+        public IBodyWorkflowAction<FileUpdateResponse> FileUpdate([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfile != null)
-            {
-                body["file"] = ExpressionConverter.ConvertO(bodyfile);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyexpires != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FileUpdateResponse> __BuildFileUpdate(WorkflowValue<string> key, WorkflowValue<string> bodyfile = null, WorkflowValue<string> bodyexpires = null, WorkflowValue<int> bodymaxDownloads = null, WorkflowValue<bool> bodyautoDelete = null)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(bodyfile, nameof(bodyfile), required: false);
+            WorkflowValue.Validate(bodyexpires, nameof(bodyexpires), required: false);
+            WorkflowValue.Validate(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
+            WorkflowValue.Validate(bodyautoDelete, nameof(bodyautoDelete), required: false);
+            return new DeferredBodyAction<FileUpdateResponse>(() =>
             {
-                body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfile != null)
+                {
+                    body["file"] = ExpressionConverter.ConvertO(bodyfile);
+                    bodypropCount++;
+                }
 
-            if (bodymaxDownloads != null)
-            {
-                body["maxDownloads"] = ExpressionConverter.ConvertO(bodymaxDownloads);
-                bodypropCount++;
-            }
+                if (bodyexpires != null)
+                {
+                    body["expires"] = ExpressionConverter.ConvertO(bodyexpires);
+                    bodypropCount++;
+                }
 
-            if (bodyautoDelete != null)
-            {
-                body["autoDelete"] = ExpressionConverter.ConvertO(bodyautoDelete);
-                bodypropCount++;
-            }
+                if (bodymaxDownloads != null)
+                {
+                    body["maxDownloads"] = ExpressionConverter.ConvertO(bodymaxDownloads);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyautoDelete != null)
+                {
+                    body["autoDelete"] = ExpressionConverter.ConvertO(bodyautoDelete);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<FileUpdateResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<FileUpdateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileDeleteResponse> FileDelete(Expression<Func<string>> key)
+        [WorkflowExpressionFactory(nameof(__BuildFileDelete))]
+        public IBodyWorkflowAction<FileDeleteResponse> FileDelete([WorkflowExpression] Func<string> key)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FileDeleteResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FileDeleteResponse> __BuildFileDelete(WorkflowValue<string> key)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            return new DeferredBodyAction<FileDeleteResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(key, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<FileDeleteResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]

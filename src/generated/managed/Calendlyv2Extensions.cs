@@ -4,110 +4,178 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Calendlyv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<GetEventTypesResponse> GetEventTypes(Expression<Func<bool>> active = null, Expression<Func<int>> count = null, Expression<Func<string>> pageToken = null, Expression<Func<bool>> adminManaged = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetEventTypes))]
+        public IBodyWorkflowAction<GetEventTypesResponse> GetEventTypes([WorkflowExpression] Func<bool> active = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<string> pageToken = null, [WorkflowExpression] Func<bool> adminManaged = null)
         {
-            var apiCallPath = "/event_types";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (active != null)
-                callPayload.Queries["active"] = ExpressionConverter.Convert(active);
-            callPayload.Queries["count"] = Convert.ToString(20);
-            if (count != null)
-                callPayload.Queries["count"] = ExpressionConverter.Convert(count);
-            if (pageToken != null)
-                callPayload.Queries["page_token"] = ExpressionConverter.Convert(pageToken);
-            if (adminManaged != null)
-                callPayload.Queries["admin_managed"] = ExpressionConverter.Convert(adminManaged);
-            return new ApiConnectionAction<GetEventTypesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<CreateInviteeNoShowResponse> CreateInviteeNoShow(Expression<Func<string>> bodyinvitee)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEventTypesResponse> __BuildGetEventTypes(WorkflowValue<bool> active = null, WorkflowValue<int> count = null, WorkflowValue<string> pageToken = null, WorkflowValue<bool> adminManaged = null)
         {
-            var apiCallPath = "/invitee_no_shows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["invitee"] = ExpressionConverter.ConvertO(bodyinvitee);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(active, nameof(active), required: false);
+            WorkflowValue.Validate(count, nameof(count), required: false);
+            WorkflowValue.Validate(pageToken, nameof(pageToken), required: false);
+            WorkflowValue.Validate(adminManaged, nameof(adminManaged), required: false);
+            return new DeferredBodyAction<GetEventTypesResponse>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateInviteeNoShowResponse>(callPayload);
+                var apiCallPath = "/event_types";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (active != null)
+                    callPayload.Queries["active"] = ExpressionConverter.Convert(active);
+                callPayload.Queries["count"] = Convert.ToString(20);
+                if (count != null)
+                    callPayload.Queries["count"] = ExpressionConverter.Convert(count);
+                if (pageToken != null)
+                    callPayload.Queries["page_token"] = ExpressionConverter.Convert(pageToken);
+                if (adminManaged != null)
+                    callPayload.Queries["admin_managed"] = ExpressionConverter.Convert(adminManaged);
+                return new ApiConnectionAction<GetEventTypesResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<GetEventTypeResponse> GetEventType(Expression<Func<string>> uuid)
+        [WorkflowExpressionFactory(nameof(__BuildCreateInviteeNoShow))]
+        public IBodyWorkflowAction<CreateInviteeNoShowResponse> CreateInviteeNoShow([WorkflowExpression] Func<string> bodyinvitee)
         {
-            var apiCallPath = String.Format("/event_types/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetEventTypeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateInviteeNoShowResponse> __BuildCreateInviteeNoShow(WorkflowValue<string> bodyinvitee)
+        {
+            WorkflowValue.Validate(bodyinvitee, nameof(bodyinvitee), required: true);
+            return new DeferredBodyAction<CreateInviteeNoShowResponse>(() =>
+            {
+                var apiCallPath = "/invitee_no_shows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["invitee"] = ExpressionConverter.ConvertO(bodyinvitee);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateInviteeNoShowResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
-        public IBodyWorkflowAction<JToken> DeleteInviteeNoShow(Expression<Func<string>> uuid)
+        [WorkflowExpressionFactory(nameof(__BuildGetEventType))]
+        public IBodyWorkflowAction<GetEventTypeResponse> GetEventType([WorkflowExpression] Func<string> uuid)
         {
-            var apiCallPath = String.Format("/invitee_no_shows/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEventTypeResponse> __BuildGetEventType(WorkflowValue<string> uuid)
+        {
+            WorkflowValue.Validate(uuid, nameof(uuid), required: true);
+            return new DeferredBodyAction<GetEventTypeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/event_types/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetEventTypeResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "calendlyv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteInviteeNoShow))]
+        public IBodyWorkflowAction<JToken> DeleteInviteeNoShow([WorkflowExpression] Func<string> uuid)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildDeleteInviteeNoShow(WorkflowValue<string> uuid)
+        {
+            WorkflowValue.Validate(uuid, nameof(uuid), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/invitee_no_shows/{0}", ExpressionConverter.ConvertWithUrlEncoding(uuid, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class Calendlyv2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription(Expression<Func<bodyeventsInputItem[]>> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWebhookSubscription))]
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook_subscriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["events"] = ExpressionConverter.ConvertO(bodyevents);
-            body["scope"] = "organization";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission(Expression<Func<bodyeventsInputItem[]>> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> __BuildCreateWebhookSubscription(WorkflowValue<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook_subscriptions/routing_form_submission";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["events"] = ExpressionConverter.ConvertO(bodyevents);
-            body["scope"] = "organization";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(bodyevents, nameof(bodyevents), required: true);
+            return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhook_subscriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["events"] = ExpressionConverter.ConvertO(bodyevents);
+                body["scope"] = "organization";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildCreateWebhookSubscriptionRoutingFormSubmission))]
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> __BuildCreateWebhookSubscriptionRoutingFormSubmission(WorkflowValue<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodyevents, nameof(bodyevents), required: true);
+            return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(() =>
+            {
+                var apiCallPath = "/webhook_subscriptions/routing_form_submission";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                bodypropCount++;
+                body["events"] = ExpressionConverter.ConvertO(bodyevents);
+                body["scope"] = "organization";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

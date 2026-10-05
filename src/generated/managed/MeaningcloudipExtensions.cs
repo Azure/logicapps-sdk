@@ -4,83 +4,205 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MeaningcloudipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<ofInput>> of = null, Expression<Func<txtfInput>> txtf = null, Expression<Func<string>> model = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<uwInput>> uw = null)
+        [WorkflowExpressionFactory(nameof(__BuildSentimentAnalysis))]
+        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<txtfInput> txtf = null, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<uwInput> uw = null)
         {
-            var apiCallPath = "/sentiment-2.1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SentimentAnalysisResponse> __BuildSentimentAnalysis(WorkflowValue<string> key, WorkflowValue<string> txt, WorkflowValue<string> lang, WorkflowValue<ofInput> of = null, WorkflowValue<txtfInput> txtf = null, WorkflowValue<string> model = null, WorkflowValue<verboseInput> verbose = null, WorkflowValue<uwInput> uw = null)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(txt, nameof(txt), required: true);
+            WorkflowValue.Validate(lang, nameof(lang), required: true);
+            WorkflowValue.Validate(of, nameof(of), required: false);
+            WorkflowValue.Validate(txtf, nameof(txtf), required: false);
+            WorkflowValue.Validate(model, nameof(model), required: false);
+            WorkflowValue.Validate(verbose, nameof(verbose), required: false);
+            WorkflowValue.Validate(uw, nameof(uw), required: false);
+            return new DeferredBodyAction<SentimentAnalysisResponse>(() =>
+            {
+                var apiCallPath = "/sentiment-2.1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<TextClassificationResponse> TextClassification(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<expandHierarchyInput>> expandHierarchy = null)
+        [WorkflowExpressionFactory(nameof(__BuildTextClassification))]
+        public IBodyWorkflowAction<TextClassificationResponse> TextClassification([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<modelInput> model, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<debugInput> debug = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<expandHierarchyInput> expandHierarchy = null)
         {
-            var apiCallPath = "/class-2.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextClassificationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TextClassificationResponse> __BuildTextClassification(WorkflowValue<string> key, WorkflowValue<string> txt, WorkflowValue<modelInput> model, WorkflowValue<string> title = null, WorkflowValue<debugInput> debug = null, WorkflowValue<verboseInput> verbose = null, WorkflowValue<expandHierarchyInput> expandHierarchy = null)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(txt, nameof(txt), required: true);
+            WorkflowValue.Validate(model, nameof(model), required: true);
+            WorkflowValue.Validate(title, nameof(title), required: false);
+            WorkflowValue.Validate(debug, nameof(debug), required: false);
+            WorkflowValue.Validate(verbose, nameof(verbose), required: false);
+            WorkflowValue.Validate(expandHierarchy, nameof(expandHierarchy), required: false);
+            return new DeferredBodyAction<TextClassificationResponse>(() =>
+            {
+                var apiCallPath = "/class-2.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextClassificationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<string>> model = null)
+        [WorkflowExpressionFactory(nameof(__BuildCorporateReputation))]
+        public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<string> model = null)
         {
-            var apiCallPath = "/reputation-2.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CorporateReputationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CorporateReputationResponse> __BuildCorporateReputation(WorkflowValue<string> key, WorkflowValue<string> txt, WorkflowValue<string> lang, WorkflowValue<string> model = null)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(txt, nameof(txt), required: true);
+            WorkflowValue.Validate(lang, nameof(lang), required: true);
+            WorkflowValue.Validate(model, nameof(model), required: false);
+            return new DeferredBodyAction<CorporateReputationResponse>(() =>
+            {
+                var apiCallPath = "/reputation-2.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CorporateReputationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<int>> sentences = null, Expression<Func<ofInput>> of = null)
+        [WorkflowExpressionFactory(nameof(__BuildSummarization))]
+        public IBodyWorkflowAction<SummarizationResponse> Summarization([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<int> sentences = null, [WorkflowExpression] Func<ofInput> of = null)
         {
-            var apiCallPath = "/summarization-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SummarizationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SummarizationResponse> __BuildSummarization(WorkflowValue<string> key, WorkflowValue<string> txt, WorkflowValue<string> lang, WorkflowValue<int> sentences = null, WorkflowValue<ofInput> of = null)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(txt, nameof(txt), required: true);
+            WorkflowValue.Validate(lang, nameof(lang), required: true);
+            WorkflowValue.Validate(sentences, nameof(sentences), required: false);
+            WorkflowValue.Validate(of, nameof(of), required: false);
+            return new DeferredBodyAction<SummarizationResponse>(() =>
+            {
+                var apiCallPath = "/summarization-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<SummarizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<ofInput>> of = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<polarityInput>> polarity = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeepCategorization))]
+        public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<modelInput> model, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<debugInput> debug = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<polarityInput> polarity = null)
         {
-            var apiCallPath = "/deepcategorization-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeepCategorizationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DeepCategorizationResponse> __BuildDeepCategorization(WorkflowValue<string> key, WorkflowValue<string> txt, WorkflowValue<modelInput> model, WorkflowValue<string> title = null, WorkflowValue<ofInput> of = null, WorkflowValue<debugInput> debug = null, WorkflowValue<verboseInput> verbose = null, WorkflowValue<polarityInput> polarity = null)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(txt, nameof(txt), required: true);
+            WorkflowValue.Validate(model, nameof(model), required: true);
+            WorkflowValue.Validate(title, nameof(title), required: false);
+            WorkflowValue.Validate(of, nameof(of), required: false);
+            WorkflowValue.Validate(debug, nameof(debug), required: false);
+            WorkflowValue.Validate(verbose, nameof(verbose), required: false);
+            WorkflowValue.Validate(polarity, nameof(polarity), required: false);
+            return new DeferredBodyAction<DeepCategorizationResponse>(() =>
+            {
+                var apiCallPath = "/deepcategorization-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DeepCategorizationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification(Expression<Func<string>> key, Expression<Func<string>> txt)
+        [WorkflowExpressionFactory(nameof(__BuildLanguageIdentification))]
+        public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt)
         {
-            var apiCallPath = "/lang-4.0/identification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguageIdentificationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<LanguageIdentificationResponse> __BuildLanguageIdentification(WorkflowValue<string> key, WorkflowValue<string> txt)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(txt, nameof(txt), required: true);
+            return new DeferredBodyAction<LanguageIdentificationResponse>(() =>
+            {
+                var apiCallPath = "/lang-4.0/identification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<LanguageIdentificationResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<TextClusteringResponse> TextClustering(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<langInput>> lang, Expression<Func<ofInput>> of = null, Expression<Func<modeInput>> mode = null, Expression<Func<swInput>> sw = null)
+        [WorkflowExpressionFactory(nameof(__BuildTextClustering))]
+        public IBodyWorkflowAction<TextClusteringResponse> TextClustering([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<langInput> lang, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<swInput> sw = null)
         {
-            var apiCallPath = "/clustering-1.1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextClusteringResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TextClusteringResponse> __BuildTextClustering(WorkflowValue<string> key, WorkflowValue<string> txt, WorkflowValue<langInput> lang, WorkflowValue<ofInput> of = null, WorkflowValue<modeInput> mode = null, WorkflowValue<swInput> sw = null)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(txt, nameof(txt), required: true);
+            WorkflowValue.Validate(lang, nameof(lang), required: true);
+            WorkflowValue.Validate(of, nameof(of), required: false);
+            WorkflowValue.Validate(mode, nameof(mode), required: false);
+            WorkflowValue.Validate(sw, nameof(sw), required: false);
+            return new DeferredBodyAction<TextClusteringResponse>(() =>
+            {
+                var apiCallPath = "/clustering-1.1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<TextClusteringResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<ofInput>> of = null)
+        [WorkflowExpressionFactory(nameof(__BuildDocumentStructure))]
+        public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<ofInput> of = null)
         {
-            var apiCallPath = "/documentstructure-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DocumentStructureResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DocumentStructureResponse> __BuildDocumentStructure(WorkflowValue<string> key, WorkflowValue<string> txt, WorkflowValue<ofInput> of = null)
+        {
+            WorkflowValue.Validate(key, nameof(key), required: true);
+            WorkflowValue.Validate(txt, nameof(txt), required: true);
+            WorkflowValue.Validate(of, nameof(of), required: false);
+            return new DeferredBodyAction<DocumentStructureResponse>(() =>
+            {
+                var apiCallPath = "/documentstructure-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<DocumentStructureResponse>(callPayload);
+            });
         }
     }
 

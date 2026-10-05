@@ -4,103 +4,190 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class CarsxeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<SpecGetResponse> SpecGet(Expression<Func<string>> vin)
+        [WorkflowExpressionFactory(nameof(__BuildSpecGet))]
+        public IBodyWorkflowAction<SpecGetResponse> SpecGet([WorkflowExpression] Func<string> vin)
         {
-            var apiCallPath = "/specs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
-            return new ApiConnectionAction<SpecGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SpecGetResponse> __BuildSpecGet(WorkflowValue<string> vin)
+        {
+            WorkflowValue.Validate(vin, nameof(vin), required: true);
+            return new DeferredBodyAction<SpecGetResponse>(() =>
+            {
+                var apiCallPath = "/specs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
+                return new ApiConnectionAction<SpecGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<ValueGetResponse> ValueGet(Expression<Func<string>> vin)
+        [WorkflowExpressionFactory(nameof(__BuildValueGet))]
+        public IBodyWorkflowAction<ValueGetResponse> ValueGet([WorkflowExpression] Func<string> vin)
         {
-            var apiCallPath = "/marketvalue";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
-            return new ApiConnectionAction<ValueGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ValueGetResponse> __BuildValueGet(WorkflowValue<string> vin)
+        {
+            WorkflowValue.Validate(vin, nameof(vin), required: true);
+            return new DeferredBodyAction<ValueGetResponse>(() =>
+            {
+                var apiCallPath = "/marketvalue";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
+                return new ApiConnectionAction<ValueGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<HistoryGetResponse> HistoryGet(Expression<Func<string>> vin)
+        [WorkflowExpressionFactory(nameof(__BuildHistoryGet))]
+        public IBodyWorkflowAction<HistoryGetResponse> HistoryGet([WorkflowExpression] Func<string> vin)
         {
-            var apiCallPath = "/history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
-            return new ApiConnectionAction<HistoryGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<HistoryGetResponse> __BuildHistoryGet(WorkflowValue<string> vin)
+        {
+            WorkflowValue.Validate(vin, nameof(vin), required: true);
+            return new DeferredBodyAction<HistoryGetResponse>(() =>
+            {
+                var apiCallPath = "/history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["vin"] = ExpressionConverter.Convert(vin);
+                return new ApiConnectionAction<HistoryGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<PlateDecodeResponse> PlateDecode(Expression<Func<string>> plate, Expression<Func<string>> state, Expression<Func<countryInput>> country = null)
+        [WorkflowExpressionFactory(nameof(__BuildPlateDecode))]
+        public IBodyWorkflowAction<PlateDecodeResponse> PlateDecode([WorkflowExpression] Func<string> plate, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<countryInput> country = null)
         {
-            var apiCallPath = "/platedecoder";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["plate"] = ExpressionConverter.Convert(plate);
-            callPayload.Queries["state"] = ExpressionConverter.Convert(state);
-            if (country != null)
-                callPayload.Queries["country"] = ExpressionConverter.Convert(country);
-            return new ApiConnectionAction<PlateDecodeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PlateDecodeResponse> __BuildPlateDecode(WorkflowValue<string> plate, WorkflowValue<string> state, WorkflowValue<countryInput> country = null)
+        {
+            WorkflowValue.Validate(plate, nameof(plate), required: true);
+            WorkflowValue.Validate(state, nameof(state), required: true);
+            WorkflowValue.Validate(country, nameof(country), required: false);
+            return new DeferredBodyAction<PlateDecodeResponse>(() =>
+            {
+                var apiCallPath = "/platedecoder";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["plate"] = ExpressionConverter.Convert(plate);
+                callPayload.Queries["state"] = ExpressionConverter.Convert(state);
+                if (country != null)
+                    callPayload.Queries["country"] = ExpressionConverter.Convert(country);
+                return new ApiConnectionAction<PlateDecodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> make, Expression<Func<string>> model, Expression<Func<int>> year = null, Expression<Func<string>> trim = null, Expression<Func<string>> color = null, Expression<Func<bool>> transparent = null, Expression<Func<angleInput>> angle = null, Expression<Func<photoTypeInput>> photoType = null, Expression<Func<sizeInput>> size = null, Expression<Func<licenseInput>> license = null)
+        [WorkflowExpressionFactory(nameof(__BuildImageGet))]
+        public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> make, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> trim = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<bool> transparent = null, [WorkflowExpression] Func<angleInput> angle = null, [WorkflowExpression] Func<photoTypeInput> photoType = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<licenseInput> license = null)
         {
-            var apiCallPath = "/images";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["make"] = ExpressionConverter.Convert(make);
-            callPayload.Queries["model"] = ExpressionConverter.Convert(model);
-            if (year != null)
-                callPayload.Queries["year"] = ExpressionConverter.Convert(year);
-            if (trim != null)
-                callPayload.Queries["trim"] = ExpressionConverter.Convert(trim);
-            if (color != null)
-                callPayload.Queries["color"] = ExpressionConverter.Convert(color);
-            callPayload.Queries["transparent"] = Convert.ToString(true);
-            if (transparent != null)
-                callPayload.Queries["transparent"] = ExpressionConverter.Convert(transparent);
-            if (angle != null)
-                callPayload.Queries["angle"] = ExpressionConverter.Convert(angle);
-            if (photoType != null)
-                callPayload.Queries["photoType"] = ExpressionConverter.Convert(photoType);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (license != null)
-                callPayload.Queries["license"] = ExpressionConverter.Convert(license);
-            return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ImageGetResponse> __BuildImageGet(WorkflowValue<string> make, WorkflowValue<string> model, WorkflowValue<int> year = null, WorkflowValue<string> trim = null, WorkflowValue<string> color = null, WorkflowValue<bool> transparent = null, WorkflowValue<angleInput> angle = null, WorkflowValue<photoTypeInput> photoType = null, WorkflowValue<sizeInput> size = null, WorkflowValue<licenseInput> license = null)
+        {
+            WorkflowValue.Validate(make, nameof(make), required: true);
+            WorkflowValue.Validate(model, nameof(model), required: true);
+            WorkflowValue.Validate(year, nameof(year), required: false);
+            WorkflowValue.Validate(trim, nameof(trim), required: false);
+            WorkflowValue.Validate(color, nameof(color), required: false);
+            WorkflowValue.Validate(transparent, nameof(transparent), required: false);
+            WorkflowValue.Validate(angle, nameof(angle), required: false);
+            WorkflowValue.Validate(photoType, nameof(photoType), required: false);
+            WorkflowValue.Validate(size, nameof(size), required: false);
+            WorkflowValue.Validate(license, nameof(license), required: false);
+            return new DeferredBodyAction<ImageGetResponse>(() =>
+            {
+                var apiCallPath = "/images";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["make"] = ExpressionConverter.Convert(make);
+                callPayload.Queries["model"] = ExpressionConverter.Convert(model);
+                if (year != null)
+                    callPayload.Queries["year"] = ExpressionConverter.Convert(year);
+                if (trim != null)
+                    callPayload.Queries["trim"] = ExpressionConverter.Convert(trim);
+                if (color != null)
+                    callPayload.Queries["color"] = ExpressionConverter.Convert(color);
+                callPayload.Queries["transparent"] = Convert.ToString(true);
+                if (transparent != null)
+                    callPayload.Queries["transparent"] = ExpressionConverter.Convert(transparent);
+                if (angle != null)
+                    callPayload.Queries["angle"] = ExpressionConverter.Convert(angle);
+                if (photoType != null)
+                    callPayload.Queries["photoType"] = ExpressionConverter.Convert(photoType);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (license != null)
+                    callPayload.Queries["license"] = ExpressionConverter.Convert(license);
+                return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<PlateRecogResponse> PlateRecog(Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildPlateRecog))]
+        public IBodyWorkflowAction<PlateRecogResponse> PlateRecog([WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/platerecognition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("text/plain");
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<PlateRecogResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PlateRecogResponse> __BuildPlateRecog(WorkflowValue<string> body = null)
+        {
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<PlateRecogResponse>(() =>
+            {
+                var apiCallPath = "/platerecognition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("text/plain");
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<PlateRecogResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<CodeGetResponse> CodeGet(Expression<Func<string>> code)
+        [WorkflowExpressionFactory(nameof(__BuildCodeGet))]
+        public IBodyWorkflowAction<CodeGetResponse> CodeGet([WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = "/obdcodesdecoder";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = ExpressionConverter.Convert(code);
-            return new ApiConnectionAction<CodeGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CodeGetResponse> __BuildCodeGet(WorkflowValue<string> code)
+        {
+            WorkflowValue.Validate(code, nameof(code), required: true);
+            return new DeferredBodyAction<CodeGetResponse>(() =>
+            {
+                var apiCallPath = "/obdcodesdecoder";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = ExpressionConverter.Convert(code);
+                return new ApiConnectionAction<CodeGetResponse>(callPayload);
+            });
         }
     }
 

@@ -73,3 +73,10 @@ jobs:
           folderPath: $(pack_dir)
           pattern: Microsoft.Azure.Workflows.Sdk*.nupkg
           signType: nuget
+
+    - task: PowerShell@2
+      displayName: Validate packaged SDK on .NET 8
+      inputs:
+        filePath: eng/Test-PackageConsumer.ps1
+        arguments: -PackageDirectory "$(pack_dir)"
+        pwsh: true

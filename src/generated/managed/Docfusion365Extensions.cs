@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,41 +20,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
-        public IBodyWorkflowAction<GetLinkedListTemplatesResponse[]> GetTheLinkedListTemplates(Expression<Func<string>> siteUrl, Expression<Func<string>> listName)
+        [WorkflowExpressionFactory(nameof(__BuildGetTheLinkedListTemplates))]
+        public IBodyWorkflowAction<GetLinkedListTemplatesResponse[]> GetTheLinkedListTemplates([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName)
         {
-            var apiCallPath = "/api/DocFusion365/GetLinkedListTemplates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            return new ApiConnectionAction<GetLinkedListTemplatesResponse[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetLinkedListTemplatesResponse[]> __BuildGetTheLinkedListTemplates(WorkflowValue<string> siteUrl, WorkflowValue<string> listName)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(listName, nameof(listName), required: true);
+            return new DeferredBodyAction<GetLinkedListTemplatesResponse[]>(() =>
+            {
+                var apiCallPath = "/api/DocFusion365/GetLinkedListTemplates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+                return new ApiConnectionAction<GetLinkedListTemplatesResponse[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
-        public IBodyWorkflowAction<ComposeLinkedTemplateResponse> ComposeALinkedTemplate(Expression<Func<string>> siteUrl, Expression<Func<string>> listName, Expression<Func<int>> templateId, Expression<Func<int>> listItemId, Expression<Func<bool>> skipPostProcess)
+        [WorkflowExpressionFactory(nameof(__BuildComposeALinkedTemplate))]
+        public IBodyWorkflowAction<ComposeLinkedTemplateResponse> ComposeALinkedTemplate([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName, [WorkflowExpression] Func<int> templateId, [WorkflowExpression] Func<int> listItemId, [WorkflowExpression] Func<bool> skipPostProcess)
         {
-            var apiCallPath = "/api/DocFusion365/ComposeLinkedTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            callPayload.Queries["TemplateId"] = ExpressionConverter.Convert(templateId);
-            callPayload.Queries["listItemId"] = ExpressionConverter.Convert(listItemId);
-            callPayload.Queries["skipPostProcess"] = ExpressionConverter.Convert(skipPostProcess);
-            return new ApiConnectionAction<ComposeLinkedTemplateResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ComposeLinkedTemplateResponse> __BuildComposeALinkedTemplate(WorkflowValue<string> siteUrl, WorkflowValue<string> listName, WorkflowValue<int> templateId, WorkflowValue<int> listItemId, WorkflowValue<bool> skipPostProcess)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(listName, nameof(listName), required: true);
+            WorkflowValue.Validate(templateId, nameof(templateId), required: true);
+            WorkflowValue.Validate(listItemId, nameof(listItemId), required: true);
+            WorkflowValue.Validate(skipPostProcess, nameof(skipPostProcess), required: true);
+            return new DeferredBodyAction<ComposeLinkedTemplateResponse>(() =>
+            {
+                var apiCallPath = "/api/DocFusion365/ComposeLinkedTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+                callPayload.Queries["TemplateId"] = ExpressionConverter.Convert(templateId);
+                callPayload.Queries["listItemId"] = ExpressionConverter.Convert(listItemId);
+                callPayload.Queries["skipPostProcess"] = ExpressionConverter.Convert(skipPostProcess);
+                return new ApiConnectionAction<ComposeLinkedTemplateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
-        public IBodyWorkflowAction<ComposeLinkedTemplateResponse[]> ComposeAllTheLinkedTemplates(Expression<Func<string>> siteUrl, Expression<Func<string>> listName, Expression<Func<int>> listItemId, Expression<Func<bool>> skipPostProcess)
+        [WorkflowExpressionFactory(nameof(__BuildComposeAllTheLinkedTemplates))]
+        public IBodyWorkflowAction<ComposeLinkedTemplateResponse[]> ComposeAllTheLinkedTemplates([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName, [WorkflowExpression] Func<int> listItemId, [WorkflowExpression] Func<bool> skipPostProcess)
         {
-            var apiCallPath = "/api/DocFusion365/ComposeAllLinkedTemplates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-            callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
-            callPayload.Queries["listItemId"] = ExpressionConverter.Convert(listItemId);
-            callPayload.Queries["skipPostProcess"] = ExpressionConverter.Convert(skipPostProcess);
-            return new ApiConnectionAction<ComposeLinkedTemplateResponse[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ComposeLinkedTemplateResponse[]> __BuildComposeAllTheLinkedTemplates(WorkflowValue<string> siteUrl, WorkflowValue<string> listName, WorkflowValue<int> listItemId, WorkflowValue<bool> skipPostProcess)
+        {
+            WorkflowValue.Validate(siteUrl, nameof(siteUrl), required: true);
+            WorkflowValue.Validate(listName, nameof(listName), required: true);
+            WorkflowValue.Validate(listItemId, nameof(listItemId), required: true);
+            WorkflowValue.Validate(skipPostProcess, nameof(skipPostProcess), required: true);
+            return new DeferredBodyAction<ComposeLinkedTemplateResponse[]>(() =>
+            {
+                var apiCallPath = "/api/DocFusion365/ComposeAllLinkedTemplates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
+                callPayload.Queries["listName"] = ExpressionConverter.Convert(listName);
+                callPayload.Queries["listItemId"] = ExpressionConverter.Convert(listItemId);
+                callPayload.Queries["skipPostProcess"] = ExpressionConverter.Convert(skipPostProcess);
+                return new ApiConnectionAction<ComposeLinkedTemplateResponse[]>(callPayload);
+            });
         }
     }
 

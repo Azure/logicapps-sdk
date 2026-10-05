@@ -4,195 +4,326 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynatrace
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class DynatraceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IBodyWorkflowAction<GetProblemsResponse> GetProblems(Expression<Func<string>> from = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetProblems))]
+        public IBodyWorkflowAction<GetProblemsResponse> GetProblems([WorkflowExpression] Func<string> from = null)
         {
-            var apiCallPath = "/api/v2/problems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["from"] = Convert.ToString("now-2h");
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<GetProblemsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IBodyWorkflowAction<GetProblemByIdResponse> GetProblemById(Expression<Func<string>> problemId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProblemsResponse> __BuildGetProblems(WorkflowValue<string> from = null)
         {
-            var apiCallPath = String.Format("/api/v2/problems/{0}", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<GetProblemByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IWorkflowAction GetProblemComments(Expression<Func<string>> problemId)
-        {
-            var apiCallPath = String.Format("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IWorkflowAction PostProblemComment(Expression<Func<string>> problemId, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodycontext = null)
-        {
-            var apiCallPath = String.Format("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json;charset=utf-8");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
+            WorkflowValue.Validate(from, nameof(from), required: false);
+            return new DeferredBodyAction<GetProblemsResponse>(() =>
             {
-                body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                var apiCallPath = "/api/v2/problems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["from"] = Convert.ToString("now-2h");
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<GetProblemsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProblemById))]
+        public IBodyWorkflowAction<GetProblemByIdResponse> GetProblemById([WorkflowExpression] Func<string> problemId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProblemByIdResponse> __BuildGetProblemById(WorkflowValue<string> problemId)
+        {
+            WorkflowValue.Validate(problemId, nameof(problemId), required: true);
+            return new DeferredBodyAction<GetProblemByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<GetProblemByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProblemComments))]
+        public IWorkflowAction GetProblemComments([WorkflowExpression] Func<string> problemId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetProblemComments(WorkflowValue<string> problemId)
+        {
+            WorkflowValue.Validate(problemId, nameof(problemId), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
+        [WorkflowExpressionFactory(nameof(__BuildPostProblemComment))]
+        public IWorkflowAction PostProblemComment([WorkflowExpression] Func<string> problemId, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycontext = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostProblemComment(WorkflowValue<string> problemId, WorkflowValue<string> bodymessage = null, WorkflowValue<string> bodycontext = null)
+        {
+            WorkflowValue.Validate(problemId, nameof(problemId), required: true);
+            WorkflowValue.Validate(bodymessage, nameof(bodymessage), required: false);
+            WorkflowValue.Validate(bodycontext, nameof(bodycontext), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json;charset=utf-8");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessage != null)
+                {
+                    body["message"] = ExpressionConverter.ConvertO(bodymessage);
+                    bodypropCount++;
+                }
+
+                if (bodycontext != null)
+                {
+                    body["context"] = ExpressionConverter.ConvertO(bodycontext);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
+        [WorkflowExpressionFactory(nameof(__BuildGetProblemCommentByProblemIdAndCommentId))]
+        public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> GetProblemCommentByProblemIdAndCommentId([WorkflowExpression] Func<string> problemId, [WorkflowExpression] Func<string> commentId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> __BuildGetProblemCommentByProblemIdAndCommentId(WorkflowValue<string> problemId, WorkflowValue<string> commentId)
+        {
+            WorkflowValue.Validate(problemId, nameof(problemId), required: true);
+            WorkflowValue.Validate(commentId, nameof(commentId), required: true);
+            return new DeferredBodyAction<GetProblemCommentByProblemIdAndCommentIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/problems/{0}/comments/{1}", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1), ExpressionConverter.ConvertWithUrlEncoding(commentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
+                return new ApiConnectionAction<GetProblemCommentByProblemIdAndCommentIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEvents))]
+        public IBodyWorkflowAction<GetEventsResponse> GetEvents([WorkflowExpression] Func<string> from = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEventsResponse> __BuildGetEvents(WorkflowValue<string> from = null)
+        {
+            WorkflowValue.Validate(from, nameof(from), required: false);
+            return new DeferredBodyAction<GetEventsResponse>(() =>
+            {
+                var apiCallPath = "/api/v2/events";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["from"] = Convert.ToString("now-2h");
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                return new ApiConnectionAction<GetEventsResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEntities))]
+        public IBodyWorkflowAction<GetEntitiesResponse> GetEntities([WorkflowExpression] Func<string> entitySelector, [WorkflowExpression] Func<string> from = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEntitiesResponse> __BuildGetEntities(WorkflowValue<string> entitySelector, WorkflowValue<string> from = null)
+        {
+            WorkflowValue.Validate(entitySelector, nameof(entitySelector), required: true);
+            WorkflowValue.Validate(from, nameof(from), required: false);
+            return new DeferredBodyAction<GetEntitiesResponse>(() =>
+            {
+                var apiCallPath = "/api/v2/entities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entitySelector"] = ExpressionConverter.Convert(entitySelector);
+                callPayload.Queries["from"] = Convert.ToString("now-3d");
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                return new ApiConnectionAction<GetEntitiesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
+        [WorkflowExpressionFactory(nameof(__BuildGetEntityById))]
+        public IBodyWorkflowAction<GetEntityByIdResponse> GetEntityById([WorkflowExpression] Func<string> entityId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEntityByIdResponse> __BuildGetEntityById(WorkflowValue<string> entityId)
+        {
+            WorkflowValue.Validate(entityId, nameof(entityId), required: true);
+            return new DeferredBodyAction<GetEntityByIdResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/entities/{0}", ExpressionConverter.ConvertWithUrlEncoding(entityId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetEntityByIdResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
+        [WorkflowExpressionFactory(nameof(__BuildPostEventIngest))]
+        public IWorkflowAction PostEventIngest([WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<int> bodytimeout = null, [WorkflowExpression] Func<string> bodyentitySelector = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildPostEventIngest(WorkflowValue<string> bodyeventType, WorkflowValue<string> bodytitle, WorkflowValue<string> bodystartTime = null, WorkflowValue<string> bodyendTime = null, WorkflowValue<int> bodytimeout = null, WorkflowValue<string> bodyentitySelector = null)
+        {
+            WorkflowValue.Validate(bodyeventType, nameof(bodyeventType), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: true);
+            WorkflowValue.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            WorkflowValue.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            WorkflowValue.Validate(bodytimeout, nameof(bodytimeout), required: false);
+            WorkflowValue.Validate(bodyentitySelector, nameof(bodyentitySelector), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/api/v2/events/ingest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json;charset=utf-8");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycontext != null)
-            {
-                body["context"] = ExpressionConverter.ConvertO(bodycontext);
+                body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                if (bodystartTime != null)
+                {
+                    body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyendTime != null)
+                {
+                    body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction(callPayload);
+                if (bodytimeout != null)
+                {
+                    body["timeout"] = ExpressionConverter.ConvertO(bodytimeout);
+                    bodypropCount++;
+                }
+
+                if (bodyentitySelector != null)
+                {
+                    body["entitySelector"] = ExpressionConverter.ConvertO(bodyentitySelector);
+                    bodypropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IBodyWorkflowAction<GetProblemCommentByProblemIdAndCommentIdResponse> GetProblemCommentByProblemIdAndCommentId(Expression<Func<string>> problemId, Expression<Func<string>> commentId)
+        [WorkflowExpressionFactory(nameof(__BuildGetSecurityProblems))]
+        public IBodyWorkflowAction<GetSecurityProblemsResponse> GetSecurityProblems([WorkflowExpression] Func<string> securityProblemSelector = null, [WorkflowExpression] Func<string> from = null)
         {
-            var apiCallPath = String.Format("/api/v2/problems/{0}/comments/{1}", ExpressionConverter.ConvertWithUrlEncoding(problemId, 1), ExpressionConverter.ConvertWithUrlEncoding(commentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["accept"] = Convert.ToString("application/json; charset=utf-8");
-            return new ApiConnectionAction<GetProblemCommentByProblemIdAndCommentIdResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSecurityProblemsResponse> __BuildGetSecurityProblems(WorkflowValue<string> securityProblemSelector = null, WorkflowValue<string> from = null)
+        {
+            WorkflowValue.Validate(securityProblemSelector, nameof(securityProblemSelector), required: false);
+            WorkflowValue.Validate(from, nameof(from), required: false);
+            return new DeferredBodyAction<GetSecurityProblemsResponse>(() =>
+            {
+                var apiCallPath = "/api/v2/securityProblems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["securityProblemSelector"] = Convert.ToString("status(\"open\")");
+                if (securityProblemSelector != null)
+                    callPayload.Queries["securityProblemSelector"] = ExpressionConverter.Convert(securityProblemSelector);
+                callPayload.Queries["from"] = Convert.ToString("now-30d");
+                if (from != null)
+                    callPayload.Queries["from"] = ExpressionConverter.Convert(from);
+                return new ApiConnectionAction<GetSecurityProblemsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IBodyWorkflowAction<GetEventsResponse> GetEvents(Expression<Func<string>> from = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetSecurityProblemsById))]
+        public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> GetSecurityProblemsById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/api/v2/events";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["from"] = Convert.ToString("now-2h");
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            return new ApiConnectionAction<GetEventsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IBodyWorkflowAction<GetEntitiesResponse> GetEntities(Expression<Func<string>> entitySelector, Expression<Func<string>> from = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> __BuildGetSecurityProblemsById(WorkflowValue<string> id, WorkflowValue<string> fields = null)
         {
-            var apiCallPath = "/api/v2/entities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entitySelector"] = ExpressionConverter.Convert(entitySelector);
-            callPayload.Queries["from"] = Convert.ToString("now-3d");
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            return new ApiConnectionAction<GetEntitiesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IBodyWorkflowAction<GetEntityByIdResponse> GetEntityById(Expression<Func<string>> entityId)
-        {
-            var apiCallPath = String.Format("/api/v2/entities/{0}", ExpressionConverter.ConvertWithUrlEncoding(entityId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetEntityByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IWorkflowAction PostEventIngest(Expression<Func<string>> bodyeventType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<int>> bodytimeout = null, Expression<Func<string>> bodyentitySelector = null)
-        {
-            var apiCallPath = "/api/v2/events/ingest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json;charset=utf-8");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            if (bodystartTime != null)
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            WorkflowValue.Validate(fields, nameof(fields), required: false);
+            return new DeferredBodyAction<GetSecurityProblemsByIdResponse>(() =>
             {
-                body["startTime"] = ExpressionConverter.ConvertO(bodystartTime);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
-                body["endTime"] = ExpressionConverter.ConvertO(bodyendTime);
-                bodypropCount++;
-            }
-
-            if (bodytimeout != null)
-            {
-                body["timeout"] = ExpressionConverter.ConvertO(bodytimeout);
-                bodypropCount++;
-            }
-
-            if (bodyentitySelector != null)
-            {
-                body["entitySelector"] = ExpressionConverter.ConvertO(bodyentitySelector);
-                bodypropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IBodyWorkflowAction<GetSecurityProblemsResponse> GetSecurityProblems(Expression<Func<string>> securityProblemSelector = null, Expression<Func<string>> from = null)
-        {
-            var apiCallPath = "/api/v2/securityProblems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["securityProblemSelector"] = Convert.ToString("status(\"open\")");
-            if (securityProblemSelector != null)
-                callPayload.Queries["securityProblemSelector"] = ExpressionConverter.Convert(securityProblemSelector);
-            callPayload.Queries["from"] = Convert.ToString("now-30d");
-            if (from != null)
-                callPayload.Queries["from"] = ExpressionConverter.Convert(from);
-            return new ApiConnectionAction<GetSecurityProblemsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynatrace")]
-        public IBodyWorkflowAction<GetSecurityProblemsByIdResponse> GetSecurityProblemsById(Expression<Func<string>> id, Expression<Func<string>> fields = null)
-        {
-            var apiCallPath = String.Format("/api/v2/securityProblems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fields != null)
-                callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
-            return new ApiConnectionAction<GetSecurityProblemsByIdResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/v2/securityProblems/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fields != null)
+                    callPayload.Queries["fields"] = ExpressionConverter.Convert(fields);
+                return new ApiConnectionAction<GetSecurityProblemsByIdResponse>(callPayload);
+            });
         }
     }
 

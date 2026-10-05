@@ -4,65 +4,119 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AssentlyesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken> GetCase(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetCase))]
+        public IBodyWorkflowAction<JToken> GetCase([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v2/getCase";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
-            callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildGetCase(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/v2/getCase";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
+                callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken[]> FindCases(Expression<Func<object>> findCasesModel = null)
+        [WorkflowExpressionFactory(nameof(__BuildFindCases))]
+        public IBodyWorkflowAction<JToken[]> FindCases([WorkflowExpression] Func<object> findCasesModel = null)
         {
-            var apiCallPath = "/v2/findCases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
-            callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
-            callPayload.Body = ExpressionConverter.ConvertO(findCasesModel);
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken[]> __BuildFindCases(WorkflowValue<object> findCasesModel = null)
+        {
+            WorkflowValue.Validate(findCasesModel, nameof(findCasesModel), required: false);
+            return new DeferredBodyAction<JToken[]>(() =>
+            {
+                var apiCallPath = "/v2/findCases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeAllStatuses"] = Convert.ToString(true);
+                callPayload.Queries["IncludePendingApprovalStatus"] = Convert.ToString(true);
+                callPayload.Body = ExpressionConverter.ConvertO(findCasesModel);
+                return new ApiConnectionAction<JToken[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken[]> FindTemplates(Expression<Func<object>> findTemplatesModel = null)
+        [WorkflowExpressionFactory(nameof(__BuildFindTemplates))]
+        public IBodyWorkflowAction<JToken[]> FindTemplates([WorkflowExpression] Func<object> findTemplatesModel = null)
         {
-            var apiCallPath = "/v2/findTemplates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(findTemplatesModel);
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken[]> __BuildFindTemplates(WorkflowValue<object> findTemplatesModel = null)
+        {
+            WorkflowValue.Validate(findTemplatesModel, nameof(findTemplatesModel), required: false);
+            return new DeferredBodyAction<JToken[]>(() =>
+            {
+                var apiCallPath = "/v2/findTemplates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(findTemplatesModel);
+                return new ApiConnectionAction<JToken[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction CreateCase(Expression<Func<object>> caseModel = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateCase))]
+        public IWorkflowAction CreateCase([WorkflowExpression] Func<object> caseModel = null)
         {
-            var apiCallPath = "/v2/createCase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(caseModel);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateCase(WorkflowValue<object> caseModel = null)
+        {
+            WorkflowValue.Validate(caseModel, nameof(caseModel), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/createCase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(caseModel);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction CreateCaseFromTemplate(Expression<Func<object>> createCaseFromTemplateModel = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateCaseFromTemplate))]
+        public IWorkflowAction CreateCaseFromTemplate([WorkflowExpression] Func<object> createCaseFromTemplateModel = null)
         {
-            var apiCallPath = "/v2/createCaseFromTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(createCaseFromTemplateModel);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateCaseFromTemplate(WorkflowValue<object> createCaseFromTemplateModel = null)
+        {
+            WorkflowValue.Validate(createCaseFromTemplateModel, nameof(createCaseFromTemplateModel), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/createCaseFromTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(createCaseFromTemplateModel);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
@@ -82,105 +136,205 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction UpdateCaseMetadata(Expression<Func<object>> updateCaseMetadataModel = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateCaseMetadata))]
+        public IWorkflowAction UpdateCaseMetadata([WorkflowExpression] Func<object> updateCaseMetadataModel = null)
         {
-            var apiCallPath = "/v2/updateCaseMetadata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(updateCaseMetadataModel);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildUpdateCaseMetadata(WorkflowValue<object> updateCaseMetadataModel = null)
+        {
+            WorkflowValue.Validate(updateCaseMetadataModel, nameof(updateCaseMetadataModel), required: false);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/updateCaseMetadata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(updateCaseMetadataModel);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction SendCase(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildSendCase))]
+        public IWorkflowAction SendCase([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v2/sendCase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildSendCase(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/sendCase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RequestApproval(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRequestApproval))]
+        public IWorkflowAction RequestApproval([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v2/requestApproval";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRequestApproval(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/requestApproval";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RemindCase(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRemindCase))]
+        public IWorkflowAction RemindCase([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v2/remindCase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRemindCase(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/remindCase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction DeleteCase(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteCase))]
+        public IWorkflowAction DeleteCase([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v2/deleteCase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildDeleteCase(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/deleteCase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RecallCase(Expression<Func<string>> id)
+        [WorkflowExpressionFactory(nameof(__BuildRecallCase))]
+        public IWorkflowAction RecallCase([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v2/recallCase";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildRecallCase(WorkflowValue<string> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/recallCase";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction GetCaseByTemporaryId(Expression<Func<int>> id)
+        [WorkflowExpressionFactory(nameof(__BuildGetCaseByTemporaryId))]
+        public IWorkflowAction GetCaseByTemporaryId([WorkflowExpression] Func<int> id)
         {
-            var apiCallPath = "/v2/getCaseByTemporaryId";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
-            return new ApiConnectionAction(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildGetCaseByTemporaryId(WorkflowValue<int> id)
+        {
+            WorkflowValue.Validate(id, nameof(id), required: true);
+            return new DeferredWorkflowAction(() =>
+            {
+                var apiCallPath = "/v2/getCaseByTemporaryId";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = ExpressionConverter.Convert(id);
+                return new ApiConnectionAction(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<string> GetFileOfCase(Expression<Func<string>> caseid, Expression<Func<string>> documentid)
+        [WorkflowExpressionFactory(nameof(__BuildGetFileOfCase))]
+        public IBodyWorkflowAction<string> GetFileOfCase([WorkflowExpression] Func<string> caseid, [WorkflowExpression] Func<string> documentid)
         {
-            var apiCallPath = "/v2/getdocumentdata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["caseid"] = ExpressionConverter.Convert(caseid);
-            callPayload.Queries["documentid"] = ExpressionConverter.Convert(documentid);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGetFileOfCase(WorkflowValue<string> caseid, WorkflowValue<string> documentid)
+        {
+            WorkflowValue.Validate(caseid, nameof(caseid), required: true);
+            WorkflowValue.Validate(documentid, nameof(documentid), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/v2/getdocumentdata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["caseid"] = ExpressionConverter.Convert(caseid);
+                callPayload.Queries["documentid"] = ExpressionConverter.Convert(documentid);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class AssentlyesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CaseEventTrigger(Expression<Func<string>> eventPath, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCaseEventTrigger))]
+        public IWorkflowTrigger CaseEventTrigger([WorkflowExpression] Func<string> eventPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hook/v1/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EventPath"] = ExpressionConverter.Convert(eventPath);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCaseEventTrigger(WorkflowValue<string> eventPath, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(eventPath, nameof(eventPath), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/hook/v1/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EventPath"] = ExpressionConverter.Convert(eventPath);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 }

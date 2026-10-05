@@ -4,59 +4,74 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaifoundryinference
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class AzureaifoundryinferenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaifoundryinference")]
-        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> apiVersion = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<string>> bodymodel = null)
+        [WorkflowExpressionFactory(nameof(__BuildChatCompletion))]
+        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<string> apiVersion = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<string> bodymodel = null)
         {
-            var apiCallPath = "/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (apiVersion != null)
-                callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessages != null)
-            {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodytemperature != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ChatCompletionResponse> __BuildChatCompletion(WorkflowValue<string> apiVersion = null, WorkflowValue<bodymessagesInputItem[]> bodymessages = null, WorkflowValue<double> bodytemperature = null, WorkflowValue<double> bodytopP = null, WorkflowValue<int> bodymaxTokens = null, WorkflowValue<string> bodymodel = null)
+        {
+            WorkflowValue.Validate(apiVersion, nameof(apiVersion), required: false);
+            WorkflowValue.Validate(bodymessages, nameof(bodymessages), required: false);
+            WorkflowValue.Validate(bodytemperature, nameof(bodytemperature), required: false);
+            WorkflowValue.Validate(bodytopP, nameof(bodytopP), required: false);
+            WorkflowValue.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            WorkflowValue.Validate(bodymodel, nameof(bodymodel), required: false);
+            return new DeferredBodyAction<ChatCompletionResponse>(() =>
             {
-                body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
-                bodypropCount++;
-            }
+                var apiCallPath = "/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (apiVersion != null)
+                    callPayload.Queries["api-version"] = ExpressionConverter.Convert(apiVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessages != null)
+                {
+                    body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                    bodypropCount++;
+                }
 
-            if (bodytopP != null)
-            {
-                body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
-                bodypropCount++;
-            }
+                if (bodytemperature != null)
+                {
+                    body["temperature"] = ExpressionConverter.ConvertO(bodytemperature);
+                    bodypropCount++;
+                }
 
-            if (bodymaxTokens != null)
-            {
-                body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
-                bodypropCount++;
-            }
+                if (bodytopP != null)
+                {
+                    body["top_p"] = ExpressionConverter.ConvertO(bodytopP);
+                    bodypropCount++;
+                }
 
-            if (bodymodel != null)
-            {
-                body["model"] = ExpressionConverter.ConvertO(bodymodel);
-                bodypropCount++;
-            }
+                if (bodymaxTokens != null)
+                {
+                    body["max_tokens"] = ExpressionConverter.ConvertO(bodymaxTokens);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodymodel != null)
+                {
+                    body["model"] = ExpressionConverter.ConvertO(bodymodel);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+            });
         }
     }
 

@@ -4,124 +4,201 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rsign
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<GetAuthTokenResponse> GetAuthToken(Expression<Func<string>> bodyreferenceKey, Expression<Func<string>> bodyemailAddress, Expression<Func<string>> bodypassword)
+        [WorkflowExpressionFactory(nameof(__BuildGetAuthToken))]
+        public IBodyWorkflowAction<GetAuthTokenResponse> GetAuthToken([WorkflowExpression] Func<string> bodyreferenceKey, [WorkflowExpression] Func<string> bodyemailAddress, [WorkflowExpression] Func<string> bodypassword)
         {
-            var apiCallPath = "/api/V1/Authentication/AuthenticateUserV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ReferenceKey"] = ExpressionConverter.ConvertO(bodyreferenceKey);
-            bodypropCount++;
-            body["EmailId"] = ExpressionConverter.ConvertO(bodyemailAddress);
-            bodypropCount++;
-            body["Password"] = ExpressionConverter.ConvertO(bodypassword);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetAuthTokenResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse> SendEnvelopeFromTemplate(Expression<Func<string>> authToken, Expression<Func<string>> bodytemplateCode, Expression<Func<bodytemplateRoleRecipientMappingInputItem[]>> bodytemplateRoleRecipientMapping, Expression<Func<string>> bodyappKey = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAuthTokenResponse> __BuildGetAuthToken(WorkflowValue<string> bodyreferenceKey, WorkflowValue<string> bodyemailAddress, WorkflowValue<string> bodypassword)
         {
-            var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["TemplateCode"] = ExpressionConverter.ConvertO(bodytemplateCode);
-            if (bodyappKey != null)
+            WorkflowValue.Validate(bodyreferenceKey, nameof(bodyreferenceKey), required: true);
+            WorkflowValue.Validate(bodyemailAddress, nameof(bodyemailAddress), required: true);
+            WorkflowValue.Validate(bodypassword, nameof(bodypassword), required: true);
+            return new DeferredBodyAction<GetAuthTokenResponse>(() =>
             {
-                body["AppKey"] = ExpressionConverter.ConvertO(bodyappKey);
+                var apiCallPath = "/api/V1/Authentication/AuthenticateUserV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["ReferenceKey"] = ExpressionConverter.ConvertO(bodyreferenceKey);
+                bodypropCount++;
+                body["EmailId"] = ExpressionConverter.ConvertO(bodyemailAddress);
+                bodypropCount++;
+                body["Password"] = ExpressionConverter.ConvertO(bodypassword);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["TemplateRoleRecipientMapping"] = ExpressionConverter.ConvertO(bodytemplateRoleRecipientMapping);
-            if (bodypropCount > 0)
+                return new ApiConnectionAction<GetAuthTokenResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
+        [WorkflowExpressionFactory(nameof(__BuildSendEnvelopeFromTemplate))]
+        public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse> SendEnvelopeFromTemplate([WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> bodytemplateCode, [WorkflowExpression] Func<bodytemplateRoleRecipientMappingInputItem[]> bodytemplateRoleRecipientMapping, [WorkflowExpression] Func<string> bodyappKey = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendEnvelopeFromTemplateResponse> __BuildSendEnvelopeFromTemplate(WorkflowValue<string> authToken, WorkflowValue<string> bodytemplateCode, WorkflowValue<bodytemplateRoleRecipientMappingInputItem[]> bodytemplateRoleRecipientMapping, WorkflowValue<string> bodyappKey = null)
+        {
+            WorkflowValue.Validate(authToken, nameof(authToken), required: true);
+            WorkflowValue.Validate(bodytemplateCode, nameof(bodytemplateCode), required: true);
+            WorkflowValue.Validate(bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
+            WorkflowValue.Validate(bodyappKey, nameof(bodyappKey), required: false);
+            return new DeferredBodyAction<SendEnvelopeFromTemplateResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["TemplateCode"] = ExpressionConverter.ConvertO(bodytemplateCode);
+                if (bodyappKey != null)
+                {
+                    body["AppKey"] = ExpressionConverter.ConvertO(bodyappKey);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<SendEnvelopeFromTemplateResponse>(callPayload);
+                bodypropCount++;
+                body["TemplateRoleRecipientMapping"] = ExpressionConverter.ConvertO(bodytemplateRoleRecipientMapping);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SendEnvelopeFromTemplateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<SendEnvelopeFromRuleResponse> SendEnvelopeFromRule(Expression<Func<string>> authToken, Expression<Func<string>> bodyruleCode, Expression<Func<bodydocumentsInputItem[]>> bodydocuments, Expression<Func<bodytemplateRoleRecipientMappingInputItem[]>> bodytemplateRoleRecipientMapping)
+        [WorkflowExpressionFactory(nameof(__BuildSendEnvelopeFromRule))]
+        public IBodyWorkflowAction<SendEnvelopeFromRuleResponse> SendEnvelopeFromRule([WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> bodyruleCode, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments, [WorkflowExpression] Func<bodytemplateRoleRecipientMappingInputItem[]> bodytemplateRoleRecipientMapping)
         {
-            var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromRule";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["TemplateCode"] = ExpressionConverter.ConvertO(bodyruleCode);
-            bodypropCount++;
-            body["Documents"] = ExpressionConverter.ConvertO(bodydocuments);
-            bodypropCount++;
-            body["TemplateRoleRecipientMapping"] = ExpressionConverter.ConvertO(bodytemplateRoleRecipientMapping);
-            if (bodypropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendEnvelopeFromRuleResponse> __BuildSendEnvelopeFromRule(WorkflowValue<string> authToken, WorkflowValue<string> bodyruleCode, WorkflowValue<bodydocumentsInputItem[]> bodydocuments, WorkflowValue<bodytemplateRoleRecipientMappingInputItem[]> bodytemplateRoleRecipientMapping)
+        {
+            WorkflowValue.Validate(authToken, nameof(authToken), required: true);
+            WorkflowValue.Validate(bodyruleCode, nameof(bodyruleCode), required: true);
+            WorkflowValue.Validate(bodydocuments, nameof(bodydocuments), required: true);
+            WorkflowValue.Validate(bodytemplateRoleRecipientMapping, nameof(bodytemplateRoleRecipientMapping), required: true);
+            return new DeferredBodyAction<SendEnvelopeFromRuleResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/V1/Envelope/SendEnvelopeFromRule";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["TemplateCode"] = ExpressionConverter.ConvertO(bodyruleCode);
+                bodypropCount++;
+                body["Documents"] = ExpressionConverter.ConvertO(bodydocuments);
+                bodypropCount++;
+                body["TemplateRoleRecipientMapping"] = ExpressionConverter.ConvertO(bodytemplateRoleRecipientMapping);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<SendEnvelopeFromRuleResponse>(callPayload);
+                return new ApiConnectionAction<SendEnvelopeFromRuleResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse> GetEnvelopeStatusInfo(Expression<Func<string>> authToken, Expression<Func<string>> bodyenvelopeCode, Expression<Func<bodydetailOrSummaryInput>> bodydetailOrSummary)
+        [WorkflowExpressionFactory(nameof(__BuildGetEnvelopeStatusInfo))]
+        public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse> GetEnvelopeStatusInfo([WorkflowExpression] Func<string> authToken, [WorkflowExpression] Func<string> bodyenvelopeCode, [WorkflowExpression] Func<bodydetailOrSummaryInput> bodydetailOrSummary)
         {
-            var apiCallPath = "/api/V1/Envelope/GetEnvelopeStatusInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["EnvelopeCode"] = ExpressionConverter.ConvertO(bodyenvelopeCode);
-            bodypropCount++;
-            body["DetailOrSummary"] = ExpressionConverter.ConvertO(bodydetailOrSummary);
-            if (bodypropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetEnvelopeStatusInfoResponse> __BuildGetEnvelopeStatusInfo(WorkflowValue<string> authToken, WorkflowValue<string> bodyenvelopeCode, WorkflowValue<bodydetailOrSummaryInput> bodydetailOrSummary)
+        {
+            WorkflowValue.Validate(authToken, nameof(authToken), required: true);
+            WorkflowValue.Validate(bodyenvelopeCode, nameof(bodyenvelopeCode), required: true);
+            WorkflowValue.Validate(bodydetailOrSummary, nameof(bodydetailOrSummary), required: true);
+            return new DeferredBodyAction<GetEnvelopeStatusInfoResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/api/V1/Envelope/GetEnvelopeStatusInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["EnvelopeCode"] = ExpressionConverter.ConvertO(bodyenvelopeCode);
+                bodypropCount++;
+                body["DetailOrSummary"] = ExpressionConverter.ConvertO(bodydetailOrSummary);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<GetEnvelopeStatusInfoResponse>(callPayload);
+                return new ApiConnectionAction<GetEnvelopeStatusInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<GetTemplateInfoResponse> GetTemplateInfo(Expression<Func<string>> templateCode, Expression<Func<string>> authToken)
+        [WorkflowExpressionFactory(nameof(__BuildGetTemplateInfo))]
+        public IBodyWorkflowAction<GetTemplateInfoResponse> GetTemplateInfo([WorkflowExpression] Func<string> templateCode, [WorkflowExpression] Func<string> authToken)
         {
-            var apiCallPath = String.Format("/api/V1/Template/GetTemplateInfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
-            return new ApiConnectionAction<GetTemplateInfoResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTemplateInfoResponse> __BuildGetTemplateInfo(WorkflowValue<string> templateCode, WorkflowValue<string> authToken)
+        {
+            WorkflowValue.Validate(templateCode, nameof(templateCode), required: true);
+            WorkflowValue.Validate(authToken, nameof(authToken), required: true);
+            return new DeferredBodyAction<GetTemplateInfoResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/V1/Template/GetTemplateInfo/{0}", ExpressionConverter.ConvertWithUrlEncoding(templateCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+                return new ApiConnectionAction<GetTemplateInfoResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rsign")]
-        public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse> DownloadEnvelopeDocuments(Expression<Func<string>> envelopeCode, Expression<Func<string>> authToken)
+        [WorkflowExpressionFactory(nameof(__BuildDownloadEnvelopeDocuments))]
+        public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse> DownloadEnvelopeDocuments([WorkflowExpression] Func<string> envelopeCode, [WorkflowExpression] Func<string> authToken)
         {
-            var apiCallPath = String.Format("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
-            return new ApiConnectionAction<DownloadEnvelopeDocumentsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<DownloadEnvelopeDocumentsResponse> __BuildDownloadEnvelopeDocuments(WorkflowValue<string> envelopeCode, WorkflowValue<string> authToken)
+        {
+            WorkflowValue.Validate(envelopeCode, nameof(envelopeCode), required: true);
+            WorkflowValue.Validate(authToken, nameof(authToken), required: true);
+            return new DeferredBodyAction<DownloadEnvelopeDocumentsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/api/V1/Manage/DownloadEnvelopeDocuments/{0}", ExpressionConverter.ConvertWithUrlEncoding(envelopeCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["AuthToken"] = ExpressionConverter.Convert(authToken);
+                return new ApiConnectionAction<DownloadEnvelopeDocumentsResponse>(callPayload);
+            });
         }
     }
 

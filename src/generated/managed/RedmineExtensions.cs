@@ -4,83 +4,120 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RedmineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
-        public IBodyWorkflowAction<GetIssueResponse> GetIssue(Expression<Func<string>> issueId)
+        [WorkflowExpressionFactory(nameof(__BuildGetIssue))]
+        public IBodyWorkflowAction<GetIssueResponse> GetIssue([WorkflowExpression] Func<string> issueId)
         {
-            var apiCallPath = String.Format("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetIssueResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetIssueResponse> __BuildGetIssue(WorkflowValue<string> issueId)
+        {
+            WorkflowValue.Validate(issueId, nameof(issueId), required: true);
+            return new DeferredBodyAction<GetIssueResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetIssueResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
-        public IBodyWorkflowAction<string> UpdateIssue(Expression<Func<string>> issueId, Expression<Func<string>> issueissuepriority = null, Expression<Func<issueissuetrackerInput>> issueissuetracker = null, Expression<Func<issueissuestatusInput>> issueissuestatus = null, Expression<Func<string>> issueissuesubject = null, Expression<Func<string>> issueissuedescription = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdateIssue))]
+        public IBodyWorkflowAction<string> UpdateIssue([WorkflowExpression] Func<string> issueId, [WorkflowExpression] Func<string> issueissuepriority = null, [WorkflowExpression] Func<issueissuetrackerInput> issueissuetracker = null, [WorkflowExpression] Func<issueissuestatusInput> issueissuestatus = null, [WorkflowExpression] Func<string> issueissuesubject = null, [WorkflowExpression] Func<string> issueissuedescription = null)
         {
-            var apiCallPath = String.Format("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var issue = new JObject();
-            var issuepropCount = 0;
-            var issueObject = new JObject();
-            var issueObjectpropCount = 0;
-            if (issueissuepriority != null)
-            {
-                issueObject["priority_id"] = ExpressionConverter.ConvertO(issueissuepriority);
-                issueObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (issueissuetracker != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildUpdateIssue(WorkflowValue<string> issueId, WorkflowValue<string> issueissuepriority = null, WorkflowValue<issueissuetrackerInput> issueissuetracker = null, WorkflowValue<issueissuestatusInput> issueissuestatus = null, WorkflowValue<string> issueissuesubject = null, WorkflowValue<string> issueissuedescription = null)
+        {
+            WorkflowValue.Validate(issueId, nameof(issueId), required: true);
+            WorkflowValue.Validate(issueissuepriority, nameof(issueissuepriority), required: false);
+            WorkflowValue.Validate(issueissuetracker, nameof(issueissuetracker), required: false);
+            WorkflowValue.Validate(issueissuestatus, nameof(issueissuestatus), required: false);
+            WorkflowValue.Validate(issueissuesubject, nameof(issueissuesubject), required: false);
+            WorkflowValue.Validate(issueissuedescription, nameof(issueissuedescription), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                issueObject["tracker_id"] = ExpressionConverter.ConvertO(issueissuetracker);
-                issueObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/issues/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(issueId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var issue = new JObject();
+                var issuepropCount = 0;
+                var issueObject = new JObject();
+                var issueObjectpropCount = 0;
+                if (issueissuepriority != null)
+                {
+                    issueObject["priority_id"] = ExpressionConverter.ConvertO(issueissuepriority);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuestatus != null)
-            {
-                issueObject["status_id"] = ExpressionConverter.ConvertO(issueissuestatus);
-                issueObjectpropCount++;
-            }
+                if (issueissuetracker != null)
+                {
+                    issueObject["tracker_id"] = ExpressionConverter.ConvertO(issueissuetracker);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuesubject != null)
-            {
-                issueObject["subject"] = ExpressionConverter.ConvertO(issueissuesubject);
-                issueObjectpropCount++;
-            }
+                if (issueissuestatus != null)
+                {
+                    issueObject["status_id"] = ExpressionConverter.ConvertO(issueissuestatus);
+                    issueObjectpropCount++;
+                }
 
-            if (issueissuedescription != null)
-            {
-                issueObject["description"] = ExpressionConverter.ConvertO(issueissuedescription);
-                issueObjectpropCount++;
-            }
+                if (issueissuesubject != null)
+                {
+                    issueObject["subject"] = ExpressionConverter.ConvertO(issueissuesubject);
+                    issueObjectpropCount++;
+                }
 
-            if (issueObjectpropCount > 0)
-            {
-                issue["issue"] = issueObject;
-                issuepropCount++;
-            }
+                if (issueissuedescription != null)
+                {
+                    issueObject["description"] = ExpressionConverter.ConvertO(issueissuedescription);
+                    issueObjectpropCount++;
+                }
 
-            if (issuepropCount > 0)
-            {
-                callPayload.Body = issue;
-            }
+                if (issueObjectpropCount > 0)
+                {
+                    issue["issue"] = issueObject;
+                    issuepropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (issuepropCount > 0)
+                {
+                    callPayload.Body = issue;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
+        [WorkflowExpressionFactory(nameof(__BuildGetProject))]
+        public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = String.Format("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProjectResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetProjectResponse> __BuildGetProject(WorkflowValue<string> projectId)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyAction<GetProjectResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetProjectResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
@@ -93,12 +130,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "redmine")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> userId)
+        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
+        public IBodyWorkflowAction<GetUserResponse> GetUser([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = String.Format("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUserResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUserResponse> __BuildGetUser(WorkflowValue<string> userId)
+        {
+            WorkflowValue.Validate(userId, nameof(userId), required: true);
+            return new DeferredBodyAction<GetUserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetUserResponse>(callPayload);
+            });
         }
     }
 
@@ -112,22 +160,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
             return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListIssuesResponse> OnNewIssue(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnNewIssue))]
+        public IBodyWorkflowTrigger<ListIssuesResponse> OnNewIssue([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/new_issue_trigger/issues.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue(Expression<Func<string>> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ListIssuesResponse> __BuildOnNewIssue(WorkflowValue<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/resolved_issue_trigger/issues.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-            return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyTrigger<ListIssuesResponse>(() =>
+            {
+                var apiCallPath = "/new_issue_trigger/issues.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildOnUpdatedIssue))]
+        public IBodyWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ListIssuesResponse> __BuildOnUpdatedIssue(WorkflowValue<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(projectId, nameof(projectId), required: true);
+            return new DeferredBodyTrigger<ListIssuesResponse>(() =>
+            {
+                var apiCallPath = "/resolved_issue_trigger/issues.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
+                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,116 +20,214 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<FormMeta[]> Forms(Expression<Func<string>> groupId)
+        [WorkflowExpressionFactory(nameof(__BuildForms))]
+        public IBodyWorkflowAction<FormMeta[]> Forms([WorkflowExpression] Func<string> groupId)
         {
-            var apiCallPath = "/forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            return new ApiConnectionAction<FormMeta[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FormMeta[]> __BuildForms(WorkflowValue<string> groupId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            return new DeferredBodyAction<FormMeta[]>(() =>
+            {
+                var apiCallPath = "/forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                return new ApiConnectionAction<FormMeta[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<FormSchema> Form(Expression<Func<string>> groupId, Expression<Func<string>> formId)
+        [WorkflowExpressionFactory(nameof(__BuildForm))]
+        public IBodyWorkflowAction<FormSchema> Form([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId)
         {
-            var apiCallPath = "/form";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            return new ApiConnectionAction<FormSchema>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FormSchema> __BuildForm(WorkflowValue<string> groupId, WorkflowValue<string> formId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(formId, nameof(formId), required: true);
+            return new DeferredBodyAction<FormSchema>(() =>
+            {
+                var apiCallPath = "/form";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+                return new ApiConnectionAction<FormSchema>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<File[]> Files(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        [WorkflowExpressionFactory(nameof(__BuildFiles))]
+        public IBodyWorkflowAction<File[]> Files([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
-            var apiCallPath = "/files";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<File[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<File[]> __BuildFiles(WorkflowValue<string> groupId, WorkflowValue<string> responseId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<File[]>(() =>
+            {
+                var apiCallPath = "/files";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+                return new ApiConnectionAction<File[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<File> Pdf(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        [WorkflowExpressionFactory(nameof(__BuildPdf))]
+        public IBodyWorkflowAction<File> Pdf([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
-            var apiCallPath = "/pdf";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<File>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<File> __BuildPdf(WorkflowValue<string> groupId, WorkflowValue<string> responseId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<File>(() =>
+            {
+                var apiCallPath = "/pdf";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+                return new ApiConnectionAction<File>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<string> PdfContent(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        [WorkflowExpressionFactory(nameof(__BuildPdfContent))]
+        public IBodyWorkflowAction<string> PdfContent([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
-            var apiCallPath = "/pdf-content";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildPdfContent(WorkflowValue<string> groupId, WorkflowValue<string> responseId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/pdf-content";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<JToken> Response(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<string>> responseId)
+        [WorkflowExpressionFactory(nameof(__BuildResponse))]
+        public IBodyWorkflowAction<JToken> Response([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> responseId)
         {
-            var apiCallPath = "/response";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<JToken> __BuildResponse(WorkflowValue<string> groupId, WorkflowValue<string> formId, WorkflowValue<string> responseId)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(formId, nameof(formId), required: true);
+            WorkflowValue.Validate(responseId, nameof(responseId), required: true);
+            return new DeferredBodyAction<JToken>(() =>
+            {
+                var apiCallPath = "/response";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+                callPayload.Queries["responseId"] = ExpressionConverter.Convert(responseId);
+                return new ApiConnectionAction<JToken>(callPayload);
+            });
         }
     }
 
     public class TeamformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildSubscribeResponse))]
+        public IWorkflowTrigger SubscribeResponse([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<environmentInput> environment = null, [WorkflowExpression] Func<triggersInput> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/response-subscription";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            if (formId != null)
-                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            if (environment != null)
-                callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
-            if (triggers != null)
-                callPayload.Queries["triggers"] = ExpressionConverter.Convert(triggers);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["webHookUrl"] = "@listCallbackUrl()";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildSubscribeResponse(WorkflowValue<string> groupId, WorkflowValue<string> formId = null, WorkflowValue<environmentInput> environment = null, WorkflowValue<triggersInput> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/response-deletion-subscription";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-            if (formId != null)
-                callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBody["webHookUrl"] = "@listCallbackUrl()";
-            requestBodypropCount++;
-            if (requestBodypropCount > 0)
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(formId, nameof(formId), required: false);
+            WorkflowValue.Validate(environment, nameof(environment), required: false);
+            WorkflowValue.Validate(triggers, nameof(triggers), required: false);
+            return new DeferredWorkflowTrigger(() =>
             {
-                callPayload.Body = requestBody;
-            }
+                var apiCallPath = "/response-subscription";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                if (formId != null)
+                    callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+                if (environment != null)
+                    callPayload.Queries["environment"] = ExpressionConverter.Convert(environment);
+                if (triggers != null)
+                    callPayload.Queries["triggers"] = ExpressionConverter.Convert(triggers);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["webHookUrl"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildSubscribeResponseDeletion))]
+        public IWorkflowTrigger SubscribeResponseDeletion([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildSubscribeResponseDeletion(WorkflowValue<string> groupId, WorkflowValue<string> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(formId, nameof(formId), required: false);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/response-deletion-subscription";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
+                if (formId != null)
+                    callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBody["webHookUrl"] = "#{listCallbackUrl()}";
+                requestBodypropCount++;
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

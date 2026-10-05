@@ -4,47 +4,59 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MobsimsendsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
-        public IBodyWorkflowAction<string> SMS(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodygroupMsg = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
+        [WorkflowExpressionFactory(nameof(__BuildSMS))]
+        public IBodyWorkflowAction<string> SMS([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodygroupMsg = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null)
         {
-            var apiCallPath = "/sms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodygroupId != null)
-            {
-                body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodygroupMsg != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildSMS(WorkflowValue<string> bodygroupId = null, WorkflowValue<string> bodygroupMsg = null, WorkflowValue<bodymessagesInputItem[]> bodymessages = null)
+        {
+            WorkflowValue.Validate(bodygroupId, nameof(bodygroupId), required: false);
+            WorkflowValue.Validate(bodygroupMsg, nameof(bodygroupMsg), required: false);
+            WorkflowValue.Validate(bodymessages, nameof(bodymessages), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["groupMsg"] = ExpressionConverter.ConvertO(bodygroupMsg);
-                bodypropCount++;
-            }
+                var apiCallPath = "/sms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = ExpressionConverter.ConvertO(bodygroupId);
+                    bodypropCount++;
+                }
 
-            if (bodymessages != null)
-            {
-                body["messages"] = ExpressionConverter.ConvertO(bodymessages);
-                bodypropCount++;
-            }
+                if (bodygroupMsg != null)
+                {
+                    body["groupMsg"] = ExpressionConverter.ConvertO(bodygroupMsg);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodymessages != null)
+                {
+                    body["messages"] = ExpressionConverter.ConvertO(bodymessages);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

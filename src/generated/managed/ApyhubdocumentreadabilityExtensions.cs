@@ -4,20 +4,31 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubdocumentreadability
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ApyhubdocumentreadabilityActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubdocumentreadability")]
-        public IBodyWorkflowAction<ScorePostResponse> Score(Expression<Func<object>> file, Expression<Func<contentTypeInput>> contentType)
+        [WorkflowExpressionFactory(nameof(__BuildScore))]
+        public IBodyWorkflowAction<ScorePostResponse> Score([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<contentTypeInput> contentType)
         {
-            var apiCallPath = "/extract/document/readability-score/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ScorePostResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ScorePostResponse> __BuildScore(WorkflowValue<object> file, WorkflowValue<contentTypeInput> contentType)
+        {
+            WorkflowValue.Validate(file, nameof(file), required: true);
+            WorkflowValue.Validate(contentType, nameof(contentType), required: true);
+            return new DeferredBodyAction<ScorePostResponse>(() =>
+            {
+                var apiCallPath = "/extract/document/readability-score/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ScorePostResponse>(callPayload);
+            });
         }
     }
 

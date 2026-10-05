@@ -4,37 +4,50 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdfless
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class PdflessActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdfless")]
-        public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF(Expression<Func<string>> version, Expression<Func<string>> commandtemplateId, Expression<Func<string>> commandpayload, Expression<Func<string>> commandreferenceId = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreatePDF))]
+        public IBodyWorkflowAction<PDFDtoApiResult> CreatePDF([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> commandtemplateId, [WorkflowExpression] Func<string> commandpayload, [WorkflowExpression] Func<string> commandreferenceId = null)
         {
-            var apiCallPath = String.Format("/v{0}/pdfs", ExpressionConverter.ConvertWithUrlEncoding(version, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var command = new JObject();
-            var commandpropCount = 0;
-            commandpropCount++;
-            command["template_id"] = ExpressionConverter.ConvertO(commandtemplateId);
-            commandpropCount++;
-            command["payload"] = ExpressionConverter.ConvertO(commandpayload);
-            if (commandreferenceId != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PDFDtoApiResult> __BuildCreatePDF(WorkflowValue<string> version, WorkflowValue<string> commandtemplateId, WorkflowValue<string> commandpayload, WorkflowValue<string> commandreferenceId = null)
+        {
+            WorkflowValue.Validate(version, nameof(version), required: true);
+            WorkflowValue.Validate(commandtemplateId, nameof(commandtemplateId), required: true);
+            WorkflowValue.Validate(commandpayload, nameof(commandpayload), required: true);
+            WorkflowValue.Validate(commandreferenceId, nameof(commandreferenceId), required: false);
+            return new DeferredBodyAction<PDFDtoApiResult>(() =>
             {
-                command["reference_id"] = ExpressionConverter.ConvertO(commandreferenceId);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/v{0}/pdfs", ExpressionConverter.ConvertWithUrlEncoding(version, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var command = new JObject();
+                var commandpropCount = 0;
                 commandpropCount++;
-            }
+                command["template_id"] = ExpressionConverter.ConvertO(commandtemplateId);
+                commandpropCount++;
+                command["payload"] = ExpressionConverter.ConvertO(commandpayload);
+                if (commandreferenceId != null)
+                {
+                    command["reference_id"] = ExpressionConverter.ConvertO(commandreferenceId);
+                    commandpropCount++;
+                }
 
-            if (commandpropCount > 0)
-            {
-                callPayload.Body = command;
-            }
+                if (commandpropCount > 0)
+                {
+                    callPayload.Body = command;
+                }
 
-            return new ApiConnectionAction<PDFDtoApiResult>(callPayload);
+                return new ApiConnectionAction<PDFDtoApiResult>(callPayload);
+            });
         }
     }
 

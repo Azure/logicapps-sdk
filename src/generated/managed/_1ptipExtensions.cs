@@ -4,23 +4,34 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class _1ptipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1ptip")]
-        public IBodyWorkflowAction<URLGetResponse> URLGet(Expression<Func<string>> @long, Expression<Func<string>> @short = null)
+        [WorkflowExpressionFactory(nameof(__BuildURLGet))]
+        public IBodyWorkflowAction<URLGetResponse> URLGet([WorkflowExpression] Func<string> @long, [WorkflowExpression] Func<string> @short = null)
         {
-            var apiCallPath = "/addURL";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
-            if (@short != null)
-                callPayload.Queries["short"] = ExpressionConverter.Convert(@short);
-            return new ApiConnectionAction<URLGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<URLGetResponse> __BuildURLGet(WorkflowValue<string> @long, WorkflowValue<string> @short = null)
+        {
+            WorkflowValue.Validate(@long, nameof(@long), required: true);
+            WorkflowValue.Validate(@short, nameof(@short), required: false);
+            return new DeferredBodyAction<URLGetResponse>(() =>
+            {
+                var apiCallPath = "/addURL";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["long"] = ExpressionConverter.Convert(@long);
+                if (@short != null)
+                    callPayload.Queries["short"] = ExpressionConverter.Convert(@short);
+                return new ApiConnectionAction<URLGetResponse>(callPayload);
+            });
         }
     }
 

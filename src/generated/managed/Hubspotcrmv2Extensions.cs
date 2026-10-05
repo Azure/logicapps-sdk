@@ -4,3410 +4,5147 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class Hubspotcrmv2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfCompaniesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
-        {
-            var apiCallPath = "/crm/v3/objects/companies/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfCompaniesById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfCompaniesById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfCompaniesById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<ListResponse> List(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildList))]
+        public IBodyWorkflowAction<ListResponse> List([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<ListResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListResponse> __BuildList(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
+        {
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<ListResponse>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/companies";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<ListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateResponse> Create(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreate))]
+        public IBodyWorkflowAction<CreateResponse> Create([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
-            {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateResponse> __BuildCreate(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<CreateResponse>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateResponse>(callPayload);
+                return new ApiConnectionAction<CreateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<ReadResponse> Read(Expression<Func<string>> companyId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead))]
+        public IBodyWorkflowAction<ReadResponse> Read([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<ReadResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive(Expression<Func<string>> companyId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReadResponse> __BuildRead(WorkflowValue<string> companyId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(companyId, nameof(companyId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<ReadResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<ReadResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<UpdateResponse> Update(Expression<Func<string>> companyId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive))]
+        public IBodyWorkflowAction<string> Archive([WorkflowExpression] Func<string> companyId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive(WorkflowValue<string> companyId)
+        {
+            WorkflowValue.Validate(companyId, nameof(companyId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse> MergeTwoCompaniesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdate))]
+        public IBodyWorkflowAction<UpdateResponse> Update([WorkflowExpression] Func<string> companyId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateResponse> __BuildUpdate(WorkflowValue<string> companyId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(companyId, nameof(companyId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<UpdateResponse>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/companies/{0}", ExpressionConverter.ConvertWithUrlEncoding(companyId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoCompaniesWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<UpdateResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDelete(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoCompaniesWithSameType))]
+        public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse> MergeTwoCompaniesWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoCompaniesWithSameTypeResponse> __BuildMergeTwoCompaniesWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoCompaniesWithSameTypeResponse>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoCompaniesWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse> PostCrmV3ObjectsCompaniesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDelete))]
+        public IBodyWorkflowAction<string> GdprDelete([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/companies/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
-
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
-
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
-
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodysorts != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDelete(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/companies/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsCompaniesSearchResponse>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfContactsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsCompaniesSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse> PostCrmV3ObjectsCompaniesSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsCompaniesSearchResponse> __BuildPostCrmV3ObjectsCompaniesSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsCompaniesSearchResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/companies/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
+
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
+
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
+
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsCompaniesSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List16Response> List16(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfContactsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfContactsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List16Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create17Response> Create17(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfContactsById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create17Response>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read18Response> Read18(Expression<Func<string>> contactId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildList16))]
+        public IBodyWorkflowAction<List16Response> List16([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<Read18Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive19(Expression<Func<string>> contactId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List16Response> __BuildList16(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List16Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List16Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update20Response> Update20(Expression<Func<string>> contactId)
+        [WorkflowExpressionFactory(nameof(__BuildCreate17))]
+        public IBodyWorkflowAction<Create17Response> Create17([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Update20Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse> MergeTwoContactsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create17Response> __BuildCreate17(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create17Response>(() =>
             {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoContactsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<Create17Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDelete22(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead18))]
+        public IBodyWorkflowAction<Read18Response> Read18([WorkflowExpression] Func<string> contactId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/contacts/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
-
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read18Response> __BuildRead18(WorkflowValue<string> contactId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
+        {
+            WorkflowValue.Validate(contactId, nameof(contactId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<Read18Response>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<Read18Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse> PostCrmV3ObjectsContactsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive19))]
+        public IBodyWorkflowAction<string> Archive19([WorkflowExpression] Func<string> contactId)
         {
-            var apiCallPath = "/crm/v3/objects/contacts/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
-
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
-
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyproperties != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive19(WorkflowValue<string> contactId)
+        {
+            WorkflowValue.Validate(contactId, nameof(contactId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate20))]
+        public IBodyWorkflowAction<Update20Response> Update20([WorkflowExpression] Func<string> contactId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyquery != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update20Response> __BuildUpdate20(WorkflowValue<string> contactId)
+        {
+            WorkflowValue.Validate(contactId, nameof(contactId), required: true);
+            return new DeferredBodyAction<Update20Response>(() =>
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsContactsSearchResponse>(callPayload);
+                return new ApiConnectionAction<Update20Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfDealsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoContactsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse> MergeTwoContactsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoContactsWithSameTypeResponse> __BuildMergeTwoContactsWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoContactsWithSameTypeResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
+
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoContactsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List28Response> List28(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDelete22))]
+        public IBodyWorkflowAction<string> GdprDelete22([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List28Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create29Response> Create29(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDelete22(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
-            {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Create29Response>(callPayload);
-        }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read30Response> Read30(Expression<Func<string>> dealId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
-        {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read30Response>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive31(Expression<Func<string>> dealId)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsContactsSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse> PostCrmV3ObjectsContactsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update32Response> Update32(Expression<Func<string>> dealId, Expression<Func<string>> idProperty = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsContactsSearchResponse> __BuildPostCrmV3ObjectsContactsSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsContactsSearchResponse>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/contacts/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Update32Response>(callPayload);
-        }
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse> MergeTwoDealsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
-        {
-            var apiCallPath = "/crm/v3/objects/deals/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MergeTwoDealsWithSameTypeResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsContactsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDelete34(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfDealsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfDealsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfDealsById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse> PostCrmV3ObjectsDealsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildList28))]
+        public IBodyWorkflowAction<List28Response> List28([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/deals/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
-
-            if (bodyfilterGroups != null)
-            {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodylimit != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List28Response> __BuildList28(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
+        {
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List28Response>(() =>
             {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List28Response>(callPayload);
+            });
+        }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreate29))]
+        public IBodyWorkflowAction<Create29Response> Create29([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodysorts != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create29Response> __BuildCreate29(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create29Response>(() =>
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsDealsSearchResponse>(callPayload);
+                return new ApiConnectionAction<Create29Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfFeesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead30))]
+        public IBodyWorkflowAction<Read30Response> Read30([WorkflowExpression] Func<string> dealId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read30Response> __BuildRead30(WorkflowValue<string> dealId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(dealId, nameof(dealId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read30Response>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read30Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read40Response> Read40(Expression<Func<string>> feeId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive31))]
+        public IBodyWorkflowAction<string> Archive31([WorkflowExpression] Func<string> dealId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read40Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive41(Expression<Func<string>> feeId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive31(WorkflowValue<string> dealId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(dealId, nameof(dealId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update42Response> Update42(Expression<Func<string>> feeId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdate32))]
+        public IBodyWorkflowAction<Update32Response> Update32([WorkflowExpression] Func<string> dealId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update32Response> __BuildUpdate32(WorkflowValue<string> dealId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(dealId, nameof(dealId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update32Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/deals/{0}", ExpressionConverter.ConvertWithUrlEncoding(dealId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update42Response>(callPayload);
+                return new ApiConnectionAction<Update32Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List43Response> List43(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoDealsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse> MergeTwoDealsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List43Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create44Response> Create44(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoDealsWithSameTypeResponse> __BuildMergeTwoDealsWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoDealsWithSameTypeResponse>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create44Response>(callPayload);
+                return new ApiConnectionAction<MergeTwoDealsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse> MergeTwoFeesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDelete34))]
+        public IBodyWorkflowAction<string> GdprDelete34([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
-
-            if (bodyprimaryObjectId != null)
-            {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MergeTwoFeesWithSameTypeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDelete46(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDelete34(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodyidProperty != null)
-            {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse> PostCrmV3ObjectsFeesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsDealsSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse> PostCrmV3ObjectsDealsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/fees/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsDealsSearchResponse> __BuildPostCrmV3ObjectsDealsSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsDealsSearchResponse>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/deals/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsFeesSearchResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsDealsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfGoalTargetsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfFeesById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfFeesById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfFeesById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/fees/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read52Response> Read52(Expression<Func<string>> goalTargetId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead40))]
+        public IBodyWorkflowAction<Read40Response> Read40([WorkflowExpression] Func<string> feeId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read52Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive53(Expression<Func<string>> goalTargetId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read40Response> __BuildRead40(WorkflowValue<string> feeId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(feeId, nameof(feeId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read40Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read40Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update54Response> Update54(Expression<Func<string>> goalTargetId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive41))]
+        public IBodyWorkflowAction<string> Archive41([WorkflowExpression] Func<string> feeId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive41(WorkflowValue<string> feeId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            WorkflowValue.Validate(feeId, nameof(feeId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate42))]
+        public IBodyWorkflowAction<Update42Response> Update42([WorkflowExpression] Func<string> feeId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update42Response> __BuildUpdate42(WorkflowValue<string> feeId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(feeId, nameof(feeId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update42Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/fees/{0}", ExpressionConverter.ConvertWithUrlEncoding(feeId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Update54Response>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Update42Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List55Response> List55(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildList43))]
+        public IBodyWorkflowAction<List43Response> List43([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List55Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create56Response> Create56(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List43Response> __BuildList43(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List43Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List43Response>(callPayload);
+            });
+        }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreate44))]
+        public IBodyWorkflowAction<Create44Response> Create44([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create44Response> __BuildCreate44(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create44Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/fees";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Create56Response>(callPayload);
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Create44Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse> MergeTwoGoalTargetsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoFeesWithSameType))]
+        public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse> MergeTwoFeesWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoFeesWithSameTypeResponse> __BuildMergeTwoFeesWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoFeesWithSameTypeResponse>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MergeTwoGoalTargetsWithSameTypeResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoFeesWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDelete58(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDelete46))]
+        public IBodyWorkflowAction<string> GdprDelete46([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDelete46(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse> PostCrmV3ObjectsGoalTargetsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsFeesSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse> PostCrmV3ObjectsFeesSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/goal_targets/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsFeesSearchResponse> __BuildPostCrmV3ObjectsFeesSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsFeesSearchResponse>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/fees/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsGoalTargetsSearchResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsFeesSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfLineItemsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfGoalTargetsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfGoalTargetsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfGoalTargetsById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List64Response> List64(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead52))]
+        public IBodyWorkflowAction<Read52Response> Read52([WorkflowExpression] Func<string> goalTargetId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List64Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create65Response> Create65(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read52Response> __BuildRead52(WorkflowValue<string> goalTargetId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(goalTargetId, nameof(goalTargetId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read52Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read52Response>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildArchive53))]
+        public IBodyWorkflowAction<string> Archive53([WorkflowExpression] Func<string> goalTargetId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive53(WorkflowValue<string> goalTargetId)
+        {
+            WorkflowValue.Validate(goalTargetId, nameof(goalTargetId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate54))]
+        public IBodyWorkflowAction<Update54Response> Update54([WorkflowExpression] Func<string> goalTargetId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update54Response> __BuildUpdate54(WorkflowValue<string> goalTargetId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(goalTargetId, nameof(goalTargetId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update54Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/goal_targets/{0}", ExpressionConverter.ConvertWithUrlEncoding(goalTargetId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Create65Response>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Update54Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read66Response> Read66(Expression<Func<string>> lineItemId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildList55))]
+        public IBodyWorkflowAction<List55Response> List55([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read66Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive67(Expression<Func<string>> lineItemId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List55Response> __BuildList55(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List55Response>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/goal_targets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List55Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update68Response> Update68(Expression<Func<string>> lineItemId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreate56))]
+        public IBodyWorkflowAction<Create56Response> Create56([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create56Response> __BuildCreate56(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create56Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Update68Response>(callPayload);
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Create56Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse> MergeTwoLineItemsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoGoalTargetsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse> MergeTwoGoalTargetsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoGoalTargetsWithSameTypeResponse> __BuildMergeTwoGoalTargetsWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoGoalTargetsWithSameTypeResponse>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MergeTwoLineItemsWithSameTypeResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoGoalTargetsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDelete70(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDelete58))]
+        public IBodyWorkflowAction<string> GdprDelete58([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDelete58(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse> PostCrmV3ObjectsLineItemsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsGoalTargetsSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse> PostCrmV3ObjectsGoalTargetsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/line_items/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsGoalTargetsSearchResponse> __BuildPostCrmV3ObjectsGoalTargetsSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsGoalTargetsSearchResponse>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/goal_targets/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsLineItemsSearchResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsGoalTargetsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<GetAPageOfOwnersResponse> GetAPageOfOwners(Expression<Func<string>> email, Expression<Func<string>> after = null, Expression<Func<string>> limit = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfLineItemsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfLineItemsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/owners/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = ExpressionConverter.Convert(email);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<GetAPageOfOwnersResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<ReadAnOwnerByGivenidOruseridResponse> ReadAnOwnerByGivenidOruserid(Expression<Func<string>> ownerId, Expression<Func<string>> idProperty = null, Expression<Func<bool>> archived = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfLineItemsById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v3/owners/{0}", ExpressionConverter.ConvertWithUrlEncoding(ownerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<ReadAnOwnerByGivenidOruseridResponse>(callPayload);
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/line_items/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfProductsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildList64))]
+        public IBodyWorkflowAction<List64Response> List64([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/products/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List64Response> __BuildList64(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
+        {
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List64Response>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+                var apiCallPath = "/crm/v3/objects/line_items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List64Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List78Response> List78(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreate65))]
+        public IBodyWorkflowAction<Create65Response> Create65([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/products";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List78Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create79Response> Create79(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create65Response> __BuildCreate65(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
         {
-            var apiCallPath = "/crm/v3/objects/products";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create65Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create79Response>(callPayload);
+                return new ApiConnectionAction<Create65Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read80Response> Read80(Expression<Func<string>> productId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead66))]
+        public IBodyWorkflowAction<Read66Response> Read66([WorkflowExpression] Func<string> lineItemId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read80Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive81(Expression<Func<string>> productId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read66Response> __BuildRead66(WorkflowValue<string> lineItemId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(lineItemId, nameof(lineItemId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read66Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read66Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update82Response> Update82(Expression<Func<string>> productId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive67))]
+        public IBodyWorkflowAction<string> Archive67([WorkflowExpression] Func<string> lineItemId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive67(WorkflowValue<string> lineItemId)
+        {
+            WorkflowValue.Validate(lineItemId, nameof(lineItemId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Update82Response>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse> MergeTwoProductsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildUpdate68))]
+        public IBodyWorkflowAction<Update68Response> Update68([WorkflowExpression] Func<string> lineItemId, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/products/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update68Response> __BuildUpdate68(WorkflowValue<string> lineItemId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(lineItemId, nameof(lineItemId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update68Response>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/line_items/{0}", ExpressionConverter.ConvertWithUrlEncoding(lineItemId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoProductsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<Update68Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDelete84(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoLineItemsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse> MergeTwoLineItemsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/products/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoLineItemsWithSameTypeResponse> __BuildMergeTwoLineItemsWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoLineItemsWithSameTypeResponse>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoLineItemsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse> PostCrmV3ObjectsProductsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDelete70))]
+        public IBodyWorkflowAction<string> GdprDelete70([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/products/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDelete70(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsLineItemsSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse> PostCrmV3ObjectsLineItemsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyproperties != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsLineItemsSearchResponse> __BuildPostCrmV3ObjectsLineItemsSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsLineItemsSearchResponse>(() =>
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/line_items/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
+
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
+
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
+
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
+
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodysorts != null)
+                return new ApiConnectionAction<PostCrmV3ObjectsLineItemsSearchResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetAPageOfOwners))]
+        public IBodyWorkflowAction<GetAPageOfOwnersResponse> GetAPageOfOwners([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<bool> archived = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAPageOfOwnersResponse> __BuildGetAPageOfOwners(WorkflowValue<string> email, WorkflowValue<string> after = null, WorkflowValue<string> limit = null, WorkflowValue<bool> archived = null)
+        {
+            WorkflowValue.Validate(email, nameof(email), required: true);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<GetAPageOfOwnersResponse>(() =>
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/owners/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = ExpressionConverter.Convert(email);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<GetAPageOfOwnersResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildReadAnOwnerByGivenidOruserid))]
+        public IBodyWorkflowAction<ReadAnOwnerByGivenidOruseridResponse> ReadAnOwnerByGivenidOruserid([WorkflowExpression] Func<string> ownerId, [WorkflowExpression] Func<string> idProperty = null, [WorkflowExpression] Func<bool> archived = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyquery != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReadAnOwnerByGivenidOruseridResponse> __BuildReadAnOwnerByGivenidOruserid(WorkflowValue<string> ownerId, WorkflowValue<string> idProperty = null, WorkflowValue<bool> archived = null)
+        {
+            WorkflowValue.Validate(ownerId, nameof(ownerId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<ReadAnOwnerByGivenidOruseridResponse>(() =>
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/owners/{0}", ExpressionConverter.ConvertWithUrlEncoding(ownerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<ReadAnOwnerByGivenidOruseridResponse>(callPayload);
+            });
+        }
 
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfProductsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfProductsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfProductsById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/products/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsProductsSearchResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfObjectsById(Expression<Func<string>> objectType, Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildList78))]
+        public IBodyWorkflowAction<List78Response> List78([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List78Response> __BuildList78(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List78Response>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List78Response>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreate79))]
+        public IBodyWorkflowAction<Create79Response> Create79([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create79Response> __BuildCreate79(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create79Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/products";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<Create79Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<ReadObjectResponse> ReadObject(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead80))]
+        public IBodyWorkflowAction<Read80Response> Read80([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<ReadObjectResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read80Response> __BuildRead80(WorkflowValue<string> productId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(productId, nameof(productId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read80Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read80Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<UpdateObjectIdResponse> UpdateObjectId(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive81))]
+        public IBodyWorkflowAction<string> Archive81([WorkflowExpression] Func<string> productId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive81(WorkflowValue<string> productId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            WorkflowValue.Validate(productId, nameof(productId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate82))]
+        public IBodyWorkflowAction<Update82Response> Update82([WorkflowExpression] Func<string> productId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update82Response> __BuildUpdate82(WorkflowValue<string> productId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(productId, nameof(productId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update82Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/products/{0}", ExpressionConverter.ConvertWithUrlEncoding(productId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateObjectIdResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Update82Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<ListObjectResponse> ListObject(Expression<Func<string>> objectType, Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoProductsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse> MergeTwoProductsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<ListObjectResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateObjectIdResponse> CreateObjectId(Expression<Func<string>> objectType, Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoProductsWithSameTypeResponse> __BuildMergeTwoProductsWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoProductsWithSameTypeResponse>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateObjectIdResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoProductsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse> MergeTwoObjectsWithSameType(Expression<Func<string>> objectType, Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDelete84))]
+        public IBodyWorkflowAction<string> GdprDelete84([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/merge", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDelete84(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoObjectsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDeleteObjectType(Expression<Func<string>> objectType, Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsProductsSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse> PostCrmV3ObjectsProductsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/gdpr-delete", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsProductsSearchResponse> __BuildPostCrmV3ObjectsProductsSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsProductsSearchResponse>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/products/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
+
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
+
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsProductsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse> PostCrmV3ObjectsObjectTypeSearch(Expression<Func<string>> objectType, Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfObjectsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfObjectsById([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfObjectsById(WorkflowValue<string> objectType, WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildReadObject))]
+        public IBodyWorkflowAction<ReadObjectResponse> ReadObject([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodysorts != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReadObjectResponse> __BuildReadObject(WorkflowValue<string> objectType, WorkflowValue<string> objectId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(objectId, nameof(objectId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<ReadObjectResponse>(() =>
             {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<ReadObjectResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildArchiveObjectId))]
+        public IBodyWorkflowAction<string> ArchiveObjectId([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyquery != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveObjectId(WorkflowValue<string> objectType, WorkflowValue<string> objectId)
+        {
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(objectId, nameof(objectId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateObjectId))]
+        public IBodyWorkflowAction<UpdateObjectIdResponse> UpdateObjectId([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateObjectIdResponse> __BuildUpdateObjectId(WorkflowValue<string> objectType, WorkflowValue<string> objectId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(objectId, nameof(objectId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<UpdateObjectIdResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsObjectTypeSearchResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UpdateObjectIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfDiscountsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildListObject))]
+        public IBodyWorkflowAction<ListObjectResponse> ListObject([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListObjectResponse> __BuildListObject(WorkflowValue<string> objectType, WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<ListObjectResponse>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<ListObjectResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateObjectId))]
+        public IBodyWorkflowAction<CreateObjectIdResponse> CreateObjectId([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateObjectIdResponse> __BuildCreateObjectId(WorkflowValue<string> objectType, WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<CreateObjectIdResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateObjectIdResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read16Response> Read16(Expression<Func<string>> discountId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoObjectsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse> MergeTwoObjectsWithSameType([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read16Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive17(Expression<Func<string>> discountId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoObjectsWithSameTypeResponse> __BuildMergeTwoObjectsWithSameType(WorkflowValue<string> objectType, WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoObjectsWithSameTypeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/merge", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
+
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoObjectsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update18Response> Update18(Expression<Func<string>> discountId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDeleteObjectType))]
+        public IBodyWorkflowAction<string> GdprDeleteObjectType([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDeleteObjectType(WorkflowValue<string> objectType, WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/gdpr-delete", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Update18Response>(callPayload);
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List19Response> List19(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsObjectTypeSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse> PostCrmV3ObjectsObjectTypeSearch([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List19Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create20Response> Create20(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null, Expression<Func<string>> bodypropertiesnostrudcf = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsObjectTypeSearchResponse> __BuildPostCrmV3ObjectsObjectTypeSearch(WorkflowValue<string> objectType, WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsObjectTypeSearchResponse>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/{0}/search", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodypropertiesnostrudcf != null)
-            {
-                propertiesObject["nostrudcf"] = ExpressionConverter.ConvertO(bodypropertiesnostrudcf);
-                propertiesObjectpropCount++;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
+
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Create20Response>(callPayload);
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsObjectTypeSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse> MergeTwoDiscountsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfDiscountsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfDiscountsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfDiscountsById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoDiscountsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDeleteDiscounts(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead16))]
+        public IBodyWorkflowAction<Read16Response> Read16([WorkflowExpression] Func<string> discountId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read16Response> __BuildRead16(WorkflowValue<string> discountId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
+            WorkflowValue.Validate(discountId, nameof(discountId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read16Response>(() =>
             {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read16Response>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildArchive17))]
+        public IBodyWorkflowAction<string> Archive17([WorkflowExpression] Func<string> discountId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive17(WorkflowValue<string> discountId)
+        {
+            WorkflowValue.Validate(discountId, nameof(discountId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate18))]
+        public IBodyWorkflowAction<Update18Response> Update18([WorkflowExpression] Func<string> discountId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update18Response> __BuildUpdate18(WorkflowValue<string> discountId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(discountId, nameof(discountId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update18Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/discounts/{0}", ExpressionConverter.ConvertWithUrlEncoding(discountId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Update18Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse> PostCrmV3ObjectsDiscountsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildList19))]
+        public IBodyWorkflowAction<List19Response> List19([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/discounts/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List19Response> __BuildList19(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
+        {
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List19Response>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List19Response>(callPayload);
+            });
+        }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreate20))]
+        public IBodyWorkflowAction<Create20Response> Create20([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null, [WorkflowExpression] Func<string> bodypropertiesnostrudcf = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyproperties != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create20Response> __BuildCreate20(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null, WorkflowValue<string> bodypropertiesnostrudcf = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            WorkflowValue.Validate(bodypropertiesnostrudcf, nameof(bodypropertiesnostrudcf), required: false);
+            return new DeferredBodyAction<Create20Response>(() =>
             {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (bodypropertiesnostrudcf != null)
+                {
+                    propertiesObject["nostrudcf"] = ExpressionConverter.ConvertO(bodypropertiesnostrudcf);
+                    propertiesObjectpropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsDiscountsSearchResponse>(callPayload);
+                return new ApiConnectionAction<Create20Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfFeedbackSubmissionsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoDiscountsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse> MergeTwoDiscountsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoDiscountsWithSameTypeResponse> __BuildMergeTwoDiscountsWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoDiscountsWithSameTypeResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
+
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoDiscountsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read28Response> Read28(Expression<Func<string>> feedbackSubmissionId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDeleteDiscounts))]
+        public IBodyWorkflowAction<string> GdprDeleteDiscounts([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read28Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive29(Expression<Func<string>> feedbackSubmissionId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDeleteDiscounts(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/discounts/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
+
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update30Response> Update30(Expression<Func<string>> feedbackSubmissionId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsDiscountsSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse> PostCrmV3ObjectsDiscountsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsDiscountsSearchResponse> __BuildPostCrmV3ObjectsDiscountsSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsDiscountsSearchResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/discounts/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
+
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
+
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Update30Response>(callPayload);
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
+
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
+
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsDiscountsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List31Response> List31(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfFeedbackSubmissionsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfFeedbackSubmissionsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfFeedbackSubmissionsById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List31Response>(callPayload);
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = "/crm/v3/objects/feedback_submissions/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create32Response> Create32(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead28))]
+        public IBodyWorkflowAction<Read28Response> Read28([WorkflowExpression] Func<string> feedbackSubmissionId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read28Response> __BuildRead28(WorkflowValue<string> feedbackSubmissionId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read28Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read28Response>(callPayload);
+            });
+        }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildArchive29))]
+        public IBodyWorkflowAction<string> Archive29([WorkflowExpression] Func<string> feedbackSubmissionId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive29(WorkflowValue<string> feedbackSubmissionId)
+        {
+            WorkflowValue.Validate(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate30))]
+        public IBodyWorkflowAction<Update30Response> Update30([WorkflowExpression] Func<string> feedbackSubmissionId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update30Response> __BuildUpdate30(WorkflowValue<string> feedbackSubmissionId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(feedbackSubmissionId, nameof(feedbackSubmissionId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update30Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/feedback_submissions/{0}", ExpressionConverter.ConvertWithUrlEncoding(feedbackSubmissionId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Create32Response>(callPayload);
+                return new ApiConnectionAction<Update30Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse> MergeTwoFeedbackSubmissionsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildList31))]
+        public IBodyWorkflowAction<List31Response> List31([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List31Response> __BuildList31(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
+        {
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List31Response>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List31Response>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreate32))]
+        public IBodyWorkflowAction<Create32Response> Create32([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create32Response> __BuildCreate32(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create32Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse>(callPayload);
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Create32Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDeleteFeedback(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoFeedbackSubmissionsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse> MergeTwoFeedbackSubmissionsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse> __BuildMergeTwoFeedbackSubmissionsWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<MergeTwoFeedbackSubmissionsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse> PostCrmV3ObjectsFeedbackSubmissionsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDeleteFeedback))]
+        public IBodyWorkflowAction<string> GdprDeleteFeedback([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/feedback_submissions/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDeleteFeedback(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsFeedbackSubmissionsSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse> PostCrmV3ObjectsFeedbackSubmissionsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse> __BuildPostCrmV3ObjectsFeedbackSubmissionsSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/feedback_submissions/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
+
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse>(callPayload);
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
+
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
+
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
+
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsFeedbackSubmissionsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfQuotesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfQuotesById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfQuotesById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfQuotesById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List40Response> List40(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildList40))]
+        public IBodyWorkflowAction<List40Response> List40([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List40Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create41Response> Create41(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null, Expression<Func<string>> bodypropertieselit26 = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List40Response> __BuildList40(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List40Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List40Response>(callPayload);
+            });
+        }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (bodypropertieselit26 != null)
-            {
-                propertiesObject["elit_26"] = ExpressionConverter.ConvertO(bodypropertieselit26);
-                propertiesObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreate41))]
+        public IBodyWorkflowAction<Create41Response> Create41([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null, [WorkflowExpression] Func<string> bodypropertieselit26 = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (propertiesObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create41Response> __BuildCreate41(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null, WorkflowValue<string> bodypropertieselit26 = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            WorkflowValue.Validate(bodypropertieselit26, nameof(bodypropertieselit26), required: false);
+            return new DeferredBodyAction<Create41Response>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (bodypropertieselit26 != null)
+                {
+                    propertiesObject["elit_26"] = ExpressionConverter.ConvertO(bodypropertieselit26);
+                    propertiesObjectpropCount++;
+                }
 
-            return new ApiConnectionAction<Create41Response>(callPayload);
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Create41Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read42Response> Read42(Expression<Func<string>> quoteId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead42))]
+        public IBodyWorkflowAction<Read42Response> Read42([WorkflowExpression] Func<string> quoteId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read42Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive43(Expression<Func<string>> quoteId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read42Response> __BuildRead42(WorkflowValue<string> quoteId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(quoteId, nameof(quoteId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read42Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read42Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update44Response> Update44(Expression<Func<string>> quoteId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive43))]
+        public IBodyWorkflowAction<string> Archive43([WorkflowExpression] Func<string> quoteId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive43(WorkflowValue<string> quoteId)
+        {
+            WorkflowValue.Validate(quoteId, nameof(quoteId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate44))]
+        public IBodyWorkflowAction<Update44Response> Update44([WorkflowExpression] Func<string> quoteId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update44Response> __BuildUpdate44(WorkflowValue<string> quoteId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(quoteId, nameof(quoteId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update44Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/quotes/{0}", ExpressionConverter.ConvertWithUrlEncoding(quoteId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update44Response>(callPayload);
+                return new ApiConnectionAction<Update44Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse> MergeTwoQuotesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoQuotesWithSameType))]
+        public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse> MergeTwoQuotesWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoQuotesWithSameTypeResponse> __BuildMergeTwoQuotesWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoQuotesWithSameTypeResponse>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MergeTwoQuotesWithSameTypeResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoQuotesWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDeleteQuotes(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDeleteQuotes))]
+        public IBodyWorkflowAction<string> GdprDeleteQuotes([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDeleteQuotes(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse> PostCrmV3ObjectsQuotesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsQuotesSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse> PostCrmV3ObjectsQuotesSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/quotes/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsQuotesSearchResponse> __BuildPostCrmV3ObjectsQuotesSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsQuotesSearchResponse>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/quotes/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsQuotesSearchResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsQuotesSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfTaxesById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfTaxesById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfTaxesById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfTaxesById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List52Response> List52(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildList52))]
+        public IBodyWorkflowAction<List52Response> List52([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List52Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create53Response> Create53(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List52Response> __BuildList52(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List52Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List52Response>(callPayload);
+            });
+        }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreate53))]
+        public IBodyWorkflowAction<Create53Response> Create53([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create53Response> __BuildCreate53(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create53Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Create53Response>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Create53Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read54Response> Read54(Expression<Func<string>> taxId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead54))]
+        public IBodyWorkflowAction<Read54Response> Read54([WorkflowExpression] Func<string> taxId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read54Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive55(Expression<Func<string>> taxId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read54Response> __BuildRead54(WorkflowValue<string> taxId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(taxId, nameof(taxId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read54Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read54Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update56Response> Update56(Expression<Func<string>> taxId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive55))]
+        public IBodyWorkflowAction<string> Archive55([WorkflowExpression] Func<string> taxId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive55(WorkflowValue<string> taxId)
+        {
+            WorkflowValue.Validate(taxId, nameof(taxId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
 
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate56))]
+        public IBodyWorkflowAction<Update56Response> Update56([WorkflowExpression] Func<string> taxId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update56Response> __BuildUpdate56(WorkflowValue<string> taxId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(taxId, nameof(taxId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update56Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/taxes/{0}", ExpressionConverter.ConvertWithUrlEncoding(taxId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Update56Response>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Update56Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse> MergeTwoTaxesWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoTaxesWithSameType))]
+        public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse> MergeTwoTaxesWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoTaxesWithSameTypeResponse> __BuildMergeTwoTaxesWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoTaxesWithSameTypeResponse>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<MergeTwoTaxesWithSameTypeResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<MergeTwoTaxesWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDeleteTaxes(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDeleteTaxes))]
+        public IBodyWorkflowAction<string> GdprDeleteTaxes([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDeleteTaxes(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse> PostCrmV3ObjectsTaxesSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsTaxesSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse> PostCrmV3ObjectsTaxesSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/taxes/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsTaxesSearchResponse> __BuildPostCrmV3ObjectsTaxesSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsTaxesSearchResponse>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/taxes/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsTaxesSearchResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<PostCrmV3ObjectsTaxesSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> ArchiveABatchOfTicketsById(Expression<Func<bodyinputsInputItem[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchiveABatchOfTicketsById))]
+        public IBodyWorkflowAction<string> ArchiveABatchOfTicketsById([WorkflowExpression] Func<bodyinputsInputItem[]> bodyinputs = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets/batch/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchiveABatchOfTicketsById(WorkflowValue<bodyinputsInputItem[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets/batch/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Read64Response> Read64(Expression<Func<string>> ticketId, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildRead64))]
+        public IBodyWorkflowAction<Read64Response> Read64([WorkflowExpression] Func<string> ticketId, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            return new ApiConnectionAction<Read64Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Archive65(Expression<Func<string>> ticketId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Read64Response> __BuildRead64(WorkflowValue<string> ticketId, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null, WorkflowValue<string> idProperty = null)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(ticketId, nameof(ticketId), required: true);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Read64Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                return new ApiConnectionAction<Read64Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Update66Response> Update66(Expression<Func<string>> ticketId, Expression<Func<string>> idProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildArchive65))]
+        public IBodyWorkflowAction<string> Archive65([WorkflowExpression] Func<string> ticketId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildArchive65(WorkflowValue<string> ticketId)
         {
-            var apiCallPath = String.Format("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idProperty != null)
-                callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
+            WorkflowValue.Validate(ticketId, nameof(ticketId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdate66))]
+        public IBodyWorkflowAction<Update66Response> Update66([WorkflowExpression] Func<string> ticketId, [WorkflowExpression] Func<string> idProperty = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Update66Response> __BuildUpdate66(WorkflowValue<string> ticketId, WorkflowValue<string> idProperty = null)
+        {
+            WorkflowValue.Validate(ticketId, nameof(ticketId), required: true);
+            WorkflowValue.Validate(idProperty, nameof(idProperty), required: false);
+            return new DeferredBodyAction<Update66Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/objects/tickets/{0}", ExpressionConverter.ConvertWithUrlEncoding(ticketId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idProperty != null)
+                    callPayload.Queries["idProperty"] = ExpressionConverter.Convert(idProperty);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<Update66Response>(callPayload);
+                return new ApiConnectionAction<Update66Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<List67Response> List67(Expression<Func<string>> limit = null, Expression<Func<string>> after = null, Expression<Func<string>> properties = null, Expression<Func<string>> propertiesWithHistory = null, Expression<Func<string>> associations = null, Expression<Func<bool>> archived = null)
+        [WorkflowExpressionFactory(nameof(__BuildList67))]
+        public IBodyWorkflowAction<List67Response> List67([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> properties = null, [WorkflowExpression] Func<string> propertiesWithHistory = null, [WorkflowExpression] Func<string> associations = null, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (properties != null)
-                callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
-            if (propertiesWithHistory != null)
-                callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
-            if (associations != null)
-                callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
-            if (archived != null)
-                callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
-            return new ApiConnectionAction<List67Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create68Response> Create68(Expression<Func<bodyassociationsInputItem[]>> bodyassociations = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<List67Response> __BuildList67(WorkflowValue<string> limit = null, WorkflowValue<string> after = null, WorkflowValue<string> properties = null, WorkflowValue<string> propertiesWithHistory = null, WorkflowValue<string> associations = null, WorkflowValue<bool> archived = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassociations != null)
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(properties, nameof(properties), required: false);
+            WorkflowValue.Validate(propertiesWithHistory, nameof(propertiesWithHistory), required: false);
+            WorkflowValue.Validate(associations, nameof(associations), required: false);
+            WorkflowValue.Validate(archived, nameof(archived), required: false);
+            return new DeferredBodyAction<List67Response>(() =>
             {
-                body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (properties != null)
+                    callPayload.Queries["properties"] = ExpressionConverter.Convert(properties);
+                if (propertiesWithHistory != null)
+                    callPayload.Queries["propertiesWithHistory"] = ExpressionConverter.Convert(propertiesWithHistory);
+                if (associations != null)
+                    callPayload.Queries["associations"] = ExpressionConverter.Convert(associations);
+                if (archived != null)
+                    callPayload.Queries["archived"] = ExpressionConverter.Convert(archived);
+                return new ApiConnectionAction<List67Response>(callPayload);
+            });
+        }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreate68))]
+        public IBodyWorkflowAction<Create68Response> Create68([WorkflowExpression] Func<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create68Response> __BuildCreate68(WorkflowValue<bodyassociationsInputItem[]> bodyassociations = null)
+        {
+            WorkflowValue.Validate(bodyassociations, nameof(bodyassociations), required: false);
+            return new DeferredBodyAction<Create68Response>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassociations != null)
+                {
+                    body["associations"] = ExpressionConverter.ConvertO(bodyassociations);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<Create68Response>(callPayload);
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<Create68Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse> MergeTwoTicketsWithSameType(Expression<Func<string>> bodyobjectIdToMerge = null, Expression<Func<string>> bodyprimaryObjectId = null)
+        [WorkflowExpressionFactory(nameof(__BuildMergeTwoTicketsWithSameType))]
+        public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse> MergeTwoTicketsWithSameType([WorkflowExpression] Func<string> bodyobjectIdToMerge = null, [WorkflowExpression] Func<string> bodyprimaryObjectId = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectIdToMerge != null)
-            {
-                body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyprimaryObjectId != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MergeTwoTicketsWithSameTypeResponse> __BuildMergeTwoTicketsWithSameType(WorkflowValue<string> bodyobjectIdToMerge = null, WorkflowValue<string> bodyprimaryObjectId = null)
+        {
+            WorkflowValue.Validate(bodyobjectIdToMerge, nameof(bodyobjectIdToMerge), required: false);
+            WorkflowValue.Validate(bodyprimaryObjectId, nameof(bodyprimaryObjectId), required: false);
+            return new DeferredBodyAction<MergeTwoTicketsWithSameTypeResponse>(() =>
             {
-                body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectIdToMerge != null)
+                {
+                    body["objectIdToMerge"] = ExpressionConverter.ConvertO(bodyobjectIdToMerge);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyprimaryObjectId != null)
+                {
+                    body["primaryObjectId"] = ExpressionConverter.ConvertO(bodyprimaryObjectId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<MergeTwoTicketsWithSameTypeResponse>(callPayload);
+                return new ApiConnectionAction<MergeTwoTicketsWithSameTypeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> GdprDeleteTickets(Expression<Func<string>> bodyobjectId = null, Expression<Func<string>> bodyidProperty = null)
+        [WorkflowExpressionFactory(nameof(__BuildGdprDeleteTickets))]
+        public IBodyWorkflowAction<string> GdprDeleteTickets([WorkflowExpression] Func<string> bodyobjectId = null, [WorkflowExpression] Func<string> bodyidProperty = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets/gdpr-delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobjectId != null)
-            {
-                body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyidProperty != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildGdprDeleteTickets(WorkflowValue<string> bodyobjectId = null, WorkflowValue<string> bodyidProperty = null)
+        {
+            WorkflowValue.Validate(bodyobjectId, nameof(bodyobjectId), required: false);
+            WorkflowValue.Validate(bodyidProperty, nameof(bodyidProperty), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets/gdpr-delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobjectId != null)
+                {
+                    body["objectId"] = ExpressionConverter.ConvertO(bodyobjectId);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyidProperty != null)
+                {
+                    body["idProperty"] = ExpressionConverter.ConvertO(bodyidProperty);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse> PostCrmV3ObjectsTicketsSearch(Expression<Func<string>> bodyafter = null, Expression<Func<bodyfilterGroupsInputItem[]>> bodyfilterGroups = null, Expression<Func<string>> bodylimit = null, Expression<Func<string[]>> bodyproperties = null, Expression<Func<string[]>> bodysorts = null, Expression<Func<string>> bodyquery = null)
+        [WorkflowExpressionFactory(nameof(__BuildPostCrmV3ObjectsTicketsSearch))]
+        public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse> PostCrmV3ObjectsTicketsSearch([WorkflowExpression] Func<string> bodyafter = null, [WorkflowExpression] Func<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, [WorkflowExpression] Func<string> bodylimit = null, [WorkflowExpression] Func<string[]> bodyproperties = null, [WorkflowExpression] Func<string[]> bodysorts = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/crm/v3/objects/tickets/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyafter != null)
-            {
-                body["after"] = ExpressionConverter.ConvertO(bodyafter);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfilterGroups != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<PostCrmV3ObjectsTicketsSearchResponse> __BuildPostCrmV3ObjectsTicketsSearch(WorkflowValue<string> bodyafter = null, WorkflowValue<bodyfilterGroupsInputItem[]> bodyfilterGroups = null, WorkflowValue<string> bodylimit = null, WorkflowValue<string[]> bodyproperties = null, WorkflowValue<string[]> bodysorts = null, WorkflowValue<string> bodyquery = null)
+        {
+            WorkflowValue.Validate(bodyafter, nameof(bodyafter), required: false);
+            WorkflowValue.Validate(bodyfilterGroups, nameof(bodyfilterGroups), required: false);
+            WorkflowValue.Validate(bodylimit, nameof(bodylimit), required: false);
+            WorkflowValue.Validate(bodyproperties, nameof(bodyproperties), required: false);
+            WorkflowValue.Validate(bodysorts, nameof(bodysorts), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            return new DeferredBodyAction<PostCrmV3ObjectsTicketsSearchResponse>(() =>
             {
-                body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/objects/tickets/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyafter != null)
+                {
+                    body["after"] = ExpressionConverter.ConvertO(bodyafter);
+                    bodypropCount++;
+                }
 
-            if (bodylimit != null)
-            {
-                body["limit"] = ExpressionConverter.ConvertO(bodylimit);
-                bodypropCount++;
-            }
+                if (bodyfilterGroups != null)
+                {
+                    body["filterGroups"] = ExpressionConverter.ConvertO(bodyfilterGroups);
+                    bodypropCount++;
+                }
 
-            if (bodyproperties != null)
-            {
-                body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
-                bodypropCount++;
-            }
+                if (bodylimit != null)
+                {
+                    body["limit"] = ExpressionConverter.ConvertO(bodylimit);
+                    bodypropCount++;
+                }
 
-            if (bodysorts != null)
-            {
-                body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
-                bodypropCount++;
-            }
+                if (bodyproperties != null)
+                {
+                    body["properties"] = ExpressionConverter.ConvertO(bodyproperties);
+                    bodypropCount++;
+                }
 
-            if (bodyquery != null)
-            {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                if (bodysorts != null)
+                {
+                    body["sorts"] = ExpressionConverter.ConvertO(bodysorts);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<PostCrmV3ObjectsTicketsSearchResponse>(callPayload);
+                return new ApiConnectionAction<PostCrmV3ObjectsTicketsSearchResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<ListAssociationTypesResponse> ListAssociationTypes(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType)
+        [WorkflowExpressionFactory(nameof(__BuildListAssociationTypes))]
+        public IBodyWorkflowAction<ListAssociationTypesResponse> ListAssociationTypes([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> toObjectType)
         {
-            var apiCallPath = String.Format("/crm/v3/associations/{0}/{1}/types", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListAssociationTypesResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> DeleteSpecificLabels(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem2[]>> bodyinputs = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListAssociationTypesResponse> __BuildListAssociationTypes(WorkflowValue<string> fromObjectType, WorkflowValue<string> toObjectType)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/labels/archive", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
+            WorkflowValue.Validate(fromObjectType, nameof(fromObjectType), required: true);
+            WorkflowValue.Validate(toObjectType, nameof(toObjectType), required: true);
+            return new DeferredBodyAction<ListAssociationTypesResponse>(() =>
             {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/associations/{0}/{1}/types", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ListAssociationTypesResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteSpecificLabels))]
+        public IBodyWorkflowAction<string> DeleteSpecificLabels([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<bodyinputsInputItem2[]> bodyinputs = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDeleteSpecificLabels(WorkflowValue<string> fromObjectType, WorkflowValue<string> toObjectType, WorkflowValue<bodyinputsInputItem2[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(fromObjectType, nameof(fromObjectType), required: true);
+            WorkflowValue.Validate(toObjectType, nameof(toObjectType), required: true);
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/labels/archive", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Delete(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem22[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildDelete))]
+        public IBodyWorkflowAction<string> Delete([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<bodyinputsInputItem22[]> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDelete(WorkflowValue<string> fromObjectType, WorkflowValue<string> toObjectType, WorkflowValue<bodyinputsInputItem22[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(fromObjectType, nameof(fromObjectType), required: true);
+            WorkflowValue.Validate(toObjectType, nameof(toObjectType), required: true);
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/archive", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateDefaultAssociationsResponse> CreateDefaultAssociations(Expression<Func<string>> fromObjectType, Expression<Func<string>> toObjectType, Expression<Func<bodyinputsInputItem222[]>> bodyinputs = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateDefaultAssociations))]
+        public IBodyWorkflowAction<CreateDefaultAssociationsResponse> CreateDefaultAssociations([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<bodyinputsInputItem222[]> bodyinputs = null)
         {
-            var apiCallPath = String.Format("/crm/v4/associations/{0}/{1}/batch/associate/default", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputs != null)
-            {
-                body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodypropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateDefaultAssociationsResponse> __BuildCreateDefaultAssociations(WorkflowValue<string> fromObjectType, WorkflowValue<string> toObjectType, WorkflowValue<bodyinputsInputItem222[]> bodyinputs = null)
+        {
+            WorkflowValue.Validate(fromObjectType, nameof(fromObjectType), required: true);
+            WorkflowValue.Validate(toObjectType, nameof(toObjectType), required: true);
+            WorkflowValue.Validate(bodyinputs, nameof(bodyinputs), required: false);
+            return new DeferredBodyAction<CreateDefaultAssociationsResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/associations/{0}/{1}/batch/associate/default", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputs != null)
+                {
+                    body["inputs"] = ExpressionConverter.ConvertO(bodyinputs);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<CreateDefaultAssociationsResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<CreateDefaultAssociationsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> Delete6(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId)
+        [WorkflowExpressionFactory(nameof(__BuildDelete6))]
+        public IBodyWorkflowAction<string> Delete6([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<string> toObjectId)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<Create7Response> Create7(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId, Expression<Func<bodyInputItem[]>> body = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDelete6(WorkflowValue<string> objectType, WorkflowValue<string> objectId, WorkflowValue<string> toObjectType, WorkflowValue<string> toObjectId)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<Create7Response>(callPayload);
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(objectId, nameof(objectId), required: true);
+            WorkflowValue.Validate(toObjectType, nameof(toObjectType), required: true);
+            WorkflowValue.Validate(toObjectId, nameof(toObjectId), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateDefaultResponse> CreateDefault(Expression<Func<string>> fromObjectType, Expression<Func<string>> fromObjectId, Expression<Func<string>> toObjectType, Expression<Func<string>> toObjectId)
+        [WorkflowExpressionFactory(nameof(__BuildCreate7))]
+        public IBodyWorkflowAction<Create7Response> Create7([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<string> toObjectId, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/default/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(fromObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CreateDefaultResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<ListAssociationsResponse> ListAssociations(Expression<Func<string>> objectType, Expression<Func<string>> objectId, Expression<Func<string>> toObjectType, Expression<Func<string>> after = null, Expression<Func<string>> limit = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<Create7Response> __BuildCreate7(WorkflowValue<string> objectType, WorkflowValue<string> objectId, WorkflowValue<string> toObjectType, WorkflowValue<string> toObjectId, WorkflowValue<bodyInputItem[]> body = null)
         {
-            var apiCallPath = String.Format("/crm/v4/objects/{0}/{1}/associations/{2}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<ListAssociationsResponse>(callPayload);
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(objectId, nameof(objectId), required: true);
+            WorkflowValue.Validate(toObjectType, nameof(toObjectType), required: true);
+            WorkflowValue.Validate(toObjectId, nameof(toObjectId), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<Create7Response>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<Create7Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<GetAllCardsResponse> GetAllCards(Expression<Func<string>> appId)
+        [WorkflowExpressionFactory(nameof(__BuildCreateDefault))]
+        public IBodyWorkflowAction<CreateDefaultResponse> CreateDefault([WorkflowExpression] Func<string> fromObjectType, [WorkflowExpression] Func<string> fromObjectId, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<string> toObjectId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllCardsResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CreateANewCardResponse> CreateANewCard(Expression<Func<string>> appId, Expression<Func<string[]>> bodyactionsbaseUrls = null, Expression<Func<bodydisplaypropertiesInputItem[]>> bodydisplayproperties = null, Expression<Func<bodyfetchobjectTypesInputItem[]>> bodyfetchobjectTypes = null, Expression<Func<string>> bodyfetchtargetUrl = null, Expression<Func<string>> bodyfetchcardType = null, Expression<Func<string>> bodyfetchserverlessFunction = null, Expression<Func<string>> bodytitle = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateDefaultResponse> __BuildCreateDefault(WorkflowValue<string> fromObjectType, WorkflowValue<string> fromObjectId, WorkflowValue<string> toObjectType, WorkflowValue<string> toObjectId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var actionsObject = new JObject();
-            var actionsObjectpropCount = 0;
-            if (bodyactionsbaseUrls != null)
+            WorkflowValue.Validate(fromObjectType, nameof(fromObjectType), required: true);
+            WorkflowValue.Validate(fromObjectId, nameof(fromObjectId), required: true);
+            WorkflowValue.Validate(toObjectType, nameof(toObjectType), required: true);
+            WorkflowValue.Validate(toObjectId, nameof(toObjectId), required: true);
+            return new DeferredBodyAction<CreateDefaultResponse>(() =>
             {
-                actionsObject["baseUrls"] = ExpressionConverter.ConvertO(bodyactionsbaseUrls);
-                actionsObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/default/{2}/{3}", ExpressionConverter.ConvertWithUrlEncoding(fromObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(fromObjectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CreateDefaultResponse>(callPayload);
+            });
+        }
 
-            if (actionsObjectpropCount > 0)
-            {
-                body["actions"] = actionsObject;
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildListAssociations))]
+        public IBodyWorkflowAction<ListAssociationsResponse> ListAssociations([WorkflowExpression] Func<string> objectType, [WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> toObjectType, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var displayObject = new JObject();
-            var displayObjectpropCount = 0;
-            if (bodydisplayproperties != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ListAssociationsResponse> __BuildListAssociations(WorkflowValue<string> objectType, WorkflowValue<string> objectId, WorkflowValue<string> toObjectType, WorkflowValue<string> after = null, WorkflowValue<string> limit = null)
+        {
+            WorkflowValue.Validate(objectType, nameof(objectType), required: true);
+            WorkflowValue.Validate(objectId, nameof(objectId), required: true);
+            WorkflowValue.Validate(toObjectType, nameof(toObjectType), required: true);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<ListAssociationsResponse>(() =>
             {
-                displayObject["properties"] = ExpressionConverter.ConvertO(bodydisplayproperties);
-                displayObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v4/objects/{0}/{1}/associations/{2}", ExpressionConverter.ConvertWithUrlEncoding(objectType, 1), ExpressionConverter.ConvertWithUrlEncoding(objectId, 1), ExpressionConverter.ConvertWithUrlEncoding(toObjectType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                return new ApiConnectionAction<ListAssociationsResponse>(callPayload);
+            });
+        }
 
-            if (displayObjectpropCount > 0)
-            {
-                body["display"] = displayObject;
-                bodypropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildGetAllCards))]
+        public IBodyWorkflowAction<GetAllCardsResponse> GetAllCards([WorkflowExpression] Func<string> appId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var fetchObject = new JObject();
-            var fetchObjectpropCount = 0;
-            if (bodyfetchobjectTypes != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetAllCardsResponse> __BuildGetAllCards(WorkflowValue<string> appId)
+        {
+            WorkflowValue.Validate(appId, nameof(appId), required: true);
+            return new DeferredBodyAction<GetAllCardsResponse>(() =>
             {
-                fetchObject["objectTypes"] = ExpressionConverter.ConvertO(bodyfetchobjectTypes);
-                fetchObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetAllCardsResponse>(callPayload);
+            });
+        }
 
-            if (bodyfetchtargetUrl != null)
-            {
-                fetchObject["targetUrl"] = ExpressionConverter.ConvertO(bodyfetchtargetUrl);
-                fetchObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateANewCard))]
+        public IBodyWorkflowAction<CreateANewCardResponse> CreateANewCard([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string[]> bodyactionsbaseUrls = null, [WorkflowExpression] Func<bodydisplaypropertiesInputItem[]> bodydisplayproperties = null, [WorkflowExpression] Func<bodyfetchobjectTypesInputItem[]> bodyfetchobjectTypes = null, [WorkflowExpression] Func<string> bodyfetchtargetUrl = null, [WorkflowExpression] Func<string> bodyfetchcardType = null, [WorkflowExpression] Func<string> bodyfetchserverlessFunction = null, [WorkflowExpression] Func<string> bodytitle = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfetchcardType != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CreateANewCardResponse> __BuildCreateANewCard(WorkflowValue<string> appId, WorkflowValue<string[]> bodyactionsbaseUrls = null, WorkflowValue<bodydisplaypropertiesInputItem[]> bodydisplayproperties = null, WorkflowValue<bodyfetchobjectTypesInputItem[]> bodyfetchobjectTypes = null, WorkflowValue<string> bodyfetchtargetUrl = null, WorkflowValue<string> bodyfetchcardType = null, WorkflowValue<string> bodyfetchserverlessFunction = null, WorkflowValue<string> bodytitle = null)
+        {
+            WorkflowValue.Validate(appId, nameof(appId), required: true);
+            WorkflowValue.Validate(bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
+            WorkflowValue.Validate(bodydisplayproperties, nameof(bodydisplayproperties), required: false);
+            WorkflowValue.Validate(bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
+            WorkflowValue.Validate(bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
+            WorkflowValue.Validate(bodyfetchcardType, nameof(bodyfetchcardType), required: false);
+            WorkflowValue.Validate(bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            return new DeferredBodyAction<CreateANewCardResponse>(() =>
             {
-                fetchObject["cardType"] = ExpressionConverter.ConvertO(bodyfetchcardType);
-                fetchObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var actionsObject = new JObject();
+                var actionsObjectpropCount = 0;
+                if (bodyactionsbaseUrls != null)
+                {
+                    actionsObject["baseUrls"] = ExpressionConverter.ConvertO(bodyactionsbaseUrls);
+                    actionsObjectpropCount++;
+                }
 
-            if (bodyfetchserverlessFunction != null)
-            {
-                fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(bodyfetchserverlessFunction);
-                fetchObjectpropCount++;
-            }
+                if (actionsObjectpropCount > 0)
+                {
+                    body["actions"] = actionsObject;
+                    bodypropCount++;
+                }
 
-            if (fetchObjectpropCount > 0)
-            {
-                body["fetch"] = fetchObject;
-                bodypropCount++;
-            }
+                var displayObject = new JObject();
+                var displayObjectpropCount = 0;
+                if (bodydisplayproperties != null)
+                {
+                    displayObject["properties"] = ExpressionConverter.ConvertO(bodydisplayproperties);
+                    displayObjectpropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+                if (displayObjectpropCount > 0)
+                {
+                    body["display"] = displayObject;
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                var fetchObject = new JObject();
+                var fetchObjectpropCount = 0;
+                if (bodyfetchobjectTypes != null)
+                {
+                    fetchObject["objectTypes"] = ExpressionConverter.ConvertO(bodyfetchobjectTypes);
+                    fetchObjectpropCount++;
+                }
+
+                if (bodyfetchtargetUrl != null)
+                {
+                    fetchObject["targetUrl"] = ExpressionConverter.ConvertO(bodyfetchtargetUrl);
+                    fetchObjectpropCount++;
+                }
+
+                if (bodyfetchcardType != null)
+                {
+                    fetchObject["cardType"] = ExpressionConverter.ConvertO(bodyfetchcardType);
+                    fetchObjectpropCount++;
+                }
+
+                if (bodyfetchserverlessFunction != null)
+                {
+                    fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(bodyfetchserverlessFunction);
+                    fetchObjectpropCount++;
+                }
+
+                if (fetchObjectpropCount > 0)
+                {
+                    body["fetch"] = fetchObject;
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<CreateANewCardResponse>(callPayload);
+                return new ApiConnectionAction<CreateANewCardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<GetACardResponse> GetACard(Expression<Func<string>> appId, Expression<Func<string>> cardId)
+        [WorkflowExpressionFactory(nameof(__BuildGetACard))]
+        public IBodyWorkflowAction<GetACardResponse> GetACard([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> cardId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetACardResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> DeleteACard(Expression<Func<string>> appId, Expression<Func<string>> cardId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetACardResponse> __BuildGetACard(WorkflowValue<string> appId, WorkflowValue<string> cardId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            WorkflowValue.Validate(appId, nameof(appId), required: true);
+            WorkflowValue.Validate(cardId, nameof(cardId), required: true);
+            return new DeferredBodyAction<GetACardResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetACardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<UpdateACardResponse> UpdateACard(Expression<Func<string>> appId, Expression<Func<string>> cardId, Expression<Func<string>> bodytitle = null, Expression<Func<bodyfetchobjectTypesInputItem[]>> bodyfetchobjectTypes = null, Expression<Func<string>> bodyfetchcardType = null, Expression<Func<string>> bodyfetchtargetUrl = null, Expression<Func<string>> bodyfetchserverlessFunction = null, Expression<Func<bodydisplaypropertiesInputItem[]>> bodydisplayproperties = null, Expression<Func<string[]>> bodyactionsbaseUrls = null)
+        [WorkflowExpressionFactory(nameof(__BuildDeleteACard))]
+        public IBodyWorkflowAction<string> DeleteACard([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> cardId)
         {
-            var apiCallPath = String.Format("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
-            {
-                body["title"] = ExpressionConverter.ConvertO(bodytitle);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            var fetchObject = new JObject();
-            var fetchObjectpropCount = 0;
-            if (bodyfetchobjectTypes != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDeleteACard(WorkflowValue<string> appId, WorkflowValue<string> cardId)
+        {
+            WorkflowValue.Validate(appId, nameof(appId), required: true);
+            WorkflowValue.Validate(cardId, nameof(cardId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                fetchObject["objectTypes"] = ExpressionConverter.ConvertO(bodyfetchobjectTypes);
-                fetchObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
 
-            if (bodyfetchcardType != null)
-            {
-                fetchObject["cardType"] = ExpressionConverter.ConvertO(bodyfetchcardType);
-                fetchObjectpropCount++;
-            }
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateACard))]
+        public IBodyWorkflowAction<UpdateACardResponse> UpdateACard([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> cardId, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodyfetchobjectTypesInputItem[]> bodyfetchobjectTypes = null, [WorkflowExpression] Func<string> bodyfetchcardType = null, [WorkflowExpression] Func<string> bodyfetchtargetUrl = null, [WorkflowExpression] Func<string> bodyfetchserverlessFunction = null, [WorkflowExpression] Func<bodydisplaypropertiesInputItem[]> bodydisplayproperties = null, [WorkflowExpression] Func<string[]> bodyactionsbaseUrls = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyfetchtargetUrl != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateACardResponse> __BuildUpdateACard(WorkflowValue<string> appId, WorkflowValue<string> cardId, WorkflowValue<string> bodytitle = null, WorkflowValue<bodyfetchobjectTypesInputItem[]> bodyfetchobjectTypes = null, WorkflowValue<string> bodyfetchcardType = null, WorkflowValue<string> bodyfetchtargetUrl = null, WorkflowValue<string> bodyfetchserverlessFunction = null, WorkflowValue<bodydisplaypropertiesInputItem[]> bodydisplayproperties = null, WorkflowValue<string[]> bodyactionsbaseUrls = null)
+        {
+            WorkflowValue.Validate(appId, nameof(appId), required: true);
+            WorkflowValue.Validate(cardId, nameof(cardId), required: true);
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: false);
+            WorkflowValue.Validate(bodyfetchobjectTypes, nameof(bodyfetchobjectTypes), required: false);
+            WorkflowValue.Validate(bodyfetchcardType, nameof(bodyfetchcardType), required: false);
+            WorkflowValue.Validate(bodyfetchtargetUrl, nameof(bodyfetchtargetUrl), required: false);
+            WorkflowValue.Validate(bodyfetchserverlessFunction, nameof(bodyfetchserverlessFunction), required: false);
+            WorkflowValue.Validate(bodydisplayproperties, nameof(bodydisplayproperties), required: false);
+            WorkflowValue.Validate(bodyactionsbaseUrls, nameof(bodyactionsbaseUrls), required: false);
+            return new DeferredBodyAction<UpdateACardResponse>(() =>
             {
-                fetchObject["targetUrl"] = ExpressionConverter.ConvertO(bodyfetchtargetUrl);
-                fetchObjectpropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/extensions/cards-dev/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(appId, 1), ExpressionConverter.ConvertWithUrlEncoding(cardId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodyfetchserverlessFunction != null)
-            {
-                fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(bodyfetchserverlessFunction);
-                fetchObjectpropCount++;
-            }
+                var fetchObject = new JObject();
+                var fetchObjectpropCount = 0;
+                if (bodyfetchobjectTypes != null)
+                {
+                    fetchObject["objectTypes"] = ExpressionConverter.ConvertO(bodyfetchobjectTypes);
+                    fetchObjectpropCount++;
+                }
 
-            if (fetchObjectpropCount > 0)
-            {
-                body["fetch"] = fetchObject;
-                bodypropCount++;
-            }
+                if (bodyfetchcardType != null)
+                {
+                    fetchObject["cardType"] = ExpressionConverter.ConvertO(bodyfetchcardType);
+                    fetchObjectpropCount++;
+                }
 
-            var displayObject = new JObject();
-            var displayObjectpropCount = 0;
-            if (bodydisplayproperties != null)
-            {
-                displayObject["properties"] = ExpressionConverter.ConvertO(bodydisplayproperties);
-                displayObjectpropCount++;
-            }
+                if (bodyfetchtargetUrl != null)
+                {
+                    fetchObject["targetUrl"] = ExpressionConverter.ConvertO(bodyfetchtargetUrl);
+                    fetchObjectpropCount++;
+                }
 
-            if (displayObjectpropCount > 0)
-            {
-                body["display"] = displayObject;
-                bodypropCount++;
-            }
+                if (bodyfetchserverlessFunction != null)
+                {
+                    fetchObject["serverlessFunction"] = ExpressionConverter.ConvertO(bodyfetchserverlessFunction);
+                    fetchObjectpropCount++;
+                }
 
-            var actionsObject = new JObject();
-            var actionsObjectpropCount = 0;
-            if (bodyactionsbaseUrls != null)
-            {
-                actionsObject["baseUrls"] = ExpressionConverter.ConvertO(bodyactionsbaseUrls);
-                actionsObjectpropCount++;
-            }
+                if (fetchObjectpropCount > 0)
+                {
+                    body["fetch"] = fetchObject;
+                    bodypropCount++;
+                }
 
-            if (actionsObjectpropCount > 0)
-            {
-                body["actions"] = actionsObject;
-                bodypropCount++;
-            }
+                var displayObject = new JObject();
+                var displayObjectpropCount = 0;
+                if (bodydisplayproperties != null)
+                {
+                    displayObject["properties"] = ExpressionConverter.ConvertO(bodydisplayproperties);
+                    displayObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (displayObjectpropCount > 0)
+                {
+                    body["display"] = displayObject;
+                    bodypropCount++;
+                }
+
+                var actionsObject = new JObject();
+                var actionsObjectpropCount = 0;
+                if (bodyactionsbaseUrls != null)
+                {
+                    actionsObject["baseUrls"] = ExpressionConverter.ConvertO(bodyactionsbaseUrls);
+                    actionsObjectpropCount++;
+                }
+
+                if (actionsObjectpropCount > 0)
+                {
+                    body["actions"] = actionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<UpdateACardResponse>(callPayload);
+                return new ApiConnectionAction<UpdateACardResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
@@ -3420,273 +5157,451 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcrmv2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse> GetCrmV3ExportsExportAsyncTasksTaskIdStatus(Expression<Func<string>> taskId)
+        [WorkflowExpressionFactory(nameof(__BuildGetCrmV3ExportsExportAsyncTasksTaskIdStatus))]
+        public IBodyWorkflowAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse> GetCrmV3ExportsExportAsyncTasksTaskIdStatus([WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = String.Format("/crm/v3/exports/export/async/tasks/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse> __BuildGetCrmV3ExportsExportAsyncTasksTaskIdStatus(WorkflowValue<string> taskId)
+        {
+            WorkflowValue.Validate(taskId, nameof(taskId), required: true);
+            return new DeferredBodyAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/exports/export/async/tasks/{0}/status", ExpressionConverter.ConvertWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetCrmV3ExportsExportAsyncTasksTaskIdStatusResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<StartAnExportResponse> StartAnExport(Expression<Func<string>> bodyexportName = null, Expression<Func<string>> bodyexportType = null, Expression<Func<string>> bodyformat = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string[]>> bodyobjectProperties = null, Expression<Func<string>> bodyobjectType = null, Expression<Func<string>> bodyassociatedObjectType = null, Expression<Func<bodypublicCrmSearchRequestfiltersInputItem[]>> bodypublicCrmSearchRequestfilters = null, Expression<Func<string>> bodypublicCrmSearchRequestquery = null, Expression<Func<string[]>> bodypublicCrmSearchRequestsorts = null)
+        [WorkflowExpressionFactory(nameof(__BuildStartAnExport))]
+        public IBodyWorkflowAction<StartAnExportResponse> StartAnExport([WorkflowExpression] Func<string> bodyexportName = null, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<string> bodyformat = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string[]> bodyobjectProperties = null, [WorkflowExpression] Func<string> bodyobjectType = null, [WorkflowExpression] Func<string> bodyassociatedObjectType = null, [WorkflowExpression] Func<bodypublicCrmSearchRequestfiltersInputItem[]> bodypublicCrmSearchRequestfilters = null, [WorkflowExpression] Func<string> bodypublicCrmSearchRequestquery = null, [WorkflowExpression] Func<string[]> bodypublicCrmSearchRequestsorts = null)
         {
-            var apiCallPath = "/crm/v3/exports/export/async";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyexportName != null)
-            {
-                body["exportName"] = ExpressionConverter.ConvertO(bodyexportName);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyexportType != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StartAnExportResponse> __BuildStartAnExport(WorkflowValue<string> bodyexportName = null, WorkflowValue<string> bodyexportType = null, WorkflowValue<string> bodyformat = null, WorkflowValue<string> bodylanguage = null, WorkflowValue<string[]> bodyobjectProperties = null, WorkflowValue<string> bodyobjectType = null, WorkflowValue<string> bodyassociatedObjectType = null, WorkflowValue<bodypublicCrmSearchRequestfiltersInputItem[]> bodypublicCrmSearchRequestfilters = null, WorkflowValue<string> bodypublicCrmSearchRequestquery = null, WorkflowValue<string[]> bodypublicCrmSearchRequestsorts = null)
+        {
+            WorkflowValue.Validate(bodyexportName, nameof(bodyexportName), required: false);
+            WorkflowValue.Validate(bodyexportType, nameof(bodyexportType), required: false);
+            WorkflowValue.Validate(bodyformat, nameof(bodyformat), required: false);
+            WorkflowValue.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            WorkflowValue.Validate(bodyobjectProperties, nameof(bodyobjectProperties), required: false);
+            WorkflowValue.Validate(bodyobjectType, nameof(bodyobjectType), required: false);
+            WorkflowValue.Validate(bodyassociatedObjectType, nameof(bodyassociatedObjectType), required: false);
+            WorkflowValue.Validate(bodypublicCrmSearchRequestfilters, nameof(bodypublicCrmSearchRequestfilters), required: false);
+            WorkflowValue.Validate(bodypublicCrmSearchRequestquery, nameof(bodypublicCrmSearchRequestquery), required: false);
+            WorkflowValue.Validate(bodypublicCrmSearchRequestsorts, nameof(bodypublicCrmSearchRequestsorts), required: false);
+            return new DeferredBodyAction<StartAnExportResponse>(() =>
             {
-                body["exportType"] = ExpressionConverter.ConvertO(bodyexportType);
-                bodypropCount++;
-            }
+                var apiCallPath = "/crm/v3/exports/export/async";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyexportName != null)
+                {
+                    body["exportName"] = ExpressionConverter.ConvertO(bodyexportName);
+                    bodypropCount++;
+                }
 
-            if (bodyformat != null)
-            {
-                body["format"] = ExpressionConverter.ConvertO(bodyformat);
-                bodypropCount++;
-            }
+                if (bodyexportType != null)
+                {
+                    body["exportType"] = ExpressionConverter.ConvertO(bodyexportType);
+                    bodypropCount++;
+                }
 
-            if (bodylanguage != null)
-            {
-                body["language"] = ExpressionConverter.ConvertO(bodylanguage);
-                bodypropCount++;
-            }
+                if (bodyformat != null)
+                {
+                    body["format"] = ExpressionConverter.ConvertO(bodyformat);
+                    bodypropCount++;
+                }
 
-            if (bodyobjectProperties != null)
-            {
-                body["objectProperties"] = ExpressionConverter.ConvertO(bodyobjectProperties);
-                bodypropCount++;
-            }
+                if (bodylanguage != null)
+                {
+                    body["language"] = ExpressionConverter.ConvertO(bodylanguage);
+                    bodypropCount++;
+                }
 
-            if (bodyobjectType != null)
-            {
-                body["objectType"] = ExpressionConverter.ConvertO(bodyobjectType);
-                bodypropCount++;
-            }
+                if (bodyobjectProperties != null)
+                {
+                    body["objectProperties"] = ExpressionConverter.ConvertO(bodyobjectProperties);
+                    bodypropCount++;
+                }
 
-            if (bodyassociatedObjectType != null)
-            {
-                body["associatedObjectType"] = ExpressionConverter.ConvertO(bodyassociatedObjectType);
-                bodypropCount++;
-            }
+                if (bodyobjectType != null)
+                {
+                    body["objectType"] = ExpressionConverter.ConvertO(bodyobjectType);
+                    bodypropCount++;
+                }
 
-            var publicCrmSearchRequestObject = new JObject();
-            var publicCrmSearchRequestObjectpropCount = 0;
-            if (bodypublicCrmSearchRequestfilters != null)
-            {
-                publicCrmSearchRequestObject["filters"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestfilters);
-                publicCrmSearchRequestObjectpropCount++;
-            }
+                if (bodyassociatedObjectType != null)
+                {
+                    body["associatedObjectType"] = ExpressionConverter.ConvertO(bodyassociatedObjectType);
+                    bodypropCount++;
+                }
 
-            if (bodypublicCrmSearchRequestquery != null)
-            {
-                publicCrmSearchRequestObject["query"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestquery);
-                publicCrmSearchRequestObjectpropCount++;
-            }
+                var publicCrmSearchRequestObject = new JObject();
+                var publicCrmSearchRequestObjectpropCount = 0;
+                if (bodypublicCrmSearchRequestfilters != null)
+                {
+                    publicCrmSearchRequestObject["filters"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestfilters);
+                    publicCrmSearchRequestObjectpropCount++;
+                }
 
-            if (bodypublicCrmSearchRequestsorts != null)
-            {
-                publicCrmSearchRequestObject["sorts"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestsorts);
-                publicCrmSearchRequestObjectpropCount++;
-            }
+                if (bodypublicCrmSearchRequestquery != null)
+                {
+                    publicCrmSearchRequestObject["query"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestquery);
+                    publicCrmSearchRequestObjectpropCount++;
+                }
 
-            if (publicCrmSearchRequestObjectpropCount > 0)
-            {
-                body["publicCrmSearchRequest"] = publicCrmSearchRequestObject;
-                bodypropCount++;
-            }
+                if (bodypublicCrmSearchRequestsorts != null)
+                {
+                    publicCrmSearchRequestObject["sorts"] = ExpressionConverter.ConvertO(bodypublicCrmSearchRequestsorts);
+                    publicCrmSearchRequestObjectpropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (publicCrmSearchRequestObjectpropCount > 0)
+                {
+                    body["publicCrmSearchRequest"] = publicCrmSearchRequestObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<StartAnExportResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<StartAnExportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<GetTheInformationOnAnyImportResponse> GetTheInformationOnAnyImport(Expression<Func<string>> importId)
+        [WorkflowExpressionFactory(nameof(__BuildGetTheInformationOnAnyImport))]
+        public IBodyWorkflowAction<GetTheInformationOnAnyImportResponse> GetTheInformationOnAnyImport([WorkflowExpression] Func<string> importId)
         {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTheInformationOnAnyImportResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<CancelAnActiveImportResponse> CancelAnActiveImport(Expression<Func<string>> importId)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetTheInformationOnAnyImportResponse> __BuildGetTheInformationOnAnyImport(WorkflowValue<string> importId)
         {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CancelAnActiveImportResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<GetActiveImportsResponse> GetActiveImports(Expression<Func<string>> after = null, Expression<Func<string>> before = null, Expression<Func<string>> limit = null)
-        {
-            var apiCallPath = "/crm/v3/imports/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetActiveImportsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<StartANewImportResponse> StartANewImport(Expression<Func<string>> contentType)
-        {
-            var apiCallPath = "/crm/v3/imports/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
-            return new ApiConnectionAction<StartANewImportResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse> GetCrmV3ImportsImportIdErrorsGetErrors(Expression<Func<string>> importId, Expression<Func<string>> after = null, Expression<Func<string>> limit = null)
-        {
-            var apiCallPath = String.Format("/crm/v3/imports/{0}/errors", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse> AddAndOrRemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<string[]>> bodyrecordIdsToAdd = null, Expression<Func<string[]>> bodyrecordIdsToRemove = null)
-        {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add-and-remove", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyrecordIdsToAdd != null)
+            WorkflowValue.Validate(importId, nameof(importId), required: true);
+            return new DeferredBodyAction<GetTheInformationOnAnyImportResponse>(() =>
             {
-                body["recordIdsToAdd"] = ExpressionConverter.ConvertO(bodyrecordIdsToAdd);
-                bodypropCount++;
-            }
-
-            if (bodyrecordIdsToRemove != null)
-            {
-                body["recordIdsToRemove"] = ExpressionConverter.ConvertO(bodyrecordIdsToRemove);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddAndOrRemoveRecordsFromAListResponse>(callPayload);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetTheInformationOnAnyImportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<AddRecordsToAListResponse> AddRecordsToAList(Expression<Func<string>> listId, Expression<Func<string[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildCancelAnActiveImport))]
+        public IBodyWorkflowAction<CancelAnActiveImportResponse> CancelAnActiveImport([WorkflowExpression] Func<string> importId)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<AddRecordsToAListResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<CancelAnActiveImportResponse> __BuildCancelAnActiveImport(WorkflowValue<string> importId)
+        {
+            WorkflowValue.Validate(importId, nameof(importId), required: true);
+            return new DeferredBodyAction<CancelAnActiveImportResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}/cancel", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<CancelAnActiveImportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> AddAllRecordsFromASourceListToADestinationList(Expression<Func<string>> listId, Expression<Func<string>> sourceListId)
+        [WorkflowExpressionFactory(nameof(__BuildGetActiveImports))]
+        public IBodyWorkflowAction<GetActiveImportsResponse> GetActiveImports([WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/add-from/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(sourceListId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetActiveImportsResponse> __BuildGetActiveImports(WorkflowValue<string> after = null, WorkflowValue<string> before = null, WorkflowValue<string> limit = null)
+        {
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(before, nameof(before), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<GetActiveImportsResponse>(() =>
+            {
+                var apiCallPath = "/crm/v3/imports/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                return new ApiConnectionAction<GetActiveImportsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<FetchListMembershipsOrderedByIdResponse> FetchListMembershipsOrderedById(Expression<Func<string>> listId, Expression<Func<string>> after = null, Expression<Func<string>> before = null, Expression<Func<string>> limit = null)
+        [WorkflowExpressionFactory(nameof(__BuildStartANewImport))]
+        public IBodyWorkflowAction<StartANewImportResponse> StartANewImport([WorkflowExpression] Func<string> contentType)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (after != null)
-                callPayload.Queries["after"] = ExpressionConverter.Convert(after);
-            if (before != null)
-                callPayload.Queries["before"] = ExpressionConverter.Convert(before);
-            if (limit != null)
-                callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
-            return new ApiConnectionAction<FetchListMembershipsOrderedByIdResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<StartANewImportResponse> __BuildStartANewImport(WorkflowValue<string> contentType)
+        {
+            WorkflowValue.Validate(contentType, nameof(contentType), required: true);
+            return new DeferredBodyAction<StartANewImportResponse>(() =>
+            {
+                var apiCallPath = "/crm/v3/imports/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = ExpressionConverter.Convert(contentType);
+                return new ApiConnectionAction<StartANewImportResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<string> DeleteAllRecordsFromAList(Expression<Func<string>> listId)
+        [WorkflowExpressionFactory(nameof(__BuildGetCrmV3ImportsImportIdErrorsGetErrors))]
+        public IBodyWorkflowAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse> GetCrmV3ImportsImportIdErrorsGetErrors([WorkflowExpression] Func<string> importId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> limit = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse> __BuildGetCrmV3ImportsImportIdErrorsGetErrors(WorkflowValue<string> importId, WorkflowValue<string> after = null, WorkflowValue<string> limit = null)
+        {
+            WorkflowValue.Validate(importId, nameof(importId), required: true);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/imports/{0}/errors", ExpressionConverter.ConvertWithUrlEncoding(importId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                return new ApiConnectionAction<GetCrmV3ImportsImportIdErrorsGetErrorsResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<RemoveRecordsFromAListResponse> RemoveRecordsFromAList(Expression<Func<string>> listId, Expression<Func<string[]>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddAndOrRemoveRecordsFromAList))]
+        public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse> AddAndOrRemoveRecordsFromAList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string[]> bodyrecordIdsToAdd = null, [WorkflowExpression] Func<string[]> bodyrecordIdsToRemove = null)
         {
-            var apiCallPath = String.Format("/crm/v3/lists/{0}/memberships/remove", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<RemoveRecordsFromAListResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddAndOrRemoveRecordsFromAListResponse> __BuildAddAndOrRemoveRecordsFromAList(WorkflowValue<string> listId, WorkflowValue<string[]> bodyrecordIdsToAdd = null, WorkflowValue<string[]> bodyrecordIdsToRemove = null)
+        {
+            WorkflowValue.Validate(listId, nameof(listId), required: true);
+            WorkflowValue.Validate(bodyrecordIdsToAdd, nameof(bodyrecordIdsToAdd), required: false);
+            WorkflowValue.Validate(bodyrecordIdsToRemove, nameof(bodyrecordIdsToRemove), required: false);
+            return new DeferredBodyAction<AddAndOrRemoveRecordsFromAListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add-and-remove", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyrecordIdsToAdd != null)
+                {
+                    body["recordIdsToAdd"] = ExpressionConverter.ConvertO(bodyrecordIdsToAdd);
+                    bodypropCount++;
+                }
+
+                if (bodyrecordIdsToRemove != null)
+                {
+                    body["recordIdsToRemove"] = ExpressionConverter.ConvertO(bodyrecordIdsToRemove);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<AddAndOrRemoveRecordsFromAListResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
-        public IBodyWorkflowAction<SearchListsResponse> SearchLists(Expression<Func<string[]>> bodyadditionalProperties = null, Expression<Func<string>> bodyoffset = null, Expression<Func<string>> bodyquery = null, Expression<Func<string>> bodycount = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddRecordsToAList))]
+        public IBodyWorkflowAction<AddRecordsToAListResponse> AddRecordsToAList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string[]> body = null)
         {
-            var apiCallPath = "/crm/v3/lists/search";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyadditionalProperties != null)
-            {
-                body["additionalProperties"] = ExpressionConverter.ConvertO(bodyadditionalProperties);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyoffset != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<AddRecordsToAListResponse> __BuildAddRecordsToAList(WorkflowValue<string> listId, WorkflowValue<string[]> body = null)
+        {
+            WorkflowValue.Validate(listId, nameof(listId), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<AddRecordsToAListResponse>(() =>
             {
-                body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<AddRecordsToAListResponse>(callPayload);
+            });
+        }
 
-            if (bodyquery != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildAddAllRecordsFromASourceListToADestinationList))]
+        public IBodyWorkflowAction<string> AddAllRecordsFromASourceListToADestinationList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> sourceListId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildAddAllRecordsFromASourceListToADestinationList(WorkflowValue<string> listId, WorkflowValue<string> sourceListId)
+        {
+            WorkflowValue.Validate(listId, nameof(listId), required: true);
+            WorkflowValue.Validate(sourceListId, nameof(sourceListId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                body["query"] = ExpressionConverter.ConvertO(bodyquery);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/add-from/{1}", ExpressionConverter.ConvertWithUrlEncoding(listId, 1), ExpressionConverter.ConvertWithUrlEncoding(sourceListId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
 
-            if (bodycount != null)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildFetchListMembershipsOrderedById))]
+        public IBodyWorkflowAction<FetchListMembershipsOrderedByIdResponse> FetchListMembershipsOrderedById([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<string> limit = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<FetchListMembershipsOrderedByIdResponse> __BuildFetchListMembershipsOrderedById(WorkflowValue<string> listId, WorkflowValue<string> after = null, WorkflowValue<string> before = null, WorkflowValue<string> limit = null)
+        {
+            WorkflowValue.Validate(listId, nameof(listId), required: true);
+            WorkflowValue.Validate(after, nameof(after), required: false);
+            WorkflowValue.Validate(before, nameof(before), required: false);
+            WorkflowValue.Validate(limit, nameof(limit), required: false);
+            return new DeferredBodyAction<FetchListMembershipsOrderedByIdResponse>(() =>
             {
-                body["count"] = ExpressionConverter.ConvertO(bodycount);
-                bodypropCount++;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (after != null)
+                    callPayload.Queries["after"] = ExpressionConverter.Convert(after);
+                if (before != null)
+                    callPayload.Queries["before"] = ExpressionConverter.Convert(before);
+                if (limit != null)
+                    callPayload.Queries["limit"] = ExpressionConverter.Convert(limit);
+                return new ApiConnectionAction<FetchListMembershipsOrderedByIdResponse>(callPayload);
+            });
+        }
 
-            if (bodypropCount > 0)
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteAllRecordsFromAList))]
+        public IBodyWorkflowAction<string> DeleteAllRecordsFromAList([WorkflowExpression] Func<string> listId)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildDeleteAllRecordsFromAList(WorkflowValue<string> listId)
+        {
+            WorkflowValue.Validate(listId, nameof(listId), required: true);
+            return new DeferredBodyAction<string>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<string>(callPayload);
+            });
+        }
 
-            return new ApiConnectionAction<SearchListsResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildRemoveRecordsFromAList))]
+        public IBodyWorkflowAction<RemoveRecordsFromAListResponse> RemoveRecordsFromAList([WorkflowExpression] Func<string> listId, [WorkflowExpression] Func<string[]> body = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<RemoveRecordsFromAListResponse> __BuildRemoveRecordsFromAList(WorkflowValue<string> listId, WorkflowValue<string[]> body = null)
+        {
+            WorkflowValue.Validate(listId, nameof(listId), required: true);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<RemoveRecordsFromAListResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/crm/v3/lists/{0}/memberships/remove", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<RemoveRecordsFromAListResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcrmv2")]
+        [WorkflowExpressionFactory(nameof(__BuildSearchLists))]
+        public IBodyWorkflowAction<SearchListsResponse> SearchLists([WorkflowExpression] Func<string[]> bodyadditionalProperties = null, [WorkflowExpression] Func<string> bodyoffset = null, [WorkflowExpression] Func<string> bodyquery = null, [WorkflowExpression] Func<string> bodycount = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SearchListsResponse> __BuildSearchLists(WorkflowValue<string[]> bodyadditionalProperties = null, WorkflowValue<string> bodyoffset = null, WorkflowValue<string> bodyquery = null, WorkflowValue<string> bodycount = null)
+        {
+            WorkflowValue.Validate(bodyadditionalProperties, nameof(bodyadditionalProperties), required: false);
+            WorkflowValue.Validate(bodyoffset, nameof(bodyoffset), required: false);
+            WorkflowValue.Validate(bodyquery, nameof(bodyquery), required: false);
+            WorkflowValue.Validate(bodycount, nameof(bodycount), required: false);
+            return new DeferredBodyAction<SearchListsResponse>(() =>
+            {
+                var apiCallPath = "/crm/v3/lists/search";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyadditionalProperties != null)
+                {
+                    body["additionalProperties"] = ExpressionConverter.ConvertO(bodyadditionalProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyoffset != null)
+                {
+                    body["offset"] = ExpressionConverter.ConvertO(bodyoffset);
+                    bodypropCount++;
+                }
+
+                if (bodyquery != null)
+                {
+                    body["query"] = ExpressionConverter.ConvertO(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodycount != null)
+                {
+                    body["count"] = ExpressionConverter.ConvertO(bodycount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<SearchListsResponse>(callPayload);
+            });
         }
     }
 

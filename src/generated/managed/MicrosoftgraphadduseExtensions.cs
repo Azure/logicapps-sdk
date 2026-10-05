@@ -4,129 +4,170 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftgraphadduse
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class MicrosoftgraphadduseActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<string>> bodyuserPrincipalName = null, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null, Expression<Func<bodyidentitiesInputItem[]>> bodyidentities = null, Expression<Func<string>> bodyonPremisesImmutableId = null)
+        [WorkflowExpressionFactory(nameof(__BuildUser))]
+        public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<bool> bodyaccountEnabled = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodymailNickname = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null, [WorkflowExpression] Func<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, [WorkflowExpression] Func<string> bodypasswordProfilepassword = null, [WorkflowExpression] Func<bodyidentitiesInputItem[]> bodyidentities = null, [WorkflowExpression] Func<string> bodyonPremisesImmutableId = null)
         {
-            var apiCallPath = "/users";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountEnabled != null)
-            {
-                body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodydisplayName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UserPostResponse> __BuildUser(WorkflowValue<bool> bodyaccountEnabled = null, WorkflowValue<string> bodydisplayName = null, WorkflowValue<string> bodymailNickname = null, WorkflowValue<string> bodyuserPrincipalName = null, WorkflowValue<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, WorkflowValue<string> bodypasswordProfilepassword = null, WorkflowValue<bodyidentitiesInputItem[]> bodyidentities = null, WorkflowValue<string> bodyonPremisesImmutableId = null)
+        {
+            WorkflowValue.Validate(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
+            WorkflowValue.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            WorkflowValue.Validate(bodymailNickname, nameof(bodymailNickname), required: false);
+            WorkflowValue.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            WorkflowValue.Validate(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
+            WorkflowValue.Validate(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            WorkflowValue.Validate(bodyidentities, nameof(bodyidentities), required: false);
+            WorkflowValue.Validate(bodyonPremisesImmutableId, nameof(bodyonPremisesImmutableId), required: false);
+            return new DeferredBodyAction<UserPostResponse>(() =>
             {
-                body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
-                bodypropCount++;
-            }
+                var apiCallPath = "/users";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountEnabled != null)
+                {
+                    body["accountEnabled"] = ExpressionConverter.ConvertO(bodyaccountEnabled);
+                    bodypropCount++;
+                }
 
-            if (bodymailNickname != null)
-            {
-                body["mailNickname"] = ExpressionConverter.ConvertO(bodymailNickname);
-                bodypropCount++;
-            }
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = ExpressionConverter.ConvertO(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodyuserPrincipalName != null)
-            {
-                body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
-                bodypropCount++;
-            }
+                if (bodymailNickname != null)
+                {
+                    body["mailNickname"] = ExpressionConverter.ConvertO(bodymailNickname);
+                    bodypropCount++;
+                }
 
-            var passwordProfileObject = new JObject();
-            var passwordProfileObjectpropCount = 0;
-            if (bodypasswordProfileforceChangePasswordNextSignIn != null)
-            {
-                passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(bodypasswordProfileforceChangePasswordNextSignIn);
-                passwordProfileObjectpropCount++;
-            }
+                if (bodyuserPrincipalName != null)
+                {
+                    body["userPrincipalName"] = ExpressionConverter.ConvertO(bodyuserPrincipalName);
+                    bodypropCount++;
+                }
 
-            if (bodypasswordProfilepassword != null)
-            {
-                passwordProfileObject["password"] = ExpressionConverter.ConvertO(bodypasswordProfilepassword);
-                passwordProfileObjectpropCount++;
-            }
+                var passwordProfileObject = new JObject();
+                var passwordProfileObjectpropCount = 0;
+                if (bodypasswordProfileforceChangePasswordNextSignIn != null)
+                {
+                    passwordProfileObject["forceChangePasswordNextSignIn"] = ExpressionConverter.ConvertO(bodypasswordProfileforceChangePasswordNextSignIn);
+                    passwordProfileObjectpropCount++;
+                }
 
-            if (passwordProfileObjectpropCount > 0)
-            {
-                body["passwordProfile"] = passwordProfileObject;
-                bodypropCount++;
-            }
+                if (bodypasswordProfilepassword != null)
+                {
+                    passwordProfileObject["password"] = ExpressionConverter.ConvertO(bodypasswordProfilepassword);
+                    passwordProfileObjectpropCount++;
+                }
 
-            if (bodyidentities != null)
-            {
-                body["identities"] = ExpressionConverter.ConvertO(bodyidentities);
-                bodypropCount++;
-            }
+                if (passwordProfileObjectpropCount > 0)
+                {
+                    body["passwordProfile"] = passwordProfileObject;
+                    bodypropCount++;
+                }
 
-            if (bodyonPremisesImmutableId != null)
-            {
-                body["onPremisesImmutableId"] = ExpressionConverter.ConvertO(bodyonPremisesImmutableId);
-                bodypropCount++;
-            }
+                if (bodyidentities != null)
+                {
+                    body["identities"] = ExpressionConverter.ConvertO(bodyidentities);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyonPremisesImmutableId != null)
+                {
+                    body["onPremisesImmutableId"] = ExpressionConverter.ConvertO(bodyonPremisesImmutableId);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UserPostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<UserPostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<InvitePostResponse> Invite(Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<string>> bodyinviteRedirectUrl = null)
+        [WorkflowExpressionFactory(nameof(__BuildInvite))]
+        public IBodyWorkflowAction<InvitePostResponse> Invite([WorkflowExpression] Func<string> bodyinvitedUserEmailAddress = null, [WorkflowExpression] Func<string> bodyinviteRedirectUrl = null)
         {
-            var apiCallPath = "/invitations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinvitedUserEmailAddress != null)
-            {
-                body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(bodyinvitedUserEmailAddress);
-                bodypropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (bodyinviteRedirectUrl != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InvitePostResponse> __BuildInvite(WorkflowValue<string> bodyinvitedUserEmailAddress = null, WorkflowValue<string> bodyinviteRedirectUrl = null)
+        {
+            WorkflowValue.Validate(bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
+            WorkflowValue.Validate(bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
+            return new DeferredBodyAction<InvitePostResponse>(() =>
             {
-                body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(bodyinviteRedirectUrl);
-                bodypropCount++;
-            }
+                var apiCallPath = "/invitations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinvitedUserEmailAddress != null)
+                {
+                    body["invitedUserEmailAddress"] = ExpressionConverter.ConvertO(bodyinvitedUserEmailAddress);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodyinviteRedirectUrl != null)
+                {
+                    body["inviteRedirectUrl"] = ExpressionConverter.ConvertO(bodyinviteRedirectUrl);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<InvitePostResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<InvitePostResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "microsoftgraphadduse")]
-        public IBodyWorkflowAction<string> MembersPatch(Expression<Func<string>> groupId, Expression<Func<string[]>> bodymembersOdataBind)
+        [WorkflowExpressionFactory(nameof(__BuildMembersPatch))]
+        public IBodyWorkflowAction<string> MembersPatch([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string[]> bodymembersOdataBind)
         {
-            var apiCallPath = String.Format("/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["members@odata.bind"] = ExpressionConverter.ConvertO(bodymembersOdataBind);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionAction<string>(callPayload);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildMembersPatch(WorkflowValue<string> groupId, WorkflowValue<string[]> bodymembersOdataBind)
+        {
+            WorkflowValue.Validate(groupId, nameof(groupId), required: true);
+            WorkflowValue.Validate(bodymembersOdataBind, nameof(bodymembersOdataBind), required: true);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["members@odata.bind"] = ExpressionConverter.ConvertO(bodymembersOdataBind);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 

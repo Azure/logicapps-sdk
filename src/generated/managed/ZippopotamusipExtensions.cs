@@ -4,29 +4,53 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class ZippopotamusipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
-        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> GetDetailsByPostalCode(Expression<Func<countryInput>> country, Expression<Func<string>> postalCode)
+        [WorkflowExpressionFactory(nameof(__BuildGetDetailsByPostalCode))]
+        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> GetDetailsByPostalCode([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> postalCode)
         {
-            var apiCallPath = String.Format("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(postalCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDetailsByPostalCodeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> __BuildGetDetailsByPostalCode(WorkflowValue<countryInput> country, WorkflowValue<string> postalCode)
+        {
+            WorkflowValue.Validate(country, nameof(country), required: true);
+            WorkflowValue.Validate(postalCode, nameof(postalCode), required: true);
+            return new DeferredBodyAction<GetDetailsByPostalCodeResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(postalCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDetailsByPostalCodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
-        public IBodyWorkflowAction<GetDetailsByStateCityResponse> GetDetailsByStateCity(Expression<Func<countryInput>> country, Expression<Func<string>> state, Expression<Func<string>> city)
+        [WorkflowExpressionFactory(nameof(__BuildGetDetailsByStateCity))]
+        public IBodyWorkflowAction<GetDetailsByStateCityResponse> GetDetailsByStateCity([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> city)
         {
-            var apiCallPath = String.Format("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(state, 1), ExpressionConverter.ConvertWithUrlEncoding(city, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDetailsByStateCityResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetDetailsByStateCityResponse> __BuildGetDetailsByStateCity(WorkflowValue<countryInput> country, WorkflowValue<string> state, WorkflowValue<string> city)
+        {
+            WorkflowValue.Validate(country, nameof(country), required: true);
+            WorkflowValue.Validate(state, nameof(state), required: true);
+            WorkflowValue.Validate(city, nameof(city), required: true);
+            return new DeferredBodyAction<GetDetailsByStateCityResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(state, 1), ExpressionConverter.ConvertWithUrlEncoding(city, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetDetailsByStateCityResponse>(callPayload);
+            });
         }
     }
 

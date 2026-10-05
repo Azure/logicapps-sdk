@@ -4,259 +4,428 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.X12
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class X12Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<UpdateControlNumberResult[]> AddOrUpdateControlNumbers(Expression<Func<ReplicableControlNumberContent[]>> controlNumberContents = null)
+        [WorkflowExpressionFactory(nameof(__BuildAddOrUpdateControlNumbers))]
+        public IBodyWorkflowAction<UpdateControlNumberResult[]> AddOrUpdateControlNumbers([WorkflowExpression] Func<ReplicableControlNumberContent[]> controlNumberContents = null)
         {
-            var apiCallPath = "/controlNumbers";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(controlNumberContents);
-            return new ApiConnectionAction<UpdateControlNumberResult[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<UpdateControlNumberResult[]> __BuildAddOrUpdateControlNumbers(WorkflowValue<ReplicableControlNumberContent[]> controlNumberContents = null)
+        {
+            WorkflowValue.Validate(controlNumberContents, nameof(controlNumberContents), required: false);
+            return new DeferredBodyAction<UpdateControlNumberResult[]>(() =>
+            {
+                var apiCallPath = "/controlNumbers";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(controlNumberContents);
+                return new ApiConnectionAction<UpdateControlNumberResult[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<EdiDecodeResponseX12DecodeResponseX12AcknowledgementResponse> Decode(Expression<Func<bool>> preserveInterchange = null, Expression<Func<bool>> suspendInterchangeOnError = null, Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildDecode))]
+        public IBodyWorkflowAction<EdiDecodeResponseX12DecodeResponseX12AcknowledgementResponse> Decode([WorkflowExpression] Func<bool> preserveInterchange = null, [WorkflowExpression] Func<bool> suspendInterchangeOnError = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/decode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (preserveInterchange != null)
-                callPayload.Queries["preserveInterchange"] = ExpressionConverter.Convert(preserveInterchange);
-            if (suspendInterchangeOnError != null)
-                callPayload.Queries["suspendInterchangeOnError"] = ExpressionConverter.Convert(suspendInterchangeOnError);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<EdiDecodeResponseX12DecodeResponseX12AcknowledgementResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EdiDecodeResponseX12DecodeResponseX12AcknowledgementResponse> __BuildDecode(WorkflowValue<bool> preserveInterchange = null, WorkflowValue<bool> suspendInterchangeOnError = null, WorkflowValue<string> body = null)
+        {
+            WorkflowValue.Validate(preserveInterchange, nameof(preserveInterchange), required: false);
+            WorkflowValue.Validate(suspendInterchangeOnError, nameof(suspendInterchangeOnError), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<EdiDecodeResponseX12DecodeResponseX12AcknowledgementResponse>(() =>
+            {
+                var apiCallPath = "/decode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (preserveInterchange != null)
+                    callPayload.Queries["preserveInterchange"] = ExpressionConverter.Convert(preserveInterchange);
+                if (suspendInterchangeOnError != null)
+                    callPayload.Queries["suspendInterchangeOnError"] = ExpressionConverter.Convert(suspendInterchangeOnError);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<EdiDecodeResponseX12DecodeResponseX12AcknowledgementResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<EdiAgreementProperties> ResolveAgreement(Expression<Func<string>> body = null)
+        [WorkflowExpressionFactory(nameof(__BuildResolveAgreement))]
+        public IBodyWorkflowAction<EdiAgreementProperties> ResolveAgreement([WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/resolveAgreement";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<EdiAgreementProperties>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EdiAgreementProperties> __BuildResolveAgreement(WorkflowValue<string> body = null)
+        {
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            return new DeferredBodyAction<EdiAgreementProperties>(() =>
+            {
+                var apiCallPath = "/resolveAgreement";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<EdiAgreementProperties>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<X12BatchEncodeResponse> BatchEncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null)
+        [WorkflowExpressionFactory(nameof(__BuildBatchEncodeResolveByAgreementName))]
+        public IBodyWorkflowAction<X12BatchEncodeResponse> BatchEncodeResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<string> messagesToBatchbatchName = null, [WorkflowExpression] Func<string> messagesToBatchpartitionName = null, [WorkflowExpression] Func<BatchItem[]> messagesToBatchitems = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> replacementCharacter = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null)
         {
-            var apiCallPath = "/Encode/Batch/ResolveByName";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
-            if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-            if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-            if (replacementCharacter != null)
-                callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
-            if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-            if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-            var messagesToBatch = new JObject();
-            var messagesToBatchpropCount = 0;
-            if (messagesToBatchbatchName != null)
-            {
-                messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
-                messagesToBatchpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (messagesToBatchpartitionName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<X12BatchEncodeResponse> __BuildBatchEncodeResolveByAgreementName(WorkflowValue<string> agreementName, WorkflowValue<string> messagesToBatchbatchName = null, WorkflowValue<string> messagesToBatchpartitionName = null, WorkflowValue<BatchItem[]> messagesToBatchitems = null, WorkflowValue<int> dataElementSeparator = null, WorkflowValue<int> componentSeparator = null, WorkflowValue<int> replacementCharacter = null, WorkflowValue<int> segmentTerminator = null, WorkflowValue<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null)
+        {
+            WorkflowValue.Validate(agreementName, nameof(agreementName), required: true);
+            WorkflowValue.Validate(messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
+            WorkflowValue.Validate(messagesToBatchpartitionName, nameof(messagesToBatchpartitionName), required: false);
+            WorkflowValue.Validate(messagesToBatchitems, nameof(messagesToBatchitems), required: false);
+            WorkflowValue.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
+            WorkflowValue.Validate(componentSeparator, nameof(componentSeparator), required: false);
+            WorkflowValue.Validate(replacementCharacter, nameof(replacementCharacter), required: false);
+            WorkflowValue.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
+            WorkflowValue.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            return new DeferredBodyAction<X12BatchEncodeResponse>(() =>
             {
-                messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
-                messagesToBatchpropCount++;
-            }
+                var apiCallPath = "/Encode/Batch/ResolveByName";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
+                if (dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                if (componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                if (replacementCharacter != null)
+                    callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
+                if (segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                if (segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                var messagesToBatch = new JObject();
+                var messagesToBatchpropCount = 0;
+                if (messagesToBatchbatchName != null)
+                {
+                    messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
+                    messagesToBatchpropCount++;
+                }
 
-            if (messagesToBatchitems != null)
-            {
-                messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
-                messagesToBatchpropCount++;
-            }
+                if (messagesToBatchpartitionName != null)
+                {
+                    messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
+                    messagesToBatchpropCount++;
+                }
 
-            if (messagesToBatchpropCount > 0)
-            {
-                callPayload.Body = messagesToBatch;
-            }
+                if (messagesToBatchitems != null)
+                {
+                    messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
+                    messagesToBatchpropCount++;
+                }
 
-            return new ApiConnectionAction<X12BatchEncodeResponse>(callPayload);
+                if (messagesToBatchpropCount > 0)
+                {
+                    callPayload.Body = messagesToBatch;
+                }
+
+                return new ApiConnectionAction<X12BatchEncodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<EdiEncodeResponse> EncodeResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<string>> body = null, Expression<Func<string>> iSA12 = null, Expression<Func<string>> gS02 = null, Expression<Func<string>> gS03 = null)
+        [WorkflowExpressionFactory(nameof(__BuildEncodeResolveByAgreementName))]
+        public IBodyWorkflowAction<EdiEncodeResponse> EncodeResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> replacementCharacter = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> iSA12 = null, [WorkflowExpression] Func<string> gS02 = null, [WorkflowExpression] Func<string> gS03 = null)
         {
-            var apiCallPath = "/encode/resolvebyname";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
-            if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-            if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-            if (replacementCharacter != null)
-                callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
-            if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-            if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-            if (iSA12 != null)
-                callPayload.Headers["ISA12"] = ExpressionConverter.Convert(iSA12);
-            if (gS02 != null)
-                callPayload.Headers["GS02"] = ExpressionConverter.Convert(gS02);
-            if (gS03 != null)
-                callPayload.Headers["GS03"] = ExpressionConverter.Convert(gS03);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<EdiEncodeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EdiEncodeResponse> __BuildEncodeResolveByAgreementName(WorkflowValue<string> agreementName, WorkflowValue<int> dataElementSeparator = null, WorkflowValue<int> componentSeparator = null, WorkflowValue<int> replacementCharacter = null, WorkflowValue<int> segmentTerminator = null, WorkflowValue<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowValue<string> body = null, WorkflowValue<string> iSA12 = null, WorkflowValue<string> gS02 = null, WorkflowValue<string> gS03 = null)
+        {
+            WorkflowValue.Validate(agreementName, nameof(agreementName), required: true);
+            WorkflowValue.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
+            WorkflowValue.Validate(componentSeparator, nameof(componentSeparator), required: false);
+            WorkflowValue.Validate(replacementCharacter, nameof(replacementCharacter), required: false);
+            WorkflowValue.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
+            WorkflowValue.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(iSA12, nameof(iSA12), required: false);
+            WorkflowValue.Validate(gS02, nameof(gS02), required: false);
+            WorkflowValue.Validate(gS03, nameof(gS03), required: false);
+            return new DeferredBodyAction<EdiEncodeResponse>(() =>
+            {
+                var apiCallPath = "/encode/resolvebyname";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
+                if (dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                if (componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                if (replacementCharacter != null)
+                    callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
+                if (segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                if (segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                if (iSA12 != null)
+                    callPayload.Headers["ISA12"] = ExpressionConverter.Convert(iSA12);
+                if (gS02 != null)
+                    callPayload.Headers["GS02"] = ExpressionConverter.Convert(gS02);
+                if (gS03 != null)
+                    callPayload.Headers["GS03"] = ExpressionConverter.Convert(gS03);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<EdiEncodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<X12EncodeV2Response> EncodeV2ResolveByAgreementName(Expression<Func<string>> agreementName, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<string>> body = null, Expression<Func<string>> gS02 = null, Expression<Func<string>> gS03 = null)
+        [WorkflowExpressionFactory(nameof(__BuildEncodeV2ResolveByAgreementName))]
+        public IBodyWorkflowAction<X12EncodeV2Response> EncodeV2ResolveByAgreementName([WorkflowExpression] Func<string> agreementName, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> replacementCharacter = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> gS02 = null, [WorkflowExpression] Func<string> gS03 = null)
         {
-            var apiCallPath = "/EncodeV2/ResolveByName";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
-            if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-            if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-            if (replacementCharacter != null)
-                callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
-            if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-            if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-            if (gS02 != null)
-                callPayload.Headers["GS02"] = ExpressionConverter.Convert(gS02);
-            if (gS03 != null)
-                callPayload.Headers["GS03"] = ExpressionConverter.Convert(gS03);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<X12EncodeV2Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<X12EncodeV2Response> __BuildEncodeV2ResolveByAgreementName(WorkflowValue<string> agreementName, WorkflowValue<int> dataElementSeparator = null, WorkflowValue<int> componentSeparator = null, WorkflowValue<int> replacementCharacter = null, WorkflowValue<int> segmentTerminator = null, WorkflowValue<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowValue<string> body = null, WorkflowValue<string> gS02 = null, WorkflowValue<string> gS03 = null)
+        {
+            WorkflowValue.Validate(agreementName, nameof(agreementName), required: true);
+            WorkflowValue.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
+            WorkflowValue.Validate(componentSeparator, nameof(componentSeparator), required: false);
+            WorkflowValue.Validate(replacementCharacter, nameof(replacementCharacter), required: false);
+            WorkflowValue.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
+            WorkflowValue.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(gS02, nameof(gS02), required: false);
+            WorkflowValue.Validate(gS03, nameof(gS03), required: false);
+            return new DeferredBodyAction<X12EncodeV2Response>(() =>
+            {
+                var apiCallPath = "/EncodeV2/ResolveByName";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["agreementName"] = ExpressionConverter.Convert(agreementName);
+                if (dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                if (componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                if (replacementCharacter != null)
+                    callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
+                if (segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                if (segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                if (gS02 != null)
+                    callPayload.Headers["GS02"] = ExpressionConverter.Convert(gS02);
+                if (gS03 != null)
+                    callPayload.Headers["GS03"] = ExpressionConverter.Convert(gS03);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<X12EncodeV2Response>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<X12BatchEncodeResponse> BatchEncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> senderQualifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> receiverQualifier, Expression<Func<string>> messagesToBatchbatchName = null, Expression<Func<string>> messagesToBatchpartitionName = null, Expression<Func<BatchItem[]>> messagesToBatchitems = null, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null)
+        [WorkflowExpressionFactory(nameof(__BuildBatchEncodeResolveByPartnerIdentities))]
+        public IBodyWorkflowAction<X12BatchEncodeResponse> BatchEncodeResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> senderQualifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> receiverQualifier, [WorkflowExpression] Func<string> messagesToBatchbatchName = null, [WorkflowExpression] Func<string> messagesToBatchpartitionName = null, [WorkflowExpression] Func<BatchItem[]> messagesToBatchitems = null, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> replacementCharacter = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null)
         {
-            var apiCallPath = "/Encode/Batch/ResolveByIdentities";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-            callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
-            callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
-            callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
-            if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-            if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-            if (replacementCharacter != null)
-                callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
-            if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-            if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-            var messagesToBatch = new JObject();
-            var messagesToBatchpropCount = 0;
-            if (messagesToBatchbatchName != null)
-            {
-                messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
-                messagesToBatchpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (messagesToBatchpartitionName != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<X12BatchEncodeResponse> __BuildBatchEncodeResolveByPartnerIdentities(WorkflowValue<string> senderIdentifier, WorkflowValue<string> senderQualifier, WorkflowValue<string> receiverIdentifier, WorkflowValue<string> receiverQualifier, WorkflowValue<string> messagesToBatchbatchName = null, WorkflowValue<string> messagesToBatchpartitionName = null, WorkflowValue<BatchItem[]> messagesToBatchitems = null, WorkflowValue<int> dataElementSeparator = null, WorkflowValue<int> componentSeparator = null, WorkflowValue<int> replacementCharacter = null, WorkflowValue<int> segmentTerminator = null, WorkflowValue<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null)
+        {
+            WorkflowValue.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
+            WorkflowValue.Validate(senderQualifier, nameof(senderQualifier), required: true);
+            WorkflowValue.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
+            WorkflowValue.Validate(receiverQualifier, nameof(receiverQualifier), required: true);
+            WorkflowValue.Validate(messagesToBatchbatchName, nameof(messagesToBatchbatchName), required: false);
+            WorkflowValue.Validate(messagesToBatchpartitionName, nameof(messagesToBatchpartitionName), required: false);
+            WorkflowValue.Validate(messagesToBatchitems, nameof(messagesToBatchitems), required: false);
+            WorkflowValue.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
+            WorkflowValue.Validate(componentSeparator, nameof(componentSeparator), required: false);
+            WorkflowValue.Validate(replacementCharacter, nameof(replacementCharacter), required: false);
+            WorkflowValue.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
+            WorkflowValue.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            return new DeferredBodyAction<X12BatchEncodeResponse>(() =>
             {
-                messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
-                messagesToBatchpropCount++;
-            }
+                var apiCallPath = "/Encode/Batch/ResolveByIdentities";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
+                callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
+                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
+                callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
+                if (dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                if (componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                if (replacementCharacter != null)
+                    callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
+                if (segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                if (segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                var messagesToBatch = new JObject();
+                var messagesToBatchpropCount = 0;
+                if (messagesToBatchbatchName != null)
+                {
+                    messagesToBatch["BatchName"] = ExpressionConverter.ConvertO(messagesToBatchbatchName);
+                    messagesToBatchpropCount++;
+                }
 
-            if (messagesToBatchitems != null)
-            {
-                messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
-                messagesToBatchpropCount++;
-            }
+                if (messagesToBatchpartitionName != null)
+                {
+                    messagesToBatch["PartitionName"] = ExpressionConverter.ConvertO(messagesToBatchpartitionName);
+                    messagesToBatchpropCount++;
+                }
 
-            if (messagesToBatchpropCount > 0)
-            {
-                callPayload.Body = messagesToBatch;
-            }
+                if (messagesToBatchitems != null)
+                {
+                    messagesToBatch["Items"] = ExpressionConverter.ConvertO(messagesToBatchitems);
+                    messagesToBatchpropCount++;
+                }
 
-            return new ApiConnectionAction<X12BatchEncodeResponse>(callPayload);
+                if (messagesToBatchpropCount > 0)
+                {
+                    callPayload.Body = messagesToBatch;
+                }
+
+                return new ApiConnectionAction<X12BatchEncodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<EdiEncodeResponse> EncodeResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> senderQualifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> receiverQualifier, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<string>> body = null, Expression<Func<string>> gS02 = null, Expression<Func<string>> gS03 = null)
+        [WorkflowExpressionFactory(nameof(__BuildEncodeResolveByPartnerIdentities))]
+        public IBodyWorkflowAction<EdiEncodeResponse> EncodeResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> senderQualifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> receiverQualifier, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> replacementCharacter = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> gS02 = null, [WorkflowExpression] Func<string> gS03 = null)
         {
-            var apiCallPath = "/encode/resolvebyidentities";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-            callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
-            callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
-            callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
-            if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-            if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-            if (replacementCharacter != null)
-                callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
-            if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-            if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-            if (gS02 != null)
-                callPayload.Headers["GS02"] = ExpressionConverter.Convert(gS02);
-            if (gS03 != null)
-                callPayload.Headers["GS03"] = ExpressionConverter.Convert(gS03);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<EdiEncodeResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<EdiEncodeResponse> __BuildEncodeResolveByPartnerIdentities(WorkflowValue<string> senderIdentifier, WorkflowValue<string> senderQualifier, WorkflowValue<string> receiverIdentifier, WorkflowValue<string> receiverQualifier, WorkflowValue<int> dataElementSeparator = null, WorkflowValue<int> componentSeparator = null, WorkflowValue<int> replacementCharacter = null, WorkflowValue<int> segmentTerminator = null, WorkflowValue<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowValue<string> body = null, WorkflowValue<string> gS02 = null, WorkflowValue<string> gS03 = null)
+        {
+            WorkflowValue.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
+            WorkflowValue.Validate(senderQualifier, nameof(senderQualifier), required: true);
+            WorkflowValue.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
+            WorkflowValue.Validate(receiverQualifier, nameof(receiverQualifier), required: true);
+            WorkflowValue.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
+            WorkflowValue.Validate(componentSeparator, nameof(componentSeparator), required: false);
+            WorkflowValue.Validate(replacementCharacter, nameof(replacementCharacter), required: false);
+            WorkflowValue.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
+            WorkflowValue.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(gS02, nameof(gS02), required: false);
+            WorkflowValue.Validate(gS03, nameof(gS03), required: false);
+            return new DeferredBodyAction<EdiEncodeResponse>(() =>
+            {
+                var apiCallPath = "/encode/resolvebyidentities";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
+                callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
+                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
+                callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
+                if (dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                if (componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                if (replacementCharacter != null)
+                    callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
+                if (segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                if (segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                if (gS02 != null)
+                    callPayload.Headers["GS02"] = ExpressionConverter.Convert(gS02);
+                if (gS03 != null)
+                    callPayload.Headers["GS03"] = ExpressionConverter.Convert(gS03);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<EdiEncodeResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "x12")]
-        public IBodyWorkflowAction<X12EncodeV2Response> EncodeV2ResolveByPartnerIdentities(Expression<Func<string>> senderIdentifier, Expression<Func<string>> senderQualifier, Expression<Func<string>> receiverIdentifier, Expression<Func<string>> receiverQualifier, Expression<Func<int>> dataElementSeparator = null, Expression<Func<int>> componentSeparator = null, Expression<Func<int>> replacementCharacter = null, Expression<Func<int>> segmentTerminator = null, Expression<Func<segmentTerminatorSuffixInput>> segmentTerminatorSuffix = null, Expression<Func<string>> body = null, Expression<Func<string>> gS02 = null, Expression<Func<string>> gS03 = null)
+        [WorkflowExpressionFactory(nameof(__BuildEncodeV2ResolveByPartnerIdentities))]
+        public IBodyWorkflowAction<X12EncodeV2Response> EncodeV2ResolveByPartnerIdentities([WorkflowExpression] Func<string> senderIdentifier, [WorkflowExpression] Func<string> senderQualifier, [WorkflowExpression] Func<string> receiverIdentifier, [WorkflowExpression] Func<string> receiverQualifier, [WorkflowExpression] Func<int> dataElementSeparator = null, [WorkflowExpression] Func<int> componentSeparator = null, [WorkflowExpression] Func<int> replacementCharacter = null, [WorkflowExpression] Func<int> segmentTerminator = null, [WorkflowExpression] Func<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> gS02 = null, [WorkflowExpression] Func<string> gS03 = null)
         {
-            var apiCallPath = "/EncodeV2/ResolveByIdentities";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
-            callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
-            callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
-            callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
-            if (dataElementSeparator != null)
-                callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
-            if (componentSeparator != null)
-                callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
-            if (replacementCharacter != null)
-                callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
-            if (segmentTerminator != null)
-                callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
-            if (segmentTerminatorSuffix != null)
-                callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
-            if (gS02 != null)
-                callPayload.Headers["GS02"] = ExpressionConverter.Convert(gS02);
-            if (gS03 != null)
-                callPayload.Headers["GS03"] = ExpressionConverter.Convert(gS03);
-            callPayload.Body = ExpressionConverter.ConvertO(body);
-            return new ApiConnectionAction<X12EncodeV2Response>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<X12EncodeV2Response> __BuildEncodeV2ResolveByPartnerIdentities(WorkflowValue<string> senderIdentifier, WorkflowValue<string> senderQualifier, WorkflowValue<string> receiverIdentifier, WorkflowValue<string> receiverQualifier, WorkflowValue<int> dataElementSeparator = null, WorkflowValue<int> componentSeparator = null, WorkflowValue<int> replacementCharacter = null, WorkflowValue<int> segmentTerminator = null, WorkflowValue<segmentTerminatorSuffixInput> segmentTerminatorSuffix = null, WorkflowValue<string> body = null, WorkflowValue<string> gS02 = null, WorkflowValue<string> gS03 = null)
+        {
+            WorkflowValue.Validate(senderIdentifier, nameof(senderIdentifier), required: true);
+            WorkflowValue.Validate(senderQualifier, nameof(senderQualifier), required: true);
+            WorkflowValue.Validate(receiverIdentifier, nameof(receiverIdentifier), required: true);
+            WorkflowValue.Validate(receiverQualifier, nameof(receiverQualifier), required: true);
+            WorkflowValue.Validate(dataElementSeparator, nameof(dataElementSeparator), required: false);
+            WorkflowValue.Validate(componentSeparator, nameof(componentSeparator), required: false);
+            WorkflowValue.Validate(replacementCharacter, nameof(replacementCharacter), required: false);
+            WorkflowValue.Validate(segmentTerminator, nameof(segmentTerminator), required: false);
+            WorkflowValue.Validate(segmentTerminatorSuffix, nameof(segmentTerminatorSuffix), required: false);
+            WorkflowValue.Validate(body, nameof(body), required: false);
+            WorkflowValue.Validate(gS02, nameof(gS02), required: false);
+            WorkflowValue.Validate(gS03, nameof(gS03), required: false);
+            return new DeferredBodyAction<X12EncodeV2Response>(() =>
+            {
+                var apiCallPath = "/EncodeV2/ResolveByIdentities";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["senderIdentifier"] = ExpressionConverter.Convert(senderIdentifier);
+                callPayload.Queries["senderQualifier"] = ExpressionConverter.Convert(senderQualifier);
+                callPayload.Queries["receiverIdentifier"] = ExpressionConverter.Convert(receiverIdentifier);
+                callPayload.Queries["receiverQualifier"] = ExpressionConverter.Convert(receiverQualifier);
+                if (dataElementSeparator != null)
+                    callPayload.Queries["dataElementSeparator"] = ExpressionConverter.Convert(dataElementSeparator);
+                if (componentSeparator != null)
+                    callPayload.Queries["componentSeparator"] = ExpressionConverter.Convert(componentSeparator);
+                if (replacementCharacter != null)
+                    callPayload.Queries["replacementCharacter"] = ExpressionConverter.Convert(replacementCharacter);
+                if (segmentTerminator != null)
+                    callPayload.Queries["segmentTerminator"] = ExpressionConverter.Convert(segmentTerminator);
+                if (segmentTerminatorSuffix != null)
+                    callPayload.Queries["segmentTerminatorSuffix"] = ExpressionConverter.Convert(segmentTerminatorSuffix);
+                if (gS02 != null)
+                    callPayload.Headers["GS02"] = ExpressionConverter.Convert(gS02);
+                if (gS03 != null)
+                    callPayload.Headers["GS03"] = ExpressionConverter.Convert(gS03);
+                callPayload.Body = ExpressionConverter.ConvertO(body);
+                return new ApiConnectionAction<X12EncodeV2Response>(callPayload);
+            });
         }
     }
 
     public class X12Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber(Expression<Func<string>> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildOnModifiedControlNumber))]
+        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber([WorkflowExpression] Func<string> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/triggers/onModifiedControlNumber";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startSyncTime != null)
-                callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(startSyncTime);
-            return new ApiConnectionTrigger<ReplicableControlNumberContent[]>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> __BuildOnModifiedControlNumber(WorkflowValue<string> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(startSyncTime, nameof(startSyncTime), required: false);
+            return new DeferredBodyTrigger<ReplicableControlNumberContent[]>(() =>
+            {
+                var apiCallPath = "/triggers/onModifiedControlNumber";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startSyncTime != null)
+                    callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(startSyncTime);
+                return new ApiConnectionTrigger<ReplicableControlNumberContent[]>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

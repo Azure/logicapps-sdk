@@ -4,37 +4,49 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lnkbio
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class LnkbioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lnkbio")]
-        public IBodyWorkflowAction<InlineResponse200> Lnkadd(Expression<Func<string>> bodytitle, Expression<Func<string>> bodylink, Expression<Func<string>> bodyimage = null)
+        [WorkflowExpressionFactory(nameof(__BuildLnkadd))]
+        public IBodyWorkflowAction<InlineResponse200> Lnkadd([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodylink, [WorkflowExpression] Func<string> bodyimage = null)
         {
-            var apiCallPath = "/lnk/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = ExpressionConverter.ConvertO(bodytitle);
-            bodypropCount++;
-            body["link"] = ExpressionConverter.ConvertO(bodylink);
-            if (bodyimage != null)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<InlineResponse200> __BuildLnkadd(WorkflowValue<string> bodytitle, WorkflowValue<string> bodylink, WorkflowValue<string> bodyimage = null)
+        {
+            WorkflowValue.Validate(bodytitle, nameof(bodytitle), required: true);
+            WorkflowValue.Validate(bodylink, nameof(bodylink), required: true);
+            WorkflowValue.Validate(bodyimage, nameof(bodyimage), required: false);
+            return new DeferredBodyAction<InlineResponse200>(() =>
             {
-                body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                var apiCallPath = "/lnk/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = ExpressionConverter.ConvertO(bodytitle);
+                bodypropCount++;
+                body["link"] = ExpressionConverter.ConvertO(bodylink);
+                if (bodyimage != null)
+                {
+                    body["image"] = ExpressionConverter.ConvertO(bodyimage);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            return new ApiConnectionAction<InlineResponse200>(callPayload);
+                return new ApiConnectionAction<InlineResponse200>(callPayload);
+            });
         }
     }
 

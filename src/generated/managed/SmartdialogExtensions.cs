@@ -4,538 +4,738 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class SmartdialogActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodysender, Expression<Func<string>> requestBodycontent, Expression<Func<requestBodyprotocolInput>> requestBodyprotocol, Expression<Func<requestBodyrecipientsInputItem[]>> requestBodyrecipients, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<bool>> requestBodyadMessage = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodyrequestId = null)
+        [WorkflowExpressionFactory(nameof(__BuildSendMessage))]
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-            callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["Sender"] = ExpressionConverter.ConvertO(requestBodysender);
-            requestBodypropCount++;
-            requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
-            requestBodypropCount++;
-            requestBody["Protocol"] = ExpressionConverter.ConvertO(requestBodyprotocol);
-            if (requestBodysendDateTime != null)
-            {
-                requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
-                requestBodypropCount++;
-            }
-
-            requestBodypropCount++;
-            requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
-            if (requestBodyattachmentUri != null)
-            {
-                requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
-                requestBodypropCount++;
-            }
-
-            if (requestBodycustomerData != null)
-            {
-                requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyadMessage != null)
-            {
-                requestBody["AdMessage"] = ExpressionConverter.ConvertO(requestBodyadMessage);
-                requestBodypropCount++;
-            }
-
-            if (requestBodydlrUrl != null)
-            {
-                requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyrequestId != null)
-            {
-                requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage(Expression<Func<string>> parentMessageId, Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodysender, Expression<Func<string>> requestBodycontent, Expression<Func<requestBodyprotocolInput>> requestBodyprotocol, Expression<Func<requestBodyrecipientsInputItem[]>> requestBodyrecipients, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<bool>> requestBodyadMessage = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodyrequestId = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendMessageResponse> __BuildSendMessage(WorkflowValue<string> customerId, WorkflowValue<string> serviceId, WorkflowValue<string> requestBodysender, WorkflowValue<string> requestBodycontent, WorkflowValue<requestBodyprotocolInput> requestBodyprotocol, WorkflowValue<requestBodyrecipientsInputItem[]> requestBodyrecipients, WorkflowValue<string> requestBodysendDateTime = null, WorkflowValue<string> requestBodyattachmentUri = null, WorkflowValue<string> requestBodycustomerData = null, WorkflowValue<bool> requestBodyadMessage = null, WorkflowValue<string> requestBodydlrUrl = null, WorkflowValue<string> requestBodyrequestId = null)
         {
-            var apiCallPath = String.Format("/messages/reply/{0}", ExpressionConverter.ConvertWithUrlEncoding(parentMessageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-            callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["Sender"] = ExpressionConverter.ConvertO(requestBodysender);
-            requestBodypropCount++;
-            requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
-            requestBodypropCount++;
-            requestBody["Protocol"] = ExpressionConverter.ConvertO(requestBodyprotocol);
-            if (requestBodysendDateTime != null)
+            WorkflowValue.Validate(customerId, nameof(customerId), required: true);
+            WorkflowValue.Validate(serviceId, nameof(serviceId), required: true);
+            WorkflowValue.Validate(requestBodysender, nameof(requestBodysender), required: true);
+            WorkflowValue.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
+            WorkflowValue.Validate(requestBodyprotocol, nameof(requestBodyprotocol), required: true);
+            WorkflowValue.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            WorkflowValue.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            WorkflowValue.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            WorkflowValue.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            WorkflowValue.Validate(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
+            WorkflowValue.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            WorkflowValue.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            return new DeferredBodyAction<SendMessageResponse>(() =>
             {
-                requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
+                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
-
-            requestBodypropCount++;
-            requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
-            if (requestBodyattachmentUri != null)
-            {
-                requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                requestBody["Sender"] = ExpressionConverter.ConvertO(requestBodysender);
                 requestBodypropCount++;
-            }
-
-            if (requestBodycustomerData != null)
-            {
-                requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
                 requestBodypropCount++;
-            }
-
-            if (requestBodyadMessage != null)
-            {
-                requestBody["AdMessage"] = ExpressionConverter.ConvertO(requestBodyadMessage);
-                requestBodypropCount++;
-            }
-
-            if (requestBodydlrUrl != null)
-            {
-                requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyrequestId != null)
-            {
-                requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<SendReplyMessageResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> SendDiscussionReplyMessage(Expression<Func<string>> customerId, Expression<Func<string>> requestBodythreadId, Expression<Func<string>> requestBodycontent, Expression<Func<string>> requestBodycustomerData = null)
-        {
-            var apiCallPath = "/messages/discussion/reply";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["CustomerId"] = ExpressionConverter.Convert(customerId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["ThreadId"] = ExpressionConverter.ConvertO(requestBodythreadId);
-            requestBodypropCount++;
-            requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
-            if (requestBodycustomerData != null)
-            {
-                requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<SendDiscussionReplyMessageResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IWorkflowAction CreateWhatsappTemplate(Expression<Func<string>> customerId, Expression<Func<string>> identityNumber, Expression<Func<string>> requestBodydisplayName, Expression<Func<string>> requestBodyrawContent, Expression<Func<string>> requestBodycategory, Expression<Func<string>> requestBodylanguage, Expression<Func<requestBodybuttonsInputItem[]>> requestBodybuttons = null, Expression<Func<string>> requestBodyattachmentUrl = null)
-        {
-            var apiCallPath = String.Format("/whatsapp/templates/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(identityNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["DisplayName"] = ExpressionConverter.ConvertO(requestBodydisplayName);
-            requestBodypropCount++;
-            requestBody["RawContent"] = ExpressionConverter.ConvertO(requestBodyrawContent);
-            requestBodypropCount++;
-            requestBody["Category"] = ExpressionConverter.ConvertO(requestBodycategory);
-            requestBodypropCount++;
-            requestBody["Language"] = ExpressionConverter.ConvertO(requestBodylanguage);
-            if (requestBodybuttons != null)
-            {
-                requestBody["Buttons"] = ExpressionConverter.ConvertO(requestBodybuttons);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyattachmentUrl != null)
-            {
-                requestBody["AttachmentUrl"] = ExpressionConverter.ConvertO(requestBodyattachmentUrl);
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> SendWhatsappTemplateMessage(Expression<Func<string>> customerId, Expression<Func<string>> serviceId, Expression<Func<string>> requestBodytemplateName, Expression<Func<requestBodyrecipientsInputItem2[]>> requestBodyrecipients, Expression<Func<string[]>> requestBodybodyParameters = null, Expression<Func<string[]>> requestBodyheaderParameters = null, Expression<Func<requestBodybuttonsInputItem2[]>> requestBodybuttons = null, Expression<Func<string>> requestBodysendDateTime = null, Expression<Func<string>> requestBodyattachmentUri = null, Expression<Func<bool>> requestBodyuseSmsFallback = null, Expression<Func<string>> requestBodydlrUrl = null, Expression<Func<string>> requestBodycustomerData = null, Expression<Func<string>> requestBodyrequestId = null)
-        {
-            var apiCallPath = "/messages/templates/whatsapp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
-            callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["TemplateName"] = ExpressionConverter.ConvertO(requestBodytemplateName);
-            requestBodypropCount++;
-            requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
-            if (requestBodybodyParameters != null)
-            {
-                requestBody["BodyParameters"] = ExpressionConverter.ConvertO(requestBodybodyParameters);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyheaderParameters != null)
-            {
-                requestBody["HeaderParameters"] = ExpressionConverter.ConvertO(requestBodyheaderParameters);
-                requestBodypropCount++;
-            }
-
-            if (requestBodybuttons != null)
-            {
-                requestBody["Buttons"] = ExpressionConverter.ConvertO(requestBodybuttons);
-                requestBodypropCount++;
-            }
-
-            if (requestBodysendDateTime != null)
-            {
-                requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyattachmentUri != null)
-            {
-                requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyuseSmsFallback != null)
-            {
-                requestBody["UseSmsFallback"] = ExpressionConverter.ConvertO(requestBodyuseSmsFallback);
-                requestBodypropCount++;
-            }
-
-            if (requestBodydlrUrl != null)
-            {
-                requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
-                requestBodypropCount++;
-            }
-
-            if (requestBodycustomerData != null)
-            {
-                requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyrequestId != null)
-            {
-                requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<SendWhatsappTemplateMessageResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<GetGroupContactResponse> GetGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<string>> region = null)
-        {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (region != null)
-                callPayload.Queries["Region"] = ExpressionConverter.Convert(region);
-            return new ApiConnectionAction<GetGroupContactResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<bool> DeleteGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone)
-        {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<bool>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<bool> UpdateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> phone, Expression<Func<bool>> requestBodyactive = null, Expression<Func<string>> requestBodyemail = null, Expression<Func<string>> requestBodyfirstName = null, Expression<Func<string>> requestBodylastName = null, Expression<Func<requestBodygenderInput>> requestBodygender = null, Expression<Func<int>> requestBodybirthYear = null, Expression<Func<string>> requestBodystreetAddress = null, Expression<Func<string>> requestBodyzipCode = null, Expression<Func<string>> requestBodycity = null, Expression<Func<string>> requestBodycountryCode = null, Expression<Func<requestBodycustomContactPropertiesInputItem[]>> requestBodycustomContactProperties = null, Expression<Func<string[]>> requestBodyphoneNumberRegions = null)
-        {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodyactive != null)
-            {
-                if (requestBodyactive != null)
+                requestBody["Protocol"] = ExpressionConverter.ConvertO(requestBodyprotocol);
+                if (requestBodysendDateTime != null)
                 {
-                    requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
                     requestBodypropCount++;
                 }
 
                 requestBodypropCount++;
-            }
-            else
-            {
-                requestBody["active"] = true;
-                requestBodypropCount++;
-            }
-
-            if (requestBodyemail != null)
-            {
-                requestBody["email"] = ExpressionConverter.ConvertO(requestBodyemail);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyfirstName != null)
-            {
-                requestBody["firstName"] = ExpressionConverter.ConvertO(requestBodyfirstName);
-                requestBodypropCount++;
-            }
-
-            if (requestBodylastName != null)
-            {
-                requestBody["lastName"] = ExpressionConverter.ConvertO(requestBodylastName);
-                requestBodypropCount++;
-            }
-
-            if (requestBodygender != null)
-            {
-                requestBody["gender"] = ExpressionConverter.ConvertO(requestBodygender);
-                requestBodypropCount++;
-            }
-
-            if (requestBodybirthYear != null)
-            {
-                requestBody["birthYear"] = ExpressionConverter.ConvertO(requestBodybirthYear);
-                requestBodypropCount++;
-            }
-
-            if (requestBodystreetAddress != null)
-            {
-                requestBody["streetAddress"] = ExpressionConverter.ConvertO(requestBodystreetAddress);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyzipCode != null)
-            {
-                requestBody["zipCode"] = ExpressionConverter.ConvertO(requestBodyzipCode);
-                requestBodypropCount++;
-            }
-
-            if (requestBodycity != null)
-            {
-                requestBody["city"] = ExpressionConverter.ConvertO(requestBodycity);
-                requestBodypropCount++;
-            }
-
-            if (requestBodycountryCode != null)
-            {
-                requestBody["countryCode"] = ExpressionConverter.ConvertO(requestBodycountryCode);
-                requestBodypropCount++;
-            }
-
-            if (requestBodycustomContactProperties != null)
-            {
-                requestBody["customContactProperties"] = ExpressionConverter.ConvertO(requestBodycustomContactProperties);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyphoneNumberRegions != null)
-            {
-                requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(requestBodyphoneNumberRegions);
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<bool>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<bool> DeleteAllGroupContacts(Expression<Func<string>> customer, Expression<Func<string>> groupService)
-        {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<bool>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
-        public IBodyWorkflowAction<string> CreateGroupContact(Expression<Func<string>> customer, Expression<Func<string>> groupService, Expression<Func<string>> requestBodyphone, Expression<Func<bool>> requestBodyactive = null, Expression<Func<string>> requestBodyemail = null, Expression<Func<string>> requestBodyfirstName = null, Expression<Func<string>> requestBodylastName = null, Expression<Func<requestBodygenderInput>> requestBodygender = null, Expression<Func<int>> requestBodybirthYear = null, Expression<Func<string>> requestBodystreetAddress = null, Expression<Func<string>> requestBodyzipCode = null, Expression<Func<string>> requestBodycity = null, Expression<Func<string>> requestBodycountryCode = null, Expression<Func<requestBodycustomContactPropertiesInputItem[]>> requestBodycustomContactProperties = null, Expression<Func<string[]>> requestBodyphoneNumberRegions = null)
-        {
-            var apiCallPath = String.Format("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodyactive != null)
-            {
-                if (requestBodyactive != null)
+                requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
+                if (requestBodyattachmentUri != null)
                 {
-                    requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycustomerData != null)
+                {
+                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyadMessage != null)
+                {
+                    requestBody["AdMessage"] = ExpressionConverter.ConvertO(requestBodyadMessage);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodydlrUrl != null)
+                {
+                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyrequestId != null)
+                {
+                    requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+
+                return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildSendReplyMessage))]
+        public IBodyWorkflowAction<SendReplyMessageResponse> SendReplyMessage([WorkflowExpression] Func<string> parentMessageId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodysender, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<requestBodyprotocolInput> requestBodyprotocol, [WorkflowExpression] Func<requestBodyrecipientsInputItem[]> requestBodyrecipients, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<bool> requestBodyadMessage = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendReplyMessageResponse> __BuildSendReplyMessage(WorkflowValue<string> parentMessageId, WorkflowValue<string> customerId, WorkflowValue<string> serviceId, WorkflowValue<string> requestBodysender, WorkflowValue<string> requestBodycontent, WorkflowValue<requestBodyprotocolInput> requestBodyprotocol, WorkflowValue<requestBodyrecipientsInputItem[]> requestBodyrecipients, WorkflowValue<string> requestBodysendDateTime = null, WorkflowValue<string> requestBodyattachmentUri = null, WorkflowValue<string> requestBodycustomerData = null, WorkflowValue<bool> requestBodyadMessage = null, WorkflowValue<string> requestBodydlrUrl = null, WorkflowValue<string> requestBodyrequestId = null)
+        {
+            WorkflowValue.Validate(parentMessageId, nameof(parentMessageId), required: true);
+            WorkflowValue.Validate(customerId, nameof(customerId), required: true);
+            WorkflowValue.Validate(serviceId, nameof(serviceId), required: true);
+            WorkflowValue.Validate(requestBodysender, nameof(requestBodysender), required: true);
+            WorkflowValue.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
+            WorkflowValue.Validate(requestBodyprotocol, nameof(requestBodyprotocol), required: true);
+            WorkflowValue.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            WorkflowValue.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            WorkflowValue.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            WorkflowValue.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            WorkflowValue.Validate(requestBodyadMessage, nameof(requestBodyadMessage), required: false);
+            WorkflowValue.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            WorkflowValue.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            return new DeferredBodyAction<SendReplyMessageResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/messages/reply/{0}", ExpressionConverter.ConvertWithUrlEncoding(parentMessageId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
+                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                requestBodypropCount++;
+                requestBody["Sender"] = ExpressionConverter.ConvertO(requestBodysender);
+                requestBodypropCount++;
+                requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
+                requestBodypropCount++;
+                requestBody["Protocol"] = ExpressionConverter.ConvertO(requestBodyprotocol);
+                if (requestBodysendDateTime != null)
+                {
+                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
                     requestBodypropCount++;
                 }
 
                 requestBodypropCount++;
-            }
-            else
+                requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
+                if (requestBodyattachmentUri != null)
+                {
+                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycustomerData != null)
+                {
+                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyadMessage != null)
+                {
+                    requestBody["AdMessage"] = ExpressionConverter.ConvertO(requestBodyadMessage);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodydlrUrl != null)
+                {
+                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyrequestId != null)
+                {
+                    requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+
+                return new ApiConnectionAction<SendReplyMessageResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildSendDiscussionReplyMessage))]
+        public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> SendDiscussionReplyMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> requestBodythreadId, [WorkflowExpression] Func<string> requestBodycontent, [WorkflowExpression] Func<string> requestBodycustomerData = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendDiscussionReplyMessageResponse> __BuildSendDiscussionReplyMessage(WorkflowValue<string> customerId, WorkflowValue<string> requestBodythreadId, WorkflowValue<string> requestBodycontent, WorkflowValue<string> requestBodycustomerData = null)
+        {
+            WorkflowValue.Validate(customerId, nameof(customerId), required: true);
+            WorkflowValue.Validate(requestBodythreadId, nameof(requestBodythreadId), required: true);
+            WorkflowValue.Validate(requestBodycontent, nameof(requestBodycontent), required: true);
+            WorkflowValue.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            return new DeferredBodyAction<SendDiscussionReplyMessageResponse>(() =>
             {
-                requestBody["active"] = true;
+                var apiCallPath = "/messages/discussion/reply";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["CustomerId"] = ExpressionConverter.Convert(customerId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
-
-            requestBodypropCount++;
-            requestBody["phone"] = ExpressionConverter.ConvertO(requestBodyphone);
-            if (requestBodyemail != null)
-            {
-                requestBody["email"] = ExpressionConverter.ConvertO(requestBodyemail);
+                requestBody["ThreadId"] = ExpressionConverter.ConvertO(requestBodythreadId);
                 requestBodypropCount++;
-            }
+                requestBody["Content"] = ExpressionConverter.ConvertO(requestBodycontent);
+                if (requestBodycustomerData != null)
+                {
+                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyfirstName != null)
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+
+                return new ApiConnectionAction<SendDiscussionReplyMessageResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateWhatsappTemplate))]
+        public IWorkflowAction CreateWhatsappTemplate([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> identityNumber, [WorkflowExpression] Func<string> requestBodydisplayName, [WorkflowExpression] Func<string> requestBodyrawContent, [WorkflowExpression] Func<string> requestBodycategory, [WorkflowExpression] Func<string> requestBodylanguage, [WorkflowExpression] Func<requestBodybuttonsInputItem[]> requestBodybuttons = null, [WorkflowExpression] Func<string> requestBodyattachmentUrl = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowAction __BuildCreateWhatsappTemplate(WorkflowValue<string> customerId, WorkflowValue<string> identityNumber, WorkflowValue<string> requestBodydisplayName, WorkflowValue<string> requestBodyrawContent, WorkflowValue<string> requestBodycategory, WorkflowValue<string> requestBodylanguage, WorkflowValue<requestBodybuttonsInputItem[]> requestBodybuttons = null, WorkflowValue<string> requestBodyattachmentUrl = null)
+        {
+            WorkflowValue.Validate(customerId, nameof(customerId), required: true);
+            WorkflowValue.Validate(identityNumber, nameof(identityNumber), required: true);
+            WorkflowValue.Validate(requestBodydisplayName, nameof(requestBodydisplayName), required: true);
+            WorkflowValue.Validate(requestBodyrawContent, nameof(requestBodyrawContent), required: true);
+            WorkflowValue.Validate(requestBodycategory, nameof(requestBodycategory), required: true);
+            WorkflowValue.Validate(requestBodylanguage, nameof(requestBodylanguage), required: true);
+            WorkflowValue.Validate(requestBodybuttons, nameof(requestBodybuttons), required: false);
+            WorkflowValue.Validate(requestBodyattachmentUrl, nameof(requestBodyattachmentUrl), required: false);
+            return new DeferredWorkflowAction(() =>
             {
-                requestBody["firstName"] = ExpressionConverter.ConvertO(requestBodyfirstName);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/whatsapp/templates/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customerId, 1), ExpressionConverter.ConvertWithUrlEncoding(identityNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
-
-            if (requestBodylastName != null)
-            {
-                requestBody["lastName"] = ExpressionConverter.ConvertO(requestBodylastName);
+                requestBody["DisplayName"] = ExpressionConverter.ConvertO(requestBodydisplayName);
                 requestBodypropCount++;
-            }
-
-            if (requestBodygender != null)
-            {
-                requestBody["gender"] = ExpressionConverter.ConvertO(requestBodygender);
+                requestBody["RawContent"] = ExpressionConverter.ConvertO(requestBodyrawContent);
                 requestBodypropCount++;
-            }
-
-            if (requestBodybirthYear != null)
-            {
-                requestBody["birthYear"] = ExpressionConverter.ConvertO(requestBodybirthYear);
+                requestBody["Category"] = ExpressionConverter.ConvertO(requestBodycategory);
                 requestBodypropCount++;
-            }
+                requestBody["Language"] = ExpressionConverter.ConvertO(requestBodylanguage);
+                if (requestBodybuttons != null)
+                {
+                    requestBody["Buttons"] = ExpressionConverter.ConvertO(requestBodybuttons);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodystreetAddress != null)
+                if (requestBodyattachmentUrl != null)
+                {
+                    requestBody["AttachmentUrl"] = ExpressionConverter.ConvertO(requestBodyattachmentUrl);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+
+                return new ApiConnectionAction(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildSendWhatsappTemplateMessage))]
+        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> SendWhatsappTemplateMessage([WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> serviceId, [WorkflowExpression] Func<string> requestBodytemplateName, [WorkflowExpression] Func<requestBodyrecipientsInputItem2[]> requestBodyrecipients, [WorkflowExpression] Func<string[]> requestBodybodyParameters = null, [WorkflowExpression] Func<string[]> requestBodyheaderParameters = null, [WorkflowExpression] Func<requestBodybuttonsInputItem2[]> requestBodybuttons = null, [WorkflowExpression] Func<string> requestBodysendDateTime = null, [WorkflowExpression] Func<string> requestBodyattachmentUri = null, [WorkflowExpression] Func<bool> requestBodyuseSmsFallback = null, [WorkflowExpression] Func<string> requestBodydlrUrl = null, [WorkflowExpression] Func<string> requestBodycustomerData = null, [WorkflowExpression] Func<string> requestBodyrequestId = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<SendWhatsappTemplateMessageResponse> __BuildSendWhatsappTemplateMessage(WorkflowValue<string> customerId, WorkflowValue<string> serviceId, WorkflowValue<string> requestBodytemplateName, WorkflowValue<requestBodyrecipientsInputItem2[]> requestBodyrecipients, WorkflowValue<string[]> requestBodybodyParameters = null, WorkflowValue<string[]> requestBodyheaderParameters = null, WorkflowValue<requestBodybuttonsInputItem2[]> requestBodybuttons = null, WorkflowValue<string> requestBodysendDateTime = null, WorkflowValue<string> requestBodyattachmentUri = null, WorkflowValue<bool> requestBodyuseSmsFallback = null, WorkflowValue<string> requestBodydlrUrl = null, WorkflowValue<string> requestBodycustomerData = null, WorkflowValue<string> requestBodyrequestId = null)
+        {
+            WorkflowValue.Validate(customerId, nameof(customerId), required: true);
+            WorkflowValue.Validate(serviceId, nameof(serviceId), required: true);
+            WorkflowValue.Validate(requestBodytemplateName, nameof(requestBodytemplateName), required: true);
+            WorkflowValue.Validate(requestBodyrecipients, nameof(requestBodyrecipients), required: true);
+            WorkflowValue.Validate(requestBodybodyParameters, nameof(requestBodybodyParameters), required: false);
+            WorkflowValue.Validate(requestBodyheaderParameters, nameof(requestBodyheaderParameters), required: false);
+            WorkflowValue.Validate(requestBodybuttons, nameof(requestBodybuttons), required: false);
+            WorkflowValue.Validate(requestBodysendDateTime, nameof(requestBodysendDateTime), required: false);
+            WorkflowValue.Validate(requestBodyattachmentUri, nameof(requestBodyattachmentUri), required: false);
+            WorkflowValue.Validate(requestBodyuseSmsFallback, nameof(requestBodyuseSmsFallback), required: false);
+            WorkflowValue.Validate(requestBodydlrUrl, nameof(requestBodydlrUrl), required: false);
+            WorkflowValue.Validate(requestBodycustomerData, nameof(requestBodycustomerData), required: false);
+            WorkflowValue.Validate(requestBodyrequestId, nameof(requestBodyrequestId), required: false);
+            return new DeferredBodyAction<SendWhatsappTemplateMessageResponse>(() =>
             {
-                requestBody["streetAddress"] = ExpressionConverter.ConvertO(requestBodystreetAddress);
+                var apiCallPath = "/messages/templates/whatsapp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Customer-Id"] = ExpressionConverter.Convert(customerId);
+                callPayload.Headers["Service-Id"] = ExpressionConverter.Convert(serviceId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
-            }
-
-            if (requestBodyzipCode != null)
-            {
-                requestBody["zipCode"] = ExpressionConverter.ConvertO(requestBodyzipCode);
+                requestBody["TemplateName"] = ExpressionConverter.ConvertO(requestBodytemplateName);
                 requestBodypropCount++;
-            }
+                requestBody["Recipients"] = ExpressionConverter.ConvertO(requestBodyrecipients);
+                if (requestBodybodyParameters != null)
+                {
+                    requestBody["BodyParameters"] = ExpressionConverter.ConvertO(requestBodybodyParameters);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodycity != null)
+                if (requestBodyheaderParameters != null)
+                {
+                    requestBody["HeaderParameters"] = ExpressionConverter.ConvertO(requestBodyheaderParameters);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodybuttons != null)
+                {
+                    requestBody["Buttons"] = ExpressionConverter.ConvertO(requestBodybuttons);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodysendDateTime != null)
+                {
+                    requestBody["SendDateTime"] = ExpressionConverter.ConvertO(requestBodysendDateTime);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyattachmentUri != null)
+                {
+                    requestBody["AttachmentUri"] = ExpressionConverter.ConvertO(requestBodyattachmentUri);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyuseSmsFallback != null)
+                {
+                    requestBody["UseSmsFallback"] = ExpressionConverter.ConvertO(requestBodyuseSmsFallback);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodydlrUrl != null)
+                {
+                    requestBody["DlrUrl"] = ExpressionConverter.ConvertO(requestBodydlrUrl);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycustomerData != null)
+                {
+                    requestBody["CustomerData"] = ExpressionConverter.ConvertO(requestBodycustomerData);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyrequestId != null)
+                {
+                    requestBody["RequestId"] = ExpressionConverter.ConvertO(requestBodyrequestId);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+
+                return new ApiConnectionAction<SendWhatsappTemplateMessageResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildGetGroupContact))]
+        public IBodyWorkflowAction<GetGroupContactResponse> GetGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<string> region = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetGroupContactResponse> __BuildGetGroupContact(WorkflowValue<string> customer, WorkflowValue<string> groupService, WorkflowValue<string> phone, WorkflowValue<string> region = null)
+        {
+            WorkflowValue.Validate(customer, nameof(customer), required: true);
+            WorkflowValue.Validate(groupService, nameof(groupService), required: true);
+            WorkflowValue.Validate(phone, nameof(phone), required: true);
+            WorkflowValue.Validate(region, nameof(region), required: false);
+            return new DeferredBodyAction<GetGroupContactResponse>(() =>
             {
-                requestBody["city"] = ExpressionConverter.ConvertO(requestBodycity);
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (region != null)
+                    callPayload.Queries["Region"] = ExpressionConverter.Convert(region);
+                return new ApiConnectionAction<GetGroupContactResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteGroupContact))]
+        public IBodyWorkflowAction<bool> DeleteGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<bool> __BuildDeleteGroupContact(WorkflowValue<string> customer, WorkflowValue<string> groupService, WorkflowValue<string> phone)
+        {
+            WorkflowValue.Validate(customer, nameof(customer), required: true);
+            WorkflowValue.Validate(groupService, nameof(groupService), required: true);
+            WorkflowValue.Validate(phone, nameof(phone), required: true);
+            return new DeferredBodyAction<bool>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<bool>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildUpdateGroupContact))]
+        public IBodyWorkflowAction<bool> UpdateGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<bool> requestBodyactive = null, [WorkflowExpression] Func<string> requestBodyemail = null, [WorkflowExpression] Func<string> requestBodyfirstName = null, [WorkflowExpression] Func<string> requestBodylastName = null, [WorkflowExpression] Func<requestBodygenderInput> requestBodygender = null, [WorkflowExpression] Func<int> requestBodybirthYear = null, [WorkflowExpression] Func<string> requestBodystreetAddress = null, [WorkflowExpression] Func<string> requestBodyzipCode = null, [WorkflowExpression] Func<string> requestBodycity = null, [WorkflowExpression] Func<string> requestBodycountryCode = null, [WorkflowExpression] Func<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, [WorkflowExpression] Func<string[]> requestBodyphoneNumberRegions = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<bool> __BuildUpdateGroupContact(WorkflowValue<string> customer, WorkflowValue<string> groupService, WorkflowValue<string> phone, WorkflowValue<bool> requestBodyactive = null, WorkflowValue<string> requestBodyemail = null, WorkflowValue<string> requestBodyfirstName = null, WorkflowValue<string> requestBodylastName = null, WorkflowValue<requestBodygenderInput> requestBodygender = null, WorkflowValue<int> requestBodybirthYear = null, WorkflowValue<string> requestBodystreetAddress = null, WorkflowValue<string> requestBodyzipCode = null, WorkflowValue<string> requestBodycity = null, WorkflowValue<string> requestBodycountryCode = null, WorkflowValue<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, WorkflowValue<string[]> requestBodyphoneNumberRegions = null)
+        {
+            WorkflowValue.Validate(customer, nameof(customer), required: true);
+            WorkflowValue.Validate(groupService, nameof(groupService), required: true);
+            WorkflowValue.Validate(phone, nameof(phone), required: true);
+            WorkflowValue.Validate(requestBodyactive, nameof(requestBodyactive), required: false);
+            WorkflowValue.Validate(requestBodyemail, nameof(requestBodyemail), required: false);
+            WorkflowValue.Validate(requestBodyfirstName, nameof(requestBodyfirstName), required: false);
+            WorkflowValue.Validate(requestBodylastName, nameof(requestBodylastName), required: false);
+            WorkflowValue.Validate(requestBodygender, nameof(requestBodygender), required: false);
+            WorkflowValue.Validate(requestBodybirthYear, nameof(requestBodybirthYear), required: false);
+            WorkflowValue.Validate(requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
+            WorkflowValue.Validate(requestBodyzipCode, nameof(requestBodyzipCode), required: false);
+            WorkflowValue.Validate(requestBodycity, nameof(requestBodycity), required: false);
+            WorkflowValue.Validate(requestBodycountryCode, nameof(requestBodycountryCode), required: false);
+            WorkflowValue.Validate(requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
+            WorkflowValue.Validate(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
+            return new DeferredBodyAction<bool>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1), ExpressionConverter.ConvertWithUrlEncoding(phone, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (requestBodyactive != null)
+                {
+                    if (requestBodyactive != null)
+                    {
+                        requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                        requestBodypropCount++;
+                    }
+
+                    requestBodypropCount++;
+                }
+                else
+                {
+                    requestBody["active"] = true;
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyemail != null)
+                {
+                    requestBody["email"] = ExpressionConverter.ConvertO(requestBodyemail);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyfirstName != null)
+                {
+                    requestBody["firstName"] = ExpressionConverter.ConvertO(requestBodyfirstName);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodylastName != null)
+                {
+                    requestBody["lastName"] = ExpressionConverter.ConvertO(requestBodylastName);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodygender != null)
+                {
+                    requestBody["gender"] = ExpressionConverter.ConvertO(requestBodygender);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodybirthYear != null)
+                {
+                    requestBody["birthYear"] = ExpressionConverter.ConvertO(requestBodybirthYear);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodystreetAddress != null)
+                {
+                    requestBody["streetAddress"] = ExpressionConverter.ConvertO(requestBodystreetAddress);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyzipCode != null)
+                {
+                    requestBody["zipCode"] = ExpressionConverter.ConvertO(requestBodyzipCode);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycity != null)
+                {
+                    requestBody["city"] = ExpressionConverter.ConvertO(requestBodycity);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycountryCode != null)
+                {
+                    requestBody["countryCode"] = ExpressionConverter.ConvertO(requestBodycountryCode);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycustomContactProperties != null)
+                {
+                    requestBody["customContactProperties"] = ExpressionConverter.ConvertO(requestBodycustomContactProperties);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyphoneNumberRegions != null)
+                {
+                    requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(requestBodyphoneNumberRegions);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+
+                return new ApiConnectionAction<bool>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildDeleteAllGroupContacts))]
+        public IBodyWorkflowAction<bool> DeleteAllGroupContacts([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<bool> __BuildDeleteAllGroupContacts(WorkflowValue<string> customer, WorkflowValue<string> groupService)
+        {
+            WorkflowValue.Validate(customer, nameof(customer), required: true);
+            WorkflowValue.Validate(groupService, nameof(groupService), required: true);
+            return new DeferredBodyAction<bool>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<bool>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smartdialog")]
+        [WorkflowExpressionFactory(nameof(__BuildCreateGroupContact))]
+        public IBodyWorkflowAction<string> CreateGroupContact([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> groupService, [WorkflowExpression] Func<string> requestBodyphone, [WorkflowExpression] Func<bool> requestBodyactive = null, [WorkflowExpression] Func<string> requestBodyemail = null, [WorkflowExpression] Func<string> requestBodyfirstName = null, [WorkflowExpression] Func<string> requestBodylastName = null, [WorkflowExpression] Func<requestBodygenderInput> requestBodygender = null, [WorkflowExpression] Func<int> requestBodybirthYear = null, [WorkflowExpression] Func<string> requestBodystreetAddress = null, [WorkflowExpression] Func<string> requestBodyzipCode = null, [WorkflowExpression] Func<string> requestBodycity = null, [WorkflowExpression] Func<string> requestBodycountryCode = null, [WorkflowExpression] Func<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, [WorkflowExpression] Func<string[]> requestBodyphoneNumberRegions = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<string> __BuildCreateGroupContact(WorkflowValue<string> customer, WorkflowValue<string> groupService, WorkflowValue<string> requestBodyphone, WorkflowValue<bool> requestBodyactive = null, WorkflowValue<string> requestBodyemail = null, WorkflowValue<string> requestBodyfirstName = null, WorkflowValue<string> requestBodylastName = null, WorkflowValue<requestBodygenderInput> requestBodygender = null, WorkflowValue<int> requestBodybirthYear = null, WorkflowValue<string> requestBodystreetAddress = null, WorkflowValue<string> requestBodyzipCode = null, WorkflowValue<string> requestBodycity = null, WorkflowValue<string> requestBodycountryCode = null, WorkflowValue<requestBodycustomContactPropertiesInputItem[]> requestBodycustomContactProperties = null, WorkflowValue<string[]> requestBodyphoneNumberRegions = null)
+        {
+            WorkflowValue.Validate(customer, nameof(customer), required: true);
+            WorkflowValue.Validate(groupService, nameof(groupService), required: true);
+            WorkflowValue.Validate(requestBodyphone, nameof(requestBodyphone), required: true);
+            WorkflowValue.Validate(requestBodyactive, nameof(requestBodyactive), required: false);
+            WorkflowValue.Validate(requestBodyemail, nameof(requestBodyemail), required: false);
+            WorkflowValue.Validate(requestBodyfirstName, nameof(requestBodyfirstName), required: false);
+            WorkflowValue.Validate(requestBodylastName, nameof(requestBodylastName), required: false);
+            WorkflowValue.Validate(requestBodygender, nameof(requestBodygender), required: false);
+            WorkflowValue.Validate(requestBodybirthYear, nameof(requestBodybirthYear), required: false);
+            WorkflowValue.Validate(requestBodystreetAddress, nameof(requestBodystreetAddress), required: false);
+            WorkflowValue.Validate(requestBodyzipCode, nameof(requestBodyzipCode), required: false);
+            WorkflowValue.Validate(requestBodycity, nameof(requestBodycity), required: false);
+            WorkflowValue.Validate(requestBodycountryCode, nameof(requestBodycountryCode), required: false);
+            WorkflowValue.Validate(requestBodycustomContactProperties, nameof(requestBodycustomContactProperties), required: false);
+            WorkflowValue.Validate(requestBodyphoneNumberRegions, nameof(requestBodyphoneNumberRegions), required: false);
+            return new DeferredBodyAction<string>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groupcontact/{0}/{1}", ExpressionConverter.ConvertWithUrlEncoding(customer, 1), ExpressionConverter.ConvertWithUrlEncoding(groupService, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (requestBodyactive != null)
+                {
+                    if (requestBodyactive != null)
+                    {
+                        requestBody["active"] = ExpressionConverter.ConvertO(requestBodyactive);
+                        requestBodypropCount++;
+                    }
+
+                    requestBodypropCount++;
+                }
+                else
+                {
+                    requestBody["active"] = true;
+                    requestBodypropCount++;
+                }
+
                 requestBodypropCount++;
-            }
+                requestBody["phone"] = ExpressionConverter.ConvertO(requestBodyphone);
+                if (requestBodyemail != null)
+                {
+                    requestBody["email"] = ExpressionConverter.ConvertO(requestBodyemail);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodycountryCode != null)
-            {
-                requestBody["countryCode"] = ExpressionConverter.ConvertO(requestBodycountryCode);
-                requestBodypropCount++;
-            }
+                if (requestBodyfirstName != null)
+                {
+                    requestBody["firstName"] = ExpressionConverter.ConvertO(requestBodyfirstName);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodycustomContactProperties != null)
-            {
-                requestBody["customContactProperties"] = ExpressionConverter.ConvertO(requestBodycustomContactProperties);
-                requestBodypropCount++;
-            }
+                if (requestBodylastName != null)
+                {
+                    requestBody["lastName"] = ExpressionConverter.ConvertO(requestBodylastName);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodyphoneNumberRegions != null)
-            {
-                requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(requestBodyphoneNumberRegions);
-                requestBodypropCount++;
-            }
+                if (requestBodygender != null)
+                {
+                    requestBody["gender"] = ExpressionConverter.ConvertO(requestBodygender);
+                    requestBodypropCount++;
+                }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
+                if (requestBodybirthYear != null)
+                {
+                    requestBody["birthYear"] = ExpressionConverter.ConvertO(requestBodybirthYear);
+                    requestBodypropCount++;
+                }
 
-            return new ApiConnectionAction<string>(callPayload);
+                if (requestBodystreetAddress != null)
+                {
+                    requestBody["streetAddress"] = ExpressionConverter.ConvertO(requestBodystreetAddress);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyzipCode != null)
+                {
+                    requestBody["zipCode"] = ExpressionConverter.ConvertO(requestBodyzipCode);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycity != null)
+                {
+                    requestBody["city"] = ExpressionConverter.ConvertO(requestBodycity);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycountryCode != null)
+                {
+                    requestBody["countryCode"] = ExpressionConverter.ConvertO(requestBodycountryCode);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodycustomContactProperties != null)
+                {
+                    requestBody["customContactProperties"] = ExpressionConverter.ConvertO(requestBodycustomContactProperties);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyphoneNumberRegions != null)
+                {
+                    requestBody["phoneNumberRegions"] = ExpressionConverter.ConvertO(requestBodyphoneNumberRegions);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+
+                return new ApiConnectionAction<string>(callPayload);
+            });
         }
     }
 
     public class SmartdialogTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewMessageResponse> NewMessage(Expression<Func<string>> customer, Expression<Func<string>> service, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildNewMessage))]
+        public IBodyWorkflowTrigger<NewMessageResponse> NewMessage([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> service, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = String.Format("/service/{0}/pipelines/actions", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Customer"] = ExpressionConverter.Convert(customer);
-            var createWebhookRequestBody = new JObject();
-            var createWebhookRequestBodypropCount = 0;
-            createWebhookRequestBody["name"] = "PowerAutomate (Auto Created Webhook)";
-            createWebhookRequestBodypropCount++;
-            createWebhookRequestBody["actionType"] = "HttpRequest";
-            createWebhookRequestBodypropCount++;
-            createWebhookRequestBody["description"] = "PowerAutomate auto-created webhook. Please don't modify. Will be removed by PowerAutomate , when the Flow/Logic App is disabled or removed";
-            createWebhookRequestBodypropCount++;
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            optionsObject["endpointUrl"] = "@listCallbackUrl()";
-            optionsObjectpropCount++;
-            optionsObject["httpVerb"] = "POST";
-            optionsObjectpropCount++;
-            if (optionsObjectpropCount > 0)
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<NewMessageResponse> __BuildNewMessage(WorkflowValue<string> customer, WorkflowValue<string> service, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(customer, nameof(customer), required: true);
+            WorkflowValue.Validate(service, nameof(service), required: true);
+            return new DeferredBodyTrigger<NewMessageResponse>(() =>
             {
-                createWebhookRequestBody["options"] = optionsObject;
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/service/{0}/pipelines/actions", ExpressionConverter.ConvertWithUrlEncoding(service, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Customer"] = ExpressionConverter.Convert(customer);
+                var createWebhookRequestBody = new JObject();
+                var createWebhookRequestBodypropCount = 0;
+                createWebhookRequestBody["name"] = "PowerAutomate (Auto Created Webhook)";
                 createWebhookRequestBodypropCount++;
-            }
+                createWebhookRequestBody["actionType"] = "HttpRequest";
+                createWebhookRequestBodypropCount++;
+                createWebhookRequestBody["description"] = "PowerAutomate auto-created webhook. Please don't modify. Will be removed by PowerAutomate , when the Flow/Logic App is disabled or removed";
+                createWebhookRequestBodypropCount++;
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                optionsObject["endpointUrl"] = "#{listCallbackUrl()}";
+                optionsObjectpropCount++;
+                optionsObject["httpVerb"] = "POST";
+                optionsObjectpropCount++;
+                if (optionsObjectpropCount > 0)
+                {
+                    createWebhookRequestBody["options"] = optionsObject;
+                    createWebhookRequestBodypropCount++;
+                }
 
-            if (createWebhookRequestBodypropCount > 0)
-            {
-                callPayload.Body = createWebhookRequestBody;
-            }
+                if (createWebhookRequestBodypropCount > 0)
+                {
+                    callPayload.Body = createWebhookRequestBody;
+                }
 
-            return new ApiConnectionTrigger<NewMessageResponse>(callPayload, triggerName, recurrence);
+                return new ApiConnectionTrigger<NewMessageResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

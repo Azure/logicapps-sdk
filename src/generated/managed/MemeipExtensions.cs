@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -21,12 +20,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
-        public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit(Expression<Func<string>> subreddit)
+        [WorkflowExpressionFactory(nameof(__BuildMemeSubreddit))]
+        public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit([WorkflowExpression] Func<string> subreddit)
         {
-            var apiCallPath = String.Format("/gimme/{0}", ExpressionConverter.ConvertWithUrlEncoding(subreddit, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MemeSubredditResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MemeSubredditResponse> __BuildMemeSubreddit(WorkflowValue<string> subreddit)
+        {
+            WorkflowValue.Validate(subreddit, nameof(subreddit), required: true);
+            return new DeferredBodyAction<MemeSubredditResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/gimme/{0}", ExpressionConverter.ConvertWithUrlEncoding(subreddit, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<MemeSubredditResponse>(callPayload);
+            });
         }
     }
 

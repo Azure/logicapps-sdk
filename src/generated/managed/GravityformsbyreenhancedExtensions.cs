@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,23 +14,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class GravityformsbyreenhancedTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
+        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> webhookform, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webhook = new JObject();
-            var webhookpropCount = 0;
-            webhook["callback_url"] = "@listCallbackUrl()";
-            webhookpropCount++;
-            webhookpropCount++;
-            webhook["form_id"] = ExpressionConverter.ConvertO(webhookform);
-            if (webhookpropCount > 0)
-            {
-                callPayload.Body = webhook;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IWorkflowTrigger __BuildCreateWebhook(WorkflowValue<string> webhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(webhookform, nameof(webhookform), required: true);
+            return new DeferredWorkflowTrigger(() =>
+            {
+                var apiCallPath = "/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webhook = new JObject();
+                var webhookpropCount = 0;
+                webhook["callback_url"] = "#{listCallbackUrl()}";
+                webhookpropCount++;
+                webhookpropCount++;
+                webhook["form_id"] = ExpressionConverter.ConvertO(webhookform);
+                if (webhookpropCount > 0)
+                {
+                    callPayload.Body = webhook;
+                }
+
+                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 }

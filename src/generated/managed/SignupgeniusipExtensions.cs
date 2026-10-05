@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -30,43 +29,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
-        public IBodyWorkflowAction<GroupMemberResponse> GroupMember(Expression<Func<string>> groupID)
+        [WorkflowExpressionFactory(nameof(__BuildGroupMember))]
+        public IBodyWorkflowAction<GroupMemberResponse> GroupMember([WorkflowExpression] Func<string> groupID)
         {
-            var apiCallPath = String.Format("/groups/{0}/members/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GroupMemberResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
-        public IBodyWorkflowAction<GroupMemberDetailResponse> GroupMemberDetail(Expression<Func<string>> groupID, Expression<Func<string>> memberID)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GroupMemberResponse> __BuildGroupMember(WorkflowValue<string> groupID)
         {
-            var apiCallPath = String.Format("/groups/{0}/members/{1}/details/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1), ExpressionConverter.ConvertWithUrlEncoding(memberID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GroupMemberDetailResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
-        public IBodyWorkflowAction<GroupUserAddResponse> GroupUserAdd(Expression<Func<string>> groupID, Expression<Func<string>> bodyemailaddress, Expression<Func<string>> bodyfirstname, Expression<Func<string>> bodylastname)
-        {
-            var apiCallPath = String.Format("/groups/{0}/members/create/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["emailaddress"] = ExpressionConverter.ConvertO(bodyemailaddress);
-            bodypropCount++;
-            body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
-            bodypropCount++;
-            body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
-            if (bodypropCount > 0)
+            WorkflowValue.Validate(groupID, nameof(groupID), required: true);
+            return new DeferredBodyAction<GroupMemberResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/members/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GroupMemberResponse>(callPayload);
+            });
+        }
 
-            return new ApiConnectionAction<GroupUserAddResponse>(callPayload);
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
+        [WorkflowExpressionFactory(nameof(__BuildGroupMemberDetail))]
+        public IBodyWorkflowAction<GroupMemberDetailResponse> GroupMemberDetail([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> memberID)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GroupMemberDetailResponse> __BuildGroupMemberDetail(WorkflowValue<string> groupID, WorkflowValue<string> memberID)
+        {
+            WorkflowValue.Validate(groupID, nameof(groupID), required: true);
+            WorkflowValue.Validate(memberID, nameof(memberID), required: true);
+            return new DeferredBodyAction<GroupMemberDetailResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/members/{1}/details/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1), ExpressionConverter.ConvertWithUrlEncoding(memberID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GroupMemberDetailResponse>(callPayload);
+            });
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
+        [WorkflowExpressionFactory(nameof(__BuildGroupUserAdd))]
+        public IBodyWorkflowAction<GroupUserAddResponse> GroupUserAdd([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> bodyemailaddress, [WorkflowExpression] Func<string> bodyfirstname, [WorkflowExpression] Func<string> bodylastname)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GroupUserAddResponse> __BuildGroupUserAdd(WorkflowValue<string> groupID, WorkflowValue<string> bodyemailaddress, WorkflowValue<string> bodyfirstname, WorkflowValue<string> bodylastname)
+        {
+            WorkflowValue.Validate(groupID, nameof(groupID), required: true);
+            WorkflowValue.Validate(bodyemailaddress, nameof(bodyemailaddress), required: true);
+            WorkflowValue.Validate(bodyfirstname, nameof(bodyfirstname), required: true);
+            WorkflowValue.Validate(bodylastname, nameof(bodylastname), required: true);
+            return new DeferredBodyAction<GroupUserAddResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/members/create/", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["emailaddress"] = ExpressionConverter.ConvertO(bodyemailaddress);
+                bodypropCount++;
+                body["firstname"] = ExpressionConverter.ConvertO(bodyfirstname);
+                bodypropCount++;
+                body["lastname"] = ExpressionConverter.ConvertO(bodylastname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionAction<GroupUserAddResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
@@ -115,30 +151,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signupgeniusip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
-        public IBodyWorkflowAction<ReportSignUpResponse> ReportSignUp(Expression<Func<string>> signUpID)
+        [WorkflowExpressionFactory(nameof(__BuildReportSignUp))]
+        public IBodyWorkflowAction<ReportSignUpResponse> ReportSignUp([WorkflowExpression] Func<string> signUpID)
         {
-            var apiCallPath = String.Format("/signups/report/all/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReportSignUpResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReportSignUpResponse> __BuildReportSignUp(WorkflowValue<string> signUpID)
+        {
+            WorkflowValue.Validate(signUpID, nameof(signUpID), required: true);
+            return new DeferredBodyAction<ReportSignUpResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signups/report/all/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ReportSignUpResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
-        public IBodyWorkflowAction<ReportSignUpSlotResponse> ReportSignUpSlot(Expression<Func<string>> signUpID)
+        [WorkflowExpressionFactory(nameof(__BuildReportSignUpSlot))]
+        public IBodyWorkflowAction<ReportSignUpSlotResponse> ReportSignUpSlot([WorkflowExpression] Func<string> signUpID)
         {
-            var apiCallPath = String.Format("/signups/report/available/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReportSignUpSlotResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReportSignUpSlotResponse> __BuildReportSignUpSlot(WorkflowValue<string> signUpID)
+        {
+            WorkflowValue.Validate(signUpID, nameof(signUpID), required: true);
+            return new DeferredBodyAction<ReportSignUpSlotResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signups/report/available/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ReportSignUpSlotResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signupgeniusip")]
-        public IBodyWorkflowAction<ReportSignupFilledResponse> ReportSignupFilled(Expression<Func<string>> signUpID)
+        [WorkflowExpressionFactory(nameof(__BuildReportSignupFilled))]
+        public IBodyWorkflowAction<ReportSignupFilledResponse> ReportSignupFilled([WorkflowExpression] Func<string> signUpID)
         {
-            var apiCallPath = String.Format("/signups/report/filled/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReportSignupFilledResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ReportSignupFilledResponse> __BuildReportSignupFilled(WorkflowValue<string> signUpID)
+        {
+            WorkflowValue.Validate(signUpID, nameof(signUpID), required: true);
+            return new DeferredBodyAction<ReportSignupFilledResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/signups/report/filled/{0}", ExpressionConverter.ConvertWithUrlEncoding(signUpID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<ReportSignupFilledResponse>(callPayload);
+            });
         }
     }
 

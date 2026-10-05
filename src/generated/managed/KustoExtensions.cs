@@ -4,71 +4,84 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kusto
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class KustoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kusto")]
-        public IBodyWorkflowAction<MCPQueryResponse> McpKustoQueryManagement(Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null, Expression<Func<string>> sessionId = null)
+        [WorkflowExpressionFactory(nameof(__BuildMcpKustoQueryManagement))]
+        public IBodyWorkflowAction<MCPQueryResponse> McpKustoQueryManagement([WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null, [WorkflowExpression] Func<string> sessionId = null)
         {
-            var apiCallPath = "/mcp/KustoQueryManagement";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (sessionId != null)
-                callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
-            {
-                queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (queryRequestid != null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<MCPQueryResponse> __BuildMcpKustoQueryManagement(WorkflowValue<string> queryRequestjsonrpc = null, WorkflowValue<string> queryRequestid = null, WorkflowValue<string> queryRequestmethod = null, WorkflowValue<string> sessionId = null)
+        {
+            WorkflowValue.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            WorkflowValue.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            WorkflowValue.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            WorkflowValue.Validate(sessionId, nameof(sessionId), required: false);
+            return new DeferredBodyAction<MCPQueryResponse>(() =>
             {
-                queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
-                queryRequestpropCount++;
-            }
+                var apiCallPath = "/mcp/KustoQueryManagement";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (sessionId != null)
+                    callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
+                {
+                    queryRequest["jsonrpc"] = ExpressionConverter.ConvertO(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
-                queryRequestpropCount++;
-            }
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = ExpressionConverter.ConvertO(queryRequestid);
+                    queryRequestpropCount++;
+                }
 
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = ExpressionConverter.ConvertO(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
 
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
 
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
 
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
 
-            return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+
+                return new ApiConnectionAction<MCPQueryResponse>(callPayload);
+            });
         }
     }
 

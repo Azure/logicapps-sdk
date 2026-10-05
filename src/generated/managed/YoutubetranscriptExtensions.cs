@@ -4,49 +4,59 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youtubetranscript
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class YoutubetranscriptActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youtubetranscript")]
-        public IBodyWorkflowAction<TranscriptResponse> GetTranscript(Expression<Func<string>> bodyyouTubeVideoID)
+        [WorkflowExpressionFactory(nameof(__BuildGetTranscript))]
+        public IBodyWorkflowAction<TranscriptResponse> GetTranscript([WorkflowExpression] Func<string> bodyyouTubeVideoID)
         {
-            var apiCallPath = "/youtubei/v1/get_transcript";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var contextObject = new JObject();
-            var contextObjectpropCount = 0;
-            var clientObject = new JObject();
-            var clientObjectpropCount = 0;
-            clientObject["clientName"] = "WEB";
-            clientObjectpropCount++;
-            clientObject["clientVersion"] = "2.20250923.08.00";
-            clientObjectpropCount++;
-            if (clientObjectpropCount > 0)
-            {
-                contextObject["client"] = clientObject;
-                contextObjectpropCount++;
-            }
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
 
-            if (contextObjectpropCount > 0)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<TranscriptResponse> __BuildGetTranscript(WorkflowValue<string> bodyyouTubeVideoID)
+        {
+            WorkflowValue.Validate(bodyyouTubeVideoID, nameof(bodyyouTubeVideoID), required: true);
+            return new DeferredBodyAction<TranscriptResponse>(() =>
             {
-                body["context"] = contextObject;
+                var apiCallPath = "/youtubei/v1/get_transcript";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var contextObject = new JObject();
+                var contextObjectpropCount = 0;
+                var clientObject = new JObject();
+                var clientObjectpropCount = 0;
+                clientObject["clientName"] = "WEB";
+                clientObjectpropCount++;
+                clientObject["clientVersion"] = "2.20250923.08.00";
+                clientObjectpropCount++;
+                if (clientObjectpropCount > 0)
+                {
+                    contextObject["client"] = clientObject;
+                    contextObjectpropCount++;
+                }
+
+                if (contextObjectpropCount > 0)
+                {
+                    body["context"] = contextObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["externalVideoId"] = ExpressionConverter.ConvertO(bodyyouTubeVideoID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
 
-            bodypropCount++;
-            body["externalVideoId"] = ExpressionConverter.ConvertO(bodyyouTubeVideoID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TranscriptResponse>(callPayload);
+                return new ApiConnectionAction<TranscriptResponse>(callPayload);
+            });
         }
     }
 

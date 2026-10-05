@@ -4,8 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
@@ -15,50 +14,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 
     public class LawliftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger(Expression<Func<string>> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [WorkflowExpressionFactory(nameof(__BuildLawliftExportTrigger))]
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger([WorkflowExpression] Func<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/export";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyflowName != null)
-            {
-                body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload, triggerName, recurrence);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
         }
 
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> __BuildLawliftExportTrigger(WorkflowValue<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/notifications";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyflowName != null)
+            WorkflowValue.Validate(bodyflowName, nameof(bodyflowName), required: false);
+            return new DeferredBodyTrigger<LawliftExportTriggerResponse>(() =>
             {
-                body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
+                var apiCallPath = "/webhooks/export";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
-            }
+                if (bodyflowName != null)
+                {
+                    body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
+                    bodypropCount++;
+                }
 
-            if (bodypropCount > 0)
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
+        }
+
+        [WorkflowExpressionFactory(nameof(__BuildLawliftNotificationTrigger))]
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger([WorkflowExpression] Func<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> __BuildLawliftNotificationTrigger(WorkflowValue<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            WorkflowValue.Validate(bodyflowName, nameof(bodyflowName), required: false);
+            return new DeferredBodyTrigger<LawliftNotificationTriggerResponse>(() =>
             {
-                callPayload.Body = body;
-            }
+                var apiCallPath = "/webhooks/notifications";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "#{listCallbackUrl()}";
+                bodypropCount++;
+                if (bodyflowName != null)
+                {
+                    body["flowName"] = ExpressionConverter.ConvertO(bodyflowName);
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(callPayload, triggerName, recurrence);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+
+                return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(callPayload, triggerName, recurrence);
+            }, triggerName);
         }
     }
 

@@ -4,22 +4,32 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class _24pullrequestipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers(Expression<Func<int>> page = null)
+        [WorkflowExpressionFactory(nameof(__BuildGetUsers))]
+        public IBodyWorkflowAction<GetUsersResponseItem[]> GetUsers([WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/users.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = ExpressionConverter.Convert(page);
-            return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUsersResponseItem[]> __BuildGetUsers(WorkflowValue<int> page = null)
+        {
+            WorkflowValue.Validate(page, nameof(page), required: false);
+            return new DeferredBodyAction<GetUsersResponseItem[]>(() =>
+            {
+                var apiCallPath = "/users.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = ExpressionConverter.Convert(page);
+                return new ApiConnectionAction<GetUsersResponseItem[]>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
@@ -59,21 +69,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._24pullrequestip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> name)
+        [WorkflowExpressionFactory(nameof(__BuildGetUser))]
+        public IBodyWorkflowAction<GetUserResponse> GetUser([WorkflowExpression] Func<string> name)
         {
-            var apiCallPath = String.Format("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUserResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetUserResponse> __BuildGetUser(WorkflowValue<string> name)
+        {
+            WorkflowValue.Validate(name, nameof(name), required: true);
+            return new DeferredBodyAction<GetUserResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/users/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(name, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetUserResponse>(callPayload);
+            });
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "24pullrequestip")]
-        public IBodyWorkflowAction<GetSpecificOrganisationResponse> GetSpecificOrganisation(Expression<Func<string>> organisation)
+        [WorkflowExpressionFactory(nameof(__BuildGetSpecificOrganisation))]
+        public IBodyWorkflowAction<GetSpecificOrganisationResponse> GetSpecificOrganisation([WorkflowExpression] Func<string> organisation)
         {
-            var apiCallPath = String.Format("/organisations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(organisation, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSpecificOrganisationResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<GetSpecificOrganisationResponse> __BuildGetSpecificOrganisation(WorkflowValue<string> organisation)
+        {
+            WorkflowValue.Validate(organisation, nameof(organisation), required: true);
+            return new DeferredBodyAction<GetSpecificOrganisationResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/organisations/{0}.json", ExpressionConverter.ConvertWithUrlEncoding(organisation, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return new ApiConnectionAction<GetSpecificOrganisationResponse>(callPayload);
+            });
         }
     }
 

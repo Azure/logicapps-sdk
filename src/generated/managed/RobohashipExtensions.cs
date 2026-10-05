@@ -4,28 +4,42 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
 {
-    using System.Linq.Expressions;
-    using System.Runtime.Serialization;
+        using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 
     public class RobohashipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
+        [WorkflowExpressionFactory(nameof(__BuildImageGet))]
+        public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> text, [WorkflowExpression] Func<setInput> set, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<string> bgset = null, [WorkflowExpression] Func<gravatarInput> gravatar = null)
         {
-            var apiCallPath = String.Format("/{0}", ExpressionConverter.ConvertWithUrlEncoding(text, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["set"] = ExpressionConverter.Convert(set);
-            if (size != null)
-                callPayload.Queries["size"] = ExpressionConverter.Convert(size);
-            if (bgset != null)
-                callPayload.Queries["bgset"] = ExpressionConverter.Convert(bgset);
-            callPayload.Queries["gravatar"] = Convert.ToString("no");
-            if (gravatar != null)
-                callPayload.Queries["gravatar"] = ExpressionConverter.Convert(gravatar);
-            return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            throw new NotSupportedException("This workflow call requires the SDK source compiler. Build with Microsoft.Azure.Workflows.Sdk build assets enabled.");
+        }
+
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
+        public IBodyWorkflowAction<ImageGetResponse> __BuildImageGet(WorkflowValue<string> text, WorkflowValue<setInput> set, WorkflowValue<string> size = null, WorkflowValue<string> bgset = null, WorkflowValue<gravatarInput> gravatar = null)
+        {
+            WorkflowValue.Validate(text, nameof(text), required: true);
+            WorkflowValue.Validate(set, nameof(set), required: true);
+            WorkflowValue.Validate(size, nameof(size), required: false);
+            WorkflowValue.Validate(bgset, nameof(bgset), required: false);
+            WorkflowValue.Validate(gravatar, nameof(gravatar), required: false);
+            return new DeferredBodyAction<ImageGetResponse>(() =>
+            {
+                var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/{0}", ExpressionConverter.ConvertWithUrlEncoding(text, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["set"] = ExpressionConverter.Convert(set);
+                if (size != null)
+                    callPayload.Queries["size"] = ExpressionConverter.Convert(size);
+                if (bgset != null)
+                    callPayload.Queries["bgset"] = ExpressionConverter.Convert(bgset);
+                callPayload.Queries["gravatar"] = Convert.ToString("no");
+                if (gravatar != null)
+                    callPayload.Queries["gravatar"] = ExpressionConverter.Convert(gravatar);
+                return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            });
         }
     }
 
