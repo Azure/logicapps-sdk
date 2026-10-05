@@ -30,9 +30,18 @@ expressions such as `@outputs(...)`, `@body(...)`, `@json(...)`, `@base64(...)`,
 and `@{...}` interpolation are no longer emitted. Workflow helpers remain
 available inside C# expressions. Pass-through values and recognized property
 paths use JSON-native helpers (for example `#{body("Read")["content"]}`)
-without requiring the generated output model on the expression host. Actual CLR
-operations, interpolation, and typed encoding operands materialize their declared
-types as needed.
+without requiring the generated output model on the expression host. Formatting a
+workflow-backed model or collection with default `object.ToString()` behavior
+preserves its JSON rather than printing a CLR type name. This applies to string
+interpolation, string concatenation, standard object-formatting calls, and
+parameterless `ToString()`. JSON null becomes CLR null; unknown JSON fields are
+retained. Numeric/date formatting, custom `ToString()`/`IFormattable`, typed method
+calls, and collection operations still use their CLR types. Authored objects and
+captures are not reinterpreted as workflow JSON.
+Explicit JSON serialization and schema-directed JSON encoding consume the
+JSON-backed representation rather than first deserializing a generated model.
+The JSON formatting bridge uses a fresh serializer without ambient default
+settings. It does not evaluate the authoring delegate.
 Structured JSON retains independently converted literal and C# leaves.
 The `#{...}` envelope replaces the incompatible `@csharp{...}` preview syntax.
 An authored literal such as `"#{1 + 2}"` is emitted as `#{"#{1 + 2}"}` so the
@@ -66,7 +75,9 @@ default of 200 and rejects an explicitly supplied literal zero.
 Executable compiler and SDK regression tests live in
 `tests\Microsoft.Azure.Workflows.Sdk.SourceExpressionTests`; package-consumer
 checks live in `tests\SourcePackageConsumer`, and actual-host workflows live in
-`tests\SourceExpressionE2E`. Historical reports and recorded output snapshots
+`tests\SourceExpressionE2E`. The [extension candidate kit](tests/ExtensionE2E/README.md)
+prepares complete SDK packages and genuine Logic Apps Bundles for isolated LogicAppsUX
+pickup and execution checks. Historical reports and recorded output snapshots
 are kept outside the repository. Local test passes do not establish backend
 support; the E2E suite retains its known failing contracts.
 

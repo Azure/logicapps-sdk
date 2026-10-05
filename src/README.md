@@ -32,7 +32,7 @@ var customer = actionResult.GetOutputs<CustomerSummary>();
 ## Generated connectors
 
 The wrappers in `generated\managed` and `generated\serviceProviders` are committed
-output from BPM's `src\tools\CodefulSdkGenerator`. The active C# targets are
+output from the Logic Apps Bundle repository's `src\tools\CodefulSdkGenerator`. The active C# targets are
 `ManagedConnectorSdk\CSharpTargetGenerator.cs` and
 `ServiceProviderSdk\LogicAppsSdkServiceProviderTargetGenerator.cs`; the legacy
 service-provider/DurableTask target does not generate these SDK wrappers.
@@ -69,7 +69,7 @@ receipt, including `pack --no-build`. The SDK runtime remains netstandard2.0 and
 does not acquire a Roslyn dependency.
 
 Validation-free generated output requires this injection-enabled SDK build.
-Do not compile it through an older SDK build pipeline. During migration, old BPM
+Do not compile it through an older SDK build pipeline. During migration, old Logic Apps Bundle
 output that still emits validation is rejected rather than duplicated. The managed
 and modern service-provider generators must omit those calls; the SDK owns their
 compiled implementation. Keep regeneration gated by unchanged SDK tests and

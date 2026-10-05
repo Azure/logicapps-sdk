@@ -5,7 +5,7 @@
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>annotations</Nullable>
-    <WorkflowRepositoryConsumer Condition="'$(ComparisonSdkAssembly)' == ''">true</WorkflowRepositoryConsumer>
+    <WorkflowRepositoryConsumer Condition="'$(ComparisonSdkAssembly)' == '' and '$(E2ESdkPackageVersion)' == ''">true</WorkflowRepositoryConsumer>
     <InterceptorsNamespaces Condition="'$(ComparisonSdkAssembly)' != ''">Microsoft.Azure.Workflows.Sdk.GeneratedInterceptors</InterceptorsNamespaces>
   </PropertyGroup>
   <ItemGroup>
@@ -23,8 +23,11 @@
   <ItemGroup Condition="'$(E2EExcludedSources)' != ''">
     <Compile Remove="$([MSBuild]::Unescape('$(E2EExcludedSources)'))" />
   </ItemGroup>
-  <ItemGroup Condition="'$(ComparisonSdkAssembly)' == ''">
+  <ItemGroup Condition="'$(ComparisonSdkAssembly)' == '' and '$(E2ESdkPackageVersion)' == ''">
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(E2ESdkPackageVersion)' != ''">
+    <PackageReference Include="Microsoft.Azure.Workflows.Sdk" Version="$(E2ESdkPackageVersion)" />
   </ItemGroup>
   <ItemGroup Condition="'$(ComparisonSdkAssembly)' != ''">
     <Reference Include="Microsoft.Azure.Workflows.Sdk" HintPath="$(ComparisonSdkAssembly)" />
@@ -38,6 +41,12 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0" />
   </ItemGroup>
+  <Target Name="ValidateE2ESdkSelection" BeforeTargets="CollectPackageReferences;PrepareForBuild">
+    <Error Condition="'$(E2ESdkPackageVersion)' != '' and '$(ComparisonSdkAssembly)' != ''"
+           Text="Select either E2ESdkPackageVersion or ComparisonSdkAssembly, not both." />
+    <Error Condition="'$(E2ESdkPackageVersion)' != '' and '$(WorkflowRepositoryConsumer)' == 'true'"
+           Text="Packaged E2E runs must use the package build assets, not WorkflowRepositoryConsumer." />
+  </Target>
   <Target Name="ValidateComparisonInputs" BeforeTargets="CoreCompile" Condition="'$(ComparisonSdkAssembly)' != ''">
     <Error Condition="!Exists('$(ComparisonSdkAssembly)')" Text="The comparison SDK assembly does not exist." />
     <Error Condition="!Exists('$(ComparisonGeneratorAssembly)')" Text="The comparison source generator does not exist." />

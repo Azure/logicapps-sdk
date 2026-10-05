@@ -204,6 +204,15 @@ namespace Microsoft.Azure.Workflows.Sdk
             ValidateType(descriptor.ResultType, destination);
             var nullableType = Nullable.GetUnderlyingType(descriptor.ResultType);
             var type = Nullable.GetUnderlyingType(descriptor.ResultType) ?? descriptor.ResultType;
+            if (destination.Transforms.Count != 0 && destination.InputEncoding != "base64" &&
+                !IsScalar(type) && type != typeof(byte[]) &&
+                (destination.Kind == "json" || destination.Kind == "object" || destination.Kind == "array" || destination.Kind == "any") &&
+                (descriptor is ISourceValueDescriptor || descriptor is ISourceJsonDescriptor))
+            {
+                var json = descriptor is ISourceValueDescriptor value ? value.RenderJson() : descriptor.RenderNative();
+                return "global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime.NormalizeAndEncode(" +
+                    json + ", " + SourceSnapshot.Quote(destination.SchemaJson) + ")";
+            }
             // Plain JSON text references can use host encoding helpers without an SDK dependency.
             var jsonTextReference = descriptor is ISourceValueDescriptor && destination.Kind == "text";
             if (destination.Transforms.Count != 0 &&

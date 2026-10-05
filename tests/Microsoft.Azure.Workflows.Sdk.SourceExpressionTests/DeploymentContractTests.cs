@@ -105,6 +105,35 @@ public sealed class DeploymentContractTests : IDisposable
             d => d.Code == "WFDEP002" && d.Message.Contains("Microsoft.Azure.Workflows.Sdk", StringComparison.Ordinal));
     }
 
+    [Fact]
+    public void Generated_connector_body_interpolation_preserves_JSON_without_a_model_dependency()
+    {
+        var result = Build(Source("""
+            var weather = new MsnweatherActions("connection")
+                .CurrentWeather(() => "98058", () => unitsInput.Imperial).WithName("Weather");
+            return WorkflowActions.BuiltIn.Response(responseBody: () => $"{weather.Body}" + "something")
+                .GetActionDefinition("Response");
+            """, imports: "using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;"));
+        EqualSource("""
+            #{$"{body("Weather").ToObject<object>(global::Newtonsoft.Json.JsonSerializer.Create())}" + "something"}
+            """, Token(result.Definition)["body"]!.Value<string>()!);
+        var weather = JObject.Parse("""{"responses":{"source":{"location":"98058"}},"unknown":[1,true,null]}""");
+        Assert.Equal(weather.ToString() + "something", LocalNativeHost.Evaluate(
+            Token(result.Definition)["body"]!.Value<string>()!, new() { ["Weather"] = weather }).Value);
+        var manifest = new WorkflowDependencyManifest
+        {
+            Dependencies = result.Transformation.Dependencies.ToArray(),
+        };
+        Assert.DoesNotContain(manifest.Dependencies, dependency =>
+            dependency.MetadataTypeName == "Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather.CurrentWeather");
+        WriteWorkflow(new JObject { ["actions"] = new JObject
+        {
+            ["Response"] = JToken.Parse(result.Definition.ToJson()),
+        } });
+        Assert.DoesNotContain(WorkflowDeploymentValidator.Validate(manifest, directory, LocalHostProfile()),
+            diagnostic => diagnostic.Message.Contains("Msnweather.CurrentWeather", StringComparison.Ordinal));
+    }
+
     [Theory]
     [InlineData("ToCompactJson(null)")]
     [InlineData("NormalizeAndEncode(null, \"{}\")")]

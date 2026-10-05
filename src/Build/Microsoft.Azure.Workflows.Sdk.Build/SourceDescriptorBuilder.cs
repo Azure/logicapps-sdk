@@ -5,6 +5,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Build;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Operations;
 using Microsoft.CodeAnalysis.Text;
 using System.Text.Json;
 using static ExpressionCompilationTransformer;
@@ -354,9 +355,9 @@ internal sealed class SourceDescriptorBuilder(
         method.ContainingAssembly.Name == SdkAssembly &&
         method.ContainingType.ToDisplayString() == SdkAssembly + ".WorkflowFunctions";
 
-    private string BuildJsonDescriptorSource(InvocationExpressionSyntax expression, ITypeSymbol resultType)
+    private string BuildJsonDescriptorSource(InvocationExpressionSyntax expression, ITypeSymbol resultType, bool recordDependency = true)
     {
-        dependencies.RecordType(resultType, expression);
+        if (recordDependency) dependencies.RecordType(resultType, expression);
         return $"{Runtime}SourceExpression.Json<{GetQualifiedTypeName(resultType)}>(1, " +
             BuildExpressionDescriptorSource(expression.ArgumentList.Arguments[0].Expression,
                 model.Compilation.GetSpecialType(SpecialType.System_String)) + ")";
@@ -516,6 +517,104 @@ internal sealed class SourceDescriptorBuilder(
         return false;
     }
 
+    private bool ConsumesJsonValue(ExpressionSyntax expression, out bool formatting)
+    {
+        formatting = true;
+        if (model.GetConversion(expression).IsUserDefined) return false;
+        SyntaxNode value = expression;
+        var arrayElement = false;
+        while (true)
+        {
+            switch (value.Parent)
+            {
+                case ParenthesizedExpressionSyntax parenthesized:
+                    value = parenthesized;
+                    continue;
+                case CastExpressionSyntax cast when model.GetTypeInfo(cast.Type).Type?.SpecialType == SpecialType.System_Object &&
+                    !model.ClassifyConversion(cast.Expression, model.GetTypeInfo(cast.Type).Type!).IsUserDefined:
+                    value = cast;
+                    continue;
+                case ConditionalExpressionSyntax conditional when value != conditional.Condition:
+                    value = conditional;
+                    continue;
+                case BinaryExpressionSyntax coalesce when coalesce.IsKind(SyntaxKind.CoalesceExpression):
+                    value = coalesce;
+                    continue;
+                case SwitchExpressionArmSyntax arm when value == arm.Expression:
+                    value = arm.Parent!;
+                    continue;
+                case InitializerExpressionSyntax initializer when
+                    initializer.Parent is ExpressionSyntax array &&
+                    model.GetTypeInfo(array).Type is IArrayTypeSymbol { ElementType.SpecialType: SpecialType.System_Object }:
+                    arrayElement = true;
+                    value = array;
+                    continue;
+            }
+            break;
+        }
+
+        if (value.Parent is ArgumentSyntax argument &&
+            argument.Parent?.Parent is InvocationExpressionSyntax invocation &&
+            model.GetSymbolInfo(invocation).Symbol is IMethodSymbol method)
+        {
+            var parameter = (model.GetOperation(argument) as IArgumentOperation)?.Parameter ??
+                method.Parameters.LastOrDefault(p => p.IsParams &&
+                    invocation.ArgumentList.Arguments.IndexOf(argument) >= p.Ordinal);
+            if (parameter == null) return false;
+            var owner = method.ContainingType.ToDisplayString();
+            if (parameter.Ordinal == 0 &&
+                (owner == SdkAssembly + ".WorkflowWireRuntime" && method.Name == "ToCompactJson" ||
+                 owner == "Newtonsoft.Json.JsonConvert" && method.Name == "SerializeObject" && method.Parameters.Length == 1))
+            {
+                formatting = false;
+                return true;
+            }
+
+            var objectParams = parameter.Type is IArrayTypeSymbol { ElementType.SpecialType: SpecialType.System_Object } ||
+                parameter.Type is INamedTypeSymbol { Name: "ReadOnlySpan", TypeArguments.Length: 1 } span &&
+                span.ContainingNamespace.ToDisplayString() == "System" &&
+                span.TypeArguments[0].SpecialType == SpecialType.System_Object;
+            var objectArgument = parameter.Type.SpecialType == SpecialType.System_Object ||
+                parameter.IsParams && objectParams &&
+                (arrayElement || !model.ClassifyConversion(argument.Expression, parameter.Type).IsImplicit);
+            return objectArgument && UsesDefaultObjectFormatting(model.GetTypeInfo(expression).Type) &&
+                (owner == "string" && method.Name is "Format" or "Concat" or "Join" ||
+                 owner == "System.Convert" && method.Name == "ToString" ||
+                 owner == "System.Text.StringBuilder" && method.Name is "Append" or "AppendFormat");
+        }
+
+        if (!UsesDefaultObjectFormatting(model.GetTypeInfo(expression).Type))
+            return false;
+
+        return value.Parent is InterpolationSyntax interpolation &&
+                model.GetTypeInfo((ExpressionSyntax)interpolation.Parent!).ConvertedType?.SpecialType is
+                    SpecialType.System_String or SpecialType.System_Object ||
+            value.Parent is BinaryExpressionSyntax binary && binary.IsKind(SyntaxKind.AddExpression) &&
+                model.GetOperation(binary) is IBinaryOperation { OperatorMethod: null, Type.SpecialType: SpecialType.System_String } ||
+            value.Parent is MemberAccessExpressionSyntax member && member.Expression == value &&
+                member.Parent is InvocationExpressionSyntax call && call.ArgumentList.Arguments.Count == 0 &&
+                model.GetSymbolInfo(call).Symbol is IMethodSymbol
+                {
+                    Name: "ToString", ContainingType.SpecialType: SpecialType.System_Object,
+                };
+    }
+
+    private static bool UsesDefaultObjectFormatting(ITypeSymbol? type)
+    {
+        if (type is ITypeParameterSymbol) return true;
+        if (type is null || !type.IsReferenceType || type.TypeKind == TypeKind.Dynamic)
+            return false;
+        if (type.AllInterfaces.Any(i => i.ToDisplayString() == "System.IFormattable"))
+            return false;
+        for (var current = type; current != null && current.SpecialType != SpecialType.System_Object; current = current.BaseType)
+        {
+            if (current.GetMembers("ToString").OfType<IMethodSymbol>().Any(m =>
+                !m.IsStatic && m.Arity == 0 && m.Parameters.Length == 0 && m.DeclaredAccessibility == Accessibility.Public))
+                return false;
+        }
+        return true;
+    }
+
     private bool TryBuildWorkflowBinding(ExpressionSyntax expression, out string binding, bool jsonValue = false)
     {
         binding = "";
@@ -523,7 +622,7 @@ internal sealed class SourceDescriptorBuilder(
             model.GetSymbolInfo(expression).Symbol is IParameterSymbol item && IsForEachItemParameter(item))
         {
             ValidateHandleReceiver(expression);
-            dependencies.RecordType(item.Type, expression);
+            if (!jsonValue) dependencies.RecordType(item.Type, expression);
             var itemType = jsonValue ? Quote("global::Newtonsoft.Json.Linq.JToken") : BuildBindingTypeExpression(item.Type);
             binding = $"{Runtime}SourceBinding.Item({expression}, {itemType})";
             return true;
@@ -542,7 +641,7 @@ internal sealed class SourceDescriptorBuilder(
                 i.ContainingAssembly.Name == SdkAssembly && i.OriginalDefinition.MetadataName == "IAgentToolContext`1"))
         {
             ValidateHandleReceiver(parameters.Expression);
-            dependencies.RecordType(property.Type, expression);
+            if (!jsonValue) dependencies.RecordType(property.Type, expression);
             binding = $"{Runtime}SourceBinding.AgentParameter({parameters.Expression}, {Quote(property.Name)}, {type})";
             return true;
         }
@@ -551,7 +650,7 @@ internal sealed class SourceDescriptorBuilder(
             IsWorkflowProperty(property, "IBodyWorkflowAction<T>", "Body"))
         {
             ValidateHandleReceiver(member.Expression);
-            dependencies.RecordType(property.Type, expression);
+            if (!jsonValue) dependencies.RecordType(property.Type, expression);
             binding = $"{Runtime}SourceBinding.{property.Name}({member.Expression}, {type})";
             return true;
         }
@@ -559,7 +658,7 @@ internal sealed class SourceDescriptorBuilder(
         if (IsWorkflowProperty(property, "IVariableWorkflowAction", "Value"))
         {
             ValidateHandleReceiver(member.Expression);
-            dependencies.RecordType(property.Type, expression);
+            if (!jsonValue) dependencies.RecordType(property.Type, expression);
             binding = $"{Runtime}SourceBinding.Variable({member.Expression}, {type})";
             return true;
         }
@@ -570,7 +669,7 @@ internal sealed class SourceDescriptorBuilder(
             triggerProperty.ContainingAssembly.Name == SdkAssembly && triggerProperty.Name == "TriggerOutput")
         {
             ValidateHandleReceiver(triggerOutput.Expression);
-            dependencies.RecordType(property.Type, expression);
+            if (!jsonValue) dependencies.RecordType(property.Type, expression);
             binding = $"{Runtime}SourceBinding.Trigger({triggerOutput.Expression}, \"triggerBody\", {type})";
             return true;
         }
@@ -579,7 +678,7 @@ internal sealed class SourceDescriptorBuilder(
             property.Name is "TriggerOutput" or "TriggerBody")
         {
             ValidateHandleReceiver(member.Expression);
-            dependencies.RecordType(property.Type, expression);
+            if (!jsonValue) dependencies.RecordType(property.Type, expression);
             var helper = property.Name == "TriggerBody" ? "triggerBody" : "triggerOutputs";
             binding = $"{Runtime}SourceBinding.Trigger({member.Expression}, {Quote(helper)}, {type})";
             return true;
@@ -842,12 +941,24 @@ internal sealed class SourceDescriptorBuilder(
             replacements.Add((new TextSpan(hole.Expression.Span.End, 0), null, ")"));
         }
 
+        void ParenthesizeBindingInterpolation(ExpressionSyntax expression)
+        {
+            if (model.GetTypeInfo(expression).Type is not { } type)
+                return;
+            var typeName = GetQualifiedTypeName(type);
+            if (typeName != "global::Newtonsoft.Json.Linq.JToken" &&
+                (ContainsTypeParameter(type) || type is IArrayTypeSymbol ||
+                 typeName.Contains("global::", StringComparison.Ordinal)))
+                ParenthesizeInterpolationHole(expression);
+        }
+
         void CollectSourceReplacements(SyntaxNode node)
         {
             if (node is ExpressionSyntax expression)
             {
                 if (enumLeaves.Contains(expression))
                 {
+                    ParenthesizeBindingInterpolation(expression);
                     replacements.Add((node.Span,
                         $"{Runtime}SourceBinding.EnumWire({BuildExpressionDescriptorSource(expression, enumWireType!)})", null));
                     return;
@@ -856,13 +967,37 @@ internal sealed class SourceDescriptorBuilder(
                 if (IsJsonIntrinsicCall(expression))
                 {
                     var resultType = model.GetTypeInfo(expression).Type!;
+                    var jsonValue = ConsumesJsonValue(expression, out var formatting);
+                    if (jsonValue)
+                    {
+                        var formatType = formatting && resultType is ITypeParameterSymbol ? GetQualifiedTypeName(resultType) : "object";
+                        if (formatType != "object") ParenthesizeBindingInterpolation(expression);
+                        replacements.Add((node.Span,
+                            $"{Runtime}SourceBinding.FormatJson({BuildJsonDescriptorSource((InvocationExpressionSyntax)expression, resultType, recordDependency: formatType != "object")}, typeof({formatType}))", null));
+                        return;
+                    }
+                    ParenthesizeBindingInterpolation(expression);
                     replacements.Add((node.Span,
                         $"{Runtime}SourceBinding.Json({BuildJsonDescriptorSource((InvocationExpressionSyntax)expression, resultType)}, {BuildBindingTypeExpression(resultType)})", null));
                     return;
                 }
 
+                if (ConsumesJsonValue(expression, out var formatJson) && TryBuildJsonNavigation(expression, out var jsonBinding, out var suffix))
+                {
+                    var tokenType = model.Compilation.GetTypeByMetadataName("Newtonsoft.Json.Linq.JToken")!;
+                    var jsonSource = BuildDescriptorFactoryCall(tokenType, "native", ["", suffix], [jsonBinding], expression);
+                    var formatType = formatJson && model.GetTypeInfo(expression).Type is ITypeParameterSymbol typeParameter
+                        ? GetQualifiedTypeName(typeParameter) : "object";
+                    if (formatType != "object")
+                        ParenthesizeBindingInterpolation(expression);
+                    replacements.Add((node.Span,
+                        $"{Runtime}SourceBinding.FormatJson({jsonSource}, typeof({formatType}))", null));
+                    return;
+                }
+
                 if (TryBuildWorkflowBinding(expression, out var workflow))
                 {
+                    ParenthesizeBindingInterpolation(expression);
                     replacements.Add((node.Span, workflow, null));
                     return;
                 }
@@ -890,6 +1025,7 @@ internal sealed class SourceDescriptorBuilder(
                         throw Error("WFBUILD003", "Captured values are construction-time snapshots, not writable runtime variables or by-reference arguments.", expression);
                     }
 
+                    ParenthesizeBindingInterpolation(expression);
                     replacements.Add((node.Span, capture, null));
                     return;
                 }

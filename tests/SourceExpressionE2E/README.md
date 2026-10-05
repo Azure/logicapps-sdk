@@ -2,8 +2,8 @@
 
 These are SDK-authored `.cs` workflows registered with an actual local Logic Apps
 runtime. They are not evaluations using mock `outputs()` helpers. The same source
-files build against the repository SDK or a separately supplied comparison SDK
-and source generator.
+files build against the repository SDK, a complete SDK NuGet package, or a
+separately supplied comparison SDK and source generator.
 
 `case-coverage.json` maps the failed-comparison IDs to workflow scenarios or
 negative compilation/authoring contracts. Read its coverage level: representative
@@ -80,6 +80,35 @@ dotnet msbuild .\tests\SourceExpressionE2E\SourceExpressionE2E.csproj -getProper
 The export records generation failures explicitly and returns nonzero when
 generation violates an expected contract. A rejected factory is not a successful
 workflow run. Other successfully generated cases remain available for execution.
+
+## Build the packaged candidate variant
+
+Use the complete SDK package from the [extension candidate kit](../ExtensionE2E/README.md)
+to exercise the same packaged compiler and build assets selected by LogicAppsUX.
+This mode disables the repository SDK project reference and repository build-tool
+imports. Do not combine it with `ComparisonSdkAssembly` or
+`WorkflowRepositoryConsumer=true`.
+
+```powershell
+$properties = @(
+  '-p:E2ESdkPackageVersion=1.0.0-e2e.mychange',
+  '-p:RestoreAdditionalProjectSources=D:\candidates\mychange-001\artifacts',
+  '-p:ArtifactsPath=D:\candidates\packaged-e2e-001\artifacts',
+  '-p:RestorePackagesPath=D:\candidates\packaged-e2e-001\packages',
+  '-p:GeneratePackageOnBuild=false'
+)
+dotnet restore .\tests\SourceExpressionE2E\SourceExpressionE2E.csproj @properties
+dotnet build .\tests\SourceExpressionE2E\SourceExpressionE2E.csproj --no-restore @properties
+dotnet msbuild .\tests\SourceExpressionE2E\SourceExpressionE2E.csproj @properties -getProperty:TargetDir
+```
+
+Use a fresh artifact directory and the exact package version from `candidate.json`.
+The whole resulting worker directory, not just the SDK DLL, is the input to
+`Run-Local.ps1`. The usual self-test/export switches can be used by invoking
+`dotnet <TargetDir>\SourceExpressionE2E.dll --self-test` or `--export <new path>`.
+Those checks establish authoring behavior only; actual runtime results still
+require execution against the verified candidate host. Keep this separate from
+the extension's create/reopen/F5 evidence.
 
 ## Build a comparison variant
 

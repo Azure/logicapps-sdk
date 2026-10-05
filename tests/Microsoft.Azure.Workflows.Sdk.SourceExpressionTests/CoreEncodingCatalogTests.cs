@@ -95,6 +95,29 @@ public sealed class CoreEncodingCatalogTests
         Assert.Equal(["Source"], local.Reads);
     }
 
+    [Theory]
+    [InlineData("\"98058\"", "\"98058\"", "/current/98058")]
+    [InlineData("\"a /\"", "\"a /\"", "/current/a%20%2F")]
+    [InlineData("source.Output.ToUpperInvariant()", "outputs(\"Source\").ToObject<string>().ToUpperInvariant()", "/current/A%20%2F")]
+    public void Weather_connector_retains_native_encoded_route_and_literal_query(
+        string input, string nativeArgument, string expectedPath)
+    {
+        var result = Build(Source(Handles + $$"""
+            return new MsnweatherActions("connection")
+                .CurrentWeather(() => {{input}}, () => unitsInput.Imperial)
+                .GetActionDefinition("Weather");
+            """, imports: "using Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather;"));
+        var inputs = Token(result.Definition);
+        var path = inputs["path"]!.Value<string>()!;
+        Assert.Equal(
+            "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/current/{0}\", encodeURIComponent(" +
+            nativeArgument + "))}", path);
+        Assert.Equal("get", inputs["method"]!.Value<string>());
+        Assert.Equal("I", inputs["queries"]!["units"]!.Value<string>());
+        var local = LocalNativeHost.Evaluate(path, new() { ["Source"] = new JValue("a /") });
+        Assert.Equal(expectedPath, local.Value);
+    }
+
     private static (FlowTemplateAction Definition, System.Reflection.Assembly Assembly,
         global::Microsoft.Azure.Workflows.Sdk.Build.TransformationResult Transformation)
         Encode(string input, string setup = "") =>

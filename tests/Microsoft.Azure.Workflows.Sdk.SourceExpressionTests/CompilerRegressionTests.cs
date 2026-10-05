@@ -96,6 +96,53 @@ public sealed class CompilerRegressionTests
         Assert.Equal("3", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue(3) }).Value);
     }
 
+    [Theory]
+    [InlineData("$\"{summary.Body}\" + \"something\"", "{\n  \"Total\": 3.5\n}something")]
+    [InlineData("$\"{summary.Body,16}\"", "{\n  \"Total\": 3.5\n}")]
+    [InlineData("$\"{summary.Body.Total:0.00}\"", "3.50")]
+    [InlineData("$@\"{{prefix}} {summary.Body}\"", "{prefix} {\n  \"Total\": 3.5\n}")]
+    [InlineData("$$\"\"\"{prefix} {{summary.Body}}\"\"\"", "{prefix} {\n  \"Total\": 3.5\n}")]
+    [InlineData("$\"{(summary.Body)}\"", "{\n  \"Total\": 3.5\n}")]
+    public void Interpolated_typed_workflow_bindings_compile_and_execute(string expression, string expected)
+    {
+        var emitted = Native(expression, CoreHandles);
+        Assert.Equal(expected.Replace("\n", Environment.NewLine), LocalNativeHost.Evaluate(emitted,
+            new() { ["GetSummary"] = JObject.Parse("""{"Total":3.5}""") }).Value);
+    }
+
+    [Fact]
+    public void Interpolated_generic_workflow_binding_protects_runtime_qualified_type()
+    {
+        var result = Build(Source("""
+            var source = WorkflowActions.BuiltIn.Compose<int>(input: () => 3).WithName("Source");
+            return Create(source).GetActionDefinition("Catalog");
+            """, """
+            private static IOutputWorkflowAction<string> Create<T>(IOutputWorkflowAction<T> action)
+                => WorkflowActions.BuiltIn.Compose<string>(input: () => $"{action.Output}" + "!");
+            """));
+        var emitted = Token(result.Definition).Value<string>()!;
+        Assert.Equal("3!", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue(3) }).Value);
+    }
+
+    [Theory]
+    [InlineData("var value = new List<int> { 7 };", "$\"{value[0]}\"", "7")]
+    [InlineData("var value = new Dictionary<string, int> { [\"key\"] = 7 };", "$\"{value[\"key\"]}\"", "7")]
+    [InlineData("var value = new[] { 7 };", "$\"{value[0]}\"", "7")]
+    public void Interpolated_captured_values_protect_snapshot_qualified_types(
+        string setup, string expression, string expected)
+    {
+        Assert.Equal(expected, LocalNativeHost.Evaluate(Native(expression, setup), new()).Value);
+    }
+
+    [Fact]
+    public void Interpolated_datetime_workflow_binding_preserves_format()
+    {
+        var emitted = Native("$\"{value.Output:yyyy-MM-dd}\"",
+            """var value = WorkflowActions.BuiltIn.Compose<DateTime>(() => default(DateTime)).WithName("Date");""");
+        Assert.Equal("2020-01-02", LocalNativeHost.Evaluate(emitted,
+            new() { ["Date"] = new JValue(new DateTime(2020, 1, 2)) }).Value);
+    }
+
     [Fact]
     public void Mixed_connector_path_preserves_original_interpolation_as_native_source()
     {

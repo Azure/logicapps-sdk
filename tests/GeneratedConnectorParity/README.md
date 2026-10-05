@@ -1,6 +1,6 @@
 # Generated connector parity test
 
-Compare freshly emitted BPM `CodefulSdkGenerator` sources with the generated
+Compare freshly emitted Logic Apps Bundle `CodefulSdkGenerator` sources with the generated
 managed connectors and service providers in this SDK checkout. No ARM calls,
 generation, migration, or source replacement occurs in the comparison itself.
 

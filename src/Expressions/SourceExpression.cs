@@ -183,10 +183,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         private readonly string clrType;
         private readonly SourceSnapshot capture;
         private readonly string parameterName;
-        private readonly ISourceJsonDescriptor json;
+        private readonly ISourceDescriptor json;
         private readonly ISourceDescriptor enumWire;
+        private readonly bool preserveJson;
 
-        private SourceBinding(IWorkflowAction action, string helper, string clrType, SourceSnapshot capture = null, IVariableWorkflowAction variable = null, string parameterName = null, ISourceJsonDescriptor json = null, ISourceDescriptor enumWire = null)
+        private SourceBinding(IWorkflowAction action, string helper, string clrType, SourceSnapshot capture = null, IVariableWorkflowAction variable = null, string parameterName = null, ISourceDescriptor json = null, ISourceDescriptor enumWire = null, bool preserveJson = false)
         {
             this.action = action;
             this.helper = helper;
@@ -196,6 +197,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             this.parameterName = parameterName;
             this.json = json;
             this.enumWire = enumWire;
+            this.preserveJson = preserveJson;
         }
 
         public static SourceBinding Output(IWorkflowAction handle, string clrType) =>
@@ -230,6 +232,20 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (!(SourceExpression.GetDescriptor(jsonDescriptor) is ISourceJsonDescriptor descriptor))
                 throw new ArgumentException("A JSON intrinsic descriptor is required.", nameof(jsonDescriptor));
             return new SourceBinding(null, null, clrType, json: descriptor);
+        }
+
+        /// <summary>Preserves JSON for default object formatting, resolving generic CLR types at construction.</summary>
+        public static SourceBinding FormatJson(Delegate jsonDescriptor, Type clrType)
+        {
+            if (clrType == null) throw new ArgumentNullException(nameof(clrType));
+            var descriptor = SourceExpression.GetDescriptor(jsonDescriptor);
+            if ((descriptor.ResultType != typeof(JToken) && !(descriptor is ISourceJsonDescriptor)) || descriptor.Kind != "native")
+                throw new ArgumentException("A native JSON value descriptor is required.", nameof(jsonDescriptor));
+            var defaultFormatting = !clrType.IsValueType && !typeof(IFormattable).IsAssignableFrom(clrType) &&
+                !clrType.GetMethods().Any(method => method.Name == nameof(ToString) && !method.IsStatic &&
+                    !method.IsGenericMethod && method.GetParameters().Length == 0 && method.DeclaringType != typeof(object));
+            return new SourceBinding(null, null, defaultFormatting ? "object" : SourceSnapshot.TypeName(clrType),
+                json: descriptor, preserveJson: defaultFormatting);
         }
 
         /// <summary>Binds an enum-valued leaf to its wire representation inside native source.</summary>
@@ -305,7 +321,10 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal string ToNative()
         {
             if (this.enumWire != null) return SourceExpressionConverter.RenderNativeWire(this.enumWire);
-            if (this.json != null) return Materialize(this.json.RenderNative(), this.clrType);
+            if (this.json != null)
+                return this.preserveJson
+                    ? this.json.RenderNative() + ".ToObject<object>(global::Newtonsoft.Json.JsonSerializer.Create())"
+                    : Materialize(this.json.RenderNative(), this.clrType);
             if (this.capture != null)
             {
                 if (!SourceSnapshot.MatchesDeclaredType(this.clrType, this.capture.RuntimeType))
@@ -348,7 +367,10 @@ namespace Microsoft.Azure.Workflows.Sdk
 
     internal interface ISourceJsonDescriptor : ISourceDescriptor { }
 
-    internal interface ISourceValueDescriptor : ISourceDescriptor { }
+    internal interface ISourceValueDescriptor : ISourceDescriptor
+    {
+        string RenderJson();
+    }
 
     internal sealed class SourceValueDescriptor<T> : ISourceValueDescriptor
     {
@@ -368,6 +390,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public string Kind => "native";
         public T Invoke() => throw new InvalidOperationException("A workflow source descriptor is metadata and cannot be invoked.");
         public string RenderNative() => this.native.RenderNative();
+        public string RenderJson() => this.wire.RenderNative();
         public JToken RenderToken() => this.wire.RenderToken();
     }
 

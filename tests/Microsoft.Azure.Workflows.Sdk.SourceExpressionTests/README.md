@@ -25,9 +25,37 @@ quoted C# string expression, so literal data cannot activate template evaluation
 
 Pass-through workflow outputs and recognized JSON-property paths retain raw JSON
 values inside C# envelopes, without materializing SDK or custom model types.
-Native operations, interpolation, and encoding operands retain their original
-typed C# source. Dual wire/native descriptors are checked at both boundaries;
+CLR operations retain typed C# source, but default object formatting consumes
+workflow-backed JSON rather than materializing a model with a type-name
+`ToString()`. Dual wire/native descriptors are checked at both boundaries;
 JSON-native pass-through does not imply deployed custom-type support.
+
+Interpolation regressions compile and execute typed and generic workflow
+bindings, captured collections, alignment, formatting, and raw/verbatim strings.
+Binding-generated `global::` type names are protected by parentheses so their
+colons cannot be parsed as interpolation format separators.
+The generated Msnweather body regression checks the emitted interpolation, the
+actual weather JSON plus suffix (including unknown fields), and absence of an
+unneeded `CurrentWeather` runtime dependency. Actual SDK helper/type operations
+still require explicit host approval; shipping the worker's SDK DLL or dependency
+sidecar does not register a runtime expression compiler reference.
+
+`JsonFormattingBoundaryTests` audits interpolation (including raw/verbatim
+strings), concatenation, object-formatting overloads and expanded arguments,
+default `ToString()`, nested JSON model properties, collections, conditionals,
+null coalescing, generic type binding, JSON parsing, explicit serialization, and
+schema-directed JSON/base64 encoding. Assertions compare resulting payloads,
+unknown fields, null handling, and accessor reads, not only emitted source.
+Negative controls retain scalar/date formatting, custom formatters, typed model
+operations, and collection joining/concatenation. JSON decoding ignores ambient
+serializer defaults. This is consumer-aware handling, not blanket removal of
+`ToObject<T>()`: arbitrary methods, explicit CLR operations, and unsupported
+navigation shapes continue to require typed materialization.
+
+Msnweather route regressions pin the invariant-culture `string.Format` shape,
+runtime URL encoding of literal and workflow-derived locations, and literal
+method/query values. The emitted path is native code, not a literal Swagger
+route; designer operation inference must not execute its arguments.
 
 Deployment preflight coverage requires `WFDEP010` for legacy template expressions,
 including nested inputs and control/trigger fields. Escaped `@@` literals and
