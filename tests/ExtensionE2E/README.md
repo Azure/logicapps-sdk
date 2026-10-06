@@ -173,11 +173,13 @@ $dotnetExe = 'C:\Program Files\dotnet\dotnet.exe'
 $funcExe = 'C:\tools\FuncCoreTools\func.exe'
 $codeExe = 'C:\tools\VSCode\Code.exe'
 $offlineFeed = 'D:\candidates\offline-nuget-feed'
+$builtExtension = Join-Path $uxRepo 'apps\vs-code-designer\dist'
 
 node (Join-Path $uxRepo 'apps\vs-code-designer\scripts\run-candidate-e2e.js') `
   --manifest (Join-Path $pairRoot 'candidate.json') `
   --root $runRoot --scope activation `
   --node $nodeExe --dotnet $dotnetExe --func $funcExe --code $codeExe `
+  --extension $builtExtension `
   --extensions "$env:USERPROFILE\.vscode\extensions" `
   --nuget-source $offlineFeed --timeout-ms 600000
 if ($LASTEXITCODE -ne 0) { throw 'Candidate installation failed; preserve runner evidence.' }
@@ -187,10 +189,17 @@ Use this instead of, not after, a `-RunExtension` invocation using the same
 root. The runner owns initial installation; do not prepopulate or repair its
 sealed candidate directory by hand. Activation scope establishes installation,
 not project creation, debugger attachment, or workflow execution.
+`--extension` selects the complete built extension under test; the separate
+`--extensions` directory is only a read-only source of its offline extension
+dependencies. It does not select or build the candidate extension.
 
 Save any pending edits in the source project. The manual launcher requires a
 fully installed, sealed root with a matching manifest/receipt, not an arbitrary
-directory containing extracted DLLs. Substitute the source workspace/project
+directory containing extracted DLLs. An envelope/runner receipt alone is not
+proof that the bundle and SDK were installed: verify the candidate's installed
+payload/receipt before creating any project beneath it, so project copying
+cannot make an empty candidate directory look like a completed installation.
+Substitute the source workspace/project
 and a fresh destination **inside** the installed candidate:
 
 ```powershell
