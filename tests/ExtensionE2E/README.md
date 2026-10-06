@@ -199,8 +199,11 @@ directory containing extracted DLLs. An envelope/runner receipt alone is not
 proof that the bundle and SDK were installed: verify the candidate's installed
 payload/receipt before creating any project beneath it, so project copying
 cannot make an empty candidate directory look like a completed installation.
-Substitute the source workspace/project
-and a fresh destination **inside** the installed candidate:
+The launcher checks `candidate\.logicapps-local-candidate.json` before copying:
+its schema, exact manifest path, and SHA256 of the manifest bytes must match the
+product installer's completion marker. This does not replace the payload/hash
+and runtime acceptance gates below. Substitute the source workspace/project and
+a fresh destination **inside** the installed candidate:
 
 ```powershell
 $sourceProject = 'D:\workflows\my-codeful-workspace'
