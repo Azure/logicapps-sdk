@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -294,13 +294,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildIncomingSMSReceived))]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> IncomingSMSReceived([WorkflowExpression] Func<string> accountId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildIncomingSMSReceived(WorkflowExpression<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildIncomingSMSReceived(WorkflowExpression<string> accountId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
@@ -323,18 +323,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildKeywordReceived))]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> KeywordReceived([WorkflowExpression] Func<string> accountId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildKeywordReceived(WorkflowExpression<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildKeywordReceived(WorkflowExpression<string> accountId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
@@ -357,18 +357,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildStopReceived))]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> StopReceived([WorkflowExpression] Func<string> accountId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildStopReceived(WorkflowExpression<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildStopReceived(WorkflowExpression<string> accountId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
@@ -391,18 +391,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildDeliveryNoticeReceived))]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> DeliveryNoticeReceived([WorkflowExpression] Func<string> accountId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildDeliveryNoticeReceived(WorkflowExpression<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildDeliveryNoticeReceived(WorkflowExpression<string> accountId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
@@ -425,18 +425,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildInvalidTargets))]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets([WorkflowExpression] Func<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> InvalidTargets([WorkflowExpression] Func<string> accountId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildInvalidTargets(WorkflowExpression<string> accountId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CallbackCreatedResponse> __BuildInvalidTargets(WorkflowExpression<string> accountId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accountId, nameof(accountId), required: true);
             return new DeferredBodyTrigger<CallbackCreatedResponse>(() =>
@@ -459,8 +459,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CallbackCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

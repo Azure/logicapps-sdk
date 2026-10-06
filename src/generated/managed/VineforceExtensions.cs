@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1427,13 +1427,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWhenTaskIsCompleted))]
-        public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse> WhenTaskIsCompleted([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<int> duration, [WorkflowExpression] Func<string> projectName = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> assigneeEmail = null, [WorkflowExpression] Func<string> creatorEmail = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse> WhenTaskIsCompleted([WorkflowExpression] Func<string> apiKey,[WorkflowExpression] Func<int> duration,[WorkflowExpression] Func<string> projectName = null,[WorkflowExpression] Func<string> projectId = null,[WorkflowExpression] Func<string> assigneeEmail = null,[WorkflowExpression] Func<string> creatorEmail = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse> __BuildWhenTaskIsCompleted(WorkflowExpression<string> apiKey, WorkflowExpression<int> duration, WorkflowExpression<string> projectName = null, WorkflowExpression<string> projectId = null, WorkflowExpression<string> assigneeEmail = null, WorkflowExpression<string> creatorEmail = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsCompletedResponse> __BuildWhenTaskIsCompleted(WorkflowExpression<string> apiKey,WorkflowExpression<int> duration,WorkflowExpression<string> projectName = null,WorkflowExpression<string> projectId = null,WorkflowExpression<string> assigneeEmail = null,WorkflowExpression<string> creatorEmail = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
             WorkflowExpression.Validate(duration, nameof(duration), required: true);
@@ -1456,18 +1456,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (creatorEmail != null)
                     callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(creatorEmail);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
-                return new ApiConnectionTrigger<WhenTaskIsCompletedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WhenTaskIsCompletedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenTaskSectionIsChanged))]
-        public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse> WhenTaskSectionIsChanged([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<string> userEmail, [WorkflowExpression] Func<string> projectName = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> assigneeEmail = null, [WorkflowExpression] Func<string> taskId = null, [WorkflowExpression] Func<string> oldSectionId = null, [WorkflowExpression] Func<string> oldSectoinName = null, [WorkflowExpression] Func<string> newSectionId = null, [WorkflowExpression] Func<string> newSectoinName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse> WhenTaskSectionIsChanged([WorkflowExpression] Func<string> apiKey,[WorkflowExpression] Func<string> userEmail,[WorkflowExpression] Func<string> projectName = null,[WorkflowExpression] Func<string> projectId = null,[WorkflowExpression] Func<string> assigneeEmail = null,[WorkflowExpression] Func<string> taskId = null,[WorkflowExpression] Func<string> oldSectionId = null,[WorkflowExpression] Func<string> oldSectoinName = null,[WorkflowExpression] Func<string> newSectionId = null,[WorkflowExpression] Func<string> newSectoinName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse> __BuildWhenTaskSectionIsChanged(WorkflowExpression<string> apiKey, WorkflowExpression<string> userEmail, WorkflowExpression<string> projectName = null, WorkflowExpression<string> projectId = null, WorkflowExpression<string> assigneeEmail = null, WorkflowExpression<string> taskId = null, WorkflowExpression<string> oldSectionId = null, WorkflowExpression<string> oldSectoinName = null, WorkflowExpression<string> newSectionId = null, WorkflowExpression<string> newSectoinName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskSectionIsChangedResponse> __BuildWhenTaskSectionIsChanged(WorkflowExpression<string> apiKey,WorkflowExpression<string> userEmail,WorkflowExpression<string> projectName = null,WorkflowExpression<string> projectId = null,WorkflowExpression<string> assigneeEmail = null,WorkflowExpression<string> taskId = null,WorkflowExpression<string> oldSectionId = null,WorkflowExpression<string> oldSectoinName = null,WorkflowExpression<string> newSectionId = null,WorkflowExpression<string> newSectoinName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
             WorkflowExpression.Validate(userEmail, nameof(userEmail), required: true);
@@ -1502,18 +1502,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                     callPayload.Queries["NewSectionId"] = ExpressionConverter.Convert(newSectionId);
                 if (newSectoinName != null)
                     callPayload.Queries["NewSectoinName"] = ExpressionConverter.Convert(newSectoinName);
-                return new ApiConnectionTrigger<WhenTaskSectionIsChangedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WhenTaskSectionIsChangedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenTaskIsCreated))]
-        public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse> WhenTaskIsCreated([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<int> duration, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse> WhenTaskIsCreated([WorkflowExpression] Func<string> apiKey,[WorkflowExpression] Func<int> duration,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse> __BuildWhenTaskIsCreated(WorkflowExpression<string> apiKey, WorkflowExpression<int> duration, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsCreatedResponse> __BuildWhenTaskIsCreated(WorkflowExpression<string> apiKey,WorkflowExpression<int> duration,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
             WorkflowExpression.Validate(duration, nameof(duration), required: true);
@@ -1524,18 +1524,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ApiKey"] = ExpressionConverter.Convert(apiKey);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
-                return new ApiConnectionTrigger<WhenTaskIsCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WhenTaskIsCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenTaskIsUpdated))]
-        public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse> WhenTaskIsUpdated([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<int> duration, [WorkflowExpression] Func<string> updateFilter = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse> WhenTaskIsUpdated([WorkflowExpression] Func<string> apiKey,[WorkflowExpression] Func<int> duration,[WorkflowExpression] Func<string> updateFilter = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse> __BuildWhenTaskIsUpdated(WorkflowExpression<string> apiKey, WorkflowExpression<int> duration, WorkflowExpression<string> updateFilter = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsUpdatedResponse> __BuildWhenTaskIsUpdated(WorkflowExpression<string> apiKey,WorkflowExpression<int> duration,WorkflowExpression<string> updateFilter = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
             WorkflowExpression.Validate(duration, nameof(duration), required: true);
@@ -1549,18 +1549,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (updateFilter != null)
                     callPayload.Queries["UpdateFilter"] = ExpressionConverter.Convert(updateFilter);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
-                return new ApiConnectionTrigger<WhenTaskIsUpdatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WhenTaskIsUpdatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenTaskIsDeleted))]
-        public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse> WhenTaskIsDeleted([WorkflowExpression] Func<string> apiKey, [WorkflowExpression] Func<int> duration, [WorkflowExpression] Func<string> projectName = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> assigneeEmail = null, [WorkflowExpression] Func<string> creatorEmail = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse> WhenTaskIsDeleted([WorkflowExpression] Func<string> apiKey,[WorkflowExpression] Func<int> duration,[WorkflowExpression] Func<string> projectName = null,[WorkflowExpression] Func<string> projectId = null,[WorkflowExpression] Func<string> assigneeEmail = null,[WorkflowExpression] Func<string> creatorEmail = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse> __BuildWhenTaskIsDeleted(WorkflowExpression<string> apiKey, WorkflowExpression<int> duration, WorkflowExpression<string> projectName = null, WorkflowExpression<string> projectId = null, WorkflowExpression<string> assigneeEmail = null, WorkflowExpression<string> creatorEmail = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WhenTaskIsDeletedResponse> __BuildWhenTaskIsDeleted(WorkflowExpression<string> apiKey,WorkflowExpression<int> duration,WorkflowExpression<string> projectName = null,WorkflowExpression<string> projectId = null,WorkflowExpression<string> assigneeEmail = null,WorkflowExpression<string> creatorEmail = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(apiKey, nameof(apiKey), required: true);
             WorkflowExpression.Validate(duration, nameof(duration), required: true);
@@ -1583,8 +1583,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vineforce
                 if (creatorEmail != null)
                     callPayload.Queries["CreatorEmail"] = ExpressionConverter.Convert(creatorEmail);
                 callPayload.Queries["Duration"] = ExpressionConverter.Convert(duration);
-                return new ApiConnectionTrigger<WhenTaskIsDeletedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WhenTaskIsDeletedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

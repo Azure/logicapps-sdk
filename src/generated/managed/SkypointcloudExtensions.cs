@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -103,13 +103,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnDataflowRefreshComplete))]
-        public IWorkflowTrigger OnDataflowRefreshComplete([WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnDataflowRefreshComplete([WorkflowExpression] Func<string> tenantId,[WorkflowExpression] Func<string> instanceId,[WorkflowExpression] Func<string[]> bodyevents,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOnDataflowRefreshComplete(WorkflowExpression<string> tenantId, WorkflowExpression<string> instanceId, WorkflowExpression<string[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOnDataflowRefreshComplete(WorkflowExpression<string> tenantId,WorkflowExpression<string> instanceId,WorkflowExpression<string[]> bodyevents,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(tenantId, nameof(tenantId), required: true);
             WorkflowExpression.Validate(instanceId, nameof(instanceId), required: true);
@@ -131,18 +131,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnDataflowRefreshFail))]
-        public IWorkflowTrigger OnDataflowRefreshFail([WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnDataflowRefreshFail([WorkflowExpression] Func<string> tenantId,[WorkflowExpression] Func<string> instanceId,[WorkflowExpression] Func<string[]> bodyevents,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOnDataflowRefreshFail(WorkflowExpression<string> tenantId, WorkflowExpression<string> instanceId, WorkflowExpression<string[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOnDataflowRefreshFail(WorkflowExpression<string> tenantId,WorkflowExpression<string> instanceId,WorkflowExpression<string[]> bodyevents,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(tenantId, nameof(tenantId), required: true);
             WorkflowExpression.Validate(instanceId, nameof(instanceId), required: true);
@@ -164,8 +164,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

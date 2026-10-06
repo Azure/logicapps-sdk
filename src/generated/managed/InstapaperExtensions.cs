@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -348,13 +348,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnBookmarkAdded))]
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkAdded([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkAdded([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkAdded(WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkAdded(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
@@ -363,18 +363,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
-                return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnBookmarkRemoved))]
-        public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<int[]> __BuildOnBookmarkRemoved(WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<int[]> __BuildOnBookmarkRemoved(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<int[]>(() =>
@@ -383,42 +383,42 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
-                return new ApiConnectionTrigger<int[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<int[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkArchived(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkArchived(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/bookmark_archive_trigger/1/bookmarks/list/archive";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkLiked(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkLiked(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/bookmark_starred_trigger/1/bookmarks/list/starred";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<FoldersResponse> OnFolderCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FoldersResponse> OnFolderCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/folder_trigger/1/folders/list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<FoldersResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<FoldersResponse>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnBookmarkProgressUpdated))]
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkProgressUpdated(WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkProgressUpdated(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
@@ -427,18 +427,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
-                return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnBookmarkProgressRead))]
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkProgressRead(WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> __BuildOnBookmarkProgressRead(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<BookmarksResponse>(() =>
@@ -447,18 +447,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
-                return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BookmarksResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnHighlightAdded))]
-        public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bookmarkId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded([WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<string> bookmarkId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<HighlighstResponse> __BuildOnHighlightAdded(WorkflowExpression<string> folderId, WorkflowExpression<string> bookmarkId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HighlighstResponse> __BuildOnHighlightAdded(WorkflowExpression<string> folderId,WorkflowExpression<string> bookmarkId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             WorkflowExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
@@ -468,8 +468,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["folder_id"] = ExpressionConverter.Convert(folderId);
-                return new ApiConnectionTrigger<HighlighstResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<HighlighstResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

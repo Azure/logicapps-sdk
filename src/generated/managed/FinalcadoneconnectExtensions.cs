@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -136,13 +136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
     {
 
         [WorkflowExpressionFactory(nameof(__BuildThenObsCreated))]
-        public IWorkflowTrigger ThenObsCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenObsCreated([WorkflowExpression] Func<string> bodyorganizationID,[WorkflowExpression] Func<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildThenObsCreated(WorkflowExpression<string> bodyorganizationID, WorkflowExpression<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildThenObsCreated(WorkflowExpression<string> bodyorganizationID,WorkflowExpression<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
             WorkflowExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
@@ -164,18 +164,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildThenObsUpdated))]
-        public IWorkflowTrigger ThenObsUpdated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenObsUpdated([WorkflowExpression] Func<string> bodyorganizationID,[WorkflowExpression] Func<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildThenObsUpdated(WorkflowExpression<string> bodyorganizationID, WorkflowExpression<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildThenObsUpdated(WorkflowExpression<string> bodyorganizationID,WorkflowExpression<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
             WorkflowExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
@@ -197,18 +197,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildThenFormCreated))]
-        public IWorkflowTrigger ThenFormCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenFormCreated([WorkflowExpression] Func<string> bodyorganizationID,[WorkflowExpression] Func<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildThenFormCreated(WorkflowExpression<string> bodyorganizationID, WorkflowExpression<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildThenFormCreated(WorkflowExpression<string> bodyorganizationID,WorkflowExpression<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
             WorkflowExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
@@ -230,18 +230,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildThenFormUpdated))]
-        public IWorkflowTrigger ThenFormUpdated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenFormUpdated([WorkflowExpression] Func<string> bodyorganizationID,[WorkflowExpression] Func<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildThenFormUpdated(WorkflowExpression<string> bodyorganizationID, WorkflowExpression<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildThenFormUpdated(WorkflowExpression<string> bodyorganizationID,WorkflowExpression<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
             WorkflowExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
@@ -263,18 +263,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildThenDocumentCreated))]
-        public IWorkflowTrigger ThenDocumentCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenDocumentCreated([WorkflowExpression] Func<string> bodyorganizationID,[WorkflowExpression] Func<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildThenDocumentCreated(WorkflowExpression<string> bodyorganizationID, WorkflowExpression<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildThenDocumentCreated(WorkflowExpression<string> bodyorganizationID,WorkflowExpression<string> bodyprojectID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyorganizationID, nameof(bodyorganizationID), required: true);
             WorkflowExpression.Validate(bodyprojectID, nameof(bodyprojectID), required: true);
@@ -296,8 +296,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

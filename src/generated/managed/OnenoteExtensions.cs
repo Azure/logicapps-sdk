@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -236,13 +236,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewSectionInNotebook))]
-        public IBodyWorkflowTrigger<NewSectionResponse> OnNewSectionInNotebook([WorkflowExpression] Func<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSectionResponse> OnNewSectionInNotebook([WorkflowExpression] Func<string> notebookKey,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewSectionResponse> __BuildOnNewSectionInNotebook(WorkflowExpression<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSectionResponse> __BuildOnNewSectionInNotebook(WorkflowExpression<string> notebookKey,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(notebookKey, nameof(notebookKey), required: true);
             return new DeferredBodyTrigger<NewSectionResponse>(() =>
@@ -251,18 +251,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-                return new ApiConnectionTrigger<NewSectionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewSectionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewSectionGroupInNotebook))]
-        public IBodyWorkflowTrigger<NewSectionGroupResponse> OnNewSectionGroupInNotebook([WorkflowExpression] Func<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSectionGroupResponse> OnNewSectionGroupInNotebook([WorkflowExpression] Func<string> notebookKey,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewSectionGroupResponse> __BuildOnNewSectionGroupInNotebook(WorkflowExpression<string> notebookKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSectionGroupResponse> __BuildOnNewSectionGroupInNotebook(WorkflowExpression<string> notebookKey,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(notebookKey, nameof(notebookKey), required: true);
             return new DeferredBodyTrigger<NewSectionGroupResponse>(() =>
@@ -271,18 +271,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
-                return new ApiConnectionTrigger<NewSectionGroupResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewSectionGroupResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewPageInSection))]
-        public IBodyWorkflowTrigger<NewPageResponse> OnNewPageInSection([WorkflowExpression] Func<string> notebookKey, [WorkflowExpression] Func<string> sectionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewPageResponse> OnNewPageInSection([WorkflowExpression] Func<string> notebookKey,[WorkflowExpression] Func<string> sectionId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewPageResponse> __BuildOnNewPageInSection(WorkflowExpression<string> notebookKey, WorkflowExpression<string> sectionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewPageResponse> __BuildOnNewPageInSection(WorkflowExpression<string> notebookKey,WorkflowExpression<string> sectionId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(notebookKey, nameof(notebookKey), required: true);
             WorkflowExpression.Validate(sectionId, nameof(sectionId), required: true);
@@ -293,8 +293,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onenote
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["notebookKey"] = ExpressionConverter.Convert(notebookKey);
                 callPayload.Queries["sectionId"] = ExpressionConverter.Convert(sectionId);
-                return new ApiConnectionTrigger<NewPageResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewPageResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

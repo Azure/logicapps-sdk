@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateSlateTrigger))]
-        public IBodyWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger([WorkflowExpression] Func<string> bodybotAuthorizationToken, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateSlateTriggerResponse> CreateSlateTrigger([WorkflowExpression] Func<string> bodybotAuthorizationToken,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CreateSlateTriggerResponse> __BuildCreateSlateTrigger(WorkflowExpression<string> bodybotAuthorizationToken, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateSlateTriggerResponse> __BuildCreateSlateTrigger(WorkflowExpression<string> bodybotAuthorizationToken,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodybotAuthorizationToken, nameof(bodybotAuthorizationToken), required: true);
             return new DeferredBodyTrigger<CreateSlateTriggerResponse>(() =>
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CreateSlateTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CreateSlateTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

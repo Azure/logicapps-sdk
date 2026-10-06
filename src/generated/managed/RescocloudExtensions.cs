@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -41,13 +41,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerCreate))]
-        public IWorkflowTrigger TriggerCreate([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<actionInput> action, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerCreate([WorkflowExpression] Func<string> entity,[WorkflowExpression] Func<actionInput> action,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTriggerCreate(WorkflowExpression<string> entity, WorkflowExpression<actionInput> action, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTriggerCreate(WorkflowExpression<string> entity,WorkflowExpression<actionInput> action,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(entity, nameof(entity), required: true);
             WorkflowExpression.Validate(action, nameof(action), required: true);
@@ -67,8 +67,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

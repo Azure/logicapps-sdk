@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
     {
 
         [WorkflowExpressionFactory(nameof(__BuildBttnWebhook))]
-        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook([WorkflowExpression] Func<string> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BttnWebhookResponse> BttnWebhook([WorkflowExpression] Func<string> bodyactionConfigId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BttnWebhookResponse> __BuildBttnWebhook(WorkflowExpression<string> bodyactionConfigId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BttnWebhookResponse> __BuildBttnWebhook(WorkflowExpression<string> bodyactionConfigId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyactionConfigId, nameof(bodyactionConfigId), required: true);
             return new DeferredBodyTrigger<BttnWebhookResponse>(() =>
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttnone
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BttnWebhookResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -227,22 +227,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
 
     public class InoreaderTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Subscription[]> OnNewSubscription(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Subscription[]> OnNewSubscription(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/subscription/list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<Subscription[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<Subscription[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUnreadItemCountForStreamExceedsTarget))]
-        public IBodyWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget([WorkflowExpression] Func<string> streamId, [WorkflowExpression] Func<int> target, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnreadCount> OnUnreadItemCountForStreamExceedsTarget([WorkflowExpression] Func<string> streamId,[WorkflowExpression] Func<int> target,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<UnreadCount> __BuildOnUnreadItemCountForStreamExceedsTarget(WorkflowExpression<string> streamId, WorkflowExpression<int> target, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnreadCount> __BuildOnUnreadItemCountForStreamExceedsTarget(WorkflowExpression<string> streamId,WorkflowExpression<int> target,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(streamId, nameof(streamId), required: true);
             WorkflowExpression.Validate(target, nameof(target), required: true);
@@ -253,8 +253,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Inoreader
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["streamId"] = ExpressionConverter.Convert(streamId);
                 callPayload.Queries["target"] = ExpressionConverter.Convert(target);
-                return new ApiConnectionTrigger<UnreadCount>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<UnreadCount>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

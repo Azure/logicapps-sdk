@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -61,13 +61,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateFormWebhook))]
-        public IWorkflowTrigger CreateFormWebhook([WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateFormWebhook([WorkflowExpression] Func<string> formId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateFormWebhook(WorkflowExpression<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateFormWebhook(WorkflowExpression<string> formId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(formId, nameof(formId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

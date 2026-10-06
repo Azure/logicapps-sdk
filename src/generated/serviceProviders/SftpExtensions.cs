@@ -428,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenFileIsAddedOrModified))]
@@ -473,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFileIsAddedOrModifiedOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

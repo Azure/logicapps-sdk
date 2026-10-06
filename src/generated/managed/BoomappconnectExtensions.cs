@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -493,24 +493,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boomappconnect
 
     public class BoomappconnectTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse> GESTRESPONSESTRIGGER(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GESTRESPONSESTRIGGERResponse> GESTRESPONSESTRIGGER(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/get_responses";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["ignore_previous"] = Convert.ToString(true);
             callPayload.Queries["mark_as_read"] = Convert.ToString(true);
-            return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<GESTRESPONSESTRIGGERResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse> GETDRSTRIGGER(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GETDRSTRIGGERResponse> GETDRSTRIGGER(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/get_all_new_drs";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["ignore_previous"] = Convert.ToString(true);
             callPayload.Queries["drs_after"] = Convert.ToString("1990-01-01 00:00:00");
-            return new ApiConnectionTrigger<GETDRSTRIGGERResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<GETDRSTRIGGERResponse>(callPayload, recurrence: recurrence);
         }
     }
 

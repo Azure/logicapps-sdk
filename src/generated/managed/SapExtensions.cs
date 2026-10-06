@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -690,13 +690,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
     {
 
         [WorkflowExpressionFactory(nameof(__BuildSubscribe))]
-        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe([WorkflowExpression] Func<string> gatewayHost, [WorkflowExpression] Func<string> gatewayService, [WorkflowExpression] Func<string> programId, [WorkflowExpression] Func<string[]> subscriptionsapActions = null, [WorkflowExpression] Func<subscriptioniDOCFormatInput> subscriptioniDOCFormat = null, [WorkflowExpression] Func<bool> subscriptionreceiveIDOCsWithUnreleasedSegments = null, [WorkflowExpression] Func<string> sncPartnerNames = null, [WorkflowExpression] Func<int> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse> Subscribe([WorkflowExpression] Func<string> gatewayHost,[WorkflowExpression] Func<string> gatewayService,[WorkflowExpression] Func<string> programId,[WorkflowExpression] Func<string[]> subscriptionsapActions = null,[WorkflowExpression] Func<subscriptioniDOCFormatInput> subscriptioniDOCFormat = null,[WorkflowExpression] Func<bool> subscriptionreceiveIDOCsWithUnreleasedSegments = null,[WorkflowExpression] Func<string> sncPartnerNames = null,[WorkflowExpression] Func<int> degreeOfParallelism = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SubscribeResponse> __BuildSubscribe(WorkflowExpression<string> gatewayHost, WorkflowExpression<string> gatewayService, WorkflowExpression<string> programId, WorkflowExpression<string[]> subscriptionsapActions = null, WorkflowExpression<subscriptioniDOCFormatInput> subscriptioniDOCFormat = null, WorkflowExpression<bool> subscriptionreceiveIDOCsWithUnreleasedSegments = null, WorkflowExpression<string> sncPartnerNames = null, WorkflowExpression<int> degreeOfParallelism = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SubscribeResponse> __BuildSubscribe(WorkflowExpression<string> gatewayHost,WorkflowExpression<string> gatewayService,WorkflowExpression<string> programId,WorkflowExpression<string[]> subscriptionsapActions = null,WorkflowExpression<subscriptioniDOCFormatInput> subscriptioniDOCFormat = null,WorkflowExpression<bool> subscriptionreceiveIDOCsWithUnreleasedSegments = null,WorkflowExpression<string> sncPartnerNames = null,WorkflowExpression<int> degreeOfParallelism = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(gatewayHost, nameof(gatewayHost), required: true);
             WorkflowExpression.Validate(gatewayService, nameof(gatewayService), required: true);
@@ -746,8 +746,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<SubscribeResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<SubscribeResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

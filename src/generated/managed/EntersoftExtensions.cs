@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -3720,13 +3720,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     {
 
         [WorkflowExpressionFactory(nameof(__BuildESBusinessHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost([WorkflowExpression] Func<registrationbusinessEventTypeInput> registrationbusinessEventType, [WorkflowExpression] Func<string> registrationcontext = null, [WorkflowExpression] Func<double> registrationvalue = null, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost([WorkflowExpression] Func<registrationbusinessEventTypeInput> registrationbusinessEventType,[WorkflowExpression] Func<string> registrationcontext = null,[WorkflowExpression] Func<double> registrationvalue = null,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> __BuildESBusinessHookPost(WorkflowExpression<registrationbusinessEventTypeInput> registrationbusinessEventType, WorkflowExpression<string> registrationcontext = null, WorkflowExpression<double> registrationvalue = null, WorkflowExpression<string> registrationexternalID = null, WorkflowExpression<string> registrationdescription = null, WorkflowExpression<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> __BuildESBusinessHookPost(WorkflowExpression<registrationbusinessEventTypeInput> registrationbusinessEventType,WorkflowExpression<string> registrationcontext = null,WorkflowExpression<double> registrationvalue = null,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(registrationbusinessEventType, nameof(registrationbusinessEventType), required: true);
             WorkflowExpression.Validate(registrationcontext, nameof(registrationcontext), required: false);
@@ -3800,18 +3800,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     callPayload.Body = registration;
                 }
 
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildESPodHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost([WorkflowExpression] Func<registrationstateInput> registrationstate = null, [WorkflowExpression] Func<registrationpackageTypeInput> registrationpackageType = null, [WorkflowExpression] Func<string> registrationconveyanceLicencePlate = null, [WorkflowExpression] Func<string> registrationbranchID = null, [WorkflowExpression] Func<string> registrationtradeAccountName = null, [WorkflowExpression] Func<string> registrationdriverCode = null, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost([WorkflowExpression] Func<registrationstateInput> registrationstate = null,[WorkflowExpression] Func<registrationpackageTypeInput> registrationpackageType = null,[WorkflowExpression] Func<string> registrationconveyanceLicencePlate = null,[WorkflowExpression] Func<string> registrationbranchID = null,[WorkflowExpression] Func<string> registrationtradeAccountName = null,[WorkflowExpression] Func<string> registrationdriverCode = null,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> __BuildESPodHookPost(WorkflowExpression<registrationstateInput> registrationstate = null, WorkflowExpression<registrationpackageTypeInput> registrationpackageType = null, WorkflowExpression<string> registrationconveyanceLicencePlate = null, WorkflowExpression<string> registrationbranchID = null, WorkflowExpression<string> registrationtradeAccountName = null, WorkflowExpression<string> registrationdriverCode = null, WorkflowExpression<string> registrationexternalID = null, WorkflowExpression<string> registrationdescription = null, WorkflowExpression<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> __BuildESPodHookPost(WorkflowExpression<registrationstateInput> registrationstate = null,WorkflowExpression<registrationpackageTypeInput> registrationpackageType = null,WorkflowExpression<string> registrationconveyanceLicencePlate = null,WorkflowExpression<string> registrationbranchID = null,WorkflowExpression<string> registrationtradeAccountName = null,WorkflowExpression<string> registrationdriverCode = null,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(registrationstate, nameof(registrationstate), required: false);
             WorkflowExpression.Validate(registrationpackageType, nameof(registrationpackageType), required: false);
@@ -3920,18 +3920,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     callPayload.Body = registration;
                 }
 
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildESRFAHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost([WorkflowExpression] Func<string> registrationrequestedBy = null, [WorkflowExpression] Func<registrationpriorityInput> registrationpriority = null, [WorkflowExpression] Func<string> registrationrequestClass = null, [WorkflowExpression] Func<string> registrationrequestCategory = null, [WorkflowExpression] Func<double> registrationnumericValue = null, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost([WorkflowExpression] Func<string> registrationrequestedBy = null,[WorkflowExpression] Func<registrationpriorityInput> registrationpriority = null,[WorkflowExpression] Func<string> registrationrequestClass = null,[WorkflowExpression] Func<string> registrationrequestCategory = null,[WorkflowExpression] Func<double> registrationnumericValue = null,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> __BuildESRFAHookPost(WorkflowExpression<string> registrationrequestedBy = null, WorkflowExpression<registrationpriorityInput> registrationpriority = null, WorkflowExpression<string> registrationrequestClass = null, WorkflowExpression<string> registrationrequestCategory = null, WorkflowExpression<double> registrationnumericValue = null, WorkflowExpression<string> registrationexternalID = null, WorkflowExpression<string> registrationdescription = null, WorkflowExpression<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> __BuildESRFAHookPost(WorkflowExpression<string> registrationrequestedBy = null,WorkflowExpression<registrationpriorityInput> registrationpriority = null,WorkflowExpression<string> registrationrequestClass = null,WorkflowExpression<string> registrationrequestCategory = null,WorkflowExpression<double> registrationnumericValue = null,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(registrationrequestedBy, nameof(registrationrequestedBy), required: false);
             WorkflowExpression.Validate(registrationpriority, nameof(registrationpriority), required: false);
@@ -4023,18 +4023,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     callPayload.Body = registration;
                 }
 
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildESHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost([WorkflowExpression] Func<registrationentityTypeInput> registrationentityType, [WorkflowExpression] Func<registrationeventTypeInput> registrationeventType, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost([WorkflowExpression] Func<registrationentityTypeInput> registrationentityType,[WorkflowExpression] Func<registrationeventTypeInput> registrationeventType,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> __BuildESHookPost(WorkflowExpression<registrationentityTypeInput> registrationentityType, WorkflowExpression<registrationeventTypeInput> registrationeventType, WorkflowExpression<string> registrationexternalID = null, WorkflowExpression<string> registrationdescription = null, WorkflowExpression<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> __BuildESHookPost(WorkflowExpression<registrationentityTypeInput> registrationentityType,WorkflowExpression<registrationeventTypeInput> registrationeventType,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(registrationentityType, nameof(registrationentityType), required: true);
             WorkflowExpression.Validate(registrationeventType, nameof(registrationeventType), required: true);
@@ -4087,18 +4087,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     callPayload.Body = registration;
                 }
 
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildESSystemHookPost))]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost([WorkflowExpression] Func<registrationsystemEventTypeInputItem[]> registrationsystemEventType, [WorkflowExpression] Func<string> registrationotherEvent = null, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost([WorkflowExpression] Func<registrationsystemEventTypeInputItem[]> registrationsystemEventType,[WorkflowExpression] Func<string> registrationotherEvent = null,[WorkflowExpression] Func<string> registrationexternalID = null,[WorkflowExpression] Func<string> registrationdescription = null,[WorkflowExpression] Func<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> __BuildESSystemHookPost(WorkflowExpression<registrationsystemEventTypeInputItem[]> registrationsystemEventType, WorkflowExpression<string> registrationotherEvent = null, WorkflowExpression<string> registrationexternalID = null, WorkflowExpression<string> registrationdescription = null, WorkflowExpression<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> __BuildESSystemHookPost(WorkflowExpression<registrationsystemEventTypeInputItem[]> registrationsystemEventType,WorkflowExpression<string> registrationotherEvent = null,WorkflowExpression<string> registrationexternalID = null,WorkflowExpression<string> registrationdescription = null,WorkflowExpression<bool> registrationisActive = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(registrationsystemEventType, nameof(registrationsystemEventType), required: true);
             WorkflowExpression.Validate(registrationotherEvent, nameof(registrationotherEvent), required: false);
@@ -4155,8 +4155,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                     callPayload.Body = registration;
                 }
 
-                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

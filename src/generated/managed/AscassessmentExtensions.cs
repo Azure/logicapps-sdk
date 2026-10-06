@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascassessment
 
     public class AscassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ASCAssessmentTriggerSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASCAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/Microsoft.Security/Assessment/subscribe";
             var apiCallHttpMethod = "post";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascassessment
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 }

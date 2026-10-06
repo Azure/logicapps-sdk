@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -182,36 +182,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
 
     public class IntercomTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TrigLeadResponse[]> TrigNewLead(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigLeadResponse[]> TrigNewLead(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_lead_trigger/contacts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigNewUser(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigNewUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_user_trigger/users";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigUpdateUser(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigUserResponse[]> TrigUpdateUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/update_user_trigger/users";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TrigConversationResponse[]> TrigNewConversation(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TrigConversationResponse[]> TrigNewConversation(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_conversation_trigger/conversations";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigConversationResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TrigConversationResponse[]>(callPayload, recurrence: recurrence);
         }
     }
 

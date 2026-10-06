@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -499,13 +499,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnItemCreated))]
-        public IBodyWorkflowTrigger<JToken> OnItemCreated([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemCreated([WorkflowExpression] Func<string> application,[WorkflowExpression] Func<string> listID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnItemCreated(WorkflowExpression<string> application, WorkflowExpression<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildOnItemCreated(WorkflowExpression<string> application,WorkflowExpression<string> listID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(application, nameof(application), required: true);
             WorkflowExpression.Validate(listID, nameof(listID), required: true);
@@ -525,18 +525,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnItemModified))]
-        public IBodyWorkflowTrigger<JToken> OnItemModified([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemModified([WorkflowExpression] Func<string> application,[WorkflowExpression] Func<string> listID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnItemModified(WorkflowExpression<string> application, WorkflowExpression<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildOnItemModified(WorkflowExpression<string> application,WorkflowExpression<string> listID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(application, nameof(application), required: true);
             WorkflowExpression.Validate(listID, nameof(listID), required: true);
@@ -556,18 +556,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnItemCreatedModified))]
-        public IBodyWorkflowTrigger<JToken> OnItemCreatedModified([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemCreatedModified([WorkflowExpression] Func<string> application,[WorkflowExpression] Func<string> listID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnItemCreatedModified(WorkflowExpression<string> application, WorkflowExpression<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildOnItemCreatedModified(WorkflowExpression<string> application,WorkflowExpression<string> listID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(application, nameof(application), required: true);
             WorkflowExpression.Validate(listID, nameof(listID), required: true);
@@ -587,18 +587,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnItemDeleted))]
-        public IBodyWorkflowTrigger<JToken> OnItemDeleted([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemDeleted([WorkflowExpression] Func<string> application,[WorkflowExpression] Func<string> listID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnItemDeleted(WorkflowExpression<string> application, WorkflowExpression<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildOnItemDeleted(WorkflowExpression<string> application,WorkflowExpression<string> listID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(application, nameof(application), required: true);
             WorkflowExpression.Validate(listID, nameof(listID), required: true);
@@ -618,8 +618,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

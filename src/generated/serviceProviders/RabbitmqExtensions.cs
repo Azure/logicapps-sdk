@@ -148,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveRabbitMQMessagesOutput>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPeeklockRabbitMQMessages))]
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Rabbitmq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PeeklockRabbitMQMessagesOutput>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

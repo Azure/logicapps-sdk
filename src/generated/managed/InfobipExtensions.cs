@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -108,13 +108,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateInfobipSMSWebhook))]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> CreateInfobipSMSWebhook([WorkflowExpression] Func<string> requestBodyOfWebhookphoneNumber, [WorkflowExpression] Func<string> requestBodyOfWebhookkeyword, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> CreateInfobipSMSWebhook([WorkflowExpression] Func<string> requestBodyOfWebhookphoneNumber,[WorkflowExpression] Func<string> requestBodyOfWebhookkeyword,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildCreateInfobipSMSWebhook(WorkflowExpression<string> requestBodyOfWebhookphoneNumber, WorkflowExpression<string> requestBodyOfWebhookkeyword, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildCreateInfobipSMSWebhook(WorkflowExpression<string> requestBodyOfWebhookphoneNumber,WorkflowExpression<string> requestBodyOfWebhookkeyword,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestBodyOfWebhookphoneNumber, nameof(requestBodyOfWebhookphoneNumber), required: true);
             WorkflowExpression.Validate(requestBodyOfWebhookkeyword, nameof(requestBodyOfWebhookkeyword), required: true);
@@ -136,8 +136,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

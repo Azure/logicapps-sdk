@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -267,13 +267,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewItems))]
-        public IBodyWorkflowTrigger<SqlItemsList> OnNewItems([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SqlItemsList> OnNewItems([WorkflowExpression] Func<string> server,[WorkflowExpression] Func<string> database,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> filter = null,[WorkflowExpression] Func<int> top = null,[WorkflowExpression] Func<string> orderby = null,[WorkflowExpression] Func<string> select = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SqlItemsList> __BuildOnNewItems(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<int> top = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SqlItemsList> __BuildOnNewItems(WorkflowExpression<string> server,WorkflowExpression<string> database,WorkflowExpression<string> table,WorkflowExpression<string> filter = null,WorkflowExpression<int> top = null,WorkflowExpression<string> orderby = null,WorkflowExpression<string> select = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(server, nameof(server), required: true);
             WorkflowExpression.Validate(database, nameof(database), required: true);
@@ -295,18 +295,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
                     callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
                 if (select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                return new ApiConnectionTrigger<SqlItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<SqlItemsList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedItems))]
-        public IBodyWorkflowTrigger<SqlItemsList> OnUpdatedItems([WorkflowExpression] Func<string> server, [WorkflowExpression] Func<string> database, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SqlItemsList> OnUpdatedItems([WorkflowExpression] Func<string> server,[WorkflowExpression] Func<string> database,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> filter = null,[WorkflowExpression] Func<int> top = null,[WorkflowExpression] Func<string> orderby = null,[WorkflowExpression] Func<string> select = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SqlItemsList> __BuildOnUpdatedItems(WorkflowExpression<string> server, WorkflowExpression<string> database, WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<int> top = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SqlItemsList> __BuildOnUpdatedItems(WorkflowExpression<string> server,WorkflowExpression<string> database,WorkflowExpression<string> table,WorkflowExpression<string> filter = null,WorkflowExpression<int> top = null,WorkflowExpression<string> orderby = null,WorkflowExpression<string> select = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(server, nameof(server), required: true);
             WorkflowExpression.Validate(database, nameof(database), required: true);
@@ -328,8 +328,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sql
                     callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
                 if (select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                return new ApiConnectionTrigger<SqlItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<SqlItemsList>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

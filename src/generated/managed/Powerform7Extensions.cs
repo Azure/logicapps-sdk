@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
-        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> wPSITEURL, [WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> wPSITEURL,[WorkflowExpression] Func<string> formId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateWebhook(WorkflowExpression<string> wPSITEURL, WorkflowExpression<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateWebhook(WorkflowExpression<string> wPSITEURL,WorkflowExpression<string> formId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
             WorkflowExpression.Validate(formId, nameof(formId), required: true);
@@ -88,8 +88,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
                     callPayload.Body = callbackUrl;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -581,7 +581,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
 
     public class TeamworkTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> WebhookCreateProject(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> WebhookCreateProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook1/webhooks.json";
             var apiCallHttpMethod = "post";
@@ -609,10 +609,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> WebhookCreateTask(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> WebhookCreateTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook2/webhooks.json";
             var apiCallHttpMethod = "post";
@@ -640,10 +640,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> WebhookCreateUser(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> WebhookCreateUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook3/webhooks.json";
             var apiCallHttpMethod = "post";
@@ -671,7 +671,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
     }
 

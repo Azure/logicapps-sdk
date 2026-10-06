@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -324,13 +324,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCaseEventTrigger))]
-        public IWorkflowTrigger CaseEventTrigger([WorkflowExpression] Func<string> eventPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseEventTrigger([WorkflowExpression] Func<string> eventPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCaseEventTrigger(WorkflowExpression<string> eventPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCaseEventTrigger(WorkflowExpression<string> eventPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventPath, nameof(eventPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -348,8 +348,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

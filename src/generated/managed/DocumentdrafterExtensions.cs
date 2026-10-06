@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -467,13 +467,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerSubmitPolling))]
-        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> scope, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling([WorkflowExpression] Func<string> siteUrl,[WorkflowExpression] Func<string> scope,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> __BuildTriggerSubmitPolling(WorkflowExpression<string> siteUrl, WorkflowExpression<string> scope, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> __BuildTriggerSubmitPolling(WorkflowExpression<string> siteUrl,WorkflowExpression<string> scope,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
             WorkflowExpression.Validate(scope, nameof(scope), required: true);
@@ -484,18 +484,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
                 callPayload.Queries["Scope"] = ExpressionConverter.Convert(scope);
-                return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFlowTriggerPolling))]
-        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling([WorkflowExpression] Func<string> flowKey, [WorkflowExpression] Func<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling([WorkflowExpression] Func<string> flowKey,[WorkflowExpression] Func<string> siteUrl,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> __BuildFlowTriggerPolling(WorkflowExpression<string> flowKey, WorkflowExpression<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> __BuildFlowTriggerPolling(WorkflowExpression<string> flowKey,WorkflowExpression<string> siteUrl,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(flowKey, nameof(flowKey), required: true);
             WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
@@ -506,8 +506,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FlowKey"] = ExpressionConverter.Convert(flowKey);
                 callPayload.Queries["SiteUrl"] = ExpressionConverter.Convert(siteUrl);
-                return new ApiConnectionTrigger<FlowTriggerPollingResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<FlowTriggerPollingResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

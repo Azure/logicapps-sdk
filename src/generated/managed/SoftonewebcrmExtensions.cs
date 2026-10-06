@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -4692,13 +4692,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCallCreated))]
-        public IWorkflowTrigger CallCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CallCreated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCallCreated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCallCreated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4717,18 +4717,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOpportunityUpdated))]
-        public IWorkflowTrigger OpportunityUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OpportunityUpdated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOpportunityUpdated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOpportunityUpdated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4747,18 +4747,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOpportunityDeleted))]
-        public IWorkflowTrigger OpportunityDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OpportunityDeleted([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOpportunityDeleted(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOpportunityDeleted(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4777,18 +4777,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOpportunityCreated))]
-        public IWorkflowTrigger OpportunityCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OpportunityCreated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOpportunityCreated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOpportunityCreated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4807,18 +4807,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildLeadUpdated))]
-        public IWorkflowTrigger LeadUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LeadUpdated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildLeadUpdated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildLeadUpdated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4837,18 +4837,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildLeadDeleted))]
-        public IWorkflowTrigger LeadDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LeadDeleted([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildLeadDeleted(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildLeadDeleted(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4867,18 +4867,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildLeadCreated))]
-        public IWorkflowTrigger LeadCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LeadCreated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildLeadCreated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildLeadCreated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4897,18 +4897,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTaskUpdated))]
-        public IWorkflowTrigger TaskUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TaskUpdated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTaskUpdated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTaskUpdated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4927,18 +4927,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTaskDeleted))]
-        public IWorkflowTrigger TaskDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TaskDeleted([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTaskDeleted(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTaskDeleted(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4957,18 +4957,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTaskCreated))]
-        public IWorkflowTrigger TaskCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TaskCreated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTaskCreated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTaskCreated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -4987,18 +4987,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventUpdated))]
-        public IWorkflowTrigger EventUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventUpdated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventUpdated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventUpdated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -5017,18 +5017,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventDeleted))]
-        public IWorkflowTrigger EventDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventDeleted([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventDeleted(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventDeleted(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -5047,18 +5047,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventCreated))]
-        public IWorkflowTrigger EventCreated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventCreated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventCreated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventCreated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -5077,18 +5077,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCallDeleted))]
-        public IWorkflowTrigger CallDeleted([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CallDeleted([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCallDeleted(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCallDeleted(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -5107,18 +5107,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCallUpdated))]
-        public IWorkflowTrigger CallUpdated([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CallUpdated([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCallUpdated(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCallUpdated(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -5137,8 +5137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

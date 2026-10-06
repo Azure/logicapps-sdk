@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -78,12 +78,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
 
     public class PureleadsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse> CreatedLeadSubmission(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse> CreatedLeadSubmission(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/contacts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, recurrence: recurrence);
         }
     }
 

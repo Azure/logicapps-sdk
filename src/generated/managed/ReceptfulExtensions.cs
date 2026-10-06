@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
     {
 
         [WorkflowExpressionFactory(nameof(__BuildVisitEvents))]
-        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents([WorkflowExpression] Func<bodyEventInput> bodyEvent, [WorkflowExpression] Func<string> bodyregionId = null, [WorkflowExpression] Func<string> bodylocationId = null, [WorkflowExpression] Func<string> bodybuttonId = null, [WorkflowExpression] Func<string> bodyconfigId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VisitEventsResponse> VisitEvents([WorkflowExpression] Func<bodyEventInput> bodyEvent,[WorkflowExpression] Func<string> bodyregionId = null,[WorkflowExpression] Func<string> bodylocationId = null,[WorkflowExpression] Func<string> bodybuttonId = null,[WorkflowExpression] Func<string> bodyconfigId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VisitEventsResponse> __BuildVisitEvents(WorkflowExpression<bodyEventInput> bodyEvent, WorkflowExpression<string> bodyregionId = null, WorkflowExpression<string> bodylocationId = null, WorkflowExpression<string> bodybuttonId = null, WorkflowExpression<string> bodyconfigId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VisitEventsResponse> __BuildVisitEvents(WorkflowExpression<bodyEventInput> bodyEvent,WorkflowExpression<string> bodyregionId = null,WorkflowExpression<string> bodylocationId = null,WorkflowExpression<string> bodybuttonId = null,WorkflowExpression<string> bodyconfigId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
             WorkflowExpression.Validate(bodyregionId, nameof(bodyregionId), required: false);
@@ -71,8 +71,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Receptful
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<VisitEventsResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VisitEventsResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

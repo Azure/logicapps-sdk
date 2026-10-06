@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -650,13 +650,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEmailInGroup))]
-        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> OnNewEmailInGroup([WorkflowExpression] Func<string> groupId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> __BuildOnNewEmailInGroup(WorkflowExpression<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEmailInGroupResponse> __BuildOnNewEmailInGroup(WorkflowExpression<string> groupId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnNewEmailInGroupResponse>(() =>
@@ -667,8 +667,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groupsmail
                 callPayload.Queries["$select"] = Convert.ToString("id,lastDeliveredDateTime");
                 callPayload.Queries["$expand"] = Convert.ToString("threads($select=id;$expand=posts($select=id,createdDateTime))");
                 callPayload.Queries["$orderby"] = Convert.ToString("lastDeliveredDateTime desc");
-                return new ApiConnectionTrigger<OnNewEmailInGroupResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnNewEmailInGroupResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

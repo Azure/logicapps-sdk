@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -87,13 +87,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEvents))]
-        public IBodyWorkflowTrigger<Event[]> OnNewEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> contentSchema = null, [WorkflowExpression] Func<string> consumerGroupName = null, [WorkflowExpression] Func<string> minimumPartitionKey = null, [WorkflowExpression] Func<string> maximumPartitionKey = null, [WorkflowExpression] Func<int> maximumEventsCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Event[]> OnNewEvents([WorkflowExpression] Func<string> eventHubName,[WorkflowExpression] Func<string> contentType = null,[WorkflowExpression] Func<string> contentSchema = null,[WorkflowExpression] Func<string> consumerGroupName = null,[WorkflowExpression] Func<string> minimumPartitionKey = null,[WorkflowExpression] Func<string> maximumPartitionKey = null,[WorkflowExpression] Func<int> maximumEventsCount = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Event[]> __BuildOnNewEvents(WorkflowExpression<string> eventHubName, WorkflowExpression<string> contentType = null, WorkflowExpression<string> contentSchema = null, WorkflowExpression<string> consumerGroupName = null, WorkflowExpression<string> minimumPartitionKey = null, WorkflowExpression<string> maximumPartitionKey = null, WorkflowExpression<int> maximumEventsCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Event[]> __BuildOnNewEvents(WorkflowExpression<string> eventHubName,WorkflowExpression<string> contentType = null,WorkflowExpression<string> contentSchema = null,WorkflowExpression<string> consumerGroupName = null,WorkflowExpression<string> minimumPartitionKey = null,WorkflowExpression<string> maximumPartitionKey = null,WorkflowExpression<int> maximumEventsCount = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventHubName, nameof(eventHubName), required: true);
             WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
@@ -122,8 +122,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventhubs
                 callPayload.Queries["maximumEventsCount"] = Convert.ToString(50);
                 if (maximumEventsCount != null)
                     callPayload.Queries["maximumEventsCount"] = ExpressionConverter.Convert(maximumEventsCount);
-                return new ApiConnectionTrigger<Event[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<Event[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

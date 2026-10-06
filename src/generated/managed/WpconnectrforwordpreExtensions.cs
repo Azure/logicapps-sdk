@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -176,13 +176,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateTrigger))]
-        public IWorkflowTrigger CreateTrigger([WorkflowExpression] Func<string> bodyresourceType, [WorkflowExpression] Func<string> bodytriggerEvent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateTrigger([WorkflowExpression] Func<string> bodyresourceType,[WorkflowExpression] Func<string> bodytriggerEvent,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateTrigger(WorkflowExpression<string> bodyresourceType, WorkflowExpression<string> bodytriggerEvent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateTrigger(WorkflowExpression<string> bodyresourceType,WorkflowExpression<string> bodytriggerEvent,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: true);
             WorkflowExpression.Validate(bodytriggerEvent, nameof(bodytriggerEvent), required: true);
@@ -204,8 +204,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

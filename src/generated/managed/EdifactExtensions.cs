@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -492,13 +492,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnModifiedControlNumber))]
-        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber([WorkflowExpression] Func<string> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> OnModifiedControlNumber([WorkflowExpression] Func<string> startSyncTime = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> __BuildOnModifiedControlNumber(WorkflowExpression<string> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReplicableControlNumberContent[]> __BuildOnModifiedControlNumber(WorkflowExpression<string> startSyncTime = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(startSyncTime, nameof(startSyncTime), required: false);
             return new DeferredBodyTrigger<ReplicableControlNumberContent[]>(() =>
@@ -508,8 +508,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edifact
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (startSyncTime != null)
                     callPayload.Queries["startSyncTime"] = ExpressionConverter.Convert(startSyncTime);
-                return new ApiConnectionTrigger<ReplicableControlNumberContent[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ReplicableControlNumberContent[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

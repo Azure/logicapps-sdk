@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCCEEventTrigger))]
-        public IWorkflowTrigger CCEEventTrigger([WorkflowExpression] Func<bodyactionInput> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CCEEventTrigger([WorkflowExpression] Func<bodyactionInput> bodyaction = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCCEEventTrigger(WorkflowExpression<bodyactionInput> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCCEEventTrigger(WorkflowExpression<bodyactionInput> bodyaction = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyaction, nameof(bodyaction), required: false);
             return new DeferredWorkflowTrigger(() =>
@@ -45,18 +45,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildHorizonEventTrigger))]
-        public IWorkflowTrigger HorizonEventTrigger([WorkflowExpression] Func<string> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger HorizonEventTrigger([WorkflowExpression] Func<string> bodyaction = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildHorizonEventTrigger(WorkflowExpression<string> bodyaction = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildHorizonEventTrigger(WorkflowExpression<string> bodyaction = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyaction, nameof(bodyaction), required: false);
             return new DeferredWorkflowTrigger(() =>
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

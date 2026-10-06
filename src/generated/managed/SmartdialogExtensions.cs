@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -705,13 +705,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewMessage))]
-        public IBodyWorkflowTrigger<NewMessageResponse> NewMessage([WorkflowExpression] Func<string> customer, [WorkflowExpression] Func<string> service, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMessageResponse> NewMessage([WorkflowExpression] Func<string> customer,[WorkflowExpression] Func<string> service,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewMessageResponse> __BuildNewMessage(WorkflowExpression<string> customer, WorkflowExpression<string> service, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMessageResponse> __BuildNewMessage(WorkflowExpression<string> customer,WorkflowExpression<string> service,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(customer, nameof(customer), required: true);
             WorkflowExpression.Validate(service, nameof(service), required: true);
@@ -746,8 +746,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
                     callPayload.Body = createWebhookRequestBody;
                 }
 
-                return new ApiConnectionTrigger<NewMessageResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewMessageResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

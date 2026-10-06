@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -121,13 +121,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateWebhookSubscription))]
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> CreateWebhookSubscription([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> __BuildCreateWebhookSubscription(WorkflowExpression<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionResponse> __BuildCreateWebhookSubscription(WorkflowExpression<bodyeventsInputItem[]> bodyevents,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyevents, nameof(bodyevents), required: true);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionResponse>(() =>
@@ -148,18 +148,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CreateWebhookSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateWebhookSubscriptionRoutingFormSubmission))]
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> CreateWebhookSubscriptionRoutingFormSubmission([WorkflowExpression] Func<bodyeventsInputItem[]> bodyevents,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> __BuildCreateWebhookSubscriptionRoutingFormSubmission(WorkflowExpression<bodyeventsInputItem[]> bodyevents, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse> __BuildCreateWebhookSubscriptionRoutingFormSubmission(WorkflowExpression<bodyeventsInputItem[]> bodyevents,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyevents, nameof(bodyevents), required: true);
             return new DeferredBodyTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(() =>
@@ -180,8 +180,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Calendlyv2
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CreateWebhookSubscriptionRoutingFormSubmissionResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

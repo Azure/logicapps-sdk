@@ -1255,13 +1255,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewCardInBoard))]
-        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInBoard([WorkflowExpression] Func<string> boardId, string triggerName = null)
+        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInBoard([WorkflowExpression] Func<string> boardId)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CardInAction[]> __BuildOnNewCardInBoard(WorkflowExpression<string> boardId, string triggerName = null)
+        public IBodyWorkflowTrigger<CardInAction[]> __BuildOnNewCardInBoard(WorkflowExpression<string> boardId)
         {
             WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
             return new DeferredBodyTrigger<CardInAction[]>(() =>
@@ -1297,17 +1297,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
                 }
 
                 return new ApiConnectionTrigger<CardInAction[]>(input);
-            }, triggerName);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewCardInList))]
-        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInList([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> listId, string triggerName = null)
+        public IBodyWorkflowTrigger<CardInAction[]> OnNewCardInList([WorkflowExpression] Func<string> boardId,[WorkflowExpression] Func<string> listId)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CardInAction[]> __BuildOnNewCardInList(WorkflowExpression<string> boardId, WorkflowExpression<string> listId, string triggerName = null)
+        public IBodyWorkflowTrigger<CardInAction[]> __BuildOnNewCardInList(WorkflowExpression<string> boardId,WorkflowExpression<string> listId)
         {
             WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
             WorkflowExpression.Validate(listId, nameof(listId), required: true);
@@ -1346,7 +1346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
                 }
 
                 return new ApiConnectionTrigger<CardInAction[]>(input);
-            }, triggerName);
+            });
         }
     }
 

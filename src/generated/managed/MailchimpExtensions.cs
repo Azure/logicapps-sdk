@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -973,13 +973,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnMemberSubscribed))]
-        public IBodyWorkflowTrigger<GetMembersResponseModel> OnMemberSubscribed([WorkflowExpression] Func<string> listId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetMembersResponseModel> OnMemberSubscribed([WorkflowExpression] Func<string> listId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetMembersResponseModel> __BuildOnMemberSubscribed(WorkflowExpression<string> listId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetMembersResponseModel> __BuildOnMemberSubscribed(WorkflowExpression<string> listId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(listId, nameof(listId), required: true);
             return new DeferredBodyTrigger<GetMembersResponseModel>(() =>
@@ -987,16 +987,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailchimp
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/lists/{0}/members", ExpressionConverter.ConvertWithUrlEncoding(listId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<GetMembersResponseModel>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<GetMembersResponseModel>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<GetListsResponseModel> OnCreateList(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetListsResponseModel> OnCreateList(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/lists";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<GetListsResponseModel>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<GetListsResponseModel>(callPayload, recurrence: recurrence);
         }
     }
 

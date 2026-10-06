@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -3690,13 +3690,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhook))]
-        public IWorkflowTrigger Webhook([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Webhook([WorkflowExpression] Func<bodyObjectInput> bodyObject,[WorkflowExpression] Func<string> bodycondition = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhook(WorkflowExpression<bodyObjectInput> bodyObject, WorkflowExpression<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhook(WorkflowExpression<bodyObjectInput> bodyObject,WorkflowExpression<string> bodycondition = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
             WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
@@ -3733,18 +3733,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookOnDelete))]
-        public IWorkflowTrigger WebhookOnDelete([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnDelete([WorkflowExpression] Func<bodyObjectInput> bodyObject,[WorkflowExpression] Func<string> bodycondition = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookOnDelete(WorkflowExpression<bodyObjectInput> bodyObject, WorkflowExpression<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookOnDelete(WorkflowExpression<bodyObjectInput> bodyObject,WorkflowExpression<string> bodycondition = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
             WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
@@ -3781,18 +3781,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookOnInsert))]
-        public IWorkflowTrigger WebhookOnInsert([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnInsert([WorkflowExpression] Func<bodyObjectInput> bodyObject,[WorkflowExpression] Func<string> bodycondition = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookOnInsert(WorkflowExpression<bodyObjectInput> bodyObject, WorkflowExpression<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookOnInsert(WorkflowExpression<bodyObjectInput> bodyObject,WorkflowExpression<string> bodycondition = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
             WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
@@ -3829,18 +3829,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookOnUpdate))]
-        public IWorkflowTrigger WebhookOnUpdate([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnUpdate([WorkflowExpression] Func<bodyObjectInput> bodyObject,[WorkflowExpression] Func<string> bodycondition = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookOnUpdate(WorkflowExpression<bodyObjectInput> bodyObject, WorkflowExpression<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookOnUpdate(WorkflowExpression<bodyObjectInput> bodyObject,WorkflowExpression<string> bodycondition = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyObject, nameof(bodyObject), required: true);
             WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
@@ -3877,8 +3877,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
 
     public class RequestorTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TicketCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TicketCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketCreatedTrigger";
             var apiCallHttpMethod = "post";
@@ -215,10 +215,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger UserCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateUserCreatedTrigger";
             var apiCallHttpMethod = "post";
@@ -232,10 +232,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TicketMonitoring(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TicketMonitoring(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketMonitoringTrigger";
             var apiCallHttpMethod = "post";
@@ -249,10 +249,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TicketStateChange(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TicketStateChange(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketStateChangeTrigger";
             var apiCallHttpMethod = "post";
@@ -266,10 +266,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TicketCategoryChange(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TicketCategoryChange(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketCategoryChangeTrigger";
             var apiCallHttpMethod = "post";
@@ -283,10 +283,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TicketCustomFormChange(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TicketCustomFormChange(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateTicketCustomFormChangeTrigger";
             var apiCallHttpMethod = "post";
@@ -300,10 +300,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger UserUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateUserUpdatedTrigger";
             var apiCallHttpMethod = "post";
@@ -317,10 +317,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger UserDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateUserDeletedTrigger";
             var apiCallHttpMethod = "post";
@@ -334,10 +334,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CompanyCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CompanyCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateCompanyCreatedTrigger";
             var apiCallHttpMethod = "post";
@@ -351,10 +351,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CompanyUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CompanyUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateCompanyUpdatedTrigger";
             var apiCallHttpMethod = "post";
@@ -368,10 +368,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CompanyDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CompanyDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/CreateCompanyDeletedTrigger";
             var apiCallHttpMethod = "post";
@@ -385,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Requestor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 }

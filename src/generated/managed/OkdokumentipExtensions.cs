@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWaitForSignature))]
-        public IWorkflowTrigger WaitForSignature([WorkflowExpression] Func<string> signatureRequestId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WaitForSignature([WorkflowExpression] Func<string> signatureRequestId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWaitForSignature(WorkflowExpression<string> signatureRequestId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWaitForSignature(WorkflowExpression<string> signatureRequestId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(signatureRequestId, nameof(signatureRequestId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

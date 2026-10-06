@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildFormAnswer))]
-        public IBodyWorkflowTrigger<JToken> FormAnswer([WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> FormAnswer([WorkflowExpression] Func<string> formId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildFormAnswer(WorkflowExpression<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildFormAnswer(WorkflowExpression<string> formId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(formId, nameof(formId), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -39,8 +39,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datascopeforms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

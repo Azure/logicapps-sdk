@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -79,13 +79,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
     {
 
         [WorkflowExpressionFactory(nameof(__BuildGetMessageFromQueue))]
-        public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue([WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null, [WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null, [WorkflowExpression] Func<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage> GetMessageFromQueue([WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null,[WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null,[WorkflowExpression] Func<string> messageAttributeNames = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<QueueMessage> __BuildGetMessageFromQueue(WorkflowExpression<int> messageVisibilityTimeoutSeconds = null, WorkflowExpression<int> requestWaitTimeoutSeconds = null, WorkflowExpression<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage> __BuildGetMessageFromQueue(WorkflowExpression<int> messageVisibilityTimeoutSeconds = null,WorkflowExpression<int> requestWaitTimeoutSeconds = null,WorkflowExpression<string> messageAttributeNames = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
             WorkflowExpression.Validate(requestWaitTimeoutSeconds, nameof(requestWaitTimeoutSeconds), required: false);
@@ -102,18 +102,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
                     callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(requestWaitTimeoutSeconds);
                 if (messageAttributeNames != null)
                     callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(messageAttributeNames);
-                return new ApiConnectionTrigger<QueueMessage>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<QueueMessage>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueue))]
-        public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<int> maximumNumberOfMessages = null, [WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null, [WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null, [WorkflowExpression] Func<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<int> maximumNumberOfMessages = null,[WorkflowExpression] Func<int> messageVisibilityTimeoutSeconds = null,[WorkflowExpression] Func<int> requestWaitTimeoutSeconds = null,[WorkflowExpression] Func<string> messageAttributeNames = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<QueueMessage[]> __BuildGetMessagesFromQueue(WorkflowExpression<int> maximumNumberOfMessages = null, WorkflowExpression<int> messageVisibilityTimeoutSeconds = null, WorkflowExpression<int> requestWaitTimeoutSeconds = null, WorkflowExpression<string> messageAttributeNames = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<QueueMessage[]> __BuildGetMessagesFromQueue(WorkflowExpression<int> maximumNumberOfMessages = null,WorkflowExpression<int> messageVisibilityTimeoutSeconds = null,WorkflowExpression<int> requestWaitTimeoutSeconds = null,WorkflowExpression<string> messageAttributeNames = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(maximumNumberOfMessages, nameof(maximumNumberOfMessages), required: false);
             WorkflowExpression.Validate(messageVisibilityTimeoutSeconds, nameof(messageVisibilityTimeoutSeconds), required: false);
@@ -134,8 +134,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazonsqs
                     callPayload.Queries["requestWaitTimeoutSeconds"] = ExpressionConverter.Convert(requestWaitTimeoutSeconds);
                 if (messageAttributeNames != null)
                     callPayload.Queries["messageAttributeNames"] = ExpressionConverter.Convert(messageAttributeNames);
-                return new ApiConnectionTrigger<QueueMessage[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<QueueMessage[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

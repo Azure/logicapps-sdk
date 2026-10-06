@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
     {
 
         [WorkflowExpressionFactory(nameof(__BuildDataIn))]
-        public IWorkflowTrigger DataIn([WorkflowExpression] Func<int> bodygroupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DataIn([WorkflowExpression] Func<int> bodygroupId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDataIn(WorkflowExpression<int> bodygroupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildDataIn(WorkflowExpression<int> bodygroupId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

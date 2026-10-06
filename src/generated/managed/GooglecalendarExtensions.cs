@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -274,13 +274,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEventInCalendar))]
-        public IBodyWorkflowTrigger<CalendarEventList> OnNewEventInCalendar([WorkflowExpression] Func<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList> OnNewEventInCalendar([WorkflowExpression] Func<string> calendarId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CalendarEventList> __BuildOnNewEventInCalendar(WorkflowExpression<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList> __BuildOnNewEventInCalendar(WorkflowExpression<string> calendarId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
@@ -288,18 +288,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CalendarEventList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedEventInCalendar))]
-        public IBodyWorkflowTrigger<CalendarEventList> OnUpdatedEventInCalendar([WorkflowExpression] Func<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList> OnUpdatedEventInCalendar([WorkflowExpression] Func<string> calendarId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CalendarEventList> __BuildOnUpdatedEventInCalendar(WorkflowExpression<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList> __BuildOnUpdatedEventInCalendar(WorkflowExpression<string> calendarId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
@@ -307,18 +307,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CalendarEventList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnDeletedEventInCalendar))]
-        public IBodyWorkflowTrigger<CalendarEventList> OnDeletedEventInCalendar([WorkflowExpression] Func<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList> OnDeletedEventInCalendar([WorkflowExpression] Func<string> calendarId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CalendarEventList> __BuildOnDeletedEventInCalendar(WorkflowExpression<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList> __BuildOnDeletedEventInCalendar(WorkflowExpression<string> calendarId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
@@ -326,18 +326,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CalendarEventList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnChangedEventInCalendar))]
-        public IBodyWorkflowTrigger<CalendarEventChangedList> OnChangedEventInCalendar([WorkflowExpression] Func<string> calendarId, [WorkflowExpression] Func<bool> singleEvents = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventChangedList> OnChangedEventInCalendar([WorkflowExpression] Func<string> calendarId,[WorkflowExpression] Func<bool> singleEvents = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CalendarEventChangedList> __BuildOnChangedEventInCalendar(WorkflowExpression<string> calendarId, WorkflowExpression<bool> singleEvents = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventChangedList> __BuildOnChangedEventInCalendar(WorkflowExpression<string> calendarId,WorkflowExpression<bool> singleEvents = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(calendarId, nameof(calendarId), required: true);
             WorkflowExpression.Validate(singleEvents, nameof(singleEvents), required: false);
@@ -348,18 +348,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (singleEvents != null)
                     callPayload.Queries["singleEvents"] = ExpressionConverter.Convert(singleEvents);
-                return new ApiConnectionTrigger<CalendarEventChangedList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CalendarEventChangedList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnEventStarted))]
-        public IBodyWorkflowTrigger<CalendarEventList> OnEventStarted([WorkflowExpression] Func<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList> OnEventStarted([WorkflowExpression] Func<string> calendarId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CalendarEventList> __BuildOnEventStarted(WorkflowExpression<string> calendarId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CalendarEventList> __BuildOnEventStarted(WorkflowExpression<string> calendarId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(calendarId, nameof(calendarId), required: true);
             return new DeferredBodyTrigger<CalendarEventList>(() =>
@@ -367,8 +367,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecalendar
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/eventstarted/calendars/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(calendarId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<CalendarEventList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CalendarEventList>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

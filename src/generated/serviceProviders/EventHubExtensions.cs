@@ -136,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildReceiveEventsForReplication))]
@@ -165,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
     {
 
         [WorkflowExpressionFactory(nameof(__BuildLawliftExportTrigger))]
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger([WorkflowExpression] Func<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger([WorkflowExpression] Func<string> bodyflowName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> __BuildLawliftExportTrigger(WorkflowExpression<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> __BuildLawliftExportTrigger(WorkflowExpression<string> bodyflowName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
             return new DeferredBodyTrigger<LawliftExportTriggerResponse>(() =>
@@ -45,18 +45,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildLawliftNotificationTrigger))]
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger([WorkflowExpression] Func<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger([WorkflowExpression] Func<string> bodyflowName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> __BuildLawliftNotificationTrigger(WorkflowExpression<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> __BuildLawliftNotificationTrigger(WorkflowExpression<string> bodyflowName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
             return new DeferredBodyTrigger<LawliftNotificationTriggerResponse>(() =>
@@ -79,8 +79,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

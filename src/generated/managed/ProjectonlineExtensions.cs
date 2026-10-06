@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -323,13 +323,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewProject))]
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnNewProject([WorkflowExpression] Func<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnNewProject([WorkflowExpression] Func<string> siteUrl,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> __BuildOnNewProject(WorkflowExpression<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper> __BuildOnNewProject(WorkflowExpression<string> siteUrl,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
             return new DeferredBodyTrigger<TriggerProjectsWrapper>(() =>
@@ -338,18 +338,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-                return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnProjectPublished))]
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublished([WorkflowExpression] Func<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper> OnProjectPublished([WorkflowExpression] Func<string> siteUrl,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerProjectsWrapper> __BuildOnProjectPublished(WorkflowExpression<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsWrapper> __BuildOnProjectPublished(WorkflowExpression<string> siteUrl,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
             return new DeferredBodyTrigger<TriggerProjectsWrapper>(() =>
@@ -358,18 +358,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-                return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerProjectsWrapper>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewResource))]
-        public IBodyWorkflowTrigger<TriggerResourcesWrapper> OnNewResource([WorkflowExpression] Func<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerResourcesWrapper> OnNewResource([WorkflowExpression] Func<string> siteUrl,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerResourcesWrapper> __BuildOnNewResource(WorkflowExpression<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerResourcesWrapper> __BuildOnNewResource(WorkflowExpression<string> siteUrl,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
             return new DeferredBodyTrigger<TriggerResourcesWrapper>(() =>
@@ -378,18 +378,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-                return new ApiConnectionTrigger<TriggerResourcesWrapper>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerResourcesWrapper>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewTask))]
-        public IBodyWorkflowTrigger<TriggerTasksWrapper> OnNewTask([WorkflowExpression] Func<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerTasksWrapper> OnNewTask([WorkflowExpression] Func<string> siteUrl,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerTasksWrapper> __BuildOnNewTask(WorkflowExpression<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerTasksWrapper> __BuildOnNewTask(WorkflowExpression<string> siteUrl,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(siteUrl, nameof(siteUrl), required: true);
             return new DeferredBodyTrigger<TriggerTasksWrapper>(() =>
@@ -398,8 +398,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectonline
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["siteUrl"] = ExpressionConverter.Convert(siteUrl);
-                return new ApiConnectionTrigger<TriggerTasksWrapper>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerTasksWrapper>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

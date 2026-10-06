@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -218,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
 
     public class _365trainingTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewCourseUserNotification(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewCourseUserNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewCourseUserNotification";
             var apiCallHttpMethod = "post";
@@ -232,10 +232,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger NewIdeaNotification(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewIdeaNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewIdeaNotification";
             var apiCallHttpMethod = "post";
@@ -249,10 +249,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger NewCoursePublishedNotification(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewCoursePublishedNotification(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/NewCoursePublishedNotification";
             var apiCallHttpMethod = "post";
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

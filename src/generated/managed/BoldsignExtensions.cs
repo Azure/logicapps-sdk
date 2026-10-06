@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -150,13 +150,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebHooks))]
-        public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks([WorkflowExpression] Func<eventsInput> events, [WorkflowExpression] Func<bool> bodyadminMode, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks([WorkflowExpression] Func<eventsInput> events,[WorkflowExpression] Func<bool> bodyadminMode,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<AddWebHooksResponse> __BuildWebHooks(WorkflowExpression<eventsInput> events, WorkflowExpression<bool> bodyadminMode, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddWebHooksResponse> __BuildWebHooks(WorkflowExpression<eventsInput> events,WorkflowExpression<bool> bodyadminMode,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(events, nameof(events), required: true);
             WorkflowExpression.Validate(bodyadminMode, nameof(bodyadminMode), required: true);
@@ -187,8 +187,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<AddWebHooksResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<AddWebHooksResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

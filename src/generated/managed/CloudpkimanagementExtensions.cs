@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -906,13 +906,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
     {
 
         [WorkflowExpressionFactory(nameof(__BuildAddedHook))]
-        public IBodyWorkflowTrigger<AddedHookResponse> AddedHook([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddedHookResponse> AddedHook([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<AddedHookResponse> __BuildAddedHook(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddedHookResponse> __BuildAddedHook(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -934,18 +934,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<AddedHookResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<AddedHookResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildRemovedHook))]
-        public IBodyWorkflowTrigger<RemovedHookResponse> RemovedHook([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RemovedHookResponse> RemovedHook([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<RemovedHookResponse> __BuildRemovedHook(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RemovedHookResponse> __BuildRemovedHook(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -967,18 +967,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<RemovedHookResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<RemovedHookResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildIssuedCertificate))]
-        public IBodyWorkflowTrigger<IssuedCertificateResponse> IssuedCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCertificateResponse> IssuedCertificate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<IssuedCertificateResponse> __BuildIssuedCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCertificateResponse> __BuildIssuedCertificate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1000,18 +1000,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<IssuedCertificateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<IssuedCertificateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildRevokedCertificate))]
-        public IBodyWorkflowTrigger<RevokedCertificateResponse> RevokedCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RevokedCertificateResponse> RevokedCertificate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<RevokedCertificateResponse> __BuildRevokedCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RevokedCertificateResponse> __BuildRevokedCertificate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1033,18 +1033,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<RevokedCertificateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<RevokedCertificateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUpdatedCertificate))]
-        public IBodyWorkflowTrigger<UpdatedCertificateResponse> UpdatedCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedCertificateResponse> UpdatedCertificate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<UpdatedCertificateResponse> __BuildUpdatedCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedCertificateResponse> __BuildUpdatedCertificate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1066,18 +1066,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<UpdatedCertificateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<UpdatedCertificateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildExpiringCertificate))]
-        public IBodyWorkflowTrigger<ExpiringCertificateResponse> ExpiringCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiringCertificateResponse> ExpiringCertificate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ExpiringCertificateResponse> __BuildExpiringCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiringCertificateResponse> __BuildExpiringCertificate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1099,18 +1099,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ExpiringCertificateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ExpiringCertificateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildExpiredCertificate))]
-        public IBodyWorkflowTrigger<ExpiredCertificateResponse> ExpiredCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiredCertificateResponse> ExpiredCertificate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ExpiredCertificateResponse> __BuildExpiredCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ExpiredCertificateResponse> __BuildExpiredCertificate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1132,18 +1132,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ExpiredCertificateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ExpiredCertificateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildRenewingCertificate))]
-        public IBodyWorkflowTrigger<RenewingCertificateResponse> RenewingCertificate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RenewingCertificateResponse> RenewingCertificate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<RenewingCertificateResponse> __BuildRenewingCertificate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RenewingCertificateResponse> __BuildRenewingCertificate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1165,18 +1165,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<RenewingCertificateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<RenewingCertificateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPendingRequest))]
-        public IBodyWorkflowTrigger<PendingRequestResponse> PendingRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PendingRequestResponse> PendingRequest([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PendingRequestResponse> __BuildPendingRequest(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PendingRequestResponse> __BuildPendingRequest(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1198,18 +1198,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<PendingRequestResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PendingRequestResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildApprovedRequest))]
-        public IBodyWorkflowTrigger<ApprovedRequestResponse> ApprovedRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ApprovedRequestResponse> ApprovedRequest([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ApprovedRequestResponse> __BuildApprovedRequest(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ApprovedRequestResponse> __BuildApprovedRequest(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1231,18 +1231,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ApprovedRequestResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ApprovedRequestResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildDeniedRequest))]
-        public IBodyWorkflowTrigger<DeniedRequestResponse> DeniedRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeniedRequestResponse> DeniedRequest([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<DeniedRequestResponse> __BuildDeniedRequest(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeniedRequestResponse> __BuildDeniedRequest(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1264,18 +1264,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<DeniedRequestResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<DeniedRequestResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUpdatedRequest))]
-        public IBodyWorkflowTrigger<UpdatedRequestResponse> UpdatedRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedRequestResponse> UpdatedRequest([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<UpdatedRequestResponse> __BuildUpdatedRequest(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedRequestResponse> __BuildUpdatedRequest(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1297,18 +1297,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<UpdatedRequestResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<UpdatedRequestResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFailedRequest))]
-        public IBodyWorkflowTrigger<FailedRequestResponse> FailedRequest([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedRequestResponse> FailedRequest([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<FailedRequestResponse> __BuildFailedRequest(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedRequestResponse> __BuildFailedRequest(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1330,18 +1330,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<FailedRequestResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<FailedRequestResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPublishedTemplate))]
-        public IBodyWorkflowTrigger<PublishedTemplateResponse> PublishedTemplate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PublishedTemplateResponse> PublishedTemplate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PublishedTemplateResponse> __BuildPublishedTemplate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PublishedTemplateResponse> __BuildPublishedTemplate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1363,18 +1363,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<PublishedTemplateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PublishedTemplateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUnpublishedTemplate))]
-        public IBodyWorkflowTrigger<UnpublishedTemplateResponse> UnpublishedTemplate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnpublishedTemplateResponse> UnpublishedTemplate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<UnpublishedTemplateResponse> __BuildUnpublishedTemplate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UnpublishedTemplateResponse> __BuildUnpublishedTemplate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1396,18 +1396,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<UnpublishedTemplateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<UnpublishedTemplateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUpdatedTemplate))]
-        public IBodyWorkflowTrigger<UpdatedTemplateResponse> UpdatedTemplate([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedTemplateResponse> UpdatedTemplate([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<UpdatedTemplateResponse> __BuildUpdatedTemplate(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedTemplateResponse> __BuildUpdatedTemplate(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1429,18 +1429,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<UpdatedTemplateResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<UpdatedTemplateResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildIssuedCRL))]
-        public IBodyWorkflowTrigger<IssuedCRLResponse> IssuedCRL([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCRLResponse> IssuedCRL([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<IssuedCRLResponse> __BuildIssuedCRL(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IssuedCRLResponse> __BuildIssuedCRL(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1462,18 +1462,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<IssuedCRLResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<IssuedCRLResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNewConnectorAction))]
-        public IBodyWorkflowTrigger<NewConnectorActionResponse> NewConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewConnectorActionResponse> NewConnectorAction([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewConnectorActionResponse> __BuildNewConnectorAction(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewConnectorActionResponse> __BuildNewConnectorAction(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1495,18 +1495,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<NewConnectorActionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewConnectorActionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCompletedConnectorAction))]
-        public IBodyWorkflowTrigger<CompletedConnectorActionResponse> CompletedConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CompletedConnectorActionResponse> CompletedConnectorAction([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CompletedConnectorActionResponse> __BuildCompletedConnectorAction(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CompletedConnectorActionResponse> __BuildCompletedConnectorAction(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1528,18 +1528,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CompletedConnectorActionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CompletedConnectorActionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFailedConnectorAction))]
-        public IBodyWorkflowTrigger<FailedConnectorActionResponse> FailedConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedConnectorActionResponse> FailedConnectorAction([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<FailedConnectorActionResponse> __BuildFailedConnectorAction(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FailedConnectorActionResponse> __BuildFailedConnectorAction(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1561,18 +1561,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<FailedConnectorActionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<FailedConnectorActionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildStalledConnectorAction))]
-        public IBodyWorkflowTrigger<StalledConnectorActionResponse> StalledConnectorAction([WorkflowExpression] Func<string> regionid, [WorkflowExpression] Func<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StalledConnectorActionResponse> StalledConnectorAction([WorkflowExpression] Func<string> regionid,[WorkflowExpression] Func<string> deploymentid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<StalledConnectorActionResponse> __BuildStalledConnectorAction(WorkflowExpression<string> regionid, WorkflowExpression<string> deploymentid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<StalledConnectorActionResponse> __BuildStalledConnectorAction(WorkflowExpression<string> regionid,WorkflowExpression<string> deploymentid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(regionid, nameof(regionid), required: true);
             WorkflowExpression.Validate(deploymentid, nameof(deploymentid), required: true);
@@ -1594,8 +1594,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<StalledConnectorActionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<StalledConnectorActionResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

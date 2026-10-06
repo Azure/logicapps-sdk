@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -625,13 +625,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnDeletedFiles))]
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnDeletedFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> OnDeletedFiles([WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<bool> includeSubfolders = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BlobMetadata[]> __BuildOnDeletedFiles(WorkflowExpression<string> folderId, WorkflowExpression<bool> includeSubfolders = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> __BuildOnDeletedFiles(WorkflowExpression<string> folderId,WorkflowExpression<bool> includeSubfolders = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             WorkflowExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
@@ -645,18 +645,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (includeSubfolders != null)
                     callPayload.Queries["includeSubfolders"] = ExpressionConverter.Convert(includeSubfolders);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewFile))]
-        public IBodyWorkflowTrigger<string> OnNewFile([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnNewFile([WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<bool> includeSubfolders = null,[WorkflowExpression] Func<bool> inferContentType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildOnNewFile(WorkflowExpression<string> folderId, WorkflowExpression<bool> includeSubfolders = null, WorkflowExpression<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> __BuildOnNewFile(WorkflowExpression<string> folderId,WorkflowExpression<bool> includeSubfolders = null,WorkflowExpression<bool> inferContentType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             WorkflowExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
@@ -674,18 +674,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewFiles))]
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnNewFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> OnNewFiles([WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<bool> includeSubfolders = null,[WorkflowExpression] Func<int> maxFileCount = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BlobMetadata[]> __BuildOnNewFiles(WorkflowExpression<string> folderId, WorkflowExpression<bool> includeSubfolders = null, WorkflowExpression<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> __BuildOnNewFiles(WorkflowExpression<string> folderId,WorkflowExpression<bool> includeSubfolders = null,WorkflowExpression<int> maxFileCount = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             WorkflowExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
@@ -703,18 +703,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedFile))]
-        public IBodyWorkflowTrigger<string> OnUpdatedFile([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnUpdatedFile([WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<bool> includeSubfolders = null,[WorkflowExpression] Func<bool> inferContentType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildOnUpdatedFile(WorkflowExpression<string> folderId, WorkflowExpression<bool> includeSubfolders = null, WorkflowExpression<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> __BuildOnUpdatedFile(WorkflowExpression<string> folderId,WorkflowExpression<bool> includeSubfolders = null,WorkflowExpression<bool> inferContentType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             WorkflowExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
@@ -733,18 +733,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedFiles))]
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> includeSubfolders = null, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<bool> includeSubfolders = null,[WorkflowExpression] Func<int> maxFileCount = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BlobMetadata[]> __BuildOnUpdatedFiles(WorkflowExpression<string> folderId, WorkflowExpression<bool> includeSubfolders = null, WorkflowExpression<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> __BuildOnUpdatedFiles(WorkflowExpression<string> folderId,WorkflowExpression<bool> includeSubfolders = null,WorkflowExpression<int> maxFileCount = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             WorkflowExpression.Validate(includeSubfolders, nameof(includeSubfolders), required: false);
@@ -762,8 +762,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Onedrive
                 if (maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
                 callPayload.Queries["simulate"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

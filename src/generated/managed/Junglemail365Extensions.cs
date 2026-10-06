@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -463,13 +463,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookJobCompleted))]
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted([WorkflowExpression] Func<string> requesttitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> __BuildWebhookJobCompleted(WorkflowExpression<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> __BuildWebhookJobCompleted(WorkflowExpression<string> requesttitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requesttitle, nameof(requesttitle), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
@@ -488,18 +488,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookJobStarted))]
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted([WorkflowExpression] Func<string> requesttitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> __BuildWebhookJobStarted(WorkflowExpression<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> __BuildWebhookJobStarted(WorkflowExpression<string> requesttitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requesttitle, nameof(requesttitle), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
@@ -518,18 +518,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookJobSumitted))]
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted([WorkflowExpression] Func<string> requesttitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> __BuildWebhookJobSumitted(WorkflowExpression<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> __BuildWebhookJobSumitted(WorkflowExpression<string> requesttitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requesttitle, nameof(requesttitle), required: true);
             return new DeferredBodyTrigger<JsWebhookCreatedResponse>(() =>
@@ -548,8 +548,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

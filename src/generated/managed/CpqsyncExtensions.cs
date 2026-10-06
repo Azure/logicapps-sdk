@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
     {
 
         [WorkflowExpressionFactory(nameof(__BuildProductUpdated))]
-        public IWorkflowTrigger ProductUpdated([WorkflowExpression] Func<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductUpdated([WorkflowExpression] Func<string> tenantId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProductUpdated(WorkflowExpression<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildProductUpdated(WorkflowExpression<string> tenantId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(tenantId, nameof(tenantId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -41,18 +41,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildProductCreated))]
-        public IWorkflowTrigger ProductCreated([WorkflowExpression] Func<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductCreated([WorkflowExpression] Func<string> tenantId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProductCreated(WorkflowExpression<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildProductCreated(WorkflowExpression<string> tenantId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(tenantId, nameof(tenantId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -71,8 +71,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

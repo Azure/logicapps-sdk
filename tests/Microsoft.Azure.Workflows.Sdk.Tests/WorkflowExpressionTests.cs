@@ -224,6 +224,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             }
         }
 
+        [Fact]
+        public void GeneratedTriggersUseUniqueDefaultsAndWithNameOnly()
+        {
+            var managedMethod = typeof(Microsoft.Azure.Workflows.Sdk.Connectors.Office365.Office365Triggers)
+                .GetMethod("OnNewEmail");
+            Assert.DoesNotContain(managedMethod.GetParameters(), parameter => parameter.Name == "triggerName");
+            var first = WorkflowTriggers.Managed.Office365("office").OnNewEmail();
+            var second = WorkflowTriggers.Managed.Office365("office").OnNewEmail();
+            Assert.NotEqual(first.Name, second.Name);
+            Assert.DoesNotContain(first.Name, new[] { "ApiConnectionTrigger", "ServiceProviderTrigger" });
+            first.WithName("Managed").Then(WorkflowActions.BuiltIn.Compose(() => "yes").WithName("Action"));
+            var managedDefinition = WorkflowFactory.CreateStatefulWorkflow("ManagedFlow", first);
+            Assert.Contains("Managed", managedDefinition.Definition.Triggers.Keys);
+
+            var serviceFirst = WorkflowTriggers.ServiceProviders.ServiceBus("service").ReceiveQueueMessages(() => "queue");
+            var serviceSecond = WorkflowTriggers.ServiceProviders.ServiceBus("service").ReceiveQueueMessages(() => "queue");
+            Assert.NotEqual(serviceFirst.Name, serviceSecond.Name);
+            serviceFirst.WithName("Service").Then(WorkflowActions.BuiltIn.Compose(() => "yes").WithName("Action"));
+            var serviceDefinition = WorkflowFactory.CreateStatefulWorkflow("ServiceFlow", serviceFirst);
+            Assert.Contains("Service", serviceDefinition.Definition.Triggers.Keys);
+        }
+
         internal static string Input(IWorkflowAction action) => ((JToken)action.GetActionDefinition("flow").Inputs).Value<string>();
         private static IEnumerable<MetadataReference> References() =>
             ((string)AppContext.GetData("TRUSTED_PLATFORM_ASSEMBLIES")).Split(Path.PathSeparator)

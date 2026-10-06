@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -25,13 +25,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildFormSubmitted))]
-        public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted([WorkflowExpression] Func<string> formlinkname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted([WorkflowExpression] Func<string> formlinkname,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<FormSubmittedResponse> __BuildFormSubmitted(WorkflowExpression<string> formlinkname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormSubmittedResponse> __BuildFormSubmitted(WorkflowExpression<string> formlinkname,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(formlinkname, nameof(formlinkname), required: true);
             return new DeferredBodyTrigger<FormSubmittedResponse>(() =>
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
                 callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
                 callPayload.Headers["zf_version"] = Convert.ToString(2);
                 callPayload.Headers["webhooks_url"] = Convert.ToString("#{listCallbackUrl()}");
-                return new ApiConnectionTrigger<FormSubmittedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<FormSubmittedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

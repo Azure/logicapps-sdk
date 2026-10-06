@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1750,7 +1750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
 
     public class PowertextorTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductionWebhook(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductionWebhook(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/twilio/registration";
             var apiCallHttpMethod = "post";
@@ -1764,10 +1764,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger MMSWebhook(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MMSWebhook(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/twilio/MMSregistration";
             var apiCallHttpMethod = "post";
@@ -1781,7 +1781,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powertextor
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

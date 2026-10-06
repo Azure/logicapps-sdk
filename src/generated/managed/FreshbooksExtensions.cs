@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -384,13 +384,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTrigUpdatedInvoice))]
-        public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Invoice[]> TrigUpdatedInvoice([WorkflowExpression] Func<string> accountid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Invoice[]> __BuildTrigUpdatedInvoice(WorkflowExpression<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Invoice[]> __BuildTrigUpdatedInvoice(WorkflowExpression<string> accountid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Invoice[]>(() =>
@@ -400,18 +400,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["include[]"] = Convert.ToString("client");
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                return new ApiConnectionTrigger<Invoice[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<Invoice[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTrigUpdatedExpense))]
-        public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Expense[]> TrigUpdatedExpense([WorkflowExpression] Func<string> accountid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Expense[]> __BuildTrigUpdatedExpense(WorkflowExpression<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Expense[]> __BuildTrigUpdatedExpense(WorkflowExpression<string> accountid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Expense[]>(() =>
@@ -420,18 +420,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                return new ApiConnectionTrigger<Expense[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<Expense[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTrigUpdatedPayment))]
-        public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment([WorkflowExpression] Func<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Payment[]> TrigUpdatedPayment([WorkflowExpression] Func<string> accountid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Payment[]> __BuildTrigUpdatedPayment(WorkflowExpression<string> accountid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Payment[]> __BuildTrigUpdatedPayment(WorkflowExpression<string> accountid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accountid, nameof(accountid), required: true);
             return new DeferredBodyTrigger<Payment[]>(() =>
@@ -441,8 +441,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Freshbooks
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["include[]"] = Convert.ToString("client");
                 callPayload.Queries["per_page"] = Convert.ToString(100);
-                return new ApiConnectionTrigger<Payment[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<Payment[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

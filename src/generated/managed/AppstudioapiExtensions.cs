@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
     {
 
         [WorkflowExpressionFactory(nameof(__BuildApiHooksSubscribePost))]
-        public IWorkflowTrigger ApiHooksSubscribePost([WorkflowExpression] Func<string> solutionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ApiHooksSubscribePost([WorkflowExpression] Func<string> solutionId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildApiHooksSubscribePost(WorkflowExpression<string> solutionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildApiHooksSubscribePost(WorkflowExpression<string> solutionId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(solutionId, nameof(solutionId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
                     callPayload.Body = data;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

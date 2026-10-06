@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1283,36 +1283,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Capsulecrm
 
     public class CapsulecrmTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OpportunityResponse[]> OnNewOpportunity(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityResponse[]> OnNewOpportunity(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_trigger/opportunities";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<OpportunityResponse[]> OnUpdateOpportunity(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityResponse[]> OnUpdateOpportunity(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/update_trigger/opportunities";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<OpportunityResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TaskResponse[]> OnNewTask(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskResponse[]> OnNewTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_trigger/tasks";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaskResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TaskResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<PartyResponse[]> OnNewParty(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PartyResponse[]> OnNewParty(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/create_trigger/parties";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PartyResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<PartyResponse[]>(callPayload, recurrence: recurrence);
         }
     }
 

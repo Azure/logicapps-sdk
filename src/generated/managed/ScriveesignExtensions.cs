@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -693,13 +693,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
     {
 
         [WorkflowExpressionFactory(nameof(__BuildStartAndOnDocumentSign))]
-        public IBodyWorkflowTrigger<string> StartAndOnDocumentSign([WorkflowExpression] Func<string> bodydocumentId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> StartAndOnDocumentSign([WorkflowExpression] Func<string> bodydocumentId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildStartAndOnDocumentSign(WorkflowExpression<string> bodydocumentId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> __BuildStartAndOnDocumentSign(WorkflowExpression<string> bodydocumentId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
             return new DeferredBodyTrigger<string>(() =>
@@ -718,18 +718,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookFromTemplateSign))]
-        public IBodyWorkflowTrigger<string> WebhookFromTemplateSign([WorkflowExpression] Func<string> templateIdDynamic, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> WebhookFromTemplateSign([WorkflowExpression] Func<string> templateIdDynamic,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildWebhookFromTemplateSign(WorkflowExpression<string> templateIdDynamic, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> __BuildWebhookFromTemplateSign(WorkflowExpression<string> templateIdDynamic,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(templateIdDynamic, nameof(templateIdDynamic), required: true);
             return new DeferredBodyTrigger<string>(() =>
@@ -746,17 +746,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<PollSignedDocumentsResponse> PollSignedDocuments(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollSignedDocumentsResponse> PollSignedDocuments(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/polling/signed";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["pollTime"] = Convert.ToString("init");
-            return new ApiConnectionTrigger<PollSignedDocumentsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<PollSignedDocumentsResponse>(callPayload, recurrence: recurrence);
         }
     }
 

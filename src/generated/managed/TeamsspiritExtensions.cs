@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -409,13 +409,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
     {
 
         [WorkflowExpressionFactory(nameof(__BuildActionTrigger))]
-        public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger([WorkflowExpression] Func<string> bodyname,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ActionTriggerResponse> __BuildActionTrigger(WorkflowExpression<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActionTriggerResponse> __BuildActionTrigger(WorkflowExpression<string> bodyname,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
             return new DeferredBodyTrigger<ActionTriggerResponse>(() =>
@@ -434,8 +434,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ActionTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ActionTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

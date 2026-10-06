@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -456,13 +456,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateBusinessEventSubscription))]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateBusinessEventSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> businessevent, [WorkflowExpression] Func<string> company = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateBusinessEventSubscription([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> businessevent,[WorkflowExpression] Func<string> company = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateBusinessEventSubscription(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> businessevent, WorkflowExpression<string> company = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateBusinessEventSubscription(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> businessevent,WorkflowExpression<string> company = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(businessevent, nameof(businessevent), required: true);
@@ -484,18 +484,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateCustomerApprovalWebHook))]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateCustomerApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateCustomerApprovalWebHook([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> subscriptionfirstCondition = null,[WorkflowExpression] Func<string> subscriptionfirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionsecondCondition = null,[WorkflowExpression] Func<string> subscriptionsecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionthirdCondition = null,[WorkflowExpression] Func<string> subscriptionthirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionfourthCondition = null,[WorkflowExpression] Func<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateCustomerApprovalWebHook(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> subscriptionfirstCondition = null, WorkflowExpression<string> subscriptionfirstConditionIs = null, WorkflowExpression<string> subscriptionsecondCondition = null, WorkflowExpression<string> subscriptionsecondConditionIs = null, WorkflowExpression<string> subscriptionthirdCondition = null, WorkflowExpression<string> subscriptionthirdConditionIs = null, WorkflowExpression<string> subscriptionfourthCondition = null, WorkflowExpression<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateCustomerApprovalWebHook(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> subscriptionfirstCondition = null,WorkflowExpression<string> subscriptionfirstConditionIs = null,WorkflowExpression<string> subscriptionsecondCondition = null,WorkflowExpression<string> subscriptionsecondConditionIs = null,WorkflowExpression<string> subscriptionthirdCondition = null,WorkflowExpression<string> subscriptionthirdConditionIs = null,WorkflowExpression<string> subscriptionfourthCondition = null,WorkflowExpression<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -569,18 +569,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateGeneralJournalBatchApprovalWebHook))]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalBatchApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalBatchApprovalWebHook([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> subscriptionfirstCondition = null,[WorkflowExpression] Func<string> subscriptionfirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionsecondCondition = null,[WorkflowExpression] Func<string> subscriptionsecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionthirdCondition = null,[WorkflowExpression] Func<string> subscriptionthirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionfourthCondition = null,[WorkflowExpression] Func<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateGeneralJournalBatchApprovalWebHook(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> subscriptionfirstCondition = null, WorkflowExpression<string> subscriptionfirstConditionIs = null, WorkflowExpression<string> subscriptionsecondCondition = null, WorkflowExpression<string> subscriptionsecondConditionIs = null, WorkflowExpression<string> subscriptionthirdCondition = null, WorkflowExpression<string> subscriptionthirdConditionIs = null, WorkflowExpression<string> subscriptionfourthCondition = null, WorkflowExpression<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateGeneralJournalBatchApprovalWebHook(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> subscriptionfirstCondition = null,WorkflowExpression<string> subscriptionfirstConditionIs = null,WorkflowExpression<string> subscriptionsecondCondition = null,WorkflowExpression<string> subscriptionsecondConditionIs = null,WorkflowExpression<string> subscriptionthirdCondition = null,WorkflowExpression<string> subscriptionthirdConditionIs = null,WorkflowExpression<string> subscriptionfourthCondition = null,WorkflowExpression<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -654,18 +654,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateGeneralJournalLineApprovalWebHook))]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalLineApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalLineApprovalWebHook([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> subscriptionfirstCondition = null,[WorkflowExpression] Func<string> subscriptionfirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionsecondCondition = null,[WorkflowExpression] Func<string> subscriptionsecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionthirdCondition = null,[WorkflowExpression] Func<string> subscriptionthirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionfourthCondition = null,[WorkflowExpression] Func<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateGeneralJournalLineApprovalWebHook(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> subscriptionfirstCondition = null, WorkflowExpression<string> subscriptionfirstConditionIs = null, WorkflowExpression<string> subscriptionsecondCondition = null, WorkflowExpression<string> subscriptionsecondConditionIs = null, WorkflowExpression<string> subscriptionthirdCondition = null, WorkflowExpression<string> subscriptionthirdConditionIs = null, WorkflowExpression<string> subscriptionfourthCondition = null, WorkflowExpression<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateGeneralJournalLineApprovalWebHook(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> subscriptionfirstCondition = null,WorkflowExpression<string> subscriptionfirstConditionIs = null,WorkflowExpression<string> subscriptionsecondCondition = null,WorkflowExpression<string> subscriptionsecondConditionIs = null,WorkflowExpression<string> subscriptionthirdCondition = null,WorkflowExpression<string> subscriptionthirdConditionIs = null,WorkflowExpression<string> subscriptionfourthCondition = null,WorkflowExpression<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -739,18 +739,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateItemApprovalWebHook))]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateItemApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateItemApprovalWebHook([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> subscriptionfirstCondition = null,[WorkflowExpression] Func<string> subscriptionfirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionsecondCondition = null,[WorkflowExpression] Func<string> subscriptionsecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionthirdCondition = null,[WorkflowExpression] Func<string> subscriptionthirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionfourthCondition = null,[WorkflowExpression] Func<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateItemApprovalWebHook(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> subscriptionfirstCondition = null, WorkflowExpression<string> subscriptionfirstConditionIs = null, WorkflowExpression<string> subscriptionsecondCondition = null, WorkflowExpression<string> subscriptionsecondConditionIs = null, WorkflowExpression<string> subscriptionthirdCondition = null, WorkflowExpression<string> subscriptionthirdConditionIs = null, WorkflowExpression<string> subscriptionfourthCondition = null, WorkflowExpression<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateItemApprovalWebHook(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> subscriptionfirstCondition = null,WorkflowExpression<string> subscriptionfirstConditionIs = null,WorkflowExpression<string> subscriptionsecondCondition = null,WorkflowExpression<string> subscriptionsecondConditionIs = null,WorkflowExpression<string> subscriptionthirdCondition = null,WorkflowExpression<string> subscriptionthirdConditionIs = null,WorkflowExpression<string> subscriptionfourthCondition = null,WorkflowExpression<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -824,18 +824,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateOnChangedItemsSubscription))]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnChangedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnChangedItemsSubscription([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateOnChangedItemsSubscription(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateOnChangedItemsSubscription(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> dataset,WorkflowExpression<string> table,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -855,18 +855,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateOnDeletedItemsSubscription))]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnDeletedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnDeletedItemsSubscription([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateOnDeletedItemsSubscription(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateOnDeletedItemsSubscription(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> dataset,WorkflowExpression<string> table,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -886,18 +886,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateOnNewItemsSubscription))]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnNewItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnNewItemsSubscription([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateOnNewItemsSubscription(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateOnNewItemsSubscription(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> dataset,WorkflowExpression<string> table,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -917,18 +917,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateOnUpdatedItemsSubscription))]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnUpdatedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnUpdatedItemsSubscription([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateOnUpdatedItemsSubscription(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> dataset, WorkflowExpression<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> __BuildCreateOnUpdatedItemsSubscription(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> dataset,WorkflowExpression<string> table,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -948,18 +948,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreatePurchaseDocumentApprovalWebHook))]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreatePurchaseDocumentApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionheaderFirstCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderSecondCondition = null, [WorkflowExpression] Func<string> subscriptionheaderSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderThirdCondition = null, [WorkflowExpression] Func<string> subscriptionheaderThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderFourthCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFourthConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFirstCondition = null, [WorkflowExpression] Func<string> subscriptionlineFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineSecondCondition = null, [WorkflowExpression] Func<string> subscriptionlineSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineThirdCondition = null, [WorkflowExpression] Func<string> subscriptionlineThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFourthCondition = null, [WorkflowExpression] Func<string> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreatePurchaseDocumentApprovalWebHook([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> subscriptionheaderFirstCondition = null,[WorkflowExpression] Func<string> subscriptionheaderFirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionheaderSecondCondition = null,[WorkflowExpression] Func<string> subscriptionheaderSecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionheaderThirdCondition = null,[WorkflowExpression] Func<string> subscriptionheaderThirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionheaderFourthCondition = null,[WorkflowExpression] Func<string> subscriptionheaderFourthConditionIs = null,[WorkflowExpression] Func<string> subscriptionlineFirstCondition = null,[WorkflowExpression] Func<string> subscriptionlineFirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionlineSecondCondition = null,[WorkflowExpression] Func<string> subscriptionlineSecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionlineThirdCondition = null,[WorkflowExpression] Func<string> subscriptionlineThirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionlineFourthCondition = null,[WorkflowExpression] Func<string> subscriptionlineFourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreatePurchaseDocumentApprovalWebHook(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> subscriptionheaderFirstCondition = null, WorkflowExpression<string> subscriptionheaderFirstConditionIs = null, WorkflowExpression<string> subscriptionheaderSecondCondition = null, WorkflowExpression<string> subscriptionheaderSecondConditionIs = null, WorkflowExpression<string> subscriptionheaderThirdCondition = null, WorkflowExpression<string> subscriptionheaderThirdConditionIs = null, WorkflowExpression<string> subscriptionheaderFourthCondition = null, WorkflowExpression<string> subscriptionheaderFourthConditionIs = null, WorkflowExpression<string> subscriptionlineFirstCondition = null, WorkflowExpression<string> subscriptionlineFirstConditionIs = null, WorkflowExpression<string> subscriptionlineSecondCondition = null, WorkflowExpression<string> subscriptionlineSecondConditionIs = null, WorkflowExpression<string> subscriptionlineThirdCondition = null, WorkflowExpression<string> subscriptionlineThirdConditionIs = null, WorkflowExpression<string> subscriptionlineFourthCondition = null, WorkflowExpression<string> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreatePurchaseDocumentApprovalWebHook(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> subscriptionheaderFirstCondition = null,WorkflowExpression<string> subscriptionheaderFirstConditionIs = null,WorkflowExpression<string> subscriptionheaderSecondCondition = null,WorkflowExpression<string> subscriptionheaderSecondConditionIs = null,WorkflowExpression<string> subscriptionheaderThirdCondition = null,WorkflowExpression<string> subscriptionheaderThirdConditionIs = null,WorkflowExpression<string> subscriptionheaderFourthCondition = null,WorkflowExpression<string> subscriptionheaderFourthConditionIs = null,WorkflowExpression<string> subscriptionlineFirstCondition = null,WorkflowExpression<string> subscriptionlineFirstConditionIs = null,WorkflowExpression<string> subscriptionlineSecondCondition = null,WorkflowExpression<string> subscriptionlineSecondConditionIs = null,WorkflowExpression<string> subscriptionlineThirdCondition = null,WorkflowExpression<string> subscriptionlineThirdConditionIs = null,WorkflowExpression<string> subscriptionlineFourthCondition = null,WorkflowExpression<string> subscriptionlineFourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -1089,18 +1089,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateSalesDocumentApprovalWebHook))]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateSalesDocumentApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionheaderFirstCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderSecondCondition = null, [WorkflowExpression] Func<string> subscriptionheaderSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderThirdCondition = null, [WorkflowExpression] Func<string> subscriptionheaderThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderFourthCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFourthConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFirstCondition = null, [WorkflowExpression] Func<string> subscriptionlineFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineSecondCondition = null, [WorkflowExpression] Func<string> subscriptionlineSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineThirdCondition = null, [WorkflowExpression] Func<string> subscriptionlineThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFourthCondition = null, [WorkflowExpression] Func<string> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateSalesDocumentApprovalWebHook([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> subscriptionheaderFirstCondition = null,[WorkflowExpression] Func<string> subscriptionheaderFirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionheaderSecondCondition = null,[WorkflowExpression] Func<string> subscriptionheaderSecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionheaderThirdCondition = null,[WorkflowExpression] Func<string> subscriptionheaderThirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionheaderFourthCondition = null,[WorkflowExpression] Func<string> subscriptionheaderFourthConditionIs = null,[WorkflowExpression] Func<string> subscriptionlineFirstCondition = null,[WorkflowExpression] Func<string> subscriptionlineFirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionlineSecondCondition = null,[WorkflowExpression] Func<string> subscriptionlineSecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionlineThirdCondition = null,[WorkflowExpression] Func<string> subscriptionlineThirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionlineFourthCondition = null,[WorkflowExpression] Func<string> subscriptionlineFourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateSalesDocumentApprovalWebHook(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> subscriptionheaderFirstCondition = null, WorkflowExpression<string> subscriptionheaderFirstConditionIs = null, WorkflowExpression<string> subscriptionheaderSecondCondition = null, WorkflowExpression<string> subscriptionheaderSecondConditionIs = null, WorkflowExpression<string> subscriptionheaderThirdCondition = null, WorkflowExpression<string> subscriptionheaderThirdConditionIs = null, WorkflowExpression<string> subscriptionheaderFourthCondition = null, WorkflowExpression<string> subscriptionheaderFourthConditionIs = null, WorkflowExpression<string> subscriptionlineFirstCondition = null, WorkflowExpression<string> subscriptionlineFirstConditionIs = null, WorkflowExpression<string> subscriptionlineSecondCondition = null, WorkflowExpression<string> subscriptionlineSecondConditionIs = null, WorkflowExpression<string> subscriptionlineThirdCondition = null, WorkflowExpression<string> subscriptionlineThirdConditionIs = null, WorkflowExpression<string> subscriptionlineFourthCondition = null, WorkflowExpression<string> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateSalesDocumentApprovalWebHook(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> subscriptionheaderFirstCondition = null,WorkflowExpression<string> subscriptionheaderFirstConditionIs = null,WorkflowExpression<string> subscriptionheaderSecondCondition = null,WorkflowExpression<string> subscriptionheaderSecondConditionIs = null,WorkflowExpression<string> subscriptionheaderThirdCondition = null,WorkflowExpression<string> subscriptionheaderThirdConditionIs = null,WorkflowExpression<string> subscriptionheaderFourthCondition = null,WorkflowExpression<string> subscriptionheaderFourthConditionIs = null,WorkflowExpression<string> subscriptionlineFirstCondition = null,WorkflowExpression<string> subscriptionlineFirstConditionIs = null,WorkflowExpression<string> subscriptionlineSecondCondition = null,WorkflowExpression<string> subscriptionlineSecondConditionIs = null,WorkflowExpression<string> subscriptionlineThirdCondition = null,WorkflowExpression<string> subscriptionlineThirdConditionIs = null,WorkflowExpression<string> subscriptionlineFourthCondition = null,WorkflowExpression<string> subscriptionlineFourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -1230,18 +1230,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateVendorApprovalWebHook))]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateVendorApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateVendorApprovalWebHook([WorkflowExpression] Func<string> bcenvironment,[WorkflowExpression] Func<string> company,[WorkflowExpression] Func<string> subscriptionfirstCondition = null,[WorkflowExpression] Func<string> subscriptionfirstConditionIs = null,[WorkflowExpression] Func<string> subscriptionsecondCondition = null,[WorkflowExpression] Func<string> subscriptionsecondConditionIs = null,[WorkflowExpression] Func<string> subscriptionthirdCondition = null,[WorkflowExpression] Func<string> subscriptionthirdConditionIs = null,[WorkflowExpression] Func<string> subscriptionfourthCondition = null,[WorkflowExpression] Func<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateVendorApprovalWebHook(WorkflowExpression<string> bcenvironment, WorkflowExpression<string> company, WorkflowExpression<string> subscriptionfirstCondition = null, WorkflowExpression<string> subscriptionfirstConditionIs = null, WorkflowExpression<string> subscriptionsecondCondition = null, WorkflowExpression<string> subscriptionsecondConditionIs = null, WorkflowExpression<string> subscriptionthirdCondition = null, WorkflowExpression<string> subscriptionthirdConditionIs = null, WorkflowExpression<string> subscriptionfourthCondition = null, WorkflowExpression<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> __BuildCreateVendorApprovalWebHook(WorkflowExpression<string> bcenvironment,WorkflowExpression<string> company,WorkflowExpression<string> subscriptionfirstCondition = null,WorkflowExpression<string> subscriptionfirstConditionIs = null,WorkflowExpression<string> subscriptionsecondCondition = null,WorkflowExpression<string> subscriptionsecondConditionIs = null,WorkflowExpression<string> subscriptionthirdCondition = null,WorkflowExpression<string> subscriptionthirdConditionIs = null,WorkflowExpression<string> subscriptionfourthCondition = null,WorkflowExpression<string> subscriptionfourthConditionIs = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
             WorkflowExpression.Validate(company, nameof(company), required: true);
@@ -1315,8 +1315,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -355,7 +355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
 
     public class WebexTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MembershipsUpdatedResponse> MembershipsUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsUpdatedResponse> MembershipsUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/1";
             var apiCallHttpMethod = "post";
@@ -375,10 +375,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<MembershipsUpdatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MembershipsDeletedResponse> MembershipsDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsDeletedResponse> MembershipsDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/2";
             var apiCallHttpMethod = "post";
@@ -398,10 +398,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<MembershipsDeletedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MembershipsCreatedResponse> MembershipsCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MembershipsCreatedResponse> MembershipsCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/3";
             var apiCallHttpMethod = "post";
@@ -421,10 +421,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<MembershipsCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MessagesCreatedResponse> MessagesCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesCreatedResponse> MessagesCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/4";
             var apiCallHttpMethod = "post";
@@ -444,10 +444,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<MessagesCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MessagesDeletedResponse> MessagesDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MessagesDeletedResponse> MessagesDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/5";
             var apiCallHttpMethod = "post";
@@ -467,10 +467,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<MessagesDeletedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<SpaceCreatedResponse> SpaceCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceCreatedResponse> SpaceCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/6";
             var apiCallHttpMethod = "post";
@@ -490,10 +490,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<SpaceCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<SpaceUpdatedResponse> SpaceUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SpaceUpdatedResponse> SpaceUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/7";
             var apiCallHttpMethod = "post";
@@ -513,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<SpaceUpdatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<SpaceUpdatedResponse>(callPayload, recurrence: recurrence);
         }
     }
 

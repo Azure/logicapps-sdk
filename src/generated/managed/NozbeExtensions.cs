@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -229,13 +229,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
     {
 
         [WorkflowExpressionFactory(nameof(__BuildPollNewTasks))]
-        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks([WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks([WorkflowExpression] Func<string> projectId = null,[WorkflowExpression] Func<string> responsibleId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> __BuildPollNewTasks(WorkflowExpression<string> projectId = null, WorkflowExpression<string> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> __BuildPollNewTasks(WorkflowExpression<string> projectId = null,WorkflowExpression<string> responsibleId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: false);
             WorkflowExpression.Validate(responsibleId, nameof(responsibleId), required: false);
@@ -249,18 +249,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                     callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
                 if (responsibleId != null)
                     callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(responsibleId);
-                return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollUpdatedTasks))]
-        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks([WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks([WorkflowExpression] Func<string> projectId = null,[WorkflowExpression] Func<string> responsibleId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> __BuildPollUpdatedTasks(WorkflowExpression<string> projectId = null, WorkflowExpression<string> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> __BuildPollUpdatedTasks(WorkflowExpression<string> projectId = null,WorkflowExpression<string> responsibleId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: false);
             WorkflowExpression.Validate(responsibleId, nameof(responsibleId), required: false);
@@ -274,8 +274,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
                     callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
                 if (responsibleId != null)
                     callPayload.Queries["responsible_id"] = ExpressionConverter.Convert(responsibleId);
-                return new ApiConnectionTrigger<PollUpdatedTasksResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollUpdatedTasksResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -195,28 +195,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Theeventscalendar
 
     public class TheeventscalendarTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewEventTriggerResponse> NewEventTrigger(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewEventTriggerResponse> NewEventTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/new-events/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewEventTriggerResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NewEventTriggerResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<UpdatedEventTriggerResponse> UpdatedEventTrigger(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UpdatedEventTriggerResponse> UpdatedEventTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/updated-events/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<UpdatedEventTriggerResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<UpdatedEventTriggerResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<CanceledEventTriggerResponse> CanceledEventTrigger(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CanceledEventTriggerResponse> CanceledEventTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/wp-json/tribe/power-automate/v1/canceled-events/";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CanceledEventTriggerResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<CanceledEventTriggerResponse>(callPayload, recurrence: recurrence);
         }
     }
 

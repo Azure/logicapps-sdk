@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -425,13 +425,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
     {
 
         [WorkflowExpressionFactory(nameof(__BuildEvents))]
-        public IWorkflowTrigger Events([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, [WorkflowExpression] Func<string> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Events([WorkflowExpression] Func<string> bodyEvent,[WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodygroupId = null,[WorkflowExpression] Func<string> bodyenterpriseId = null,[WorkflowExpression] Func<string> bodytype = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEvents(WorkflowExpression<string> bodyEvent, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyenterpriseId = null, WorkflowExpression<string> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEvents(WorkflowExpression<string> bodyEvent,WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodygroupId = null,WorkflowExpression<string> bodyenterpriseId = null,WorkflowExpression<string> bodytype = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
             WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
@@ -479,18 +479,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsDoNotDisturb))]
-        public IWorkflowTrigger EventsDoNotDisturb([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsDoNotDisturb([WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodygroupId = null,[WorkflowExpression] Func<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventsDoNotDisturb(WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventsDoNotDisturb(WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodygroupId = null,WorkflowExpression<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
@@ -529,18 +529,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsCallCenterMonitoring))]
-        public IWorkflowTrigger EventsCallCenterMonitoring([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsCallCenterMonitoring([WorkflowExpression] Func<string> bodygroupId = null,[WorkflowExpression] Func<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventsCallCenterMonitoring(WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventsCallCenterMonitoring(WorkflowExpression<string> bodygroupId = null,WorkflowExpression<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
             WorkflowExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
@@ -572,18 +572,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsCallCenterQueue))]
-        public IWorkflowTrigger EventsCallCenterQueue([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsCallCenterQueue([WorkflowExpression] Func<string> bodygroupId = null,[WorkflowExpression] Func<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventsCallCenterQueue(WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventsCallCenterQueue(WorkflowExpression<string> bodygroupId = null,WorkflowExpression<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
             WorkflowExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
@@ -615,18 +615,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsCallCenterAgent))]
-        public IWorkflowTrigger EventsCallCenterAgent([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsCallCenterAgent([WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodygroupId = null,[WorkflowExpression] Func<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventsCallCenterAgent(WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventsCallCenterAgent(WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodygroupId = null,WorkflowExpression<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
@@ -665,18 +665,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsVoicemail))]
-        public IWorkflowTrigger EventsVoicemail([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsVoicemail([WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodygroupId = null,[WorkflowExpression] Func<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventsVoicemail(WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyenterpriseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventsVoicemail(WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodygroupId = null,WorkflowExpression<string> bodyenterpriseId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
@@ -715,18 +715,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsCall))]
-        public IWorkflowTrigger EventsCall([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyenterpriseId = null, [WorkflowExpression] Func<string> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EventsCall([WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodygroupId = null,[WorkflowExpression] Func<string> bodyenterpriseId = null,[WorkflowExpression] Func<string> bodytype = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEventsCall(WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodygroupId = null, WorkflowExpression<string> bodyenterpriseId = null, WorkflowExpression<string> bodytype = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEventsCall(WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodygroupId = null,WorkflowExpression<string> bodyenterpriseId = null,WorkflowExpression<string> bodytype = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             WorkflowExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
@@ -772,8 +772,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

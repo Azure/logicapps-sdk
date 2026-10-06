@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -92,13 +92,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
     {
 
         [WorkflowExpressionFactory(nameof(__BuildIdeaReachedStageTrigger))]
-        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger([WorkflowExpression] Func<string> ideaboxId, [WorkflowExpression] Func<string> stageId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger([WorkflowExpression] Func<string> ideaboxId,[WorkflowExpression] Func<string> stageId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> __BuildIdeaReachedStageTrigger(WorkflowExpression<string> ideaboxId, WorkflowExpression<string> stageId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> __BuildIdeaReachedStageTrigger(WorkflowExpression<string> ideaboxId,WorkflowExpression<string> stageId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(ideaboxId, nameof(ideaboxId), required: true);
             WorkflowExpression.Validate(stageId, nameof(stageId), required: true);
@@ -109,18 +109,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(ideaboxId);
                 callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
-                return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildIdeaStatusChangedTrigger))]
-        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, [WorkflowExpression] Func<string> statusId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger([WorkflowExpression] Func<string> ideaboxId = null,[WorkflowExpression] Func<string> stageId = null,[WorkflowExpression] Func<string> statusId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> __BuildIdeaStatusChangedTrigger(WorkflowExpression<string> ideaboxId = null, WorkflowExpression<string> stageId = null, WorkflowExpression<string> statusId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> __BuildIdeaStatusChangedTrigger(WorkflowExpression<string> ideaboxId = null,WorkflowExpression<string> stageId = null,WorkflowExpression<string> statusId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
             WorkflowExpression.Validate(stageId, nameof(stageId), required: false);
@@ -136,18 +136,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
                 if (statusId != null)
                     callPayload.Queries["statusId"] = ExpressionConverter.Convert(statusId);
-                return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildIdeaPublishedTrigger))]
-        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger([WorkflowExpression] Func<string> ideaboxId = null,[WorkflowExpression] Func<string> stageId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> __BuildIdeaPublishedTrigger(WorkflowExpression<string> ideaboxId = null, WorkflowExpression<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> __BuildIdeaPublishedTrigger(WorkflowExpression<string> ideaboxId = null,WorkflowExpression<string> stageId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
             WorkflowExpression.Validate(stageId, nameof(stageId), required: false);
@@ -160,18 +160,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                     callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(ideaboxId);
                 if (stageId != null)
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
-                return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildIdeaEditedTrigger))]
-        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger([WorkflowExpression] Func<string> ideaboxId = null,[WorkflowExpression] Func<string> stageId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> __BuildIdeaEditedTrigger(WorkflowExpression<string> ideaboxId = null, WorkflowExpression<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> __BuildIdeaEditedTrigger(WorkflowExpression<string> ideaboxId = null,WorkflowExpression<string> stageId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
             WorkflowExpression.Validate(stageId, nameof(stageId), required: false);
@@ -184,8 +184,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
                     callPayload.Queries["ideaboxId"] = ExpressionConverter.Convert(ideaboxId);
                 if (stageId != null)
                     callPayload.Queries["stageId"] = ExpressionConverter.Convert(stageId);
-                return new ApiConnectionTrigger<IdeaEditedTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<IdeaEditedTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

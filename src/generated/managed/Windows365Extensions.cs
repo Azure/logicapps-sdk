@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -533,13 +533,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhook))]
-        public IWorkflowTrigger Webhook([WorkflowExpression] Func<bodyscenarioInput> bodyscenario, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Webhook([WorkflowExpression] Func<bodyscenarioInput> bodyscenario,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhook(WorkflowExpression<bodyscenarioInput> bodyscenario, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhook(WorkflowExpression<bodyscenarioInput> bodyscenario,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyscenario, nameof(bodyscenario), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -558,8 +558,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

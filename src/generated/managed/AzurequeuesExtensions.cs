@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -114,13 +114,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnMessages))]
-        public IBodyWorkflowTrigger<Messages> OnMessages([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<string> visibilitytimeout = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Messages> OnMessages([WorkflowExpression] Func<string> storageAccountName,[WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<string> visibilitytimeout = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Messages> __BuildOnMessages(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> queueName, WorkflowExpression<string> visibilitytimeout = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Messages> __BuildOnMessages(WorkflowExpression<string> storageAccountName,WorkflowExpression<string> queueName,WorkflowExpression<string> visibilitytimeout = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
             WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
@@ -132,18 +132,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (visibilitytimeout != null)
                     callPayload.Queries["visibilitytimeout"] = ExpressionConverter.Convert(visibilitytimeout);
-                return new ApiConnectionTrigger<Messages>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<Messages>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnMessageThresholdReached))]
-        public IBodyWorkflowTrigger<string> OnMessageThresholdReached([WorkflowExpression] Func<string> storageAccountName, [WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> threshold, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnMessageThresholdReached([WorkflowExpression] Func<string> storageAccountName,[WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<int> threshold,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildOnMessageThresholdReached(WorkflowExpression<string> storageAccountName, WorkflowExpression<string> queueName, WorkflowExpression<int> threshold, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> __BuildOnMessageThresholdReached(WorkflowExpression<string> storageAccountName,WorkflowExpression<string> queueName,WorkflowExpression<int> threshold,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(storageAccountName, nameof(storageAccountName), required: true);
             WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
@@ -154,8 +154,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurequeues
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["threshold"] = ExpressionConverter.Convert(threshold);
-                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

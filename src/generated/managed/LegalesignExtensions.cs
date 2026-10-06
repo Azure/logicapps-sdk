@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -914,13 +914,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
     {
 
         [WorkflowExpressionFactory(nameof(__BuildRecipientTrigger))]
-        public IWorkflowTrigger RecipientTrigger([WorkflowExpression] Func<bodyeventFilterInput> bodyeventFilter, [WorkflowExpression] Func<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RecipientTrigger([WorkflowExpression] Func<bodyeventFilterInput> bodyeventFilter,[WorkflowExpression] Func<string> bodygroup = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildRecipientTrigger(WorkflowExpression<bodyeventFilterInput> bodyeventFilter, WorkflowExpression<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildRecipientTrigger(WorkflowExpression<bodyeventFilterInput> bodyeventFilter,WorkflowExpression<string> bodygroup = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyeventFilter, nameof(bodyeventFilter), required: true);
             WorkflowExpression.Validate(bodygroup, nameof(bodygroup), required: false);
@@ -949,18 +949,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildDocumentTrigger))]
-        public IWorkflowTrigger DocumentTrigger([WorkflowExpression] Func<bodyeventFilterInput> bodyeventFilter, [WorkflowExpression] Func<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentTrigger([WorkflowExpression] Func<bodyeventFilterInput> bodyeventFilter,[WorkflowExpression] Func<string> bodygroup = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDocumentTrigger(WorkflowExpression<bodyeventFilterInput> bodyeventFilter, WorkflowExpression<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildDocumentTrigger(WorkflowExpression<bodyeventFilterInput> bodyeventFilter,WorkflowExpression<string> bodygroup = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyeventFilter, nameof(bodyeventFilter), required: true);
             WorkflowExpression.Validate(bodygroup, nameof(bodygroup), required: false);
@@ -989,8 +989,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Legalesign
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

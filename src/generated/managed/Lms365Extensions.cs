@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
 
     public class Lms365Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger EnrollmentApprovalRequest(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EnrollmentApprovalRequest(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/EnrollmentApprovalRequest";
             var apiCallHttpMethod = "post";
@@ -936,10 +936,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CourseEnrollment(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CourseEnrollment(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseEnrollment";
             var apiCallHttpMethod = "post";
@@ -953,10 +953,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CourseUnenrollment(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CourseUnenrollment(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseUnenrollment";
             var apiCallHttpMethod = "post";
@@ -970,10 +970,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CourseStarted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CourseStarted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseStarted";
             var apiCallHttpMethod = "post";
@@ -987,10 +987,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CourseCompleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CourseCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseCompleted";
             var apiCallHttpMethod = "post";
@@ -1004,10 +1004,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CoursePublished(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CoursePublished(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/CoursePublished";
             var apiCallHttpMethod = "post";
@@ -1021,10 +1021,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CourseUnpublished(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CourseUnpublished(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseUnpublished";
             var apiCallHttpMethod = "post";
@@ -1038,10 +1038,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger UserCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/UserCreated";
             var apiCallHttpMethod = "post";
@@ -1055,10 +1055,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger UserDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/UserDeleted";
             var apiCallHttpMethod = "post";
@@ -1072,10 +1072,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CourseCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CourseCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseCreated";
             var apiCallHttpMethod = "post";
@@ -1089,10 +1089,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CourseDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CourseDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/subscribe/CourseDeleted";
             var apiCallHttpMethod = "post";
@@ -1106,7 +1106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

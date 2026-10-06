@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreatePowerAutomateWorkflow))]
-        public IWorkflowTrigger CreatePowerAutomateWorkflow([WorkflowExpression] Func<string> connectionString, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreatePowerAutomateWorkflow([WorkflowExpression] Func<string> connectionString,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreatePowerAutomateWorkflow(WorkflowExpression<string> connectionString, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreatePowerAutomateWorkflow(WorkflowExpression<string> connectionString,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(connectionString, nameof(connectionString), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -40,8 +40,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataactivatorpreview
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

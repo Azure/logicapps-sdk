@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -81,13 +81,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTicketTransitionsToStatus))]
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus([WorkflowExpression] Func<string> bodyprocessName, [WorkflowExpression] Func<string> bodyticketStatusName, [WorkflowExpression] Func<string> bodyserviceName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> TicketTransitionsToStatus([WorkflowExpression] Func<string> bodyprocessName,[WorkflowExpression] Func<string> bodyticketStatusName,[WorkflowExpression] Func<string> bodyserviceName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> __BuildTicketTransitionsToStatus(WorkflowExpression<string> bodyprocessName, WorkflowExpression<string> bodyticketStatusName, WorkflowExpression<string> bodyserviceName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> __BuildTicketTransitionsToStatus(WorkflowExpression<string> bodyprocessName,WorkflowExpression<string> bodyticketStatusName,WorkflowExpression<string> bodyserviceName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyprocessName, nameof(bodyprocessName), required: true);
             WorkflowExpression.Validate(bodyticketStatusName, nameof(bodyticketStatusName), required: true);
@@ -116,8 +116,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

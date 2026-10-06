@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1262,13 +1262,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerForOpenShiftChangeRequests))]
-        public IWorkflowTrigger TriggerForOpenShiftChangeRequests([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerForOpenShiftChangeRequests([WorkflowExpression] Func<string> teamId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTriggerForOpenShiftChangeRequests(WorkflowExpression<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTriggerForOpenShiftChangeRequests(WorkflowExpression<string> teamId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(teamId, nameof(teamId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1285,18 +1285,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerForSwapShiftsChangeRequests))]
-        public IWorkflowTrigger TriggerForSwapShiftsChangeRequests([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerForSwapShiftsChangeRequests([WorkflowExpression] Func<string> teamId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTriggerForSwapShiftsChangeRequests(WorkflowExpression<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTriggerForSwapShiftsChangeRequests(WorkflowExpression<string> teamId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(teamId, nameof(teamId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1313,18 +1313,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerForOfferShiftRequests))]
-        public IWorkflowTrigger TriggerForOfferShiftRequests([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerForOfferShiftRequests([WorkflowExpression] Func<string> teamId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTriggerForOfferShiftRequests(WorkflowExpression<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTriggerForOfferShiftRequests(WorkflowExpression<string> teamId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(teamId, nameof(teamId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1341,18 +1341,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerForTimeOffRequests))]
-        public IWorkflowTrigger TriggerForTimeOffRequests([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerForTimeOffRequests([WorkflowExpression] Func<string> teamId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTriggerForTimeOffRequests(WorkflowExpression<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTriggerForTimeOffRequests(WorkflowExpression<string> teamId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(teamId, nameof(teamId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1369,18 +1369,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerForShifts))]
-        public IWorkflowTrigger TriggerForShifts([WorkflowExpression] Func<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerForShifts([WorkflowExpression] Func<string> teamId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTriggerForShifts(WorkflowExpression<string> teamId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTriggerForShifts(WorkflowExpression<string> teamId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(teamId, nameof(teamId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1397,8 +1397,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

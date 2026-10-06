@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -176,13 +176,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnPinAddedToFollowedBoard))]
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard([WorkflowExpression] Func<string> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard([WorkflowExpression] Func<string> board,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PinResponse> __BuildOnPinAddedToFollowedBoard(WorkflowExpression<string> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> __BuildOnPinAddedToFollowedBoard(WorkflowExpression<string> board,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(board, nameof(board), required: true);
             return new DeferredBodyTrigger<PinResponse>(() =>
@@ -190,18 +190,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnPinAddedToMyBoard))]
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard([WorkflowExpression] Func<string> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard([WorkflowExpression] Func<string> board,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PinResponse> __BuildOnPinAddedToMyBoard(WorkflowExpression<string> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> __BuildOnPinAddedToMyBoard(WorkflowExpression<string> board,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(board, nameof(board), required: true);
             return new DeferredBodyTrigger<PinResponse>(() =>
@@ -209,16 +209,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", ExpressionConverter.ConvertWithUrlEncoding(board, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PinResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<UserResponse> OnSomeoneFollowsMe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UserResponse> OnSomeoneFollowsMe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger4/users/me/followers";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<UserResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<UserResponse>(callPayload, recurrence: recurrence);
         }
     }
 

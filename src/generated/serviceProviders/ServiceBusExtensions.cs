@@ -1028,7 +1028,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveQueueMessagesOutputItem[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildReceiveTopicMessages))]
@@ -1069,7 +1069,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveTopicMessagesOutputItem[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildReceiveQueueMessagesForReplication))]
@@ -1108,7 +1108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildReceiveTopicMessagesForReplication))]
@@ -1149,7 +1149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPeekLockQueueMessagesV2))]
@@ -1178,7 +1178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PeekLockQueueMessagesV2OutputItem[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPeekLockTopicMessagesV2))]
@@ -1209,7 +1209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PeekLockTopicMessagesV2OutputItem[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewMessagesFromQueueSession))]
@@ -1244,7 +1244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<OnNewMessagesFromQueueSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewMessagesFromTopicSession))]
@@ -1281,7 +1281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<OnNewMessagesFromTopicSessionOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnSingleNewMessageFromQueueSession))]
@@ -1310,7 +1310,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<OnSingleNewMessageFromQueueSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnSingleNewMessageFromTopicSession))]
@@ -1341,7 +1341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ServiceBus
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<OnSingleNewMessageFromTopicSessionOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

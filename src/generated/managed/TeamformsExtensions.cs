@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -168,13 +168,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildSubscribeResponse))]
-        public IWorkflowTrigger SubscribeResponse([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<environmentInput> environment = null, [WorkflowExpression] Func<triggersInput> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeResponse([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> formId = null,[WorkflowExpression] Func<environmentInput> environment = null,[WorkflowExpression] Func<triggersInput> triggers = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSubscribeResponse(WorkflowExpression<string> groupId, WorkflowExpression<string> formId = null, WorkflowExpression<environmentInput> environment = null, WorkflowExpression<triggersInput> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildSubscribeResponse(WorkflowExpression<string> groupId,WorkflowExpression<string> formId = null,WorkflowExpression<environmentInput> environment = null,WorkflowExpression<triggersInput> triggers = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             WorkflowExpression.Validate(formId, nameof(formId), required: false);
@@ -201,18 +201,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                     callPayload.Body = requestBody;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildSubscribeResponseDeletion))]
-        public IWorkflowTrigger SubscribeResponseDeletion([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeResponseDeletion([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> formId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSubscribeResponseDeletion(WorkflowExpression<string> groupId, WorkflowExpression<string> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildSubscribeResponseDeletion(WorkflowExpression<string> groupId,WorkflowExpression<string> formId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             WorkflowExpression.Validate(formId, nameof(formId), required: false);
@@ -233,8 +233,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                     callPayload.Body = requestBody;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

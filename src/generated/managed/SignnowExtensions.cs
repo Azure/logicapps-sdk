@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1331,13 +1331,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTriggers))]
-        public IBodyWorkflowTrigger<TriggersV2Response> Triggers([WorkflowExpression] Func<string> bodyevent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersV2Response> Triggers([WorkflowExpression] Func<string> bodyevent,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggersV2Response> __BuildTriggers(WorkflowExpression<string> bodyevent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggersV2Response> __BuildTriggers(WorkflowExpression<string> bodyevent,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyevent, nameof(bodyevent), required: true);
             return new DeferredBodyTrigger<TriggersV2Response>(() =>
@@ -1368,8 +1368,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnow
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<TriggersV2Response>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggersV2Response>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

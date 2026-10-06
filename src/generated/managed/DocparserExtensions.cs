@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -67,13 +67,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookCreate))]
-        public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate([WorkflowExpression] Func<string> parserId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreateReponse> WebhookCreate([WorkflowExpression] Func<string> parserId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreateReponse> __BuildWebhookCreate(WorkflowExpression<string> parserId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreateReponse> __BuildWebhookCreate(WorkflowExpression<string> parserId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(parserId, nameof(parserId), required: true);
             return new DeferredBodyTrigger<WebhookCreateReponse>(() =>
@@ -90,8 +90,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
                     callPayload.Body = targetUrl;
                 }
 
-                return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookCreateReponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

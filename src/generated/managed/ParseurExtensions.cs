@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -75,13 +75,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewDocumentExpanded))]
-        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded([WorkflowExpression] Func<string> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded([WorkflowExpression] Func<string> mailboxID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildNewDocumentExpanded(WorkflowExpression<string> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildNewDocumentExpanded(WorkflowExpression<string> mailboxID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -98,18 +98,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTemplateNeeded))]
-        public IBodyWorkflowTrigger<JToken> TemplateNeeded([WorkflowExpression] Func<string> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TemplateNeeded([WorkflowExpression] Func<string> mailboxID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildTemplateNeeded(WorkflowExpression<string> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildTemplateNeeded(WorkflowExpression<string> mailboxID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(mailboxID, nameof(mailboxID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -126,18 +126,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTableProcessed))]
-        public IBodyWorkflowTrigger<JToken> TableProcessed([WorkflowExpression] Func<string> tableID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TableProcessed([WorkflowExpression] Func<string> tableID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildTableProcessed(WorkflowExpression<string> tableID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildTableProcessed(WorkflowExpression<string> tableID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(tableID, nameof(tableID), required: true);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -154,8 +154,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

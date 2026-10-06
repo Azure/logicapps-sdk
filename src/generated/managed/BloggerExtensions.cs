@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -232,13 +232,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnPostCreated))]
-        public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> blogId, [WorkflowExpression] Func<statusInput> status, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> blogId,[WorkflowExpression] Func<statusInput> status,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Post[]> __BuildOnPostCreated(WorkflowExpression<string> blogId, WorkflowExpression<statusInput> status, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[]> __BuildOnPostCreated(WorkflowExpression<string> blogId,WorkflowExpression<statusInput> status,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(blogId, nameof(blogId), required: true);
             WorkflowExpression.Validate(status, nameof(status), required: true);
@@ -248,8 +248,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blogger
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["status"] = ExpressionConverter.Convert(status);
-                return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<Post[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

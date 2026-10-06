@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -94,13 +94,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
     {
 
         [WorkflowExpressionFactory(nameof(__BuildASITETRIGGEREVENT))]
-        public IWorkflowTrigger ASITETRIGGEREVENT([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASITETRIGGEREVENT([WorkflowExpression] Func<string> projectId,[WorkflowExpression] Func<string> bodytriggerName,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildASITETRIGGEREVENT(WorkflowExpression<string> projectId, WorkflowExpression<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildASITETRIGGEREVENT(WorkflowExpression<string> projectId,WorkflowExpression<string> bodytriggerName,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
             WorkflowExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
@@ -124,18 +124,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildASITETRIGGEREVENTAPPFORM))]
-        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASITETRIGGEREVENTAPPFORM([WorkflowExpression] Func<string> projectId,[WorkflowExpression] Func<string> bodytriggerName,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildASITETRIGGEREVENTAPPFORM(WorkflowExpression<string> projectId, WorkflowExpression<string> bodytriggerName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildASITETRIGGEREVENTAPPFORM(WorkflowExpression<string> projectId,WorkflowExpression<string> bodytriggerName,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
             WorkflowExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
@@ -159,8 +159,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -309,13 +309,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     {
 
         [WorkflowExpressionFactory(nameof(__BuildGroupMgrGroupRequested))]
-        public IWorkflowTrigger GroupMgrGroupRequested([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupMgrGroupRequested([WorkflowExpression] Func<string> bodyname,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildGroupMgrGroupRequested(WorkflowExpression<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildGroupMgrGroupRequested(WorkflowExpression<string> bodyname,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -334,11 +334,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger GroupMgrGroupCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupMgrGroupCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupCreated";
             var apiCallHttpMethod = "post";
@@ -352,10 +352,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GroupMgrGroupUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupMgrGroupUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupUpdated";
             var apiCallHttpMethod = "post";
@@ -369,10 +369,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GroupMgrGroupDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupMgrGroupDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/webhookrequest/GroupDeleted";
             var apiCallHttpMethod = "post";
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

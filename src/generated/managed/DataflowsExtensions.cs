@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -40,13 +40,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnRefreshComplete))]
-        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete([WorkflowExpression] Func<workspaceTypeInput> workspaceType, [WorkflowExpression] Func<string> groupIdForOnRefreshComplete, [WorkflowExpression] Func<string> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RefreshModel> OnRefreshComplete([WorkflowExpression] Func<workspaceTypeInput> workspaceType,[WorkflowExpression] Func<string> groupIdForOnRefreshComplete,[WorkflowExpression] Func<string> dataflowIdForOnRefreshComplete,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<RefreshModel> __BuildOnRefreshComplete(WorkflowExpression<workspaceTypeInput> workspaceType, WorkflowExpression<string> groupIdForOnRefreshComplete, WorkflowExpression<string> dataflowIdForOnRefreshComplete, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RefreshModel> __BuildOnRefreshComplete(WorkflowExpression<workspaceTypeInput> workspaceType,WorkflowExpression<string> groupIdForOnRefreshComplete,WorkflowExpression<string> dataflowIdForOnRefreshComplete,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workspaceType, nameof(workspaceType), required: true);
             WorkflowExpression.Validate(groupIdForOnRefreshComplete, nameof(groupIdForOnRefreshComplete), required: true);
@@ -57,8 +57,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflows
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceType"] = ExpressionConverter.Convert(workspaceType);
-                return new ApiConnectionTrigger<RefreshModel>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<RefreshModel>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

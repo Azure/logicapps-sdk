@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -119,13 +119,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnObjectUpdate))]
-        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate([WorkflowExpression] Func<string> bucketName, [WorkflowExpression] Func<string> objectKey, [WorkflowExpression] Func<string> bucketRegion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> OnObjectUpdate([WorkflowExpression] Func<string> bucketName,[WorkflowExpression] Func<string> objectKey,[WorkflowExpression] Func<string> bucketRegion = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> __BuildOnObjectUpdate(WorkflowExpression<string> bucketName, WorkflowExpression<string> objectKey, WorkflowExpression<string> bucketRegion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<S3ObjectDeepMetadata> __BuildOnObjectUpdate(WorkflowExpression<string> bucketName,WorkflowExpression<string> objectKey,WorkflowExpression<string> bucketRegion = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bucketName, nameof(bucketName), required: true);
             WorkflowExpression.Validate(objectKey, nameof(objectKey), required: true);
@@ -139,8 +139,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3
                 callPayload.Queries["objectKey"] = ExpressionConverter.Convert(objectKey);
                 if (bucketRegion != null)
                     callPayload.Queries["bucketRegion"] = ExpressionConverter.Convert(bucketRegion);
-                return new ApiConnectionTrigger<S3ObjectDeepMetadata>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<S3ObjectDeepMetadata>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -295,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Ftp
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFtpFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

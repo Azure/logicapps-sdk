@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -136,13 +136,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
     {
 
         [WorkflowExpressionFactory(nameof(__BuildSubscribeTrigger))]
-        public IBodyWorkflowTrigger<JToken> SubscribeTrigger([WorkflowExpression] Func<string> bodytriggerName, [WorkflowExpression] Func<int> bodywhen = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> SubscribeTrigger([WorkflowExpression] Func<string> bodytriggerName,[WorkflowExpression] Func<int> bodywhen = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildSubscribeTrigger(WorkflowExpression<string> bodytriggerName, WorkflowExpression<int> bodywhen = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildSubscribeTrigger(WorkflowExpression<string> bodytriggerName,WorkflowExpression<int> bodywhen = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytriggerName, nameof(bodytriggerName), required: true);
             WorkflowExpression.Validate(bodywhen, nameof(bodywhen), required: false);
@@ -174,8 +174,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

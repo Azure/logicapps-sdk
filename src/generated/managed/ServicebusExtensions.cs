@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -759,13 +759,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     {
 
         [WorkflowExpressionFactory(nameof(__BuildGetMessageFromQueue))]
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<queueTypeInput> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue([WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<queueTypeInput> queueType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetMessageFromQueue(WorkflowExpression<string> queueName, WorkflowExpression<queueTypeInput> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetMessageFromQueue(WorkflowExpression<string> queueName,WorkflowExpression<queueTypeInput> queueType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
             WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
@@ -777,18 +777,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
                 if (queueType != null)
                     callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
-                return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGetNewMessageFromQueueWithPeekLock))]
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<queueTypeInput> queueType = null,[WorkflowExpression] Func<string> sessionId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetNewMessageFromQueueWithPeekLock(WorkflowExpression<string> queueName, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetNewMessageFromQueueWithPeekLock(WorkflowExpression<string> queueName,WorkflowExpression<queueTypeInput> queueType = null,WorkflowExpression<string> sessionId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
             WorkflowExpression.Validate(queueType, nameof(queueType), required: false);
@@ -804,18 +804,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
                 if (sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-                return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromQueue))]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue([WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<int> maxMessageCount = null,[WorkflowExpression] Func<queueTypeInput> queueType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetMessagesFromQueue(WorkflowExpression<string> queueName, WorkflowExpression<int> maxMessageCount = null, WorkflowExpression<queueTypeInput> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetMessagesFromQueue(WorkflowExpression<string> queueName,WorkflowExpression<int> maxMessageCount = null,WorkflowExpression<queueTypeInput> queueType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
             WorkflowExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
@@ -831,18 +831,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["queueType"] = Convert.ToString("Main");
                 if (queueType != null)
                     callPayload.Queries["queueType"] = ExpressionConverter.Convert(queueType);
-                return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGetNewMessagesFromQueueWithPeekLock))]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock([WorkflowExpression] Func<string> queueName,[WorkflowExpression] Func<int> maxMessageCount = null,[WorkflowExpression] Func<queueTypeInput> queueType = null,[WorkflowExpression] Func<string> sessionId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetNewMessagesFromQueueWithPeekLock(WorkflowExpression<string> queueName, WorkflowExpression<int> maxMessageCount = null, WorkflowExpression<queueTypeInput> queueType = null, WorkflowExpression<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetNewMessagesFromQueueWithPeekLock(WorkflowExpression<string> queueName,WorkflowExpression<int> maxMessageCount = null,WorkflowExpression<queueTypeInput> queueType = null,WorkflowExpression<string> sessionId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(queueName, nameof(queueName), required: true);
             WorkflowExpression.Validate(maxMessageCount, nameof(maxMessageCount), required: false);
@@ -862,18 +862,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
                 if (sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-                return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGetMessageFromTopic))]
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic([WorkflowExpression] Func<string> topicName,[WorkflowExpression] Func<string> subscriptionName,[WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetMessageFromTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetMessageFromTopic(WorkflowExpression<string> topicName,WorkflowExpression<string> subscriptionName,WorkflowExpression<subscriptionTypeInput> subscriptionType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
             WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
@@ -886,18 +886,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
                 if (subscriptionType != null)
                     callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
-                return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGetNewMessageFromTopicWithPeekLock))]
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName,[WorkflowExpression] Func<string> subscriptionName,[WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null,[WorkflowExpression] Func<string> sessionId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetNewMessageFromTopicWithPeekLock(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> __BuildGetNewMessageFromTopicWithPeekLock(WorkflowExpression<string> topicName,WorkflowExpression<string> subscriptionName,WorkflowExpression<subscriptionTypeInput> subscriptionType = null,WorkflowExpression<string> sessionId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
             WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
@@ -914,18 +914,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
                 if (sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-                return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGetMessagesFromTopic))]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic([WorkflowExpression] Func<string> topicName,[WorkflowExpression] Func<string> subscriptionName,[WorkflowExpression] Func<int> maxMessageCount = null,[WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetMessagesFromTopic(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> maxMessageCount = null, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetMessagesFromTopic(WorkflowExpression<string> topicName,WorkflowExpression<string> subscriptionName,WorkflowExpression<int> maxMessageCount = null,WorkflowExpression<subscriptionTypeInput> subscriptionType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
             WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
@@ -942,18 +942,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["subscriptionType"] = Convert.ToString("Main");
                 if (subscriptionType != null)
                     callPayload.Queries["subscriptionType"] = ExpressionConverter.Convert(subscriptionType);
-                return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGetNewMessagesFromTopicWithPeekLock))]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName, [WorkflowExpression] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock([WorkflowExpression] Func<string> topicName,[WorkflowExpression] Func<string> subscriptionName,[WorkflowExpression] Func<int> maxMessageCount = null,[WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null,[WorkflowExpression] Func<string> sessionId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetNewMessagesFromTopicWithPeekLock(WorkflowExpression<string> topicName, WorkflowExpression<string> subscriptionName, WorkflowExpression<int> maxMessageCount = null, WorkflowExpression<subscriptionTypeInput> subscriptionType = null, WorkflowExpression<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> __BuildGetNewMessagesFromTopicWithPeekLock(WorkflowExpression<string> topicName,WorkflowExpression<string> subscriptionName,WorkflowExpression<int> maxMessageCount = null,WorkflowExpression<subscriptionTypeInput> subscriptionType = null,WorkflowExpression<string> sessionId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(topicName, nameof(topicName), required: true);
             WorkflowExpression.Validate(subscriptionName, nameof(subscriptionName), required: true);
@@ -974,8 +974,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
                 callPayload.Queries["sessionId"] = Convert.ToString("None");
                 if (sessionId != null)
                     callPayload.Queries["sessionId"] = ExpressionConverter.Convert(sessionId);
-                return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peakboard
 
     public class PeakboardTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WhenAlertIsSent(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenAlertIsSent(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PowerAutomate/Subscribe";
             var apiCallHttpMethod = "post";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Peakboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 }

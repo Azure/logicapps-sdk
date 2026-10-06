@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
-        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> webhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> webhookform,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateWebhook(WorkflowExpression<string> webhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateWebhook(WorkflowExpression<string> webhookform,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(webhookform, nameof(webhookform), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
                     callPayload.Body = webhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -3259,13 +3259,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
     {
 
         [WorkflowExpressionFactory(nameof(__BuildFileLocked))]
-        public IWorkflowTrigger FileLocked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FileLocked([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFileLocked(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFileLocked(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3283,18 +3283,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFileUnlocked))]
-        public IWorkflowTrigger FileUnlocked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FileUnlocked([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFileUnlocked(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFileUnlocked(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3312,18 +3312,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFileUpdated))]
-        public IWorkflowTrigger FileUpdated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FileUpdated([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFileUpdated(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFileUpdated(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3341,18 +3341,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFileCreated))]
-        public IWorkflowTrigger FileCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FileCreated([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFileCreated(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFileCreated(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3370,18 +3370,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildShareLinkCreated))]
-        public IWorkflowTrigger ShareLinkCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ShareLinkCreated([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildShareLinkCreated(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildShareLinkCreated(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3399,18 +3399,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildShareLinkDeleted))]
-        public IWorkflowTrigger ShareLinkDeleted([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ShareLinkDeleted([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildShareLinkDeleted(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildShareLinkDeleted(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3428,18 +3428,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFileOrFolderPermissionChange))]
-        public IWorkflowTrigger FileOrFolderPermissionChange([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FileOrFolderPermissionChange([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFileOrFolderPermissionChange(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFileOrFolderPermissionChange(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3457,18 +3457,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFileOrFolderMetadataChange))]
-        public IWorkflowTrigger FileOrFolderMetadataChange([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FileOrFolderMetadataChange([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFileOrFolderMetadataChange(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFileOrFolderMetadataChange(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3486,18 +3486,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFolderProjectAdded))]
-        public IWorkflowTrigger FolderProjectAdded([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderProjectAdded([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFolderProjectAdded(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFolderProjectAdded(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3515,18 +3515,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFolderProjectUnmarked))]
-        public IWorkflowTrigger FolderProjectUnmarked([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderProjectUnmarked([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFolderProjectUnmarked(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFolderProjectUnmarked(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3544,18 +3544,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFolderProjectUpdated))]
-        public IWorkflowTrigger FolderProjectUpdated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderProjectUpdated([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFolderProjectUpdated(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFolderProjectUpdated(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3573,18 +3573,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWorkflowCreated))]
-        public IWorkflowTrigger WorkflowCreated([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WorkflowCreated([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWorkflowCreated(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWorkflowCreated(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3602,18 +3602,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWorkflowCompleted))]
-        public IWorkflowTrigger WorkflowCompleted([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WorkflowCompleted([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWorkflowCompleted(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWorkflowCompleted(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3631,18 +3631,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWorkflowApprovalTaskApproved))]
-        public IWorkflowTrigger WorkflowApprovalTaskApproved([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WorkflowApprovalTaskApproved([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWorkflowApprovalTaskApproved(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWorkflowApprovalTaskApproved(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3660,18 +3660,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWorkflowApprovalTaskRejected))]
-        public IWorkflowTrigger WorkflowApprovalTaskRejected([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WorkflowApprovalTaskRejected([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWorkflowApprovalTaskRejected(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWorkflowApprovalTaskRejected(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -3689,11 +3689,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger GroupCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook/GroupCreated";
             var apiCallHttpMethod = "post";
@@ -3707,10 +3707,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GroupUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook/GroupUpdated";
             var apiCallHttpMethod = "post";
@@ -3724,10 +3724,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GroupDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook/GroupDeleted";
             var apiCallHttpMethod = "post";
@@ -3741,17 +3741,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollCreatedFiles))]
-        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> PollCreatedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> PollCreatedFiles([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> __BuildPollCreatedFiles(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCreatedFilesResponseItem[]> __BuildPollCreatedFiles(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollCreatedFilesResponseItem[]>(() =>
@@ -3760,18 +3760,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollCreatedFilesResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollCreatedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollCreatedFolders))]
-        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> PollCreatedFolders([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> __BuildPollCreatedFolders(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCreatedFoldersResponseItem[]> __BuildPollCreatedFolders(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollCreatedFoldersResponseItem[]>(() =>
@@ -3780,18 +3780,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollCreatedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollCreatedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollDeletedFiles))]
-        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> PollDeletedFiles([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> __BuildPollDeletedFiles(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollDeletedFilesResponseItem[]> __BuildPollDeletedFiles(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollDeletedFilesResponseItem[]>(() =>
@@ -3800,18 +3800,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollDeletedFilesResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollDeletedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollDeletedFolders))]
-        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> PollDeletedFolders([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> __BuildPollDeletedFolders(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollDeletedFoldersResponseItem[]> __BuildPollDeletedFolders(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollDeletedFoldersResponseItem[]>(() =>
@@ -3820,18 +3820,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollDeletedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollDeletedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollRenamedFiles))]
-        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> PollRenamedFiles([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> __BuildPollRenamedFiles(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollRenamedFilesResponseItem[]> __BuildPollRenamedFiles(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollRenamedFilesResponseItem[]>(() =>
@@ -3840,18 +3840,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollRenamedFilesResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollRenamedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollRenamedFolders))]
-        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> PollRenamedFolders([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> __BuildPollRenamedFolders(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollRenamedFoldersResponseItem[]> __BuildPollRenamedFolders(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollRenamedFoldersResponseItem[]>(() =>
@@ -3860,18 +3860,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollRenamedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollRenamedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollMovedFiles))]
-        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> PollMovedFiles([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> __BuildPollMovedFiles(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMovedFilesResponseItem[]> __BuildPollMovedFiles(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollMovedFilesResponseItem[]>(() =>
@@ -3880,18 +3880,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollMovedFilesResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollMovedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollMovedFolders))]
-        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> PollMovedFolders([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> __BuildPollMovedFolders(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollMovedFoldersResponseItem[]> __BuildPollMovedFolders(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollMovedFoldersResponseItem[]>(() =>
@@ -3900,18 +3900,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollMovedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollMovedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollCopiedFiles))]
-        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> PollCopiedFiles([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> __BuildPollCopiedFiles(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCopiedFilesResponseItem[]> __BuildPollCopiedFiles(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollCopiedFilesResponseItem[]>(() =>
@@ -3920,18 +3920,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollCopiedFilesResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollCopiedFilesResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollCopiedFolders))]
-        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders([WorkflowExpression] Func<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> PollCopiedFolders([WorkflowExpression] Func<string> folderPath,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> __BuildPollCopiedFolders(WorkflowExpression<string> folderPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollCopiedFoldersResponseItem[]> __BuildPollCopiedFolders(WorkflowExpression<string> folderPath,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: true);
             return new DeferredBodyTrigger<PollCopiedFoldersResponseItem[]>(() =>
@@ -3940,8 +3940,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Egnyte
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["FolderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<PollCopiedFoldersResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollCopiedFoldersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

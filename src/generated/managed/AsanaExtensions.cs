@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -385,13 +385,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnProjectCreated))]
-        public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreated([WorkflowExpression] Func<string> workspace, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseV2> OnProjectCreated([WorkflowExpression] Func<string> workspace,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListProjectsResponseV2> __BuildOnProjectCreated(WorkflowExpression<string> workspace, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseV2> __BuildOnProjectCreated(WorkflowExpression<string> workspace,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workspace, nameof(workspace), required: true);
             return new DeferredBodyTrigger<ListProjectsResponseV2>(() =>
@@ -400,18 +400,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
-                return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListProjectsResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnTaskCompleted))]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted([WorkflowExpression] Func<string> workspace, [WorkflowExpression] Func<string> project, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCompleted([WorkflowExpression] Func<string> workspace,[WorkflowExpression] Func<string> project,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnTaskCompleted(WorkflowExpression<string> workspace, WorkflowExpression<string> project, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnTaskCompleted(WorkflowExpression<string> workspace,WorkflowExpression<string> project,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workspace, nameof(workspace), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -422,18 +422,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnTaskCreated))]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated([WorkflowExpression] Func<string> workspace, [WorkflowExpression] Func<string> project, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskCreated([WorkflowExpression] Func<string> workspace,[WorkflowExpression] Func<string> project,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnTaskCreated(WorkflowExpression<string> workspace, WorkflowExpression<string> project, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnTaskCreated(WorkflowExpression<string> workspace,WorkflowExpression<string> project,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workspace, nameof(workspace), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -444,8 +444,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asana
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspace"] = ExpressionConverter.Convert(workspace);
                 callPayload.Queries["project"] = ExpressionConverter.Convert(project);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -306,13 +306,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
     {
 
         [WorkflowExpressionFactory(nameof(__BuildRegisterWebhookExchangeModified))]
-        public IWorkflowTrigger RegisterWebhookExchangeModified([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> hubId, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RegisterWebhookExchangeModified([WorkflowExpression] Func<regionInput> region,[WorkflowExpression] Func<string> hubId,[WorkflowExpression] Func<string> projectId,[WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildRegisterWebhookExchangeModified(WorkflowExpression<regionInput> region, WorkflowExpression<string> hubId, WorkflowExpression<string> projectId, WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildRegisterWebhookExchangeModified(WorkflowExpression<regionInput> region,WorkflowExpression<string> hubId,WorkflowExpression<string> projectId,WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(region, nameof(region), required: true);
             WorkflowExpression.Validate(hubId, nameof(hubId), required: true);
@@ -336,18 +336,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildRegisterWebhookExchangeAdded))]
-        public IWorkflowTrigger RegisterWebhookExchangeAdded([WorkflowExpression] Func<regionInput> region, [WorkflowExpression] Func<string> hubId, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RegisterWebhookExchangeAdded([WorkflowExpression] Func<regionInput> region,[WorkflowExpression] Func<string> hubId,[WorkflowExpression] Func<string> projectId,[WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildRegisterWebhookExchangeAdded(WorkflowExpression<regionInput> region, WorkflowExpression<string> hubId, WorkflowExpression<string> projectId, WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildRegisterWebhookExchangeAdded(WorkflowExpression<regionInput> region,WorkflowExpression<string> hubId,WorkflowExpression<string> projectId,WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(region, nameof(region), required: true);
             WorkflowExpression.Validate(hubId, nameof(hubId), required: true);
@@ -371,18 +371,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildRegisterWebhookExchangeModifiedUrl))]
-        public IWorkflowTrigger RegisterWebhookExchangeModifiedUrl([WorkflowExpression] Func<string> fileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RegisterWebhookExchangeModifiedUrl([WorkflowExpression] Func<string> fileId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildRegisterWebhookExchangeModifiedUrl(WorkflowExpression<string> fileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildRegisterWebhookExchangeModifiedUrl(WorkflowExpression<string> fileId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(fileId, nameof(fileId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -400,8 +400,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autodeskforgedataexc
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

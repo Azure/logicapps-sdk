@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -268,13 +268,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewTweet))]
-        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet([WorkflowExpression] Func<string> searchQuery, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet([WorkflowExpression] Func<string> searchQuery,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> __BuildOnNewTweet(WorkflowExpression<string> searchQuery, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> __BuildOnNewTweet(WorkflowExpression<string> searchQuery,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(searchQuery, nameof(searchQuery), required: true);
             return new DeferredBodyTrigger<TriggerBatchResponseTweetModel>(() =>
@@ -283,8 +283,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["searchQuery"] = ExpressionConverter.Convert(searchQuery);
-                return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

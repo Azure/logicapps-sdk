@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
     {
 
         [WorkflowExpressionFactory(nameof(__BuildDynamicWebhookTrigger))]
-        public IWorkflowTrigger DynamicWebhookTrigger([WorkflowExpression] Func<string> triggerId, [WorkflowExpression] Func<bodyconditionInputItem[]> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DynamicWebhookTrigger([WorkflowExpression] Func<string> triggerId,[WorkflowExpression] Func<bodyconditionInputItem[]> bodycondition = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDynamicWebhookTrigger(WorkflowExpression<string> triggerId, WorkflowExpression<bodyconditionInputItem[]> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildDynamicWebhookTrigger(WorkflowExpression<string> triggerId,WorkflowExpression<bodyconditionInputItem[]> bodycondition = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(triggerId, nameof(triggerId), required: true);
             WorkflowExpression.Validate(bodycondition, nameof(bodycondition), required: false);
@@ -46,8 +46,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dvelop
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

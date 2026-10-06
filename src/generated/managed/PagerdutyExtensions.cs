@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -290,13 +290,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewIncidentNote))]
-        public IBodyWorkflowTrigger<NotesResponse> OnNewIncidentNote([WorkflowExpression] Func<string> incidentId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NotesResponse> OnNewIncidentNote([WorkflowExpression] Func<string> incidentId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NotesResponse> __BuildOnNewIncidentNote(WorkflowExpression<string> incidentId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NotesResponse> __BuildOnNewIncidentNote(WorkflowExpression<string> incidentId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(incidentId, nameof(incidentId), required: true);
             return new DeferredBodyTrigger<NotesResponse>(() =>
@@ -304,26 +304,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger1/incidents/{0}/notes", ExpressionConverter.ConvertWithUrlEncoding(incidentId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NotesResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NotesResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse> OnNewIncidentCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse> OnNewIncidentCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger2/incidents";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnIncidentAssigned))]
-        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAssigned([WorkflowExpression] Func<string> userId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAssigned([WorkflowExpression] Func<string> userId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<IncidentsResponse> __BuildOnIncidentAssigned(WorkflowExpression<string> userId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse> __BuildOnIncidentAssigned(WorkflowExpression<string> userId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(userId, nameof(userId), required: true);
             return new DeferredBodyTrigger<IncidentsResponse>(() =>
@@ -331,24 +331,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pagerduty
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/incidents/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAcknowledged(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentAcknowledged(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger4/incidents";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentResolved(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IncidentsResponse> OnIncidentResolved(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger5/incidents";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<IncidentsResponse>(callPayload, recurrence: recurrence);
         }
     }
 

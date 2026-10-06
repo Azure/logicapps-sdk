@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -726,13 +726,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerAbEntryUpdated))]
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryUpdated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<AbEntryTriggerSchema>(() =>
@@ -741,18 +741,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerAbEntryCreated))]
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryCreated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<AbEntryTriggerSchema>(() =>
@@ -761,18 +761,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerAbEntryDateNotification))]
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> TriggerAbEntryDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryDateNotification(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AbEntryTriggerSchema> __BuildTriggerAbEntryDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<AbEntryTriggerSchema>(() =>
@@ -781,18 +781,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<AbEntryTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerAppointmentUpdated))]
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentUpdated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<AppointmentTriggerSchema>(() =>
@@ -801,18 +801,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerAppointmentCreated))]
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentCreated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<AppointmentTriggerSchema>(() =>
@@ -821,18 +821,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerAppointmentDateNotification))]
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> TriggerAppointmentDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentDateNotification(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AppointmentTriggerSchema> __BuildTriggerAppointmentDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<AppointmentTriggerSchema>(() =>
@@ -841,18 +841,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<AppointmentTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerCaseUpdated))]
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseUpdated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<CaseTriggerSchema>(() =>
@@ -861,18 +861,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerCaseDateNotification))]
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseDateNotification(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<CaseTriggerSchema>(() =>
@@ -881,18 +881,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerCaseCreated))]
-        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> TriggerCaseCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseCreated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CaseTriggerSchema> __BuildTriggerCaseCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<CaseTriggerSchema>(() =>
@@ -901,18 +901,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CaseTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerHTaskCreated))]
-        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> TriggerHTaskCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> __BuildTriggerHTaskCreated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HotlistTaskTriggerSchema> __BuildTriggerHTaskCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<HotlistTaskTriggerSchema>(() =>
@@ -921,18 +921,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<HotlistTaskTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerLeadDateNotification))]
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadDateNotification(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<LeadTriggerSchema>(() =>
@@ -941,18 +941,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerLeadUpdated))]
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadUpdated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<LeadTriggerSchema>(() =>
@@ -961,18 +961,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerLeadCreated))]
-        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> TriggerLeadCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadCreated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LeadTriggerSchema> __BuildTriggerLeadCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<LeadTriggerSchema>(() =>
@@ -981,18 +981,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<LeadTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookOppStageChanged))]
-        public IBodyWorkflowTrigger<WebhookCreated> WebhookOppStageChanged([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreated> WebhookOppStageChanged([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreated> __BuildWebhookOppStageChanged(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreated> __BuildWebhookOppStageChanged(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<WebhookCreated>(() =>
@@ -1001,18 +1001,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<WebhookCreated>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookCreated>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerOppCreated))]
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppCreated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOppCreated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOppCreated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<OpportunityTriggerSchema>(() =>
@@ -1021,18 +1021,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerOppUpdated))]
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOppUpdated([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOppUpdated(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOppUpdated(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<OpportunityTriggerSchema>(() =>
@@ -1041,18 +1041,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerOpportunityDateNotification))]
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification([WorkflowExpression] Func<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> TriggerOpportunityDateNotification([WorkflowExpression] Func<object> body = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOpportunityDateNotification(WorkflowExpression<object> body = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OpportunityTriggerSchema> __BuildTriggerOpportunityDateNotification(WorkflowExpression<object> body = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(body, nameof(body), required: false);
             return new DeferredBodyTrigger<OpportunityTriggerSchema>(() =>
@@ -1061,8 +1061,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Maximizercrm
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(body);
-                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OpportunityTriggerSchema>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

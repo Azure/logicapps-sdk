@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -72,13 +72,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
     {
 
         [WorkflowExpressionFactory(nameof(__BuildActionExecuted))]
-        public IWorkflowTrigger ActionExecuted([WorkflowExpression] Func<string> bodyactionName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionExecuted([WorkflowExpression] Func<string> bodyactionName,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildActionExecuted(WorkflowExpression<string> bodyactionName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildActionExecuted(WorkflowExpression<string> bodyactionName,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyactionName, nameof(bodyactionName), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -97,8 +97,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

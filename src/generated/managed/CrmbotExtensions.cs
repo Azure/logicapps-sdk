@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -369,13 +369,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
     {
 
         [WorkflowExpressionFactory(nameof(__BuildIntentDetected))]
-        public IBodyWorkflowTrigger<JToken> IntentDetected([WorkflowExpression] Func<string> bodyselectIntentYouWouldLikeToTriggerOn, [WorkflowExpression] Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> IntentDetected([WorkflowExpression] Func<string> bodyselectIntentYouWouldLikeToTriggerOn,[WorkflowExpression] Func<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildIntentDetected(WorkflowExpression<string> bodyselectIntentYouWouldLikeToTriggerOn, WorkflowExpression<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildIntentDetected(WorkflowExpression<string> bodyselectIntentYouWouldLikeToTriggerOn,WorkflowExpression<bodyuseUnspecifiedIfYourFlowIsPlatformAgnosticInput> bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyselectIntentYouWouldLikeToTriggerOn, nameof(bodyselectIntentYouWouldLikeToTriggerOn), required: true);
             WorkflowExpression.Validate(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic, nameof(bodyuseUnspecifiedIfYourFlowIsPlatformAgnostic), required: true);
@@ -397,8 +397,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Crmbot
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

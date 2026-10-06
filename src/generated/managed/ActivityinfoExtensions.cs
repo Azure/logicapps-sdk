@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
     {
 
         [WorkflowExpressionFactory(nameof(__BuildAddRecordTrigger))]
-        public IBodyWorkflowTrigger<JToken> AddRecordTrigger([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> AddRecordTrigger([WorkflowExpression] Func<string> formId,[WorkflowExpression] Func<string> bodylabel,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildAddRecordTrigger(WorkflowExpression<string> formId, WorkflowExpression<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildAddRecordTrigger(WorkflowExpression<string> formId,WorkflowExpression<string> bodylabel,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(formId, nameof(formId), required: true);
             WorkflowExpression.Validate(bodylabel, nameof(bodylabel), required: true);
@@ -54,18 +54,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEditRecordTrigger))]
-        public IBodyWorkflowTrigger<JToken> EditRecordTrigger([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> EditRecordTrigger([WorkflowExpression] Func<string> formId,[WorkflowExpression] Func<string> bodylabel,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildEditRecordTrigger(WorkflowExpression<string> formId, WorkflowExpression<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildEditRecordTrigger(WorkflowExpression<string> formId,WorkflowExpression<string> bodylabel,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(formId, nameof(formId), required: true);
             WorkflowExpression.Validate(bodylabel, nameof(bodylabel), required: true);
@@ -97,18 +97,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildDeleteRecordTrigger))]
-        public IBodyWorkflowTrigger<JToken> DeleteRecordTrigger([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> DeleteRecordTrigger([WorkflowExpression] Func<string> formId,[WorkflowExpression] Func<string> bodylabel,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildDeleteRecordTrigger(WorkflowExpression<string> formId, WorkflowExpression<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildDeleteRecordTrigger(WorkflowExpression<string> formId,WorkflowExpression<string> bodylabel,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(formId, nameof(formId), required: true);
             WorkflowExpression.Validate(bodylabel, nameof(bodylabel), required: true);
@@ -140,8 +140,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

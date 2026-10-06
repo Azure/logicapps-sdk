@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -202,13 +202,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerXero))]
-        public IWorkflowTrigger TriggerXero([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<eventTypeInput> eventType, [WorkflowExpression] Func<eventCategoryInput> eventCategory, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerXero([WorkflowExpression] Func<string> xeroTenantId,[WorkflowExpression] Func<eventTypeInput> eventType,[WorkflowExpression] Func<eventCategoryInput> eventCategory,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTriggerXero(WorkflowExpression<string> xeroTenantId, WorkflowExpression<eventTypeInput> eventType, WorkflowExpression<eventCategoryInput> eventCategory, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTriggerXero(WorkflowExpression<string> xeroTenantId,WorkflowExpression<eventTypeInput> eventType,WorkflowExpression<eventCategoryInput> eventCategory,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
             WorkflowExpression.Validate(eventType, nameof(eventType), required: true);
@@ -230,8 +230,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

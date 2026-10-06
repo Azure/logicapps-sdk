@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -157,22 +157,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
 
     public class RedmineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListProjectsResponse> OnNewProject(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponse> OnNewProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/new_project_trigger/projects.json";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListProjectsResponse>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewIssue))]
-        public IBodyWorkflowTrigger<ListIssuesResponse> OnNewIssue([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse> OnNewIssue([WorkflowExpression] Func<string> projectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListIssuesResponse> __BuildOnNewIssue(WorkflowExpression<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse> __BuildOnNewIssue(WorkflowExpression<string> projectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<ListIssuesResponse>(() =>
@@ -181,18 +181,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedIssue))]
-        public IBodyWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse> OnUpdatedIssue([WorkflowExpression] Func<string> projectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListIssuesResponse> __BuildOnUpdatedIssue(WorkflowExpression<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListIssuesResponse> __BuildOnUpdatedIssue(WorkflowExpression<string> projectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<ListIssuesResponse>(() =>
@@ -201,8 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Redmine
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListIssuesResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

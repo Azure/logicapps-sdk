@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -295,13 +295,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     {
 
         [WorkflowExpressionFactory(nameof(__BuildRunCompleted))]
-        public IBodyWorkflowTrigger<RunCompletedResponse> RunCompleted([WorkflowExpression] Func<string> actionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RunCompletedResponse> RunCompleted([WorkflowExpression] Func<string> actionId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<RunCompletedResponse> __BuildRunCompleted(WorkflowExpression<string> actionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RunCompletedResponse> __BuildRunCompleted(WorkflowExpression<string> actionId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(actionId, nameof(actionId), required: true);
             return new DeferredBodyTrigger<RunCompletedResponse>(() =>
@@ -331,8 +331,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<RunCompletedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<RunCompletedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

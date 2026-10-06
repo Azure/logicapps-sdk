@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -665,13 +665,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
     {
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddFinancialValuesChangedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddFinancialValuesChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddFinancialValuesChangedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddFinancialValuesChangedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -690,18 +690,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddEntityCreatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityCreatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityCreatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -720,18 +720,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddEntityUpdatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -750,18 +750,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddEntityDeletedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddEntityDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityDeletedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddEntityDeletedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -780,18 +780,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddStageTransitionHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddStageTransitionHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddStageTransitionHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddStageTransitionHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -810,18 +810,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddActualsApprovalWorkflowStartedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsApprovalWorkflowStartedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddActualsApprovalWorkflowStartedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddActualsApprovalWorkflowStartedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -840,18 +840,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddActualsPeriodStatusChangedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddActualsPeriodStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddActualsPeriodStatusChangedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddActualsPeriodStatusChangedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -870,18 +870,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddChangeRequestCreatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestCreatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestCreatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -900,18 +900,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddChangeRequestUpdatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -930,18 +930,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddChangeRequestDeletedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestDeletedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestDeletedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -960,18 +960,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddChangeRequestStatusChangedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddChangeRequestStatusChangedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestStatusChangedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddChangeRequestStatusChangedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -990,18 +990,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddResourceAssignmentAddedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentAddedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentAddedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentAddedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1020,18 +1020,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddResourceAssignmentRemovedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentRemovedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentRemovedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentRemovedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1050,18 +1050,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddResourceAssignmentUpdatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddResourceAssignmentUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddResourceAssignmentUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1080,18 +1080,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddMilestoneCreatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneCreatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneCreatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1110,18 +1110,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddMilestoneUpdatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1140,18 +1140,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddMilestoneDeletedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddMilestoneDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneDeletedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddMilestoneDeletedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1170,18 +1170,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddRelationshipCreatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipCreatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipCreatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipCreatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1200,18 +1200,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddRelationshipUpdatedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipUpdatedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipUpdatedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1230,18 +1230,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEventsAddRelationshipDeletedHook))]
-        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> EventsAddRelationshipDeletedHook([WorkflowExpression] Func<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipDeletedHook(WorkflowExpression<string> eventCreationInformationsiteURL, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EventCreationResponse> __BuildEventsAddRelationshipDeletedHook(WorkflowExpression<string> eventCreationInformationsiteURL,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventCreationInformationsiteURL, nameof(eventCreationInformationsiteURL), required: true);
             return new DeferredBodyTrigger<EventCreationResponse>(() =>
@@ -1260,8 +1260,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                     callPayload.Body = eventCreationInformation;
                 }
 
-                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EventCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

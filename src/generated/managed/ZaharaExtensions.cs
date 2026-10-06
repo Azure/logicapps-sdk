@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -407,30 +407,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
 
     public class ZaharaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CostCodeIntegrationModel[]> NewCostCode(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CostCodeIntegrationModel[]> NewCostCode(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/CostCodeIntegration/GetAll";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CostCodeIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<CostCodeIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewApprovalComment(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewApprovalComment(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/DocumentsIntegration/GetApprovalComments";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNewDocumentApproved))]
-        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewDocumentApproved([WorkflowExpression] Func<documentTypeInput> documentType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> NewDocumentApproved([WorkflowExpression] Func<documentTypeInput> documentType,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> __BuildNewDocumentApproved(WorkflowExpression<documentTypeInput> documentType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProcessLogIntegrationModel[]> __BuildNewDocumentApproved(WorkflowExpression<documentTypeInput> documentType,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(documentType, nameof(documentType), required: true);
             return new DeferredBodyTrigger<ProcessLogIntegrationModel[]>(() =>
@@ -439,88 +439,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zahara
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["documentType"] = ExpressionConverter.Convert(documentType);
-                return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ProcessLogIntegrationModel[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoice(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoice(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/InvoiceIntegration/GetAll";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoiceSetAsExported(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<InvoiceIntegrationModel[]> NewInvoiceSetAsExported(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/InvoiceIntegration/GetExported";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<InvoiceIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<NominalCodeIntegrationModel[]> NewNominalCode(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NominalCodeIntegrationModel[]> NewNominalCode(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/NominalCodeIntegration/GetAll";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NominalCodeIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NominalCodeIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ProjectIntegrationModel[]> NewProject(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProjectIntegrationModel[]> NewProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/ProjectIntegration/getall";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ProjectIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ProjectIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrder(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrder(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PurchaseOrderIntegration/GetAll";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrderSentToSupplier(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PurchaseOrderIntegrationModel[]> NewPurchaseOrderSentToSupplier(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PurchaseOrderIntegration/GetSentToSupplier";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<PurchaseOrderIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<PurchaseRequsitionIntegrationModel[]> NewPurchaseRequsition(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PurchaseRequsitionIntegrationModel[]> NewPurchaseRequsition(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/PurchaseRequsitionIntegration/getall";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PurchaseRequsitionIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<PurchaseRequsitionIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<SupplierIntegrationModel[]> NewSupplier(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SupplierIntegrationModel[]> NewSupplier(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/SupplierIntegration/GetAll";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<SupplierIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<SupplierIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<SupplierUpdateIntegrationModel[]> SupplierAmended(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SupplierUpdateIntegrationModel[]> SupplierAmended(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/SupplierIntegration/GetAllUpdated";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<SupplierUpdateIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<SupplierUpdateIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TaxCodeIntegrationModel[]> NewTaxCode(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaxCodeIntegrationModel[]> NewTaxCode(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/TaxCodeIntegration/getall";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaxCodeIntegrationModel[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TaxCodeIntegrationModel[]>(callPayload, recurrence: recurrence);
         }
     }
 

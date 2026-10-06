@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -365,13 +365,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
     {
 
         [WorkflowExpressionFactory(nameof(__BuildPostWebhooks))]
-        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks([WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodysecret = null, [WorkflowExpression] Func<string> bodyexpirationDate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> PostWebhooks([WorkflowExpression] Func<string> bodyeventType,[WorkflowExpression] Func<string> bodysecret = null,[WorkflowExpression] Func<string> bodyexpirationDate = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> __BuildPostWebhooks(WorkflowExpression<string> bodyeventType, WorkflowExpression<string> bodysecret = null, WorkflowExpression<string> bodyexpirationDate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0> __BuildPostWebhooks(WorkflowExpression<string> bodyeventType,WorkflowExpression<string> bodysecret = null,WorkflowExpression<string> bodyexpirationDate = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
             WorkflowExpression.Validate(bodysecret, nameof(bodysecret), required: false);
@@ -404,8 +404,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OfficeArchitectContractsNotificationResponseSaveWebhookResponseLevel0>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

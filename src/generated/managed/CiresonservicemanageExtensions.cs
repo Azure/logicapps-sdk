@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1026,13 +1026,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
-        public IBodyWorkflowTrigger<WebhookSettings> CreateWebhook([WorkflowExpression] Func<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings> CreateWebhook([WorkflowExpression] Func<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookSettings> __BuildCreateWebhook(WorkflowExpression<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings> __BuildCreateWebhook(WorkflowExpression<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
             return new DeferredBodyTrigger<WebhookSettings>(() =>
@@ -1074,18 +1074,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookSettings>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateActionLogWebhook))]
-        public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook([WorkflowExpression] Func<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings> CreateActionLogWebhook([WorkflowExpression] Func<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookSettings> __BuildCreateActionLogWebhook(WorkflowExpression<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSettings> __BuildCreateActionLogWebhook(WorkflowExpression<bodywebhookSettingsworkItemClassTypeInput> bodywebhookSettingsworkItemClassType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodywebhookSettingsworkItemClassType, nameof(bodywebhookSettingsworkItemClassType), required: false);
             return new DeferredBodyTrigger<WebhookSettings>(() =>
@@ -1127,8 +1127,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<WebhookSettings>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookSettings>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -847,7 +847,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureBlob
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenABlobIsAddedOrModifiedOutput>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

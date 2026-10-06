@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascalert
 
     public class AscalertTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ASCAlertTriggerSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ASCAlertTriggerSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/Microsoft.Security/Alert/subscribe";
             var apiCallHttpMethod = "post";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascalert
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 }

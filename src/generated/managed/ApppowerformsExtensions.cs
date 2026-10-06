@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -189,13 +189,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTriggerGetCardResponse))]
-        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse([WorkflowExpression] Func<string> name, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse([WorkflowExpression] Func<string> name,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> __BuildTriggerGetCardResponse(WorkflowExpression<string> name, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> __BuildTriggerGetCardResponse(WorkflowExpression<string> name,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(name, nameof(name), required: true);
             return new DeferredBodyTrigger<TriggerGetCardResponseResponse>(() =>
@@ -204,8 +204,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");
-                return new ApiConnectionTrigger<TriggerGetCardResponseResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerGetCardResponseResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -300,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenARowIsDeleted))]
@@ -323,7 +323,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenARowIsInserted))]
@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenARowIsModified))]
@@ -369,7 +369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sql
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<JToken[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

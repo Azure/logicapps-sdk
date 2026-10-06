@@ -75,6 +75,10 @@ existing cooperative cancellation, not an execution sandbox or hard timeout.
 
 Managed and service-provider generators emit both surfaces from one operation.
 Descriptor arguments are validated; optional omission retains manifest defaults.
+Generated trigger factory methods expose operation inputs and trigger execution
+configuration such as polling recurrence, but no naming metadata. Unnamed deferred
+triggers retain `WorkflowTriggerBase`'s unique generated name; `.WithName(...)`
+is the single explicit naming API for generated triggers.
 The SDK package carries the .NET 8 compiler and transitive build target.
 Consumers need only the SDK package; no interceptor preview configuration is needed.
 

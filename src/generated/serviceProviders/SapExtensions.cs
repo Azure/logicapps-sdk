@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Sap
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<SapTriggerOutput>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

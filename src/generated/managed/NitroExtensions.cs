@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
 
     public class NitroTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Error> WebhookDocumentSignedTrigger(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Error> WebhookDocumentSignedTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v2/webhooks";
             var apiCallHttpMethod = "post";
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
                 callPayload.Body = request;
             }
 
-            return new ApiConnectionTrigger<Error>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<Error>(callPayload, recurrence: recurrence);
         }
     }
 

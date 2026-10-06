@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -172,13 +172,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewResponse))]
-        public IBodyWorkflowTrigger<JToken> NewResponse([WorkflowExpression] Func<int> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewResponse([WorkflowExpression] Func<int> bodycampaignId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildNewResponse(WorkflowExpression<int> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildNewResponse(WorkflowExpression<int> bodycampaignId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -204,18 +204,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNewCampaignMember))]
-        public IBodyWorkflowTrigger<JToken> NewCampaignMember([WorkflowExpression] Func<int> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewCampaignMember([WorkflowExpression] Func<int> bodycampaignId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildNewCampaignMember(WorkflowExpression<int> bodycampaignId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildNewCampaignMember(WorkflowExpression<int> bodycampaignId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodycampaignId, nameof(bodycampaignId), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -241,8 +241,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

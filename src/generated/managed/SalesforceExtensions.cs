@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -808,13 +808,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> filter = null,[WorkflowExpression] Func<string> orderby = null,[WorkflowExpression] Func<string> select = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewItems(WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewItems(WorkflowExpression<string> table,WorkflowExpression<string> filter = null,WorkflowExpression<string> orderby = null,WorkflowExpression<string> select = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(table, nameof(table), required: true);
             WorkflowExpression.Validate(filter, nameof(filter), required: false);
@@ -831,18 +831,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                     callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
                 if (select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> filter = null,[WorkflowExpression] Func<string> orderby = null,[WorkflowExpression] Func<string> select = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedItems(WorkflowExpression<string> table, WorkflowExpression<string> filter = null, WorkflowExpression<string> orderby = null, WorkflowExpression<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedItems(WorkflowExpression<string> table,WorkflowExpression<string> filter = null,WorkflowExpression<string> orderby = null,WorkflowExpression<string> select = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(table, nameof(table), required: true);
             WorkflowExpression.Validate(filter, nameof(filter), required: false);
@@ -859,8 +859,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Salesforce
                     callPayload.Queries["$orderby"] = ExpressionConverter.Convert(orderby);
                 if (select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

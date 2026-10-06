@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -136,22 +136,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
 
     public class GotowebinarTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebinarSummary[]> OnNewWebinar(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebinarSummary[]> OnNewWebinar(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/organizers/organizerKey/webinars";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<WebinarSummary[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebinarSummary[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewRegistration))]
-        public IBodyWorkflowTrigger<RegistrantSummary[]> OnNewRegistration([WorkflowExpression] Func<string> webinarKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegistrantSummary[]> OnNewRegistration([WorkflowExpression] Func<string> webinarKey,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<RegistrantSummary[]> __BuildOnNewRegistration(WorkflowExpression<string> webinarKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RegistrantSummary[]> __BuildOnNewRegistration(WorkflowExpression<string> webinarKey,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(webinarKey, nameof(webinarKey), required: true);
             return new DeferredBodyTrigger<RegistrantSummary[]>(() =>
@@ -159,8 +159,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotowebinar
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/organizers/organizerKey/webinars/{0}/registrants", ExpressionConverter.ConvertWithUrlEncoding(webinarKey, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<RegistrantSummary[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<RegistrantSummary[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

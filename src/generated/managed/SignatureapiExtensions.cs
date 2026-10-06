@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1204,13 +1204,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeCreated))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCreated([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCreated(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCreated(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1233,18 +1233,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeStarted))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeStarted([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeStarted(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeStarted(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1267,18 +1267,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeCompleted))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCompleted([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCompleted(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCompleted(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1301,18 +1301,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeFailed))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeFailed([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeFailed(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeFailed(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1335,18 +1335,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForEnvelopeCanceled))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForEnvelopeCanceled([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCanceled(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForEnvelopeCanceled(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1369,18 +1369,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientReleased))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReleased([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientReleased(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientReleased(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1403,18 +1403,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientSent))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientSent([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientSent(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientSent(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1437,18 +1437,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientCompleted))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientCompleted([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientCompleted(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientCompleted(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1471,18 +1471,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientRejected))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientRejected([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientRejected(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientRejected(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1505,18 +1505,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientBounced))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientBounced([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientBounced(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientBounced(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1539,18 +1539,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientFailed))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientFailed([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientFailed(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientFailed(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1573,18 +1573,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientReplaced))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientReplaced([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientReplaced(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientReplaced(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1607,18 +1607,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForRecipientResent))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForRecipientResent([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientResent(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForRecipientResent(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1641,18 +1641,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForDeliverableGenerated))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableGenerated([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForDeliverableGenerated(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForDeliverableGenerated(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1675,18 +1675,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateEndpointForDeliverableFailed))]
-        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed([WorkflowExpression] Func<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CreateEndpointForDeliverableFailed([WorkflowExpression] Func<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForDeliverableFailed(WorkflowExpression<string[]> bodytopics = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCreateEndpointForDeliverableFailed(WorkflowExpression<string[]> bodytopics = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytopics, nameof(bodytopics), required: false);
             return new DeferredBodyTrigger<JToken>(() =>
@@ -1709,8 +1709,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signatureapi
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

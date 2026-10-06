@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -206,7 +206,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
 
     public class AdobecreativecloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookSubscribeToAssetCreatedEvents(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookSubscribeToAssetCreatedEvents(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook1/csm/cc/events/asset_created";
             var apiCallHttpMethod = "post";
@@ -220,10 +220,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger WebhookSubscribeToAssetUpdatedEvents(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookSubscribeToAssetUpdatedEvents(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook2/csm/cc/events/asset_updated";
             var apiCallHttpMethod = "post";
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adobecreativecloud
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

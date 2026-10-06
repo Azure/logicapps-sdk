@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -394,13 +394,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnItemCompleted))]
-        public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCompletedV4Response> OnItemCompleted([WorkflowExpression] Func<string> projectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnItemCompletedV4Response> __BuildOnItemCompleted(WorkflowExpression<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCompletedV4Response> __BuildOnItemCompleted(WorkflowExpression<string> projectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<OnItemCompletedV4Response>(() =>
@@ -409,18 +409,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-                return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnItemCompletedV4Response>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnItemCreated))]
-        public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated([WorkflowExpression] Func<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCreatedV4Response> OnItemCreated([WorkflowExpression] Func<string> projectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnItemCreatedV4Response> __BuildOnItemCreated(WorkflowExpression<string> projectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnItemCreatedV4Response> __BuildOnItemCreated(WorkflowExpression<string> projectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
             return new DeferredBodyTrigger<OnItemCreatedV4Response>(() =>
@@ -429,8 +429,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoist
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["project_id"] = ExpressionConverter.Convert(projectId);
-                return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnItemCreatedV4Response>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

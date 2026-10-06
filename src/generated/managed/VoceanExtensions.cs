@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -179,13 +179,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
     {
 
         [WorkflowExpressionFactory(nameof(__BuildIdeaTrigger))]
-        public IWorkflowTrigger IdeaTrigger([WorkflowExpression] Func<string> networkId, [WorkflowExpression] Func<string> activityId, [WorkflowExpression] Func<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IdeaTrigger([WorkflowExpression] Func<string> networkId,[WorkflowExpression] Func<string> activityId,[WorkflowExpression] Func<bodyeventTypesInputItem[]> bodyeventTypes = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildIdeaTrigger(WorkflowExpression<string> networkId, WorkflowExpression<string> activityId, WorkflowExpression<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildIdeaTrigger(WorkflowExpression<string> networkId,WorkflowExpression<string> activityId,WorkflowExpression<bodyeventTypesInputItem[]> bodyeventTypes = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(networkId, nameof(networkId), required: true);
             WorkflowExpression.Validate(activityId, nameof(activityId), required: true);
@@ -210,18 +210,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUserActivityTrigger))]
-        public IWorkflowTrigger UserActivityTrigger([WorkflowExpression] Func<string> networkId = null, [WorkflowExpression] Func<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserActivityTrigger([WorkflowExpression] Func<string> networkId = null,[WorkflowExpression] Func<bodyeventTypesInputItem[]> bodyeventTypes = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildUserActivityTrigger(WorkflowExpression<string> networkId = null, WorkflowExpression<bodyeventTypesInputItem[]> bodyeventTypes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildUserActivityTrigger(WorkflowExpression<string> networkId = null,WorkflowExpression<bodyeventTypesInputItem[]> bodyeventTypes = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(networkId, nameof(networkId), required: false);
             WorkflowExpression.Validate(bodyeventTypes, nameof(bodyeventTypes), required: false);
@@ -247,8 +247,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

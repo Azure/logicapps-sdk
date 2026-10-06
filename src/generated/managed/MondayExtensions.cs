@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -713,13 +713,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookCreateItem))]
-        public IBodyWorkflowTrigger<JToken> WebhookCreateItem([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> WebhookCreateItem([WorkflowExpression] Func<string> bodyworkspaceId,[WorkflowExpression] Func<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildWebhookCreateItem(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildWebhookCreateItem(WorkflowExpression<string> bodyworkspaceId,WorkflowExpression<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             WorkflowExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
@@ -741,18 +741,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookCreateUpdate))]
-        public IBodyWorkflowTrigger<JToken> WebhookCreateUpdate([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> WebhookCreateUpdate([WorkflowExpression] Func<string> bodyworkspaceId,[WorkflowExpression] Func<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildWebhookCreateUpdate(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildWebhookCreateUpdate(WorkflowExpression<string> bodyworkspaceId,WorkflowExpression<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             WorkflowExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
@@ -774,18 +774,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookChangeName))]
-        public IBodyWorkflowTrigger<JToken> WebhookChangeName([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> WebhookChangeName([WorkflowExpression] Func<string> bodyworkspaceId,[WorkflowExpression] Func<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildWebhookChangeName(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildWebhookChangeName(WorkflowExpression<string> bodyworkspaceId,WorkflowExpression<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             WorkflowExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
@@ -807,18 +807,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookChangeSubitemName))]
-        public IBodyWorkflowTrigger<JToken> WebhookChangeSubitemName([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> WebhookChangeSubitemName([WorkflowExpression] Func<string> bodyworkspaceId,[WorkflowExpression] Func<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildWebhookChangeSubitemName(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildWebhookChangeSubitemName(WorkflowExpression<string> bodyworkspaceId,WorkflowExpression<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             WorkflowExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
@@ -840,18 +840,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookCreateSubitem))]
-        public IBodyWorkflowTrigger<JToken> WebhookCreateSubitem([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> WebhookCreateSubitem([WorkflowExpression] Func<string> bodyworkspaceId,[WorkflowExpression] Func<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildWebhookCreateSubitem(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildWebhookCreateSubitem(WorkflowExpression<string> bodyworkspaceId,WorkflowExpression<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             WorkflowExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
@@ -873,18 +873,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookColumnChanges))]
-        public IBodyWorkflowTrigger<JToken> WebhookColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<string> bodycolumnId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> WebhookColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId,[WorkflowExpression] Func<string> bodyboardId,[WorkflowExpression] Func<string> bodycolumnId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildWebhookColumnChanges(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, WorkflowExpression<string> bodycolumnId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildWebhookColumnChanges(WorkflowExpression<string> bodyworkspaceId,WorkflowExpression<string> bodyboardId,WorkflowExpression<string> bodycolumnId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             WorkflowExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
@@ -909,18 +909,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookAnyColumnChanges))]
-        public IBodyWorkflowTrigger<JToken> WebhookAnyColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> WebhookAnyColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId,[WorkflowExpression] Func<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildWebhookAnyColumnChanges(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildWebhookAnyColumnChanges(WorkflowExpression<string> bodyworkspaceId,WorkflowExpression<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             WorkflowExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
@@ -942,18 +942,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookSubitemColumnChanges))]
-        public IBodyWorkflowTrigger<JToken> WebhookSubitemColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> WebhookSubitemColumnChanges([WorkflowExpression] Func<string> bodyworkspaceId,[WorkflowExpression] Func<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildWebhookSubitemColumnChanges(WorkflowExpression<string> bodyworkspaceId, WorkflowExpression<string> bodyboardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildWebhookSubitemColumnChanges(WorkflowExpression<string> bodyworkspaceId,WorkflowExpression<string> bodyboardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
             WorkflowExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
@@ -975,8 +975,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

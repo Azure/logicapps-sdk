@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -525,46 +525,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
 
     public class HarvestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<GetUserByIDResponse[]> TrigNewUser(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetUserByIDResponse[]> TrigNewUser(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/people";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<GetUserByIDResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<GetUserByIDResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListAllClientsResponseItem[]> TrigNewClient(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListAllClientsResponseItem[]> TrigNewClient(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/clients";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListAllClientsResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListAllClientsResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListAllContactsResponseItem[]> TrigNewContact(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListAllContactsResponseItem[]> TrigNewContact(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/contacts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListAllContactsResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListAllContactsResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListProjectsResponseItem[]> TrigNewProject(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListProjectsResponseItem[]> TrigNewProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/projects";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListProjectsResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListProjectsResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTrigNewTimeEntryToday))]
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday([WorkflowExpression] Func<string> ofUser = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntryToday([WorkflowExpression] Func<string> ofUser = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> __BuildTrigNewTimeEntryToday(WorkflowExpression<string> ofUser = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> __BuildTrigNewTimeEntryToday(WorkflowExpression<string> ofUser = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(ofUser, nameof(ofUser), required: false);
             return new DeferredBodyTrigger<GetTimeEntriesForDayResponse>(() =>
@@ -574,18 +574,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (ofUser != null)
                     callPayload.Queries["of_user"] = ExpressionConverter.Convert(ofUser);
-                return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTrigNewTimeEntry))]
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry([WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> ofUser = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> TrigNewTimeEntry([WorkflowExpression] Func<string> date,[WorkflowExpression] Func<string> ofUser = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> __BuildTrigNewTimeEntry(WorkflowExpression<string> date, WorkflowExpression<string> ofUser = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetTimeEntriesForDayResponse> __BuildTrigNewTimeEntry(WorkflowExpression<string> date,WorkflowExpression<string> ofUser = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(date, nameof(date), required: true);
             WorkflowExpression.Validate(ofUser, nameof(ofUser), required: false);
@@ -597,8 +597,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Harvest
                 callPayload.Queries["date"] = ExpressionConverter.Convert(date);
                 if (ofUser != null)
                     callPayload.Queries["of_user"] = ExpressionConverter.Convert(ofUser);
-                return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<GetTimeEntriesForDayResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1461,13 +1461,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
     {
 
         [WorkflowExpressionFactory(nameof(__BuildEventSubscriptionLexoffice))]
-        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> EventSubscriptionLexoffice([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> EventSubscriptionLexoffice([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> __BuildEventSubscriptionLexoffice(WorkflowExpression<bodyeventTypeInput> bodyeventType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ResponseEventSubscriptionsPost> __BuildEventSubscriptionLexoffice(WorkflowExpression<bodyeventTypeInput> bodyeventType,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
             return new DeferredBodyTrigger<ResponseEventSubscriptionsPost>(() =>
@@ -1488,8 +1488,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ResponseEventSubscriptionsPost>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ResponseEventSubscriptionsPost>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

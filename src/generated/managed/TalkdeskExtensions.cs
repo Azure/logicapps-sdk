@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
 
     public class TalkdeskTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ContactCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ContactCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/contactCreated";
             var apiCallHttpMethod = "post";
@@ -32,10 +32,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger ContactUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ContactUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/contactUpdated";
             var apiCallHttpMethod = "post";
@@ -53,10 +53,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger NoteCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NoteCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/noteCreated";
             var apiCallHttpMethod = "post";
@@ -74,10 +74,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger AgentLogIn(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AgentLogIn(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/agentLogIn";
             var apiCallHttpMethod = "post";
@@ -95,10 +95,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger AgentLogOut(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AgentLogOut(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/agentLogOut";
             var apiCallHttpMethod = "post";
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OutboundCallEnds(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OutboundCallEnds(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/outboundCallEnds";
             var apiCallHttpMethod = "post";
@@ -137,10 +137,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger InboundCallReachesContactCenter(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundCallReachesContactCenter(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallReachesContactCenter";
             var apiCallHttpMethod = "post";
@@ -158,10 +158,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger InboundCallEnds(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundCallEnds(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallEnds";
             var apiCallHttpMethod = "post";
@@ -179,10 +179,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger InboundCallStarts(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundCallStarts(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/triggers/inboundCallStarts";
             var apiCallHttpMethod = "post";
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Talkdesk
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 }

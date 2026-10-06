@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -168,13 +168,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
     {
 
         [WorkflowExpressionFactory(nameof(__BuildFormCompleted))]
-        public IWorkflowTrigger FormCompleted([WorkflowExpression] Func<string> bodyentityId, [WorkflowExpression] Func<string> bodyeventType = null, [WorkflowExpression] Func<bool> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormCompleted([WorkflowExpression] Func<string> bodyentityId,[WorkflowExpression] Func<string> bodyeventType = null,[WorkflowExpression] Func<bool> bodyenabled = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFormCompleted(WorkflowExpression<string> bodyentityId, WorkflowExpression<string> bodyeventType = null, WorkflowExpression<bool> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFormCompleted(WorkflowExpression<string> bodyentityId,WorkflowExpression<string> bodyeventType = null,WorkflowExpression<bool> bodyenabled = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyentityId, nameof(bodyentityId), required: true);
             WorkflowExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
@@ -207,8 +207,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -37,13 +37,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCompletelySigned))]
-        public IWorkflowTrigger CompletelySigned([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CompletelySigned([WorkflowExpression] Func<string> bodyname,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCompletelySigned(WorkflowExpression<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCompletelySigned(WorkflowExpression<string> bodyname,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyname, nameof(bodyname), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -62,8 +62,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

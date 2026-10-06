@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -176,13 +176,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEvent))]
-        public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent([WorkflowExpression] Func<eventNameInput> eventName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponse> OnNewEvent([WorkflowExpression] Func<eventNameInput> eventName,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewEventResponse> __BuildOnNewEvent(WorkflowExpression<eventNameInput> eventName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponse> __BuildOnNewEvent(WorkflowExpression<eventNameInput> eventName,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(eventName, nameof(eventName), required: true);
             return new DeferredBodyTrigger<OnNewEventResponse>(() =>
@@ -190,18 +190,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/events/{0}", ExpressionConverter.ConvertWithUrlEncoding(eventName, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnNewEventResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewUserInSegment))]
-        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment([WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> OnNewUserInSegment([WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> __BuildOnNewUserInSegment(WorkflowExpression<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewUserInSegmentResponse> __BuildOnNewUserInSegment(WorkflowExpression<string> id,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(id, nameof(id), required: true);
             return new DeferredBodyTrigger<OnNewUserInSegmentResponse>(() =>
@@ -209,8 +209,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netvolution
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/cdp/contacts/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnNewUserInSegmentResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

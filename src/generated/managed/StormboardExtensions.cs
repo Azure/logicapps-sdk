@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
 
     public class StormboardTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger LegendChange(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LegendChange(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks";
             var apiCallHttpMethod = "post";
@@ -131,10 +131,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger IdeaSection(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IdeaSection(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/ideaSection";
             var apiCallHttpMethod = "post";
@@ -153,10 +153,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger IdeaCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IdeaCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/ideaCreated";
             var apiCallHttpMethod = "post";
@@ -175,10 +175,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger IdeaDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IdeaDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/ideaDeleted";
             var apiCallHttpMethod = "post";
@@ -197,10 +197,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CommentCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CommentCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hooks/commentCreated";
             var apiCallHttpMethod = "post";
@@ -219,7 +219,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

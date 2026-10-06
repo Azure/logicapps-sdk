@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -14,24 +14,24 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
 
     public class VimeoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Video[]> OnVideoUpload(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Video[]> OnVideoUpload(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/me/videos";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
             callPayload.Queries["sort"] = Convert.ToString("date");
-            return new ApiConnectionTrigger<Video[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<Video[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewVideoInChannel))]
-        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel([WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoWithChannelId[]> OnNewVideoInChannel([WorkflowExpression] Func<string> channelId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VideoWithChannelId[]> __BuildOnNewVideoInChannel(WorkflowExpression<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VideoWithChannelId[]> __BuildOnNewVideoInChannel(WorkflowExpression<string> channelId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(channelId, nameof(channelId), required: true);
             return new DeferredBodyTrigger<VideoWithChannelId[]>(() =>
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vimeo
                 callPayload.Queries["fields"] = Convert.ToString("user,uri,name,description,link,created_time,modified_time");
                 callPayload.Queries["sort"] = Convert.ToString("added");
                 callPayload.Queries["per_page"] = Convert.ToString(50);
-                return new ApiConnectionTrigger<VideoWithChannelId[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VideoWithChannelId[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

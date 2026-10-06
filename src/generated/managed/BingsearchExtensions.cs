@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -53,13 +53,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTrigNewNews))]
-        public IBodyWorkflowTrigger<NewsArticle[]> TrigNewNews([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<mktInput> mkt = null, [WorkflowExpression] Func<safeSearchInput> safeSearch = null, [WorkflowExpression] Func<string> count = null, [WorkflowExpression] Func<string> offset = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewsArticle[]> TrigNewNews([WorkflowExpression] Func<string> q,[WorkflowExpression] Func<mktInput> mkt = null,[WorkflowExpression] Func<safeSearchInput> safeSearch = null,[WorkflowExpression] Func<string> count = null,[WorkflowExpression] Func<string> offset = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewsArticle[]> __BuildTrigNewNews(WorkflowExpression<string> q, WorkflowExpression<mktInput> mkt = null, WorkflowExpression<safeSearchInput> safeSearch = null, WorkflowExpression<string> count = null, WorkflowExpression<string> offset = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewsArticle[]> __BuildTrigNewNews(WorkflowExpression<string> q,WorkflowExpression<mktInput> mkt = null,WorkflowExpression<safeSearchInput> safeSearch = null,WorkflowExpression<string> count = null,WorkflowExpression<string> offset = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(q, nameof(q), required: true);
             WorkflowExpression.Validate(mkt, nameof(mkt), required: false);
@@ -83,8 +83,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bingsearch
                     callPayload.Queries["count"] = ExpressionConverter.Convert(count);
                 if (offset != null)
                     callPayload.Queries["offset"] = ExpressionConverter.Convert(offset);
-                return new ApiConnectionTrigger<NewsArticle[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewsArticle[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

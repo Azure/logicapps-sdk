@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -133,13 +133,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCRUDEntitiy))]
-        public IBodyWorkflowTrigger<JToken> CRUDEntitiy([WorkflowExpression] Func<string> bodyevent, [WorkflowExpression] Func<bool> bodyisEnabled, [WorkflowExpression] Func<bool> bodyeventTypecreate = null, [WorkflowExpression] Func<bool> bodyeventTypedelete = null, [WorkflowExpression] Func<bool> bodyeventTypeupdate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> CRUDEntitiy([WorkflowExpression] Func<string> bodyevent,[WorkflowExpression] Func<bool> bodyisEnabled,[WorkflowExpression] Func<bool> bodyeventTypecreate = null,[WorkflowExpression] Func<bool> bodyeventTypedelete = null,[WorkflowExpression] Func<bool> bodyeventTypeupdate = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildCRUDEntitiy(WorkflowExpression<string> bodyevent, WorkflowExpression<bool> bodyisEnabled, WorkflowExpression<bool> bodyeventTypecreate = null, WorkflowExpression<bool> bodyeventTypedelete = null, WorkflowExpression<bool> bodyeventTypeupdate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildCRUDEntitiy(WorkflowExpression<string> bodyevent,WorkflowExpression<bool> bodyisEnabled,WorkflowExpression<bool> bodyeventTypecreate = null,WorkflowExpression<bool> bodyeventTypedelete = null,WorkflowExpression<bool> bodyeventTypeupdate = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyevent, nameof(bodyevent), required: true);
             WorkflowExpression.Validate(bodyisEnabled, nameof(bodyisEnabled), required: true);
@@ -220,8 +220,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

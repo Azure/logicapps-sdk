@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookTrigger))]
-        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookCompanyId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookCompanyId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> requestBodyOfWebhookCompanyId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> requestBodyOfWebhookCompanyId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestBodyOfWebhookCompanyId, nameof(requestBodyOfWebhookCompanyId), required: false);
             return new DeferredWorkflowTrigger(() =>
@@ -45,8 +45,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -3043,13 +3043,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
     {
 
         [WorkflowExpressionFactory(nameof(__BuildSingleSelectedDocument))]
-        public IBodyWorkflowTrigger<SingleSelectedDocumentResponse> SingleSelectedDocument([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<bool> bodyinferFolderId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<string> bodyworkspaces = null, [WorkflowExpression] Func<string> bodyclasses = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SingleSelectedDocumentResponse> SingleSelectedDocument([WorkflowExpression] Func<string> bodyworkflowName,[WorkflowExpression] Func<string> bodydescription,[WorkflowExpression] Func<string> bodylibraryId,[WorkflowExpression] Func<string> bodyformId,[WorkflowExpression] Func<bool> bodyinferFolderId,[WorkflowExpression] Func<string> bodyusers = null,[WorkflowExpression] Func<string> bodygroups = null,[WorkflowExpression] Func<string> bodyworkspaces = null,[WorkflowExpression] Func<string> bodyclasses = null,[WorkflowExpression] Func<bool> bodywaitForCompletion = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SingleSelectedDocumentResponse> __BuildSingleSelectedDocument(WorkflowExpression<string> bodyworkflowName, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodyformId, WorkflowExpression<bool> bodyinferFolderId, WorkflowExpression<string> bodyusers = null, WorkflowExpression<string> bodygroups = null, WorkflowExpression<string> bodyworkspaces = null, WorkflowExpression<string> bodyclasses = null, WorkflowExpression<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SingleSelectedDocumentResponse> __BuildSingleSelectedDocument(WorkflowExpression<string> bodyworkflowName,WorkflowExpression<string> bodydescription,WorkflowExpression<string> bodylibraryId,WorkflowExpression<string> bodyformId,WorkflowExpression<bool> bodyinferFolderId,WorkflowExpression<string> bodyusers = null,WorkflowExpression<string> bodygroups = null,WorkflowExpression<string> bodyworkspaces = null,WorkflowExpression<string> bodyclasses = null,WorkflowExpression<bool> bodywaitForCompletion = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
             WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
@@ -3125,18 +3125,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<SingleSelectedDocumentResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<SingleSelectedDocumentResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildMultipleSelectedDocuments))]
-        public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse> MultipleSelectedDocuments([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<bool> bodyinferFolderId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<bool> bodyshowFormPerObject = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse> MultipleSelectedDocuments([WorkflowExpression] Func<string> bodyworkflowName,[WorkflowExpression] Func<string> bodydescription,[WorkflowExpression] Func<string> bodylibraryId,[WorkflowExpression] Func<string> bodyformId,[WorkflowExpression] Func<bool> bodyinferFolderId,[WorkflowExpression] Func<string> bodyusers = null,[WorkflowExpression] Func<string> bodygroups = null,[WorkflowExpression] Func<bool> bodyshowFormPerObject = null,[WorkflowExpression] Func<bool> bodywaitForCompletion = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse> __BuildMultipleSelectedDocuments(WorkflowExpression<string> bodyworkflowName, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodyformId, WorkflowExpression<bool> bodyinferFolderId, WorkflowExpression<string> bodyusers = null, WorkflowExpression<string> bodygroups = null, WorkflowExpression<bool> bodyshowFormPerObject = null, WorkflowExpression<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedDocumentsResponse> __BuildMultipleSelectedDocuments(WorkflowExpression<string> bodyworkflowName,WorkflowExpression<string> bodydescription,WorkflowExpression<string> bodylibraryId,WorkflowExpression<string> bodyformId,WorkflowExpression<bool> bodyinferFolderId,WorkflowExpression<string> bodyusers = null,WorkflowExpression<string> bodygroups = null,WorkflowExpression<bool> bodyshowFormPerObject = null,WorkflowExpression<bool> bodywaitForCompletion = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
             WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
@@ -3215,18 +3215,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<MultipleSelectedDocumentsResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<MultipleSelectedDocumentsResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildSingleSelectedWorkspace))]
-        public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse> SingleSelectedWorkspace([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse> SingleSelectedWorkspace([WorkflowExpression] Func<string> bodyworkflowName,[WorkflowExpression] Func<string> bodydescription,[WorkflowExpression] Func<string> bodylibraryId,[WorkflowExpression] Func<string> bodyformId,[WorkflowExpression] Func<string> bodyusers = null,[WorkflowExpression] Func<string> bodygroups = null,[WorkflowExpression] Func<bool> bodywaitForCompletion = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse> __BuildSingleSelectedWorkspace(WorkflowExpression<string> bodyworkflowName, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodyformId, WorkflowExpression<string> bodyusers = null, WorkflowExpression<string> bodygroups = null, WorkflowExpression<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SingleSelectedWorkspaceResponse> __BuildSingleSelectedWorkspace(WorkflowExpression<string> bodyworkflowName,WorkflowExpression<string> bodydescription,WorkflowExpression<string> bodylibraryId,WorkflowExpression<string> bodyformId,WorkflowExpression<string> bodyusers = null,WorkflowExpression<string> bodygroups = null,WorkflowExpression<bool> bodywaitForCompletion = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
             WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
@@ -3285,18 +3285,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<SingleSelectedWorkspaceResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<SingleSelectedWorkspaceResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildMultipleSelectedWorkspaces))]
-        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse> MultipleSelectedWorkspaces([WorkflowExpression] Func<string> bodyworkflowName, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodylibraryId, [WorkflowExpression] Func<string> bodyformId, [WorkflowExpression] Func<string> bodyusers = null, [WorkflowExpression] Func<string> bodygroups = null, [WorkflowExpression] Func<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse> MultipleSelectedWorkspaces([WorkflowExpression] Func<string> bodyworkflowName,[WorkflowExpression] Func<string> bodydescription,[WorkflowExpression] Func<string> bodylibraryId,[WorkflowExpression] Func<string> bodyformId,[WorkflowExpression] Func<string> bodyusers = null,[WorkflowExpression] Func<string> bodygroups = null,[WorkflowExpression] Func<bool> bodywaitForCompletion = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse> __BuildMultipleSelectedWorkspaces(WorkflowExpression<string> bodyworkflowName, WorkflowExpression<string> bodydescription, WorkflowExpression<string> bodylibraryId, WorkflowExpression<string> bodyformId, WorkflowExpression<string> bodyusers = null, WorkflowExpression<string> bodygroups = null, WorkflowExpression<bool> bodywaitForCompletion = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MultipleSelectedWorkspacesResponse> __BuildMultipleSelectedWorkspaces(WorkflowExpression<string> bodyworkflowName,WorkflowExpression<string> bodydescription,WorkflowExpression<string> bodylibraryId,WorkflowExpression<string> bodyformId,WorkflowExpression<string> bodyusers = null,WorkflowExpression<string> bodygroups = null,WorkflowExpression<bool> bodywaitForCompletion = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkflowName, nameof(bodyworkflowName), required: true);
             WorkflowExpression.Validate(bodydescription, nameof(bodydescription), required: true);
@@ -3355,8 +3355,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<MultipleSelectedWorkspacesResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<MultipleSelectedWorkspacesResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

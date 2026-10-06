@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
 
     public class LivechatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTicketCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTicketCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/ticket_created_webhook/webhooks";
             var apiCallHttpMethod = "post";
@@ -350,10 +350,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger WebhookChatStarted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookChatStarted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/chat_starts_webhook/webhooks";
             var apiCallHttpMethod = "post";
@@ -368,10 +368,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger WebhookChatEnded(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookChatEnded(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/chat_ends_webhook/webhooks";
             var apiCallHttpMethod = "post";
@@ -386,7 +386,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

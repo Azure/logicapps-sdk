@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -149,13 +149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWhenTaskCreatedPost))]
-        public IWorkflowTrigger WhenTaskCreatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskCreatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenTaskCreatedPost(WorkflowExpression<string> requestcontextTypeName = null, WorkflowExpression<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWhenTaskCreatedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
@@ -185,18 +185,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenTaskUpdatedPost))]
-        public IWorkflowTrigger WhenTaskUpdatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskUpdatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenTaskUpdatedPost(WorkflowExpression<string> requestcontextTypeName = null, WorkflowExpression<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWhenTaskUpdatedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
@@ -226,18 +226,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenTaskArchivedPost))]
-        public IWorkflowTrigger WhenTaskArchivedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskArchivedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenTaskArchivedPost(WorkflowExpression<string> requestcontextTypeName = null, WorkflowExpression<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWhenTaskArchivedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requesttaskTypeName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             WorkflowExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
@@ -267,18 +267,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenMilestoneReachedPost))]
-        public IWorkflowTrigger WhenMilestoneReachedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenMilestoneReachedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenMilestoneReachedPost(WorkflowExpression<string> requestcontextTypeName = null, WorkflowExpression<string> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWhenMilestoneReachedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             WorkflowExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
@@ -308,18 +308,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenMilestoneClearedPost))]
-        public IWorkflowTrigger WhenMilestoneClearedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenMilestoneClearedPost([WorkflowExpression] Func<string> requestcontextTypeName = null,[WorkflowExpression] Func<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWhenMilestoneClearedPost(WorkflowExpression<string> requestcontextTypeName = null, WorkflowExpression<string> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWhenMilestoneClearedPost(WorkflowExpression<string> requestcontextTypeName = null,WorkflowExpression<string> requestmilestoneName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
             WorkflowExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
@@ -349,8 +349,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

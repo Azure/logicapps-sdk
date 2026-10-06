@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -46,13 +46,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnBitlinkCreated))]
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated([WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> OnBitlinkCreated([WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> __BuildOnBitlinkCreated(WorkflowExpression<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnBitlinkCreatedResponse> __BuildOnBitlinkCreated(WorkflowExpression<string> id,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(id, nameof(id), required: true);
             return new DeferredBodyTrigger<OnBitlinkCreatedResponse>(() =>
@@ -60,8 +60,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitly
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/groups/{0}/bitlinks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnBitlinkCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

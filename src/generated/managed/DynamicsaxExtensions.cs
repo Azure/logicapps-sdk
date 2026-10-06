@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -199,13 +199,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
     {
 
         [WorkflowExpressionFactory(nameof(__BuildSubscribeOnABusinessEvent))]
-        public IBodyWorkflowTrigger<BusinessEventSubscriptionResponse> SubscribeOnABusinessEvent([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> businesseventcategory, [WorkflowExpression] Func<string> businessevent, [WorkflowExpression] Func<string> legalEntity = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BusinessEventSubscriptionResponse> SubscribeOnABusinessEvent([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> businesseventcategory,[WorkflowExpression] Func<string> businessevent,[WorkflowExpression] Func<string> legalEntity = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BusinessEventSubscriptionResponse> __BuildSubscribeOnABusinessEvent(WorkflowExpression<string> dataset, WorkflowExpression<string> businesseventcategory, WorkflowExpression<string> businessevent, WorkflowExpression<string> legalEntity = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BusinessEventSubscriptionResponse> __BuildSubscribeOnABusinessEvent(WorkflowExpression<string> dataset,WorkflowExpression<string> businesseventcategory,WorkflowExpression<string> businessevent,WorkflowExpression<string> legalEntity = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(businesseventcategory, nameof(businesseventcategory), required: true);
@@ -228,8 +228,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger<BusinessEventSubscriptionResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BusinessEventSubscriptionResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

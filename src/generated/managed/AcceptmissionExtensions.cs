@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -3907,7 +3907,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
 
     public class AcceptmissionTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TriggerIdeaCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerIdeaCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/ideas/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -3921,10 +3921,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerIdeaUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerIdeaUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/ideas/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -3938,10 +3938,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerIdeaDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerIdeaDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/ideas/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -3955,10 +3955,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerProjectCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerProjectCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/projects/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -3972,10 +3972,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerProjectUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerProjectUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/projects/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -3989,10 +3989,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerProjectDelete(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerProjectDelete(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/projects/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4006,10 +4006,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggertaskCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggertaskCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/tasks/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4023,10 +4023,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggercategoryCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggercategoryCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/categories/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4040,10 +4040,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerCategoryUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerCategoryUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/categories/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4057,10 +4057,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerCategoryDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerCategoryDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/categories/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4074,10 +4074,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerdepartmentCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerdepartmentCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/departments/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4091,10 +4091,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerdepartmentUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerdepartmentUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/departments/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4108,10 +4108,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerdepartmentDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerdepartmentDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/departments/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4125,10 +4125,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerfunnellaneCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerfunnellaneCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/funnel_lanes/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4142,10 +4142,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerfunnellaneUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerfunnellaneUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/funnel_lanes/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4159,10 +4159,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerfunnellaneDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerfunnellaneDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/funnel_lanes/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4176,10 +4176,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerfunnelCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerfunnelCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/funnels/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4193,10 +4193,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerfunnelUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerfunnelUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/funnels/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4210,10 +4210,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggerfunnelDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerfunnelDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/funnels/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4227,10 +4227,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggermissionCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggermissionCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/missions/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4244,10 +4244,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggermissionUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggermissionUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/missions/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4261,10 +4261,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggermissionDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggermissionDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/missions/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4278,10 +4278,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggertopicCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggertopicCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/topics/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4295,10 +4295,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggertopicUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggertopicUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/topics/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4312,10 +4312,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggertopicDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggertopicDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/topics/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4329,10 +4329,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggertaskUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggertaskUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/tasks/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4346,10 +4346,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggertaskDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggertaskDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/tasks/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4363,10 +4363,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggeruserCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggeruserCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/users/add_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4380,10 +4380,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggeruserUpdated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggeruserUpdated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/users/edit_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4397,10 +4397,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger TriggeruserDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggeruserDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/general/v1/users/delete_redirect_url";
             var apiCallHttpMethod = "post";
@@ -4414,7 +4414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acceptmission
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

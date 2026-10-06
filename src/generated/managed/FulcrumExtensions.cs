@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1060,13 +1060,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnFulcrumEvent))]
-        public IBodyWorkflowTrigger<OnFulcrumEventResponse> OnFulcrumEvent([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> bodywebhookactive = null, [WorkflowExpression] Func<string> bodywebhookwebhookName = null, [WorkflowExpression] Func<bool> bodywebhookrunForBulkActions = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnFulcrumEventResponse> OnFulcrumEvent([WorkflowExpression] Func<string> contentType = null,[WorkflowExpression] Func<bool> bodywebhookactive = null,[WorkflowExpression] Func<string> bodywebhookwebhookName = null,[WorkflowExpression] Func<bool> bodywebhookrunForBulkActions = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnFulcrumEventResponse> __BuildOnFulcrumEvent(WorkflowExpression<string> contentType = null, WorkflowExpression<bool> bodywebhookactive = null, WorkflowExpression<string> bodywebhookwebhookName = null, WorkflowExpression<bool> bodywebhookrunForBulkActions = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnFulcrumEventResponse> __BuildOnFulcrumEvent(WorkflowExpression<string> contentType = null,WorkflowExpression<bool> bodywebhookactive = null,WorkflowExpression<string> bodywebhookwebhookName = null,WorkflowExpression<bool> bodywebhookrunForBulkActions = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(contentType, nameof(contentType), required: false);
             WorkflowExpression.Validate(bodywebhookactive, nameof(bodywebhookactive), required: false);
@@ -1125,8 +1125,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<OnFulcrumEventResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnFulcrumEventResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollAvailableOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollBrowseMessages))]
@@ -373,7 +373,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollBrowseMessagesOutput>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollMessages))]
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Mq
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<PollMessagesOutput>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

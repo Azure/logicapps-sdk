@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -131,13 +131,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTrigSemantikInvoiceCompleted))]
-        public IBodyWorkflowTrigger<UploadCreatedResponse> TrigSemantikInvoiceCompleted([WorkflowExpression] Func<string> bodyintegrationName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UploadCreatedResponse> TrigSemantikInvoiceCompleted([WorkflowExpression] Func<string> bodyintegrationName,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<UploadCreatedResponse> __BuildTrigSemantikInvoiceCompleted(WorkflowExpression<string> bodyintegrationName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<UploadCreatedResponse> __BuildTrigSemantikInvoiceCompleted(WorkflowExpression<string> bodyintegrationName,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyintegrationName, nameof(bodyintegrationName), required: true);
             return new DeferredBodyTrigger<UploadCreatedResponse>(() =>
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ephesoftsemantikforinvoices
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<UploadCreatedResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<UploadCreatedResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

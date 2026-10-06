@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
     {
 
         [WorkflowExpressionFactory(nameof(__BuildReceiveDataFromTrackers))]
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers([WorkflowExpression] Func<string> bodyhookName = null, [WorkflowExpression] Func<string> bodydispatchId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> ReceiveDataFromTrackers([WorkflowExpression] Func<string> bodyhookName = null,[WorkflowExpression] Func<string> bodydispatchId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> __BuildReceiveDataFromTrackers(WorkflowExpression<string> bodyhookName = null, WorkflowExpression<string> bodydispatchId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReceiveDataFromTrackersResponseItem[]> __BuildReceiveDataFromTrackers(WorkflowExpression<string> bodyhookName = null,WorkflowExpression<string> bodydispatchId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyhookName, nameof(bodyhookName), required: false);
             WorkflowExpression.Validate(bodydispatchId, nameof(bodydispatchId), required: false);
@@ -54,8 +54,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ReceiveDataFromTrackersResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ReceiveDataFromTrackersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

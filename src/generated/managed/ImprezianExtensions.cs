@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -3006,30 +3006,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
 
     public class ImprezianTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewSalesLeadResponseItem[]> NewSalesLead(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSalesLeadResponseItem[]> NewSalesLead(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/new_lead";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewSalesLeadResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NewSalesLeadResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<NewMarketingCampaignResponseItem[]> NewMarketingCampaign(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMarketingCampaignResponseItem[]> NewMarketingCampaign(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/new_campaign";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewMarketingCampaignResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NewMarketingCampaignResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNewMembersLeads))]
-        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads([WorkflowExpression] Func<int> promotionID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> NewMembersLeads([WorkflowExpression] Func<int> promotionID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> __BuildNewMembersLeads(WorkflowExpression<int> promotionID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMembersLeadsResponseItem[]> __BuildNewMembersLeads(WorkflowExpression<int> promotionID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(promotionID, nameof(promotionID), required: true);
             return new DeferredBodyTrigger<NewMembersLeadsResponseItem[]>(() =>
@@ -3038,34 +3038,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["PromotionID"] = ExpressionConverter.Convert(promotionID);
-                return new ApiConnectionTrigger<NewMembersLeadsResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewMembersLeadsResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<NewSalesOrderResponseItem[]> NewSalesOrder(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSalesOrderResponseItem[]> NewSalesOrder(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/new_orders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewSalesOrderResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NewSalesOrderResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<NewProposalCreatedResponseItem[]> NewProposalCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewProposalCreatedResponseItem[]> NewProposalCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/new_quotes";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewProposalCreatedResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NewProposalCreatedResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOrderStatusChanged))]
-        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[]> OrderStatusChanged([WorkflowExpression] Func<string> status, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[]> OrderStatusChanged([WorkflowExpression] Func<string> status,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[]> __BuildOrderStatusChanged(WorkflowExpression<string> status, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderStatusChangedResponseItem[]> __BuildOrderStatusChanged(WorkflowExpression<string> status,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(status, nameof(status), required: true);
             return new DeferredBodyTrigger<OrderStatusChangedResponseItem[]>(() =>
@@ -3074,74 +3074,74 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-                return new ApiConnectionTrigger<OrderStatusChangedResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OrderStatusChangedResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<OrderInHistoryResponseItem[]> OrderInHistory(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderInHistoryResponseItem[]> OrderInHistory(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/orders_final";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OrderInHistoryResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<OrderInHistoryResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<OrderInProcessingResponseItem[]> OrderInProcessing(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderInProcessingResponseItem[]> OrderInProcessing(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/orders_processing";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OrderInProcessingResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<OrderInProcessingResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<OrderIsShippingResponseItem[]> OrderIsShipping(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OrderIsShippingResponseItem[]> OrderIsShipping(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/orders_shipping";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<OrderIsShippingResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<OrderIsShippingResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ProposalNeedsApprovalResponseItem[]> ProposalNeedsApproval(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ProposalNeedsApprovalResponseItem[]> ProposalNeedsApproval(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/quotes_approval";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ProposalNeedsApprovalResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ProposalNeedsApprovalResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<WorkOrderClosedResponseItem[]> WorkOrderClosed(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderClosedResponseItem[]> WorkOrderClosed(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/wo_closed";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<WorkOrderClosedResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WorkOrderClosedResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<WorkOrderCreatedResponseItem[]> WorkOrderCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderCreatedResponseItem[]> WorkOrderCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/wo_opened";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<WorkOrderCreatedResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WorkOrderCreatedResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<WorkOrderPastDueResponseItem[]> WorkOrderPastDue(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderPastDueResponseItem[]> WorkOrderPastDue(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/api/wo_pastdue";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<WorkOrderPastDueResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WorkOrderPastDueResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWorkOrderStatusChanged))]
-        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> WorkOrderStatusChanged([WorkflowExpression] Func<string> status, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> WorkOrderStatusChanged([WorkflowExpression] Func<string> status,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> __BuildWorkOrderStatusChanged(WorkflowExpression<string> status, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WorkOrderStatusChangedResponseItem[]> __BuildWorkOrderStatusChanged(WorkflowExpression<string> status,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(status, nameof(status), required: true);
             return new DeferredBodyTrigger<WorkOrderStatusChangedResponseItem[]>(() =>
@@ -3150,8 +3150,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imprezian
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["Status"] = ExpressionConverter.Convert(status);
-                return new ApiConnectionTrigger<WorkOrderStatusChangedResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WorkOrderStatusChangedResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

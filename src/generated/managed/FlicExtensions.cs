@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
     {
 
         [WorkflowExpressionFactory(nameof(__BuildFlicButtonTrigger))]
-        public IWorkflowTrigger FlicButtonTrigger([WorkflowExpression] Func<string> buttonUuid, [WorkflowExpression] Func<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FlicButtonTrigger([WorkflowExpression] Func<string> buttonUuid,[WorkflowExpression] Func<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFlicButtonTrigger(WorkflowExpression<string> buttonUuid, WorkflowExpression<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFlicButtonTrigger(WorkflowExpression<string> buttonUuid,WorkflowExpression<requestBodyOfWebhookeventsInput> requestBodyOfWebhookevents = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(buttonUuid, nameof(buttonUuid), required: true);
             WorkflowExpression.Validate(requestBodyOfWebhookevents, nameof(requestBodyOfWebhookevents), required: false);
@@ -56,18 +56,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFlicTaskTrigger))]
-        public IWorkflowTrigger FlicTaskTrigger([WorkflowExpression] Func<string> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FlicTaskTrigger([WorkflowExpression] Func<string> taskUuid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFlicTaskTrigger(WorkflowExpression<string> taskUuid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFlicTaskTrigger(WorkflowExpression<string> taskUuid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(taskUuid, nameof(taskUuid), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -84,8 +84,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

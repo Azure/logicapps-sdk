@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -667,13 +667,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
     {
 
         [WorkflowExpressionFactory(nameof(__BuildAddTicketWebhookTrigger))]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddTicketWebhookTrigger([WorkflowExpression] Func<string> bodywebHookrequesters = null, [WorkflowExpression] Func<string> bodywebHookassignees = null, [WorkflowExpression] Func<string> bodywebHooktitle = null, [WorkflowExpression] Func<string> bodywebHookstatus = null, [WorkflowExpression] Func<bodywebHookpriorityInput> bodywebHookpriority = null, [WorkflowExpression] Func<int> bodywebHookgroup = null, [WorkflowExpression] Func<int> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddTicketWebhookTrigger([WorkflowExpression] Func<string> bodywebHookrequesters = null,[WorkflowExpression] Func<string> bodywebHookassignees = null,[WorkflowExpression] Func<string> bodywebHooktitle = null,[WorkflowExpression] Func<string> bodywebHookstatus = null,[WorkflowExpression] Func<bodywebHookpriorityInput> bodywebHookpriority = null,[WorkflowExpression] Func<int> bodywebHookgroup = null,[WorkflowExpression] Func<int> bodywebHookselectTemplate = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildAddTicketWebhookTrigger(WorkflowExpression<string> bodywebHookrequesters = null, WorkflowExpression<string> bodywebHookassignees = null, WorkflowExpression<string> bodywebHooktitle = null, WorkflowExpression<string> bodywebHookstatus = null, WorkflowExpression<bodywebHookpriorityInput> bodywebHookpriority = null, WorkflowExpression<int> bodywebHookgroup = null, WorkflowExpression<int> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildAddTicketWebhookTrigger(WorkflowExpression<string> bodywebHookrequesters = null,WorkflowExpression<string> bodywebHookassignees = null,WorkflowExpression<string> bodywebHooktitle = null,WorkflowExpression<string> bodywebHookstatus = null,WorkflowExpression<bodywebHookpriorityInput> bodywebHookpriority = null,WorkflowExpression<int> bodywebHookgroup = null,WorkflowExpression<int> bodywebHookselectTemplate = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodywebHookrequesters, nameof(bodywebHookrequesters), required: false);
             WorkflowExpression.Validate(bodywebHookassignees, nameof(bodywebHookassignees), required: false);
@@ -767,18 +767,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUpdateTicketWebhookTrigger))]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> UpdateTicketWebhookTrigger([WorkflowExpression] Func<string> bodywebHookrequesters = null, [WorkflowExpression] Func<string> bodywebHookassignees = null, [WorkflowExpression] Func<string> bodywebHooktitle = null, [WorkflowExpression] Func<string> bodywebHookstatus = null, [WorkflowExpression] Func<bodywebHookpriorityInput> bodywebHookpriority = null, [WorkflowExpression] Func<int> bodywebHookgroup = null, [WorkflowExpression] Func<int> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> UpdateTicketWebhookTrigger([WorkflowExpression] Func<string> bodywebHookrequesters = null,[WorkflowExpression] Func<string> bodywebHookassignees = null,[WorkflowExpression] Func<string> bodywebHooktitle = null,[WorkflowExpression] Func<string> bodywebHookstatus = null,[WorkflowExpression] Func<bodywebHookpriorityInput> bodywebHookpriority = null,[WorkflowExpression] Func<int> bodywebHookgroup = null,[WorkflowExpression] Func<int> bodywebHookselectTemplate = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildUpdateTicketWebhookTrigger(WorkflowExpression<string> bodywebHookrequesters = null, WorkflowExpression<string> bodywebHookassignees = null, WorkflowExpression<string> bodywebHooktitle = null, WorkflowExpression<string> bodywebHookstatus = null, WorkflowExpression<bodywebHookpriorityInput> bodywebHookpriority = null, WorkflowExpression<int> bodywebHookgroup = null, WorkflowExpression<int> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildUpdateTicketWebhookTrigger(WorkflowExpression<string> bodywebHookrequesters = null,WorkflowExpression<string> bodywebHookassignees = null,WorkflowExpression<string> bodywebHooktitle = null,WorkflowExpression<string> bodywebHookstatus = null,WorkflowExpression<bodywebHookpriorityInput> bodywebHookpriority = null,WorkflowExpression<int> bodywebHookgroup = null,WorkflowExpression<int> bodywebHookselectTemplate = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodywebHookrequesters, nameof(bodywebHookrequesters), required: false);
             WorkflowExpression.Validate(bodywebHookassignees, nameof(bodywebHookassignees), required: false);
@@ -872,18 +872,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAddCommentTicketWebhook))]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddCommentTicketWebhook([WorkflowExpression] Func<string> bodywebHookcommenter = null, [WorkflowExpression] Func<string> bodywebHookcommentStringContain = null, [WorkflowExpression] Func<bodywebHookisPublicCommentInput> bodywebHookisPublicComment = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddCommentTicketWebhook([WorkflowExpression] Func<string> bodywebHookcommenter = null,[WorkflowExpression] Func<string> bodywebHookcommentStringContain = null,[WorkflowExpression] Func<bodywebHookisPublicCommentInput> bodywebHookisPublicComment = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildAddCommentTicketWebhook(WorkflowExpression<string> bodywebHookcommenter = null, WorkflowExpression<string> bodywebHookcommentStringContain = null, WorkflowExpression<bodywebHookisPublicCommentInput> bodywebHookisPublicComment = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildAddCommentTicketWebhook(WorkflowExpression<string> bodywebHookcommenter = null,WorkflowExpression<string> bodywebHookcommentStringContain = null,WorkflowExpression<bodywebHookisPublicCommentInput> bodywebHookisPublicComment = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodywebHookcommenter, nameof(bodywebHookcommenter), required: false);
             WorkflowExpression.Validate(bodywebHookcommentStringContain, nameof(bodywebHookcommentStringContain), required: false);
@@ -939,18 +939,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildActivatePowerAutomateTaskWebhook))]
-        public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> ActivatePowerAutomateTaskWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null, [WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null, [WorkflowExpression] Func<string> bodywebHooklifecyclePowerAutomateName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> ActivatePowerAutomateTaskWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null,[WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null,[WorkflowExpression] Func<string> bodywebHooklifecyclePowerAutomateName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> __BuildActivatePowerAutomateTaskWebhook(WorkflowExpression<string> bodywebHooklifecycleId = null, WorkflowExpression<int> bodywebHooklifecyclePhaseId = null, WorkflowExpression<string> bodywebHooklifecyclePowerAutomateName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> __BuildActivatePowerAutomateTaskWebhook(WorkflowExpression<string> bodywebHooklifecycleId = null,WorkflowExpression<int> bodywebHooklifecyclePhaseId = null,WorkflowExpression<string> bodywebHooklifecyclePowerAutomateName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodywebHooklifecycleId, nameof(bodywebHooklifecycleId), required: false);
             WorkflowExpression.Validate(bodywebHooklifecyclePhaseId, nameof(bodywebHooklifecyclePhaseId), required: false);
@@ -996,18 +996,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ServiceDeskCoreModelsTicketTask>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceDeskCoreModelsTicketTask>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildChangeLifecyclePhaseWebhook))]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> ChangeLifecyclePhaseWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null, [WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> ChangeLifecyclePhaseWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null,[WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildChangeLifecyclePhaseWebhook(WorkflowExpression<string> bodywebHooklifecycleId = null, WorkflowExpression<int> bodywebHooklifecyclePhaseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildChangeLifecyclePhaseWebhook(WorkflowExpression<string> bodywebHooklifecycleId = null,WorkflowExpression<int> bodywebHooklifecyclePhaseId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodywebHooklifecycleId, nameof(bodywebHooklifecycleId), required: false);
             WorkflowExpression.Validate(bodywebHooklifecyclePhaseId, nameof(bodywebHooklifecyclePhaseId), required: false);
@@ -1046,18 +1046,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEngageLifecycleTransitionWebhook))]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> EngageLifecycleTransitionWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null, [WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null, [WorkflowExpression] Func<int> bodywebHooklifecycleTransitionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> EngageLifecycleTransitionWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null,[WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null,[WorkflowExpression] Func<int> bodywebHooklifecycleTransitionId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildEngageLifecycleTransitionWebhook(WorkflowExpression<string> bodywebHooklifecycleId = null, WorkflowExpression<int> bodywebHooklifecyclePhaseId = null, WorkflowExpression<int> bodywebHooklifecycleTransitionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> __BuildEngageLifecycleTransitionWebhook(WorkflowExpression<string> bodywebHooklifecycleId = null,WorkflowExpression<int> bodywebHooklifecyclePhaseId = null,WorkflowExpression<int> bodywebHooklifecycleTransitionId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodywebHooklifecycleId, nameof(bodywebHooklifecycleId), required: false);
             WorkflowExpression.Validate(bodywebHooklifecyclePhaseId, nameof(bodywebHooklifecyclePhaseId), required: false);
@@ -1103,8 +1103,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

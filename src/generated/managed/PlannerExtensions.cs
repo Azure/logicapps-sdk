@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -807,13 +807,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnCompleteTask))]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnCompleteTask([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnCompleteTask(WorkflowExpression<string> groupId, WorkflowExpression<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnCompleteTask(WorkflowExpression<string> groupId,WorkflowExpression<string> id,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             WorkflowExpression.Validate(id, nameof(id), required: true);
@@ -823,18 +823,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewTask))]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnNewTask([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnNewTask(WorkflowExpression<string> groupId, WorkflowExpression<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> __BuildOnNewTask(WorkflowExpression<string> groupId,WorkflowExpression<string> id,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             WorkflowExpression.Validate(id, nameof(id), required: true);
@@ -844,16 +844,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planner
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
-                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskAssignedToMe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListTasksResponseV2> OnTaskAssignedToMe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1.0/me/planner/ontaskassignedtome_trigger/tasks";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListTasksResponseV2>(callPayload, recurrence: recurrence);
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -114,12 +114,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
 
     public class WordpressTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListPostsResponse> OnTriggerNewPost(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsResponse> OnTriggerNewPost(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/me/posts";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListPostsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListPostsResponse>(callPayload, recurrence: recurrence);
         }
     }
 

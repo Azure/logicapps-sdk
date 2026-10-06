@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -379,28 +379,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Myhours
 
     public class MyhoursTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerLogsEnvelope> NewTimeLog(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerLogsEnvelope> NewTimeLog(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/logs/powerautomate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TriggerLogsEnvelope>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TriggerLogsEnvelope>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectsEnvelope> NewProject(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectsEnvelope> NewProject(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/projects/powerautomate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TriggerProjectsEnvelope>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TriggerProjectsEnvelope>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<TriggerProjectTasksEnvelope> NewTask(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerProjectTasksEnvelope> NewTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/projecttasks/powerautomate";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TriggerProjectTasksEnvelope>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TriggerProjectTasksEnvelope>(callPayload, recurrence: recurrence);
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -95,28 +95,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hellosign
 
     public class HellosignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RequestResponse[]> OnNewRequest(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RequestResponse[]> OnNewRequest(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/request_trigger/v3/signature_request/list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<RequestResponse[]> OnRequestCompleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RequestResponse[]> OnRequestCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/complete_trigger/v3/signature_request/list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<RequestResponse[]> OnRequestDeclined(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RequestResponse[]> OnRequestDeclined(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/decline_trigger/v3/signature_request/list";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<RequestResponse[]>(callPayload, recurrence: recurrence);
         }
     }
 

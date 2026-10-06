@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -259,13 +259,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
     {
 
         [WorkflowExpressionFactory(nameof(__BuildDocumentChange))]
-        public IWorkflowTrigger DocumentChange([WorkflowExpression] Func<string> bodycallbackAdapterId, [WorkflowExpression] Func<string> responseVariant = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentChange([WorkflowExpression] Func<string> bodycallbackAdapterId,[WorkflowExpression] Func<string> responseVariant = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDocumentChange(WorkflowExpression<string> bodycallbackAdapterId, WorkflowExpression<string> responseVariant = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildDocumentChange(WorkflowExpression<string> bodycallbackAdapterId,WorkflowExpression<string> responseVariant = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodycallbackAdapterId, nameof(bodycallbackAdapterId), required: true);
             WorkflowExpression.Validate(responseVariant, nameof(responseVariant), required: false);
@@ -296,8 +296,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

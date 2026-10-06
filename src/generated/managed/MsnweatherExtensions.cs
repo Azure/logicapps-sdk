@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -85,13 +85,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnCurrentWeatherChange))]
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<measureInput> measure, [WorkflowExpression] Func<whenInput> when, [WorkflowExpression] Func<double> target, [WorkflowExpression] Func<string> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange([WorkflowExpression] Func<string> location,[WorkflowExpression] Func<measureInput> measure,[WorkflowExpression] Func<whenInput> when,[WorkflowExpression] Func<double> target,[WorkflowExpression] Func<string> units,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CurrentWeather> __BuildOnCurrentWeatherChange(WorkflowExpression<string> location, WorkflowExpression<measureInput> measure, WorkflowExpression<whenInput> when, WorkflowExpression<double> target, WorkflowExpression<string> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> __BuildOnCurrentWeatherChange(WorkflowExpression<string> location,WorkflowExpression<measureInput> measure,WorkflowExpression<whenInput> when,WorkflowExpression<double> target,WorkflowExpression<string> units,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(location, nameof(location), required: true);
             WorkflowExpression.Validate(measure, nameof(measure), required: true);
@@ -107,18 +107,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
                 callPayload.Queries["When"] = ExpressionConverter.Convert(when);
                 callPayload.Queries["Target"] = ExpressionConverter.Convert(target);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-                return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CurrentWeather>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnCurrentConditionsChange))]
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange([WorkflowExpression] Func<string> location,[WorkflowExpression] Func<unitsInput> units,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CurrentWeather> __BuildOnCurrentConditionsChange(WorkflowExpression<string> location, WorkflowExpression<unitsInput> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> __BuildOnCurrentConditionsChange(WorkflowExpression<string> location,WorkflowExpression<unitsInput> units,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(location, nameof(location), required: true);
             WorkflowExpression.Validate(units, nameof(units), required: true);
@@ -128,8 +128,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["units"] = ExpressionConverter.Convert(units);
-                return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CurrentWeather>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

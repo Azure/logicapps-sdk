@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -134,13 +134,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
     {
 
         [WorkflowExpressionFactory(nameof(__BuildDataTrigger))]
-        public IBodyWorkflowTrigger<PostDataResponse> DataTrigger([WorkflowExpression] Func<string> device, [WorkflowExpression] Func<string> variable, [WorkflowExpression] Func<conditionInput> condition, [WorkflowExpression] Func<string> value = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostDataResponse> DataTrigger([WorkflowExpression] Func<string> device,[WorkflowExpression] Func<string> variable,[WorkflowExpression] Func<conditionInput> condition,[WorkflowExpression] Func<string> value = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PostDataResponse> __BuildDataTrigger(WorkflowExpression<string> device, WorkflowExpression<string> variable, WorkflowExpression<conditionInput> condition, WorkflowExpression<string> value = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostDataResponse> __BuildDataTrigger(WorkflowExpression<string> device,WorkflowExpression<string> variable,WorkflowExpression<conditionInput> condition,WorkflowExpression<string> value = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(device, nameof(device), required: true);
             WorkflowExpression.Validate(variable, nameof(variable), required: true);
@@ -173,8 +173,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<PostDataResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PostDataResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

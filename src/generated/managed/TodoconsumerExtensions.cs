@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -406,13 +406,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewToDoInFolder))]
-        public IBodyWorkflowTrigger<ToDo[]> OnNewToDoInFolder([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[]> OnNewToDoInFolder([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ToDo[]> __BuildOnNewToDoInFolder(WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[]> __BuildOnNewToDoInFolder(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<ToDo[]>(() =>
@@ -420,18 +420,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/onNewToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ToDo[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ToDo[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdateToDoInFolder))]
-        public IBodyWorkflowTrigger<ToDo[]> OnUpdateToDoInFolder([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[]> OnUpdateToDoInFolder([WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ToDo[]> __BuildOnUpdateToDoInFolder(WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[]> __BuildOnUpdateToDoInFolder(WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             return new DeferredBodyTrigger<ToDo[]>(() =>
@@ -439,8 +439,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/onUpdateToDoInFolder/{0}", ExpressionConverter.ConvertWithUrlEncoding(folderId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ToDo[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ToDo[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

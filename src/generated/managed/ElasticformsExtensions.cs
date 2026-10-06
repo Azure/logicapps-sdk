@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -93,13 +93,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTrigNewResponse))]
-        public IWorkflowTrigger TrigNewResponse([WorkflowExpression] Func<string> requestBodyOfWebhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TrigNewResponse([WorkflowExpression] Func<string> requestBodyOfWebhookform,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTrigNewResponse(WorkflowExpression<string> requestBodyOfWebhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTrigNewResponse(WorkflowExpression<string> requestBodyOfWebhookform,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestBodyOfWebhookform, nameof(requestBodyOfWebhookform), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -118,8 +118,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

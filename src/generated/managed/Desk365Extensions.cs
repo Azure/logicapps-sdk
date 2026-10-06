@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -295,13 +295,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateTicketWebhook))]
-        public IWorkflowTrigger CreateTicketWebhook([WorkflowExpression] Func<string> bodycontactEmail = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateTicketWebhook([WorkflowExpression] Func<string> bodycontactEmail = null,[WorkflowExpression] Func<string> bodysubject = null,[WorkflowExpression] Func<string> bodystatus = null,[WorkflowExpression] Func<string> bodypriority = null,[WorkflowExpression] Func<string> bodyagent = null,[WorkflowExpression] Func<string> bodygroup = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateTicketWebhook(WorkflowExpression<string> bodycontactEmail = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodyagent = null, WorkflowExpression<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateTicketWebhook(WorkflowExpression<string> bodycontactEmail = null,WorkflowExpression<string> bodysubject = null,WorkflowExpression<string> bodystatus = null,WorkflowExpression<string> bodypriority = null,WorkflowExpression<string> bodyagent = null,WorkflowExpression<string> bodygroup = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: false);
             WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
@@ -359,18 +359,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUpdateTicketWebhook))]
-        public IWorkflowTrigger UpdateTicketWebhook([WorkflowExpression] Func<string> bodycontactEmail = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UpdateTicketWebhook([WorkflowExpression] Func<string> bodycontactEmail = null,[WorkflowExpression] Func<string> bodysubject = null,[WorkflowExpression] Func<string> bodystatus = null,[WorkflowExpression] Func<string> bodypriority = null,[WorkflowExpression] Func<string> bodyagent = null,[WorkflowExpression] Func<string> bodygroup = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildUpdateTicketWebhook(WorkflowExpression<string> bodycontactEmail = null, WorkflowExpression<string> bodysubject = null, WorkflowExpression<string> bodystatus = null, WorkflowExpression<string> bodypriority = null, WorkflowExpression<string> bodyagent = null, WorkflowExpression<string> bodygroup = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildUpdateTicketWebhook(WorkflowExpression<string> bodycontactEmail = null,WorkflowExpression<string> bodysubject = null,WorkflowExpression<string> bodystatus = null,WorkflowExpression<string> bodypriority = null,WorkflowExpression<string> bodyagent = null,WorkflowExpression<string> bodygroup = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodycontactEmail, nameof(bodycontactEmail), required: false);
             WorkflowExpression.Validate(bodysubject, nameof(bodysubject), required: false);
@@ -428,18 +428,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAddNoteWebhook))]
-        public IWorkflowTrigger AddNoteWebhook([WorkflowExpression] Func<string> bodyagent = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<bodyprivateInput> bodyprivate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddNoteWebhook([WorkflowExpression] Func<string> bodyagent = null,[WorkflowExpression] Func<string> bodycontent = null,[WorkflowExpression] Func<bodyprivateInput> bodyprivate = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddNoteWebhook(WorkflowExpression<string> bodyagent = null, WorkflowExpression<string> bodycontent = null, WorkflowExpression<bodyprivateInput> bodyprivate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAddNoteWebhook(WorkflowExpression<string> bodyagent = null,WorkflowExpression<string> bodycontent = null,WorkflowExpression<bodyprivateInput> bodyprivate = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyagent, nameof(bodyagent), required: false);
             WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
@@ -476,18 +476,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAddReplyWebhook))]
-        public IWorkflowTrigger AddReplyWebhook([WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<bodyresponseTypeInput> bodyresponseType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddReplyWebhook([WorkflowExpression] Func<string> bodycontent = null,[WorkflowExpression] Func<bodyresponseTypeInput> bodyresponseType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddReplyWebhook(WorkflowExpression<string> bodycontent = null, WorkflowExpression<bodyresponseTypeInput> bodyresponseType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAddReplyWebhook(WorkflowExpression<string> bodycontent = null,WorkflowExpression<bodyresponseTypeInput> bodyresponseType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodycontent, nameof(bodycontent), required: false);
             WorkflowExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: false);
@@ -517,8 +517,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

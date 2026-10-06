@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -744,13 +744,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnBuildCompleted))]
-        public IBodyWorkflowTrigger<VstsListBuildResult> OnBuildCompleted([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<resultFilterInput> resultFilter = null, [WorkflowExpression] Func<string> definitions = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListBuildResult> OnBuildCompleted([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<resultFilterInput> resultFilter = null,[WorkflowExpression] Func<string> definitions = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListBuildResult> __BuildOnBuildCompleted(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<resultFilterInput> resultFilter = null, WorkflowExpression<string> definitions = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListBuildResult> __BuildOnBuildCompleted(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<resultFilterInput> resultFilter = null,WorkflowExpression<string> definitions = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -766,18 +766,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["resultFilter"] = ExpressionConverter.Convert(resultFilter);
                 if (definitions != null)
                     callPayload.Queries["definitions"] = ExpressionConverter.Convert(definitions);
-                return new ApiConnectionTrigger<VstsListBuildResult>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListBuildResult>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnGitPush))]
-        public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> refName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPush> OnGitPush([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<string> repository,[WorkflowExpression] Func<string> refName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListGitPush> __BuildOnGitPush(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> repository, WorkflowExpression<string> refName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPush> __BuildOnGitPush(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<string> repository,WorkflowExpression<string> refName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -791,18 +791,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                 callPayload.Queries["account"] = ExpressionConverter.Convert(account);
                 if (refName != null)
                     callPayload.Queries["refName"] = ExpressionConverter.Convert(refName);
-                return new ApiConnectionTrigger<VstsListGitPush>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListGitPush>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnGitPullCreated))]
-        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> sourceRefName = null, [WorkflowExpression] Func<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullCreated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<string> repository,[WorkflowExpression] Func<string> sourceRefName = null,[WorkflowExpression] Func<string> targetRefName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListGitPullRequest> __BuildOnGitPullCreated(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> repository, WorkflowExpression<string> sourceRefName = null, WorkflowExpression<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> __BuildOnGitPullCreated(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<string> repository,WorkflowExpression<string> sourceRefName = null,WorkflowExpression<string> targetRefName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -819,18 +819,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
                 if (targetRefName != null)
                     callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
-                return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnGitPullClosed))]
-        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> repository, [WorkflowExpression] Func<string> sourceRefName = null, [WorkflowExpression] Func<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> OnGitPullClosed([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<string> repository,[WorkflowExpression] Func<string> sourceRefName = null,[WorkflowExpression] Func<string> targetRefName = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListGitPullRequest> __BuildOnGitPullClosed(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> repository, WorkflowExpression<string> sourceRefName = null, WorkflowExpression<string> targetRefName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListGitPullRequest> __BuildOnGitPullClosed(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<string> repository,WorkflowExpression<string> sourceRefName = null,WorkflowExpression<string> targetRefName = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -847,18 +847,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["sourceRefName"] = ExpressionConverter.Convert(sourceRefName);
                 if (targetRefName != null)
                     callPayload.Queries["targetRefName"] = ExpressionConverter.Convert(targetRefName);
-                return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListGitPullRequest>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnTfvcCheckIn))]
-        public IBodyWorkflowTrigger<VstsListTfvcChangeset> OnTfvcCheckIn([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> author = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTfvcChangeset> OnTfvcCheckIn([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<string> team = null,[WorkflowExpression] Func<string> author = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListTfvcChangeset> __BuildOnTfvcCheckIn(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> team = null, WorkflowExpression<string> author = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTfvcChangeset> __BuildOnTfvcCheckIn(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<string> team = null,WorkflowExpression<string> author = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -875,18 +875,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["team"] = ExpressionConverter.Convert(team);
                 if (author != null)
                     callPayload.Queries["author"] = ExpressionConverter.Convert(author);
-                return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListTfvcChangeset>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnWorkItemAssigned))]
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team, [WorkflowExpression] Func<string> wiqlSystemAssignedTo, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemAssigned([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<string> team,[WorkflowExpression] Func<string> wiqlSystemAssignedTo,[WorkflowExpression] Func<string> wiqlSystemWorkItemType = null,[WorkflowExpression] Func<string> wiqlSystemAreaPath = null,[WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null,[WorkflowExpression] Func<string> wiqlSystemIterationPath = null,[WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null,[WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null,[WorkflowExpression] Func<string> wiqlSystemCreatedBy = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemAssigned(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> team, WorkflowExpression<string> wiqlSystemAssignedTo, WorkflowExpression<string> wiqlSystemWorkItemType = null, WorkflowExpression<string> wiqlSystemAreaPath = null, WorkflowExpression<areaPathComparisonInput> areaPathComparison = null, WorkflowExpression<string> wiqlSystemIterationPath = null, WorkflowExpression<iterationPathComparisonInput> iterationPathComparison = null, WorkflowExpression<string> wiqlMicrosoftVSTSCommonPriority = null, WorkflowExpression<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemAssigned(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<string> team,WorkflowExpression<string> wiqlSystemAssignedTo,WorkflowExpression<string> wiqlSystemWorkItemType = null,WorkflowExpression<string> wiqlSystemAreaPath = null,WorkflowExpression<areaPathComparisonInput> areaPathComparison = null,WorkflowExpression<string> wiqlSystemIterationPath = null,WorkflowExpression<iterationPathComparisonInput> iterationPathComparison = null,WorkflowExpression<string> wiqlMicrosoftVSTSCommonPriority = null,WorkflowExpression<string> wiqlSystemCreatedBy = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -923,18 +923,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
                 if (wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
-                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnWorkItemClosed))]
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> closedState = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemClosed([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<string> team = null,[WorkflowExpression] Func<string> wiqlSystemAssignedTo = null,[WorkflowExpression] Func<string> wiqlSystemWorkItemType = null,[WorkflowExpression] Func<string> closedState = null,[WorkflowExpression] Func<string> wiqlSystemAreaPath = null,[WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null,[WorkflowExpression] Func<string> wiqlSystemIterationPath = null,[WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null,[WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null,[WorkflowExpression] Func<string> wiqlSystemCreatedBy = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemClosed(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> team = null, WorkflowExpression<string> wiqlSystemAssignedTo = null, WorkflowExpression<string> wiqlSystemWorkItemType = null, WorkflowExpression<string> closedState = null, WorkflowExpression<string> wiqlSystemAreaPath = null, WorkflowExpression<areaPathComparisonInput> areaPathComparison = null, WorkflowExpression<string> wiqlSystemIterationPath = null, WorkflowExpression<iterationPathComparisonInput> iterationPathComparison = null, WorkflowExpression<string> wiqlMicrosoftVSTSCommonPriority = null, WorkflowExpression<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemClosed(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<string> team = null,WorkflowExpression<string> wiqlSystemAssignedTo = null,WorkflowExpression<string> wiqlSystemWorkItemType = null,WorkflowExpression<string> closedState = null,WorkflowExpression<string> wiqlSystemAreaPath = null,WorkflowExpression<areaPathComparisonInput> areaPathComparison = null,WorkflowExpression<string> wiqlSystemIterationPath = null,WorkflowExpression<iterationPathComparisonInput> iterationPathComparison = null,WorkflowExpression<string> wiqlMicrosoftVSTSCommonPriority = null,WorkflowExpression<string> wiqlSystemCreatedBy = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -978,18 +978,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
                 if (wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
-                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnWorkItemCreated))]
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemCreated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<string> team = null,[WorkflowExpression] Func<string> wiqlSystemAssignedTo = null,[WorkflowExpression] Func<string> wiqlSystemWorkItemType = null,[WorkflowExpression] Func<string> wiqlSystemAreaPath = null,[WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null,[WorkflowExpression] Func<string> wiqlSystemIterationPath = null,[WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null,[WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null,[WorkflowExpression] Func<string> wiqlSystemCreatedBy = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemCreated(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> team = null, WorkflowExpression<string> wiqlSystemAssignedTo = null, WorkflowExpression<string> wiqlSystemWorkItemType = null, WorkflowExpression<string> wiqlSystemAreaPath = null, WorkflowExpression<areaPathComparisonInput> areaPathComparison = null, WorkflowExpression<string> wiqlSystemIterationPath = null, WorkflowExpression<iterationPathComparisonInput> iterationPathComparison = null, WorkflowExpression<string> wiqlMicrosoftVSTSCommonPriority = null, WorkflowExpression<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemCreated(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<string> team = null,WorkflowExpression<string> wiqlSystemAssignedTo = null,WorkflowExpression<string> wiqlSystemWorkItemType = null,WorkflowExpression<string> wiqlSystemAreaPath = null,WorkflowExpression<areaPathComparisonInput> areaPathComparison = null,WorkflowExpression<string> wiqlSystemIterationPath = null,WorkflowExpression<iterationPathComparisonInput> iterationPathComparison = null,WorkflowExpression<string> wiqlMicrosoftVSTSCommonPriority = null,WorkflowExpression<string> wiqlSystemCreatedBy = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -1029,18 +1029,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
                 if (wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
-                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnWorkItemUpdated))]
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> team = null, [WorkflowExpression] Func<string> wiqlSystemAssignedTo = null, [WorkflowExpression] Func<string> wiqlSystemWorkItemType = null, [WorkflowExpression] Func<string> wiqlSystemAreaPath = null, [WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null, [WorkflowExpression] Func<string> wiqlSystemIterationPath = null, [WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null, [WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null, [WorkflowExpression] Func<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> OnWorkItemUpdated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> project,[WorkflowExpression] Func<string> team = null,[WorkflowExpression] Func<string> wiqlSystemAssignedTo = null,[WorkflowExpression] Func<string> wiqlSystemWorkItemType = null,[WorkflowExpression] Func<string> wiqlSystemAreaPath = null,[WorkflowExpression] Func<areaPathComparisonInput> areaPathComparison = null,[WorkflowExpression] Func<string> wiqlSystemIterationPath = null,[WorkflowExpression] Func<iterationPathComparisonInput> iterationPathComparison = null,[WorkflowExpression] Func<string> wiqlMicrosoftVSTSCommonPriority = null,[WorkflowExpression] Func<string> wiqlSystemCreatedBy = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemUpdated(WorkflowExpression<string> account, WorkflowExpression<string> project, WorkflowExpression<string> team = null, WorkflowExpression<string> wiqlSystemAssignedTo = null, WorkflowExpression<string> wiqlSystemWorkItemType = null, WorkflowExpression<string> wiqlSystemAreaPath = null, WorkflowExpression<areaPathComparisonInput> areaPathComparison = null, WorkflowExpression<string> wiqlSystemIterationPath = null, WorkflowExpression<iterationPathComparisonInput> iterationPathComparison = null, WorkflowExpression<string> wiqlMicrosoftVSTSCommonPriority = null, WorkflowExpression<string> wiqlSystemCreatedBy = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<VstsListTriggerWorkItemResponse> __BuildOnWorkItemUpdated(WorkflowExpression<string> account,WorkflowExpression<string> project,WorkflowExpression<string> team = null,WorkflowExpression<string> wiqlSystemAssignedTo = null,WorkflowExpression<string> wiqlSystemWorkItemType = null,WorkflowExpression<string> wiqlSystemAreaPath = null,WorkflowExpression<areaPathComparisonInput> areaPathComparison = null,WorkflowExpression<string> wiqlSystemIterationPath = null,WorkflowExpression<iterationPathComparisonInput> iterationPathComparison = null,WorkflowExpression<string> wiqlMicrosoftVSTSCommonPriority = null,WorkflowExpression<string> wiqlSystemCreatedBy = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(project, nameof(project), required: true);
@@ -1079,8 +1079,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Visualstudioteamservices
                     callPayload.Queries["wiql__Microsoft_VSTS_Common_Priority"] = ExpressionConverter.Convert(wiqlMicrosoftVSTSCommonPriority);
                 if (wiqlSystemCreatedBy != null)
                     callPayload.Queries["wiql__System_CreatedBy"] = ExpressionConverter.Convert(wiqlSystemCreatedBy);
-                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<VstsListTriggerWorkItemResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

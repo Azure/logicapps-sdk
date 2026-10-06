@@ -400,7 +400,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFilesAreAddedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWhenFilesAreAddedOrModified))]
@@ -435,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.FileSystem
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenFilesAreAddedOrModifiedOutputItem[]>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

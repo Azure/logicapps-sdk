@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -232,13 +232,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnPostCreated))]
-        public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> forum, [WorkflowExpression] Func<string> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> forum,[WorkflowExpression] Func<string> thread = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Post[]> __BuildOnPostCreated(WorkflowExpression<string> forum, WorkflowExpression<string> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[]> __BuildOnPostCreated(WorkflowExpression<string> forum,WorkflowExpression<string> thread = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(forum, nameof(forum), required: true);
             WorkflowExpression.Validate(thread, nameof(thread), required: false);
@@ -252,18 +252,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
                     callPayload.Queries["thread"] = ExpressionConverter.Convert(thread);
                 callPayload.Queries["order"] = Convert.ToString("desc");
                 callPayload.Queries["limit"] = Convert.ToString(75);
-                return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<Post[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnThreadCreated))]
-        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated([WorkflowExpression] Func<string> forum, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated([WorkflowExpression] Func<string> forum,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<Thread[]> __BuildOnThreadCreated(WorkflowExpression<string> forum, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Thread[]> __BuildOnThreadCreated(WorkflowExpression<string> forum,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(forum, nameof(forum), required: true);
             return new DeferredBodyTrigger<Thread[]>(() =>
@@ -274,8 +274,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
                 callPayload.Queries["forum"] = ExpressionConverter.Convert(forum);
                 callPayload.Queries["order"] = Convert.ToString("desc");
                 callPayload.Queries["limit"] = Convert.ToString(75);
-                return new ApiConnectionTrigger<Thread[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<Thread[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

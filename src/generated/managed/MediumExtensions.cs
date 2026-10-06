@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -14,12 +14,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medium
 
     public class MediumTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Publications> TriggerPublicationAdded(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Publications> TriggerPublicationAdded(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/publications";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<Publications>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<Publications>(callPayload, recurrence: recurrence);
         }
     }
 

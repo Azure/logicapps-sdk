@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
 
     public class CosmobotTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger OnNewTicket(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnNewTicket(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/new-ticket";
             var apiCallHttpMethod = "post";
@@ -711,10 +711,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnResolvedTicket(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnResolvedTicket(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/resolved-ticket";
             var apiCallHttpMethod = "post";
@@ -728,10 +728,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnUpdatedTicketTopic(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnUpdatedTicketTopic(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/updated-ticket-topic";
             var apiCallHttpMethod = "post";
@@ -745,10 +745,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnNewAnswer(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnNewAnswer(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/new-answer";
             var apiCallHttpMethod = "post";
@@ -762,10 +762,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnUpdateAnswer(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnUpdateAnswer(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/update-answer";
             var apiCallHttpMethod = "post";
@@ -779,10 +779,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger OnAskedQuestion(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnAskedQuestion(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/asked-question";
             var apiCallHttpMethod = "post";
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 callPayload.Body = requestBody;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

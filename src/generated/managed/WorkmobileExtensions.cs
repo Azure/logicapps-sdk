@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -33,13 +33,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
     {
 
         [WorkflowExpressionFactory(nameof(__BuildFormDataHook))]
-        public IWorkflowTrigger FormDataHook([WorkflowExpression] Func<int> bodyuserFormId, [WorkflowExpression] Func<bool> bodyincludeSubFormData, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormDataHook([WorkflowExpression] Func<int> bodyuserFormId,[WorkflowExpression] Func<bool> bodyincludeSubFormData,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFormDataHook(WorkflowExpression<int> bodyuserFormId, WorkflowExpression<bool> bodyincludeSubFormData, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFormDataHook(WorkflowExpression<int> bodyuserFormId,WorkflowExpression<bool> bodyincludeSubFormData,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyuserFormId, nameof(bodyuserFormId), required: true);
             WorkflowExpression.Validate(bodyincludeSubFormData, nameof(bodyincludeSubFormData), required: true);
@@ -63,8 +63,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

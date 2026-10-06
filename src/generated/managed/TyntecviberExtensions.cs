@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -279,13 +279,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
     {
 
         [WorkflowExpressionFactory(nameof(__BuildIncoming))]
-        public IWorkflowTrigger Incoming([WorkflowExpression] Func<string> viberServiceId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Incoming([WorkflowExpression] Func<string> viberServiceId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildIncoming(WorkflowExpression<string> viberServiceId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildIncoming(WorkflowExpression<string> viberServiceId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(viberServiceId, nameof(viberServiceId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -302,8 +302,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tyntecviber
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

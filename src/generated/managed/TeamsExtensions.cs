@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1112,13 +1112,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewChannelMessage))]
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessage([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> channelId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> __BuildOnNewChannelMessage(WorkflowExpression<string> groupId, WorkflowExpression<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> __BuildOnNewChannelMessage(WorkflowExpression<string> groupId,WorkflowExpression<string> channelId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             WorkflowExpression.Validate(channelId, nameof(channelId), required: true);
@@ -1128,18 +1128,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$top"] = Convert.ToString(50);
-                return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewChannelMessageMentioningMe))]
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> OnNewChannelMessageMentioningMe([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> channelId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> __BuildOnNewChannelMessageMentioningMe(WorkflowExpression<string> groupId, WorkflowExpression<string> channelId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewChannelMessageResponseItem[]> __BuildOnNewChannelMessageMentioningMe(WorkflowExpression<string> groupId,WorkflowExpression<string> channelId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             WorkflowExpression.Validate(channelId, nameof(channelId), required: true);
@@ -1149,18 +1149,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$top"] = Convert.ToString(50);
-                return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnNewChannelMessageResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookAtMentionTrigger))]
-        public IWorkflowTrigger WebhookAtMentionTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookAtMentionTrigger([WorkflowExpression] Func<threadTypeInput> threadType,[WorkflowExpression] Func<object> requestBody = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookAtMentionTrigger(WorkflowExpression<threadTypeInput> threadType, WorkflowExpression<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookAtMentionTrigger(WorkflowExpression<threadTypeInput> threadType,WorkflowExpression<object> requestBody = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(threadType, nameof(threadType), required: true);
             WorkflowExpression.Validate(requestBody, nameof(requestBody), required: false);
@@ -1170,18 +1170,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookMessageReactionTrigger))]
-        public IWorkflowTrigger WebhookMessageReactionTrigger([WorkflowExpression] Func<string> reactionKey, [WorkflowExpression] Func<frequencyInput> frequency, [WorkflowExpression] Func<runningPolicyInput> runningPolicy, [WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookMessageReactionTrigger([WorkflowExpression] Func<string> reactionKey,[WorkflowExpression] Func<frequencyInput> frequency,[WorkflowExpression] Func<runningPolicyInput> runningPolicy,[WorkflowExpression] Func<threadTypeInput> threadType,[WorkflowExpression] Func<object> requestBody = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookMessageReactionTrigger(WorkflowExpression<string> reactionKey, WorkflowExpression<frequencyInput> frequency, WorkflowExpression<runningPolicyInput> runningPolicy, WorkflowExpression<threadTypeInput> threadType, WorkflowExpression<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookMessageReactionTrigger(WorkflowExpression<string> reactionKey,WorkflowExpression<frequencyInput> frequency,WorkflowExpression<runningPolicyInput> runningPolicy,WorkflowExpression<threadTypeInput> threadType,WorkflowExpression<object> requestBody = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(reactionKey, nameof(reactionKey), required: true);
             WorkflowExpression.Validate(frequency, nameof(frequency), required: true);
@@ -1197,11 +1197,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 callPayload.Queries["frequency"] = ExpressionConverter.Convert(frequency);
                 callPayload.Queries["runningPolicy"] = ExpressionConverter.Convert(runningPolicy);
                 callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger WebhookChatMessageTrigger(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookChatMessageTrigger(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/beta/subscriptions/chatmessagetrigger";
             var apiCallHttpMethod = "post";
@@ -1215,17 +1215,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 callPayload.Body = chatMessageSubscriptionRequest;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookKeywordTrigger))]
-        public IWorkflowTrigger WebhookKeywordTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<string> search, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookKeywordTrigger([WorkflowExpression] Func<threadTypeInput> threadType,[WorkflowExpression] Func<string> search,[WorkflowExpression] Func<object> requestBody = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookKeywordTrigger(WorkflowExpression<threadTypeInput> threadType, WorkflowExpression<string> search, WorkflowExpression<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookKeywordTrigger(WorkflowExpression<threadTypeInput> threadType,WorkflowExpression<string> search,WorkflowExpression<object> requestBody = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(threadType, nameof(threadType), required: true);
             WorkflowExpression.Validate(search, nameof(search), required: true);
@@ -1237,18 +1237,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["$search"] = ExpressionConverter.Convert(search);
                 callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookNewMessageTrigger))]
-        public IWorkflowTrigger WebhookNewMessageTrigger([WorkflowExpression] Func<threadTypeInput> threadType, [WorkflowExpression] Func<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookNewMessageTrigger([WorkflowExpression] Func<threadTypeInput> threadType,[WorkflowExpression] Func<object> requestBody = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookNewMessageTrigger(WorkflowExpression<threadTypeInput> threadType, WorkflowExpression<object> requestBody = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookNewMessageTrigger(WorkflowExpression<threadTypeInput> threadType,WorkflowExpression<object> requestBody = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(threadType, nameof(threadType), required: true);
             WorkflowExpression.Validate(requestBody, nameof(requestBody), required: false);
@@ -1258,18 +1258,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 var apiCallHttpMethod = "post";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Body = ExpressionConverter.ConvertO(requestBody);
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnTeamMemberRemoved))]
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberRemoved([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberRemoved([WorkflowExpression] Func<string> groupId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> __BuildOnTeamMemberRemoved(WorkflowExpression<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> __BuildOnTeamMemberRemoved(WorkflowExpression<string> groupId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnGroupMemberChangeResponseItem[]>(() =>
@@ -1279,18 +1279,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
                 callPayload.Queries["$select"] = Convert.ToString("members");
-                return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnTeamMemberAdded))]
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberAdded([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> OnTeamMemberAdded([WorkflowExpression] Func<string> groupId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> __BuildOnTeamMemberAdded(WorkflowExpression<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberChangeResponseItem[]> __BuildOnTeamMemberAdded(WorkflowExpression<string> groupId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnGroupMemberChangeResponseItem[]>(() =>
@@ -1300,8 +1300,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
                 callPayload.Queries["$select"] = Convert.ToString("members");
-                return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnGroupMemberChangeResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

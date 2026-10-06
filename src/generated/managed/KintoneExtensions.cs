@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -97,13 +97,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookTrigger))]
-        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -128,18 +128,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAddWebhookForUpdatingRecord))]
-        public IWorkflowTrigger AddWebhookForUpdatingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForUpdatingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddWebhookForUpdatingRecord(WorkflowExpression<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAddWebhookForUpdatingRecord(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -162,18 +162,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAddWebhookForDeletingRecord))]
-        public IWorkflowTrigger AddWebhookForDeletingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForDeletingRecord([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddWebhookForDeletingRecord(WorkflowExpression<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAddWebhookForDeletingRecord(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -196,18 +196,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAddWebhookForAddingRecordComment))]
-        public IWorkflowTrigger AddWebhookForAddingRecordComment([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForAddingRecordComment([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddWebhookForAddingRecordComment(WorkflowExpression<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAddWebhookForAddingRecordComment(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -230,18 +230,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAddWebhookForUpdatingStatus))]
-        public IWorkflowTrigger AddWebhookForUpdatingStatus([WorkflowExpression] Func<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AddWebhookForUpdatingStatus([WorkflowExpression] Func<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAddWebhookForUpdatingStatus(WorkflowExpression<string> requestBodyOfWebhookappID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAddWebhookForUpdatingStatus(WorkflowExpression<string> requestBodyOfWebhookappID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(requestBodyOfWebhookappID, nameof(requestBodyOfWebhookappID), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -264,8 +264,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

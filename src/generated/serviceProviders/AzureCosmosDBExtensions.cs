@@ -327,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureCosmosDB
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<WhenADocumentIsCreatedOrModifiedOutputItem[]>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

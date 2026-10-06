@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -255,12 +255,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
 
     public class SparkpostTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListRecipientListsResponse> OnNewRecipientList(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListRecipientListsResponse> OnNewRecipientList(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/recipient-lists";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListRecipientListsResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListRecipientListsResponse>(callPayload, recurrence: recurrence);
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -237,13 +237,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewODataItem))]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<string> feed, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem([WorkflowExpression] Func<string> endpoint,[WorkflowExpression] Func<string> feed,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildNewODataItem(WorkflowExpression<string> endpoint, WorkflowExpression<string> feed, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildNewODataItem(WorkflowExpression<string> endpoint,WorkflowExpression<string> feed,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(endpoint, nameof(endpoint), required: true);
             WorkflowExpression.Validate(feed, nameof(feed), required: true);
@@ -269,8 +269,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

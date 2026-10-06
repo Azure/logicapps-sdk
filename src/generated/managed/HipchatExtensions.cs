@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -111,13 +111,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewMessage))]
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage([WorkflowExpression] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage([WorkflowExpression] Func<string> roomId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<HistoryResponse> __BuildOnNewMessage(WorkflowExpression<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> __BuildOnNewMessage(WorkflowExpression<string> roomId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(roomId, nameof(roomId), required: true);
             return new DeferredBodyTrigger<HistoryResponse>(() =>
@@ -125,18 +125,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<HistoryResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<HistoryResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewFile))]
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile([WorkflowExpression] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile([WorkflowExpression] Func<string> roomId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<HistoryResponse> __BuildOnNewFile(WorkflowExpression<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> __BuildOnNewFile(WorkflowExpression<string> roomId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(roomId, nameof(roomId), required: true);
             return new DeferredBodyTrigger<HistoryResponse>(() =>
@@ -144,16 +144,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", ExpressionConverter.ConvertWithUrlEncoding(roomId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<HistoryResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<HistoryResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<RoomList> OnNewRoom(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RoomList> OnNewRoom(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/room_trigger/room";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RoomList>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<RoomList>(callPayload, recurrence: recurrence);
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewEntry))]
-        public IWorkflowTrigger NewEntry([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewEntry([WorkflowExpression] Func<string> publisher,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNewEntry(WorkflowExpression<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildNewEntry(WorkflowExpression<string> publisher,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(publisher, nameof(publisher), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -41,18 +41,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                     callPayload.Body = endpoint;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUpdateEntry))]
-        public IWorkflowTrigger UpdateEntry([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UpdateEntry([WorkflowExpression] Func<string> publisher,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildUpdateEntry(WorkflowExpression<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildUpdateEntry(WorkflowExpression<string> publisher,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(publisher, nameof(publisher), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -71,18 +71,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                     callPayload.Body = endpoint;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildEntryDeleted))]
-        public IWorkflowTrigger EntryDeleted([WorkflowExpression] Func<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger EntryDeleted([WorkflowExpression] Func<string> publisher,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildEntryDeleted(WorkflowExpression<string> publisher, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildEntryDeleted(WorkflowExpression<string> publisher,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(publisher, nameof(publisher), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                     callPayload.Body = endpoint;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -101,13 +101,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNEWREGISTRATION))]
-        public IWorkflowTrigger NEWREGISTRATION([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NEWREGISTRATION([WorkflowExpression] Func<string> platformId,[WorkflowExpression] Func<string> domainId,[WorkflowExpression] Func<string> appId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNEWREGISTRATION(WorkflowExpression<string> platformId, WorkflowExpression<string> domainId, WorkflowExpression<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildNEWREGISTRATION(WorkflowExpression<string> platformId,WorkflowExpression<string> domainId,WorkflowExpression<string> appId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(platformId, nameof(platformId), required: true);
             WorkflowExpression.Validate(domainId, nameof(domainId), required: true);
@@ -130,18 +130,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNEWCHECKIN))]
-        public IWorkflowTrigger NEWCHECKIN([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NEWCHECKIN([WorkflowExpression] Func<string> platformId,[WorkflowExpression] Func<string> domainId,[WorkflowExpression] Func<string> appId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNEWCHECKIN(WorkflowExpression<string> platformId, WorkflowExpression<string> domainId, WorkflowExpression<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildNEWCHECKIN(WorkflowExpression<string> platformId,WorkflowExpression<string> domainId,WorkflowExpression<string> appId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(platformId, nameof(platformId), required: true);
             WorkflowExpression.Validate(domainId, nameof(domainId), required: true);
@@ -164,8 +164,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

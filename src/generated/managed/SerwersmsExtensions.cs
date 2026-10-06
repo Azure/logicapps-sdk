@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -197,13 +197,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewAnswer))]
-        public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer([WorkflowExpression] Func<bodytypeInput> bodytype, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer([WorkflowExpression] Func<bodytypeInput> bodytype,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewAnswerResponse> __BuildNewAnswer(WorkflowExpression<bodytypeInput> bodytype, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewAnswerResponse> __BuildNewAnswer(WorkflowExpression<bodytypeInput> bodytype,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytype, nameof(bodytype), required: true);
             return new DeferredBodyTrigger<NewAnswerResponse>(() =>
@@ -220,8 +220,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<NewAnswerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewAnswerResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

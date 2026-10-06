@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookCreateTrigger))]
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger([WorkflowExpression] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookCreateTrigger([WorkflowExpression] Func<string> formID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookCreateTrigger(WorkflowExpression<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookCreateTrigger(WorkflowExpression<string> formID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(formID, nameof(formID), required: true);
             return new DeferredBodyTrigger<WebhookResponse>(() =>
@@ -86,18 +86,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<WebhookResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookUpdateTrigger))]
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger([WorkflowExpression] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookUpdateTrigger([WorkflowExpression] Func<string> formID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookUpdateTrigger(WorkflowExpression<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookUpdateTrigger(WorkflowExpression<string> formID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(formID, nameof(formID), required: true);
             return new DeferredBodyTrigger<WebhookResponse>(() =>
@@ -114,8 +114,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Captisaforms
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<WebhookResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

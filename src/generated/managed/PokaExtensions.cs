@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateWebhook))]
-        public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook([WorkflowExpression] Func<string> bodyselectALanguage, [WorkflowExpression] Func<string> item, [WorkflowExpression] Func<string> operationName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook([WorkflowExpression] Func<string> bodyselectALanguage,[WorkflowExpression] Func<string> item,[WorkflowExpression] Func<string> operationName,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHookDetail> __BuildCreateWebhook(WorkflowExpression<string> bodyselectALanguage, WorkflowExpression<string> item, WorkflowExpression<string> operationName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookDetail> __BuildCreateWebhook(WorkflowExpression<string> bodyselectALanguage,WorkflowExpression<string> item,WorkflowExpression<string> operationName,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyselectALanguage, nameof(bodyselectALanguage), required: true);
             WorkflowExpression.Validate(item, nameof(item), required: true);
@@ -43,8 +43,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<WebHookDetail>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHookDetail>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

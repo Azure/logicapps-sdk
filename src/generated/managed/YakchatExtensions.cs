@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -52,13 +52,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
     {
 
         [WorkflowExpressionFactory(nameof(__BuildInboundMessage))]
-        public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> bodyinboxEmail,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInboundMessage(WorkflowExpression<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildInboundMessage(WorkflowExpression<string> bodyinboxEmail,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -77,18 +77,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOutboundMessage))]
-        public IWorkflowTrigger OutboundMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OutboundMessage([WorkflowExpression] Func<string> bodyinboxEmail,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOutboundMessage(WorkflowExpression<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOutboundMessage(WorkflowExpression<string> bodyinboxEmail,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -107,18 +107,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildBidirectionalMessage))]
-        public IWorkflowTrigger BidirectionalMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BidirectionalMessage([WorkflowExpression] Func<string> bodyinboxEmail,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildBidirectionalMessage(WorkflowExpression<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildBidirectionalMessage(WorkflowExpression<string> bodyinboxEmail,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -137,8 +137,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

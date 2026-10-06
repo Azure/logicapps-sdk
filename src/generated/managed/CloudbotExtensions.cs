@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -179,13 +179,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
     {
 
         [WorkflowExpressionFactory(nameof(__BuildBotDone))]
-        public IBodyWorkflowTrigger<BotDoneResponse> BotDone([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage, [WorkflowExpression] Func<string> publicId, [WorkflowExpression] Func<string> botId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BotDoneResponse> BotDone([WorkflowExpression] Func<xCbotContentLanguageInput> xCbotContentLanguage,[WorkflowExpression] Func<string> publicId,[WorkflowExpression] Func<string> botId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BotDoneResponse> __BuildBotDone(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage, WorkflowExpression<string> publicId, WorkflowExpression<string> botId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BotDoneResponse> __BuildBotDone(WorkflowExpression<xCbotContentLanguageInput> xCbotContentLanguage,WorkflowExpression<string> publicId,WorkflowExpression<string> botId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(xCbotContentLanguage, nameof(xCbotContentLanguage), required: true);
             WorkflowExpression.Validate(publicId, nameof(publicId), required: true);
@@ -208,8 +208,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<BotDoneResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BotDoneResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

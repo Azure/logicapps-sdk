@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
     {
 
         [WorkflowExpressionFactory(nameof(__BuildListReceivedReportsByReportDefinition))]
-        public IBodyWorkflowTrigger<JToken[]> ListReceivedReportsByReportDefinition([WorkflowExpression] Func<string> reportDefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken[]> ListReceivedReportsByReportDefinition([WorkflowExpression] Func<string> reportDefinitionId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken[]> __BuildListReceivedReportsByReportDefinition(WorkflowExpression<string> reportDefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken[]> __BuildListReceivedReportsByReportDefinition(WorkflowExpression<string> reportDefinitionId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(reportDefinitionId, nameof(reportDefinitionId), required: true);
             return new DeferredBodyTrigger<JToken[]>(() =>
@@ -30,16 +30,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.M365updatesapp
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/connector/powerautomate/triggers/{0}/reports", ExpressionConverter.ConvertWithUrlEncoding(reportDefinitionId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<JToken[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken[]>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<JToken[]> ListReceivedReports(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken[]> ListReceivedReports(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/connector/powerautomate/triggers/reports";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<JToken[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken[]>(callPayload, recurrence: recurrence);
         }
     }
 }

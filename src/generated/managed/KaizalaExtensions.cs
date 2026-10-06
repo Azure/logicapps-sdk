@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -601,13 +601,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
     {
 
         [WorkflowExpressionFactory(nameof(__BuildActionCreatedOnGroup))]
-        public IWorkflowTrigger ActionCreatedOnGroup([WorkflowExpression] Func<string> objectId, [WorkflowExpression] Func<string> actionPackageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionCreatedOnGroup([WorkflowExpression] Func<string> objectId,[WorkflowExpression] Func<string> actionPackageId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildActionCreatedOnGroup(WorkflowExpression<string> objectId, WorkflowExpression<string> actionPackageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildActionCreatedOnGroup(WorkflowExpression<string> objectId,WorkflowExpression<string> actionPackageId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             WorkflowExpression.Validate(actionPackageId, nameof(actionPackageId), required: false);
@@ -628,18 +628,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAnnouncementOnGroup))]
-        public IWorkflowTrigger AnnouncementOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AnnouncementOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAnnouncementOnGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAnnouncementOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -657,18 +657,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGroupAddedToGroup))]
-        public IWorkflowTrigger GroupAddedToGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupAddedToGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildGroupAddedToGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildGroupAddedToGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -686,18 +686,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildGroupRemovedFromGroup))]
-        public IWorkflowTrigger GroupRemovedFromGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupRemovedFromGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildGroupRemovedFromGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildGroupRemovedFromGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -715,18 +715,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildMemberAddedToGroup))]
-        public IWorkflowTrigger MemberAddedToGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MemberAddedToGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildMemberAddedToGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildMemberAddedToGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -744,18 +744,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildMemberRemovedFromGroup))]
-        public IWorkflowTrigger MemberRemovedFromGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MemberRemovedFromGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildMemberRemovedFromGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildMemberRemovedFromGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -773,18 +773,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildSurveyCreatedOnGroup))]
-        public IWorkflowTrigger SurveyCreatedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SurveyCreatedOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSurveyCreatedOnGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildSurveyCreatedOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -802,18 +802,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTextMessageCreatedOnGroup))]
-        public IWorkflowTrigger TextMessageCreatedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TextMessageCreatedOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildTextMessageCreatedOnGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildTextMessageCreatedOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -831,18 +831,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildSurveyResponseOnGroup))]
-        public IWorkflowTrigger SurveyResponseOnGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SurveyResponseOnGroup([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSurveyResponseOnGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildSurveyResponseOnGroup(WorkflowExpression<string> groupId,WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
@@ -862,18 +862,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAttachmentOnGroup))]
-        public IWorkflowTrigger AttachmentOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttachmentOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAttachmentOnGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAttachmentOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -891,18 +891,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildActionResponseOnGroup))]
-        public IWorkflowTrigger ActionResponseOnGroup([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> actionPackageId, [WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionResponseOnGroup([WorkflowExpression] Func<string> groupId,[WorkflowExpression] Func<string> actionPackageId,[WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildActionResponseOnGroup(WorkflowExpression<string> groupId, WorkflowExpression<string> actionPackageId, WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildActionResponseOnGroup(WorkflowExpression<string> groupId,WorkflowExpression<string> actionPackageId,WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             WorkflowExpression.Validate(actionPackageId, nameof(actionPackageId), required: true);
@@ -924,18 +924,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUserJoinedOnGroup))]
-        public IWorkflowTrigger UserJoinedOnGroup([WorkflowExpression] Func<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UserJoinedOnGroup([WorkflowExpression] Func<string> objectId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildUserJoinedOnGroup(WorkflowExpression<string> objectId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildUserJoinedOnGroup(WorkflowExpression<string> objectId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(objectId, nameof(objectId), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -953,8 +953,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                     callPayload.Body = request;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

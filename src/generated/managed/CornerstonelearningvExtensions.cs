@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -420,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
 
     public class CornerstonelearningvTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateInstructorSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateInstructorSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribe/addInstructor";
             var apiCallHttpMethod = "post";
@@ -434,10 +434,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger UpdateInstructorSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UpdateInstructorSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribe/updateInstructor";
             var apiCallHttpMethod = "post";
@@ -451,10 +451,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CreateSessionSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateSessionSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribe/createSession";
             var apiCallHttpMethod = "post";
@@ -468,10 +468,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger UpdateSessionSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UpdateSessionSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribe/updateSession";
             var apiCallHttpMethod = "post";
@@ -485,10 +485,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger DeleteSessionSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DeleteSessionSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribe/deleteSession";
             var apiCallHttpMethod = "post";
@@ -502,10 +502,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger LaunchSessionSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger LaunchSessionSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribe/launchSession";
             var apiCallHttpMethod = "post";
@@ -519,10 +519,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GetAttendanceSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GetAttendanceSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribe/getAttendance";
             var apiCallHttpMethod = "post";
@@ -536,7 +536,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

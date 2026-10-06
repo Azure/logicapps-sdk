@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -137,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 
     public class SinchTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger MessageArrived(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger MessageArrived(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/messages";
             var apiCallHttpMethod = "post";
@@ -167,10 +167,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger GetDeliveryReceipt(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GetDeliveryReceipt(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v1/webhooks/deliveryreports";
             var apiCallHttpMethod = "post";
@@ -200,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

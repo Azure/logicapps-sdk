@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1689,13 +1689,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
     {
 
         [WorkflowExpressionFactory(nameof(__BuildSearchCab))]
-        public IWorkflowTrigger SearchCab([WorkflowExpression] Func<string> cabId, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<orderbyInput> orderby = null, [WorkflowExpression] Func<string> top = null, [WorkflowExpression] Func<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SearchCab([WorkflowExpression] Func<string> cabId,[WorkflowExpression] Func<string> q,[WorkflowExpression] Func<orderbyInput> orderby = null,[WorkflowExpression] Func<string> top = null,[WorkflowExpression] Func<string> select = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSearchCab(WorkflowExpression<string> cabId, WorkflowExpression<string> q, WorkflowExpression<orderbyInput> orderby = null, WorkflowExpression<string> top = null, WorkflowExpression<string> select = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildSearchCab(WorkflowExpression<string> cabId,WorkflowExpression<string> q,WorkflowExpression<orderbyInput> orderby = null,WorkflowExpression<string> top = null,WorkflowExpression<string> select = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(cabId, nameof(cabId), required: true);
             WorkflowExpression.Validate(q, nameof(q), required: true);
@@ -1716,8 +1716,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Netdocuments
                 if (select != null)
                     callPayload.Queries["$select"] = ExpressionConverter.Convert(select);
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

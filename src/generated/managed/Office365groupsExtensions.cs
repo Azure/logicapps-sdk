@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -528,13 +528,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnGroupMembershipChange))]
-        public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> OnGroupMembershipChange([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> OnGroupMembershipChange([WorkflowExpression] Func<string> groupId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> __BuildOnGroupMembershipChange(WorkflowExpression<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnGroupMemberAddedOrRemovedResponseItem[]> __BuildOnGroupMembershipChange(WorkflowExpression<string> groupId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(() =>
@@ -544,18 +544,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["groupId"] = ExpressionConverter.Convert(groupId);
                 callPayload.Queries["$select"] = Convert.ToString("members");
-                return new ApiConnectionTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnGroupMemberAddedOrRemovedResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEvent))]
-        public IBodyWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponseItem[]> OnNewEvent([WorkflowExpression] Func<string> groupId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewEventResponseItem[]> __BuildOnNewEvent(WorkflowExpression<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewEventResponseItem[]> __BuildOnNewEvent(WorkflowExpression<string> groupId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<OnNewEventResponseItem[]>(() =>
@@ -563,8 +563,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365groups
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v1.0/groups/{0}/events", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<OnNewEventResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnNewEventResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

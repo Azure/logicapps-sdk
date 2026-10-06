@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -24,13 +24,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookCreate))]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate([WorkflowExpression] Func<string> inboxId, [WorkflowExpression] Func<string> requestBodyOfWebhooklabel = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate([WorkflowExpression] Func<string> inboxId,[WorkflowExpression] Func<string> requestBodyOfWebhooklabel = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildWebhookCreate(WorkflowExpression<string> inboxId, WorkflowExpression<string> requestBodyOfWebhooklabel = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> __BuildWebhookCreate(WorkflowExpression<string> inboxId,WorkflowExpression<string> requestBodyOfWebhooklabel = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(inboxId, nameof(inboxId), required: true);
             WorkflowExpression.Validate(requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
@@ -56,8 +56,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

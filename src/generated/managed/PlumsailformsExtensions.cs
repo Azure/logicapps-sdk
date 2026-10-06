@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
     {
 
         [WorkflowExpressionFactory(nameof(__BuildFormIsSubmitted))]
-        public IWorkflowTrigger FormIsSubmitted([WorkflowExpression] Func<string> subscriberform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormIsSubmitted([WorkflowExpression] Func<string> subscriberform,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFormIsSubmitted(WorkflowExpression<string> subscriberform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFormIsSubmitted(WorkflowExpression<string> subscriberform,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(subscriberform, nameof(subscriberform), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -107,8 +107,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
                     callPayload.Body = subscriber;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

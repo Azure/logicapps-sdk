@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewTaskTrigger))]
-        public IWorkflowTrigger NewTaskTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> bodytaskType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewTaskTrigger([WorkflowExpression] Func<string> xEpTenant,[WorkflowExpression] Func<int> bodytaskType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNewTaskTrigger(WorkflowExpression<string> xEpTenant, WorkflowExpression<int> bodytaskType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildNewTaskTrigger(WorkflowExpression<string> xEpTenant,WorkflowExpression<int> bodytaskType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(xEpTenant, nameof(xEpTenant), required: true);
             WorkflowExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
@@ -99,18 +99,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildChangedTaskTrigger))]
-        public IWorkflowTrigger ChangedTaskTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> bodychangeType, [WorkflowExpression] Func<int> bodytaskType = null, [WorkflowExpression] Func<int> bodytaskStatus = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ChangedTaskTrigger([WorkflowExpression] Func<string> xEpTenant,[WorkflowExpression] Func<int> bodychangeType,[WorkflowExpression] Func<int> bodytaskType = null,[WorkflowExpression] Func<int> bodytaskStatus = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildChangedTaskTrigger(WorkflowExpression<string> xEpTenant, WorkflowExpression<int> bodychangeType, WorkflowExpression<int> bodytaskType = null, WorkflowExpression<int> bodytaskStatus = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildChangedTaskTrigger(WorkflowExpression<string> xEpTenant,WorkflowExpression<int> bodychangeType,WorkflowExpression<int> bodytaskType = null,WorkflowExpression<int> bodytaskStatus = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(xEpTenant, nameof(xEpTenant), required: true);
             WorkflowExpression.Validate(bodychangeType, nameof(bodychangeType), required: true);
@@ -145,18 +145,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNewTeamTrigger))]
-        public IWorkflowTrigger NewTeamTrigger([WorkflowExpression] Func<string> xEpTenant, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewTeamTrigger([WorkflowExpression] Func<string> xEpTenant,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNewTeamTrigger(WorkflowExpression<string> xEpTenant, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildNewTeamTrigger(WorkflowExpression<string> xEpTenant,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(xEpTenant, nameof(xEpTenant), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -174,18 +174,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildChangedTeamTrigger))]
-        public IWorkflowTrigger ChangedTeamTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> bodychangeType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ChangedTeamTrigger([WorkflowExpression] Func<string> xEpTenant,[WorkflowExpression] Func<int> bodychangeType,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildChangedTeamTrigger(WorkflowExpression<string> xEpTenant, WorkflowExpression<int> bodychangeType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildChangedTeamTrigger(WorkflowExpression<string> xEpTenant,WorkflowExpression<int> bodychangeType,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(xEpTenant, nameof(xEpTenant), required: true);
             WorkflowExpression.Validate(bodychangeType, nameof(bodychangeType), required: true);
@@ -206,18 +206,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNewProcessTrigger))]
-        public IWorkflowTrigger NewProcessTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<string> bodydefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewProcessTrigger([WorkflowExpression] Func<string> xEpTenant,[WorkflowExpression] Func<string> bodydefinitionId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNewProcessTrigger(WorkflowExpression<string> xEpTenant, WorkflowExpression<string> bodydefinitionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildNewProcessTrigger(WorkflowExpression<string> xEpTenant,WorkflowExpression<string> bodydefinitionId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(xEpTenant, nameof(xEpTenant), required: true);
             WorkflowExpression.Validate(bodydefinitionId, nameof(bodydefinitionId), required: true);
@@ -238,18 +238,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildChangedProcessTrigger))]
-        public IWorkflowTrigger ChangedProcessTrigger([WorkflowExpression] Func<string> xEpTenant, [WorkflowExpression] Func<int> bodychangeType, [WorkflowExpression] Func<string> bodydefinitionId = null, [WorkflowExpression] Func<string> bodystepId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ChangedProcessTrigger([WorkflowExpression] Func<string> xEpTenant,[WorkflowExpression] Func<int> bodychangeType,[WorkflowExpression] Func<string> bodydefinitionId = null,[WorkflowExpression] Func<string> bodystepId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildChangedProcessTrigger(WorkflowExpression<string> xEpTenant, WorkflowExpression<int> bodychangeType, WorkflowExpression<string> bodydefinitionId = null, WorkflowExpression<string> bodystepId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildChangedProcessTrigger(WorkflowExpression<string> xEpTenant,WorkflowExpression<int> bodychangeType,WorkflowExpression<string> bodydefinitionId = null,WorkflowExpression<string> bodystepId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(xEpTenant, nameof(xEpTenant), required: true);
             WorkflowExpression.Validate(bodychangeType, nameof(bodychangeType), required: true);
@@ -284,8 +284,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

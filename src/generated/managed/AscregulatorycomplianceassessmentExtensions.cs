@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascregulatorycomplianceassess
 
     public class AscregulatorycomplianceassessmentTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<string> ASCRegulatoryComplianceAssessmentTriggerSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> ASCRegulatoryComplianceAssessmentTriggerSubscribe(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/Microsoft.Security/RegulatoryComplianceAssessment/subscribe";
             var apiCallHttpMethod = "post";
@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ascregulatorycomplianceassess
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
     }
 }

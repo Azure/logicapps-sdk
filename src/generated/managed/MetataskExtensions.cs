@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateSubscriptionProcessCompleted))]
-        public IWorkflowTrigger CreateSubscriptionProcessCompleted([WorkflowExpression] Func<string> webhookRequestBodyconditionstemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateSubscriptionProcessCompleted([WorkflowExpression] Func<string> webhookRequestBodyconditionstemplate = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateSubscriptionProcessCompleted(WorkflowExpression<string> webhookRequestBodyconditionstemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateSubscriptionProcessCompleted(WorkflowExpression<string> webhookRequestBodyconditionstemplate = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(webhookRequestBodyconditionstemplate, nameof(webhookRequestBodyconditionstemplate), required: false);
             return new DeferredWorkflowTrigger(() =>
@@ -55,8 +55,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
                     callPayload.Body = webhookRequestBody;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

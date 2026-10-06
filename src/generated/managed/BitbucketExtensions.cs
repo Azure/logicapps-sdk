@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -234,13 +234,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewRepo))]
-        public IBodyWorkflowTrigger<ListRepositoriesResponse> OnNewRepo([WorkflowExpression] Func<string> account, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListRepositoriesResponse> OnNewRepo([WorkflowExpression] Func<string> account,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListRepositoriesResponse> __BuildOnNewRepo(WorkflowExpression<string> account, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListRepositoriesResponse> __BuildOnNewRepo(WorkflowExpression<string> account,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             return new DeferredBodyTrigger<ListRepositoriesResponse>(() =>
@@ -248,18 +248,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/repository_created_trigger/2.0/repositories/{0}", ExpressionConverter.ConvertWithUrlEncoding(account, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListRepositoriesResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListRepositoriesResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateHookIssueCreated))]
-        public IWorkflowTrigger CreateHookIssueCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateHookIssueCreated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateHookIssueCreated(WorkflowExpression<string> account, WorkflowExpression<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateHookIssueCreated(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(slug, nameof(slug), required: true);
@@ -277,18 +277,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateHookIssueUpdated))]
-        public IWorkflowTrigger CreateHookIssueUpdated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateHookIssueUpdated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateHookIssueUpdated(WorkflowExpression<string> account, WorkflowExpression<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateHookIssueUpdated(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(slug, nameof(slug), required: true);
@@ -306,18 +306,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateHookPullRequestApproved))]
-        public IWorkflowTrigger CreateHookPullRequestApproved([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateHookPullRequestApproved([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateHookPullRequestApproved(WorkflowExpression<string> account, WorkflowExpression<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateHookPullRequestApproved(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(slug, nameof(slug), required: true);
@@ -335,18 +335,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateHookPullRequestCreated))]
-        public IWorkflowTrigger CreateHookPullRequestCreated([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateHookPullRequestCreated([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateHookPullRequestCreated(WorkflowExpression<string> account, WorkflowExpression<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateHookPullRequestCreated(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(slug, nameof(slug), required: true);
@@ -364,18 +364,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateHookPullRequestDeclined))]
-        public IWorkflowTrigger CreateHookPullRequestDeclined([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateHookPullRequestDeclined([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateHookPullRequestDeclined(WorkflowExpression<string> account, WorkflowExpression<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateHookPullRequestDeclined(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(slug, nameof(slug), required: true);
@@ -393,18 +393,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateHookPullRequestMerged))]
-        public IWorkflowTrigger CreateHookPullRequestMerged([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateHookPullRequestMerged([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateHookPullRequestMerged(WorkflowExpression<string> account, WorkflowExpression<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateHookPullRequestMerged(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(slug, nameof(slug), required: true);
@@ -422,18 +422,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateHookRepositoryPush))]
-        public IWorkflowTrigger CreateHookRepositoryPush([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateHookRepositoryPush([WorkflowExpression] Func<string> account,[WorkflowExpression] Func<string> slug,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateHookRepositoryPush(WorkflowExpression<string> account, WorkflowExpression<string> slug, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateHookRepositoryPush(WorkflowExpression<string> account,WorkflowExpression<string> slug,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(account, nameof(account), required: true);
             WorkflowExpression.Validate(slug, nameof(slug), required: true);
@@ -451,8 +451,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bitbucket
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

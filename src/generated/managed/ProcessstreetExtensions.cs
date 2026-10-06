@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -216,13 +216,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCreateTaskStateChangedTrigger))]
-        public IWorkflowTrigger CreateTaskStateChangedTrigger([WorkflowExpression] Func<bodytaskStateInput> bodytaskState, [WorkflowExpression] Func<string> bodyworkflowID = null, [WorkflowExpression] Func<string> bodytaskID = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateTaskStateChangedTrigger([WorkflowExpression] Func<bodytaskStateInput> bodytaskState,[WorkflowExpression] Func<string> bodyworkflowID = null,[WorkflowExpression] Func<string> bodytaskID = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateTaskStateChangedTrigger(WorkflowExpression<bodytaskStateInput> bodytaskState, WorkflowExpression<string> bodyworkflowID = null, WorkflowExpression<string> bodytaskID = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateTaskStateChangedTrigger(WorkflowExpression<bodytaskStateInput> bodytaskState,WorkflowExpression<string> bodyworkflowID = null,WorkflowExpression<string> bodytaskID = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytaskState, nameof(bodytaskState), required: true);
             WorkflowExpression.Validate(bodyworkflowID, nameof(bodyworkflowID), required: false);
@@ -255,18 +255,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateWorkflowRunCreatedTrigger))]
-        public IWorkflowTrigger CreateWorkflowRunCreatedTrigger([WorkflowExpression] Func<string> bodyworkflowID = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWorkflowRunCreatedTrigger([WorkflowExpression] Func<string> bodyworkflowID = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateWorkflowRunCreatedTrigger(WorkflowExpression<string> bodyworkflowID = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateWorkflowRunCreatedTrigger(WorkflowExpression<string> bodyworkflowID = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkflowID, nameof(bodyworkflowID), required: false);
             return new DeferredWorkflowTrigger(() =>
@@ -289,18 +289,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreateWorkflowRunCompletedTrigger))]
-        public IWorkflowTrigger CreateWorkflowRunCompletedTrigger([WorkflowExpression] Func<string> bodyworkflowID = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWorkflowRunCompletedTrigger([WorkflowExpression] Func<string> bodyworkflowID = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCreateWorkflowRunCompletedTrigger(WorkflowExpression<string> bodyworkflowID = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCreateWorkflowRunCompletedTrigger(WorkflowExpression<string> bodyworkflowID = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyworkflowID, nameof(bodyworkflowID), required: false);
             return new DeferredWorkflowTrigger(() =>
@@ -323,8 +323,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

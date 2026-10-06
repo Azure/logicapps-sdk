@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1558,13 +1558,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnChangedItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnChangedItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnChangedItems([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> folderPath = null,[WorkflowExpression] Func<string> view = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnChangedItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> folderPath = null, WorkflowExpression<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnChangedItems(WorkflowExpression<string> dataset,WorkflowExpression<string> table,WorkflowExpression<string> folderPath = null,WorkflowExpression<string> view = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(table, nameof(table), required: true);
@@ -1579,18 +1579,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
                 if (view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnDeletedFileItems))]
-        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedFileItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedFileItems([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> folderPath = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<DeletedItemList> __BuildOnDeletedFileItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> folderPath = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList> __BuildOnDeletedFileItems(WorkflowExpression<string> dataset,WorkflowExpression<string> table,WorkflowExpression<string> folderPath = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(table, nameof(table), required: true);
@@ -1602,18 +1602,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (folderPath != null)
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
-                return new ApiConnectionTrigger<DeletedItemList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<DeletedItemList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnDeletedItems))]
-        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedItems([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<DeletedItemList> __BuildOnDeletedItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList> __BuildOnDeletedItems(WorkflowExpression<string> dataset,WorkflowExpression<string> table,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(table, nameof(table), required: true);
@@ -1622,18 +1622,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/ondeleteditems", ExpressionConverter.ConvertWithUrlEncoding(dataset, 2), ExpressionConverter.ConvertWithUrlEncoding(table, 2));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<DeletedItemList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<DeletedItemList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewFileItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnNewFileItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewFileItems([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> folderPath = null,[WorkflowExpression] Func<string> view = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewFileItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> folderPath = null, WorkflowExpression<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewFileItems(WorkflowExpression<string> dataset,WorkflowExpression<string> table,WorkflowExpression<string> folderPath = null,WorkflowExpression<string> view = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(table, nameof(table), required: true);
@@ -1648,18 +1648,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
                 if (view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> view = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnNewItems(WorkflowExpression<string> dataset,WorkflowExpression<string> table,WorkflowExpression<string> view = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(table, nameof(table), required: true);
@@ -1671,18 +1671,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedFileClassifiedTimes))]
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileClassifiedTimes([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileClassifiedTimes([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> folderPath = null,[WorkflowExpression] Func<string> view = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedFileClassifiedTimes(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> folderPath = null, WorkflowExpression<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedFileClassifiedTimes(WorkflowExpression<string> dataset,WorkflowExpression<string> table,WorkflowExpression<string> folderPath = null,WorkflowExpression<string> view = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(table, nameof(table), required: true);
@@ -1697,18 +1697,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
                 if (view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedFileItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileItems([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> folderPath = null,[WorkflowExpression] Func<string> view = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedFileItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> folderPath = null, WorkflowExpression<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedFileItems(WorkflowExpression<string> dataset,WorkflowExpression<string> table,WorkflowExpression<string> folderPath = null,WorkflowExpression<string> view = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(table, nameof(table), required: true);
@@ -1723,18 +1723,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                     callPayload.Queries["folderPath"] = ExpressionConverter.Convert(folderPath);
                 if (view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedItems))]
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> view = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedItems(WorkflowExpression<string> dataset, WorkflowExpression<string> table, WorkflowExpression<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> __BuildOnUpdatedItems(WorkflowExpression<string> dataset,WorkflowExpression<string> table,WorkflowExpression<string> view = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(table, nameof(table), required: true);
@@ -1746,18 +1746,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 if (view != null)
                     callPayload.Queries["view"] = ExpressionConverter.Convert(view);
-                return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ItemsList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewFile))]
-        public IBodyWorkflowTrigger<string> OnNewFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnNewFile([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<bool> inferContentType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildOnNewFile(WorkflowExpression<string> dataset, WorkflowExpression<string> folderId, WorkflowExpression<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> __BuildOnNewFile(WorkflowExpression<string> dataset,WorkflowExpression<string> folderId,WorkflowExpression<bool> inferContentType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
@@ -1772,18 +1772,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedFile))]
-        public IBodyWorkflowTrigger<string> OnUpdatedFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnUpdatedFile([WorkflowExpression] Func<string> dataset,[WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<bool> inferContentType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildOnUpdatedFile(WorkflowExpression<string> dataset, WorkflowExpression<string> folderId, WorkflowExpression<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> __BuildOnUpdatedFile(WorkflowExpression<string> dataset,WorkflowExpression<string> folderId,WorkflowExpression<bool> inferContentType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataset, nameof(dataset), required: true);
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
@@ -1799,8 +1799,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
                 if (inferContentType != null)
                     callPayload.Queries["inferContentType"] = ExpressionConverter.Convert(inferContentType);
                 callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

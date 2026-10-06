@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -188,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
 
     public class EsignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SignDocument(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SignDocument(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v3/pa_create_webhook";
             var apiCallHttpMethod = "post";
@@ -204,10 +204,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CreatedEnvelope(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreatedEnvelope(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v3/pa_create_webhook_two";
             var apiCallHttpMethod = "post";
@@ -223,10 +223,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
-        public IWorkflowTrigger CompletedEnvelope(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CompletedEnvelope(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/v3/pa_create_webhook_three";
             var apiCallHttpMethod = "post";
@@ -242,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

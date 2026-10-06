@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -292,13 +292,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
     {
 
         [WorkflowExpressionFactory(nameof(__BuildPollFolderForFileUpload))]
-        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload([WorkflowExpression] Func<string> workspaceId,[WorkflowExpression] Func<string> folderId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> __BuildPollFolderForFileUpload(WorkflowExpression<string> workspaceId, WorkflowExpression<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> __BuildPollFolderForFileUpload(WorkflowExpression<string> workspaceId,WorkflowExpression<string> folderId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
@@ -308,18 +308,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
-                return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPollWorkspaceForNewApproval))]
-        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval([WorkflowExpression] Func<string> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval([WorkflowExpression] Func<string> workspaceId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> __BuildPollWorkspaceForNewApproval(WorkflowExpression<string> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> __BuildPollWorkspaceForNewApproval(WorkflowExpression<string> workspaceId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workspaceId, nameof(workspaceId), required: true);
             return new DeferredBodyTrigger<PollWorkspaceForNewApprovalResponse>(() =>
@@ -327,8 +327,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddle
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", ExpressionConverter.ConvertWithUrlEncoding(workspaceId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

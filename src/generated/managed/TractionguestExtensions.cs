@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
 
     public class TractionguestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateInviteWebhook(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateInviteWebhook(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/invite";
             var apiCallHttpMethod = "post";
@@ -51,10 +51,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateSigninWebhook(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateSigninWebhook(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/signin";
             var apiCallHttpMethod = "post";
@@ -70,10 +70,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateSignoutWebhook(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateSignoutWebhook(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/signout";
             var apiCallHttpMethod = "post";
@@ -89,10 +89,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateWatchlistWebhook(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreatedResponse> CreateWatchlistWebhook(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/watchlist";
             var apiCallHttpMethod = "post";
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreatedResponse>(callPayload, recurrence: recurrence);
         }
     }
 

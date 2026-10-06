@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -187,13 +187,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
     {
 
         [WorkflowExpressionFactory(nameof(__BuildPostCompanyRegistration))]
-        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration([WorkflowExpression] Func<string> bodyEvent, [WorkflowExpression] Func<string> bodycallbackSignatureSecretKey, [WorkflowExpression] Func<string> bodycallbackSignatureAlgorithm, [WorkflowExpression] Func<string> bodycallbackAuthUrl = null, [WorkflowExpression] Func<string> bodycallbackClientId = null, [WorkflowExpression] Func<string> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> PostCompanyRegistration([WorkflowExpression] Func<string> bodyEvent,[WorkflowExpression] Func<string> bodycallbackSignatureSecretKey,[WorkflowExpression] Func<string> bodycallbackSignatureAlgorithm,[WorkflowExpression] Func<string> bodycallbackAuthUrl = null,[WorkflowExpression] Func<string> bodycallbackClientId = null,[WorkflowExpression] Func<string> bodycallbackClientSecret = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> __BuildPostCompanyRegistration(WorkflowExpression<string> bodyEvent, WorkflowExpression<string> bodycallbackSignatureSecretKey, WorkflowExpression<string> bodycallbackSignatureAlgorithm, WorkflowExpression<string> bodycallbackAuthUrl = null, WorkflowExpression<string> bodycallbackClientId = null, WorkflowExpression<string> bodycallbackClientSecret = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PostCompanyRegistrationResponse> __BuildPostCompanyRegistration(WorkflowExpression<string> bodyEvent,WorkflowExpression<string> bodycallbackSignatureSecretKey,WorkflowExpression<string> bodycallbackSignatureAlgorithm,WorkflowExpression<string> bodycallbackAuthUrl = null,WorkflowExpression<string> bodycallbackClientId = null,WorkflowExpression<string> bodycallbackClientSecret = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyEvent, nameof(bodyEvent), required: true);
             WorkflowExpression.Validate(bodycallbackSignatureSecretKey, nameof(bodycallbackSignatureSecretKey), required: true);
@@ -239,8 +239,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fedexdataworks
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<PostCompanyRegistrationResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<PostCompanyRegistrationResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

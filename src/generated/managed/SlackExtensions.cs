@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -193,13 +193,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewFile))]
-        public IBodyWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile([WorkflowExpression] Func<string> channel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewFileResponseItem[]> OnNewFile([WorkflowExpression] Func<string> channel,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<OnNewFileResponseItem[]> __BuildOnNewFile(WorkflowExpression<string> channel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnNewFileResponseItem[]> __BuildOnNewFile(WorkflowExpression<string> channel,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(channel, nameof(channel), required: true);
             return new DeferredBodyTrigger<OnNewFileResponseItem[]>(() =>
@@ -208,8 +208,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Slack
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["channel"] = ExpressionConverter.Convert(channel);
-                return new ApiConnectionTrigger<OnNewFileResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<OnNewFileResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

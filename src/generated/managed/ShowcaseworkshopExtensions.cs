@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
     {
 
         [WorkflowExpressionFactory(nameof(__BuildShowcaseShareSendEmail))]
-        public IWorkflowTrigger ShowcaseShareSendEmail([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ShowcaseShareSendEmail([WorkflowExpression] Func<string> workshopUid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildShowcaseShareSendEmail(WorkflowExpression<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildShowcaseShareSendEmail(WorkflowExpression<string> workshopUid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -41,18 +41,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildShowcaseSharedPageView))]
-        public IWorkflowTrigger ShowcaseSharedPageView([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ShowcaseSharedPageView([WorkflowExpression] Func<string> workshopUid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildShowcaseSharedPageView(WorkflowExpression<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildShowcaseSharedPageView(WorkflowExpression<string> workshopUid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -71,18 +71,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildShowcaseSharedPageDownload))]
-        public IWorkflowTrigger ShowcaseSharedPageDownload([WorkflowExpression] Func<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ShowcaseSharedPageDownload([WorkflowExpression] Func<string> workshopUid,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildShowcaseSharedPageDownload(WorkflowExpression<string> workshopUid, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildShowcaseSharedPageDownload(WorkflowExpression<string> workshopUid,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workshopUid, nameof(workshopUid), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -101,8 +101,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                     callPayload.Body = requestBodyOfWebhook;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

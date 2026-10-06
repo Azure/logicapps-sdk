@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -73,13 +73,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCSATReceived))]
-        public IWorkflowTrigger CSATReceived([WorkflowExpression] Func<fieldcsatFilterRaitingInputItem[]> fieldcsatFilterRaiting = null, [WorkflowExpression] Func<string[]> fieldcsatFilterAgents = null, [WorkflowExpression] Func<string[]> fieldcsatFilterSegments = null, [WorkflowExpression] Func<string[]> fieldcsatFilterCompanies = null, [WorkflowExpression] Func<string[]> fieldcsatFilterContacts = null, [WorkflowExpression] Func<fieldcsatFilterCommentsInput> fieldcsatFilterComments = null, [WorkflowExpression] Func<fieldcsatFilterMpInput> fieldcsatFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CSATReceived([WorkflowExpression] Func<fieldcsatFilterRaitingInputItem[]> fieldcsatFilterRaiting = null,[WorkflowExpression] Func<string[]> fieldcsatFilterAgents = null,[WorkflowExpression] Func<string[]> fieldcsatFilterSegments = null,[WorkflowExpression] Func<string[]> fieldcsatFilterCompanies = null,[WorkflowExpression] Func<string[]> fieldcsatFilterContacts = null,[WorkflowExpression] Func<fieldcsatFilterCommentsInput> fieldcsatFilterComments = null,[WorkflowExpression] Func<fieldcsatFilterMpInput> fieldcsatFilterMp = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCSATReceived(WorkflowExpression<fieldcsatFilterRaitingInputItem[]> fieldcsatFilterRaiting = null, WorkflowExpression<string[]> fieldcsatFilterAgents = null, WorkflowExpression<string[]> fieldcsatFilterSegments = null, WorkflowExpression<string[]> fieldcsatFilterCompanies = null, WorkflowExpression<string[]> fieldcsatFilterContacts = null, WorkflowExpression<fieldcsatFilterCommentsInput> fieldcsatFilterComments = null, WorkflowExpression<fieldcsatFilterMpInput> fieldcsatFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCSATReceived(WorkflowExpression<fieldcsatFilterRaitingInputItem[]> fieldcsatFilterRaiting = null,WorkflowExpression<string[]> fieldcsatFilterAgents = null,WorkflowExpression<string[]> fieldcsatFilterSegments = null,WorkflowExpression<string[]> fieldcsatFilterCompanies = null,WorkflowExpression<string[]> fieldcsatFilterContacts = null,WorkflowExpression<fieldcsatFilterCommentsInput> fieldcsatFilterComments = null,WorkflowExpression<fieldcsatFilterMpInput> fieldcsatFilterMp = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(fieldcsatFilterRaiting, nameof(fieldcsatFilterRaiting), required: false);
             WorkflowExpression.Validate(fieldcsatFilterAgents, nameof(fieldcsatFilterAgents), required: false);
@@ -143,18 +143,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                     callPayload.Body = field;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNPSReceived))]
-        public IWorkflowTrigger NPSReceived([WorkflowExpression] Func<fieldnpsFilterScoreInputItem[]> fieldnpsFilterScore = null, [WorkflowExpression] Func<string[]> fieldnpsFilterCampaigns = null, [WorkflowExpression] Func<fieldnpsFilterCommentsInput> fieldnpsFilterComments = null, [WorkflowExpression] Func<fieldnpsFilterMpInput> fieldnpsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NPSReceived([WorkflowExpression] Func<fieldnpsFilterScoreInputItem[]> fieldnpsFilterScore = null,[WorkflowExpression] Func<string[]> fieldnpsFilterCampaigns = null,[WorkflowExpression] Func<fieldnpsFilterCommentsInput> fieldnpsFilterComments = null,[WorkflowExpression] Func<fieldnpsFilterMpInput> fieldnpsFilterMp = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNPSReceived(WorkflowExpression<fieldnpsFilterScoreInputItem[]> fieldnpsFilterScore = null, WorkflowExpression<string[]> fieldnpsFilterCampaigns = null, WorkflowExpression<fieldnpsFilterCommentsInput> fieldnpsFilterComments = null, WorkflowExpression<fieldnpsFilterMpInput> fieldnpsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildNPSReceived(WorkflowExpression<fieldnpsFilterScoreInputItem[]> fieldnpsFilterScore = null,WorkflowExpression<string[]> fieldnpsFilterCampaigns = null,WorkflowExpression<fieldnpsFilterCommentsInput> fieldnpsFilterComments = null,WorkflowExpression<fieldnpsFilterMpInput> fieldnpsFilterMp = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(fieldnpsFilterScore, nameof(fieldnpsFilterScore), required: false);
             WorkflowExpression.Validate(fieldnpsFilterCampaigns, nameof(fieldnpsFilterCampaigns), required: false);
@@ -197,18 +197,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                     callPayload.Body = field;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPRJReceived))]
-        public IWorkflowTrigger PRJReceived([WorkflowExpression] Func<fieldprojectsFilterScoreInputItem[]> fieldprojectsFilterScore = null, [WorkflowExpression] Func<string[]> fieldprojectsFilterSurveys = null, [WorkflowExpression] Func<fieldprojectsFilterCommentsInput> fieldprojectsFilterComments = null, [WorkflowExpression] Func<fieldprojectsFilterMpInput> fieldprojectsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PRJReceived([WorkflowExpression] Func<fieldprojectsFilterScoreInputItem[]> fieldprojectsFilterScore = null,[WorkflowExpression] Func<string[]> fieldprojectsFilterSurveys = null,[WorkflowExpression] Func<fieldprojectsFilterCommentsInput> fieldprojectsFilterComments = null,[WorkflowExpression] Func<fieldprojectsFilterMpInput> fieldprojectsFilterMp = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildPRJReceived(WorkflowExpression<fieldprojectsFilterScoreInputItem[]> fieldprojectsFilterScore = null, WorkflowExpression<string[]> fieldprojectsFilterSurveys = null, WorkflowExpression<fieldprojectsFilterCommentsInput> fieldprojectsFilterComments = null, WorkflowExpression<fieldprojectsFilterMpInput> fieldprojectsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildPRJReceived(WorkflowExpression<fieldprojectsFilterScoreInputItem[]> fieldprojectsFilterScore = null,WorkflowExpression<string[]> fieldprojectsFilterSurveys = null,WorkflowExpression<fieldprojectsFilterCommentsInput> fieldprojectsFilterComments = null,WorkflowExpression<fieldprojectsFilterMpInput> fieldprojectsFilterMp = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(fieldprojectsFilterScore, nameof(fieldprojectsFilterScore), required: false);
             WorkflowExpression.Validate(fieldprojectsFilterSurveys, nameof(fieldprojectsFilterSurveys), required: false);
@@ -251,8 +251,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
                     callPayload.Body = field;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

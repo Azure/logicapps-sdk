@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -431,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
 
     public class AletheiaTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewFilings(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewFilings(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/SubscribeToNewFilingsWebhook";
             var apiCallHttpMethod = "post";
@@ -445,17 +445,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildInsiderTrading))]
-        public IWorkflowTrigger InsiderTrading([WorkflowExpression] Func<string> bodyissuer = null, [WorkflowExpression] Func<int> bodyowner = null, [WorkflowExpression] Func<bodytransactionTypeInput> bodytransactionType = null, [WorkflowExpression] Func<bodysecurityTypeInput> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InsiderTrading([WorkflowExpression] Func<string> bodyissuer = null,[WorkflowExpression] Func<int> bodyowner = null,[WorkflowExpression] Func<bodytransactionTypeInput> bodytransactionType = null,[WorkflowExpression] Func<bodysecurityTypeInput> bodysecurityType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInsiderTrading(WorkflowExpression<string> bodyissuer = null, WorkflowExpression<int> bodyowner = null, WorkflowExpression<bodytransactionTypeInput> bodytransactionType = null, WorkflowExpression<bodysecurityTypeInput> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildInsiderTrading(WorkflowExpression<string> bodyissuer = null,WorkflowExpression<int> bodyowner = null,WorkflowExpression<bodytransactionTypeInput> bodytransactionType = null,WorkflowExpression<bodysecurityTypeInput> bodysecurityType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyissuer, nameof(bodyissuer), required: false);
             WorkflowExpression.Validate(bodyowner, nameof(bodyowner), required: false);
@@ -499,8 +499,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

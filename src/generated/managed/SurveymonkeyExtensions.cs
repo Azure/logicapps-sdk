@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -125,22 +125,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
 
     public class SurveymonkeyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewSurveysItem[]> OnSurveyCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewSurveysItem[]> OnSurveyCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger1/surveys";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnSurveyCollectorCreated))]
-        public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated([WorkflowExpression] Func<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated([WorkflowExpression] Func<string> surveyId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewCollectorsItem[]> __BuildOnSurveyCollectorCreated(WorkflowExpression<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewCollectorsItem[]> __BuildOnSurveyCollectorCreated(WorkflowExpression<string> surveyId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
             return new DeferredBodyTrigger<NewCollectorsItem[]>(() =>
@@ -148,18 +148,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewResponseAddedCollector))]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> collectorId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector([WorkflowExpression] Func<string> surveyId,[WorkflowExpression] Func<string> collectorId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseAddedCollector(WorkflowExpression<string> surveyId, WorkflowExpression<string> collectorId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseAddedCollector(WorkflowExpression<string> surveyId,WorkflowExpression<string> collectorId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
             WorkflowExpression.Validate(collectorId, nameof(collectorId), required: true);
@@ -169,18 +169,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["surveyId"] = ExpressionConverter.Convert(surveyId);
-                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewResponseAddedSurvey))]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey([WorkflowExpression] Func<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey([WorkflowExpression] Func<string> surveyId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseAddedSurvey(WorkflowExpression<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseAddedSurvey(WorkflowExpression<string> surveyId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
             return new DeferredBodyTrigger<SurveyResponsesItem[]>(() =>
@@ -188,18 +188,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", ExpressionConverter.ConvertWithUrlEncoding(surveyId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewResponseToQuestionAdded))]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> pageIds = null, [WorkflowExpression] Func<string> questionIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded([WorkflowExpression] Func<string> surveyId,[WorkflowExpression] Func<string> pageIds = null,[WorkflowExpression] Func<string> questionIds = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseToQuestionAdded(WorkflowExpression<string> surveyId, WorkflowExpression<string> pageIds = null, WorkflowExpression<string> questionIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> __BuildOnNewResponseToQuestionAdded(WorkflowExpression<string> surveyId,WorkflowExpression<string> pageIds = null,WorkflowExpression<string> questionIds = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(surveyId, nameof(surveyId), required: true);
             WorkflowExpression.Validate(pageIds, nameof(pageIds), required: false);
@@ -213,8 +213,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkey
                     callPayload.Queries["page_ids"] = ExpressionConverter.Convert(pageIds);
                 if (questionIds != null)
                     callPayload.Queries["question_ids"] = ExpressionConverter.Convert(questionIds);
-                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

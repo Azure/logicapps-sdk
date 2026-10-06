@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -47,13 +47,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewDispatchAdvice))]
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice([WorkflowExpression] Func<string> brandId,[WorkflowExpression] Func<string> bodystoreIds = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> __BuildNewDispatchAdvice(WorkflowExpression<string> brandId, WorkflowExpression<string> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody> __BuildNewDispatchAdvice(WorkflowExpression<string> brandId,WorkflowExpression<string> bodystoreIds = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(brandId, nameof(brandId), required: true);
             WorkflowExpression.Validate(bodystoreIds, nameof(bodystoreIds), required: false);
@@ -77,18 +77,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNewInvoice))]
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice([WorkflowExpression] Func<string> brandId,[WorkflowExpression] Func<string> bodystoreIds = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> __BuildNewInvoice(WorkflowExpression<string> brandId, WorkflowExpression<string> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody> __BuildNewInvoice(WorkflowExpression<string> brandId,WorkflowExpression<string> bodystoreIds = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(brandId, nameof(brandId), required: true);
             WorkflowExpression.Validate(bodystoreIds, nameof(bodystoreIds), required: false);
@@ -112,8 +112,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

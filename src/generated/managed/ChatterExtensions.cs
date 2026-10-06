@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -142,13 +142,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTrigNewPostInGroup))]
-        public IBodyWorkflowTrigger<ListPostsByGroupResponse> TrigNewPostInGroup([WorkflowExpression] Func<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsByGroupResponse> TrigNewPostInGroup([WorkflowExpression] Func<string> groupId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListPostsByGroupResponse> __BuildTrigNewPostInGroup(WorkflowExpression<string> groupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPostsByGroupResponse> __BuildTrigNewPostInGroup(WorkflowExpression<string> groupId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(groupId, nameof(groupId), required: true);
             return new DeferredBodyTrigger<ListPostsByGroupResponse>(() =>
@@ -156,8 +156,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chatter
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/new_post_trigger/services/data/v38.0/chatter/feeds/record/{0}/feed-elements", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListPostsByGroupResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListPostsByGroupResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

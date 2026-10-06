@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -650,13 +650,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
     {
 
         [WorkflowExpressionFactory(nameof(__BuildProductCreatedTrigger))]
-        public IWorkflowTrigger ProductCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProductCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildProductCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -675,18 +675,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildProductUpdatedTrigger))]
-        public IWorkflowTrigger ProductUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProductUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildProductUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -705,18 +705,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildProductDeletedTrigger))]
-        public IWorkflowTrigger ProductDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProductDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildProductDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -735,18 +735,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCategoryCreatedTrigger))]
-        public IWorkflowTrigger CategoryCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCategoryCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCategoryCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -765,18 +765,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCategoryUpdatedTrigger))]
-        public IWorkflowTrigger CategoryUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCategoryUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCategoryUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -795,18 +795,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCategoryDeletedTrigger))]
-        public IWorkflowTrigger CategoryDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CategoryDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCategoryDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCategoryDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -825,18 +825,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildBrandCreatedTrigger))]
-        public IWorkflowTrigger BrandCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildBrandCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildBrandCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -855,18 +855,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildBrandUpdatedTrigger))]
-        public IWorkflowTrigger BrandUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildBrandUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildBrandUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -885,18 +885,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildBrandDeletedTrigger))]
-        public IWorkflowTrigger BrandDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BrandDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildBrandDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildBrandDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -915,18 +915,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUnitCreatedTrigger))]
-        public IWorkflowTrigger UnitCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildUnitCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildUnitCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -945,18 +945,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUnitUpdatedTrigger))]
-        public IWorkflowTrigger UnitUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildUnitUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildUnitUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -975,18 +975,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildUnitDeletedTrigger))]
-        public IWorkflowTrigger UnitDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger UnitDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildUnitDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildUnitDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1005,18 +1005,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAttributeCreatedTrigger))]
-        public IWorkflowTrigger AttributeCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAttributeCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAttributeCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1035,18 +1035,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAttributeUpdatedTrigger))]
-        public IWorkflowTrigger AttributeUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAttributeUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAttributeUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1065,18 +1065,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAttributeDeletedTrigger))]
-        public IWorkflowTrigger AttributeDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAttributeDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAttributeDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1095,18 +1095,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAttributeSetCreatedTrigger))]
-        public IWorkflowTrigger AttributeSetCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAttributeSetCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAttributeSetCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1125,18 +1125,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAttributeSetUpdatedTrigger))]
-        public IWorkflowTrigger AttributeSetUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAttributeSetUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAttributeSetUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1155,18 +1155,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildAttributeSetDeletedTrigger))]
-        public IWorkflowTrigger AttributeSetDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger AttributeSetDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildAttributeSetDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildAttributeSetDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1185,18 +1185,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCheckoutCreatedTrigger))]
-        public IWorkflowTrigger CheckoutCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CheckoutCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCheckoutCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCheckoutCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1215,18 +1215,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCheckoutCompletedTrigger))]
-        public IWorkflowTrigger CheckoutCompletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CheckoutCompletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCheckoutCompletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCheckoutCompletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1245,18 +1245,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCustomerCreatedTrigger))]
-        public IWorkflowTrigger CustomerCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCustomerCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCustomerCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1275,18 +1275,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCustomerUpdatedTrigger))]
-        public IWorkflowTrigger CustomerUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCustomerUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCustomerUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1305,18 +1305,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCustomerDeletedTrigger))]
-        public IWorkflowTrigger CustomerDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CustomerDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCustomerDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCustomerDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1335,18 +1335,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOrderCreatedTrigger))]
-        public IWorkflowTrigger OrderCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOrderCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOrderCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1365,18 +1365,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOrderUpdatedTrigger))]
-        public IWorkflowTrigger OrderUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOrderUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOrderUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1395,18 +1395,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOrderDeletedTrigger))]
-        public IWorkflowTrigger OrderDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OrderDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildOrderDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildOrderDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1425,18 +1425,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildInventoryLevelCreatedTrigger))]
-        public IWorkflowTrigger InventoryLevelCreatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelCreatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInventoryLevelCreatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildInventoryLevelCreatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1455,18 +1455,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildInventoryLevelUpdatedTrigger))]
-        public IWorkflowTrigger InventoryLevelUpdatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelUpdatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInventoryLevelUpdatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildInventoryLevelUpdatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1485,18 +1485,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildInventoryLevelDeletedTrigger))]
-        public IWorkflowTrigger InventoryLevelDeletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InventoryLevelDeletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInventoryLevelDeletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildInventoryLevelDeletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1515,18 +1515,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPaymentInitiatedTrigger))]
-        public IWorkflowTrigger PaymentInitiatedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PaymentInitiatedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildPaymentInitiatedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildPaymentInitiatedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1545,18 +1545,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildPaymentCompletedTrigger))]
-        public IWorkflowTrigger PaymentCompletedTrigger([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PaymentCompletedTrigger([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildPaymentCompletedTrigger(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildPaymentCompletedTrigger(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -1575,8 +1575,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shopranos
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

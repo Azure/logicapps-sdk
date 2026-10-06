@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -177,13 +177,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewEvent))]
-        public IWorkflowTrigger NewEvent([WorkflowExpression] Func<webookHookEventInput> webookHookEvent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewEvent([WorkflowExpression] Func<webookHookEventInput> webookHookEvent,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildNewEvent(WorkflowExpression<webookHookEventInput> webookHookEvent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildNewEvent(WorkflowExpression<webookHookEventInput> webookHookEvent,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(webookHookEvent, nameof(webookHookEvent), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -203,8 +203,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

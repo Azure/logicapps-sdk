@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -220,13 +220,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
     {
 
         [WorkflowExpressionFactory(nameof(__BuildFlowCreateHookForCommon))]
-        public IBodyWorkflowTrigger<string> FlowCreateHookForCommon([WorkflowExpression] Func<string> flowTriggerType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForCommon([WorkflowExpression] Func<string> flowTriggerType,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<string> __BuildFlowCreateHookForCommon(WorkflowExpression<string> flowTriggerType, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> __BuildFlowCreateHookForCommon(WorkflowExpression<string> flowTriggerType,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(flowTriggerType, nameof(flowTriggerType), required: true);
             return new DeferredBodyTrigger<string>(() =>
@@ -244,11 +244,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/errortask/created";
             var apiCallHttpMethod = "post";
@@ -262,10 +262,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskRetried(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskRetried(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/errortask/retried";
             var apiCallHttpMethod = "post";
@@ -279,10 +279,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestCancelled(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestCancelled(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/request/cancelled";
             var apiCallHttpMethod = "post";
@@ -296,10 +296,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestCompleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/request/completed";
             var apiCallHttpMethod = "post";
@@ -313,10 +313,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestSubmitted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForRequestSubmitted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/request/submitted";
             var apiCallHttpMethod = "post";
@@ -330,10 +330,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskApproved(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskApproved(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/approved";
             var apiCallHttpMethod = "post";
@@ -347,10 +347,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForFullyAutoImportCompleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForFullyAutoImportCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/autoimport";
             var apiCallHttpMethod = "post";
@@ -364,10 +364,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForConfirmDetailCompleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForConfirmDetailCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/confirm";
             var apiCallHttpMethod = "post";
@@ -381,10 +381,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskCreated(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskCreated(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/created";
             var apiCallHttpMethod = "post";
@@ -398,10 +398,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskRejected(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForTaskRejected(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/rejected";
             var apiCallHttpMethod = "post";
@@ -415,10 +415,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskCompleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/completed";
             var apiCallHttpMethod = "post";
@@ -432,10 +432,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskException(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskException(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/exception";
             var apiCallHttpMethod = "post";
@@ -449,10 +449,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskOverdue(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForRenewalTaskOverdue(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/renewal/overdue";
             var apiCallHttpMethod = "post";
@@ -466,10 +466,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskSkipped(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> FlowCreateHookForErrorTaskSkipped(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/flow/hooks/task/skipped";
             var apiCallHttpMethod = "post";
@@ -483,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Avepointcloudgovernance
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(callPayload, recurrence: recurrence);
         }
     }
 }

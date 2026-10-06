@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -239,13 +239,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEmail))]
-        public IBodyWorkflowTrigger<DetailedReceiveMessage> OnNewEmail([WorkflowExpression] Func<string> label = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<starredInput> starred = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachments = null, [WorkflowExpression] Func<bool> includeAttachments = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DetailedReceiveMessage> OnNewEmail([WorkflowExpression] Func<string> label = null,[WorkflowExpression] Func<string> to = null,[WorkflowExpression] Func<string> from = null,[WorkflowExpression] Func<string> subject = null,[WorkflowExpression] Func<importanceInput> importance = null,[WorkflowExpression] Func<starredInput> starred = null,[WorkflowExpression] Func<bool> fetchOnlyWithAttachments = null,[WorkflowExpression] Func<bool> includeAttachments = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<DetailedReceiveMessage> __BuildOnNewEmail(WorkflowExpression<string> label = null, WorkflowExpression<string> to = null, WorkflowExpression<string> from = null, WorkflowExpression<string> subject = null, WorkflowExpression<importanceInput> importance = null, WorkflowExpression<starredInput> starred = null, WorkflowExpression<bool> fetchOnlyWithAttachments = null, WorkflowExpression<bool> includeAttachments = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DetailedReceiveMessage> __BuildOnNewEmail(WorkflowExpression<string> label = null,WorkflowExpression<string> to = null,WorkflowExpression<string> from = null,WorkflowExpression<string> subject = null,WorkflowExpression<importanceInput> importance = null,WorkflowExpression<starredInput> starred = null,WorkflowExpression<bool> fetchOnlyWithAttachments = null,WorkflowExpression<bool> includeAttachments = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(label, nameof(label), required: false);
             WorkflowExpression.Validate(to, nameof(to), required: false);
@@ -281,8 +281,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gmail
                 callPayload.Queries["includeAttachments"] = Convert.ToString(false);
                 if (includeAttachments != null)
                     callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
-                return new ApiConnectionTrigger<DetailedReceiveMessage>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<DetailedReceiveMessage>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

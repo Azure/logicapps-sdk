@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -381,13 +381,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookTrigger))]
-        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> licenceId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> questionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> licenceId,[WorkflowExpression] Func<string> botId,[WorkflowExpression] Func<string> language,[WorkflowExpression] Func<string> profileId,[WorkflowExpression] Func<string> questionId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> licenceId, WorkflowExpression<string> botId, WorkflowExpression<string> language, WorkflowExpression<string> profileId, WorkflowExpression<string> questionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookTrigger(WorkflowExpression<string> licenceId,WorkflowExpression<string> botId,WorkflowExpression<string> language,WorkflowExpression<string> profileId,WorkflowExpression<string> questionId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(licenceId, nameof(licenceId), required: true);
             WorkflowExpression.Validate(botId, nameof(botId), required: true);
@@ -410,18 +410,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookEscalationTrigger))]
-        public IWorkflowTrigger WebhookEscalationTrigger([WorkflowExpression] Func<string> licenceId, [WorkflowExpression] Func<string> botId, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<string> profileId, [WorkflowExpression] Func<string> escalationId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookEscalationTrigger([WorkflowExpression] Func<string> licenceId,[WorkflowExpression] Func<string> botId,[WorkflowExpression] Func<string> language,[WorkflowExpression] Func<string> profileId,[WorkflowExpression] Func<string> escalationId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildWebhookEscalationTrigger(WorkflowExpression<string> licenceId, WorkflowExpression<string> botId, WorkflowExpression<string> language, WorkflowExpression<string> profileId, WorkflowExpression<string> escalationId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildWebhookEscalationTrigger(WorkflowExpression<string> licenceId,WorkflowExpression<string> botId,WorkflowExpression<string> language,WorkflowExpression<string> profileId,WorkflowExpression<string> escalationId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(licenceId, nameof(licenceId), required: true);
             WorkflowExpression.Validate(botId, nameof(botId), required: true);
@@ -444,8 +444,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

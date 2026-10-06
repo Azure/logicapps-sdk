@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -93,13 +93,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
     {
 
         [WorkflowExpressionFactory(nameof(__BuildInboundMessage))]
-        public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> configdedicatedNumber = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> configdedicatedNumber = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildInboundMessage(WorkflowExpression<string> configdedicatedNumber = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildInboundMessage(WorkflowExpression<string> configdedicatedNumber = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(configdedicatedNumber, nameof(configdedicatedNumber), required: false);
             return new DeferredWorkflowTrigger(() =>
@@ -126,8 +126,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Edgility
                     callPayload.Body = config;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

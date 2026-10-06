@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -956,13 +956,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWhenAnIcMIncidentIsCreated))]
-        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse> WhenAnIcMIncidentIsCreated([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<searchEndpointInput> searchEndpoint = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse> WhenAnIcMIncidentIsCreated([WorkflowExpression] Func<string> filter,[WorkflowExpression] Func<string> select = null,[WorkflowExpression] Func<searchEndpointInput> searchEndpoint = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse> __BuildWhenAnIcMIncidentIsCreated(WorkflowExpression<string> filter, WorkflowExpression<string> select = null, WorkflowExpression<searchEndpointInput> searchEndpoint = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IcmIncidentResponseTriggerBatchResponse> __BuildWhenAnIcMIncidentIsCreated(WorkflowExpression<string> filter,WorkflowExpression<string> select = null,WorkflowExpression<searchEndpointInput> searchEndpoint = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(filter, nameof(filter), required: true);
             WorkflowExpression.Validate(select, nameof(select), required: false);
@@ -978,8 +978,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Icm
                 callPayload.Queries["searchEndpoint"] = Convert.ToString("Public");
                 if (searchEndpoint != null)
                     callPayload.Queries["searchEndpoint"] = ExpressionConverter.Convert(searchEndpoint);
-                return new ApiConnectionTrigger<IcmIncidentResponseTriggerBatchResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<IcmIncidentResponseTriggerBatchResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

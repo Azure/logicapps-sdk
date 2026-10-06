@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.ConfluentKafka
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveMessageOutput>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

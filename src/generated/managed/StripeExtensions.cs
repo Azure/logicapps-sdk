@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -270,36 +270,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stripe
 
     public class StripeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ListCustomersResponseItem[]> OnNewCustomer(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListCustomersResponseItem[]> OnNewCustomer(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/customers";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListCustomersResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListOrdersResponseItem[]> OnNewOrder(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListOrdersResponseItem[]> OnNewOrder(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/orders";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListOrdersResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListChargesResponseItem[]> OnNewCharge(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListChargesResponseItem[]> OnNewCharge(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/charges";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListChargesResponseItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[]> OnNewInvoiceItem(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListInvoiceItemsResponseItem[]> OnNewInvoiceItem(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/v1/invoiceitems";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListInvoiceItemsResponseItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ListInvoiceItemsResponseItem[]>(callPayload, recurrence: recurrence);
         }
     }
 

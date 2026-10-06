@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -458,13 +458,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
     {
 
         [WorkflowExpressionFactory(nameof(__BuildSubscribeWebhookTrigger))]
-        public IWorkflowTrigger SubscribeWebhookTrigger([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> subscriptionRequesttableName, [WorkflowExpression] Func<int> subscriptionRequestchangeType, [WorkflowExpression] Func<int> subscriptionRequestscope, [WorkflowExpression] Func<string> subscriptionRequestselectColumns = null, [WorkflowExpression] Func<string> subscriptionRequestfilterRows = null, [WorkflowExpression] Func<string> subscriptionRequestdelayUntil = null, [WorkflowExpression] Func<int> subscriptionRequestrunAs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeWebhookTrigger([WorkflowExpression] Func<string> organization,[WorkflowExpression] Func<string> subscriptionRequesttableName,[WorkflowExpression] Func<int> subscriptionRequestchangeType,[WorkflowExpression] Func<int> subscriptionRequestscope,[WorkflowExpression] Func<string> subscriptionRequestselectColumns = null,[WorkflowExpression] Func<string> subscriptionRequestfilterRows = null,[WorkflowExpression] Func<string> subscriptionRequestdelayUntil = null,[WorkflowExpression] Func<int> subscriptionRequestrunAs = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSubscribeWebhookTrigger(WorkflowExpression<string> organization, WorkflowExpression<string> subscriptionRequesttableName, WorkflowExpression<int> subscriptionRequestchangeType, WorkflowExpression<int> subscriptionRequestscope, WorkflowExpression<string> subscriptionRequestselectColumns = null, WorkflowExpression<string> subscriptionRequestfilterRows = null, WorkflowExpression<string> subscriptionRequestdelayUntil = null, WorkflowExpression<int> subscriptionRequestrunAs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildSubscribeWebhookTrigger(WorkflowExpression<string> organization,WorkflowExpression<string> subscriptionRequesttableName,WorkflowExpression<int> subscriptionRequestchangeType,WorkflowExpression<int> subscriptionRequestscope,WorkflowExpression<string> subscriptionRequestselectColumns = null,WorkflowExpression<string> subscriptionRequestfilterRows = null,WorkflowExpression<string> subscriptionRequestdelayUntil = null,WorkflowExpression<int> subscriptionRequestrunAs = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(organization, nameof(organization), required: true);
             WorkflowExpression.Validate(subscriptionRequesttableName, nameof(subscriptionRequesttableName), required: true);
@@ -524,18 +524,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
                     callPayload.Body = subscriptionRequest;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildBusinessEventsTrigger))]
-        public IWorkflowTrigger BusinessEventsTrigger([WorkflowExpression] Func<string> organization, [WorkflowExpression] Func<string> catalog, [WorkflowExpression] Func<string> category, [WorkflowExpression] Func<string> subscriptionRequesttableName, [WorkflowExpression] Func<string> subscriptionRequestactionName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BusinessEventsTrigger([WorkflowExpression] Func<string> organization,[WorkflowExpression] Func<string> catalog,[WorkflowExpression] Func<string> category,[WorkflowExpression] Func<string> subscriptionRequesttableName,[WorkflowExpression] Func<string> subscriptionRequestactionName,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildBusinessEventsTrigger(WorkflowExpression<string> organization, WorkflowExpression<string> catalog, WorkflowExpression<string> category, WorkflowExpression<string> subscriptionRequesttableName, WorkflowExpression<string> subscriptionRequestactionName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildBusinessEventsTrigger(WorkflowExpression<string> organization,WorkflowExpression<string> catalog,WorkflowExpression<string> category,WorkflowExpression<string> subscriptionRequesttableName,WorkflowExpression<string> subscriptionRequestactionName,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(organization, nameof(organization), required: true);
             WorkflowExpression.Validate(catalog, nameof(catalog), required: true);
@@ -568,8 +568,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
                     callPayload.Body = subscriptionRequest;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -333,13 +333,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
     {
 
         [WorkflowExpressionFactory(nameof(__BuildIntentRecognized))]
-        public IWorkflowTrigger IntentRecognized([WorkflowExpression] Func<string> subscriptionbot, [WorkflowExpression] Func<string> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IntentRecognized([WorkflowExpression] Func<string> subscriptionbot,[WorkflowExpression] Func<string> subscriptionflow,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildIntentRecognized(WorkflowExpression<string> subscriptionbot, WorkflowExpression<string> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildIntentRecognized(WorkflowExpression<string> subscriptionbot,WorkflowExpression<string> subscriptionflow,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(subscriptionbot, nameof(subscriptionbot), required: true);
             WorkflowExpression.Validate(subscriptionflow, nameof(subscriptionflow), required: true);
@@ -361,8 +361,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                     callPayload.Body = subscription;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

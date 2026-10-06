@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
 
     public class HuddoboardsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NodeSummary> AddedToBoard(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary> AddedToBoard(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook/added-to-board";
             var apiCallHttpMethod = "post";
@@ -540,10 +540,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<NodeSummary>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<NodeSummary> AssignedTask(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary> AssignedTask(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook/assigned-task";
             var apiCallHttpMethod = "post";
@@ -557,17 +557,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<NodeSummary>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildBoardTaskCompleted))]
-        public IBodyWorkflowTrigger<NodeSummary> BoardTaskCompleted([WorkflowExpression] Func<string> boardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary> BoardTaskCompleted([WorkflowExpression] Func<string> boardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NodeSummary> __BuildBoardTaskCompleted(WorkflowExpression<string> boardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary> __BuildBoardTaskCompleted(WorkflowExpression<string> boardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
             return new DeferredBodyTrigger<NodeSummary>(() =>
@@ -584,18 +584,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<NodeSummary>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCreatedNode))]
-        public IBodyWorkflowTrigger<NodeSummary> CreatedNode([WorkflowExpression] Func<string> boardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary> CreatedNode([WorkflowExpression] Func<string> boardId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NodeSummary> __BuildCreatedNode(WorkflowExpression<string> boardId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary> __BuildCreatedNode(WorkflowExpression<string> boardId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(boardId, nameof(boardId), required: true);
             return new DeferredBodyTrigger<NodeSummary>(() =>
@@ -612,11 +612,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<NodeSummary>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IBodyWorkflowTrigger<NodeSummary> MyTaskCompleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NodeSummary> MyTaskCompleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhook/my-task-completed";
             var apiCallHttpMethod = "post";
@@ -630,7 +630,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddoboards
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<NodeSummary>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NodeSummary>(callPayload, recurrence: recurrence);
         }
     }
 

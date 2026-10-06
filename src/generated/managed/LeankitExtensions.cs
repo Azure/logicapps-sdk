@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -402,13 +402,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTrigNewCard))]
-        public IBodyWorkflowTrigger<CardResponse[]> TrigNewCard([WorkflowExpression] Func<string> board, [WorkflowExpression] Func<string> lane, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[]> TrigNewCard([WorkflowExpression] Func<string> board,[WorkflowExpression] Func<string> lane,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CardResponse[]> __BuildTrigNewCard(WorkflowExpression<string> board, WorkflowExpression<string> lane, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[]> __BuildTrigNewCard(WorkflowExpression<string> board,WorkflowExpression<string> lane,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(board, nameof(board), required: true);
             WorkflowExpression.Validate(lane, nameof(lane), required: true);
@@ -419,18 +419,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board"] = ExpressionConverter.Convert(board);
                 callPayload.Queries["lane"] = ExpressionConverter.Convert(lane);
-                return new ApiConnectionTrigger<CardResponse[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CardResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTrigUpdateCard))]
-        public IBodyWorkflowTrigger<CardResponse[]> TrigUpdateCard([WorkflowExpression] Func<string> board, [WorkflowExpression] Func<string> lane, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[]> TrigUpdateCard([WorkflowExpression] Func<string> board,[WorkflowExpression] Func<string> lane,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<CardResponse[]> __BuildTrigUpdateCard(WorkflowExpression<string> board, WorkflowExpression<string> lane, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CardResponse[]> __BuildTrigUpdateCard(WorkflowExpression<string> board,WorkflowExpression<string> lane,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(board, nameof(board), required: true);
             WorkflowExpression.Validate(lane, nameof(lane), required: true);
@@ -441,8 +441,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Leankit
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["board"] = ExpressionConverter.Convert(board);
                 callPayload.Queries["lane"] = ExpressionConverter.Convert(lane);
-                return new ApiConnectionTrigger<CardResponse[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<CardResponse[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

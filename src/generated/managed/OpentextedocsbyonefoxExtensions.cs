@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -919,13 +919,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
     {
 
         [WorkflowExpressionFactory(nameof(__BuildDocumentCreated))]
-        public IWorkflowTrigger DocumentCreated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentCreated([WorkflowExpression] Func<int> bodyfilterparentparentID = null,[WorkflowExpression] Func<int> bodyfilterparentparentDepth = null,[WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDocumentCreated(WorkflowExpression<int> bodyfilterparentparentID = null, WorkflowExpression<int> bodyfilterparentparentDepth = null, WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildDocumentCreated(WorkflowExpression<int> bodyfilterparentparentID = null,WorkflowExpression<int> bodyfilterparentparentDepth = null,WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
             WorkflowExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
@@ -978,18 +978,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildDocumentContentUpdated))]
-        public IWorkflowTrigger DocumentContentUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentContentUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null,[WorkflowExpression] Func<int> bodyfilterparentparentDepth = null,[WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDocumentContentUpdated(WorkflowExpression<int> bodyfilterparentparentID = null, WorkflowExpression<int> bodyfilterparentparentDepth = null, WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildDocumentContentUpdated(WorkflowExpression<int> bodyfilterparentparentID = null,WorkflowExpression<int> bodyfilterparentparentDepth = null,WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
             WorkflowExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
@@ -1042,18 +1042,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildDocumentPropertiesUpdated))]
-        public IWorkflowTrigger DocumentPropertiesUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentPropertiesUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null,[WorkflowExpression] Func<int> bodyfilterparentparentDepth = null,[WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDocumentPropertiesUpdated(WorkflowExpression<int> bodyfilterparentparentID = null, WorkflowExpression<int> bodyfilterparentparentDepth = null, WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildDocumentPropertiesUpdated(WorkflowExpression<int> bodyfilterparentparentID = null,WorkflowExpression<int> bodyfilterparentparentDepth = null,WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
             WorkflowExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
@@ -1106,18 +1106,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildDocumentDeleted))]
-        public IWorkflowTrigger DocumentDeleted([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DocumentDeleted([WorkflowExpression] Func<int> bodyfilterparentparentID = null,[WorkflowExpression] Func<int> bodyfilterparentparentDepth = null,[WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildDocumentDeleted(WorkflowExpression<int> bodyfilterparentparentID = null, WorkflowExpression<int> bodyfilterparentparentDepth = null, WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildDocumentDeleted(WorkflowExpression<int> bodyfilterparentparentID = null,WorkflowExpression<int> bodyfilterparentparentDepth = null,WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
             WorkflowExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
@@ -1170,18 +1170,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFolderCreated))]
-        public IWorkflowTrigger FolderCreated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderCreated([WorkflowExpression] Func<int> bodyfilterparentparentID = null,[WorkflowExpression] Func<int> bodyfilterparentparentDepth = null,[WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFolderCreated(WorkflowExpression<int> bodyfilterparentparentID = null, WorkflowExpression<int> bodyfilterparentparentDepth = null, WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFolderCreated(WorkflowExpression<int> bodyfilterparentparentID = null,WorkflowExpression<int> bodyfilterparentparentDepth = null,WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
             WorkflowExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
@@ -1234,18 +1234,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFolderUpdated))]
-        public IWorkflowTrigger FolderUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderUpdated([WorkflowExpression] Func<int> bodyfilterparentparentID = null,[WorkflowExpression] Func<int> bodyfilterparentparentDepth = null,[WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFolderUpdated(WorkflowExpression<int> bodyfilterparentparentID = null, WorkflowExpression<int> bodyfilterparentparentDepth = null, WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFolderUpdated(WorkflowExpression<int> bodyfilterparentparentID = null,WorkflowExpression<int> bodyfilterparentparentDepth = null,WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
             WorkflowExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
@@ -1298,18 +1298,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildFolderDeleted))]
-        public IWorkflowTrigger FolderDeleted([WorkflowExpression] Func<int> bodyfilterparentparentID = null, [WorkflowExpression] Func<int> bodyfilterparentparentDepth = null, [WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FolderDeleted([WorkflowExpression] Func<int> bodyfilterparentparentID = null,[WorkflowExpression] Func<int> bodyfilterparentparentDepth = null,[WorkflowExpression] Func<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildFolderDeleted(WorkflowExpression<int> bodyfilterparentparentID = null, WorkflowExpression<int> bodyfilterparentparentDepth = null, WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildFolderDeleted(WorkflowExpression<int> bodyfilterparentparentID = null,WorkflowExpression<int> bodyfilterparentparentDepth = null,WorkflowExpression<bodyfiltermetadataInputItem[]> bodyfiltermetadata = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyfilterparentparentID, nameof(bodyfilterparentparentID), required: false);
             WorkflowExpression.Validate(bodyfilterparentparentDepth, nameof(bodyfilterparentparentDepth), required: false);
@@ -1362,11 +1362,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
-        public IWorkflowTrigger ItemDeleted(string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ItemDeleted(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/web-hook/create/ItemDeleted";
             var apiCallHttpMethod = "post";
@@ -1380,7 +1380,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextedocsbyonefox
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -164,13 +164,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEvent))]
-        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> organizerFilter, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> OnNewEvent([WorkflowExpression] Func<string> organizationId,[WorkflowExpression] Func<string> organizerFilter,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> __BuildOnNewEvent(WorkflowExpression<string> organizationId, WorkflowExpression<string> organizerFilter, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetEventsForOrganizationResponseItem[]> __BuildOnNewEvent(WorkflowExpression<string> organizationId,WorkflowExpression<string> organizerFilter,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(organizationId, nameof(organizationId), required: true);
             WorkflowExpression.Validate(organizerFilter, nameof(organizerFilter), required: true);
@@ -181,18 +181,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organizer_filter"] = ExpressionConverter.Convert(organizerFilter);
                 callPayload.Queries["order_by"] = Convert.ToString("created_desc");
-                return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<GetEventsForOrganizationResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnOrderChanged))]
-        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> OnOrderChanged([WorkflowExpression] Func<string> organizationId,[WorkflowExpression] Func<string> id,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> __BuildOnOrderChanged(WorkflowExpression<string> organizationId, WorkflowExpression<string> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GetOrdersResponseItem[]> __BuildOnOrderChanged(WorkflowExpression<string> organizationId,WorkflowExpression<string> id,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(organizationId, nameof(organizationId), required: true);
             WorkflowExpression.Validate(id, nameof(id), required: true);
@@ -202,8 +202,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eventbrite
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 callPayload.Queries["organization_id"] = ExpressionConverter.Convert(organizationId);
-                return new ApiConnectionTrigger<GetOrdersResponseItem[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<GetOrdersResponseItem[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

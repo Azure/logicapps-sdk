@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -148,13 +148,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
     {
 
         [WorkflowExpressionFactory(nameof(__BuildServiceCaseCreated))]
-        public IWorkflowTrigger ServiceCaseCreated([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> connectorId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ServiceCaseCreated([WorkflowExpression] Func<string> projectId,[WorkflowExpression] Func<string> connectorId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildServiceCaseCreated(WorkflowExpression<string> projectId, WorkflowExpression<string> connectorId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildServiceCaseCreated(WorkflowExpression<string> projectId,WorkflowExpression<string> connectorId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(projectId, nameof(projectId), required: true);
             WorkflowExpression.Validate(connectorId, nameof(connectorId), required: true);
@@ -172,8 +172,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

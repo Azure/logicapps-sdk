@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -3149,13 +3149,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnCalendarChangedItems))]
-        public IBodyWorkflowTrigger<GraphCalendarEventListWithActionType> OnCalendarChangedItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> incomingDays = null, [WorkflowExpression] Func<int> pastDays = null, string triggerName = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListWithActionType> OnCalendarChangedItems([WorkflowExpression] Func<string> table,[WorkflowExpression] Func<int> incomingDays = null,[WorkflowExpression] Func<int> pastDays = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GraphCalendarEventListWithActionType> __BuildOnCalendarChangedItems(WorkflowExpression<string> table, WorkflowExpression<int> incomingDays = null, WorkflowExpression<int> pastDays = null, string triggerName = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListWithActionType> __BuildOnCalendarChangedItems(WorkflowExpression<string> table,WorkflowExpression<int> incomingDays = null,WorkflowExpression<int> pastDays = null)
         {
             WorkflowExpression.Validate(table, nameof(table), required: true);
             WorkflowExpression.Validate(incomingDays, nameof(incomingDays), required: false);
@@ -3205,17 +3205,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 }
 
                 return new ApiConnectionTrigger<GraphCalendarEventListWithActionType>(input);
-            }, triggerName);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnCalendarNewItems))]
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> OnCalendarNewItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> OnCalendarNewItems([WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> orderby = null,[WorkflowExpression] Func<int> top = null,[WorkflowExpression] Func<int> skip = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> __BuildOnCalendarNewItems(WorkflowExpression<string> table, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> __BuildOnCalendarNewItems(WorkflowExpression<string> table,WorkflowExpression<string> orderby = null,WorkflowExpression<int> top = null,WorkflowExpression<int> skip = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(table, nameof(table), required: true);
             WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
@@ -3232,18 +3232,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
                 if (skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnCalendarUpdatedItems))]
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> OnCalendarUpdatedItems([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> OnCalendarUpdatedItems([WorkflowExpression] Func<string> table,[WorkflowExpression] Func<string> orderby = null,[WorkflowExpression] Func<int> top = null,[WorkflowExpression] Func<int> skip = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> __BuildOnCalendarUpdatedItems(WorkflowExpression<string> table, WorkflowExpression<string> orderby = null, WorkflowExpression<int> top = null, WorkflowExpression<int> skip = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> __BuildOnCalendarUpdatedItems(WorkflowExpression<string> table,WorkflowExpression<string> orderby = null,WorkflowExpression<int> top = null,WorkflowExpression<int> skip = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(table, nameof(table), required: true);
             WorkflowExpression.Validate(orderby, nameof(orderby), required: false);
@@ -3260,18 +3260,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["$top"] = ExpressionConverter.Convert(top);
                 if (skip != null)
                     callPayload.Queries["$skip"] = ExpressionConverter.Convert(skip);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnFlaggedEmail))]
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmail([WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> toOrCc = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnFlaggedEmail([WorkflowExpression] Func<string> folderPath = null,[WorkflowExpression] Func<string> to = null,[WorkflowExpression] Func<string> cc = null,[WorkflowExpression] Func<string> toOrCc = null,[WorkflowExpression] Func<string> from = null,[WorkflowExpression] Func<importanceInput> importance = null,[WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null,[WorkflowExpression] Func<bool> includeAttachments = null,[WorkflowExpression] Func<string> subjectFilter = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> __BuildOnFlaggedEmail(WorkflowExpression<string> folderPath = null, WorkflowExpression<string> to = null, WorkflowExpression<string> cc = null, WorkflowExpression<string> toOrCc = null, WorkflowExpression<string> from = null, WorkflowExpression<importanceInput> importance = null, WorkflowExpression<bool> fetchOnlyWithAttachment = null, WorkflowExpression<bool> includeAttachments = null, WorkflowExpression<string> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> __BuildOnFlaggedEmail(WorkflowExpression<string> folderPath = null,WorkflowExpression<string> to = null,WorkflowExpression<string> cc = null,WorkflowExpression<string> toOrCc = null,WorkflowExpression<string> from = null,WorkflowExpression<importanceInput> importance = null,WorkflowExpression<bool> fetchOnlyWithAttachment = null,WorkflowExpression<bool> includeAttachments = null,WorkflowExpression<string> subjectFilter = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: false);
             WorkflowExpression.Validate(to, nameof(to), required: false);
@@ -3346,17 +3346,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 }
 
                 return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
-            }, triggerName);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEmail))]
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewEmail([WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> toOrCc = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewEmail([WorkflowExpression] Func<string> folderPath = null,[WorkflowExpression] Func<string> to = null,[WorkflowExpression] Func<string> cc = null,[WorkflowExpression] Func<string> toOrCc = null,[WorkflowExpression] Func<string> from = null,[WorkflowExpression] Func<importanceInput> importance = null,[WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null,[WorkflowExpression] Func<bool> includeAttachments = null,[WorkflowExpression] Func<string> subjectFilter = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> __BuildOnNewEmail(WorkflowExpression<string> folderPath = null, WorkflowExpression<string> to = null, WorkflowExpression<string> cc = null, WorkflowExpression<string> toOrCc = null, WorkflowExpression<string> from = null, WorkflowExpression<importanceInput> importance = null, WorkflowExpression<bool> fetchOnlyWithAttachment = null, WorkflowExpression<bool> includeAttachments = null, WorkflowExpression<string> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> __BuildOnNewEmail(WorkflowExpression<string> folderPath = null,WorkflowExpression<string> to = null,WorkflowExpression<string> cc = null,WorkflowExpression<string> toOrCc = null,WorkflowExpression<string> from = null,WorkflowExpression<importanceInput> importance = null,WorkflowExpression<bool> fetchOnlyWithAttachment = null,WorkflowExpression<bool> includeAttachments = null,WorkflowExpression<string> subjectFilter = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: false);
             WorkflowExpression.Validate(to, nameof(to), required: false);
@@ -3431,17 +3431,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 }
 
                 return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
-            }, triggerName);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewEmailMentioningMe))]
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewEmailMentioningMe([WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> toOrCc = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnNewEmailMentioningMe([WorkflowExpression] Func<string> folderPath = null,[WorkflowExpression] Func<string> to = null,[WorkflowExpression] Func<string> cc = null,[WorkflowExpression] Func<string> toOrCc = null,[WorkflowExpression] Func<string> from = null,[WorkflowExpression] Func<importanceInput> importance = null,[WorkflowExpression] Func<bool> fetchOnlyWithAttachment = null,[WorkflowExpression] Func<bool> includeAttachments = null,[WorkflowExpression] Func<string> subjectFilter = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> __BuildOnNewEmailMentioningMe(WorkflowExpression<string> folderPath = null, WorkflowExpression<string> to = null, WorkflowExpression<string> cc = null, WorkflowExpression<string> toOrCc = null, WorkflowExpression<string> from = null, WorkflowExpression<importanceInput> importance = null, WorkflowExpression<bool> fetchOnlyWithAttachment = null, WorkflowExpression<bool> includeAttachments = null, WorkflowExpression<string> subjectFilter = null, string triggerName = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> __BuildOnNewEmailMentioningMe(WorkflowExpression<string> folderPath = null,WorkflowExpression<string> to = null,WorkflowExpression<string> cc = null,WorkflowExpression<string> toOrCc = null,WorkflowExpression<string> from = null,WorkflowExpression<importanceInput> importance = null,WorkflowExpression<bool> fetchOnlyWithAttachment = null,WorkflowExpression<bool> includeAttachments = null,WorkflowExpression<string> subjectFilter = null)
         {
             WorkflowExpression.Validate(folderPath, nameof(folderPath), required: false);
             WorkflowExpression.Validate(to, nameof(to), required: false);
@@ -3514,17 +3514,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 }
 
                 return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(input);
-            }, triggerName);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpcomingEvents))]
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> OnUpcomingEvents([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> lookAheadTimeInMinutes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> OnUpcomingEvents([WorkflowExpression] Func<string> table,[WorkflowExpression] Func<int> lookAheadTimeInMinutes = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> __BuildOnUpcomingEvents(WorkflowExpression<string> table, WorkflowExpression<int> lookAheadTimeInMinutes = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<GraphCalendarEventListClientReceive> __BuildOnUpcomingEvents(WorkflowExpression<string> table,WorkflowExpression<int> lookAheadTimeInMinutes = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(table, nameof(table), required: true);
             WorkflowExpression.Validate(lookAheadTimeInMinutes, nameof(lookAheadTimeInMinutes), required: false);
@@ -3537,18 +3537,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 callPayload.Queries["lookAheadTimeInMinutes"] = Convert.ToString(15);
                 if (lookAheadTimeInMinutes != null)
                     callPayload.Queries["lookAheadTimeInMinutes"] = ExpressionConverter.Convert(lookAheadTimeInMinutes);
-                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<GraphCalendarEventListClientReceive>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnSharedMailboxNewEmail))]
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnSharedMailboxNewEmail([WorkflowExpression] Func<string> mailboxAddress, [WorkflowExpression] Func<string> folderId = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> toOrCc = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<importanceInput> importance = null, [WorkflowExpression] Func<bool> hasAttachments = null, [WorkflowExpression] Func<bool> includeAttachments = null, [WorkflowExpression] Func<string> subjectFilter = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> OnSharedMailboxNewEmail([WorkflowExpression] Func<string> mailboxAddress,[WorkflowExpression] Func<string> folderId = null,[WorkflowExpression] Func<string> to = null,[WorkflowExpression] Func<string> cc = null,[WorkflowExpression] Func<string> toOrCc = null,[WorkflowExpression] Func<string> from = null,[WorkflowExpression] Func<importanceInput> importance = null,[WorkflowExpression] Func<bool> hasAttachments = null,[WorkflowExpression] Func<bool> includeAttachments = null,[WorkflowExpression] Func<string> subjectFilter = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> __BuildOnSharedMailboxNewEmail(WorkflowExpression<string> mailboxAddress, WorkflowExpression<string> folderId = null, WorkflowExpression<string> to = null, WorkflowExpression<string> cc = null, WorkflowExpression<string> toOrCc = null, WorkflowExpression<string> from = null, WorkflowExpression<importanceInput> importance = null, WorkflowExpression<bool> hasAttachments = null, WorkflowExpression<bool> includeAttachments = null, WorkflowExpression<string> subjectFilter = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseGraphClientReceiveMessage> __BuildOnSharedMailboxNewEmail(WorkflowExpression<string> mailboxAddress,WorkflowExpression<string> folderId = null,WorkflowExpression<string> to = null,WorkflowExpression<string> cc = null,WorkflowExpression<string> toOrCc = null,WorkflowExpression<string> from = null,WorkflowExpression<importanceInput> importance = null,WorkflowExpression<bool> hasAttachments = null,WorkflowExpression<bool> includeAttachments = null,WorkflowExpression<string> subjectFilter = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(mailboxAddress, nameof(mailboxAddress), required: true);
             WorkflowExpression.Validate(folderId, nameof(folderId), required: false);
@@ -3588,8 +3588,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     callPayload.Queries["includeAttachments"] = ExpressionConverter.Convert(includeAttachments);
                 if (subjectFilter != null)
                     callPayload.Queries["subjectFilter"] = ExpressionConverter.Convert(subjectFilter);
-                return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerBatchResponseGraphClientReceiveMessage>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
     {
 
         [WorkflowExpressionFactory(nameof(__BuildTrigPendingUpdates))]
-        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates([WorkflowExpression] Func<string> profileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> TrigPendingUpdates([WorkflowExpression] Func<string> profileId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> __BuildTrigPendingUpdates(WorkflowExpression<string> profileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListPendingUpdatesResponse> __BuildTrigPendingUpdates(WorkflowExpression<string> profileId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
             return new DeferredBodyTrigger<ListPendingUpdatesResponse>(() =>
@@ -77,18 +77,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/pending.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListPendingUpdatesResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListPendingUpdatesResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildTrigSentUpdates))]
-        public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates([WorkflowExpression] Func<string> profileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListSentUpdatesResponse> TrigSentUpdates([WorkflowExpression] Func<string> profileId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<ListSentUpdatesResponse> __BuildTrigSentUpdates(WorkflowExpression<string> profileId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ListSentUpdatesResponse> __BuildTrigSentUpdates(WorkflowExpression<string> profileId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(profileId, nameof(profileId), required: true);
             return new DeferredBodyTrigger<ListSentUpdatesResponse>(() =>
@@ -96,8 +96,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Buffer
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger/1/profiles/{0}/updates/sent.json", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<ListSentUpdatesResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<ListSentUpdatesResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

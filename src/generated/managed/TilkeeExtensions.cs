@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -546,13 +546,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnTilkeeEvent))]
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEvent([WorkflowExpression] Func<bodyruleInput> bodyrule, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEvent([WorkflowExpression] Func<bodyruleInput> bodyrule,[WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodyprojectId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEvent(WorkflowExpression<bodyruleInput> bodyrule, WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEvent(WorkflowExpression<bodyruleInput> bodyrule,WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodyprojectId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyrule, nameof(bodyrule), required: true);
             WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
@@ -590,18 +590,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnTilkeeEventEnded))]
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEventEnded([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEventEnded([WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodyprojectId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEventEnded(WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEventEnded(WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodyprojectId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
@@ -638,18 +638,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnTilkeeEventSigned))]
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEventSigned([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEventSigned([WorkflowExpression] Func<string> bodyuserId = null,[WorkflowExpression] Func<string> bodyprojectId = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEventSigned(WorkflowExpression<string> bodyuserId = null, WorkflowExpression<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> __BuildOnTilkeeEventSigned(WorkflowExpression<string> bodyuserId = null,WorkflowExpression<string> bodyprojectId = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
             WorkflowExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
@@ -686,8 +686,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<JToken>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

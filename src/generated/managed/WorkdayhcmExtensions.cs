@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -847,13 +847,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWhenAnEmployeeIsAddedOrUpdated))]
-        public IBodyWorkflowTrigger<EmployeeInfo> WhenAnEmployeeIsAddedOrUpdated([WorkflowExpression] Func<dateCriteriaInput> dateCriteria, [WorkflowExpression] Func<businessProcessTypeInput> businessProcessType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EmployeeInfo> WhenAnEmployeeIsAddedOrUpdated([WorkflowExpression] Func<dateCriteriaInput> dateCriteria,[WorkflowExpression] Func<businessProcessTypeInput> businessProcessType = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<EmployeeInfo> __BuildWhenAnEmployeeIsAddedOrUpdated(WorkflowExpression<dateCriteriaInput> dateCriteria, WorkflowExpression<businessProcessTypeInput> businessProcessType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EmployeeInfo> __BuildWhenAnEmployeeIsAddedOrUpdated(WorkflowExpression<dateCriteriaInput> dateCriteria,WorkflowExpression<businessProcessTypeInput> businessProcessType = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dateCriteria, nameof(dateCriteria), required: true);
             WorkflowExpression.Validate(businessProcessType, nameof(businessProcessType), required: false);
@@ -865,8 +865,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdayhcm
                 callPayload.Queries["dateCriteria"] = ExpressionConverter.Convert(dateCriteria);
                 if (businessProcessType != null)
                     callPayload.Queries["businessProcessType"] = ExpressionConverter.Convert(businessProcessType);
-                return new ApiConnectionTrigger<EmployeeInfo>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<EmployeeInfo>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

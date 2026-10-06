@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -230,13 +230,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
     {
 
         [WorkflowExpressionFactory(nameof(__BuildProactiveDialogSubscribe))]
-        public IWorkflowTrigger ProactiveDialogSubscribe([WorkflowExpression] Func<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProactiveDialogSubscribe([WorkflowExpression] Func<string> bodytitle,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildProactiveDialogSubscribe(WorkflowExpression<string> bodytitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildProactiveDialogSubscribe(WorkflowExpression<string> bodytitle,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             return new DeferredWorkflowTrigger(() =>
@@ -255,18 +255,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildSmartDialogSubscribe))]
-        public IWorkflowTrigger SmartDialogSubscribe([WorkflowExpression] Func<string> bodyappId, [WorkflowExpression] Func<string> bodyintent, [WorkflowExpression] Func<string> bodydescription, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SmartDialogSubscribe([WorkflowExpression] Func<string> bodyappId,[WorkflowExpression] Func<string> bodyintent,[WorkflowExpression] Func<string> bodydescription,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSmartDialogSubscribe(WorkflowExpression<string> bodyappId, WorkflowExpression<string> bodyintent, WorkflowExpression<string> bodydescription, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildSmartDialogSubscribe(WorkflowExpression<string> bodyappId,WorkflowExpression<string> bodyintent,WorkflowExpression<string> bodydescription,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodyappId, nameof(bodyappId), required: true);
             WorkflowExpression.Validate(bodyintent, nameof(bodyintent), required: true);
@@ -291,18 +291,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildSmartSourceSubscribe))]
-        public IWorkflowTrigger SmartSourceSubscribe([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<string> bodyicon = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SmartSourceSubscribe([WorkflowExpression] Func<string> bodytitle,[WorkflowExpression] Func<string> bodycategory,[WorkflowExpression] Func<string> bodyicon = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildSmartSourceSubscribe(WorkflowExpression<string> bodytitle, WorkflowExpression<string> bodycategory, WorkflowExpression<string> bodyicon = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildSmartSourceSubscribe(WorkflowExpression<string> bodytitle,WorkflowExpression<string> bodycategory,WorkflowExpression<string> bodyicon = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytitle, nameof(bodytitle), required: true);
             WorkflowExpression.Validate(bodycategory, nameof(bodycategory), required: true);
@@ -331,8 +331,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

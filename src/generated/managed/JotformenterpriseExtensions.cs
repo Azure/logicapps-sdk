@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -16,13 +16,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhookTrigger))]
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger([WorkflowExpression] Func<string> workspaceID, [WorkflowExpression] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger([WorkflowExpression] Func<string> workspaceID,[WorkflowExpression] Func<string> formID,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookTrigger(WorkflowExpression<string> workspaceID, WorkflowExpression<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> __BuildWebhookTrigger(WorkflowExpression<string> workspaceID,WorkflowExpression<string> formID,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(workspaceID, nameof(workspaceID), required: true);
             WorkflowExpression.Validate(formID, nameof(formID), required: true);
@@ -41,8 +41,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<WebhookResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

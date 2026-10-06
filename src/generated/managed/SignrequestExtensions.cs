@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -301,13 +301,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebhooksCreate))]
-        public IBodyWorkflowTrigger<WebhookSubscription> WebhooksCreate([WorkflowExpression] Func<dataeventTypeInput> dataeventType, [WorkflowExpression] Func<string> datacreated = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> datasubdomain = null, [WorkflowExpression] Func<string> datateamname = null, [WorkflowExpression] Func<string> datateamsubdomain = null, [WorkflowExpression] Func<string> datateamurl = null, [WorkflowExpression] Func<string> dataurl = null, [WorkflowExpression] Func<string> datauuid = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription> WebhooksCreate([WorkflowExpression] Func<dataeventTypeInput> dataeventType,[WorkflowExpression] Func<string> datacreated = null,[WorkflowExpression] Func<string> dataname = null,[WorkflowExpression] Func<string> datasubdomain = null,[WorkflowExpression] Func<string> datateamname = null,[WorkflowExpression] Func<string> datateamsubdomain = null,[WorkflowExpression] Func<string> datateamurl = null,[WorkflowExpression] Func<string> dataurl = null,[WorkflowExpression] Func<string> datauuid = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebhookSubscription> __BuildWebhooksCreate(WorkflowExpression<dataeventTypeInput> dataeventType, WorkflowExpression<string> datacreated = null, WorkflowExpression<string> dataname = null, WorkflowExpression<string> datasubdomain = null, WorkflowExpression<string> datateamname = null, WorkflowExpression<string> datateamsubdomain = null, WorkflowExpression<string> datateamurl = null, WorkflowExpression<string> dataurl = null, WorkflowExpression<string> datauuid = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription> __BuildWebhooksCreate(WorkflowExpression<dataeventTypeInput> dataeventType,WorkflowExpression<string> datacreated = null,WorkflowExpression<string> dataname = null,WorkflowExpression<string> datasubdomain = null,WorkflowExpression<string> datateamname = null,WorkflowExpression<string> datateamsubdomain = null,WorkflowExpression<string> datateamurl = null,WorkflowExpression<string> dataurl = null,WorkflowExpression<string> datauuid = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(dataeventType, nameof(dataeventType), required: true);
             WorkflowExpression.Validate(datacreated, nameof(datacreated), required: false);
@@ -390,8 +390,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
                     callPayload.Body = data;
                 }
 
-                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebhookSubscription>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

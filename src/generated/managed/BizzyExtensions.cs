@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -1402,13 +1402,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     {
 
         [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsPost))]
-        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPost([WorkflowExpression] Func<string> webHooktriggerDescription, [WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookkeywords = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISAPIKey = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISApp = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISIntent = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPost([WorkflowExpression] Func<string> webHooktriggerDescription,[WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType,[WorkflowExpression] Func<string[]> webHookfilters = null,[WorkflowExpression] Func<string> webHookkeywords = null,[WorkflowExpression] Func<string> webHookDeprecatedLUISAPIKey = null,[WorkflowExpression] Func<string> webHookDeprecatedLUISApp = null,[WorkflowExpression] Func<string> webHookDeprecatedLUISIntent = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHook> __BuildWebHookRegistrationsPost(WorkflowExpression<string> webHooktriggerDescription, WorkflowExpression<webHookbotTriggerTypeInput> webHookbotTriggerType, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<string> webHookkeywords = null, WorkflowExpression<string> webHookDeprecatedLUISAPIKey = null, WorkflowExpression<string> webHookDeprecatedLUISApp = null, WorkflowExpression<string> webHookDeprecatedLUISIntent = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook> __BuildWebHookRegistrationsPost(WorkflowExpression<string> webHooktriggerDescription,WorkflowExpression<webHookbotTriggerTypeInput> webHookbotTriggerType,WorkflowExpression<string[]> webHookfilters = null,WorkflowExpression<string> webHookkeywords = null,WorkflowExpression<string> webHookDeprecatedLUISAPIKey = null,WorkflowExpression<string> webHookDeprecatedLUISApp = null,WorkflowExpression<string> webHookDeprecatedLUISIntent = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
             WorkflowExpression.Validate(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
@@ -1481,18 +1481,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     callPayload.Body = webHook;
                 }
 
-                return new ApiConnectionTrigger<WebHook>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildWebHookRegistrationsVectorPost))]
-        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost([WorkflowExpression] Func<string> webHooktriggerDescription, [WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHooklUISIntentVector = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost([WorkflowExpression] Func<string> webHooktriggerDescription,[WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType,[WorkflowExpression] Func<string[]> webHookfilters = null,[WorkflowExpression] Func<string> webHooklUISIntentVector = null,[WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<WebHook> __BuildWebHookRegistrationsVectorPost(WorkflowExpression<string> webHooktriggerDescription, WorkflowExpression<webHookbotTriggerTypeInput> webHookbotTriggerType, WorkflowExpression<string[]> webHookfilters = null, WorkflowExpression<string> webHooklUISIntentVector = null, WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook> __BuildWebHookRegistrationsVectorPost(WorkflowExpression<string> webHooktriggerDescription,WorkflowExpression<webHookbotTriggerTypeInput> webHookbotTriggerType,WorkflowExpression<string[]> webHookfilters = null,WorkflowExpression<string> webHooklUISIntentVector = null,WorkflowExpression<webHookallowBranchingInput> webHookallowBranching = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
             WorkflowExpression.Validate(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
@@ -1561,8 +1561,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                     callPayload.Body = webHook;
                 }
 
-                return new ApiConnectionTrigger<WebHook>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<WebHook>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

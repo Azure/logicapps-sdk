@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -447,13 +447,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
     {
 
         [WorkflowExpressionFactory(nameof(__BuildNewMailTrigger))]
-        public IBodyWorkflowTrigger<NewMailTriggerResponse> NewMailTrigger([WorkflowExpression] Func<string> accId, [WorkflowExpression] Func<string> criterias, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMailTriggerResponse> NewMailTrigger([WorkflowExpression] Func<string> accId,[WorkflowExpression] Func<string> criterias,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NewMailTriggerResponse> __BuildNewMailTrigger(WorkflowExpression<string> accId, WorkflowExpression<string> criterias, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewMailTriggerResponse> __BuildNewMailTrigger(WorkflowExpression<string> accId,WorkflowExpression<string> criterias,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accId, nameof(accId), required: true);
             WorkflowExpression.Validate(criterias, nameof(criterias), required: true);
@@ -477,18 +477,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<NewMailTriggerResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NewMailTriggerResponse>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildNEWCONDITIONALMAIL))]
-        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse> NEWCONDITIONALMAIL([WorkflowExpression] Func<string> accId, [WorkflowExpression] Func<bodycriteriasInputItem[]> bodycriterias, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse> NEWCONDITIONALMAIL([WorkflowExpression] Func<string> accId,[WorkflowExpression] Func<bodycriteriasInputItem[]> bodycriterias,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse> __BuildNEWCONDITIONALMAIL(WorkflowExpression<string> accId, WorkflowExpression<bodycriteriasInputItem[]> bodycriterias, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NEWCONDITIONALMAILResponse> __BuildNEWCONDITIONALMAIL(WorkflowExpression<string> accId,WorkflowExpression<bodycriteriasInputItem[]> bodycriterias,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(accId, nameof(accId), required: true);
             WorkflowExpression.Validate(bodycriterias, nameof(bodycriterias), required: true);
@@ -513,8 +513,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger<NEWCONDITIONALMAILResponse>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<NEWCONDITIONALMAILResponse>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

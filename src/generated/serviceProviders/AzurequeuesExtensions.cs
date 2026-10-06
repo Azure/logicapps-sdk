@@ -212,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<ReceiveQueueMessagesOutput>(serviceProviderInput);
-            }, "ServiceProviderTrigger");
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildSpecifiedNumberOfMessagesAvailable))]
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues
                     Parameters = serviceProviderParameters
                 };
                 return new ServiceProviderTrigger<int>(serviceProviderInput, isPolling: true, recurrence: recurrence);
-            }, "ServiceProviderTrigger");
+            });
         }
     }
 

@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -240,13 +240,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCaseCreatedTrigger))]
-        public IWorkflowTrigger CaseCreatedTrigger([WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseCreatedTrigger([WorkflowExpression] Func<string> bodytemplateId = null,[WorkflowExpression] Func<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCaseCreatedTrigger(WorkflowExpression<string> bodytemplateId = null, WorkflowExpression<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCaseCreatedTrigger(WorkflowExpression<string> bodytemplateId = null,WorkflowExpression<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
             WorkflowExpression.Validate(bodyscope, nameof(bodyscope), required: false);
@@ -276,18 +276,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCaseUpdatedTrigger))]
-        public IWorkflowTrigger CaseUpdatedTrigger([WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseUpdatedTrigger([WorkflowExpression] Func<string> bodytemplateId = null,[WorkflowExpression] Func<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCaseUpdatedTrigger(WorkflowExpression<string> bodytemplateId = null, WorkflowExpression<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCaseUpdatedTrigger(WorkflowExpression<string> bodytemplateId = null,WorkflowExpression<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
             WorkflowExpression.Validate(bodyscope, nameof(bodyscope), required: false);
@@ -317,18 +317,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildCaseClosedTrigger))]
-        public IWorkflowTrigger CaseClosedTrigger([WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseClosedTrigger([WorkflowExpression] Func<string> bodytemplateId = null,[WorkflowExpression] Func<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCaseClosedTrigger(WorkflowExpression<string> bodytemplateId = null, WorkflowExpression<bodyscopeInput> bodyscope = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCaseClosedTrigger(WorkflowExpression<string> bodytemplateId = null,WorkflowExpression<bodyscopeInput> bodyscope = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
             WorkflowExpression.Validate(bodyscope, nameof(bodyscope), required: false);
@@ -358,8 +358,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                     callPayload.Body = body;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 

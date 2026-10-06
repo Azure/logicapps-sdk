@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -159,20 +159,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
 
     public class GotomeetingTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<MeetingArrayItem[]> OnNewMeeting(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MeetingArrayItem[]> OnNewMeeting(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/new_meeting_trigger/upcomingMeetings";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<MeetingArrayItem[]> OnMeetingComplete(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<MeetingArrayItem[]> OnMeetingComplete(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/completed_meeting_trigger/historicalMeetings";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, recurrence: recurrence);
         }
     }
 

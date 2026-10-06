@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -140,22 +140,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
 
     public class GoogletasksTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TaskListList> OnNewTaskList(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskListList> OnNewTaskList(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger1/users/@me/lists";
             var apiCallHttpMethod = "get";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TaskListList>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<TaskListList>(callPayload, recurrence: recurrence);
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewTaskInList))]
-        public IBodyWorkflowTrigger<TaskList> OnNewTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList> OnNewTaskInList([WorkflowExpression] Func<string> taskListId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TaskList> __BuildOnNewTaskInList(WorkflowExpression<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList> __BuildOnNewTaskInList(WorkflowExpression<string> taskListId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
@@ -163,18 +163,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger2/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnCompletedTaskInList))]
-        public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList> OnCompletedTaskInList([WorkflowExpression] Func<string> taskListId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TaskList> __BuildOnCompletedTaskInList(WorkflowExpression<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList> __BuildOnCompletedTaskInList(WorkflowExpression<string> taskListId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
@@ -182,18 +182,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger3/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);
+            });
         }
 
         [WorkflowExpressionFactory(nameof(__BuildOnDueTaskInList))]
-        public IBodyWorkflowTrigger<TaskList> OnDueTaskInList([WorkflowExpression] Func<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList> OnDueTaskInList([WorkflowExpression] Func<string> taskListId,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TaskList> __BuildOnDueTaskInList(WorkflowExpression<string> taskListId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TaskList> __BuildOnDueTaskInList(WorkflowExpression<string> taskListId,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(taskListId, nameof(taskListId), required: true);
             return new DeferredBodyTrigger<TaskList>(() =>
@@ -201,8 +201,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googletasks
                 var apiCallPath = ExpressionConverter.ConvertGeneratedPath("/trigger4/lists/{0}/tasks", ExpressionConverter.ConvertWithUrlEncoding(taskListId, 1));
                 var apiCallHttpMethod = "get";
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-                return new ApiConnectionTrigger<TaskList>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TaskList>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

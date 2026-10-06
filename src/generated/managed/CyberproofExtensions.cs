@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -222,13 +222,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
     {
 
         [WorkflowExpressionFactory(nameof(__BuildCPTrigger))]
-        public IWorkflowTrigger CPTrigger([WorkflowExpression] Func<string> actionReqselectTrigger, [WorkflowExpression] Func<object> actionReqparameters, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CPTrigger([WorkflowExpression] Func<string> actionReqselectTrigger,[WorkflowExpression] Func<object> actionReqparameters,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IWorkflowTrigger __BuildCPTrigger(WorkflowExpression<string> actionReqselectTrigger, WorkflowExpression<object> actionReqparameters, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger __BuildCPTrigger(WorkflowExpression<string> actionReqselectTrigger,WorkflowExpression<object> actionReqparameters,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(actionReqselectTrigger, nameof(actionReqselectTrigger), required: true);
             WorkflowExpression.Validate(actionReqparameters, nameof(actionReqparameters), required: true);
@@ -250,8 +250,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                     callPayload.Body = actionReq;
                 }
 
-                return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger(callPayload, recurrence: recurrence);
+            });
         }
     }
 }

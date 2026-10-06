@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -282,13 +282,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ftp
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnUpdatedFiles))]
-        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> OnUpdatedFiles([WorkflowExpression] Func<string> folderId,[WorkflowExpression] Func<int> maxFileCount = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<BlobMetadata[]> __BuildOnUpdatedFiles(WorkflowExpression<string> folderId, WorkflowExpression<int> maxFileCount = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BlobMetadata[]> __BuildOnUpdatedFiles(WorkflowExpression<string> folderId,WorkflowExpression<int> maxFileCount = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(folderId, nameof(folderId), required: true);
             WorkflowExpression.Validate(maxFileCount, nameof(maxFileCount), required: false);
@@ -302,8 +302,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ftp
                 if (maxFileCount != null)
                     callPayload.Queries["maxFileCount"] = ExpressionConverter.Convert(maxFileCount);
                 callPayload.Queries["checkBothCreatedAndModifiedDateTime"] = Convert.ToString(false);
-                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<BlobMetadata[]>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

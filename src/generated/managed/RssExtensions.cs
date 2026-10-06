@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -45,13 +45,13 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
     {
 
         [WorkflowExpressionFactory(nameof(__BuildOnNewFeed))]
-        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed([WorkflowExpression] Func<string> feedUrl,[WorkflowExpression] Func<sincePropertyInput> sinceProperty = null,FlowRecurrence recurrence = null)
         {
             throw new NotSupportedException("Build this workflow with the SDK expression compiler enabled.");
         }
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> __BuildOnNewFeed(WorkflowExpression<string> feedUrl, WorkflowExpression<sincePropertyInput> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> __BuildOnNewFeed(WorkflowExpression<string> feedUrl,WorkflowExpression<sincePropertyInput> sinceProperty = null,FlowRecurrence recurrence = null)
         {
             WorkflowExpression.Validate(feedUrl, nameof(feedUrl), required: true);
             WorkflowExpression.Validate(sinceProperty, nameof(sinceProperty), required: false);
@@ -64,8 +64,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
                 callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
                 if (sinceProperty != null)
                     callPayload.Queries["sinceProperty"] = ExpressionConverter.Convert(sinceProperty);
-                return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(callPayload, triggerName, recurrence);
-            }, triggerName);
+                return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(callPayload, recurrence: recurrence);
+            });
         }
     }
 

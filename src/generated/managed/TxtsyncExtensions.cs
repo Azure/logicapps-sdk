@@ -1,4 +1,4 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
@@ -673,7 +673,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
 
     public class TxtsyncTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<InboundSMSResponse> InboundSMS(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<InboundSMSResponse> InboundSMS(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/system/applications/webhooks/type/0";
             var apiCallHttpMethod = "post";
@@ -689,10 +689,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<InboundSMSResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<InboundSMSResponse>(callPayload, recurrence: recurrence);
         }
 
-        public IBodyWorkflowTrigger<OutboundSMSResponse> OutboundSMS(string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OutboundSMSResponse> OutboundSMS(FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/system/applications/webhooks/type/5";
             var apiCallHttpMethod = "post";
@@ -708,7 +708,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Txtsync
                 callPayload.Body = body;
             }
 
-            return new ApiConnectionTrigger<OutboundSMSResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<OutboundSMSResponse>(callPayload, recurrence: recurrence);
         }
     }
 
